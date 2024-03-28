@@ -1,6 +1,6 @@
 ---
-name: Feature request
-about: 기능 추가 이슈 템플릿
+name: Issue request
+about: 이슈추가 템플릿
 title: ''
 labels: ''
 assignees: ''
