@@ -1,0 +1,38 @@
+{
+  "arrowParens": "always",
+  "bracketSameLine": false,
+  "bracketSpacing": true,
+  "embeddedLanguageFormatting": "auto",
+  "htmlWhitespaceSensitivity": "css",
+  "insertPragma": false,
+  "jsxSingleQuote": true,
+  "printWidth": 80,
+  "proseWrap": "always",
+  "quoteProps": "as-needed",
+  "requirePragma": false,
+  "semi": true,
+  "singleAttributePerLine": false,
+  "singleQuote": true,
+  "tabWidth": 2,
+  "trailingComma": "es5",
+  "useTabs": false,
+  "vueIndentScriptAndStyle": false,
+
+  "plugins": ["@trivago/prettier-plugin-sort-imports"],
+  "importOrder": [
+      "^react",
+      "<THIRD_PARTY_MODULES>",
+
+      "^(.)*(/)(components)(.*)$",
+      "^(.)*(/)(pages)(.*)$",
+      "^(.)*(/)(hooks)(.*)$",
+      "^(.)*(/)(assets)(.*)$",
+
+      "^(.)*(/)(constants)(.*)$|^(.)*(/)(utils)(.*)",
+
+      "^(.)*(/)(api)(.*)$",
+      "^(.)*(/)(store)(.*)$|^@reduxjs"
+  ],
+  "importOrderSeparation": true,
+  "importOrderSortSpecifiers": false
+}
