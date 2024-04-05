@@ -9,7 +9,7 @@ import MainPage from './pages/MainPage';
 import MyPage from './pages/MyPage';
 import RootPage from './pages/RootPage';
 import SigninPage from './pages/SigninPage';
-import SignupPage from './pages/SignupPage';
+import SignupPage from './pages/signup/SignupPage';
 
 const router = createBrowserRouter([
   {
