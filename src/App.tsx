@@ -10,6 +10,7 @@ import MyPage from './pages/MyPage';
 import RootPage from './pages/RootPage';
 import SigninPage from './pages/SigninPage';
 import SignupPage from './pages/signup/SignupPage';
+import SignupPendingPage from './pages/signup/SignupPendingPage';
 
 const router = createBrowserRouter([
   {
@@ -20,7 +21,13 @@ const router = createBrowserRouter([
     children: [
       { index: true, element: <MainPage /> },
       { path: 'signin', element: <SigninPage /> },
-      { path: 'signup', element: <SignupPage /> },
+      {
+        path: 'signup',
+        children: [
+          { path: '', element: <SignupPage /> },
+          { path: 'pending', element: <SignupPendingPage /> },
+        ],
+      },
       { path: 'mypage/:username', element: <MyPage /> },
     ],
   },
