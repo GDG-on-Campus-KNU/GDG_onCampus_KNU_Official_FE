@@ -1,5 +1,9 @@
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 
+import './App.css';
+import { GlobalStyle } from './styles/GlobalStyle';
+import { Global } from '@emotion/react';
+
 import ErrorPage from './pages/ErrorPage';
 import MainPage from './pages/MainPage';
 import MyPage from './pages/MyPage';
@@ -25,6 +29,7 @@ const router = createBrowserRouter([
 function App() {
   return (
     <>
+      <Global styles={GlobalStyle} />
       <RouterProvider router={router} />
     </>
   );
