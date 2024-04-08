@@ -59,16 +59,32 @@ const SignUpForm = () => {
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
-    const userData = {
-      name: name,
-      age: age,
-      studentNumber: studentNumber,
-      major: major,
-    };
+    if (debounceAge === 0) {
+      alert('나이를 0으로 제출할 수 없습니다.');
+      // 에러창 모달로 새로 띄워야함.
+      return;
+    }
 
-    mutate(userData);
+    if (studentNumber.length !== 10) {
+      alert('학번은 10자리로 입력해주세요.');
+      // 에러창 모달로 새로 띄워야함.
+      return;
+    }
 
-    console.log('회원가입 데이터:', userData);
+    const isConfirmed = window.confirm('회원가입을 완료하시겠습니까?');
+    if (isConfirmed) {
+      const userData = {
+        name: name,
+        age: age,
+        studentNumber: studentNumber,
+        major: major,
+      };
+
+      mutate(userData);
+
+      // 성공 모달창 띄우고 navigate 시켜야함.
+      console.log('회원가입 데이터:', userData);
+    }
   };
 
   // useEffect(() => {
@@ -80,7 +96,7 @@ const SignUpForm = () => {
 
   return (
     <SignFormWrapper onSubmit={handleSubmit}>
-      <h3>이름</h3>
+      <SignFormTitle>이름</SignFormTitle>
       <input
         placeholder='이름을 입력하세요'
         type='string'
@@ -88,7 +104,7 @@ const SignUpForm = () => {
         value={debounceName}
         onChange={(e) => handleName(e)}
       />
-      <h3>나이</h3>
+      <SignFormTitle>나이</SignFormTitle>
       <input
         placeholder='나이를 입력하세요'
         type='number'
@@ -96,15 +112,15 @@ const SignUpForm = () => {
         value={debounceAge}
         onChange={(e) => handleAge(e)}
       />
-      <h3>학번</h3>
+      <SignFormTitle>학번(10자리로 입력해주세요. ex.2019115615)</SignFormTitle>
       <input
-        placeholder='학번을 입력하세요'
+        placeholder='학번을 입력하세요(10자리로 입력해주세요)'
         type='string'
         required
         value={debounceStudentNumber}
         onChange={(e) => handleStudentNumber(e)}
       />
-      <h3>전공</h3>
+      <SignFormTitle>전공</SignFormTitle>
       <input
         placeholder='전공을 입력하세요'
         type='string'
@@ -124,4 +140,9 @@ const SignFormWrapper = styled.form`
   display: flex;
   box-sizing: border-box;
   flex-direction: column;
+`;
+
+const SignFormTitle = styled.h3`
+  font-size: var(--font-size-md);
+  font-weight: 600;
 `;

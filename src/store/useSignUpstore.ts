@@ -36,6 +36,10 @@ export const useSignUpStore = create<signUpUserVoidInterface>((set) => ({
     } else if (!isNaN(Number(debounceAge))) {
       set({ debounceAge: Number(debounceAge) });
     }
+
+    if (Number(debounceAge) >= 0) {
+      set({ debounceAge: Number(debounceAge) });
+    }
   },
   setDebounceStudentNumber: (debounceStudentNumber) =>
     set({ debounceStudentNumber: debounceStudentNumber }),
