@@ -3,6 +3,7 @@ import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import './App.css';
 import { GlobalStyle } from './styles/GlobalStyle';
 import { Global } from '@emotion/react';
+import { QueryClientProvider } from '@tanstack/react-query';
 
 import ErrorPage from './pages/ErrorPage';
 import MainPage from './pages/MainPage';
@@ -11,6 +12,8 @@ import RootPage from './pages/RootPage';
 import SigninPage from './pages/SigninPage';
 import SignupPage from './pages/signup/SignupPage';
 import SignupPendingPage from './pages/signup/SignupPendingPage';
+
+import { queryClient } from './hooks/queries/Http';
 
 const router = createBrowserRouter([
   {
@@ -36,8 +39,10 @@ const router = createBrowserRouter([
 function App() {
   return (
     <>
-      <Global styles={GlobalStyle} />
-      <RouterProvider router={router} />
+      <QueryClientProvider client={queryClient}>
+        <Global styles={GlobalStyle} />
+        <RouterProvider router={router} />
+      </QueryClientProvider>
     </>
   );
 }

@@ -2,7 +2,8 @@ import { useEffect } from 'react';
 
 import styled from '@emotion/styled';
 
-import { Debounce } from '../../../hooks/Debounce';
+import { Debounce } from '../../../hooks/custom_hooks/Debounce';
+import { SignupQuery } from '../../../hooks/queries/post/SignupQuery';
 
 import { useSignUpStore } from '../../../store/useSignUpstore';
 
@@ -31,6 +32,8 @@ const SignUpForm = () => {
   const debouncedStudentNumber = Debounce(debounceStudentNumber, 500);
   const debouncedMajor = Debounce(debounceMajor, 500);
 
+  const { mutate, isPending, isError, error } = SignupQuery();
+
   useEffect(() => {
     setName(debouncedName);
     setAge(Number(debouncedAge));
@@ -56,14 +59,16 @@ const SignUpForm = () => {
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
-    const formData = {
+    const userData = {
       name: name,
       age: age,
       studentNumber: studentNumber,
       major: major,
     };
 
-    console.log('회원가입 데이터:', formData);
+    mutate(userData);
+
+    console.log('회원가입 데이터:', userData);
   };
 
   // useEffect(() => {
@@ -107,7 +112,8 @@ const SignUpForm = () => {
         value={debounceMajor}
         onChange={(e) => handleMajor(e)}
       />
-      <button type='submit'>회원가입</button>
+      {isPending && <button type='submit'>'Submitting...'</button>}
+      {!isPending && <button type='submit'>회원가입</button>}
     </SignFormWrapper>
   );
 };

@@ -3,7 +3,7 @@ import { create } from 'zustand';
 
 interface signUpUserVoidInterface extends signUpUserInterface {
   debounceName: string;
-  debounceAge: number;
+  debounceAge: string | number;
   debounceStudentNumber: string;
   debounceMajor: string;
   setName: (name: string) => void;
@@ -11,30 +11,33 @@ interface signUpUserVoidInterface extends signUpUserInterface {
   setStudentNumber: (studentNumber: string) => void;
   setMajor: (major: string) => void;
   setDebounceName: (debounceName: string) => void;
-  setDebounceAge: (debounceAge: number) => void;
+  setDebounceAge: (debounceAge: string | number) => void;
   setDebounceStudentNumber: (debounceStudentNumber: string) => void;
   setDebounceMajor: (debounceMajor: string) => void;
 }
 
 export const useSignUpStore = create<signUpUserVoidInterface>((set) => ({
   name: '',
-  age: 0,
+  age: 1,
   studentNumber: '',
   major: '',
   debounceName: '',
-  debounceAge: 0,
+  debounceAge: '',
   debounceStudentNumber: '',
   debounceMajor: '',
-  setName: (name: string) => set({ name: name }),
-  setAge: (age: number) => set({ age: age }),
-  setStudentNumber: (studentNumber: string) =>
-    set({ studentNumber: studentNumber }),
-  setMajor: (major: string) => set({ major: major }),
-  setDebounceName: (debounceName: string) =>
-    set({ debounceName: debounceName }),
-  setDebounceAge: (debounceAge: number) => set({ debounceAge: debounceAge }),
-  setDebounceStudentNumber: (debounceStudentNumber: string) =>
+  setName: (name) => set({ name: name }),
+  setAge: (age) => set({ age: age }),
+  setStudentNumber: (studentNumber) => set({ studentNumber: studentNumber }),
+  setMajor: (major) => set({ major: major }),
+  setDebounceName: (debounceName) => set({ debounceName: debounceName }),
+  setDebounceAge: (debounceAge) => {
+    if (debounceAge === '') {
+      set({ debounceAge: '' });
+    } else if (!isNaN(Number(debounceAge))) {
+      set({ debounceAge: Number(debounceAge) });
+    }
+  },
+  setDebounceStudentNumber: (debounceStudentNumber) =>
     set({ debounceStudentNumber: debounceStudentNumber }),
-  setDebounceMajor: (debounceMajor: string) =>
-    set({ debounceMajor: debounceMajor }),
+  setDebounceMajor: (debounceMajor) => set({ debounceMajor: debounceMajor }),
 }));
