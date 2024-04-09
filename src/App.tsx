@@ -1,6 +1,5 @@
 import { RouterProvider } from 'react-router-dom';
 
-import './App.css';
 import { Router } from './Router';
 import { GlobalStyle } from './styles/GlobalStyle';
 import { Global } from '@emotion/react';

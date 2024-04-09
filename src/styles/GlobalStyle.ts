@@ -36,4 +36,12 @@ export const GlobalStyle = css`
     --color-dove: ${colorDoveGray};
     --color-blue: ${colorCornflowerBlue};
   }
+
+  @import url('https://fonts.googleapis.com/css2?family=Noto+Sans:ital,wdth,wght@0,62.5..100,100..900;1,62.5..100,100..900&display=swap');
+
+  body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Noto+Sans', monospace;
+  }
 `;
