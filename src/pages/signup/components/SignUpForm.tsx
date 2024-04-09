@@ -2,7 +2,7 @@ import { useEffect } from 'react';
 
 import styled from '@emotion/styled';
 
-import { Debounce } from '../../../hooks/custom_hooks/Debounce';
+import { useDebounce } from '../../../hooks/custom_hooks/useDebounce';
 import { SignupQuery } from '../../../hooks/queries/post/SignupQuery';
 
 import { useSignUpStore } from '../../../store/useSignUpstore';
@@ -27,12 +27,13 @@ const SignUpForm = () => {
     setDebounceMajor,
   } = useSignUpStore();
 
-  const debouncedName = Debounce(debounceName, 500);
-  const debouncedAge = Debounce(debounceAge.toString(), 500);
-  const debouncedStudentNumber = Debounce(debounceStudentNumber, 500);
-  const debouncedMajor = Debounce(debounceMajor, 500);
+  const debouncedName = useDebounce(debounceName, 500);
+  const debouncedAge = useDebounce(debounceAge.toString(), 500);
+  const debouncedStudentNumber = useDebounce(debounceStudentNumber, 500);
+  const debouncedMajor = useDebounce(debounceMajor, 500);
 
   const { mutate, isPending, isError, error } = SignupQuery();
+  //모달 창 나왔을때 isError랑 error 모달창 집어넣어야함.
 
   useEffect(() => {
     setName(debouncedName);
@@ -128,7 +129,7 @@ const SignUpForm = () => {
         value={debounceMajor}
         onChange={(e) => handleMajor(e)}
       />
-      {isPending && <button type='submit'>'Submitting...'</button>}
+      {isPending && <button type='submit'>Submitting...</button>}
       {!isPending && <button type='submit'>회원가입</button>}
     </SignFormWrapper>
   );
