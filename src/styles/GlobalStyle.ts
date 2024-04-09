@@ -19,6 +19,8 @@ const colorDoveGray = '#636363';
 const colorCornflowerBlue = '#4285F4';
 
 export const GlobalStyle = css`
+  @import url('https://fonts.googleapis.com/css2?family=Noto+Sans:ital,wdth,wght@0,62.5..100,100..900;1,62.5..100,100..900&display=swap');
+
   :root {
     --font-size-xl: ${fontSizeXl};
     --font-size-lg: ${fontSizeLg};
@@ -36,8 +38,6 @@ export const GlobalStyle = css`
     --color-dove: ${colorDoveGray};
     --color-blue: ${colorCornflowerBlue};
   }
-
-  @import url('https://fonts.googleapis.com/css2?family=Noto+Sans:ital,wdth,wght@0,62.5..100,100..900;1,62.5..100,100..900&display=swap');
 
   body {
     margin: 0;
