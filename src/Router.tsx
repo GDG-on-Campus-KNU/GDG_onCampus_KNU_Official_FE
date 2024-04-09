@@ -13,6 +13,8 @@ import AuthCallBackPage from './pages/signin/AuthCallBackPage';
 import SigninPage from './pages/signin/SigninPage';
 import TechBlogPage from './pages/tech_blog/TechBlogPage';
 
+import { BASE_URI } from './constants/URI';
+
 export const Router = createBrowserRouter([
   {
     path: '/gdscknu',
@@ -28,14 +30,14 @@ export const Router = createBrowserRouter([
       { path: 'mypage/:username', element: <MyPage /> },
       { path: 'community', element: <CommunityPage /> },
       { path: 'techblog/:tech', element: <TechBlogPage /> },
-      {
-        path: 'logout',
-        action: logoutAction,
-      },
     ],
   },
   {
     path: '/oauth/:provider/redirect',
     element: <AuthCallBackPage />,
+  },
+  {
+    path: `${BASE_URI}/api/auth/logout`,
+    action: logoutAction,
   },
 ]);

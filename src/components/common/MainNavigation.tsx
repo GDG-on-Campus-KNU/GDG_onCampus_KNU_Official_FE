@@ -1,5 +1,7 @@
 import { NavLink, Form } from 'react-router-dom';
 
+import { BASE_URI } from '../../constants/URI';
+
 const MainNavigation = () => {
   const accessToken = localStorage.getItem('accessToken');
 
@@ -11,10 +13,10 @@ const MainNavigation = () => {
             <NavLink to='/gdscknu'>로고</NavLink>
           </li>
           <li>
-            <NavLink to='/gdsc/introduce'>동아리 소개</NavLink>
+            <NavLink to='/gdscknu/introduce'>동아리 소개</NavLink>
           </li>
           <li>
-            <NavLink to='/gdsc/apply'>지원하기</NavLink>
+            <NavLink to='/gdscknu/apply'>지원하기</NavLink>
           </li>
           <li>
             <NavLink to='/gdscknu/techblog/:tech'>테크블로그</NavLink>
@@ -25,7 +27,7 @@ const MainNavigation = () => {
           {accessToken ? (
             <>
               <li>
-                <Form action='/gdscknu/logout' method='post'>
+                <Form action={`${BASE_URI}/api/auth/logout`} method='post'>
                   <button>로그아웃</button>
                 </Form>
               </li>
