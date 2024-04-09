@@ -1,5 +1,5 @@
 import { signUpUserInterface } from '../../interface/UserInterface';
-import { instance } from '../Api';
+import { instance } from '../Api_JWT';
 
 export const SignupAPI = (
   userData: signUpUserInterface
