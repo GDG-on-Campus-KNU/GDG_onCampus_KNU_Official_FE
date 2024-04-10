@@ -7,6 +7,17 @@ import { SignupQuery } from '../../../hooks/queries/post/SignupQuery';
 
 import { useSignUpStore } from '../../../store/useSignUpstore';
 
+const SignFormWrapper = styled.form`
+  display: flex;
+  box-sizing: border-box;
+  flex-direction: column;
+`;
+
+const SignFormTitle = styled.h3`
+  font-size: var(--font-size-md);
+  font-weight: 600;
+`;
+
 const SignUpForm = () => {
   const {
     name,
@@ -40,7 +51,16 @@ const SignUpForm = () => {
     setAge(Number(debouncedAge));
     setStudentNumber(debouncedStudentNumber);
     setMajor(debouncedMajor);
-  }, [debouncedName, debouncedAge, debouncedStudentNumber, debouncedMajor]);
+  }, [
+    debouncedName,
+    debouncedAge,
+    debouncedStudentNumber,
+    debouncedMajor,
+    setName,
+    setAge,
+    setStudentNumber,
+    setMajor,
+  ]);
 
   const handleName = (e: React.ChangeEvent<HTMLInputElement>) => {
     setDebounceName(e.target.value);
@@ -136,14 +156,3 @@ const SignUpForm = () => {
 };
 
 export default SignUpForm;
-
-const SignFormWrapper = styled.form`
-  display: flex;
-  box-sizing: border-box;
-  flex-direction: column;
-`;
-
-const SignFormTitle = styled.h3`
-  font-size: var(--font-size-md);
-  font-weight: 600;
-`;
