@@ -1,5 +1,3 @@
-import { GlobalStyle } from '../../styles/GlobalStyle';
-import SigninBtn from '../Button/SigninBtn';
 import Text from '../Typography/Text';
 import Title from '../Typography/Title';
 import logo from '/GDSC.svg';
@@ -8,6 +6,7 @@ import styled from '@emotion/styled';
 interface ISignModal {
   title: string;
   text: string;
+  children: React.ReactNode;
 }
 
 const SigninWrapper = styled.section`
@@ -50,7 +49,7 @@ const TitleItem = styled.div`
   margin: 50px 0px;
 `;
 
-const SigninModal: React.FC<ISignModal> = ({ title, text }) => {
+const AuthModal: React.FC<ISignModal> = ({ title, text, children }) => {
   return (
     <SigninWrapper>
       <SigninBox>
@@ -63,12 +62,10 @@ const SigninModal: React.FC<ISignModal> = ({ title, text }) => {
             {text}
           </Text>
         </SigninContainer>
-        <SigninContainer>
-          <SigninBtn width='80%'>Google 계정으로 로그인</SigninBtn>
-        </SigninContainer>
+        <SigninContainer>{children}</SigninContainer>
       </SigninBox>
     </SigninWrapper>
   );
 };
 
-export default SigninModal;
+export default AuthModal;

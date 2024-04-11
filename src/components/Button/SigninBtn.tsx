@@ -1,4 +1,3 @@
-import { GlobalStyle } from '../../styles/GlobalStyle';
 import Text from '../Typography/Text';
 import styled from '@emotion/styled';
 

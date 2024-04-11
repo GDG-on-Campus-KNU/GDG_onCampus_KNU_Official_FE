@@ -1,4 +1,3 @@
-import { GlobalStyle } from '../../styles/GlobalStyle';
 import styled from '@emotion/styled';
 
 interface IText {
@@ -35,7 +34,6 @@ const Text = styled.span<IText>`
   font-family: 'Noto+Sans';
 
   white-space: pre-line;
-  line-height: 0.7;
 `;
 
 export default Text;

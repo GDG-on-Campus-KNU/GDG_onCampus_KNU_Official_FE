@@ -1,13 +1,9 @@
-import SigninModal from '../components/common/SigninModal';
+import SigninModal from '../components/auth/SigninModal';
 
 const SigninPage = () => {
   return (
     <>
-      <SigninModal
-        title='GDSC 로그인'
-        text={`구글 계정을 이용하여\n
-        GDSC KNU에 로그인하세요.`}
-      />
+      <SigninModal />
     </>
   );
 };
