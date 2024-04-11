@@ -14,6 +14,7 @@ const colorMartinique = '#2A2545';
 const colorMartiniNavy = '#2D294A';
 const colorSelectiveYellow = '#FBBC05';
 const colorWhite = '#FFFFFF';
+const colorBlack = '#000000';
 const colorFrenchGray = '#BDBBC2';
 const colorDoveGray = '#636363';
 const colorCornflowerBlue = '#4285F4';
@@ -27,6 +28,7 @@ export const GlobalStyle = css`
     --font-size-xs: ${fontSizeXs};
 
     --color-white: ${colorWhite};
+    --color-black: ${colorBlack};
     --color-revolver: ${colorRevolver};
     --color-gore: ${colorPortGore};
     --color-que: ${colorMartinique};
