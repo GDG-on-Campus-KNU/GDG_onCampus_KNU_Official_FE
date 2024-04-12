@@ -7,7 +7,7 @@ interface ITitle {
 
 const Title: React.FC<ITitle> = ({ color, children }) => {
   return (
-    <Text color={color} size='2.75rem' weight='bold'>
+    <Text color={color} size='xxl' weight='bold'>
       {children}
     </Text>
   );

@@ -1,3 +1,4 @@
+import { displayCenter } from '../../styles/LayoutStyle';
 import Text from '../Typography/Text';
 import Title from '../Typography/Title';
 import logo from '/GDSC.svg';
@@ -10,8 +11,7 @@ interface ISignModal {
 }
 
 export const SigninWrapper = styled.section`
-  display: flex;
-  justify-content: center;
+  ${displayCenter}
   align-items: center;
 
   width: 100%;
@@ -23,8 +23,7 @@ export const SigninBox = styled.div`
 
   padding: 35px;
 
-  display: flex;
-  justify-content: center;
+  ${displayCenter}
   @media (max-width: 767px) {
     flex-direction: column;
     align-items: center;

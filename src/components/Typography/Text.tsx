@@ -1,7 +1,7 @@
 import styled from '@emotion/styled';
 
 interface IText {
-  size?: 'xs' | 'sm' | 'md' | 'lg' | 'xl' | string;
+  size?: 'xs' | 'sm' | 'md' | 'lg' | 'xl' | 'xxl';
   color?: 'white' | 'black' | 'placeholder' | string;
   weight?: 'light' | 'normal' | 'bold' | string;
   children?: React.ReactNode;
@@ -14,7 +14,18 @@ const Text = styled.span<IText>`
 
   font-weight: ${(props) => props.weight ?? 'normal'};
 
-  color: ${(props) => props.color};
+  color: ${(props) => {
+    switch (props.color) {
+      case 'white':
+        return 'var(--color-white)';
+      case 'black':
+        return 'var(--color-black)';
+      case 'placeholder':
+        return 'var(--color-dove)';
+      default:
+        return props.color;
+    }
+  }};
 
   font-size: ${(props) => {
     switch (props.size) {
@@ -28,10 +39,12 @@ const Text = styled.span<IText>`
         return 'var(--font-size-lg)';
       case 'xl':
         return 'var(--font-size-xl)';
+      case 'xxl':
+        return 'var(--font-size-xxl)';
       case undefined:
         return 'var(--font-size-md)';
       default:
-        return props.size;
+        return;
     }
   }};
 

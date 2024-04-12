@@ -1,3 +1,4 @@
+import { displayCenter } from '../../styles/LayoutStyle';
 import CompleteBtn from '../Button/CompleteBtn';
 import { SigninWrapper, SigninBox } from '../Common/AuthModal';
 import Title from '../Typography/Title';
@@ -7,10 +8,9 @@ import styled from '@emotion/styled';
 const CompleteContainer = styled.div`
   height: 500px;
 
-  display: flex;
+  ${displayCenter}
   flex-direction: column;
   align-items: center;
-  justify-content: center;
   gap: 40px;
 `;
 
