@@ -1,4 +1,4 @@
-import SigninModal from '../components/auth/SigninModal';
+import SigninModal from '../components/Auth/SigninModal';
 
 const SigninPage = () => {
   return (

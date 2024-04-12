@@ -9,7 +9,7 @@ interface ISignModal {
   children: React.ReactNode;
 }
 
-const SigninWrapper = styled.section`
+export const SigninWrapper = styled.section`
   display: flex;
   justify-content: center;
   align-items: center;
@@ -18,13 +18,13 @@ const SigninWrapper = styled.section`
   height: 100vh;
 `;
 
-const SigninBox = styled.div`
+export const SigninBox = styled.div`
   width: 60%;
 
   padding: 35px;
 
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
 
   background-color: var(--color-white);
   opacity: 80%;

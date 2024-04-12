@@ -1,5 +1,11 @@
+import SignupCompleteModal from '../components/Auth/SignupCompleteModal';
+
 const SignupPage = () => {
-  return <>회원가입페이지</>;
+  return (
+    <>
+      <SignupCompleteModal />
+    </>
+  );
 };
 
 export default SignupPage;
