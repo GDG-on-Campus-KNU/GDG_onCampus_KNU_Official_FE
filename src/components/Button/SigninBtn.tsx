@@ -34,8 +34,8 @@ const Button = styled.button<IButton>`
 const SigninBtn: React.FC<ISigninBtnProps> = ({ width, children }) => {
   return (
     <Button width={width}>
-      <img src={SigninLogo} alt='logo' width='1.125rem' height='18px' />
-      <Text weight='500' size='18px'>
+      <img src={SigninLogo} alt='logo' width='18px' height='18px' />
+      <Text weight='500' size='md'>
         {children}
       </Text>
     </Button>

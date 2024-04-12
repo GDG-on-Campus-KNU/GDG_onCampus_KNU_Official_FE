@@ -8,6 +8,10 @@ interface IText {
 }
 
 const Text = styled.span<IText>`
+  @media (max-width: 767px) {
+    text-align: center;
+  }
+
   font-weight: ${(props) => props.weight ?? 'normal'};
 
   color: ${(props) => props.color};
