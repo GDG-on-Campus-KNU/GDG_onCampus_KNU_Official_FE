@@ -1,7 +1,7 @@
 import styled from '@emotion/styled';
 
 interface IText {
-  size?: 'xs' | 's' | 'm' | 'l' | 'xl' | string;
+  size?: 'xs' | 'sm' | 'md' | 'lg' | 'xl' | string;
   color?: 'white' | 'black' | 'placeholder' | string;
   weight?: 'light' | 'normal' | 'bold' | string;
   children?: React.ReactNode;
