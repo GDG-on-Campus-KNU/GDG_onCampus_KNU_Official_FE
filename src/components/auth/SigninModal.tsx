@@ -1,5 +1,5 @@
 import SigninBtn from '../Button/SigninBtn';
-import AuthModal from '../common/AuthModal';
+import AuthModal from '../Common/AuthModal';
 
 const SigninModal = () => {
   return (
