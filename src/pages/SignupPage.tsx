@@ -1,5 +1,5 @@
 const SignupPage = () => {
-  return <>회원가입페이지</>;
+  return <></>;
 };
 
 export default SignupPage;
