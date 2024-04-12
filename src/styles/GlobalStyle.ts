@@ -1,6 +1,7 @@
 import { css } from '@emotion/react';
 
 // fontSize 정의
+const fontSizeXxl = '2.5rem'; //40px
 const fontSizeXl = '1.5rem'; // 24px
 const fontSizeLg = '1.25rem'; // 20px
 const fontSizeMd = '1rem'; // 16px
@@ -21,6 +22,7 @@ const colorCornflowerBlue = '#4285F4';
 
 export const GlobalStyle = css`
   :root {
+    --font-size-xxl: ${fontSizeXxl};
     --font-size-xl: ${fontSizeXl};
     --font-size-lg: ${fontSizeLg};
     --font-size-md: ${fontSizeMd};
