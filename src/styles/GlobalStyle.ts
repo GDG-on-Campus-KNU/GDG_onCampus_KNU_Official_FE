@@ -1,6 +1,7 @@
 import { css } from '@emotion/react';
 
 // fontSize 정의
+const fontSizeXxl = '2.5rem'; //40px
 const fontSizeXl = '1.5rem'; // 24px
 const fontSizeLg = '1.25rem'; // 20px
 const fontSizeMd = '1rem'; // 16px
@@ -14,12 +15,15 @@ const colorMartinique = '#2A2545';
 const colorMartiniNavy = '#2D294A';
 const colorSelectiveYellow = '#FBBC05';
 const colorWhite = '#FFFFFF';
+const colorBlack = '#000000';
 const colorFrenchGray = '#BDBBC2';
 const colorDoveGray = '#636363';
 const colorCornflowerBlue = '#4285F4';
+const colorCinnabar = '#EA4335';
 
 export const GlobalStyle = css`
   :root {
+    --font-size-xxl: ${fontSizeXxl};
     --font-size-xl: ${fontSizeXl};
     --font-size-lg: ${fontSizeLg};
     --font-size-md: ${fontSizeMd};
@@ -27,6 +31,7 @@ export const GlobalStyle = css`
     --font-size-xs: ${fontSizeXs};
 
     --color-white: ${colorWhite};
+    --color-black: ${colorBlack};
     --color-revolver: ${colorRevolver};
     --color-gore: ${colorPortGore};
     --color-que: ${colorMartinique};
@@ -35,5 +40,6 @@ export const GlobalStyle = css`
     --color-french: ${colorFrenchGray};
     --color-dove: ${colorDoveGray};
     --color-blue: ${colorCornflowerBlue};
+    --color-cinarbar: ${colorCinnabar};
   }
 `;
