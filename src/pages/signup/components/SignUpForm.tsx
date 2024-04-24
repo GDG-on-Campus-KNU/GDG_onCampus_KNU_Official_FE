@@ -1,11 +1,16 @@
-import { useEffect } from 'react';
+import { useForm } from 'react-hook-form';
 
+import { signUpUserInterface } from '../../../interface/UserInterface';
 import styled from '@emotion/styled';
+import { ErrorMessage } from '@hookform/error-message';
+import { zodResolver } from '@hookform/resolvers/zod';
 
-import { useDebounce } from '../../../hooks/custom_hooks/useDebounce';
 import { SignupQuery } from '../../../hooks/queries/post/SignupQuery';
 
-import { useSignUpStore } from '../../../store/useSignUpstore';
+import {
+  SignUpSchema,
+  SignUpSchemaType,
+} from '../../../utils/SignUpSchemaUtil';
 
 const SignFormWrapper = styled.form`
   display: flex;
@@ -13,144 +18,83 @@ const SignFormWrapper = styled.form`
   flex-direction: column;
 `;
 
-const SignFormTitle = styled.h3`
+const SignFormTitle = styled.label`
   font-size: var(--font-size-md);
   font-weight: 600;
 `;
 
 const SignUpForm = () => {
-  const {
-    name,
-    age,
-    studentNumber,
-    major,
-    debounceName,
-    debounceAge,
-    debounceStudentNumber,
-    debounceMajor,
-    setName,
-    setAge,
-    setStudentNumber,
-    setMajor,
-    setDebounceName,
-    setDebounceAge,
-    setDebounceStudentNumber,
-    setDebounceMajor,
-  } = useSignUpStore();
-
-  const debouncedName = useDebounce(debounceName, 500);
-  const debouncedAge = useDebounce(debounceAge.toString(), 500);
-  const debouncedStudentNumber = useDebounce(debounceStudentNumber, 500);
-  const debouncedMajor = useDebounce(debounceMajor, 500);
-
   const { mutate, isPending, isError, error } = SignupQuery();
   //모달 창 나왔을때 isError랑 error 모달창 집어넣어야함.
 
-  useEffect(() => {
-    setName(debouncedName);
-    setAge(Number(debouncedAge));
-    setStudentNumber(debouncedStudentNumber);
-    setMajor(debouncedMajor);
-  }, [
-    debouncedName,
-    debouncedAge,
-    debouncedStudentNumber,
-    debouncedMajor,
-    setName,
-    setAge,
-    setStudentNumber,
-    setMajor,
-  ]);
+  const {
+    register,
+    formState: { errors },
+    handleSubmit,
+  } = useForm<SignUpSchemaType>({
+    resolver: zodResolver(SignUpSchema),
+  });
 
-  const handleName = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setDebounceName(e.target.value);
-  };
-
-  const handleAge = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setDebounceAge(Number(e.target.value));
-  };
-
-  const handleStudentNumber = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setDebounceStudentNumber(e.target.value);
-  };
-  const handleMajor = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setDebounceMajor(e.target.value);
-  };
-
-  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
-
-    if (debounceAge === 0) {
-      alert('나이를 0으로 제출할 수 없습니다.');
-      // 에러창 모달로 새로 띄워야함.
-      return;
-    }
-
-    if (studentNumber.length !== 10) {
-      alert('학번은 10자리로 입력해주세요.');
-      // 에러창 모달로 새로 띄워야함.
-      return;
-    }
-
+  const onSubmit = (data: signUpUserInterface) => {
     const isConfirmed = window.confirm('회원가입을 완료하시겠습니까?');
     if (isConfirmed) {
-      const userData = {
-        name: name,
-        age: age,
-        studentNumber: studentNumber,
-        major: major,
-      };
-
-      mutate(userData);
-
-      // 성공 모달창 띄우고 navigate 시켜야함.
-      console.log('회원가입 데이터:', userData);
+      mutate(data);
     }
+    console.log(data);
   };
 
-  // useEffect(() => {
-  //   console.log('Name:', name);
-  //   console.log('Age:', age);
-  //   console.log('Student Number:', studentNumber);
-  //   console.log('Major:', major);
-  // }, [name, age, studentNumber, major]);
-
   return (
-    <SignFormWrapper onSubmit={handleSubmit}>
-      <SignFormTitle>이름</SignFormTitle>
+    <SignFormWrapper onSubmit={handleSubmit(onSubmit)}>
+      <SignFormTitle htmlFor='name'>이름</SignFormTitle>
       <input
-        placeholder='이름을 입력하세요'
-        type='string'
-        required
-        value={debounceName}
-        onChange={(e) => handleName(e)}
+        id='name'
+        placeholder='이름을 입력해주세요'
+        type='text'
+        {...register('name')}
       />
-      <SignFormTitle>나이</SignFormTitle>
+      <ErrorMessage
+        errors={errors}
+        name='name'
+        render={({ message }) => <small role='alert'>{message}</small>}
+      />
+      <SignFormTitle htmlFor='age'>나이</SignFormTitle>
       <input
+        id='age'
         placeholder='나이를 입력하세요'
-        type='number'
-        required
-        value={debounceAge}
-        onChange={(e) => handleAge(e)}
+        type='text'
+        {...register('age', { valueAsNumber: true })}
       />
-      <SignFormTitle>학번(10자리로 입력해주세요. ex.2019115615)</SignFormTitle>
+      <ErrorMessage
+        errors={errors}
+        name='age'
+        render={({ message }) => <small role='alert'>{message}</small>}
+      />
+      <SignFormTitle htmlFor='studentNumber'>학번</SignFormTitle>
       <input
+        id='studentNumber'
         placeholder='학번을 입력하세요(10자리로 입력해주세요)'
-        type='string'
-        required
-        value={debounceStudentNumber}
-        onChange={(e) => handleStudentNumber(e)}
+        type='text'
+        {...register('studentNumber')}
       />
-      <SignFormTitle>전공</SignFormTitle>
+      <ErrorMessage
+        errors={errors}
+        name='studentNumber'
+        render={({ message }) => <small role='alert'>{message}</small>}
+      />
+      <SignFormTitle htmlFor='major'>전공</SignFormTitle>
       <input
+        id='major'
         placeholder='전공을 입력하세요'
         type='string'
-        required
-        value={debounceMajor}
-        onChange={(e) => handleMajor(e)}
+        {...register('major')}
       />
-      {isPending && <button type='submit'>Submitting...</button>}
-      {!isPending && <button type='submit'>회원가입</button>}
+      <ErrorMessage
+        errors={errors}
+        name='major'
+        render={({ message }) => <small role='alert'>{message}</small>}
+      />
+      {isPending && <input type='submit' value='Submitting...' />}
+      {!isPending && <input type='submit' value='회원가입 완료하기' />}
     </SignFormWrapper>
   );
 };
