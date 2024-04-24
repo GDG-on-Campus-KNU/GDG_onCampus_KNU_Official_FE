@@ -21,6 +21,7 @@
   "plugins": ["@trivago/prettier-plugin-sort-imports"],
   "importOrder": [
       "^react",
+
       "<THIRD_PARTY_MODULES>",
 
       "^(.)*(/)(components)(.*)$",
@@ -31,7 +32,7 @@
       "^(.)*(/)(constants)(.*)$|^(.)*(/)(utils)(.*)",
 
       "^(.)*(/)(api)(.*)$",
-      "^(.)*(/)(store)(.*)$|^@reduxjs"
+      "^(.)*(/)(store)(.*)$|^@zustand"
   ],
   "importOrderSeparation": true,
   "importOrderSortSpecifiers": false
