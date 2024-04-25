@@ -8,7 +8,7 @@ import ErrorPage from '@gdsc/pages/ErrorPage';
 import MainPage from '@gdsc/pages/MainPage';
 import MyPage from '@gdsc/pages/MyPage';
 import RootPage from '@gdsc/pages/RootPage';
-import SigninPage from '@gdsc/pages/SigninPage';
+import SigninPage from '@gdsc/pages/signin/SigninPage';
 import SignupPage from '@gdsc/pages/signup/SignupPage';
 import SignupPendingPage from '@gdsc/pages/signup/SignupPendingPage';
 
