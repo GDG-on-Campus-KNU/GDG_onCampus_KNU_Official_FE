@@ -1,4 +1,4 @@
-import SignUpForm from './components/SignUpForm';
+import SignUpForm from '@gdsc/pages/signup/components/SignUpForm';
 
 const SignupPage = () => {
   return (

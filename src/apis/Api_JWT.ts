@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-import { BASE_URI } from '../constants/URI';
+import { BASE_URI } from '@gdsc/constants/URI';
 
 export const accessToken = localStorage.getItem('Accesstoken');
 

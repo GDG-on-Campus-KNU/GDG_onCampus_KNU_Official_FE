@@ -1,16 +1,13 @@
 import { useForm } from 'react-hook-form';
 
-import { signUpUserInterface } from '../../../interface/UserInterface';
 import styled from '@emotion/styled';
+import { signUpUserInterface } from '@gdsc/interface/UserInterface';
 import { ErrorMessage } from '@hookform/error-message';
 import { zodResolver } from '@hookform/resolvers/zod';
 
-import { SignupQuery } from '../../../hooks/queries/post/SignupQuery';
+import { SignupQuery } from '@gdsc/hooks/queries/post/SignupQuery';
 
-import {
-  SignUpSchema,
-  SignUpSchemaType,
-} from '../../../utils/SignUpSchemaUtil';
+import { SignUpSchema, SignUpSchemaType } from '@gdsc/utils/SignUpSchemaUtil';
 
 const SignFormWrapper = styled.form`
   display: flex;
