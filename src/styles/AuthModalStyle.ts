@@ -11,7 +11,6 @@ export const AuthWrapper = styled.section`
 
 export const AuthBox = styled.div`
   width: 60%;
-
   padding: 35px;
 
   ${displayCenter}
