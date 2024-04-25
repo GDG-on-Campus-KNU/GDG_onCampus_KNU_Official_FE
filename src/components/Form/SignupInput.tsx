@@ -12,7 +12,7 @@ interface IInput {
 const InputWrapper = styled.div`
   width: 80%;
 
-  margin: 12px 0px;
+  margin: 12px 0px 3px 0px;
 
   display: flex;
   flex-direction: column;
@@ -34,7 +34,9 @@ const InputElement = styled.input`
   font-family: 'Noto+Sans';
 
   background-color: var(--color-white);
+  opacity: 100%;
   color: var(--color-black);
+  /* border: 1px solid black; */
 
   &::placeholder {
     color: var(--color-dove);

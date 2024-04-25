@@ -12,6 +12,7 @@ export const AuthWrapper = styled.section`
 export const AuthBox = styled.div`
   width: 60%;
   padding: 35px;
+  flex-direction: row;
 
   ${displayCenter}
   @media (max-width: 767px) {
@@ -20,7 +21,7 @@ export const AuthBox = styled.div`
   }
 
   background-color: var(--color-white);
-  opacity: 80%;
+  opacity: 70%;
 
   border-radius: 12px;
   box-shadow: 4px 4px 10px var(--color-french);

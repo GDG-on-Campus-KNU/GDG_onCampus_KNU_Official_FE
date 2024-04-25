@@ -17,6 +17,7 @@ const SignFormWrapper = styled.form`
   display: flex;
   box-sizing: border-box;
   flex-direction: column;
+  width: 100%;
 `;
 
 const SignFormTitle = styled.label`
@@ -29,6 +30,7 @@ const SignFormTitle = styled.label`
 const Error = styled.small`
   color: var(--color-cinarbar);
   font-size: var(--font-size-xs);
+  margin: 0px 0px 12px 12px;
 `;
 
 const ButtonItem = styled.div`
