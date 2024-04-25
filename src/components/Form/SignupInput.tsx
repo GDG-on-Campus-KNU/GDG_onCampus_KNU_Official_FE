@@ -1,8 +1,12 @@
+import { UseFormRegisterReturn } from 'react-hook-form';
+
 import styled from '@emotion/styled';
 
 interface IInput {
-  children: React.ReactNode;
+  id: string;
+  type: string;
   placeholder: string;
+  register: UseFormRegisterReturn;
 }
 
 const InputWrapper = styled.div`
@@ -14,13 +18,6 @@ const InputWrapper = styled.div`
   flex-direction: column;
   align-items: flex-start;
   justify-content: flex-start;
-`;
-
-const InputLabel = styled.span`
-  font-size: var(--font-size-md);
-  font-weight: bold;
-
-  font-family: 'Noto+Sans';
 `;
 
 const InputElement = styled.input`
@@ -50,14 +47,16 @@ const InputElement = styled.input`
   }
 `;
 
-const SignupInput: React.FC<IInput> = ({ children, placeholder }) => {
+const SignupInput: React.FC<IInput> = ({ id, type, placeholder, register }) => {
   return (
-    <>
-      <InputWrapper>
-        <InputLabel>{children}</InputLabel>
-        <InputElement placeholder={placeholder} />
-      </InputWrapper>
-    </>
+    <InputWrapper>
+      <InputElement
+        id={id}
+        type={type}
+        placeholder={placeholder}
+        {...register}
+      />
+    </InputWrapper>
   );
 };
 
