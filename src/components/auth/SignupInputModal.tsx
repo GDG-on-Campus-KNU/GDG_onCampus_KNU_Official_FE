@@ -1,6 +1,6 @@
 import CompleteBtn from '../Button/CompleteBtn';
-import AuthModal from '../Common/AuthModal';
 import SignupInput from '../Form/SignupInput';
+import AuthModal from '../common/AuthModal';
 import styled from '@emotion/styled';
 
 const ButtonItem = styled.div`

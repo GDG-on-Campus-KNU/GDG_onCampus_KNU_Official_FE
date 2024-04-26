@@ -1,4 +1,4 @@
 export const displayCenter = `
-    display: center;
+    display: flex;
     justify-content: center;
 `;

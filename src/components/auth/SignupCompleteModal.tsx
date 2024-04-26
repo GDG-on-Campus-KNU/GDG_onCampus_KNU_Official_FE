@@ -1,7 +1,7 @@
 import { displayCenter } from '../../styles/LayoutStyle';
 import CompleteBtn from '../Button/CompleteBtn';
-import { SigninWrapper, SigninBox } from '../Common/AuthModal';
 import Title from '../Typography/Title';
+import { SigninWrapper, SigninBox } from '../common/AuthModal';
 import logo from '/GDSC.svg';
 import styled from '@emotion/styled';
 
