@@ -35,7 +35,6 @@ const InputElement = styled.input`
 
   background-color: var(--color-white);
   opacity: 100%;
-  z-index: 1000000;
   color: var(--color-black);
   /* border: 1px solid black; */
 
