@@ -1,11 +1,12 @@
-import { signUpUserInterface } from '../../interface/UserInterface';
-import { instance } from '../Api_JWT';
+import { signUpUserInterface } from '@gdsc/interface/UserInterface';
+
+import { instance } from '@gdsc/apis/Api_JWT';
 
 export const SignupAPI = (
   userData: signUpUserInterface
 ): Promise<signUpUserInterface> => {
   return instance
-    .post('/api/auth/user', { userData })
+    .post('/api/auth/additionalInfo', { userData })
     .then(function (response) {
       console.log(response);
       return response.data;

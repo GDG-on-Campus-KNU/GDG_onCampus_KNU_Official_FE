@@ -1,26 +1,23 @@
+import { UseFormRegisterReturn } from 'react-hook-form';
+
 import styled from '@emotion/styled';
 
 interface IInput {
-  children: React.ReactNode;
+  id: string;
+  type: string;
   placeholder: string;
+  register: UseFormRegisterReturn;
 }
 
 const InputWrapper = styled.div`
   width: 80%;
 
-  margin: 12px 0px;
+  margin: 12px 0px 3px 0px;
 
   display: flex;
   flex-direction: column;
   align-items: flex-start;
   justify-content: flex-start;
-`;
-
-const InputLabel = styled.span`
-  font-size: var(--font-size-md);
-  font-weight: bold;
-
-  font-family: 'Noto+Sans';
 `;
 
 const InputElement = styled.input`
@@ -37,7 +34,9 @@ const InputElement = styled.input`
   font-family: 'Noto+Sans';
 
   background-color: var(--color-white);
+  opacity: 100%;
   color: var(--color-black);
+  /* border: 1px solid black; */
 
   &::placeholder {
     color: var(--color-dove);
@@ -50,14 +49,16 @@ const InputElement = styled.input`
   }
 `;
 
-const SignupInput: React.FC<IInput> = ({ children, placeholder }) => {
+const SignupInput: React.FC<IInput> = ({ id, type, placeholder, register }) => {
   return (
-    <>
-      <InputWrapper>
-        <InputLabel>{children}</InputLabel>
-        <InputElement placeholder={placeholder} />
-      </InputWrapper>
-    </>
+    <InputWrapper>
+      <InputElement
+        id={id}
+        type={type}
+        placeholder={placeholder}
+        {...register}
+      />
+    </InputWrapper>
   );
 };
 

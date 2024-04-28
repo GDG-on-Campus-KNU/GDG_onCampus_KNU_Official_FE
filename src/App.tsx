@@ -4,13 +4,13 @@ import './App.css';
 import { GlobalStyle } from './styles/GlobalStyle';
 import { Global } from '@emotion/react';
 
-import ErrorPage from './pages/ErrorPage';
-import MainPage from './pages/MainPage';
-import MyPage from './pages/MyPage';
-import RootPage from './pages/RootPage';
-import SigninPage from './pages/SigninPage';
-import SignupPage from './pages/signup/SignupPage';
-import SignupPendingPage from './pages/signup/SignupPendingPage';
+import ErrorPage from '@gdsc/pages/ErrorPage';
+import MainPage from '@gdsc/pages/MainPage';
+import MyPage from '@gdsc/pages/MyPage';
+import RootPage from '@gdsc/pages/RootPage';
+import SigninPage from '@gdsc/pages/signin/SigninPage';
+import SignupPage from '@gdsc/pages/signup/SignupPage';
+import SignupPendingPage from '@gdsc/pages/signup/SignupPendingPage';
 
 const router = createBrowserRouter([
   {

@@ -2,6 +2,7 @@ import styled from '@emotion/styled';
 
 interface IButton {
   color: string;
+  type: 'button' | 'submit' | 'reset' | undefined;
   children: React.ReactNode;
 }
 
@@ -50,8 +51,12 @@ const Button = styled.button<IButton>`
   }
 `;
 
-const CompleteBtn: React.FC<IButton> = ({ color, children }) => {
-  return <Button color={color}>{children}</Button>;
+const CompleteBtn: React.FC<IButton> = ({ color, children, type }) => {
+  return (
+    <Button color={color} type={type}>
+      {children}
+    </Button>
+  );
 };
 
 export default CompleteBtn;
