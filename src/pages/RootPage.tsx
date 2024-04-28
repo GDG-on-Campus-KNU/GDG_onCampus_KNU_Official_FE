@@ -1,11 +1,13 @@
 import { Outlet, useNavigation } from 'react-router-dom';
 
+import MainNavigation from '../components/common/MainNavigation';
+
 const RootPage = () => {
   const navigation = useNavigation();
 
   return (
     <>
-      {/* 네비게이션바 들어갈 위치 */}
+      <MainNavigation />
       <main>
         {navigation.state === 'loading' && <p>Loading...</p>}
         <Outlet />

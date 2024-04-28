@@ -23,6 +23,8 @@ const colorCinnabar = '#EA4335';
 const colorTransParent = 'rgba(255, 255, 255, 0.8)';
 
 export const GlobalStyle = css`
+  @import url('https://fonts.googleapis.com/css2?family=Noto+Sans:ital,wdth,wght@0,62.5..100,100..900;1,62.5..100,100..900&display=swap');
+
   :root {
     --font-size-xxl: ${fontSizeXxl};
     --font-size-xl: ${fontSizeXl};
@@ -43,5 +45,11 @@ export const GlobalStyle = css`
     --color-dove: ${colorDoveGray};
     --color-blue: ${colorCornflowerBlue};
     --color-cinarbar: ${colorCinnabar};
+  }
+
+  body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Noto+Sans', monospace;
   }
 `;
