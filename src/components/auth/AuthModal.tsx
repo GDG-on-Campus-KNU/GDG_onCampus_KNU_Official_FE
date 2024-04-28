@@ -1,4 +1,4 @@
-import logo from '../../../public/GDSC.svg';
+import logo from '/GDSC.svg';
 import styled from '@emotion/styled';
 import { AuthWrapper, AuthBox } from '@gdsc/styles/AuthModalStyle';
 
