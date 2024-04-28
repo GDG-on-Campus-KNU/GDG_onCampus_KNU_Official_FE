@@ -1,5 +1,11 @@
+import SigninModal from '@gdsc/pages/signin/components/SigninModal';
+
 const SigninPage = () => {
-  return <>로그인페이지</>;
+  return (
+    <>
+      <SigninModal />
+    </>
+  );
 };
 
 export default SigninPage;
