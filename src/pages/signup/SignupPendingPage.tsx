@@ -1,3 +1,5 @@
+import { useNavigate } from 'react-router-dom';
+
 import logo from '../../../public/GDSC.svg';
 import styled from '@emotion/styled';
 import { AuthWrapper, AuthBox } from '@gdsc/styles/AuthModalStyle';
@@ -16,6 +18,8 @@ const CompleteContainer = styled.div`
 `;
 
 const SignupPendingPage = () => {
+  const navigate = useNavigate();
+
   return (
     <>
       <AuthWrapper>
@@ -26,7 +30,13 @@ const SignupPendingPage = () => {
             <Title color='var(--color-black)'>
               운영진의 승인이 필요합니다.
             </Title>
-            <CompleteBtn type='button' color='blue'>
+            <CompleteBtn
+              type='button'
+              color='blue'
+              onClick={() => {
+                navigate('/gdscknu');
+              }}
+            >
               홈으로
             </CompleteBtn>
           </CompleteContainer>

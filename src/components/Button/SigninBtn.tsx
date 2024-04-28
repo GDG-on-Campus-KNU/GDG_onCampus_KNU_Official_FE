@@ -11,6 +11,7 @@ interface IButton {
 interface ISigninBtnProps {
   width: string;
   children: React.ReactNode;
+  onClick: () => void;
 }
 
 const Button = styled.button<IButton>`
@@ -27,14 +28,15 @@ const Button = styled.button<IButton>`
   border: none;
   border-radius: 12px;
   box-shadow: 4px 4px 10px var(--color-french);
+  cursor: pointer;
 
   background-color: var(--color-white);
   color: var(--color-black);
 `;
 
-const SigninBtn: React.FC<ISigninBtnProps> = ({ width, children }) => {
+const SigninBtn: React.FC<ISigninBtnProps> = ({ width, children, onClick }) => {
   return (
-    <Button width={width}>
+    <Button width={width} onClick={onClick}>
       <img src={SigninLogo} alt='logo' width='18px' height='18px' />
       <Text weight='500' size='md'>
         {children}

@@ -4,6 +4,7 @@ interface IButton {
   color: string;
   type: 'button' | 'submit' | 'reset' | undefined;
   children: React.ReactNode;
+  onClick?: () => void;
 }
 
 const Button = styled.button<IButton>`
@@ -51,9 +52,9 @@ const Button = styled.button<IButton>`
   }
 `;
 
-const CompleteBtn: React.FC<IButton> = ({ color, children, type }) => {
+const CompleteBtn: React.FC<IButton> = ({ color, children, type, onClick }) => {
   return (
-    <Button color={color} type={type}>
+    <Button color={color} type={type} onClick={onClick}>
       {children}
     </Button>
   );
