@@ -19,6 +19,8 @@ const colorBlack = '#000000';
 const colorFrenchGray = '#BDBBC2';
 const colorDoveGray = '#636363';
 const colorCornflowerBlue = '#4285F4';
+const colorCinnabar = '#EA4335';
+const colorTransParent = 'rgba(255, 255, 255, 0.8)';
 
 export const GlobalStyle = css`
   :root {
@@ -29,6 +31,7 @@ export const GlobalStyle = css`
     --font-size-sm: ${fontSizeSm};
     --font-size-xs: ${fontSizeXs};
 
+    --color-transparent: ${colorTransParent};
     --color-white: ${colorWhite};
     --color-black: ${colorBlack};
     --color-revolver: ${colorRevolver};
@@ -39,5 +42,6 @@ export const GlobalStyle = css`
     --color-french: ${colorFrenchGray};
     --color-dove: ${colorDoveGray};
     --color-blue: ${colorCornflowerBlue};
+    --color-cinarbar: ${colorCinnabar};
   }
 `;

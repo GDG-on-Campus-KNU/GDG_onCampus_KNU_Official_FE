@@ -1,42 +1,15 @@
-import { displayCenter } from '../../styles/LayoutStyle';
-import Text from '../Typography/Text';
-import Title from '../Typography/Title';
-import logo from '/GDSC.svg';
+import logo from '../../../public/GDSC.svg';
 import styled from '@emotion/styled';
+import { AuthWrapper, AuthBox } from '@gdsc/styles/AuthModalStyle';
+
+import Text from '@gdsc/components/Typography/Text';
+import Title from '@gdsc/components/Typography/Title';
 
 interface ISignModal {
   title: string;
   text: string;
   children: React.ReactNode;
 }
-
-export const SigninWrapper = styled.section`
-  ${displayCenter}
-  align-items: center;
-
-  width: 100%;
-  height: 100vh;
-`;
-
-export const SigninBox = styled.div`
-  width: 60%;
-
-  padding: 35px;
-
-  ${displayCenter}
-  @media (max-width: 767px) {
-    flex-direction: column;
-    align-items: center;
-  }
-
-  background-color: var(--color-white);
-  opacity: 80%;
-
-  border-radius: 12px;
-  box-shadow: 4px 4px 10px var(--color-french);
-
-  z-index: 1000;
-`;
 
 const SigninContainer = styled.div`
   width: 100%;
@@ -66,8 +39,8 @@ const TitleItem = styled.div`
 
 const AuthModal: React.FC<ISignModal> = ({ title, text, children }) => {
   return (
-    <SigninWrapper>
-      <SigninBox>
+    <AuthWrapper>
+      <AuthBox>
         <SigninContainer>
           <img src={logo} alt='logo' width='80px' height='40px' />
           <TitleItem>
@@ -78,8 +51,8 @@ const AuthModal: React.FC<ISignModal> = ({ title, text, children }) => {
           </Text>
         </SigninContainer>
         <SigninContainer>{children}</SigninContainer>
-      </SigninBox>
-    </SigninWrapper>
+      </AuthBox>
+    </AuthWrapper>
   );
 };
 
