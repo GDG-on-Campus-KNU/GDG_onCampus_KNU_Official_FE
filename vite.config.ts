@@ -12,6 +12,6 @@ export default defineConfig({
     global: {},
   },
   server: {
-    open: '/gdscknu'
-  }
+    open: '/gdscknu',
+  },
 });
