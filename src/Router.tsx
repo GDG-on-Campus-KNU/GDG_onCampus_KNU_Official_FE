@@ -16,40 +16,35 @@ import TechBlogPage from '@gdsc/pages/tech_blog/TechBlogPage';
 
 import { BASE_URI } from '@gdsc/constants/URI';
 
-export const Router = createBrowserRouter(
-  [
-    {
-      path: '/',
-      element: <RootPage />,
-      id: 'root',
-      errorElement: <ErrorPage />,
-      children: [
-        { index: true, element: <MainPage /> },
-        { path: 'signin', element: <SigninPage /> },
-        {
-          path: 'signup',
-          children: [
-            { index: true, element: <SignupPage /> },
-            { path: 'pending', element: <SignupPendingPage /> },
-          ],
-        },
-        { path: 'apply', element: <ApplyPage /> },
-        { path: 'introduce', element: <IntroducePage /> },
-        { path: 'mypage/:username', element: <MyPage /> },
-        { path: 'community', element: <CommunityPage /> },
-        { path: 'techblog/:tech', element: <TechBlogPage /> },
-      ],
-    },
-    {
-      path: '/oauth/:provider/redirect',
-      element: <AuthCallBackPage />,
-    },
-    {
-      path: `${BASE_URI}/api/auth/logout`,
-      action: logoutAction,
-    },
-  ],
+export const Router = createBrowserRouter([
   {
-    basename: '/gdscknu',
-  }
-);
+    path: '/gdscknu',
+    element: <RootPage />,
+    id: 'root',
+    errorElement: <ErrorPage />,
+    children: [
+      { index: true, element: <MainPage /> },
+      { path: 'signin', element: <SigninPage /> },
+      {
+        path: 'signup',
+        children: [
+          { index: true, element: <SignupPage /> },
+          { path: 'pending', element: <SignupPendingPage /> },
+        ],
+      },
+      { path: 'apply', element: <ApplyPage /> },
+      { path: 'introduce', element: <IntroducePage /> },
+      { path: 'mypage/:username', element: <MyPage /> },
+      { path: 'community', element: <CommunityPage /> },
+      { path: 'techblog/:tech', element: <TechBlogPage /> },
+    ],
+  },
+  {
+    path: '/oauth/:provider/redirect',
+    element: <AuthCallBackPage />,
+  },
+  {
+    path: `${BASE_URI}/api/auth/logout`,
+    action: logoutAction,
+  },
+]);
