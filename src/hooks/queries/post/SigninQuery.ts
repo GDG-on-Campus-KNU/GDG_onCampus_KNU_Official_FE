@@ -2,14 +2,14 @@ import { useMutation } from '@tanstack/react-query';
 
 import { queryClient } from '@gdsc/hooks/queries/Http';
 
-import { SignupAPI } from '@gdsc/apis/signup/SignupAPI';
+import { SigninGoogleAPI } from '@gdsc/apis/signin/SigninGoogleAPI';
 
-export const SignupQuery = () => {
+export const SigninQuery = () => {
 
   const { mutate, isPending, isError, error } = useMutation({
-    mutationFn: SignupAPI,
+    mutationFn: SigninGoogleAPI,
     onSuccess: () => {
-      queryClient.invalidateQueries({ queryKey: ['signUp'] });
+      queryClient.invalidateQueries({ queryKey: ['signInGoogle'] });
     },
   });
 

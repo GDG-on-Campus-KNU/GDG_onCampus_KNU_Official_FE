@@ -2,7 +2,7 @@ import { signUpUserInterface } from '@gdsc/interface/UserInterface';
 
 import { instanceJWT } from '@gdsc/apis/Api_JWT';
 
-export const SignupAPI = (
+export const ReIssueSigninAPI = (
   userData: signUpUserInterface
 ): Promise<signUpUserInterface> => {
   return instanceJWT
