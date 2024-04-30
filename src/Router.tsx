@@ -1,6 +1,5 @@
 import { createBrowserRouter } from 'react-router-dom';
 
-import SignupPendingPage from './pages/signup/SignupPendingPage';
 import ErrorPage from '@gdsc/pages/ErrorPage';
 import MainPage from '@gdsc/pages/MainPage';
 import MyPage from '@gdsc/pages/MyPage';
@@ -15,6 +14,8 @@ import SignupPage from '@gdsc/pages/signup/SignupPage';
 import TechBlogPage from '@gdsc/pages/tech_blog/TechBlogPage';
 
 import { BASE_URI } from '@gdsc/constants/URI';
+
+import SignupPendingPage from './pages/signup/SignupPendingPage';
 
 export const Router = createBrowserRouter([
   {

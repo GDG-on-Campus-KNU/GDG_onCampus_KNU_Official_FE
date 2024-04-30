@@ -1,11 +1,10 @@
-import { useMutation } from '@tanstack/react-query';
-
 import { queryClient } from '@gdsc/hooks/queries/Http';
 
 import { SignupAPI } from '@gdsc/apis/signup/SignupAPI';
 
-export const SignupQuery = () => {
+import { useMutation } from '@tanstack/react-query';
 
+export const SignupQuery = () => {
   const { mutate, isPending, isError, error } = useMutation({
     mutationFn: SignupAPI,
     onSuccess: () => {

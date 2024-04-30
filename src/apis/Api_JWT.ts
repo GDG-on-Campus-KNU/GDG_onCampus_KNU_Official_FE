@@ -1,6 +1,7 @@
 import axios from 'axios';
 
 import { BASE_URI } from '@gdsc/constants/URI';
+
 import { useTokenStore } from '@gdsc/store/useTokenStore';
 
 export const instanceJWT = axios.create({
@@ -19,7 +20,7 @@ instanceJWT.interceptors.request.use(
     return config;
   },
   (error) => {
-    return Promise.reject(error); 
+    return Promise.reject(error);
   }
 );
 

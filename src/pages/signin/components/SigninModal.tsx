@@ -1,5 +1,6 @@
 import SigninBtn from '@gdsc/components/Button/SigninBtn';
 import AuthModal from '@gdsc/components/auth/AuthModal';
+
 import {
   GOOGLE_AUTH_CLIENT_ID,
   GOOGLE_AUTH_REDIRECT_URI,

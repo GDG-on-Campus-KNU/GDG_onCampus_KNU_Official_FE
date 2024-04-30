@@ -1,10 +1,5 @@
 import { useForm } from 'react-hook-form';
 
-import styled from '@emotion/styled';
-import { signUpUserInterface } from '@gdsc/interface/UserInterface';
-import { ErrorMessage } from '@hookform/error-message';
-import { zodResolver } from '@hookform/resolvers/zod';
-
 import CompleteBtn from '@gdsc/components/Button/CompleteBtn';
 import SignupInput from '@gdsc/components/Form/SignupInput';
 import AuthModal from '@gdsc/components/auth/AuthModal';
@@ -12,6 +7,11 @@ import AuthModal from '@gdsc/components/auth/AuthModal';
 import { SignupQuery } from '@gdsc/hooks/queries/post/SignupQuery';
 
 import { SignUpSchema, SignUpSchemaType } from '@gdsc/utils/SignUpSchemaUtil';
+
+import styled from '@emotion/styled';
+import { signUpUserInterface } from '@gdsc/interface/UserInterface';
+import { ErrorMessage } from '@hookform/error-message';
+import { zodResolver } from '@hookform/resolvers/zod';
 
 const SignFormWrapper = styled.form`
   display: flex;

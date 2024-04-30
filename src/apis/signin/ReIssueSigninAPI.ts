@@ -1,6 +1,6 @@
-import { signUpUserInterface } from '@gdsc/interface/UserInterface';
-
 import { instanceJWT } from '@gdsc/apis/Api_JWT';
+
+import { signUpUserInterface } from '@gdsc/interface/UserInterface';
 
 export const ReIssueSigninAPI = (
   userData: signUpUserInterface
