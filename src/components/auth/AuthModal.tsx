@@ -2,8 +2,8 @@ import logo from '/GDSC.svg';
 import styled from '@emotion/styled';
 import { AuthWrapper, AuthBox } from '@gdsc/styles/AuthModalStyle';
 
-import Text from '@gdsc/components/Typography/Text';
-import Title from '@gdsc/components/Typography/Title';
+import Text from '@gdsc/components/typography/Text';
+import Title from '@gdsc/components/typography/Title';
 
 interface ISignModal {
   title: string;

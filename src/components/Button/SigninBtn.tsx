@@ -1,6 +1,6 @@
 import styled from '@emotion/styled';
 
-import Text from '@gdsc/components/Typography/Text';
+import Text from '@gdsc/components/typography/Text';
 
 import SigninLogo from '@gdsc/assets/SigninLogo.svg';
 
