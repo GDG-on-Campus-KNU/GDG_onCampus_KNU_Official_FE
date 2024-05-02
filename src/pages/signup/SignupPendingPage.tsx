@@ -3,8 +3,8 @@ import styled from '@emotion/styled';
 import { AuthWrapper, AuthBox } from '@gdsc/styles/AuthModalStyle';
 import { displayCenter } from '@gdsc/styles/LayoutStyle';
 
-import CompleteBtn from '@gdsc/components/Button/CompleteBtn';
-import Title from '@gdsc/components/Typography/Title';
+import CompleteBtn from '@gdsc/components/button/CompleteBtn';
+import Title from '@gdsc/components/typography/Title';
 
 const CompleteContainer = styled.div`
   height: 500px;
