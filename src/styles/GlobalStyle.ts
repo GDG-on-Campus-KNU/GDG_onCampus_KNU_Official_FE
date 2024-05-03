@@ -9,6 +9,7 @@ const fontSizeSm = '0.875rem'; // 14px
 const fontSizeXs = '0.75rem'; // 12px
 
 //color 정의
+const colorHalti = '#1E0E3B';
 const colorRevolver = '#1F1632';
 const colorPortGore = '#271C3E';
 const colorMartinique = '#2A2545';
@@ -36,6 +37,7 @@ export const GlobalStyle = css`
     --color-transparent: ${colorTransParent};
     --color-white: ${colorWhite};
     --color-black: ${colorBlack};
+    --color-halti: ${colorHalti};
     --color-revolver: ${colorRevolver};
     --color-gore: ${colorPortGore};
     --color-que: ${colorMartinique};
@@ -50,6 +52,14 @@ export const GlobalStyle = css`
   body {
     margin: 0;
     padding: 0;
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
     font-family: 'Noto+Sans', monospace;
+  }
+
+  img {
+    display: block;
   }
 `;
