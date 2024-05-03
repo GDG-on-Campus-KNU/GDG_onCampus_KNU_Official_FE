@@ -1,6 +1,6 @@
-import { signUpUserInterface } from '@gdsc/interface/UserInterface';
-
 import { instanceJWT } from '@gdsc/apis/Api_JWT';
+
+import { signUpUserInterface } from '@gdsc/interface/UserInterface';
 
 export const SignupAPI = (
   userData: signUpUserInterface
@@ -8,7 +8,6 @@ export const SignupAPI = (
   return instanceJWT
     .post('/api/auth/additionalInfo', { userData })
     .then(function (response) {
-      console.log(response);
       return response.data;
     })
     .catch(function (error) {

@@ -1,12 +1,13 @@
 import { useNavigate } from 'react-router-dom';
 
-import logo from '../../../public/GDSC.svg';
-import styled from '@emotion/styled';
+import CompleteBtn from '@gdsc/components/Button/CompleteBtn';
+import Title from '@gdsc/components/Typography/Title';
+
 import { AuthWrapper, AuthBox } from '@gdsc/styles/AuthModalStyle';
 import { displayCenter } from '@gdsc/styles/LayoutStyle';
 
-import CompleteBtn from '@gdsc/components/Button/CompleteBtn';
-import Title from '@gdsc/components/Typography/Title';
+import logo from '../../../public/GDSC.svg';
+import styled from '@emotion/styled';
 
 const CompleteContainer = styled.div`
   height: 500px;
