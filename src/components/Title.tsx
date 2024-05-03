@@ -1,4 +1,4 @@
-import Text from '@gdsc/components/typography/Text';
+import Text from '@gdsc/components/Text';
 
 interface ITitle {
   color: string;

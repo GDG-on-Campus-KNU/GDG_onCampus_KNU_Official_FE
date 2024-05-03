@@ -1,5 +1,5 @@
+import SigninBtn from '@gdsc/components/SigninBtn';
 import AuthModal from '@gdsc/components/auth/AuthModal';
-import SigninBtn from '@gdsc/components/button/SigninBtn';
 
 const SigninModal = () => {
   return (
