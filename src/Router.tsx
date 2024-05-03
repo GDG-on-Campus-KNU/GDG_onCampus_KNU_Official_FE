@@ -1,5 +1,6 @@
 import { createBrowserRouter } from 'react-router-dom';
 
+import { BASE_URI } from './constants/URI';
 import ErrorPage from './pages/ErrorPage';
 import MainPage from './pages/MainPage';
 import MyPage from './pages/MyPage';
@@ -12,8 +13,6 @@ import AuthCallBackPage from './pages/signin/AuthCallBackPage';
 import SigninPage from './pages/signin/SigninPage';
 import SignupPage from './pages/signup/SignupPage';
 import TechBlogPage from './pages/tech_blog/TechBlogPage';
-
-import { BASE_URI } from './constants/URI';
 
 export const Router = createBrowserRouter([
   {

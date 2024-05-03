@@ -20,19 +20,25 @@
 
   "plugins": ["@trivago/prettier-plugin-sort-imports"],
   "importOrder": [
-      "^react",
+    "^react",
 
-      "<THIRD_PARTY_MODULES>",
+    "<THIRD_PARTY_MODULES>",
 
-      "^(.)*(/)(components)(.*)$",
-      "^(.)*(/)(pages)(.*)$",
-      "^(.)*(/)(hooks)(.*)$",
-      "^(.)*(/)(assets)(.*)$",
+    "^(@gdsc/components)(.*)$",
+    "^(@gdsc/pages)(.*)$",
+    "^(@gdsc/hooks)(.*)$",
+    "^(@gdsc/assets)(.*)$",
 
-      "^(.)*(/)(constants)(.*)$|^(.)*(/)(utils)(.*)",
+    "^(@gdsc/constants)(.*)$",
+    "^(@gdsc/utils)(.*)$",
+    "^(@gdsc/apis)(.*)$",
+    "^(@gdsc/common)(.*)$",
+    "^(@gdsc/config)(.*)$",
+    "^(@gdsc/store)(.*)$",
 
-      "^(.)*(/)(api)(.*)$",
-      "^(.)*(/)(store)(.*)$|^@zustand"
+    "^(@gdsc/styles)(.*)$",
+
+    "^(.*)/(.*)$"
   ],
   "importOrderSeparation": true,
   "importOrderSortSpecifiers": false

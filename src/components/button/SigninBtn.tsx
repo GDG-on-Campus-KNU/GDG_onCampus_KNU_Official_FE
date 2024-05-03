@@ -1,8 +1,8 @@
-import styled from '@emotion/styled';
-
 import Text from '@gdsc/components/typography/Text';
 
 import SigninLogo from '@gdsc/assets/SigninLogo.svg';
+
+import styled from '@emotion/styled';
 
 interface IButton {
   width: string;

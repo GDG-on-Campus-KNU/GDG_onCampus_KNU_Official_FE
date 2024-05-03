@@ -1,10 +1,11 @@
-import logo from '../../../public/GDSC.svg';
-import styled from '@emotion/styled';
+import CompleteBtn from '@gdsc/components/button/CompleteBtn';
+import Title from '@gdsc/components/typography/Title';
+
 import { AuthWrapper, AuthBox } from '@gdsc/styles/AuthModalStyle';
 import { displayCenter } from '@gdsc/styles/LayoutStyle';
 
-import CompleteBtn from '@gdsc/components/button/CompleteBtn';
-import Title from '@gdsc/components/typography/Title';
+import logo from '../../../public/GDSC.svg';
+import styled from '@emotion/styled';
 
 const CompleteContainer = styled.div`
   height: 500px;
