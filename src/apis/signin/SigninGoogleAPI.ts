@@ -6,7 +6,6 @@ export const SigninGoogleAPI = (code: string): Promise<SigninAPIInterface> => {
   return instance
     .post('/api/auth/google/oauth', { code })
     .then(function (response) {
-      console.log(response);
       return response.data;
     })
     .catch(function (error) {

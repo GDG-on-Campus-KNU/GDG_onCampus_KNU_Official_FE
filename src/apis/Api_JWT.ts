@@ -2,6 +2,8 @@ import axios from 'axios';
 
 import { BASE_URI } from '@gdsc/constants/URI';
 
+import { ReIssueSigninAPI } from '@gdsc/apis/signin/ReIssueSigninAPI';
+
 import { useTokenStore } from '@gdsc/store/useTokenStore';
 
 export const instanceJWT = axios.create({
@@ -26,25 +28,20 @@ instanceJWT.interceptors.request.use(
 
 instanceJWT.interceptors.response.use(
   (response) => {
-    if (response.status === 404) {
-      console.log('404 페이지로 넘어가야 함!');
-    }
-
     return response;
   },
-  async (error) => {
-    if (error.response?.status === 401) {
-      if (isTokenExpired()) await tokenRefresh();
-
-      const accessToken = getToken();
-
-      error.config.headers = {
-        'Content-Type': 'application/json',
-        Authorization: `Bearer ${accessToken}`,
-      };
-
-      const response = await axios.request(error.config);
-      return response;
+  (error) => {
+    if (error.response && error.response.status === 401) {
+      const { setAccessToken } = useTokenStore();
+      return ReIssueSigninAPI()
+        .then((data) => {
+          setAccessToken(data.accessToken);
+          error.config.headers['Authorization'] = `Bearer ${data.accessToken}`;
+          return instanceJWT(error.config);
+        })
+        .catch((error) => {
+          return Promise.reject(error);
+        });
     }
     return Promise.reject(error);
   }
