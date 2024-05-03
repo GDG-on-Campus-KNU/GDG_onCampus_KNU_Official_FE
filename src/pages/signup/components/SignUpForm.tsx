@@ -5,9 +5,9 @@ import { signUpUserInterface } from '@gdsc/interface/UserInterface';
 import { ErrorMessage } from '@hookform/error-message';
 import { zodResolver } from '@hookform/resolvers/zod';
 
-import CompleteBtn from '@gdsc/components/CompleteBtn';
-import SignupInput from '@gdsc/components/SignupInput';
 import AuthModal from '@gdsc/components/auth/AuthModal';
+import CompleteBtn from '@gdsc/components/button/CompleteBtn';
+import SignupInput from '@gdsc/components/form/SignupInput';
 
 import { SignupQuery } from '@gdsc/hooks/queries/post/SignupQuery';
 
