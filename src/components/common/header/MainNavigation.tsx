@@ -1,12 +1,14 @@
+import { useMediaQuery } from 'react-responsive';
 import { NavLink, Form } from 'react-router-dom';
 
 import Text from '@gdsc/components/typography/Text';
 
 import NavigationLogo from '@gdsc/assets/NavigationLogo.svg';
+import NavigationLogo768 from '@gdsc/assets/NavigationLogo768.svg';
 
 import { displayCenter } from '@gdsc/styles/LayoutStyle';
 
-import { BASE_URI } from '../../constants/URI';
+import { BASE_URI } from '../../../constants/URI';
 import styled from '@emotion/styled';
 
 const Header = styled.div`
@@ -39,17 +41,26 @@ const MenuList = styled.li`
 `;
 
 const MainNavigation = () => {
-  const accessToken = localStorage.getItem('accessToken');
+  const accessToken = localStorage.getItem('accessToken'); // 상태관리를 통해서 액세스 토큰 가져올 계획입니다. 수정해야됩니다.
+  const isTablet = useMediaQuery({ query: '(max-width: 767px)' });
 
   return (
     <Header>
       <DisplayHeader>
         <Menu>
-          <MenuList>
-            <NavLink to='/gdscknu'>
-              <img src={NavigationLogo} alt='logo' />
-            </NavLink>
-          </MenuList>
+          {isTablet ? (
+            <MenuList>
+              <NavLink to='/gdscknu'>
+                <img src={NavigationLogo768} alt='logo' />
+              </NavLink>
+            </MenuList>
+          ) : (
+            <MenuList>
+              <NavLink to='/gdscknu'>
+                <img src={NavigationLogo} alt='logo' />
+              </NavLink>
+            </MenuList>
+          )}
           <MenuList>
             <NavLink to='/gdscknu/introduce'>
               <Text color='white'>동아리 소개</Text>
