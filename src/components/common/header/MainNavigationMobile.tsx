@@ -1,7 +1,10 @@
 import MenuHamburger from '@gdsc/assets/MenuHamburger.svg';
 
+import { useNavigationStore } from '@gdsc/store/useNavigationStore';
+
 import { displayCenter } from '@gdsc/styles/LayoutStyle';
 
+import NavigationSlideMobile from './NavigationSlideMobile';
 import styled from '@emotion/styled';
 
 const MobileHeader = styled.div`
@@ -28,11 +31,14 @@ const MobileImg = styled.img`
 `;
 
 const MainNavigationMobile = () => {
+  const { isOpen, open } = useNavigationStore();
+
   return (
     <MobileHeader>
       <DisplayMobileHeader>
-        <MobileImg src={MenuHamburger} alt='menu' />
+        <MobileImg src={MenuHamburger} alt='menu' onClick={open} />
       </DisplayMobileHeader>
+      <NavigationSlideMobile open={isOpen} />
     </MobileHeader>
   );
 };
