@@ -1,6 +1,9 @@
+import { useMediaQuery } from 'react-responsive';
 import { Outlet, useNavigation } from 'react-router-dom';
 
-import MainNavigation from '../components/common/MainNavigation';
+import MainNavigationMobile from '@gdsc/components/common/header/MainNavigationMobile';
+
+import MainNavigation from '../components/common/header/MainNavigation';
 import styled from '@emotion/styled';
 
 const MainContent = styled.main`
@@ -9,10 +12,11 @@ const MainContent = styled.main`
 
 const RootPage = () => {
   const navigation = useNavigation();
+  const isMobile = useMediaQuery({ query: '(max-width: 767px)' });
 
   return (
     <>
-      <MainNavigation />
+      {isMobile ? <MainNavigationMobile /> : <MainNavigation />}
       <MainContent>
         {navigation.state === 'loading' && <p>Loading...</p>}
         <Outlet />
