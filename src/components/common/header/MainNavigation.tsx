@@ -6,9 +6,10 @@ import Text from '@gdsc/components/typography/Text';
 import NavigationLogo from '@gdsc/assets/NavigationLogo.svg';
 import NavigationLogo768 from '@gdsc/assets/NavigationLogo768.svg';
 
+import { BASE_URI } from '@gdsc/constants/URI';
+
 import { displayCenter } from '@gdsc/styles/LayoutStyle';
 
-import { BASE_URI } from '../../../constants/URI';
 import styled from '@emotion/styled';
 
 const Header = styled.div`

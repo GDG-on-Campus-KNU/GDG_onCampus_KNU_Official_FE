@@ -12,7 +12,7 @@ const MainContent = styled.main`
 
 const RootPage = () => {
   const navigation = useNavigation();
-  const isMobile = useMediaQuery({ query: '(max-width: 767px)' });
+  const isMobile = useMediaQuery({ query: '(max-width: 500px)' });
 
   return (
     <>
