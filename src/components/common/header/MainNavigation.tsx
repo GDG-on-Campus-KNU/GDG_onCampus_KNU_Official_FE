@@ -16,7 +16,7 @@ const Header = styled.div`
   position: fixed;
   top: 0;
   width: 100%;
-  background-color: var(--color-halti);
+  background-color: var(--color-navy);
   height: 45px;
   ${displayCenter}
 `;
