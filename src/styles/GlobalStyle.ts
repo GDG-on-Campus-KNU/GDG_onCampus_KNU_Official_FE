@@ -9,18 +9,21 @@ const fontSizeSm = '0.875rem'; // 14px
 const fontSizeXs = '0.75rem'; // 12px
 
 //color 정의
+const colorAbony = '#1A122B';
 const colorHalti = '#1E0E3B';
 const colorRevolver = '#1F1632';
-const colorPortGore = '#271C3E';
+const colorMartiniqueApp = '#403755';
 const colorMartinique = '#392f4f';
 const colorMartiniNavy = '#2D294A';
+const colorDarkPurple = '#4F416C';
 const colorSelectiveYellow = '#FBBC05';
 const colorWhite = '#FFFFFF';
 const colorBlack = '#000000';
-const colorFrenchGray = '#BDBBC2';
-const colorDoveGray = '#636363';
+const colorAlto = '#d9d9d9';
+const colorDoveGray = '#979ca4';
+const colorSantasGray = '#9D9AA5';
 const colorCornflowerBlue = '#4285F4';
-const colorCinnabar = '#EA4335';
+const colorCinnabar = '#FF0000';
 const colorTransParent = 'rgba(255, 255, 255, 0.8)';
 
 export const GlobalStyle = css`
@@ -38,13 +41,16 @@ export const GlobalStyle = css`
     --color-white: ${colorWhite};
     --color-black: ${colorBlack};
     --color-halti: ${colorHalti};
+    --color-abony: ${colorAbony};
     --color-revolver: ${colorRevolver};
-    --color-gore: ${colorPortGore};
+    --color-app: ${colorMartiniqueApp};
     --color-que: ${colorMartinique};
     --color-navy: ${colorMartiniNavy};
     --color-selective: ${colorSelectiveYellow};
-    --color-french: ${colorFrenchGray};
+    --color-dpuprle: ${colorDarkPurple};
+    --color-alto: ${colorAlto};
     --color-dove: ${colorDoveGray};
+    --color-santas: ${colorSantasGray};
     --color-blue: ${colorCornflowerBlue};
     --color-cinarbar: ${colorCinnabar};
   }
@@ -57,9 +63,16 @@ export const GlobalStyle = css`
     display: flex;
     flex-direction: column;
     font-family: 'Noto+Sans', monospace;
+    background-color: var(--color-revolver);
   }
 
   img {
     display: block;
+  }
+
+  ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
   }
 `;
