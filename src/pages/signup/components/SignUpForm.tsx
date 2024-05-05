@@ -20,13 +20,6 @@ const SignFormWrapper = styled.form`
   width: 100%;
 `;
 
-const SignFormTitle = styled.label`
-  font-size: var(--font-size-md);
-  font-weight: bold;
-
-  font-family: 'Noto+Sans';
-`;
-
 const Error = styled.small`
   color: var(--color-cinarbar);
   font-size: var(--font-size-xs);
@@ -68,9 +61,9 @@ const SignUpForm = () => {
       text={`Google 계정을 이용하여\n GDSC KNU 계정을 만들어보세요.`}
     >
       <SignFormWrapper onSubmit={handleSubmit(onSubmit)}>
-        <SignFormTitle htmlFor='name'>이름</SignFormTitle>
         <SignupInput
           id='name'
+          title='이름'
           placeholder='이름을 입력해주세요'
           type='text'
           register={register('name')}
@@ -80,9 +73,9 @@ const SignUpForm = () => {
           name='name'
           render={({ message }) => <Error role='alert'>{message}</Error>}
         />
-        <SignFormTitle htmlFor='age'>나이</SignFormTitle>
         <SignupInput
           id='age'
+          title='나이'
           placeholder='나이를 입력해주세요.'
           type='text'
           register={register('age', { valueAsNumber: true })}
@@ -92,9 +85,9 @@ const SignUpForm = () => {
           name='age'
           render={({ message }) => <Error role='alert'>{message}</Error>}
         />
-        <SignFormTitle htmlFor='studentNumber'>학번</SignFormTitle>
         <SignupInput
           id='studentNumber'
+          title='학번'
           placeholder='학번을 입력해주세요.'
           type='text'
           register={register('studentNumber')}
@@ -104,9 +97,9 @@ const SignUpForm = () => {
           name='studentNumber'
           render={({ message }) => <Error role='alert'>{message}</Error>}
         />
-        <SignFormTitle htmlFor='major'>전공</SignFormTitle>
         <SignupInput
           id='major'
+          title='전공'
           placeholder='전공을 입력해주세요.'
           type='string'
           register={register('major')}

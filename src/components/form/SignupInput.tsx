@@ -4,15 +4,25 @@ import styled from '@emotion/styled';
 
 interface IInput {
   id: string;
+  title: string;
   type: string;
   placeholder: string;
   register: UseFormRegisterReturn;
 }
 
-const InputWrapper = styled.div`
-  width: 80%;
+const SignFormTitle = styled.label`
+  font-size: var(--font-size-md);
 
-  margin: 12px 0px 3px 0px;
+  color: var(--color-white);
+
+  font-family: 'Noto+Sans';
+`;
+
+const InputContainer = styled.div`
+  width: 90%;
+
+  margin-top: 5px;
+  margin-bottom: 15px;
 
   display: flex;
   flex-direction: column;
@@ -28,37 +38,41 @@ const InputElement = styled.input`
   margin-top: 6px;
 
   border: none;
-  border-radius: 50px;
+  border-radius: 12px;
 
   font-size: var(--font-size-md);
   font-family: 'Noto+Sans';
 
-  background-color: var(--color-white);
+  background-color: #392f4f;
   opacity: 100%;
-  color: var(--color-black);
+  color: var(--color-white);
   /* border: 1px solid black; */
 
   &::placeholder {
-    color: var(--color-dove);
+    color: #979ca4;
     font-size: var(--font-size-xs);
-  }
-
-  &:focus {
-    background-color: var(--color-french);
-    outline: none;
   }
 `;
 
-const SignupInput: React.FC<IInput> = ({ id, type, placeholder, register }) => {
+const SignupInput: React.FC<IInput> = ({
+  id,
+  title,
+  type,
+  placeholder,
+  register,
+}) => {
   return (
-    <InputWrapper>
-      <InputElement
-        id={id}
-        type={type}
-        placeholder={placeholder}
-        {...register}
-      />
-    </InputWrapper>
+    <>
+      <SignFormTitle htmlFor={id}>{title}</SignFormTitle>
+      <InputContainer>
+        <InputElement
+          id={id}
+          type={type}
+          placeholder={placeholder}
+          {...register}
+        />
+      </InputContainer>
+    </>
   );
 };
 

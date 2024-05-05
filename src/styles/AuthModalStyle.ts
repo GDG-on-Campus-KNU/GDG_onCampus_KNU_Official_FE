@@ -24,7 +24,6 @@ export const AuthBox = styled.div`
   background-color: var(--color-transparent);
 
   border-radius: 12px;
-  box-shadow: 4px 4px 10px var(--color-french);
 
   z-index: 1000;
 `;

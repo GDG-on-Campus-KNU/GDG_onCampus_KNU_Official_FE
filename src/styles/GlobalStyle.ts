@@ -20,7 +20,7 @@ const colorFrenchGray = '#BDBBC2';
 const colorDoveGray = '#636363';
 const colorCornflowerBlue = '#4285F4';
 const colorCinnabar = '#EA4335';
-const colorTransParent = 'rgba(255, 255, 255, 0.8)';
+const colorTransParent = 'rgba(255, 255, 255, 0.3)';
 
 export const GlobalStyle = css`
   @import url('https://fonts.googleapis.com/css2?family=Noto+Sans:ital,wdth,wght@0,62.5..100,100..900;1,62.5..100,100..900&display=swap');
@@ -51,5 +51,6 @@ export const GlobalStyle = css`
     margin: 0;
     padding: 0;
     font-family: 'Noto+Sans', monospace;
+    background-color: #1f1632;
   }
 `;
