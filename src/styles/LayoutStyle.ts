@@ -7,7 +7,8 @@ export const displayCenter = `
 
 export const PageWrapper = styled.section`
   ${displayCenter}
-  align-items: flex-start;
+  align-items: center;
+  flex-direction: column;
 
   width: 100%;
   height: 100vh;
