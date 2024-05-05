@@ -11,7 +11,7 @@ const MobileHeader = styled.div`
   position: fixed;
   top: 0;
   width: 100%;
-  background-color: var(--color-halti);
+  background-color: var(--color-revolver);
   height: 75px;
   ${displayCenter}
 `;
@@ -26,7 +26,7 @@ const DisplayMobileHeader = styled.nav`
 `;
 
 const MobileImg = styled.img`
-  margin-right: 32px;
+  margin-right: 34px;
   cursor: pointer;
 `;
 
