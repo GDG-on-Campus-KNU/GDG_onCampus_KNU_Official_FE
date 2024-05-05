@@ -118,12 +118,22 @@ const SignUpForm = () => {
         />
         <ButtonItem>
           {isPending && (
-            <CompleteBtn color='blue' type='submit'>
+            <CompleteBtn
+              backgroundColor='blue'
+              color='white'
+              hoverColor='none '
+              type='submit'
+            >
               Submitting...
             </CompleteBtn>
           )}
           {!isPending && (
-            <CompleteBtn color='blue' type='submit'>
+            <CompleteBtn
+              backgroundColor='blue'
+              color='white'
+              hoverColor='none'
+              type='submit'
+            >
               회원가입
             </CompleteBtn>
           )}

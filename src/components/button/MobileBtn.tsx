@@ -1,7 +1,7 @@
 import styled from '@emotion/styled';
 import { IButton } from '@gdsc/interface/ButtonInterfaces';
 
-const Button = styled.button<IButton>`
+const LoginButton = styled.button<IButton>`
   display: flex;
   align-items: center;
   justify-content: center;
@@ -9,16 +9,14 @@ const Button = styled.button<IButton>`
   padding: 10px 20px;
 
   border: 0;
-  border-radius: 12px;
+  border-radius: 8px;
 
   background-color: ${(props) => {
     switch (props.backgroundColor) {
-      case 'blue':
-        return 'var(--color-blue)';
-      case 'navy':
-        return 'var(--color-navy)';
-      case 'white':
-        return 'var(--color-white)';
+      case 'transparent':
+        return 'rgba(255,255,255,0.3)';
+      default:
+        return props.backgroundColor;
     }
   }};
   color: ${(props) => {
@@ -28,7 +26,7 @@ const Button = styled.button<IButton>`
       case 'navy':
         return 'var(--color-white)';
       case 'white':
-        return 'var(--color-black)';
+        return 'var(--color-white)';
     }
   }};
 
@@ -41,12 +39,16 @@ const Button = styled.button<IButton>`
           return 'var(--color-black)';
         case 'white':
           return 'var(--color-dove)';
+        case 'none':
+          return 'none';
+        default:
+          return 'none';
       }
     }};
   }
 `;
 
-const CompleteBtn: React.FC<IButton> = ({
+const MobileBtn: React.FC<IButton> = ({
   color,
   backgroundColor,
   hoverColor,
@@ -54,15 +56,15 @@ const CompleteBtn: React.FC<IButton> = ({
   type,
 }) => {
   return (
-    <Button
+    <LoginButton
       color={color}
       backgroundColor={backgroundColor}
       hoverColor={hoverColor}
       type={type}
     >
       {children}
-    </Button>
+    </LoginButton>
   );
 };
 
-export default CompleteBtn;
+export default MobileBtn;

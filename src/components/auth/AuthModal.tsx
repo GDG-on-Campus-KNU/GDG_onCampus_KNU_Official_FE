@@ -1,7 +1,7 @@
 import Text from '@gdsc/components/typography/Text';
 import Title from '@gdsc/components/typography/Title';
 
-import { AuthWrapper, AuthBox } from '@gdsc/styles/AuthModalStyle';
+import { AuthBox } from '@gdsc/styles/AuthModalStyle';
 
 import logo from '../../../public/GDSC.svg';
 import styled from '@emotion/styled';
@@ -18,9 +18,7 @@ const SigninContainer = styled.div`
   @media (max-width: 767px) {
     height: auto;
   }
-
   margin: 10px;
-
   display: flex;
   flex-direction: column;
   align-items: flex-start;
@@ -40,20 +38,18 @@ const TitleItem = styled.div`
 
 const AuthModal: React.FC<ISignModal> = ({ title, text, children }) => {
   return (
-    <AuthWrapper>
-      <AuthBox>
-        <SigninContainer>
-          <img src={logo} alt='logo' width='80px' height='40px' />
-          <TitleItem>
-            <Title color='var(--color-black)'>{title}</Title>
-          </TitleItem>
-          <Text color='var(--color-black)' size='md'>
-            {text}
-          </Text>
-        </SigninContainer>
-        <SigninContainer>{children}</SigninContainer>
-      </AuthBox>
-    </AuthWrapper>
+    <AuthBox>
+      <SigninContainer>
+        <img src={logo} alt='logo' width='80px' height='40px' />
+        <TitleItem>
+          <Title color='var(--color-black)'>{title}</Title>
+        </TitleItem>
+        <Text color='var(--color-black)' size='md'>
+          {text}
+        </Text>
+      </SigninContainer>
+      <SigninContainer>{children}</SigninContainer>
+    </AuthBox>
   );
 };
 
