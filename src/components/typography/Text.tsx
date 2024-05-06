@@ -4,6 +4,7 @@ interface IText {
   size?: 'xs' | 'sm' | 'md' | 'lg' | 'xl' | 'xxl';
   color?: 'white' | 'black' | 'placeholder' | string;
   weight?: 'light' | 'normal' | 'bold' | string;
+  whiteSpace?: 'nowrap' | 'normal' | 'pre-line';
   children?: React.ReactNode;
 }
 
@@ -50,7 +51,18 @@ const Text = styled.span<IText>`
 
   font-family: 'Noto+Sans';
 
-  white-space: pre-line;
+  white-space: ${(props) => {
+    switch (props.whiteSpace) {
+      case 'nowrap':
+        return 'nowrap';
+      case 'normal':
+        return 'normal';
+      default:
+        return 'pre-line';
+    }
+  }};
+
+  word-break: break-all;
 `;
 
 export default Text;
