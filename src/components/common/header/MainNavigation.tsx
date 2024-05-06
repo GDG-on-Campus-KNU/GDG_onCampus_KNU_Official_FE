@@ -41,6 +41,10 @@ const MenuList = styled.li`
   margin-right: 20px;
 `;
 
+const NavImg = styled.img`
+  margin-left: 20px;
+`;
+
 const MainNavigation = () => {
   const accessToken = localStorage.getItem('accessToken'); // 상태관리를 통해서 액세스 토큰 가져올 계획입니다. 수정해야됩니다.
   const isTablet = useMediaQuery({ query: '(max-width: 767px)' });
@@ -52,13 +56,13 @@ const MainNavigation = () => {
           {isTablet ? (
             <MenuList>
               <NavLink to='/gdscknu'>
-                <img src={NavigationLogo768} alt='logo' />
+                <NavImg src={NavigationLogo768} alt='logo' />
               </NavLink>
             </MenuList>
           ) : (
             <MenuList>
               <NavLink to='/gdscknu'>
-                <img src={NavigationLogo} alt='logo' />
+                <NavImg src={NavigationLogo} alt='logo' />
               </NavLink>
             </MenuList>
           )}
