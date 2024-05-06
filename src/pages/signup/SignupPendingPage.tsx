@@ -27,7 +27,12 @@ const SignupPendingPage = () => {
             <Title color='var(--color-black)'>
               운영진의 승인이 필요합니다.
             </Title>
-            <CompleteBtn type='button' color='blue'>
+            <CompleteBtn
+              type='button'
+              backgroundColor='blue'
+              color='white'
+              hoverColor='none'
+            >
               홈으로
             </CompleteBtn>
           </CompleteContainer>

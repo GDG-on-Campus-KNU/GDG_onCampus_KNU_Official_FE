@@ -1,17 +1,28 @@
+import { useMediaQuery } from 'react-responsive';
 import { Outlet, useNavigation } from 'react-router-dom';
 
-import MainNavigation from '../components/common/MainNavigation';
+import MainNavigationMobile from '@gdsc/components/common/header/MainNavigationMobile';
+
+import MainNavigation from '../components/common/header/MainNavigation';
+import styled from '@emotion/styled';
+
+const MainContent = styled.main`
+  padding-top: 45px;
+  width: 100%;
+  height: calc(100vh - 45px);
+`;
 
 const RootPage = () => {
   const navigation = useNavigation();
+  const isMobile = useMediaQuery({ query: '(max-width: 500px)' });
 
   return (
     <>
-      <MainNavigation />
-      <main>
+      {isMobile ? <MainNavigationMobile /> : <MainNavigation />}
+      <MainContent>
         {navigation.state === 'loading' && <p>Loading...</p>}
         <Outlet />
-      </main>
+      </MainContent>
     </>
   );
 };
