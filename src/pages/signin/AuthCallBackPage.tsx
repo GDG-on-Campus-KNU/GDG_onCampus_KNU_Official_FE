@@ -3,11 +3,11 @@ import { useNavigate } from 'react-router-dom';
 
 import { SigninQuery } from '@gdsc/hooks/queries/post/SigninQuery';
 
-import { useTokenStore } from '@gdsc/store/useTokenStore';
+// import { useTokenStore } from '@gdsc/store/useTokenStore';
 
 const AuthCallBackPage = () => {
   const navigate = useNavigate();
-  const { setAccessToken, accessToken } = useTokenStore();
+  // const { setAccessToken, accessToken } = useTokenStore();
   const params = new URLSearchParams(window.location.search);
   const code = params.get('code');
   // console.log(code);
@@ -19,17 +19,28 @@ const AuthCallBackPage = () => {
       mutate(code);
     }
 
-    if (data && data.accessToken) {
-      setAccessToken(data.accessToken);
-      console.log(accessToken);
-    }
+    // if (data && data.accessToken) {
+    //   setAccessToken(data.accessToken);
+    //   console.log(accessToken);
+    // }
 
     // if (data && data.newMember === true) {
     //   navigate('/gdscknu/signup');
     // } else if (data && data.newMember === false) {
     //   navigate('/gdscknu');
     // }
-  }, [code, mutate, data, navigate, setAccessToken]);
+  }, [code, mutate]);
+
+  useEffect(() => {
+    if (data && data.accessToken) {
+      localStorage.setItem('accessToken', data.accessToken);
+      if (data.newMember === true) {
+        navigate('/gdscknu/signup');
+      } else if (data.newMember === false) {
+        navigate('/gdscknu');
+      }
+    }
+  }, [data, navigate]);
 
   return (
     <div>
