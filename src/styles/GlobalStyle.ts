@@ -64,6 +64,7 @@ export const GlobalStyle = css`
     flex-direction: column;
     font-family: 'Noto+Sans', monospace;
     background-color: var(--color-revolver);
+    color: var(--color-white);
   }
 
   img {

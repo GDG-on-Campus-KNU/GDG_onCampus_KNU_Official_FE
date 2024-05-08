@@ -1,0 +1,74 @@
+import { useEffect } from 'react';
+
+import gsap from 'gsap';
+
+import Text from '@gdsc/components/typography/Text';
+
+import styled from '@emotion/styled';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
+
+gsap.registerPlugin(ScrollTrigger);
+
+const AboutLayout = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 338px;
+`;
+
+const GdscTextBox = styled.div`
+  margin-top: 10px;
+`;
+
+const AboutTextBox = styled.div`
+  width: 50%;
+  height: 44px;
+  margin-top: 76px;
+  display: flex;
+  text-align: center;
+`;
+
+const AboutEvent = () => {
+  useEffect(() => {
+    gsap.to('.about-layout', {
+      opacity: 1,
+      duration: 1,
+      delay: 0.5,
+    });
+    gsap.from('.gdsc-text-box', {
+      opacity: 0,
+      y: -10,
+      duration: 1,
+      delay: 1,
+    });
+    gsap.from('.about-text-box', {
+      opacity: 0,
+      y: -20,
+      duration: 1,
+      delay: 1.5,
+    });
+  }, []);
+
+  return (
+    <AboutLayout className='about-layout'>
+      <Text color='white' weight='600' size='xs'>
+        ABOUT
+      </Text>
+      <GdscTextBox className='gdsc-text-box'>
+        <Text color='white' weight='600' size='xl'>
+          Google Developer Student Clubs KNU
+        </Text>
+      </GdscTextBox>
+      <AboutTextBox className='about-text-box'>
+        <Text color='white' weight='600' size='md'>
+          GDSC는 학생들이 개발/리더십 능력을 키울 수 있도록 지원하는
+          프로그램으로, 성장을 원하는 다양한 학생 개발자들을 기다리고 있습니다.
+        </Text>
+      </AboutTextBox>
+    </AboutLayout>
+  );
+};
+
+export default AboutEvent;

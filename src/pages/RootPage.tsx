@@ -3,6 +3,8 @@ import { Outlet, useNavigation } from 'react-router-dom';
 
 import MainNavigationMobile from '@gdsc/components/common/header/MainNavigationMobile';
 
+import { displayCenter } from '@gdsc/styles/LayoutStyle';
+
 import MainNavigation from '../components/common/header/MainNavigation';
 import styled from '@emotion/styled';
 
@@ -10,6 +12,7 @@ const MainContent = styled.main`
   padding-top: 45px;
   width: 100%;
   height: calc(100vh - 45px);
+  ${displayCenter}
 `;
 
 const RootPage = () => {
