@@ -1,4 +1,6 @@
+import { useEffect } from 'react';
 import { useForm } from 'react-hook-form';
+import { useNavigate } from 'react-router-dom';
 
 import CompleteBtn from '@gdsc/components/Button/CompleteBtn';
 import SignupInput from '@gdsc/components/Form/SignupInput';
@@ -45,6 +47,7 @@ const ButtonItem = styled.div`
 const SignUpForm = () => {
   const { mutate, isPending, isError, error } = SignupQuery();
   //모달 창 나왔을때 isError랑 error 모달창 집어넣어야함.
+  const navigate = useNavigate();
 
   const {
     register,
@@ -54,12 +57,21 @@ const SignUpForm = () => {
     resolver: zodResolver(SignUpSchema),
   });
 
+  useEffect(() => {
+    if (isError && error) {
+      alert(error.message);
+    }
+  }, [isError, error]);
+
   const onSubmit = (data: signUpUserInterface) => {
     const isConfirmed = window.confirm('회원가입을 완료하시겠습니까?');
     if (isConfirmed) {
       mutate(data);
     }
-    console.log(data);
+
+    if (data) {
+      navigate('/gdscknu');
+    }
   };
 
   return (

@@ -6,7 +6,7 @@ export const SignupAPI = (
   userData: signUpUserInterface
 ): Promise<signUpUserInterface> => {
   return instanceJWT
-    .post('/api/auth/additionalInfo', { userData })
+    .post('/api/user/additionalInfo', { userData })
     .then(function (response) {
       return response.data;
     })
