@@ -8,6 +8,7 @@ import NavigationSlideMobile from './NavigationSlideMobile';
 import styled from '@emotion/styled';
 
 const MobileHeader = styled.div`
+  z-index: 1000;
   position: fixed;
   top: 0;
   width: 100%;
