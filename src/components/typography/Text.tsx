@@ -23,6 +23,8 @@ const Text = styled.span<IText>`
         return 'var(--color-black)';
       case 'placeholder':
         return 'var(--color-dove)';
+      case 'yellow':
+        return 'var(--color-selective)';
       default:
         return props.color;
     }
