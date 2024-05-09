@@ -4,15 +4,17 @@ import gsap from 'gsap';
 
 import Text from '@gdsc/components/typography/Text';
 
+import { GDSCText, IntroText } from '@gdsc/styles/IntroduceStyle';
+import { displayCenter } from '@gdsc/styles/LayoutStyle';
+
 import styled from '@emotion/styled';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 
 gsap.registerPlugin(ScrollTrigger);
 
 const AboutLayout = styled.div`
-  display: flex;
+  ${displayCenter}
   flex-direction: column;
-  justify-content: center;
   align-items: center;
   width: 100%;
   height: 338px;
@@ -28,6 +30,10 @@ const AboutTextBox = styled.div`
   margin-top: 76px;
   display: flex;
   text-align: center;
+
+  @media (max-width: 500px) {
+    width: 90%;
+  }
 `;
 
 const AboutEvent = () => {
@@ -57,15 +63,13 @@ const AboutEvent = () => {
         ABOUT
       </Text>
       <GdscTextBox className='gdsc-text-box'>
-        <Text color='white' weight='600' size='xl'>
-          Google Developer Student Clubs KNU
-        </Text>
+        <GDSCText>Google Developer Student Clubs KNU</GDSCText>
       </GdscTextBox>
       <AboutTextBox className='about-text-box'>
-        <Text color='white' weight='600' size='md'>
+        <IntroText>
           GDSC는 학생들이 개발/리더십 능력을 키울 수 있도록 지원하는
           프로그램으로, 성장을 원하는 다양한 학생 개발자들을 기다리고 있습니다.
-        </Text>
+        </IntroText>
       </AboutTextBox>
     </AboutLayout>
   );
