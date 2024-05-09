@@ -11,7 +11,7 @@ import styled from '@emotion/styled';
 const MainContent = styled.main`
   padding-top: 45px;
   width: 100%;
-  height: calc(100vh - 45px);
+  height: calc(auto - 45px);
   ${displayCenter}
 `;
 
