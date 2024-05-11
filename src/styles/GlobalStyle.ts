@@ -8,6 +8,13 @@ const fontSizeMd = '1rem'; // 16px
 const fontSizeSm = '0.875rem'; // 14px
 const fontSizeXs = '0.75rem'; // 12px
 
+const sizeXxl = '2.5rem'; //40px
+const sizeXl = '1.5rem'; // 24px
+const sizeLg = '1.25rem'; // 20px
+const sizeMd = '1rem'; // 16px
+const sizeSm = '0.875rem'; // 14px
+const sizeXs = '0.75rem'; // 12px
+
 //color 정의
 const colorAbony = '#1A122B';
 const colorHalti = '#1E0E3B';
@@ -37,6 +44,13 @@ export const GlobalStyle = css`
     --font-size-sm: ${fontSizeSm};
     --font-size-xs: ${fontSizeXs};
 
+    --size-xxl: ${sizeXxl};
+    --size-xl: ${sizeXl};
+    --size-lg: ${sizeLg};
+    --size-md: ${sizeMd};
+    --size-sm: ${sizeSm};
+    --size-xs: ${sizeXs};
+
     --color-transparent: ${colorTransParent};
     --color-white: ${colorWhite};
     --color-black: ${colorBlack};
@@ -58,12 +72,13 @@ export const GlobalStyle = css`
   body {
     margin: 0;
     padding: 0;
-    width: 100vw;
-    height: 100vh;
+    width: auto;
+    /* height: 100vh; */
     display: flex;
     flex-direction: column;
     font-family: 'Noto+Sans', monospace;
     background-color: var(--color-revolver);
+    color: var(--color-white);
   }
 
   img {

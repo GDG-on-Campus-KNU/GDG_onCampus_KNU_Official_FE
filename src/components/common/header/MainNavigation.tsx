@@ -13,6 +13,7 @@ import { displayCenter } from '@gdsc/styles/LayoutStyle';
 import styled from '@emotion/styled';
 
 const Header = styled.div`
+  z-index: 1000;
   position: fixed;
   top: 0;
   width: 100%;
