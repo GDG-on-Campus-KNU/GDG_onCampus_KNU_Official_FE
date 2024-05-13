@@ -2,6 +2,7 @@ import { css } from '@emotion/react';
 
 // fontSize 정의
 const fontSizeXxl = '2.5rem'; //40px
+const fontSizeMxl = '2.25rem'; // 36px
 const fontSizeXl = '1.5rem'; // 24px
 const fontSizeLg = '1.25rem'; // 20px
 const fontSizeMd = '1rem'; // 16px
@@ -9,6 +10,7 @@ const fontSizeSm = '0.875rem'; // 14px
 const fontSizeXs = '0.75rem'; // 12px
 
 const sizeXxl = '2.5rem'; //40px
+const sizeMxl = '2.25rem'; // 36px
 const sizeXl = '1.5rem'; // 24px
 const sizeLg = '1.25rem'; // 20px
 const sizeMd = '1rem'; // 16px
@@ -38,6 +40,7 @@ export const GlobalStyle = css`
 
   :root {
     --font-size-xxl: ${fontSizeXxl};
+    --font-size-mxl: ${fontSizeMxl};
     --font-size-xl: ${fontSizeXl};
     --font-size-lg: ${fontSizeLg};
     --font-size-md: ${fontSizeMd};
@@ -45,6 +48,7 @@ export const GlobalStyle = css`
     --font-size-xs: ${fontSizeXs};
 
     --size-xxl: ${sizeXxl};
+    --size-mxl: ${sizeMxl};
     --size-xl: ${sizeXl};
     --size-lg: ${sizeLg};
     --size-md: ${sizeMd};
