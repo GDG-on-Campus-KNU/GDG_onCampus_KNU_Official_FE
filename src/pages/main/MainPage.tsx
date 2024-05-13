@@ -22,7 +22,7 @@ const MainPage = () => {
     <DisplayLayout>
       <Content />
       <MainRound />
-      {[...Array(15)].map((_, index) => (
+      {[...Array(25)].map((_, index) => (
         <Star
           key={index}
           top={`${Math.random() * 30}%`}
