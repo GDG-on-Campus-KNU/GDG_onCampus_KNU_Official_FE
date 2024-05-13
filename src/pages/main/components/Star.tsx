@@ -20,13 +20,13 @@ const glowAnimation = keyframes`
 
 const starStyle = (top: string, left: string) => css`
   position: absolute;
-  width: 2px;
-  height: 2px;
+  width: 3px;
+  height: 3px;
   background-color: var(--color-white);
   border-radius: 50%;
   animation:
-    twinkling 4s infinite alternate,
-    ${glowAnimation} 8s linear infinite;
+    twinkling 3s infinite alternate,
+    ${glowAnimation} 6s linear infinite;
 
   @keyframes twinkling {
     0% {
