@@ -8,7 +8,7 @@ interface StarProps {
 
 const glowAnimation = keyframes`
   0% {
-    box-shadow: 0 0 3px 1px var(--color-white);
+    box-shadow: 0 0 3px 1px var(--color-selective);
   }
   50% {
     box-shadow: 0 0 6px 2px rgba(255, 255, 255, 0.7);
@@ -25,8 +25,8 @@ const starStyle = (top: string, left: string) => css`
   background-color: var(--color-white);
   border-radius: 50%;
   animation:
-    twinkling 3s infinite alternate,
-    ${glowAnimation} 5s linear infinite;
+    twinkling 4s infinite alternate,
+    ${glowAnimation} 8s linear infinite;
 
   @keyframes twinkling {
     0% {

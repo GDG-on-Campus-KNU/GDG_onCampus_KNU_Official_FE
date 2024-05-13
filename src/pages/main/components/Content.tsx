@@ -9,13 +9,25 @@ const ContentLayout = styled.div`
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
+  text-align: left;
   position: absolute;
   top: 0;
   left: 0;
-  padding: 0 60px 0px 150px;
+  padding: 0 100px 0px 60px;
+  width: 100%;
   height: 300px;
-  width: calc(100% - 210px);
+  width: calc(100% - 160px);
   z-index: 300;
+
+  @media (max-width: 767px) {
+    padding: 0 60px 0 60px;
+    width: calc(100% - 120px);
+  }
+
+  @media (max-width: 500px) {
+    padding: 0 30px 0 30px;
+    width: calc(100% - 60px);
+  }
 `;
 
 const SpaceShipImg = styled.img`
@@ -23,6 +35,16 @@ const SpaceShipImg = styled.img`
   height: 68.77px;
   margin-bottom: 8px;
   cursor: pointer;
+
+  @media (max-width: 767px) {
+    width: 57px;
+    height: 56px;
+  }
+
+  @media (max-width: 500px) {
+    width: 45px;
+    height: 44.21px;
+  }
 `;
 
 const TextLayout = styled.div`
@@ -34,16 +56,34 @@ const ImgLayout = styled(TextLayout)`
   align-items: center;
 `;
 
+const MainSubText = styled(Text)`
+  @media (max-width: 767px) {
+    font-size: 32px;
+  }
+  @media (max-width: 500px) {
+    font-size: 20px;
+  }
+`;
+
+const MainText = styled(Text)`
+  @media (max-width: 767px) {
+    font-size: var(--font-size-mxl);
+  }
+  @media (max-width: 500px) {
+    font-size: 20px;
+  }
+`;
+
 const Content = () => {
   return (
     <ContentLayout>
       <TextLayout>
-        <Text color='white' size='mxl' weight='300'>
+        <MainSubText color='white' size='mxl' weight='300'>
           안녕하세요.
-        </Text>
-        <Text color='white' size='xxl' weight='700'>
+        </MainSubText>
+        <MainText color='white' size='xxl' weight='700'>
           우리는 GDSC KNU 입니다!
-        </Text>
+        </MainText>
       </TextLayout>
       <ImgLayout>
         <a
