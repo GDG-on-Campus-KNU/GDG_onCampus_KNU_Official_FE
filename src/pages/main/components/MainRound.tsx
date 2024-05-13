@@ -2,7 +2,7 @@ import { useEffect, useRef } from 'react';
 
 import gsap from 'gsap';
 
-import Earth from '@gdsc/pages/main/components/Earth';
+import Carousel from '@gdsc/pages/main/components/Carousel';
 
 import styled from '@emotion/styled';
 
@@ -103,7 +103,7 @@ const MainRound = () => {
     <ThirdRound>
       <SecondRound>
         <FirstRound ref={imageRef}>
-          <Earth />
+          <Carousel />
         </FirstRound>
       </SecondRound>
     </ThirdRound>
