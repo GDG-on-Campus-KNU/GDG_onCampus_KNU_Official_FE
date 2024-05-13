@@ -1,3 +1,7 @@
+import { useEffect, useRef } from 'react';
+
+import gsap from 'gsap';
+
 import Text from '@gdsc/components/typography/Text';
 
 import SpaceShip from '@gdsc/assets/SpaceShip.svg';
@@ -75,9 +79,30 @@ const MainText = styled(Text)`
 `;
 
 const Content = () => {
+  const textRef = useRef(null);
+  const imageRef = useRef(null);
+
+  useEffect(() => {
+    gsap.from(textRef.current, {
+      duration: 1,
+      opacity: 0,
+      y: 50,
+      ease: 'easeInOut',
+      delay: 0.5,
+    });
+
+    gsap.from(imageRef.current, {
+      duration: 1,
+      opacity: 0,
+      y: 50,
+      ease: 'easeInOut',
+      delay: 1,
+    });
+  }, []);
+
   return (
     <ContentLayout>
-      <TextLayout>
+      <TextLayout ref={textRef}>
         <MainSubText color='white' size='mxl' weight='300'>
           안녕하세요.
         </MainSubText>
@@ -85,7 +110,7 @@ const Content = () => {
           우리는 GDSC KNU 입니다!
         </MainText>
       </TextLayout>
-      <ImgLayout>
+      <ImgLayout ref={imageRef}>
         <a
           href='https://sites.google.com/view/gdeveloperskorea/gdsc'
           target='_blank'
