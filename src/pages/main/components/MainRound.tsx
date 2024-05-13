@@ -1,3 +1,9 @@
+import { useEffect, useRef } from 'react';
+
+import gsap from 'gsap';
+
+import Earth from '@gdsc/pages/main/components/Earth';
+
 import styled from '@emotion/styled';
 
 const FirstRound = styled.div`
@@ -81,14 +87,26 @@ const ThirdRound = styled.div`
 `;
 
 const MainRound = () => {
+  const imageRef = useRef(null);
+
+  useEffect(() => {
+    gsap.from(imageRef.current, {
+      duration: 2.5,
+      opacity: 0,
+      y: 10,
+      ease: 'easeInOut',
+      delay: 2,
+    });
+  }, []);
+
   return (
-    <>
-      <ThirdRound>
-        <SecondRound>
-          <FirstRound />
-        </SecondRound>
-      </ThirdRound>
-    </>
+    <ThirdRound>
+      <SecondRound>
+        <FirstRound ref={imageRef}>
+          <Earth />
+        </FirstRound>
+      </SecondRound>
+    </ThirdRound>
   );
 };
 
