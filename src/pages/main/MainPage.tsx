@@ -3,6 +3,7 @@ import { useMediaQuery } from 'react-responsive';
 import MainFooter from '@gdsc/components/common/footer/MainFooter';
 import MobileFooterMobile from '@gdsc/components/common/footer/MainFooterMobile';
 
+import Content from '@gdsc/pages/main/components/Content';
 import MainRound from '@gdsc/pages/main/components/MainRound';
 import Star from '@gdsc/pages/main/components/Star';
 
@@ -19,6 +20,7 @@ const MainPage = () => {
 
   return (
     <DisplayLayout>
+      <Content />
       <MainRound />
       {[...Array(15)].map((_, index) => (
         <Star
