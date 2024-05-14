@@ -7,9 +7,11 @@ import Content from '@gdsc/pages/main/components/Content';
 import MainRound from '@gdsc/pages/main/components/MainRound';
 import Star from '@gdsc/pages/main/components/Star';
 
+import { DisplayLayout } from '@gdsc/styles/LayoutStyle';
+
 import styled from '@emotion/styled';
 
-const DisplayLayout = styled.div`
+const DisplayMainLayout = styled(DisplayLayout)`
   display: flex;
   flex-direction: column;
   position: relative;
@@ -19,7 +21,7 @@ const MainPage = () => {
   const isMobile = useMediaQuery({ query: '(max-width: 500px)' });
 
   return (
-    <DisplayLayout>
+    <DisplayMainLayout>
       <Content />
       <MainRound />
       {[...Array(25)].map((_, index) => (
@@ -30,7 +32,7 @@ const MainPage = () => {
         />
       ))}
       {isMobile ? <MobileFooterMobile /> : <MainFooter />}
-    </DisplayLayout>
+    </DisplayMainLayout>
   );
 };
 

@@ -2,13 +2,13 @@ import { useEffect, useRef } from 'react';
 
 import gsap from 'gsap';
 
-import Carousel from '@gdsc/pages/main/components/Carousel';
+import RotateCarousel from '@gdsc/pages/main/components/RotateCarousel';
 
 import styled from '@emotion/styled';
 
 const FirstRound = styled.div`
-  width: 900px;
-  height: 900px;
+  width: 800px;
+  height: 800px;
   border-radius: 50%;
   background: linear-gradient(
     to bottom,
@@ -19,11 +19,6 @@ const FirstRound = styled.div`
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-
-  @media (max-width: 1023px) {
-    width: 700px;
-    height: 700px;
-  }
 
   @media (max-width: 767px) {
     width: 500px;
@@ -41,15 +36,10 @@ const SecondRound = styled.div`
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  width: 1000px;
-  height: 1000px;
+  width: 900px;
+  height: 900px;
   border-radius: 50%;
   background: linear-gradient(to bottom, #2a2545, var(--color-revolver));
-
-  @media (max-width: 1023px) {
-    width: 800px;
-    height: 800px;
-  }
 
   @media (max-width: 767px) {
     width: 600px;
@@ -65,15 +55,10 @@ const SecondRound = styled.div`
 const ThirdRound = styled.div`
   position: relative;
   margin-top: 165px;
-  width: 1100px;
-  height: 1100px;
+  width: 1000px;
+  height: 1000px;
   border-radius: 50%;
   background: linear-gradient(to bottom, #241a38, var(--color-revolver));
-
-  @media (max-width: 1023px) {
-    width: 900px;
-    height: 900px;
-  }
 
   @media (max-width: 767px) {
     width: 700px;
@@ -103,7 +88,7 @@ const MainRound = () => {
     <ThirdRound>
       <SecondRound>
         <FirstRound ref={imageRef}>
-          <Carousel />
+          <RotateCarousel />
         </FirstRound>
       </SecondRound>
     </ThirdRound>
