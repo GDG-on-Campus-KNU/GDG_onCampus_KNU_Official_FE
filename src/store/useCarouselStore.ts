@@ -2,14 +2,20 @@ import { create } from 'zustand';
 
 interface CarouselState {
   angle: number;
-  isDragging: boolean;
-  setAngle: (newAngle: number) => void;
-  setIsDragging: (dragging: boolean) => void;
+  opacityArray: number[];
 }
 
-export const useCarouselStore = create<CarouselState>((set) => ({
-  angle: 0,
-  isDragging: false,
-  setAngle: (newAngle) => set({ angle: newAngle }),
-  setIsDragging: (dragging) => set({ isDragging: dragging }),
-}));
+interface CarouselAction extends CarouselState {
+  setAngle: (newAngle: number) => void;
+  setOpacityArray: (newOpacityArray: number[]) => void;
+}
+
+export const useCarouselStore = create<CarouselState & CarouselAction>(
+  (set) => ({
+    angle: 0,
+    opacityArray: [1, 0.7, 0.5, 0.3, 0.5, 0.7],
+    setAngle: (newAngle) => set({ angle: newAngle }),
+    setOpacityArray: (newOpacityArray) =>
+      set({ opacityArray: newOpacityArray }),
+  })
+);
