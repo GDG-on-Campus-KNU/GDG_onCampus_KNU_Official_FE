@@ -1,5 +1,8 @@
 import { useMediaQuery } from 'react-responsive';
 
+import CompleteBtn from '@gdsc/components/button/CompleteBtn';
+import Text from '@gdsc/components/typography/Text';
+
 import { useColTz } from '@gdsc/hooks/custom_hooks/useColTz';
 
 import Earth from '@gdsc/assets/Earth.gif';
@@ -8,6 +11,7 @@ import RightArrow from '@gdsc/assets/RightArrow.svg';
 
 import { useCarouselStore } from '@gdsc/store/useCarouselStore';
 
+import { cardData } from './MainIntroduceText';
 import styled from '@emotion/styled';
 
 const Container = styled.div`
@@ -72,9 +76,10 @@ const Card = styled.div`
   height: 100%;
   transition: all 0.5s;
   font-size: 24px;
-  color: #000;
+  color: var(--color-black);
   font-weight: bold;
   display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
   background: var(--color-white);
@@ -96,6 +101,37 @@ const EarthImage = styled.img`
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
+`;
+
+const CardMainText = styled(Text)`
+  position: relative;
+  z-index: 1;
+  ::before {
+    content: '';
+    position: absolute;
+    top: 10px;
+    left: 0;
+    width: 100%;
+    height: 40%;
+    background: var(--color-selective);
+    z-index: -1;
+  }
+
+  @media (max-width: 500px) {
+    ::before {
+      top: 5px;
+    }
+  }
+`;
+
+const ContentText = styled(Text)`
+  padding: 20px;
+  width: calc(100% - 40px);
+`;
+
+const MobileContentText = styled(ContentText)`
+  padding: 10px;
+  width: calc(100% - 20px);
 `;
 
 const RotateCarousel = () => {
@@ -141,7 +177,46 @@ const RotateCarousel = () => {
                     opacity: opacityArray[index],
                   }}
                 >
-                  Card{index + 1}
+                  <CardMainText
+                    weight='700'
+                    color='black'
+                    whiteSpace='normal'
+                    size='sm'
+                  >
+                    {cardData[index].mainText}
+                  </CardMainText>
+                  <Text
+                    weight='500'
+                    color='black'
+                    whiteSpace='normal'
+                    size='xs'
+                  >
+                    {cardData[index].subText}
+                  </Text>
+                  <hr
+                    style={{
+                      width: '80%',
+                      height: '1px',
+                      backgroundColor: 'black',
+                      margin: '0 auto',
+                    }}
+                  />
+                  <MobileContentText
+                    color='black'
+                    size='xs'
+                    weight='500'
+                    whiteSpace='normal'
+                  >
+                    {cardData[index].contentText}
+                  </MobileContentText>
+                  <CompleteBtn
+                    type='button'
+                    color='blue'
+                    backgroundColor='blue'
+                    hoverColor='blue'
+                  >
+                    팀블로그 바로가기
+                  </CompleteBtn>
                 </Card>
               ))}
             </Carousel>
@@ -171,7 +246,46 @@ const RotateCarousel = () => {
                     opacity: opacityArray[index],
                   }}
                 >
-                  Card{index + 1}
+                  <CardMainText
+                    weight='700'
+                    color='black'
+                    whiteSpace='normal'
+                    size='lg'
+                  >
+                    {cardData[index].mainText}
+                  </CardMainText>
+                  <Text
+                    weight='500'
+                    color='black'
+                    whiteSpace='normal'
+                    size='sm'
+                  >
+                    {cardData[index].subText}
+                  </Text>
+                  <hr
+                    style={{
+                      width: '80%',
+                      height: '1px',
+                      backgroundColor: 'black',
+                      margin: '0 auto',
+                    }}
+                  />
+                  <ContentText
+                    color='black'
+                    size='xs'
+                    weight='500'
+                    whiteSpace='normal'
+                  >
+                    {cardData[index].contentText}
+                  </ContentText>
+                  <CompleteBtn
+                    type='button'
+                    color='blue'
+                    backgroundColor='blue'
+                    hoverColor='blue'
+                  >
+                    팀블로그 바로가기
+                  </CompleteBtn>
                 </Card>
               ))}
             </Carousel>
