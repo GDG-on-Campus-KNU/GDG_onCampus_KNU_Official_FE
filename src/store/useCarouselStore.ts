@@ -13,7 +13,7 @@ interface CarouselAction extends CarouselState {
 export const useCarouselStore = create<CarouselState & CarouselAction>(
   (set) => ({
     angle: 0,
-    opacityArray: [1, 0.7, 0.5, 0.3, 0.5, 0.7],
+    opacityArray: [1, 0.6, 0.1, 0.04, 0.1, 0.6],
     setAngle: (newAngle) => set({ angle: newAngle }),
     setOpacityArray: (newOpacityArray) =>
       set({ opacityArray: newOpacityArray }),

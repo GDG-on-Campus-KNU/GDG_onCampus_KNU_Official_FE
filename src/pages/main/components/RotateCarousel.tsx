@@ -2,6 +2,7 @@ import { useMediaQuery } from 'react-responsive';
 
 import { useColTz } from '@gdsc/hooks/custom_hooks/useColTz';
 
+import Earth from '@gdsc/assets/Earth.gif';
 import LeftArrow from '@gdsc/assets/LeftArrow.svg';
 import RightArrow from '@gdsc/assets/RightArrow.svg';
 
@@ -88,12 +89,14 @@ const ButtonLayout = styled.div`
   transform: translate(-50%, 0%);
 `;
 
-// const LottieContainer = styled.div`
-//   position: absolute;
-//   top: 50%;
-//   left: 50%;
-//   transform: translate(-50%, -50%);
-// `;
+const EarthImage = styled.img`
+  width: 150%;
+  height: auto;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+`;
 
 const RotateCarousel = () => {
   const { angle, setAngle, opacityArray, setOpacityArray } = useCarouselStore();
@@ -128,6 +131,7 @@ const RotateCarousel = () => {
       {isNotPC ? (
         <NotPCContainer>
           <Scene>
+            <EarthImage src={Earth} alt='earth' />
             <Carousel style={{ transform: `rotateY(${-angle}deg)` }}>
               {[...Array(6)].map((_, index) => (
                 <Card
@@ -141,9 +145,6 @@ const RotateCarousel = () => {
                 </Card>
               ))}
             </Carousel>
-            {/* <LottieContainer>
-           <Lottie animationData={EarthRotate} />
-         </LottieContainer> */}
           </Scene>
           <ButtonLayout>
             <Button onClick={handlePrevClick}>
@@ -160,6 +161,7 @@ const RotateCarousel = () => {
             <img src={LeftArrow} alt='arrow' />
           </Button>
           <Scene>
+            <EarthImage src={Earth} alt='earth' />
             <Carousel style={{ transform: `rotateY(${-angle}deg)` }}>
               {[...Array(6)].map((_, index) => (
                 <Card
@@ -173,9 +175,6 @@ const RotateCarousel = () => {
                 </Card>
               ))}
             </Carousel>
-            {/* <LottieContainer>
-           <Lottie animationData={EarthRotate} />
-         </LottieContainer> */}
           </Scene>
           <Button onClick={handleNextClick}>
             <img src={RightArrow} alt='arrow' />
