@@ -13,6 +13,7 @@ const MainContent = styled.main`
   width: 100%;
   height: calc(auto - 45px);
   ${displayCenter}
+  overflow: hidden;
 `;
 
 const RootPage = () => {

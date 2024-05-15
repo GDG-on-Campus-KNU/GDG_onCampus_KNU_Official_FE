@@ -52,8 +52,8 @@ const Scene = styled.div`
   margin: 0 auto;
 
   @media (max-width: 767px) {
-    width: 190px;
-    height: 180px;
+    width: 180px;
+    height: 170px;
   }
 
   @media (max-width: 500px) {
@@ -132,6 +132,16 @@ const ContentText = styled(Text)`
 const MobileContentText = styled(ContentText)`
   padding: 10px;
   width: calc(100% - 20px);
+`;
+
+const ArrowImg = styled.img`
+  width: 57px;
+  height: 57px;
+
+  @media (max-width: 767px) {
+    width: 47px;
+    height: 47px;
+  }
 `;
 
 const RotateCarousel = () => {
@@ -223,17 +233,17 @@ const RotateCarousel = () => {
           </Scene>
           <ButtonLayout>
             <Button onClick={handlePrevClick}>
-              <img src={LeftArrow} alt='arrow' />
+              <ArrowImg src={LeftArrow} alt='arrow' />
             </Button>
             <Button onClick={handleNextClick}>
-              <img src={RightArrow} alt='arrow' />
+              <ArrowImg src={RightArrow} alt='arrow' />
             </Button>
           </ButtonLayout>
         </NotPCContainer>
       ) : (
         <Container>
           <Button onClick={handlePrevClick}>
-            <img src={LeftArrow} alt='arrow' />
+            <ArrowImg src={LeftArrow} alt='arrow' />
           </Button>
           <Scene>
             <EarthImage src={Earth} alt='earth' />
@@ -291,7 +301,7 @@ const RotateCarousel = () => {
             </Carousel>
           </Scene>
           <Button onClick={handleNextClick}>
-            <img src={RightArrow} alt='arrow' />
+            <ArrowImg src={RightArrow} alt='arrow' />
           </Button>
         </Container>
       )}
