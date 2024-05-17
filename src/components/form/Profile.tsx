@@ -21,8 +21,8 @@ const ProfileContainer = styled.div`
 `;
 
 const ProfileImg = styled.img`
-  width: 60px;
-  height: 60px;
+  width: 80px;
+  height: 80px;
 
   border-radius: 50%;
 `;

@@ -28,6 +28,8 @@ const InputElement = styled.input`
   width: 100%;
   height: 100%;
 
+  box-sizing: border-box;
+
   padding: 12px;
   margin-top: 6px;
 
