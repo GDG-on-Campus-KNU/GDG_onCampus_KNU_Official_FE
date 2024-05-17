@@ -11,6 +11,9 @@ const Button = styled.button<IButton>`
   border: 0;
   border-radius: 12px;
 
+  font-size: var(--font-size-lg);
+  font-weight: bold;
+
   background-color: ${(props) => {
     switch (props.backgroundColor) {
       case 'blue':

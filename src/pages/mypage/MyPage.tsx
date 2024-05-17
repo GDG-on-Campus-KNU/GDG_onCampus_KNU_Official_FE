@@ -1,3 +1,4 @@
+import CompleteBtn from '@gdsc/components/button/CompleteBtn';
 import Input from '@gdsc/components/form/Input';
 import Profile from '@gdsc/components/form/Profile';
 import TextArea from '@gdsc/components/form/TextArea';
@@ -8,16 +9,20 @@ import { displayCenter } from '@gdsc/styles/LayoutStyle';
 import TeamToken from './components/TeamToken';
 import styled from '@emotion/styled';
 
-const MyPageWrapper = styled.div`
+const MyPageWrapper = styled.div<{ color: string }>`
   ${displayCenter}
+  flex-direction: column;
+  align-items: center;
 
   width: 90%;
   max-width: 800px;
+  gap: 50px;
 
-  margin-top: 40px;
+  margin-top: 20px;
+  margin-bottom: 40px;
   padding: 35px 0px;
 
-  background-color: var(--color-abony);
+  background-color: ${(props) => props.color};
   border-radius: 12px;
 `;
 
@@ -84,11 +89,32 @@ const TokenContainer = styled.div`
   }
 `;
 
+const SubInfoContainer = styled.div`
+  width: 80%;
+  box-sizing: border-box;
+
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  grid-template-rows: 1fr 1fr;
+  gap: 25px 50px;
+`;
+
+const ButtonContainer = styled.div`
+  width: 90%;
+  max-width: 596px;
+
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+
+  margin: 50px 0px 100px 0px;
+`;
+
 const MyPage = () => {
   return (
     <>
       <PageTitle MainTitle='마이페이지' SubTitle='My Page' />
-      <MyPageWrapper>
+      <MyPageWrapper color='var(--color-abnoy)'>
         <MainInfoContainer>
           <Profile />
           <Input id='name' label='이름' placeholder='ex) 홍길동' type='text' />
@@ -104,7 +130,7 @@ const MyPage = () => {
           </EmptyDiv>
         </MainInfoContainer>
       </MyPageWrapper>
-      <MyPageWrapper>
+      <MyPageWrapper color='transparent'>
         <TextArea
           id='intro'
           label='자기소개'
@@ -112,7 +138,38 @@ const MyPage = () => {
           maxLength={500}
           color='var(--color-gradient)'
         />
+        <SubInfoContainer>
+          <Input id='age' label='나이' placeholder='ex) 20' type='number' />
+          <Input
+            id='major'
+            label='전공'
+            placeholder='ex) 컴퓨터학부 글로벌소프트웨어융합전공'
+            type='text'
+          />
+          <Input
+            id='studentNumber'
+            label='학번'
+            placeholder='ex)2024111222'
+            type='number'
+          />
+          <Input
+            id='email'
+            label='이메일'
+            placeholder='ex) honggildong@gmail.com'
+            type='text'
+          />
+        </SubInfoContainer>
       </MyPageWrapper>
+      <ButtonContainer>
+        <CompleteBtn
+          color='blue'
+          backgroundColor='blue'
+          hoverColor='white'
+          type='submit'
+        >
+          저장하기
+        </CompleteBtn>
+      </ButtonContainer>
     </>
   );
 };
