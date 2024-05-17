@@ -13,6 +13,8 @@ const MainContent = styled.main`
   width: 100%;
   height: calc(auto - 45px);
   ${displayCenter}
+  flex-direction: column;
+  align-items: center;
 `;
 
 const RootPage = () => {

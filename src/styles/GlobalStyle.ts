@@ -32,6 +32,7 @@ const colorSantasGray = '#9D9AA5';
 const colorCornflowerBlue = '#4285F4';
 const colorCinnabar = '#FF0000';
 const colorTransParent = 'rgba(255, 255, 255, 0.8)';
+const colorGradient = 'linear-gradient(to top, #1f1632 0%, #392f4f 100%)';
 
 export const GlobalStyle = css`
   @import url('https://fonts.googleapis.com/css2?family=Noto+Sans:ital,wdth,wght@0,62.5..100,100..900;1,62.5..100,100..900&display=swap');
@@ -67,6 +68,7 @@ export const GlobalStyle = css`
     --color-santas: ${colorSantasGray};
     --color-blue: ${colorCornflowerBlue};
     --color-cinarbar: ${colorCinnabar};
+    --color-gradient: ${colorGradient};
   }
 
   body {
