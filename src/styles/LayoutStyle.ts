@@ -1,5 +1,7 @@
 import styled from '@emotion/styled';
 
+import styled from '@emotion/styled';
+
 export const displayCenter = `
     display: flex;
     justify-content: center;

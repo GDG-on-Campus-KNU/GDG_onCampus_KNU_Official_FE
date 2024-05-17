@@ -91,5 +91,6 @@ export const GlobalStyle = css`
     list-style: none;
     padding: 0;
     margin: 0;
+    background-color: #1f1632;
   }
 `;
