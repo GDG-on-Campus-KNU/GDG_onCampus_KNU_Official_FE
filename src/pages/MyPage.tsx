@@ -1,9 +1,7 @@
 import Input from '@gdsc/components/form/Input';
+import Profile from '@gdsc/components/form/Profile';
 import TextArea from '@gdsc/components/form/TextArea';
 import PageTitle from '@gdsc/components/title/PageTitle';
-
-import DefaultProfile from '@gdsc/assets/DefaultProfile.svg';
-import PencilIcon from '@gdsc/assets/EditIcon.svg';
 
 import { displayCenter } from '@gdsc/styles/LayoutStyle';
 
@@ -29,47 +27,6 @@ const MainInfoContainer = styled.div`
   gap: 25px 50px;
 `;
 
-const ProfileContainer = styled.div`
-  ${displayCenter}
-  align-items: center;
-  position: relative;
-
-  width: 80px;
-  height: 80px;
-
-  border-radius: 50%;
-
-  background-color: var(--color-que);
-`;
-
-const ProfileImg = styled.img`
-  width: 60px;
-  height: 60px;
-
-  border-radius: 50%;
-`;
-
-const EditBtn = styled.button`
-  ${displayCenter}
-  align-items: center;
-  position: absolute;
-  bottom: 0;
-  right: 0;
-
-  width: 32px;
-  height: 32px;
-
-  background-color: var(--color-white);
-
-  border: none;
-  border-radius: 50%;
-  box-shadow: 2px 3px 9px rgba(0, 0, 0, 0.15);
-`;
-
-const EditIcon = styled.img`
-  color: var(--color-revolver);
-`;
-
 const EmptyDiv = styled.div`
   background-color: transparent;
 `;
@@ -80,12 +37,7 @@ const MyPage = () => {
       <PageTitle MainTitle='마이페이지' SubTitle='My Page' />
       <MyPageWrapper>
         <MainInfoContainer>
-          <ProfileContainer>
-            <ProfileImg src={DefaultProfile} alt='profile' />
-            <EditBtn>
-              <EditIcon src={PencilIcon} alt='edit' />
-            </EditBtn>
-          </ProfileContainer>
+          <Profile />
           <Input id='name' label='이름' placeholder='ex) 홍길동' type='text' />
           <EmptyDiv></EmptyDiv>
           <Input
