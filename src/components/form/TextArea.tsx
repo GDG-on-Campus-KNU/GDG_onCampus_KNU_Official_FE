@@ -1,5 +1,8 @@
 import { useState } from 'react';
 
+import Text from '../typography/Text';
+import ApplyPage from './../../pages/apply/ApplyPage';
+import { Display } from './../../styles/FooterLayoutStyle';
 import styled from '@emotion/styled';
 
 interface ITextArea {
@@ -99,6 +102,24 @@ const GradientOverlay = styled.div`
   }
 `;
 
+const CharacterCount = styled.div<{ hasError?: boolean }>`
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  align-self: flex-end;
+
+  width: 100%;
+  margin-top: 20px;
+
+  font-size: var(--font-size-sm);
+  color: ${(props) => (props.hasError ? 'red' : 'var(--color-dove)')};
+  font-family: 'Noto+Sans';
+`;
+
+const BoldText = styled.span`
+  font-weight: bold;
+`;
+
 const TextArea: React.FC<ITextArea> = ({
   id,
   label,
@@ -110,9 +131,16 @@ const TextArea: React.FC<ITextArea> = ({
 
   const handleTextLength = (event: React.ChangeEvent<HTMLTextAreaElement>) => {
     const { value } = event.target;
-    if (value.length <= maxLength) {
+    if (value.length <= maxLength + 1) {
       setText(value);
     }
+  };
+
+  const handlePaste = (event: React.ClipboardEvent<HTMLTextAreaElement>) => {
+    event.preventDefault();
+    const paste = event.clipboardData.getData('text');
+    const textToPaste = paste.slice(0, maxLength - text.length);
+    setText((prevText) => prevText + textToPaste);
   };
 
   return (
@@ -125,10 +153,34 @@ const TextArea: React.FC<ITextArea> = ({
           color={color}
           value={text}
           onChange={handleTextLength}
+          onPaste={handlePaste}
           hasError={text.length > maxLength}
         />
         <GradientOverlay />
       </TextAreaContainer>
+      <CharacterCount hasError={text.length > maxLength}>
+        {text.length > maxLength ? (
+          <Text size='sm' color='red' weight='bold'>
+            🚨 500자를 초과하였습니다.
+          </Text>
+        ) : (
+          <div></div>
+        )}
+        <div>
+          <Text
+            size='sm'
+            weight='bold'
+            color={
+              text.length > maxLength
+                ? 'var(--color-red)'
+                : 'var(--color-white)'
+            }
+          >
+            {text.length}
+          </Text>
+          /{maxLength}
+        </div>
+      </CharacterCount>
     </TextAreaWrapper>
   );
 };
