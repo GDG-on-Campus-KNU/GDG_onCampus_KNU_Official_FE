@@ -1,8 +1,6 @@
 import { useState } from 'react';
 
 import Text from '../typography/Text';
-import ApplyPage from './../../pages/apply/ApplyPage';
-import { Display } from './../../styles/FooterLayoutStyle';
 import styled from '@emotion/styled';
 
 interface ITextArea {
@@ -116,10 +114,6 @@ const CharacterCount = styled.div<{ hasError?: boolean }>`
   font-family: 'Noto+Sans';
 `;
 
-const BoldText = styled.span`
-  font-weight: bold;
-`;
-
 const TextArea: React.FC<ITextArea> = ({
   id,
   label,
@@ -160,9 +154,13 @@ const TextArea: React.FC<ITextArea> = ({
       </TextAreaContainer>
       <CharacterCount hasError={text.length > maxLength}>
         {text.length > maxLength ? (
-          <Text size='sm' color='red' weight='bold'>
-            🚨 500자를 초과하였습니다.
-          </Text>
+          <div>
+            <Text size='lg'>🚨</Text>
+            <Text size='sm' color='red' weight='bold'>
+              {' '}
+              500자를 초과하였습니다.
+            </Text>
+          </div>
         ) : (
           <div></div>
         )}
