@@ -1,7 +1,7 @@
 import styled from '@emotion/styled';
 
 interface IText {
-  size?: 'xs' | 'sm' | 'md' | 'lg' | 'xl' | 'xxl';
+  size?: 'xs' | 'sm' | 'md' | 'lg' | 'mxl' | 'xl' | 'xxl';
   color?: 'white' | 'black' | 'placeholder' | string;
   weight?: 'light' | 'normal' | 'bold' | string;
   whiteSpace?: 'nowrap' | 'normal' | 'pre-line';
@@ -9,9 +9,9 @@ interface IText {
 }
 
 const Text = styled.span<IText>`
-  @media (max-width: 767px) {
+  /* @media (max-width: 767px) {
     text-align: center;
-  }
+  } */
 
   font-weight: ${(props) => props.weight ?? 'normal'};
 
@@ -42,6 +42,8 @@ const Text = styled.span<IText>`
         return 'var(--font-size-lg)';
       case 'xl':
         return 'var(--font-size-xl)';
+      case 'mxl':
+        return 'var(--font-size-mxl)';
       case 'xxl':
         return 'var(--font-size-xxl)';
       case undefined:
