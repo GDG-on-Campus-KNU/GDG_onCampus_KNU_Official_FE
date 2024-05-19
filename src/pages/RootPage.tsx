@@ -15,6 +15,7 @@ const MainContent = styled.main`
   ${displayCenter}
   flex-direction: column;
   align-items: center;
+  overflow: hidden;
 `;
 
 const RootPage = () => {

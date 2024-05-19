@@ -1,18 +1,19 @@
 import { createBrowserRouter } from 'react-router-dom';
 
-import { BASE_URI } from './constants/URI';
-import ErrorPage from './pages/ErrorPage';
-import MainPage from './pages/MainPage';
-import RootPage from './pages/RootPage';
-import ApplyPage from './pages/apply/ApplyPage';
-import CommunityPage from './pages/community/CommunityPage';
-import IntroducePage from './pages/introduce/IntroducePage';
-import { action as logoutAction } from './pages/logout/Logout';
-import MyPage from './pages/mypage/MyPage';
-import AuthCallBackPage from './pages/signin/AuthCallBackPage';
-import SigninPage from './pages/signin/SigninPage';
-import SignupPage from './pages/signup/SignupPage';
-import TechBlogPage from './pages/tech_blog/TechBlogPage';
+import ErrorPage from '@gdsc/pages/ErrorPage';
+import MyPage from '@gdsc/pages/MyPage';
+import RootPage from '@gdsc/pages/RootPage';
+import ApplyPage from '@gdsc/pages/apply/ApplyPage';
+import CommunityPage from '@gdsc/pages/community/CommunityPage';
+import IntroducePage from '@gdsc/pages/introduce/IntroducePage';
+import { action as logoutAction } from '@gdsc/pages/logout/Logout';
+import MainPage from '@gdsc/pages/main/MainPage';
+import AuthCallBackPage from '@gdsc/pages/signin/AuthCallBackPage';
+import SigninPage from '@gdsc/pages/signin/SigninPage';
+import SignupPage from '@gdsc/pages/signup/SignupPage';
+import TechBlogPage from '@gdsc/pages/tech_blog/TechBlogPage';
+
+import { BASE_URI } from '@gdsc/constants/URI';
 
 export const Router = createBrowserRouter([
   {
