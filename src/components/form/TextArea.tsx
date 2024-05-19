@@ -37,6 +37,7 @@ const TextAreaContainer = styled.div`
 const TextAreaElement = styled.textarea<{ color?: string; hasError?: boolean }>`
   width: 100%;
   height: 100%;
+  resize: none;
 
   padding: 12px;
   margin-top: 6px;
