@@ -29,12 +29,14 @@ const DisplayHeader = styled.nav`
   width: 100%;
   max-width: 1024px;
   height: 45px;
+  background-color: var(--color-navy);
 `;
 
 const Menu = styled.ul`
   list-style: none;
   display: flex;
   flex-direction: row;
+  background-color: var(--color-navy);
 `;
 const MenuList = styled.li`
   display: flex;
