@@ -214,6 +214,7 @@ const MyPage = () => {
       </MyPageWrapper>
       <ButtonContainer>
         <CompleteBtn
+          size='lg'
           color='blue'
           backgroundColor='blue'
           hoverColor='white'

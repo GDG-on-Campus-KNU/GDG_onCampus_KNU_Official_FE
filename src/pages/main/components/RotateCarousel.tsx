@@ -220,6 +220,7 @@ const RotateCarousel = () => {
                     {cardData[index].contentText}
                   </MobileContentText>
                   <CompleteBtn
+                    size='md'
                     type='button'
                     color='blue'
                     backgroundColor='blue'
@@ -289,6 +290,7 @@ const RotateCarousel = () => {
                     {cardData[index].contentText}
                   </ContentText>
                   <CompleteBtn
+                    size='md'
                     type='button'
                     color='blue'
                     backgroundColor='blue'

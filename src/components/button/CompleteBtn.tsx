@@ -11,7 +11,25 @@ const Button = styled.button<IButton>`
   border: 0;
   border-radius: 12px;
 
-  font-size: var(--font-size-lg);
+  font-size: ${(props) => {
+    switch (props.size) {
+      case 'xxl':
+        return 'var(--font-size-xxl)';
+      case 'xl':
+        return 'var(--font-size-xl)';
+      case 'lg':
+        return 'var(--font-size-lg)';
+      case 'md':
+        return 'var(--font-size-md)';
+      case 'sm':
+        return 'var(--font-size-sm)';
+      case 'xs':
+        return 'var(--font-size-xs)';
+      default:
+        return 'var(--font-size-md)';
+    }
+  }};
+
   font-weight: bold;
 
   background-color: ${(props) => {
@@ -53,12 +71,14 @@ const CompleteBtn: React.FC<IButton> = ({
   color,
   backgroundColor,
   hoverColor,
+  size,
   children,
   type,
 }) => {
   return (
     <Button
       color={color}
+      size={size}
       backgroundColor={backgroundColor}
       hoverColor={hoverColor}
       type={type}
