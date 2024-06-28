@@ -91,6 +91,10 @@ export const GlobalStyle = css`
     display: block;
   }
 
+  a {
+    text-decoration: none;
+  }
+
   ul {
     list-style: none;
     padding: 0;
