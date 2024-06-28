@@ -5,7 +5,7 @@ import RootPage from '@gdsc/pages/RootPage';
 import ApplyPage from '@gdsc/pages/apply/ApplyPage';
 import CommunityPage from '@gdsc/pages/community/CommunityPage';
 import IntroducePage from '@gdsc/pages/introduce/IntroducePage';
-import { action as logoutAction } from '@gdsc/pages/logout/Logout';
+// import { action as logoutAction } from '@gdsc/pages/logout/Logout';
 import MainPage from '@gdsc/pages/main/MainPage';
 import MyPage from '@gdsc/pages/mypage/MyPage';
 import AuthCallBackPage from '@gdsc/pages/signin/AuthCallBackPage';
@@ -13,11 +13,11 @@ import SigninPage from '@gdsc/pages/signin/SigninPage';
 import SignupPage from '@gdsc/pages/signup/SignupPage';
 import TechBlogPage from '@gdsc/pages/tech_blog/TechBlogPage';
 
-import { BASE_URI } from '@gdsc/constants/URI';
+// import { BASE_URI } from '@gdsc/constants/URI';
 
 export const Router = createBrowserRouter([
   {
-    path: '/gdscknu',
+    path: '/',
     element: <RootPage />,
     id: 'root',
     errorElement: <ErrorPage />,
@@ -27,17 +27,17 @@ export const Router = createBrowserRouter([
       { path: 'signup', element: <SignupPage /> },
       { path: 'apply', element: <ApplyPage /> },
       { path: 'introduce', element: <IntroducePage /> },
-      { path: 'mypage/:username', element: <MyPage /> },
+      { path: 'mypage', element: <MyPage /> },
       { path: 'community', element: <CommunityPage /> },
-      { path: 'techblog/:tech', element: <TechBlogPage /> },
+      { path: 'techblog', element: <TechBlogPage /> },
     ],
   },
   {
     path: '/oauth/:provider/redirect',
     element: <AuthCallBackPage />,
   },
-  {
-    path: `${BASE_URI}/api/auth/logout`,
-    action: logoutAction,
-  },
+  // {
+  //   path: `${BASE_URI}/api/auth/logout`,
+  //   action: logoutAction,
+  // },
 ]);

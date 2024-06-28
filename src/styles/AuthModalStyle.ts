@@ -5,7 +5,7 @@ import styled from '@emotion/styled';
 export const AuthWrapper = styled.section`
   ${displayCenter}
   align-items: center;
-  height: 100%;
+  height: calc(100vh - 45px);
   width: 100%;
 `;
 

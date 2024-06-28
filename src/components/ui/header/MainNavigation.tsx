@@ -1,12 +1,10 @@
 import { useMediaQuery } from 'react-responsive';
-import { NavLink, Form } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 
 import Text from '@gdsc/components/typography/Text';
 
 import NavigationLogo768 from '@gdsc/assets/NavigationLogo768.svg';
 import NavigationLogo from '@gdsc/assets/NavigationLogo.svg';
-
-import { BASE_URI } from '@gdsc/constants/URI';
 
 import { displayCenter } from '@gdsc/styles/LayoutStyle';
 
@@ -48,6 +46,10 @@ const NavImg = styled.img`
   margin-left: 20px;
 `;
 
+const LogoutDiv = styled.div`
+  cursor: pointer;
+`;
+
 const MainNavigation = () => {
   const accessToken = localStorage.getItem('accessToken'); // 상태관리를 통해서 액세스 토큰 가져올 계획입니다. 수정해야됩니다.
   const isTablet = useMediaQuery({ query: '(max-width: 767px)' });
@@ -58,34 +60,34 @@ const MainNavigation = () => {
         <Menu>
           {isTablet ? (
             <MenuList>
-              <NavLink to='/gdscknu'>
+              <NavLink to='/'>
                 <NavImg src={NavigationLogo768} alt='logo' />
               </NavLink>
             </MenuList>
           ) : (
             <MenuList>
-              <NavLink to='/gdscknu'>
+              <NavLink to='/'>
                 <NavImg src={NavigationLogo} alt='logo' />
               </NavLink>
             </MenuList>
           )}
           <MenuList>
-            <NavLink to='/gdscknu/introduce'>
+            <NavLink to='/introduce'>
               <Text color='white'>동아리 소개</Text>
             </NavLink>
           </MenuList>
           <MenuList>
-            <NavLink to='/gdscknu/apply'>
+            <NavLink to='/apply'>
               <Text color='white'>지원하기</Text>
             </NavLink>
           </MenuList>
           <MenuList>
-            <NavLink to='/gdscknu/techblog/:tech'>
+            <NavLink to='/techblog'>
               <Text color='white'>테크블로그</Text>
             </NavLink>
           </MenuList>
           <MenuList>
-            <NavLink to='/gdscknu/community'>
+            <NavLink to='/community'>
               <Text color='white'>커뮤니티</Text>
             </NavLink>
           </MenuList>
@@ -93,12 +95,17 @@ const MainNavigation = () => {
         {accessToken ? (
           <Menu>
             <MenuList>
-              <Form action={`${BASE_URI}/api/auth/logout`} method='post'>
-                <button>로그아웃</button>
-              </Form>
+              <LogoutDiv
+                onClick={() => {
+                  localStorage.removeItem('accessToken');
+                  window.location.href = '/';
+                }}
+              >
+                <Text color='white'>로그아웃</Text>
+              </LogoutDiv>
             </MenuList>
             <MenuList>
-              <NavLink to='/gdscknu/mypage'>
+              <NavLink to='/mypage'>
                 <Text color='white'>마이페이지</Text>
               </NavLink>
             </MenuList>
@@ -106,7 +113,7 @@ const MainNavigation = () => {
         ) : (
           <Menu>
             <MenuList>
-              <NavLink to='/gdscknu/signin'>
+              <NavLink to='/signin'>
                 <Text color='white'>로그인</Text>
               </NavLink>
             </MenuList>
