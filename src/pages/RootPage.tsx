@@ -1,11 +1,11 @@
 import { useMediaQuery } from 'react-responsive';
 import { Outlet, useNavigation } from 'react-router-dom';
 
-import MainNavigationMobile from '@gdsc/components/common/header/MainNavigationMobile';
+import MainNavigationMobile from '@gdsc/components/ui/header/MainNavigationMobile';
 
 import { displayCenter } from '@gdsc/styles/LayoutStyle';
 
-import MainNavigation from '../components/common/header/MainNavigation';
+import MainNavigation from '../components/ui/header/MainNavigation';
 import styled from '@emotion/styled';
 
 const MainContent = styled.main`

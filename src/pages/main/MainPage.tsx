@@ -1,7 +1,7 @@
 import { useMediaQuery } from 'react-responsive';
 
-import MainFooter from '@gdsc/components/common/footer/MainFooter';
-import MobileFooterMobile from '@gdsc/components/common/footer/MainFooterMobile';
+import MainFooter from '@gdsc/components/ui/footer/MainFooter';
+import MobileFooterMobile from '@gdsc/components/ui/footer/MainFooterMobile';
 
 import Content from '@gdsc/pages/main/components/Content';
 import MainRound from '@gdsc/pages/main/components/MainRound';
