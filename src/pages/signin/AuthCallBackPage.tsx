@@ -35,9 +35,9 @@ const AuthCallBackPage = () => {
     if (data && data.accessToken) {
       localStorage.setItem('accessToken', data.accessToken);
       if (data.newMember === true) {
-        navigate('/gdscknu/signup');
+        navigate('/signup');
       } else if (data.newMember === false) {
-        navigate('/gdscknu');
+        navigate('/');
       }
     }
   }, [data, navigate]);
