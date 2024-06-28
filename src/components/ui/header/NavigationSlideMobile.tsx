@@ -5,6 +5,7 @@ import Text from '@gdsc/components/typography/Text';
 
 import Apply from '@gdsc/assets/Apply.svg';
 import Community from '@gdsc/assets/Community.svg';
+import Home from '@gdsc/assets/Home.svg';
 import Introduce from '@gdsc/assets/Introduce.svg';
 import NavSlideClose from '@gdsc/assets/NavSlideClose.svg';
 import Techblog from '@gdsc/assets/Techblog.svg';
@@ -90,6 +91,7 @@ const NavMenu = styled.ul`
   display: flex;
   flex-direction: column;
   justify-content: center;
+  background-color: inherit;
   width: 90%;
 `;
 
@@ -120,7 +122,7 @@ const NavigationSlideMobile = ({ open }: { open: boolean }) => {
   return (
     <MobileMenu open={open}>
       <NavHeader>
-        <NavLink to='/gdscknu/signin' onClick={close}>
+        <NavLink to='/signin' onClick={close}>
           <MobileBtn
             backgroundColor='transparent'
             color='white'
@@ -136,7 +138,15 @@ const NavigationSlideMobile = ({ open }: { open: boolean }) => {
       </NavHeader>
       <NavSection>
         <NavMenu>
-          <NavLink to='/gdscknu/introduce' onClick={close}>
+          <NavLink to='/' onClick={close}>
+            <NavList>
+              <NavImg src={Home} alt='home' />
+              <Text color='white' size='md'>
+                홈
+              </Text>
+            </NavList>
+          </NavLink>
+          <NavLink to='/introduce' onClick={close}>
             <NavList>
               <NavImg src={Introduce} alt='introduce' />
               <Text color='white' size='md'>
@@ -144,7 +154,7 @@ const NavigationSlideMobile = ({ open }: { open: boolean }) => {
               </Text>
             </NavList>
           </NavLink>
-          <NavLink to='/gdscknu/apply' onClick={close}>
+          <NavLink to='/apply' onClick={close}>
             <NavList>
               <NavImg src={Apply} alt='apply' />
               <Text color='white' size='md'>
@@ -152,7 +162,7 @@ const NavigationSlideMobile = ({ open }: { open: boolean }) => {
               </Text>
             </NavList>
           </NavLink>
-          <NavLink to='/gdscknu/techblog/:tech' onClick={close}>
+          <NavLink to='/techblog' onClick={close}>
             <NavList>
               <NavImg src={Techblog} alt='techblog' />
               <Text color='white' size='md'>
@@ -160,7 +170,7 @@ const NavigationSlideMobile = ({ open }: { open: boolean }) => {
               </Text>
             </NavList>
           </NavLink>
-          <NavLink to='/gdscknu/community' onClick={close}>
+          <NavLink to='/community' onClick={close}>
             <NavList>
               <NavImg src={Community} alt='community' />
               <Text color='white' size='md'>
