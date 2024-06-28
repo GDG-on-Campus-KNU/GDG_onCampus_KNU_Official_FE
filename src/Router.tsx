@@ -25,7 +25,7 @@ export const Router = createBrowserRouter([
       { index: true, element: <MainPage /> },
       { path: 'signin', element: <SigninPage /> },
       { path: 'signup', element: <SignupPage /> },
-      { path: 'apply', element: <ApplyPage /> },
+      { path: 'apply', children: [{ path: '', element: <ApplyPage /> }] },
       { path: 'introduce', element: <IntroducePage /> },
       { path: 'mypage/:username', element: <MyPage /> },
       { path: 'community', element: <CommunityPage /> },
