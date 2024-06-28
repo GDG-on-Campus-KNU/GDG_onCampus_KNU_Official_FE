@@ -29,7 +29,7 @@ export const Router = createBrowserRouter([
       { path: 'introduce', element: <IntroducePage /> },
       { path: 'mypage/:username', element: <MyPage /> },
       { path: 'community', element: <CommunityPage /> },
-      { path: 'techblog/:tech', element: <TechBlogPage /> },
+      { path: 'techblog', element: <TechBlogPage /> },
     ],
   },
   {
