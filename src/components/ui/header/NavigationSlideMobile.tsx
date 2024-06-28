@@ -112,6 +112,12 @@ const NavImg = styled.img`
 
 const NavigationSlideMobile = ({ open }: { open: boolean }) => {
   const { close } = useNavigationStore();
+  const accessToken = localStorage.getItem('accessToken'); // 상태관리를 통해서 액세스 토큰 가져올 계획입니다. 수정해야됩니다.
+
+  const handleLogout = () => {
+    localStorage.removeItem('accessToken');
+    close();
+  };
 
   const handleKeyDown = (event: React.KeyboardEvent) => {
     if (event.key === 'Enter') {
@@ -122,16 +128,30 @@ const NavigationSlideMobile = ({ open }: { open: boolean }) => {
   return (
     <MobileMenu open={open}>
       <NavHeader>
-        <NavLink to='/signin' onClick={close}>
-          <MobileBtn
-            backgroundColor='transparent'
-            color='white'
-            type='button'
-            hoverColor='none'
-          >
-            로그인
-          </MobileBtn>
-        </NavLink>
+        {accessToken ? (
+          <NavLink to='/' onClick={handleLogout}>
+            <MobileBtn
+              backgroundColor='transparent'
+              color='white'
+              type='button'
+              hoverColor='none'
+            >
+              로그아웃
+            </MobileBtn>
+          </NavLink>
+        ) : (
+          <NavLink to='/signin' onClick={close}>
+            <MobileBtn
+              backgroundColor='transparent'
+              color='white'
+              type='button'
+              hoverColor='none'
+            >
+              로그인
+            </MobileBtn>
+          </NavLink>
+        )}
+
         <CloseButton onClick={close} onKeyDown={handleKeyDown} tabIndex={0}>
           <StyledImg src={NavSlideClose} alt='close' />
         </CloseButton>
