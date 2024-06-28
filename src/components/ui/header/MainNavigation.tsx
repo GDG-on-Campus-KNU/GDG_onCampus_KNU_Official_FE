@@ -1,12 +1,10 @@
 import { useMediaQuery } from 'react-responsive';
-import { NavLink, Form } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 
 import Text from '@gdsc/components/typography/Text';
 
 import NavigationLogo768 from '@gdsc/assets/NavigationLogo768.svg';
 import NavigationLogo from '@gdsc/assets/NavigationLogo.svg';
-
-import { BASE_URI } from '@gdsc/constants/URI';
 
 import { displayCenter } from '@gdsc/styles/LayoutStyle';
 
@@ -46,6 +44,10 @@ const MenuList = styled.li`
 
 const NavImg = styled.img`
   margin-left: 20px;
+`;
+
+const LogoutDiv = styled.div`
+  cursor: pointer;
 `;
 
 const MainNavigation = () => {
@@ -93,12 +95,17 @@ const MainNavigation = () => {
         {accessToken ? (
           <Menu>
             <MenuList>
-              <Form action={`${BASE_URI}/api/auth/logout`} method='post'>
-                <button>로그아웃</button>
-              </Form>
+              <LogoutDiv
+                onClick={() => {
+                  localStorage.removeItem('accessToken');
+                  window.location.href = '/';
+                }}
+              >
+                <Text color='white'>로그아웃</Text>
+              </LogoutDiv>
             </MenuList>
             <MenuList>
-              <NavLink to='//mypage'>
+              <NavLink to='/mypage'>
                 <Text color='white'>마이페이지</Text>
               </NavLink>
             </MenuList>
