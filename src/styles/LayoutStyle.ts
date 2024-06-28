@@ -13,4 +13,8 @@ export const DisplayLayout = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
+
+  @media (max-width: 500px) {
+    margin: 0px 32px;
+  }
 `;
