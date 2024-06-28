@@ -1,10 +1,11 @@
+import NavigationSlideMobile from '@gdsc/components/ui/header/NavigationSlideMobile';
+
 import MenuHamburger from '@gdsc/assets/MenuHamburger.svg';
 
 import { useNavigationStore } from '@gdsc/store/useNavigationStore';
 
 import { displayCenter } from '@gdsc/styles/LayoutStyle';
 
-import NavigationSlideMobile from './NavigationSlideMobile';
 import styled from '@emotion/styled';
 
 const MobileHeader = styled.div`
