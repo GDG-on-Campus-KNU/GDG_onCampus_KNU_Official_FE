@@ -58,34 +58,34 @@ const MainNavigation = () => {
         <Menu>
           {isTablet ? (
             <MenuList>
-              <NavLink to='/gdscknu'>
+              <NavLink to='/'>
                 <NavImg src={NavigationLogo768} alt='logo' />
               </NavLink>
             </MenuList>
           ) : (
             <MenuList>
-              <NavLink to='/gdscknu'>
+              <NavLink to='/'>
                 <NavImg src={NavigationLogo} alt='logo' />
               </NavLink>
             </MenuList>
           )}
           <MenuList>
-            <NavLink to='/gdscknu/introduce'>
+            <NavLink to='/introduce'>
               <Text color='white'>동아리 소개</Text>
             </NavLink>
           </MenuList>
           <MenuList>
-            <NavLink to='/gdscknu/apply'>
+            <NavLink to='/apply'>
               <Text color='white'>지원하기</Text>
             </NavLink>
           </MenuList>
           <MenuList>
-            <NavLink to='/gdscknu/techblog/:tech'>
+            <NavLink to='/techblog'>
               <Text color='white'>테크블로그</Text>
             </NavLink>
           </MenuList>
           <MenuList>
-            <NavLink to='/gdscknu/community'>
+            <NavLink to='/community'>
               <Text color='white'>커뮤니티</Text>
             </NavLink>
           </MenuList>
@@ -98,7 +98,7 @@ const MainNavigation = () => {
               </Form>
             </MenuList>
             <MenuList>
-              <NavLink to='/gdscknu/mypage'>
+              <NavLink to='//mypage'>
                 <Text color='white'>마이페이지</Text>
               </NavLink>
             </MenuList>
@@ -106,7 +106,7 @@ const MainNavigation = () => {
         ) : (
           <Menu>
             <MenuList>
-              <NavLink to='/gdscknu/signin'>
+              <NavLink to='/signin'>
                 <Text color='white'>로그인</Text>
               </NavLink>
             </MenuList>
