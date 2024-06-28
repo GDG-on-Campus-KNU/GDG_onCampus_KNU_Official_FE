@@ -2,6 +2,7 @@ import { createBrowserRouter } from 'react-router-dom';
 
 import ErrorPage from '@gdsc/pages/ErrorPage';
 import RootPage from '@gdsc/pages/RootPage';
+import ApplyExPage from '@gdsc/pages/apply/ApplyExPage';
 import ApplyPage from '@gdsc/pages/apply/ApplyPage';
 import CommunityPage from '@gdsc/pages/community/CommunityPage';
 import IntroducePage from '@gdsc/pages/introduce/IntroducePage';
@@ -25,7 +26,13 @@ export const Router = createBrowserRouter([
       { index: true, element: <MainPage /> },
       { path: 'signin', element: <SigninPage /> },
       { path: 'signup', element: <SignupPage /> },
-      { path: 'apply', element: <ApplyPage /> },
+      {
+        path: 'apply',
+        children: [
+          { path: '', element: <ApplyPage /> },
+          { path: ':tech', element: <ApplyExPage /> },
+        ],
+      },
       { path: 'introduce', element: <IntroducePage /> },
       { path: 'mypage', element: <MyPage /> },
       { path: 'community', element: <CommunityPage /> },
