@@ -11,6 +11,25 @@ const LoginButton = styled.button<IButton>`
   border: 0;
   border-radius: 8px;
 
+  font-size: ${(props) => {
+    switch (props.size) {
+      case 'xxl':
+        return 'var(--font-size-xxl)';
+      case 'xl':
+        return 'var(--font-size-xl)';
+      case 'lg':
+        return 'var(--font-size-lg)';
+      case 'md':
+        return 'var(--font-size-md)';
+      case 'sm':
+        return 'var(--font-size-sm)';
+      case 'xs':
+        return 'var(--font-size-xs)';
+      default:
+        return 'var(--font-size-md)';
+    }
+  }};
+
   background-color: ${(props) => {
     switch (props.backgroundColor) {
       case 'transparent':
@@ -54,6 +73,8 @@ const MobileBtn: React.FC<IButton> = ({
   hoverColor,
   children,
   type,
+  size,
+  ...rest
 }) => {
   return (
     <LoginButton
@@ -61,6 +82,8 @@ const MobileBtn: React.FC<IButton> = ({
       backgroundColor={backgroundColor}
       hoverColor={hoverColor}
       type={type}
+      size={size}
+      {...rest}
     >
       {children}
     </LoginButton>

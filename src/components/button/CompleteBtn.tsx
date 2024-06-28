@@ -1,6 +1,10 @@
 import styled from '@emotion/styled';
 import { IButton } from '@gdsc/interface/ButtonInterfaces';
 
+interface ICButton extends IButton {
+  onClick?: () => void;
+}
+
 const Button = styled.button<IButton>`
   display: flex;
   align-items: center;
@@ -67,21 +71,23 @@ const Button = styled.button<IButton>`
   }
 `;
 
-const CompleteBtn: React.FC<IButton> = ({
+const CompleteBtn: React.FC<ICButton> = ({
   color,
   backgroundColor,
   hoverColor,
-  size,
   children,
+  size,
   type,
+  onClick,
 }) => {
   return (
     <Button
       color={color}
-      size={size}
       backgroundColor={backgroundColor}
       hoverColor={hoverColor}
       type={type}
+      size={size}
+      onClick={onClick}
     >
       {children}
     </Button>
