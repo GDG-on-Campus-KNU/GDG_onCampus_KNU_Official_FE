@@ -17,7 +17,7 @@ import { BASE_URI } from '@gdsc/constants/URI';
 
 export const Router = createBrowserRouter([
   {
-    path: '/gdscknu',
+    path: '/',
     element: <RootPage />,
     id: 'root',
     errorElement: <ErrorPage />,
