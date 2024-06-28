@@ -2,6 +2,7 @@ import { createBrowserRouter } from 'react-router-dom';
 
 import ErrorPage from '@gdsc/pages/ErrorPage';
 import RootPage from '@gdsc/pages/RootPage';
+import ApplyExPage from '@gdsc/pages/apply/ApplyExPage';
 import ApplyPage from '@gdsc/pages/apply/ApplyPage';
 import CommunityPage from '@gdsc/pages/community/CommunityPage';
 import IntroducePage from '@gdsc/pages/introduce/IntroducePage';
@@ -17,7 +18,7 @@ import { BASE_URI } from '@gdsc/constants/URI';
 
 export const Router = createBrowserRouter([
   {
-    path: '/gdscknu',
+    path: '/',
     element: <RootPage />,
     id: 'root',
     errorElement: <ErrorPage />,
@@ -25,11 +26,17 @@ export const Router = createBrowserRouter([
       { index: true, element: <MainPage /> },
       { path: 'signin', element: <SigninPage /> },
       { path: 'signup', element: <SignupPage /> },
-      { path: 'apply', children: [{ path: '', element: <ApplyPage /> }] },
+      {
+        path: 'apply',
+        children: [
+          { path: '', element: <ApplyPage /> },
+          { path: ':tech', element: <ApplyExPage /> },
+        ],
+      },
       { path: 'introduce', element: <IntroducePage /> },
       { path: 'mypage/:username', element: <MyPage /> },
       { path: 'community', element: <CommunityPage /> },
-      { path: 'techblog/:tech', element: <TechBlogPage /> },
+      { path: 'techblog', element: <TechBlogPage /> },
     ],
   },
   {
