@@ -18,7 +18,7 @@ const InputWrapper = styled.div`
 `;
 
 const InputLabel = styled.label`
-  font-size: var(--font-size-md);
+  font-size: var(--font-size-lg);
   font-weight: bold;
 
   font-family: 'Noto+Sans';

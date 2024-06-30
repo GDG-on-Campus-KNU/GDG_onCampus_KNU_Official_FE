@@ -4,6 +4,7 @@ import ErrorPage from '@gdsc/pages/ErrorPage';
 import RootPage from '@gdsc/pages/RootPage';
 import ApplyExPage from '@gdsc/pages/apply/ApplyExPage';
 import ApplyPage from '@gdsc/pages/apply/ApplyPage';
+import InquiryPage from '@gdsc/pages/apply/InquiryPage';
 import CommunityPage from '@gdsc/pages/community/CommunityPage';
 import IntroducePage from '@gdsc/pages/introduce/IntroducePage';
 // import { action as logoutAction } from '@gdsc/pages/logout/Logout';
@@ -31,6 +32,7 @@ export const Router = createBrowserRouter([
         children: [
           { path: '', element: <ApplyPage /> },
           { path: ':tech', element: <ApplyExPage /> },
+          { path: 'inquiry', element: <InquiryPage /> },
         ],
       },
       { path: 'introduce', element: <IntroducePage /> },
