@@ -10,6 +10,9 @@ interface IInput {
 const InputWrapper = styled.div`
   width: 100%;
   height: 80px;
+  @media (max-width: 500px) {
+    height: 65px;
+  }
 
   display: flex;
   flex-direction: column;
@@ -19,7 +22,13 @@ const InputWrapper = styled.div`
 
 const InputLabel = styled.label`
   font-size: var(--font-size-lg);
+  @media (max-width: 500px) {
+    font-size: var(--font-size-md);
+  }
   font-weight: bold;
+  @media (max-width: 500px) {
+    font-weight: normal;
+  }
 
   font-family: 'Noto+Sans';
 `;
@@ -31,6 +40,9 @@ const InputElement = styled.input`
   box-sizing: border-box;
 
   padding: 12px;
+  @media (max-width: 500px) {
+    padding: 0px 12px;
+  }
   margin-top: 6px;
 
   border: none;

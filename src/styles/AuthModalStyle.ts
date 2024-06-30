@@ -11,6 +11,9 @@ export const AuthWrapper = styled.section`
 
 export const AuthBox = styled.div`
   width: 60%;
+  @media (max-width: 500px) {
+    width: 80%;
+  }
   height: 360px;
   padding: 35px;
 
@@ -27,6 +30,17 @@ export const AuthBox = styled.div`
         return 'rgba(255,255,255,0.15)';
     }
   }};
+
+  @media (max-width: 500px) {
+    background-color: ${(props) => {
+      switch (props.color) {
+        case 'navy':
+          return 'transparent';
+        case 'white':
+          return 'rgba(255,255,255,0.15)';
+      }
+    }};
+  }
 
   border-radius: 12px;
 `;
