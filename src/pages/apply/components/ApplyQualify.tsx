@@ -15,7 +15,7 @@ const QualifyContainer = styled.div`
 
 const TitleBox = styled.div`
   width: auto;
-  max-width: 190px;
+  max-width: 230px;
   height: 43px;
   border-radius: 12px;
   background-color: #ffffff26;
@@ -24,13 +24,14 @@ const TitleBox = styled.div`
   justify-content: center;
   align-items: center;
   font-weight: 700;
-  font-size: var(--font-size-md);
+  font-size: var(--font-size-lg);
   padding: 4px 17px 4px 17px;
 
   @media (max-width: 500px) {
-    width: 140px;
+    width: 190px;
     height: 30px;
     border-radius: 8px;
+    font-size: var(--font-size-md);
   }
 `;
 
