@@ -8,6 +8,7 @@ import {
   AndroidData,
   DesignerData,
 } from '@gdsc/pages/apply/components/ApplyDocs';
+import ApplyQualify from '@gdsc/pages/apply/components/ApplyQualify';
 import PCApplyBox from '@gdsc/pages/apply/components/PCApplyBox';
 
 import {
@@ -80,6 +81,7 @@ const ApplyEx = () => {
           <TitleLayout>
             <SubTitle>{data.korean}</SubTitle>
           </TitleLayout>
+          <ApplyQualify data={data} />
         </ApplyLayout>
       ) : isTablet ? (
         <ApplyLayout>
@@ -94,6 +96,7 @@ const ApplyEx = () => {
               <AppEx>{data.explain}</AppEx>
             </TitleWrapper>
           </TitleLayout>
+          <ApplyQualify data={data} />
         </ApplyLayout>
       ) : (
         <FormLayout>
@@ -109,6 +112,7 @@ const ApplyEx = () => {
                 <AppEx>{data.explain}</AppEx>
               </TitleWrapper>
             </TitleLayout>
+            <ApplyQualify data={data} />
           </AppLayout>
           <PCApplyBox data={data} />
         </FormLayout>
