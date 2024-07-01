@@ -143,6 +143,7 @@ const CommonBtn = ({
   mPadding,
   mSize,
   children,
+  onClick,
   type,
 }: ICButton) => {
   return (
@@ -161,6 +162,7 @@ const CommonBtn = ({
       mPadding={mPadding}
       backgroundColor={backgroundColor}
       hoverColor={hoverColor}
+      onClick={onClick}
       type={type}
     >
       {children}
