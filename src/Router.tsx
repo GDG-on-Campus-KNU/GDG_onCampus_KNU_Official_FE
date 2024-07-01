@@ -3,6 +3,7 @@ import { createBrowserRouter } from 'react-router-dom';
 import ErrorPage from '@gdsc/pages/ErrorPage';
 import RootPage from '@gdsc/pages/RootPage';
 import ApplyExPage from '@gdsc/pages/apply/ApplyExPage';
+import ApplyFormPage from '@gdsc/pages/apply/ApplyFormPage';
 import ApplyPage from '@gdsc/pages/apply/ApplyPage';
 import CommunityPage from '@gdsc/pages/community/CommunityPage';
 import IntroducePage from '@gdsc/pages/introduce/IntroducePage';
@@ -30,7 +31,13 @@ export const Router = createBrowserRouter([
         path: 'apply',
         children: [
           { path: '', element: <ApplyPage /> },
-          { path: ':tech', element: <ApplyExPage /> },
+          {
+            path: ':tech',
+            children: [
+              { path: '', element: <ApplyExPage /> },
+              { path: '/form', element: <ApplyFormPage /> },
+            ],
+          },
         ],
       },
       { path: 'introduce', element: <IntroducePage /> },
