@@ -35,7 +35,7 @@ export const Router = createBrowserRouter([
             path: ':tech',
             children: [
               { path: '', element: <ApplyExPage /> },
-              { path: '/form', element: <ApplyFormPage /> },
+              { path: 'form', element: <ApplyFormPage /> },
             ],
           },
         ],
