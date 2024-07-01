@@ -43,6 +43,8 @@ const Button = styled.button<ICButton>`
         return 'var(--color-white)';
       case 'gray':
         return 'var(--color-alto)';
+      default:
+        return null;
     }
   }};
   color: ${(props) => {
@@ -55,6 +57,8 @@ const Button = styled.button<ICButton>`
         return 'var(--color-black)';
       case 'gray':
         return 'var(--color-dove)';
+      default:
+        return null;
     }
   }};
 
@@ -67,6 +71,8 @@ const Button = styled.button<ICButton>`
           return 'var(--color-black)';
         case 'white':
           return 'var(--color-dove)';
+        default:
+          return null;
       }
     }};
   }
