@@ -5,6 +5,6 @@ export interface ApplyExInterface {
   duedate: string;
   link: string;
   recruit: string[];
-  qualify: string[];
   prefer: string[];
+  event: string[];
 }

@@ -1,5 +1,7 @@
 import { useMediaQuery } from 'react-responsive';
-import { useParams } from 'react-router-dom';
+import { useParams, useNavigate } from 'react-router-dom';
+
+import CommonBtn from '@gdsc/components/button/CommonBtn';
 
 import {
   FrontendData,
@@ -42,10 +44,23 @@ const AppEx = styled(Explain)`
   margin-top: 10px;
 `;
 
+const ButtonWrapper = styled.div`
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  margin-bottom: 50px;
+`;
+
+const CommonWrapper = styled.div`
+  margin-left: 20px;
+  width: 50%;
+`;
+
 const ApplyEx = () => {
   const { tech = '' } = useParams();
   const isMobile = useMediaQuery({ query: '(max-width: 500px)' });
   const isTablet = useMediaQuery({ query: '(max-width: 767px)' });
+  const navigate = useNavigate();
 
   console.log(tech);
 
@@ -82,6 +97,40 @@ const ApplyEx = () => {
             <SubTitle>{data.korean}</SubTitle>
           </TitleLayout>
           <ApplyQualify data={data} />
+          <ButtonWrapper>
+            <CommonBtn
+              color='blue'
+              backgroundColor='blue'
+              hoverColor='blue'
+              type='button'
+              width='100%'
+              mWidth='50%'
+              size='xl'
+              mSize='sm'
+              height='43px'
+              padding='0'
+              onClick={() => navigate(`${data.link}`)}
+            >
+              지원하기
+            </CommonBtn>
+            <CommonWrapper>
+              <CommonBtn
+                color='gray'
+                backgroundColor='gray'
+                hoverColor='blue'
+                type='button'
+                width='100%'
+                mWidth='100%'
+                height='43px'
+                size='lg'
+                mSize='sm'
+                padding='0'
+                onClick={() => navigate('/apply')}
+              >
+                목록으로
+              </CommonBtn>
+            </CommonWrapper>
+          </ButtonWrapper>
         </ApplyLayout>
       ) : isTablet ? (
         <ApplyLayout>
@@ -97,6 +146,42 @@ const ApplyEx = () => {
             </TitleWrapper>
           </TitleLayout>
           <ApplyQualify data={data} />
+          <ButtonWrapper>
+            <CommonBtn
+              color='blue'
+              backgroundColor='blue'
+              hoverColor='blue'
+              type='button'
+              width='100%'
+              mdWidth='50%'
+              mWidth='263px'
+              size='xl'
+              mSize='sm'
+              height='43'
+              padding='0'
+              onClick={() => navigate(`${data.link}`)}
+            >
+              지원하기
+            </CommonBtn>
+
+            <CommonWrapper>
+              <CommonBtn
+                color='gray'
+                backgroundColor='gray'
+                hoverColor='blue'
+                type='button'
+                width='253px'
+                mdWidth='100%'
+                height='43px'
+                size='lg'
+                mSize='sm'
+                padding='0'
+                onClick={() => navigate('/apply')}
+              >
+                목록으로
+              </CommonBtn>
+            </CommonWrapper>
+          </ButtonWrapper>
         </ApplyLayout>
       ) : (
         <FormLayout>
