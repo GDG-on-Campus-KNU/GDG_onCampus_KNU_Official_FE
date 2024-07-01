@@ -18,4 +18,5 @@ export interface ICButton extends IButton {
   padding: string;
   mPadding?: string;
   mSize?: string;
+  onClick?: () => void;
 }
