@@ -30,6 +30,21 @@ const SignFormWrapper = styled.form`
     grid-column: 1 / -1;
     width: 100%;
   }
+
+  @media (max-width: 500px) {
+    grid-template-rows: 1fr 1fr 1fr;
+    grid-template-columns: 1fr 1fr;
+    row-gap: 0px;
+    column-gap: 15px;
+    & > *:nth-child(1) {
+      grid-column: 1 / -1;
+      width: 100%;
+    }
+    & > *:nth-child(4) {
+      grid-column: 1 / -1;
+      width: 100%;
+    }
+  }
 `;
 
 const Error = styled.small`
@@ -127,6 +142,11 @@ const SignUpForm = () => {
             width='100%'
             height='45px'
             padding='5px'
+            mdWidth='100%'
+            mdHeight='45px'
+            mWidth='100%'
+            mHeight='45px'
+            mPadding='5px'
           >
             Submitting...
           </CommonBtn>
@@ -141,6 +161,11 @@ const SignUpForm = () => {
             width='100%'
             height='45px'
             padding='5px'
+            mdWidth='100%'
+            mdHeight='45px'
+            mWidth='100%'
+            mHeight='45px'
+            mPadding='5px'
           >
             회원가입
           </CommonBtn>

@@ -6,6 +6,8 @@ const Button = styled.button<ICButton>`
   align-items: center;
   justify-content: center;
 
+  gap: 10px;
+
   border: 0;
   border-radius: 12px;
 
