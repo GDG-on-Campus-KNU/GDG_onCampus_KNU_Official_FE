@@ -66,7 +66,7 @@ const InquiryModal = () => {
 
   return (
     <AuthWrapper>
-      <AuthBox color='navy'>
+      <AuthBox variant='transparent'>
         <TitleContainer>
           {isMobile ? (
             <Text size='lg' color='white' weight='bold' whiteSpace='normal'>
