@@ -14,7 +14,7 @@ export const DisplayLayout = styled.div`
   align-items: center;
 
   @media (max-width: 500px) {
-    width: calc(100% - 62px);
-    margin: 0px 32px;
+    width: calc(100% - 64px);
+    padding: 0px 32px;
   }
 `;

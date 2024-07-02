@@ -75,12 +75,17 @@ export const GlobalStyle = css`
     --color-gradient: ${colorGradient};
   }
 
+  ::-webkit-scrollbar {
+    display: none;
+  }
+
   body {
     margin: 0;
     padding: 0;
     width: 100vw;
-    /* height: 100vh; */
     display: flex;
+    -ms-overflow-style: none;
+    scrollbar-width: none;
     flex-direction: column;
     font-family: 'Noto+Sans', monospace;
     background-color: var(--color-revolver);

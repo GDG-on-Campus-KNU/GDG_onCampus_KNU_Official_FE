@@ -7,14 +7,6 @@ export const ApplyLayout = styled.div`
   display: flex;
   flex-direction: column;
   width: 100%;
-
-  @media (max-width: 767px) {
-    margin: 0px 62px;
-  }
-
-  @media (max-width: 500px) {
-    margin: 0px 32px;
-  }
 `;
 
 export const TitleLayout = styled.div`

@@ -12,25 +12,19 @@ const ContentLayout = styled.div`
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  align-items: center;
   text-align: left;
   position: absolute;
   top: 0;
   left: 0;
-  padding: 0 100px 0px 60px;
-  width: 100%;
-  height: 300px;
-  width: calc(100% - 160px);
+  padding: 0 62px 0px 62px;
+  width: calc(100% - 124px);
+  margin-top: 105px;
   z-index: 300;
 
-  @media (max-width: 767px) {
-    padding: 0 60px 0 60px;
-    width: calc(100% - 120px);
-  }
-
   @media (max-width: 500px) {
-    padding: 0 30px 0 30px;
-    width: calc(100% - 60px);
+    margin-top: 100px;
+    padding: 0 32px 0 32px;
+    width: calc(100% - 63px);
   }
 `;
 
@@ -58,6 +52,10 @@ const TextLayout = styled.div`
 
 const ImgLayout = styled(TextLayout)`
   align-items: center;
+  margin-left: 40px;
+  @media (max-width: 500px) {
+    margin-left: 20px;
+  }
 `;
 
 const MainSubText = styled(Text)`
