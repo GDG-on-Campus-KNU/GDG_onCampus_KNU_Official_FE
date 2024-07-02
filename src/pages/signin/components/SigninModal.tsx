@@ -24,7 +24,6 @@ const SigninModal = () => {
         {...(isMobile && {
           text: 'Google 계정을 이용하여\nGDSC KNU에 로그인하세요!',
         })}
-        isLogin='아직 GDSC KNU 계정이 없다면?'
       >
         <SigninBtn onClick={google_login} width='100%'>
           Google 계정으로 로그인

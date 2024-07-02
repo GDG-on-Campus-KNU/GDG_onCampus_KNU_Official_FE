@@ -7,10 +7,9 @@ import logo from '../../../public/GDSC.svg';
 import styled from '@emotion/styled';
 
 interface ISignModal {
-  title: string;
+  title?: string;
   text?: string;
   children: React.ReactNode;
-  isLogin?: string;
 }
 
 const TitleContainer = styled.h2`
@@ -37,27 +36,7 @@ const ButtonContainer = styled.div`
   gap: 20px;
 `;
 
-const GotoSignupBtn = styled.button`
-  background-color: transparent;
-  color: var(--color-white);
-
-  border: none;
-
-  text-decoration: underline;
-  font-family: 'Noto+Sans';
-  font-size: var(--font-size-sm);
-
-  &:hover {
-    cursor: pointer;
-  }
-`;
-
-const AuthModal: React.FC<ISignModal> = ({
-  title,
-  text,
-  children,
-  isLogin,
-}) => {
+const AuthModal: React.FC<ISignModal> = ({ title, text, children }) => {
   return (
     <AuthBox variant='primary'>
       <TitleContainer>
@@ -71,12 +50,7 @@ const AuthModal: React.FC<ISignModal> = ({
           </Text>
         ) : null}
       </TitleContainer>
-      <ButtonContainer>
-        {children}
-        {isLogin ? (
-          <GotoSignupBtn>아직 GDSC 계정이 없다면?</GotoSignupBtn>
-        ) : null}
-      </ButtonContainer>
+      <ButtonContainer>{children}</ButtonContainer>
     </AuthBox>
   );
 };

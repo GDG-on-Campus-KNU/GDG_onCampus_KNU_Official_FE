@@ -1,12 +1,13 @@
 import { useForm } from 'react-hook-form';
 
-import AuthModal from '@gdsc/components/auth/AuthModal';
-import CompleteBtn from '@gdsc/components/button/CompleteBtn';
+import CommonBtn from '@gdsc/components/button/CommonBtn';
 import SignupInput from '@gdsc/components/form/SignupInput';
 
 import { SignupQuery } from '@gdsc/hooks/queries/post/SignupQuery';
 
 import { SignUpSchema, SignUpSchemaType } from '@gdsc/utils/SignUpSchemaUtil';
+
+import { AuthBox } from '@gdsc/styles/AuthModalStyle';
 
 import styled from '@emotion/styled';
 import { signUpUserInterface } from '@gdsc/interface/UserInterface';
@@ -14,10 +15,21 @@ import { ErrorMessage } from '@hookform/error-message';
 import { zodResolver } from '@hookform/resolvers/zod';
 
 const SignFormWrapper = styled.form`
-  display: flex;
-  box-sizing: border-box;
-  flex-direction: column;
-  width: 100%;
+  width: 90%;
+
+  display: grid;
+  grid-template-rows: 1fr 1fr;
+  grid-template-columns: 1fr 1fr 2fr;
+  column-gap: 30px;
+  row-gap: 25px;
+
+  & > *:nth-child(3) {
+    width: 100%;
+  }
+  & > *:nth-child(4) {
+    grid-column: 1 / -1;
+    width: 100%;
+  }
 `;
 
 const Error = styled.small`
@@ -27,16 +39,12 @@ const Error = styled.small`
 `;
 
 const ButtonItem = styled.div`
-  width: 100%;
-
-  display: flex;
-  justify-content: flex-end;
-
-  margin: 50px 0px;
+  width: 90%;
 `;
 
 const SignUpForm = () => {
-  const { mutate, isPending, isError, error } = SignupQuery();
+  const { mutate, isPending } = SignupQuery();
+  //const { mutate, isPending, isError, error } = SignupQuery();
   //모달 창 나왔을때 isError랑 error 모달창 집어넣어야함.
 
   const {
@@ -56,15 +64,12 @@ const SignUpForm = () => {
   };
 
   return (
-    <AuthModal
-      title='GDSC 계정 만들기'
-      text={`Google 계정을 이용하여\n GDSC KNU 계정을 만들어보세요.`}
-    >
+    <AuthBox variant='primary'>
       <SignFormWrapper onSubmit={handleSubmit(onSubmit)}>
         <SignupInput
           id='name'
           title='이름'
-          placeholder='이름을 입력해주세요'
+          placeholder='ex) 홍길동'
           type='text'
           register={register('name')}
         />
@@ -76,7 +81,7 @@ const SignUpForm = () => {
         <SignupInput
           id='age'
           title='나이'
-          placeholder='나이를 입력해주세요.'
+          placeholder='ex) 20'
           type='text'
           register={register('age', { valueAsNumber: true })}
         />
@@ -88,7 +93,7 @@ const SignUpForm = () => {
         <SignupInput
           id='studentNumber'
           title='학번'
-          placeholder='학번을 입력해주세요.'
+          placeholder='ex) 2024111222'
           type='text'
           register={register('studentNumber')}
         />
@@ -109,30 +114,39 @@ const SignUpForm = () => {
           name='major'
           render={({ message }) => <Error role='alert'>{message}</Error>}
         />
-        <ButtonItem>
-          {isPending && (
-            <CompleteBtn
-              backgroundColor='blue'
-              color='white'
-              hoverColor='none '
-              type='submit'
-            >
-              Submitting...
-            </CompleteBtn>
-          )}
-          {!isPending && (
-            <CompleteBtn
-              backgroundColor='blue'
-              color='white'
-              hoverColor='none'
-              type='submit'
-            >
-              회원가입
-            </CompleteBtn>
-          )}
-        </ButtonItem>
       </SignFormWrapper>
-    </AuthModal>
+
+      <ButtonItem>
+        {isPending && (
+          <CommonBtn
+            backgroundColor='blue'
+            color='blue'
+            hoverColor='blue'
+            type='submit'
+            size='lg'
+            width='100%'
+            height='45px'
+            padding='5px'
+          >
+            Submitting...
+          </CommonBtn>
+        )}
+        {!isPending && (
+          <CommonBtn
+            backgroundColor='blue'
+            color='blue'
+            hoverColor='blue'
+            type='submit'
+            size='lg'
+            width='100%'
+            height='45px'
+            padding='5px'
+          >
+            회원가입
+          </CommonBtn>
+        )}
+      </ButtonItem>
+    </AuthBox>
   );
 };
 
