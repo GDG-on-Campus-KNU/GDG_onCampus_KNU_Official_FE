@@ -145,6 +145,7 @@ const CommonBtn = ({
   children,
   onClick,
   type,
+  onClick,
 }: ICButton) => {
   return (
     <Button
@@ -164,6 +165,7 @@ const CommonBtn = ({
       hoverColor={hoverColor}
       onClick={onClick}
       type={type}
+      onClick={onClick}
     >
       {children}
     </Button>

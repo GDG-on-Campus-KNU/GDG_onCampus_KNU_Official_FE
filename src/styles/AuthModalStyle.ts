@@ -11,16 +11,36 @@ export const AuthWrapper = styled.section`
 
 export const AuthBox = styled.div`
   width: 60%;
+  @media (max-width: 500px) {
+    width: 80%;
+  }
+  height: 360px;
   padding: 35px;
-  flex-direction: row;
 
   ${displayCenter}
-  @media (max-width: 767px) {
-    flex-direction: column;
-    align-items: center;
+  flex-direction: column;
+  align-items: center;
+  gap: 35px;
+
+  background-color: ${(props) => {
+    switch (props.color) {
+      case 'navy':
+        return 'var(--color-navy)';
+      case 'white':
+        return 'rgba(255,255,255,0.15)';
+    }
+  }};
+
+  @media (max-width: 500px) {
+    background-color: ${(props) => {
+      switch (props.color) {
+        case 'navy':
+          return 'transparent';
+        case 'white':
+          return 'rgba(255,255,255,0.15)';
+      }
+    }};
   }
-  background-color: var(--color-transparent);
 
   border-radius: 12px;
-  box-shadow: 4px 4px 10px var(--color-french);
 `;
