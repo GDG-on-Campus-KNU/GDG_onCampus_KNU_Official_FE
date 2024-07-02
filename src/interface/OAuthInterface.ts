@@ -1,6 +1,7 @@
 export interface SigninAPIInterface {
-  authorizationcode: string;
+  id: string;
   accessToken: string;
+  refreshToken?: string; // 수정해야함.
   newMember: boolean;
 }
 
