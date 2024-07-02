@@ -3,44 +3,29 @@ import { useNavigate } from 'react-router-dom';
 
 import { SigninQuery } from '@gdsc/hooks/queries/post/SigninQuery';
 
-// import { useTokenStore } from '@gdsc/store/useTokenStore';
+import { SigninAPIInterface } from '@gdsc/interface/OAuthInterface';
 
 const AuthCallBackPage = () => {
   const navigate = useNavigate();
-  // const { setAccessToken, accessToken } = useTokenStore();
   const params = new URLSearchParams(window.location.search);
   const code = params.get('code');
-  // console.log(code);
 
-  const { mutate, data, isPending, isError, error } = SigninQuery();
+  const handleSuccess = (data: SigninAPIInterface) => {
+    localStorage.setItem('accessToken', data.accessToken);
+    if (data.newMember === true) {
+      navigate('/signup');
+    } else {
+      navigate('/');
+    }
+  };
+
+  const { mutate, isPending, isError, error } = SigninQuery(handleSuccess);
 
   useEffect(() => {
     if (code) {
-      mutate(code);
+      mutate({ code, provider: 'GOOGLE' });
     }
-
-    // if (data && data.accessToken) {
-    //   setAccessToken(data.accessToken);
-    //   console.log(accessToken);
-    // }
-
-    // if (data && data.newMember === true) {
-    //   navigate('/gdscknu/signup');
-    // } else if (data && data.newMember === false) {
-    //   navigate('/gdscknu');
-    // }
   }, [code, mutate]);
-
-  useEffect(() => {
-    if (data && data.accessToken) {
-      localStorage.setItem('accessToken', data.accessToken);
-      if (data.newMember === true) {
-        navigate('/signup');
-      } else if (data.newMember === false) {
-        navigate('/');
-      }
-    }
-  }, [data, navigate]);
 
   return (
     <div>
