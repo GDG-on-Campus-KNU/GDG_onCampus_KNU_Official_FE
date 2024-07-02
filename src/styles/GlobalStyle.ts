@@ -78,7 +78,7 @@ export const GlobalStyle = css`
   body {
     margin: 0;
     padding: 0;
-    width: auto;
+    width: 100vw;
     /* height: 100vh; */
     display: flex;
     flex-direction: column;
