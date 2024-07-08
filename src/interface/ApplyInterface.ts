@@ -17,6 +17,8 @@ export interface ApplyFormInterface {
   phoneNumber: string;
   techStack: string;
   links: string;
+  applicationStatus: string;
+  track: string;
   answers: {
     questionNumber: number;
     answer: string;
