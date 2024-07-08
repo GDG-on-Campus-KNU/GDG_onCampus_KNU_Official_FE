@@ -19,10 +19,7 @@ export interface ApplyFormInterface {
   links: string;
   applicationStatus: string;
   track: string;
-  answers: {
-    questionNumber: number;
-    answer: string;
-  }[];
+  answers: Array<{ questionNumber: number; answer: string }>;
 }
 
 export interface ApplyFormQuestionInterface {
