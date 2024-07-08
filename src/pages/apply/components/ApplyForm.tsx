@@ -1,6 +1,6 @@
 import { useForm } from 'react-hook-form';
 import { useMediaQuery } from 'react-responsive';
-import { useParams } from 'react-router-dom';
+import { useParams, useNavigate } from 'react-router-dom';
 
 import CommonBtn from '@gdsc/components/button/CommonBtn';
 import FormInput from '@gdsc/components/form/FormInput';
@@ -19,6 +19,10 @@ import {
   FormInputLine,
   ButtonWrapper,
   CommonWrapper,
+  InputWrapper,
+  InputNameWrapper,
+  InputSNWrapper,
+  InputMJWrapper,
 } from '@gdsc/pages/apply/components/ApplyForm.style';
 import {
   FrontendData,
@@ -29,6 +33,8 @@ import {
 } from '@gdsc/pages/apply/components/ApplyFormDocs';
 
 import { useApplyFormMutation } from '@gdsc/hooks/queries/post/ApplyFormQuery';
+
+import { ApplyFormSchema } from '@gdsc/utils/ApplyFormScehmaUtil';
 
 import {
   TitleLayout,
@@ -43,6 +49,7 @@ import {
   ApplyFormQuestionInterface,
 } from '@gdsc/interface/ApplyInterface';
 import { ErrorMessage } from '@hookform/error-message';
+import { zodResolver } from '@hookform/resolvers/zod';
 
 const getTrack = (tech: string): string => {
   switch (tech.toLowerCase()) {
@@ -63,6 +70,7 @@ const getTrack = (tech: string): string => {
 
 const ApplyForm = () => {
   const { tech = '' } = useParams();
+  const navigate = useNavigate();
   const isMobile = useMediaQuery({ query: '(max-width: 500px)' });
   const initialTrack = getTrack(tech);
   const { mutate: submitApplication } = useApplyFormMutation();
@@ -82,8 +90,14 @@ const ApplyForm = () => {
       links: '',
       applicationStatus: 'TEMPORAL',
       track: initialTrack,
-      answers: Array(4).map((_, i) => ({ questionNumber: i + 1, answer: '' })),
+      answers: [
+        { questionNumber: 0, answer: '' },
+        { questionNumber: 1, answer: '' },
+        { questionNumber: 2, answer: '' },
+        { questionNumber: 3, answer: '' },
+      ],
     },
+    resolver: zodResolver(ApplyFormSchema),
   });
 
   const getData = (tech: string): ApplyFormQuestionInterface | null => {
@@ -110,11 +124,13 @@ const ApplyForm = () => {
     if (isConfirmed) {
       const finalFormData = {
         ...formData,
-        answers: formData.answers.map((answer, index) => ({
-          questionNumber: index + 1,
-          answer: answer.answer,
-        })),
+        answers:
+          formData.answers?.map((answer, index) => ({
+            questionNumber: index,
+            answer: answer.answer,
+          })) || [],
       };
+
       // console.log(finalFormData);
       submitApplication(finalFormData);
     }
@@ -152,108 +168,122 @@ const ApplyForm = () => {
           </FormSubTitle>
         </TextLayout>
         <FormInputLine>
-          <FormInput
-            id='name'
-            width='20%'
-            margin='0px 15px 0px 0px'
-            title='이름'
-            placeholder='이름을 입력해주세요'
-            type='text'
-            register={register('name')}
-          />
-          <ErrorMessage
-            errors={errors}
-            name='name'
-            render={({ message }) => <Error role='alert'>{message}</Error>}
-          />
-          <FormInput
-            id='studentNumber'
-            width='30%'
-            margin='0px 15px 0px 0px'
-            title='학번'
-            placeholder='ex) 2019xxxx'
-            type='text'
-            register={register('studentNumber')}
-          />
-          <ErrorMessage
-            errors={errors}
-            name='studentNumber'
-            render={({ message }) => <Error role='alert'>{message}</Error>}
-          />
-          <FormInput
-            id='major'
-            width='50%'
-            margin='0px 0px 0px 0px'
-            title='학과'
-            placeholder='학과를 입력해주세요.'
-            type='text'
-            register={register('major')}
-          />
-          <ErrorMessage
-            errors={errors}
-            name='major'
-            render={({ message }) => <Error role='alert'>{message}</Error>}
-          />
+          <InputNameWrapper>
+            <FormInput
+              id='name'
+              width='100%'
+              margin='0px 15px 0px 0px'
+              title='이름'
+              placeholder='이름을 입력해주세요'
+              type='text'
+              register={register('name')}
+            />
+            <ErrorMessage
+              errors={errors}
+              name='name'
+              render={({ message }) => <Error role='alert'>{message}</Error>}
+            />
+          </InputNameWrapper>
+          <InputSNWrapper>
+            <FormInput
+              id='studentNumber'
+              width='100%'
+              margin='0px 15px 0px 0px'
+              title='학번'
+              placeholder='ex) 2019xxxx'
+              type='text'
+              register={register('studentNumber')}
+            />
+            <ErrorMessage
+              errors={errors}
+              name='studentNumber'
+              render={({ message }) => <Error role='alert'>{message}</Error>}
+            />
+          </InputSNWrapper>
+          <InputMJWrapper>
+            <FormInput
+              id='major'
+              width='100%'
+              margin='0px 0px 0px 0px'
+              title='학과'
+              placeholder='학과를 입력해주세요.'
+              type='text'
+              register={register('major')}
+            />
+            <ErrorMessage
+              errors={errors}
+              name='major'
+              render={({ message }) => <Error role='alert'>{message}</Error>}
+            />
+          </InputMJWrapper>
         </FormInputLine>
         <FormInputLine>
-          <FormInput
-            id='phoneNumber'
-            width='100%'
-            margin='0px 15px 0px 0px'
-            title='전화번호'
-            placeholder='ex) 010-xxxx-xxxx'
-            type='text'
-            register={register('phoneNumber')}
-          />
-          <ErrorMessage
-            errors={errors}
-            name='phoneNumber'
-            render={({ message }) => <Error role='alert'>{message}</Error>}
-          />
-          <FormInput
-            id='email'
-            width='100%'
-            margin='0px 0px 0px 0px'
-            title='이메일'
-            placeholder='ex) google@gmail.com'
-            type='text'
-            register={register('email')}
-          />
-          <ErrorMessage
-            errors={errors}
-            name='email'
-            render={({ message }) => <Error role='alert'>{message}</Error>}
-          />
+          <InputWrapper>
+            <FormInput
+              id='phoneNumber'
+              width='100%'
+              margin='0px 15px 0px 0px'
+              title='전화번호'
+              placeholder='ex) 010-xxxx-xxxx'
+              type='text'
+              register={register('phoneNumber')}
+            />
+            <ErrorMessage
+              errors={errors}
+              name='phoneNumber'
+              render={({ message }) => <Error role='alert'>{message}</Error>}
+            />
+          </InputWrapper>
+          <InputWrapper>
+            <FormInput
+              id='email'
+              width='100%'
+              margin='0px 0px 0px 0px'
+              title='이메일'
+              placeholder='ex) google@gmail.com'
+              type='text'
+              register={register('email')}
+            />
+            <ErrorMessage
+              errors={errors}
+              name='email'
+              render={({ message }) => <Error role='alert'>{message}</Error>}
+            />
+          </InputWrapper>
         </FormInputLine>
         <FormInputLine>
-          <FormInput
-            id='links'
-            width='100%'
-            margin='0px 15px 0px 0px'
-            title='깃허브 링크'
-            placeholder='깃허브 링크를 입력해주세요'
-            type='text'
-            register={register('links')}
-          />
-          <ErrorMessage
-            errors={errors}
-            name='links'
-            render={({ message }) => <Error role='alert'>{message}</Error>}
-          />
-          <FormInput
-            id='techStack'
-            width='100%'
-            margin='0px 0px 0px 0px'
-            title='기술 스택'
-            placeholder='ex) JAVA, JavaScript'
-            type='text'
-            register={register('techStack')}
-          />
-          <ErrorMessage
-            errors={errors}
-            name='techStack'
-            render={({ message }) => <Error role='alert'>{message}</Error>}
-          />
+          <InputWrapper>
+            <FormInput
+              id='links'
+              width='100%'
+              margin='0px 15px 0px 0px'
+              title='깃허브 링크'
+              placeholder='깃허브 링크를 입력해주세요'
+              type='text'
+              register={register('links')}
+            />
+            <ErrorMessage
+              errors={errors}
+              name='links'
+              render={({ message }) => <Error role='alert'>{message}</Error>}
+            />
+          </InputWrapper>
+          <InputWrapper>
+            <FormInput
+              id='techStack'
+              width='100%'
+              margin='0px 0px 0px 0px'
+              title='기술 스택'
+              placeholder='ex) JAVA, JavaScript'
+              type='text'
+              register={register('techStack')}
+            />
+            <ErrorMessage
+              errors={errors}
+              name='techStack'
+              render={({ message }) => <Error role='alert'>{message}</Error>}
+            />
+          </InputWrapper>
         </FormInputLine>
         <QuestionLayout>
           <FormTitle color='white' size='xl' weight='700'>
@@ -279,7 +309,7 @@ const ApplyForm = () => {
           </FormSubTitle>
         </TextLayout>
         <FormTextArea
-          id='question2'
+          id='question-2'
           label=''
           placeholder='500자 이내로 입력해주세요.'
           maxLength={500}
@@ -296,7 +326,7 @@ const ApplyForm = () => {
           </FormSubTitle>
         </TextLayout>
         <FormTextArea
-          id='question3'
+          id='question-3'
           label=''
           placeholder='500자 이내로 입력해주세요.'
           maxLength={500}
@@ -313,7 +343,7 @@ const ApplyForm = () => {
           </FormSubTitle>
         </TextLayout>
         <FormTextArea
-          id='question4'
+          id='question-4'
           label=''
           placeholder='500자 이내로 입력해주세요.'
           maxLength={500}
@@ -351,7 +381,14 @@ const ApplyForm = () => {
               size='lg'
               mSize='sm'
               padding='0'
-              onClick={() => {}}
+              onClick={() => {
+                const isConfirmed = window.confirm(
+                  '페이지를 이동할 시 모든 데이터가 소멸될 수 있습니다. 이동하시겠습니까?'
+                );
+                if (isConfirmed) {
+                  navigate('/apply');
+                }
+              }}
             >
               목록으로
             </CommonBtn>

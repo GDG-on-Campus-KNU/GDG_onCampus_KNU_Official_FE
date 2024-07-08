@@ -5,7 +5,26 @@ import styled from '@emotion/styled';
 export const Error = styled.small`
   color: var(--color-cinarbar);
   font-size: var(--font-size-xs);
-  margin: 0px 0px 12px 12px;
+  margin-bottom: 14px;
+`;
+
+export const InputWrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+  margin: 0px 15px 0px 0px;
+  width: 100%;
+`;
+
+export const InputNameWrapper = styled(InputWrapper)`
+  width: 20%;
+`;
+
+export const InputSNWrapper = styled(InputWrapper)`
+  width: 30%;
+`;
+
+export const InputMJWrapper = styled(InputWrapper)`
+  width: 50%;
 `;
 
 export const TitleWrapper = styled.div`
