@@ -159,7 +159,7 @@ const ApplyForm = () => {
       <FormLayout onSubmit={handleSubmit(onSubmit)}>
         <TextLayout>
           <FormTitle color='white' size='xl' weight='700'>
-            기본정보
+            기본정보 <span style={{ color: 'red' }}>*</span>
           </FormTitle>
           <FormLine />
           <FormSubTitle color='white' size='md' weight='400'>

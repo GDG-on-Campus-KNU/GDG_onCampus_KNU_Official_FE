@@ -70,11 +70,11 @@ const InquiryModal = () => {
         <TitleContainer>
           {isMobile ? (
             <Text size='lg' color='white' weight='bold' whiteSpace='normal'>
-              기본정보
+              기본정보 <span style={{ color: 'red' }}>*</span>
             </Text>
           ) : (
             <Text size='xl' color='white' weight='bold' whiteSpace='normal'>
-              기본정보
+              기본정보 <span style={{ color: 'red' }}>*</span>
             </Text>
           )}
           <Line />
@@ -121,7 +121,7 @@ const InquiryModal = () => {
             mWidth='100%'
             mHeight='30px'
             type='button'
-            onClick={() => navigate('/')}
+            onClick={() => navigate(-1)}
           >
             돌아가기
           </CommonBtn>
