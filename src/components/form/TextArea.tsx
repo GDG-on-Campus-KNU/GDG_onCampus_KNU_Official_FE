@@ -12,7 +12,7 @@ interface ITextArea {
 }
 
 const TextAreaWrapper = styled.div`
-  width: 80%;
+  width: 100%;
   height: 284px;
 
   display: flex;
