@@ -5,8 +5,21 @@ import { useParams } from 'react-router-dom';
 import CommonBtn from '@gdsc/components/button/CommonBtn';
 import FormInput from '@gdsc/components/form/FormInput';
 import FormTextArea from '@gdsc/components/form/FormTextArea';
-import Text from '@gdsc/components/typography/Text';
 
+import {
+  Error,
+  TitleWrapper,
+  FormTitleLayout,
+  FormLayout,
+  TextLayout,
+  QuestionLayout,
+  FormTitle,
+  FormLine,
+  FormSubTitle,
+  FormInputLine,
+  ButtonWrapper,
+  CommonWrapper,
+} from '@gdsc/pages/apply/components/ApplyForm.style';
 import {
   FrontendData,
   BackendData,
@@ -14,6 +27,8 @@ import {
   AIData,
   DesignerData,
 } from '@gdsc/pages/apply/components/ApplyFormDocs';
+
+import { useApplyFormMutation } from '@gdsc/hooks/queries/post/ApplyFormQuery';
 
 import {
   TitleLayout,
@@ -23,91 +38,34 @@ import {
   SubLayout,
 } from '@gdsc/styles/ApplyStyle';
 
-import styled from '@emotion/styled';
 import {
   ApplyFormInterface,
   ApplyFormQuestionInterface,
 } from '@gdsc/interface/ApplyInterface';
 import { ErrorMessage } from '@hookform/error-message';
 
-const Error = styled.small`
-  color: var(--color-cinarbar);
-  font-size: var(--font-size-xs);
-  margin: 0px 0px 12px 12px;
-`;
-
-const TitleWrapper = styled.div`
-  display: flex;
-  flex-direction: column;
-`;
-
-const FormTitleLayout = styled.div`
-  display: flex;
-  width: 100%;
-  justify-content: left;
-  margin-top: 50px;
-`;
-
-const FormLayout = styled.form`
-  width: 100%;
-`;
-
-const TextLayout = styled.div`
-  width: 100%;
-  display: flex;
-  flex-direction: column;
-`;
-
-const QuestionLayout = styled.div`
-  width: 100%;
-  display: flex;
-  flex-direction: column;
-  margin-top: 115px;
-`;
-
-const FormTitle = styled(Text)`
-  @media (max-width: 500px) {
-    font-size: var(--font-size-md);
+const getTrack = (tech: string): string => {
+  switch (tech.toLowerCase()) {
+    case 'frontend':
+      return 'FRONT_END';
+    case 'backend':
+      return 'BACK_END';
+    case 'ai':
+      return 'AI';
+    case 'android':
+      return 'ANDROID';
+    case 'designer':
+      return 'DESIGNER';
+    default:
+      return '';
   }
-`;
-
-const FormLine = styled.div`
-  width: 100%;
-  height: 1px;
-  background-color: var(--color-white);
-  margin: 8px 0px 10px 0px;
-`;
-
-const FormSubTitle = styled(Text)`
-  @media (max-width: 500px) {
-    font-size: var(--font-size-sm);
-  }
-
-  margin-bottom: 30px;
-`;
-
-const FormInputLine = styled.div`
-  display: flex;
-  flex-direction: row;
-  width: 100%;
-`;
-
-const ButtonWrapper = styled.div`
-  display: flex;
-  flex-direction: row;
-  width: 100%;
-  margin-bottom: 50px;
-  margin-top: 65px;
-`;
-
-const CommonWrapper = styled.div`
-  margin-left: 20px;
-  width: 50%;
-`;
+};
 
 const ApplyForm = () => {
   const { tech = '' } = useParams();
   const isMobile = useMediaQuery({ query: '(max-width: 500px)' });
+  const initialTrack = getTrack(tech);
+  const { mutate: submitApplication } = useApplyFormMutation();
 
   const {
     register,
@@ -122,12 +80,9 @@ const ApplyForm = () => {
       phoneNumber: '',
       techStack: '',
       links: '',
-      answers: [
-        { questionNumber: 1, answer: '' },
-        { questionNumber: 2, answer: '' },
-        { questionNumber: 3, answer: '' },
-        { questionNumber: 4, answer: '' },
-      ],
+      applicationStatus: 'TEMPORAL',
+      track: initialTrack,
+      answers: Array(4).map((_, i) => ({ questionNumber: i + 1, answer: '' })),
     },
   });
 
@@ -153,19 +108,15 @@ const ApplyForm = () => {
   const onSubmit = (formData: ApplyFormInterface) => {
     const isConfirmed = window.confirm('제출을 완료하시겠습니까?');
     if (isConfirmed) {
-      const answers = [
-        { questionNumber: 1, answer: formData.answers[0].answer },
-        { questionNumber: 2, answer: formData.answers[1].answer },
-        { questionNumber: 3, answer: formData.answers[2].answer },
-        { questionNumber: 4, answer: formData.answers[3].answer },
-      ];
-
       const finalFormData = {
         ...formData,
-        answers,
+        answers: formData.answers.map((answer, index) => ({
+          questionNumber: index + 1,
+          answer: answer.answer,
+        })),
       };
-
-      console.log(finalFormData);
+      // console.log(finalFormData);
+      submitApplication(finalFormData);
     }
   };
 
@@ -383,7 +334,6 @@ const ApplyForm = () => {
             mSize='sm'
             height='43'
             padding='0'
-            onClick={() => {}}
           >
             지원하기
           </CommonBtn>
