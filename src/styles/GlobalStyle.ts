@@ -98,6 +98,7 @@ export const GlobalStyle = css`
 
   a {
     text-decoration: none;
+    color: var(--color-white);
   }
 
   ul {
