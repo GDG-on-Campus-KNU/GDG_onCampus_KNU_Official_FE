@@ -12,6 +12,7 @@ interface IInput extends InputLabelInterface {
   type: string;
   title: string;
   placeholder: string;
+  value?: string;
   register: UseFormRegisterReturn;
 }
 
@@ -75,6 +76,7 @@ const FormInput = ({
   type,
   placeholder,
   register,
+  value,
 }: IInput) => {
   return (
     <InputWrapper margin={margin} width={width}>
@@ -83,6 +85,7 @@ const FormInput = ({
         <InputElement
           id={id}
           type={type}
+          value={value}
           placeholder={placeholder}
           {...register}
         />
