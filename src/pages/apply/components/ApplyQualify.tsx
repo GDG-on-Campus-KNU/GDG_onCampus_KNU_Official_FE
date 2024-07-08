@@ -10,7 +10,7 @@ import { ApplyExInterface } from '@gdsc/interface/ApplyInterface';
 
 const QualifyContainer = styled.div`
   width: 100%;
-  margin-top: 94px;
+  margin-top: 50px;
   /* border: 1px solid #fff; */
   display: flex;
   flex-direction: column;
