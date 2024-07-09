@@ -38,8 +38,6 @@ import { useApplyFormMutation } from '@gdsc/hooks/queries/post/ApplyFormQuery';
 
 import { ApplyFormSchema } from '@gdsc/utils/ApplyFormScehmaUtil';
 
-import { useApplyDataStore } from '@gdsc/store/useApplyDataStore';
-
 import {
   TitleLayout,
   MainTitle,
@@ -48,7 +46,6 @@ import {
   SubLayout,
 } from '@gdsc/styles/ApplyStyle';
 
-import { ApplyFormAPIInterface } from '@gdsc/interface/ApplyInterface';
 import {
   ApplyFormInterface,
   ApplyFormQuestionInterface,
@@ -79,11 +76,6 @@ const ApplyForm = () => {
   const initialTrack = getTrack(tech);
   const { mutate: submitApplication, isPending } = useApplyFormMutation();
   const [submitType, setSubmitType] = useState<'submit' | 'save'>('submit');
-  const applyData = useApplyDataStore(
-    (state: { data: ApplyFormAPIInterface }) => state.data
-  );
-
-  console.log(applyData);
 
   const {
     register,
