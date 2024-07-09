@@ -10,16 +10,20 @@ export interface ApplyExInterface {
 }
 
 export interface ApplyFormInterface {
-  name: string;
-  studentNumber: string;
-  major: string;
-  email: string;
-  phoneNumber: string;
-  techStack: string;
-  links: string;
-  applicationStatus: string;
-  track: string;
-  answers: Array<{ questionNumber: number; answer: string }>;
+  name?: string;
+  studentNumber?: string;
+  major?: string;
+  email?: string;
+  phoneNumber?: string;
+  techStack?: string;
+  links?: string;
+  applicationStatus?: string;
+  track?: string;
+  answers?: Array<{ questionNumber: number; answer?: string }>;
+}
+
+export interface ApplyFormAPIInterface extends ApplyFormInterface {
+  id: number;
 }
 
 export interface ApplyFormQuestionInterface {
