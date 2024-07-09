@@ -7,7 +7,7 @@ import { ApplyAPI } from '@gdsc/apis/apply/ApplyAPI';
 import { ApplyFormInterface } from '@gdsc/interface/ApplyInterface';
 import { useMutation, UseMutationOptions } from '@tanstack/react-query';
 
-export const useApplyFormMutation = (
+export const useApplySaveMutation = (
   options?: Omit<
     UseMutationOptions<void, Error, ApplyFormInterface>,
     'mutationFn'
