@@ -1,4 +1,5 @@
 import { useMediaQuery } from 'react-responsive';
+import { Link } from 'react-router-dom';
 
 import ApplyNavBox from '@gdsc/pages/apply/components/ApplyNavBox';
 
@@ -9,6 +10,8 @@ import {
   SubTitle,
   Explain,
   SubLayout,
+  InquiryText,
+  InquiryLayout,
 } from '@gdsc/styles/ApplyStyle';
 
 const ApplyNav = () => {
@@ -17,9 +20,17 @@ const ApplyNav = () => {
   return (
     <ApplyLayout>
       {isMobile ? (
-        <TitleLayout>
-          <SubTitle>지원하기</SubTitle>
-        </TitleLayout>
+        <>
+          <TitleLayout>
+            <SubTitle>지원하기</SubTitle>
+          </TitleLayout>
+          <InquiryLayout>
+            <Explain>이미 지원했다면?</Explain>
+            <Link to='/apply/inquiry'>
+              <InquiryText>지원서 조회하기</InquiryText>
+            </Link>
+          </InquiryLayout>
+        </>
       ) : (
         <TitleLayout>
           <MainTitle color=' var(--color-white)'>지원하기</MainTitle>
@@ -28,6 +39,12 @@ const ApplyNav = () => {
             <Explain>GDSC KNU</Explain>
           </SubLayout>
           <Explain>각 분야별로 선택해서 지원을 해주세요.</Explain>
+          <InquiryLayout>
+            <Explain>이미 지원했다면?</Explain>
+            <Link to='/apply/inquiry'>
+              <InquiryText>지원서 조회하기</InquiryText>
+            </Link>
+          </InquiryLayout>
         </TitleLayout>
       )}
 
