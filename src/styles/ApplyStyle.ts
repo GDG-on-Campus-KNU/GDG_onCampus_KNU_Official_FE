@@ -10,13 +10,13 @@ export const ApplyLayout = styled.div`
 `;
 
 export const TitleLayout = styled.div`
-  margin-bottom: 44.12px;
+  margin-bottom: 24.12px;
 
   @media (max-width: 500px) {
     display: flex;
     justify-content: center;
     margin-top: 30px;
-    margin-bottom: 80px;
+    margin-bottom: 60px;
   }
 `;
 
@@ -38,4 +38,27 @@ export const Explain = styled.span`
 
 export const SubLayout = styled.div`
   margin-bottom: 10px;
+`;
+
+export const InquiryText = styled.span`
+  text-decoration: underline;
+  font-size: var(--font-size-lg);
+  font-weight: 700;
+  margin-left: 5px;
+  cursor: pointer;
+
+  @media (max-width: 500px) {
+    font-size: var(--font-size-md);
+  }
+`;
+
+export const InquiryLayout = styled.div`
+  width: 100%;
+
+  display: flex;
+  justify-content: right;
+  align-items: center;
+  @media (max-width: 500px) {
+    margin-bottom: 20px;
+  }
 `;
