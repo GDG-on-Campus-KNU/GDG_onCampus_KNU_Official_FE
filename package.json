@@ -19,6 +19,7 @@
     "@hookform/resolvers": "^3.3.4",
     "@tanstack/react-query": "^5.29.0",
     "axios": "^1.6.8",
+    "dayjs": "^1.11.11",
     "gsap": "^3.12.5",
     "hoist-non-react-statics": "^3.3.2",
     "react": "^18.2.0",
