@@ -2,7 +2,6 @@ import { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { Oval } from 'react-loader-spinner';
 import { useMediaQuery } from 'react-responsive';
-import { useParams } from 'react-router-dom';
 
 import CommonBtn from '@gdsc/components/button/CommonBtn';
 import FormInput from '@gdsc/components/form/FormInput';
@@ -35,10 +34,9 @@ import {
 } from '@gdsc/pages/apply/components/ApplyFormDocs';
 
 import { useApplyFormMutation } from '@gdsc/hooks/queries/post/ApplyFormQuery';
+import { useApplySaveMutation } from '@gdsc/hooks/queries/put/ApplySaveQuery';
 
 import { ApplyFormSchema } from '@gdsc/utils/ApplyFormScehmaUtil';
-
-import { useApplyDataStore } from '@gdsc/store/useApplyDataStore';
 
 import {
   TitleLayout,
@@ -56,34 +54,17 @@ import {
 import { ErrorMessage } from '@hookform/error-message';
 import { zodResolver } from '@hookform/resolvers/zod';
 
-const getTrack = (tech: string): string => {
-  switch (tech.toLowerCase()) {
-    case 'frontend':
-      return 'FRONT_END';
-    case 'backend':
-      return 'BACK_END';
-    case 'ai':
-      return 'AI';
-    case 'android':
-      return 'ANDROID';
-    case 'designer':
-      return 'DESIGNER';
-    default:
-      return '';
-  }
-};
+interface ApplySaveFormProps {
+  SaveData: ApplyFormAPIInterface;
+}
 
-const ApplyForm = () => {
-  const { tech = '' } = useParams();
+const ApplySaveForm = ({ SaveData }: ApplySaveFormProps) => {
+  console.log(SaveData);
   const isMobile = useMediaQuery({ query: '(max-width: 500px)' });
-  const initialTrack = getTrack(tech);
   const { mutate: submitApplication, isPending } = useApplyFormMutation();
   const [submitType, setSubmitType] = useState<'submit' | 'save'>('submit');
-  const applyData = useApplyDataStore(
-    (state: { data: ApplyFormAPIInterface }) => state.data
-  );
-
-  console.log(applyData);
+  const { mutate: saveApplication, isPending: saveLoading } =
+    useApplySaveMutation();
 
   const {
     register,
@@ -91,48 +72,50 @@ const ApplyForm = () => {
     handleSubmit,
   } = useForm<ApplyFormInterface>({
     defaultValues: {
-      name: '',
-      studentNumber: '',
-      major: '',
-      email: '',
-      phoneNumber: '',
-      techStack: '',
-      links: '',
-      applicationStatus: 'TEMPORAL',
-      track: initialTrack,
+      name: `${SaveData.name}`,
+      studentNumber: `${SaveData.studentNumber}`,
+      major: `${SaveData.major}`,
+      email: `${SaveData.email}`,
+      phoneNumber: `${SaveData.phoneNumber}`,
+      techStack: `${SaveData.techStack}`,
+      links: `${SaveData.links}`,
+      applicationStatus: `${SaveData.applicationStatus}`,
+      track: `${SaveData.track}`,
       answers: [
-        { questionNumber: 0, answer: '' },
-        { questionNumber: 1, answer: '' },
-        { questionNumber: 2, answer: '' },
-        { questionNumber: 3, answer: '' },
+        { questionNumber: 0, answer: `${SaveData.answers?.[0]?.answer}` },
+        { questionNumber: 1, answer: `${SaveData.answers?.[1]?.answer}` },
+        { questionNumber: 2, answer: `${SaveData.answers?.[2]?.answer}` },
+        { questionNumber: 3, answer: `${SaveData.answers?.[3]?.answer}` },
       ],
     },
     resolver: zodResolver(ApplyFormSchema),
   });
 
-  const getData = (tech: string): ApplyFormQuestionInterface | null => {
-    switch (tech) {
-      case 'frontend':
+  const techStack = SaveData.track || '';
+
+  const getData = (techStack: string): ApplyFormQuestionInterface | null => {
+    switch (techStack) {
+      case 'FRONT_END':
         return FrontendData;
-      case 'backend':
+      case 'BACK_END':
         return BackendData;
-      case 'ai':
+      case 'AI':
         return AIData;
-      case 'android':
+      case 'ANDROID':
         return AndroidData;
-      case 'designer':
+      case 'DESIGNER':
         return DesignerData;
       default:
         return null;
     }
   };
 
-  const data: ApplyFormQuestionInterface | null = getData(tech);
+  const data: ApplyFormQuestionInterface | null = getData(techStack);
 
   const onSubmit = (formData: ApplyFormInterface) => {
     const message =
       submitType === 'submit'
-        ? '제출을 완료하시겠습니까? \n최종 제출하시면 조회 및 수정이 불가능합니다.'
+        ? '제출을 완료하시겠습니까? \n제출하시면 조회 및 수정이 불가능합니다.'
         : '저장을 완료하시겠습니까? \n지원기간 동안 지원하기 > 지원서 조회하기를 통해 지원서를 수정하실 수 있습니다.';
     const isConfirmed = window.confirm(message);
     if (isConfirmed) {
@@ -147,7 +130,6 @@ const ApplyForm = () => {
       };
       const saveFormData = {
         ...formData,
-        applicationStatus: (formData.applicationStatus = 'TEMPORAL'),
         answers:
           formData.answers?.map((answer, index) => ({
             questionNumber: index,
@@ -158,8 +140,8 @@ const ApplyForm = () => {
         submitApplication(finalFormData);
         // console.log(finalFormData);
       } else if (submitType === 'save') {
-        console.log(saveFormData);
-        submitApplication(saveFormData);
+        // submitApplication(saveFormData);
+        saveApplication(saveFormData);
       }
     }
   };
@@ -425,7 +407,7 @@ const ApplyForm = () => {
           )}
 
           <CommonWrapper>
-            {isPending ? (
+            {saveLoading ? (
               <CommonBtn
                 color='gray'
                 backgroundColor='gray'
@@ -475,4 +457,4 @@ const ApplyForm = () => {
   );
 };
 
-export default ApplyForm;
+export default ApplySaveForm;
