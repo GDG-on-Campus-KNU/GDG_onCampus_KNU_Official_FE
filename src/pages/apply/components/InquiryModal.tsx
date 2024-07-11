@@ -3,6 +3,8 @@ import { Oval } from 'react-loader-spinner';
 import { useMediaQuery } from 'react-responsive';
 import { useNavigate } from 'react-router-dom';
 
+import dayjs from 'dayjs';
+
 import CommonBtn from '@gdsc/components/button/CommonBtn';
 import Input from '@gdsc/components/form/Input';
 import Text from '@gdsc/components/typography/Text';
@@ -73,28 +75,30 @@ const InquiryModal = () => {
   const [name, setName] = useState('');
   const [studentNumber, setStudentNumber] = useState('');
 
-  const { data, isLoading, isFetching, isError, refetch } = ApplyInquiryQuery(
-    name,
-    studentNumber
-  );
+  const { data, isLoading, isFetching, isError, error, refetch } =
+    ApplyInquiryQuery(name, studentNumber);
 
   const queryClient = useQueryClient();
 
   useEffect(() => {
     queryClient.resetQueries({ queryKey: ['getApplyData'] });
     if (isError) {
-      alert('새로고침 후 다시 시도해주세요.');
+      alert(`${error?.message}`);
     }
-  }, [isError, queryClient]);
+  }, [isError, error, queryClient]);
 
   const handleSubmit = async (e: { preventDefault: () => void }) => {
     e.preventDefault();
 
-    if (data && data.applicationStatus === 'TEMPORAL') {
-      refetch();
-    } else {
-      alert('최종 제출한 지원서는 조회 및 수정이 불가능합니다.');
+    const currentDate = dayjs();
+    const cutoffDate = dayjs('2024-08-31');
+
+    if (currentDate.isAfter(cutoffDate)) {
+      alert('조회 기간이 지났습니다. 8월 31일 이후로는 조회가 불가능합니다.');
+      return;
     }
+
+    refetch();
   };
 
   return (
