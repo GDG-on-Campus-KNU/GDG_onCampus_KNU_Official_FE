@@ -36,7 +36,7 @@ import {
 
 import { useApplyFormMutation } from '@gdsc/hooks/queries/post/ApplyFormQuery';
 
-import { ApplyFormSchema } from '@gdsc/utils/ApplyFormScehmaUtil';
+import { ApplyFormSchema } from '@gdsc/utils/ApplyFormScehma.util';
 
 import {
   TitleLayout,
@@ -49,7 +49,7 @@ import {
 import {
   ApplyFormInterface,
   ApplyFormQuestionInterface,
-} from '@gdsc/interface/ApplyInterface';
+} from '@gdsc/types/ApplyInterface';
 import { ErrorMessage } from '@hookform/error-message';
 import { zodResolver } from '@hookform/resolvers/zod';
 
@@ -76,6 +76,8 @@ const ApplyForm = () => {
   const initialTrack = getTrack(tech);
   const { mutate: submitApplication, isPending } = useApplyFormMutation();
   const [submitType, setSubmitType] = useState<'submit' | 'save'>('submit');
+
+  // console.log(applyData);
 
   const {
     register,
@@ -412,7 +414,7 @@ const ApplyForm = () => {
               padding='0'
               onClick={() => setSubmitType('submit')}
             >
-              지원하기
+              최종 제출하기
             </CommonBtn>
           )}
 
@@ -457,7 +459,7 @@ const ApplyForm = () => {
                 mSize='sm'
                 padding='0'
               >
-                저장하기
+                임시저장하기
               </CommonBtn>
             )}
           </CommonWrapper>

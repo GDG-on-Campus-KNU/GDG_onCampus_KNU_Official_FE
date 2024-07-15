@@ -1,10 +1,10 @@
-import { instance } from '@gdsc/apis/Api';
+import { instanceJWT } from '@gdsc/apis/Api_JWT';
 
-import { ApplyFormInterface } from '@gdsc/interface/ApplyInterface';
+import { ApplyFormInterface } from '@gdsc/types/ApplyInterface';
 
 export const ApplyAPI = async (formData: ApplyFormInterface): Promise<void> => {
   try {
-    const response = await instance.post('/api/application', formData);
+    const response = await instanceJWT.post('/api/application', formData);
 
     return response.data;
   } catch (err) {

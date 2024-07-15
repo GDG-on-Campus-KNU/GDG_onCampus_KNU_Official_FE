@@ -33,10 +33,9 @@ import {
   DesignerData,
 } from '@gdsc/pages/apply/components/ApplyFormDocs';
 
-import { useApplyFormMutation } from '@gdsc/hooks/queries/post/ApplyFormQuery';
 import { useApplySaveMutation } from '@gdsc/hooks/queries/put/ApplySaveQuery';
 
-import { ApplyFormSchema } from '@gdsc/utils/ApplyFormScehmaUtil';
+import { ApplyFormSchema } from '@gdsc/utils/ApplyFormScehma.util';
 
 import {
   TitleLayout,
@@ -46,11 +45,11 @@ import {
   SubLayout,
 } from '@gdsc/styles/ApplyStyle';
 
-import { ApplyFormAPIInterface } from '@gdsc/interface/ApplyInterface';
 import {
   ApplyFormInterface,
   ApplyFormQuestionInterface,
-} from '@gdsc/interface/ApplyInterface';
+} from '@gdsc/types/ApplyInterface';
+import { ApplyFormAPIInterface } from '@gdsc/types/ApplyInterface';
 import { ErrorMessage } from '@hookform/error-message';
 import { zodResolver } from '@hookform/resolvers/zod';
 
@@ -61,7 +60,6 @@ interface ApplySaveFormProps {
 const ApplySaveForm = ({ SaveData }: ApplySaveFormProps) => {
   console.log(SaveData);
   const isMobile = useMediaQuery({ query: '(max-width: 500px)' });
-  const { mutate: submitApplication, isPending } = useApplyFormMutation();
   const [submitType, setSubmitType] = useState<'submit' | 'save'>('submit');
   const { mutate: saveApplication, isPending: saveLoading } =
     useApplySaveMutation();
@@ -137,7 +135,7 @@ const ApplySaveForm = ({ SaveData }: ApplySaveFormProps) => {
           })) || [],
       };
       if (submitType === 'submit') {
-        submitApplication(finalFormData);
+        saveApplication(finalFormData);
         // console.log(finalFormData);
       } else if (submitType === 'save') {
         // submitApplication(saveFormData);
@@ -362,7 +360,7 @@ const ApplySaveForm = ({ SaveData }: ApplySaveFormProps) => {
         />
 
         <ButtonWrapper>
-          {isPending ? (
+          {saveLoading ? (
             <CommonBtn
               color='blue'
               backgroundColor='blue'
@@ -402,7 +400,7 @@ const ApplySaveForm = ({ SaveData }: ApplySaveFormProps) => {
               padding='0'
               onClick={() => setSubmitType('submit')}
             >
-              지원하기
+              최종 제출하기
             </CommonBtn>
           )}
 
@@ -447,7 +445,7 @@ const ApplySaveForm = ({ SaveData }: ApplySaveFormProps) => {
                 mSize='sm'
                 padding='0'
               >
-                저장하기
+                임시저장하기
               </CommonBtn>
             )}
           </CommonWrapper>
