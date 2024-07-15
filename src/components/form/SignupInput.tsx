@@ -31,7 +31,7 @@ const InputContainer = styled.div`
 `;
 
 const InputElement = styled.input`
-  width: 100%;
+  width: 90%;
   height: 100%;
 
   padding: 12px;
