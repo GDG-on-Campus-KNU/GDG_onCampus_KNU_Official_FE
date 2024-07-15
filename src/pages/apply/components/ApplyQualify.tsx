@@ -6,11 +6,11 @@ import ApplyInterview from '@gdsc/assets/ApplyInterview.svg';
 import ApplyResult from '@gdsc/assets/ApplyResult.svg';
 
 import styled from '@emotion/styled';
-import { ApplyExInterface } from '@gdsc/interface/ApplyInterface';
+import { ApplyExInterface } from '@gdsc/types/ApplyInterface';
 
 const QualifyContainer = styled.div`
   width: 100%;
-  margin-top: 94px;
+  margin-top: 50px;
   /* border: 1px solid #fff; */
   display: flex;
   flex-direction: column;

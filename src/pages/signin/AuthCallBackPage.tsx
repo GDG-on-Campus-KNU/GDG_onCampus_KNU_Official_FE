@@ -3,7 +3,7 @@ import { useNavigate } from 'react-router-dom';
 
 import { SigninQuery } from '@gdsc/hooks/queries/post/SigninQuery';
 
-import { SigninAPIInterface } from '@gdsc/interface/OAuthInterface';
+import { SigninAPIInterface } from '@gdsc/types/OAuthInterface';
 
 const AuthCallBackPage = () => {
   const navigate = useNavigate();
@@ -15,7 +15,7 @@ const AuthCallBackPage = () => {
     if (data.newMember === true) {
       navigate('/signup');
     } else {
-      navigate('/');
+      window.location.href = '/';
     }
   };
 

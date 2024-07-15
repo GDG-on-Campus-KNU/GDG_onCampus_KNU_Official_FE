@@ -6,15 +6,15 @@ export const displayCenter = `
 `;
 
 export const DisplayLayout = styled.div`
-  width: 100%;
-  height: 100%;
+  width: calc(100% - 124px);
   max-width: 1024px;
-  margin: 0 62px;
+  padding: 0 62px;
   display: flex;
   flex-direction: column;
   align-items: center;
 
   @media (max-width: 500px) {
-    margin: 0px 32px;
+    width: calc(100% - 64px);
+    padding: 0px 32px;
   }
 `;

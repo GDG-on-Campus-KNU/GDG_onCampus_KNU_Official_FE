@@ -1,6 +1,6 @@
 import { useState } from 'react';
+import { UseFormRegisterReturn } from 'react-hook-form';
 
-import Text from '../typography/Text';
 import styled from '@emotion/styled';
 
 interface ITextArea {
@@ -9,6 +9,7 @@ interface ITextArea {
   placeholder: string;
   maxLength: number;
   color?: string;
+  register: UseFormRegisterReturn;
 }
 
 const TextAreaWrapper = styled.div`
@@ -115,18 +116,19 @@ const CharacterCount = styled.div<{ hasError?: boolean }>`
   font-family: 'Noto+Sans';
 `;
 
-const TextArea: React.FC<ITextArea> = ({
+const FormTextArea = ({
   id,
   label,
   maxLength,
   placeholder,
   color,
-}) => {
+  register,
+}: ITextArea) => {
   const [text, setText] = useState('');
 
   const handleTextLength = (event: React.ChangeEvent<HTMLTextAreaElement>) => {
     const { value } = event.target;
-    if (value.length <= maxLength + 1) {
+    if (value.length <= maxLength) {
       setText(value);
     }
   };
@@ -147,41 +149,26 @@ const TextArea: React.FC<ITextArea> = ({
           placeholder={placeholder}
           color={color}
           value={text}
-          onChange={handleTextLength}
+          onChange={(event) => {
+            handleTextLength(event);
+            register.onChange(event);
+          }}
           onPaste={handlePaste}
+          onBlur={register.onBlur}
+          name={register.name}
+          ref={register.ref}
           hasError={text.length > maxLength}
         />
         <GradientOverlay />
       </TextAreaContainer>
       <CharacterCount hasError={text.length > maxLength}>
-        {text.length > maxLength ? (
-          <div>
-            <Text size='lg'>🚨</Text>
-            <Text size='sm' color='red' weight='bold'>
-              {' '}
-              500자를 초과하였습니다.
-            </Text>
-          </div>
-        ) : (
-          <div></div>
-        )}
+        {text.length > maxLength ? <div>🚨 500자를 초과하였습니다.</div> : null}
         <div>
-          <Text
-            size='sm'
-            weight='bold'
-            color={
-              text.length > maxLength
-                ? 'var(--color-red)'
-                : 'var(--color-white)'
-            }
-          >
-            {text.length}
-          </Text>
-          /{maxLength}
+          {text.length}/{maxLength}
         </div>
       </CharacterCount>
     </TextAreaWrapper>
   );
 };
 
-export default TextArea;
+export default FormTextArea;

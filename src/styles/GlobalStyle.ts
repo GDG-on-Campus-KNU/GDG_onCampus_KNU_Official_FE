@@ -32,7 +32,7 @@ const colorAlto = '#d9d9d9';
 const colorDoveGray = '#979ca4';
 const colorSantasGray = '#9D9AA5';
 const colorCornflowerBlue = '#4285F4';
-const colorCinnabar = '#FF0000';
+const colorCinnabar = '#EA4335';
 const colorSilverGray = '#b2b2b2';
 const colorDenimBlue = '#2e5dab';
 const colorBattleshipGray = '#6a6d73';
@@ -91,12 +91,17 @@ export const GlobalStyle = css`
     --color-gradient: ${colorGradient};
   }
 
+  ::-webkit-scrollbar {
+    display: none;
+  }
+
   body {
     margin: 0;
     padding: 0;
-    width: auto;
-    /* height: 100vh; */
+    width: 100vw;
     display: flex;
+    -ms-overflow-style: none;
+    scrollbar-width: none;
     flex-direction: column;
     font-family: 'Noto+Sans', monospace;
     background-color: var(--color-revolver);
@@ -109,6 +114,7 @@ export const GlobalStyle = css`
 
   a {
     text-decoration: none;
+    color: var(--color-white);
   }
 
   ul {

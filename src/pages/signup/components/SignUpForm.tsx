@@ -6,10 +6,10 @@ import SignupInput from '@gdsc/components/form/SignupInput';
 
 import { SignupQuery } from '@gdsc/hooks/queries/post/SignupQuery';
 
-import { SignUpSchema, SignUpSchemaType } from '@gdsc/utils/SignUpSchemaUtil';
+import { SignUpSchema, SignUpSchemaType } from '@gdsc/utils/SignUpSchema.util';
 
 import styled from '@emotion/styled';
-import { signUpUserInterface } from '@gdsc/interface/UserInterface';
+import { signUpUserInterface } from '@gdsc/types/UserInterface';
 import { ErrorMessage } from '@hookform/error-message';
 import { zodResolver } from '@hookform/resolvers/zod';
 

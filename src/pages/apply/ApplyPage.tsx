@@ -1,4 +1,9 @@
+import { useEffect, useState } from 'react';
+
+import dayjs from 'dayjs';
+
 import ApplyNav from '@gdsc/pages/apply/components/ApplyNav';
+import ApplyNavEnd from '@gdsc/pages/apply/components/ApplyNavEnd';
 import Star from '@gdsc/pages/main/components/Star';
 
 import { DisplayLayout } from '@gdsc/styles/LayoutStyle';
@@ -14,9 +19,17 @@ const ApplyLayout = styled(DisplayLayout)`
 `;
 
 const ApplyPage = () => {
+  const [showForm, setShowForm] = useState(false);
+
+  useEffect(() => {
+    const today = dayjs();
+    const deadline = dayjs('2024-08-31'); //추후 날짜 건드려야함 주의!
+    setShowForm(today.isBefore(deadline));
+  }, []);
+
   return (
     <ApplyLayout>
-      <ApplyNav />
+      {showForm ? <ApplyNav /> : <ApplyNavEnd />}
       {[...Array(25)].map((_, index) => (
         <Star
           key={index}
