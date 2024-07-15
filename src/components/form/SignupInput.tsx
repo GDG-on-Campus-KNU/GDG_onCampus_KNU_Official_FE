@@ -19,7 +19,7 @@ const SignFormTitle = styled.label`
 `;
 
 const InputContainer = styled.div`
-  width: 90%;
+  width: 100%;
 
   margin-top: 5px;
   margin-bottom: 15px;
@@ -31,7 +31,7 @@ const InputContainer = styled.div`
 `;
 
 const InputElement = styled.input`
-  width: 90%;
+  width: 100%;
   height: 100%;
 
   padding: 12px;
