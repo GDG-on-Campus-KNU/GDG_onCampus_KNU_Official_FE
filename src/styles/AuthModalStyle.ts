@@ -48,3 +48,39 @@ export const AuthBox = styled.div<{
 
   border-radius: 12px;
 `;
+
+export const AuthForm = styled.form`
+  width: 60%;
+  @media (max-width: 500px) {
+    width: 80%;
+  }
+  height: 360px;
+  padding: 35px;
+
+  ${displayCenter}
+  flex-direction: column;
+  align-items: center;
+  gap: 35px;
+
+  background-color: ${(props) => {
+    switch (props.color) {
+      case 'navy':
+        return 'var(--color-navy)';
+      case 'white':
+        return 'rgba(255,255,255,0.15)';
+    }
+  }};
+
+  @media (max-width: 500px) {
+    background-color: ${(props) => {
+      switch (props.color) {
+        case 'navy':
+          return 'transparent';
+        case 'white':
+          return 'rgba(255,255,255,0.15)';
+      }
+    }};
+  }
+
+  border-radius: 12px;
+`;

@@ -66,8 +66,8 @@ const ThirdRound = styled.div`
   }
 
   @media (max-width: 500px) {
-    width: 500px;
-    height: 500px;
+    width: 436px;
+    height: 436px;
   }
 `;
 

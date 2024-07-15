@@ -32,7 +32,15 @@ const colorAlto = '#d9d9d9';
 const colorDoveGray = '#979ca4';
 const colorSantasGray = '#9D9AA5';
 const colorCornflowerBlue = '#4285F4';
-const colorCinnabar = '#FF0000';
+const colorCinnabar = '#EA4335';
+const colorSilverGray = '#b2b2b2';
+const colorDenimBlue = '#2e5dab';
+const colorBattleshipGray = '#6a6d73';
+const colorPlatinumGray = '#989898';
+const colorFireBrick = '#a42f25';
+const colorGoldenRod = '#b08404';
+const colorMidnightBlue = '#1f1a2c';
+const colorSunsetRed = '#ea4335';
 const colorTransParent = 'rgba(255, 255, 255, 0.8)';
 const colorGradient = 'linear-gradient(to top, #1f1632 0%, #392f4f 100%)';
 
@@ -72,15 +80,28 @@ export const GlobalStyle = css`
     --color-santas: ${colorSantasGray};
     --color-blue: ${colorCornflowerBlue};
     --color-cinarbar: ${colorCinnabar};
+    --color-silver: ${colorSilverGray};
+    --color-denim: ${colorDenimBlue};
+    --color-battleship: ${colorBattleshipGray};
+    --color-platinum: ${colorPlatinumGray};
+    --color-brick: ${colorFireBrick};
+    --color-golden: ${colorGoldenRod};
+    --color-midnight: ${colorMidnightBlue};
+    --color-red: ${colorSunsetRed};
     --color-gradient: ${colorGradient};
+  }
+
+  ::-webkit-scrollbar {
+    display: none;
   }
 
   body {
     margin: 0;
     padding: 0;
-    width: auto;
-    /* height: 100vh; */
+    width: 100vw;
     display: flex;
+    -ms-overflow-style: none;
+    scrollbar-width: none;
     flex-direction: column;
     font-family: 'Noto+Sans', monospace;
     background-color: var(--color-revolver);
@@ -93,6 +114,7 @@ export const GlobalStyle = css`
 
   a {
     text-decoration: none;
+    color: var(--color-white);
   }
 
   ul {

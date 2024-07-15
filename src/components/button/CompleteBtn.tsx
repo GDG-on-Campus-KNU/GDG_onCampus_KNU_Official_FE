@@ -1,5 +1,5 @@
 import styled from '@emotion/styled';
-import { IButton, ICButton } from '@gdsc/interface/ButtonInterfaces';
+import { IButton, ICButton } from '@gdsc/types/ButtonInterfaces';
 
 const Button = styled.button<IButton>`
   display: flex;
@@ -36,24 +36,33 @@ const Button = styled.button<IButton>`
     switch (props.backgroundColor) {
       case 'blue':
         return 'var(--color-blue)';
+      case 'gray':
+        return 'var(--color-alto)';
+      case 'red':
+        return 'var(--color-red)';
+      case 'yellow':
+        return 'var(--color-selective)';
       case 'navy':
         return 'var(--color-navy)';
       case 'white':
         return 'var(--color-white)';
-      case 'gray':
-        return 'var(--color-alto)';
     }
   }};
+
   color: ${(props) => {
     switch (props.color) {
       case 'blue':
+        return 'var(--color-white)';
+      case 'gray':
+        return 'var(--color-dove)';
+      case 'red':
+        return 'var(--color-white)';
+      case 'yellow':
         return 'var(--color-white)';
       case 'navy':
         return 'var(--color-white)';
       case 'white':
         return 'var(--color-black)';
-      case 'gray':
-        return 'var(--color-dove)';
     }
   }};
 
@@ -61,11 +70,34 @@ const Button = styled.button<IButton>`
     background-color: ${(props) => {
       switch (props.hoverColor) {
         case 'blue':
-          return 'var(--color-navy)';
+          return 'var(--color-denim)';
+        case 'gray':
+          return 'var(--color-platinum)';
+        case 'red':
+          return 'var(--color-brick)';
+        case 'yellow':
+          return 'var(--color-golden)';
         case 'navy':
-          return 'var(--color-black)';
+          return 'var(--color-white)';
         case 'white':
-          return 'var(--color-dove)';
+          return 'var(--color-alto)';
+      }
+    }};
+
+    color: ${(props) => {
+      switch (props.color) {
+        case 'blue':
+          return 'var(--color-silver)';
+        case 'gray':
+          return 'var(--color-battleship )';
+        case 'red':
+          return 'var(--color-silver)';
+        case 'yellow':
+          return 'var(--color-silver)';
+        case 'navy':
+          return 'var(--color-midnight)';
+        case 'white':
+          return 'var(--color-white)';
       }
     }};
   }

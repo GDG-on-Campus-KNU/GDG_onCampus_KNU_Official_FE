@@ -1,6 +1,6 @@
 import { instanceJWT } from '@gdsc/apis/Api_JWT';
 
-import { SigninAPIInterface } from '@gdsc/interface/OAuthInterface';
+import { SigninAPIInterface } from '@gdsc/types/OAuthInterface';
 
 export const ReIssueSigninAPI = (): Promise<SigninAPIInterface> => {
   return new Promise((resolve, reject) => {

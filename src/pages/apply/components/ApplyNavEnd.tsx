@@ -1,7 +1,7 @@
 import { useMediaQuery } from 'react-responsive';
 import { Link } from 'react-router-dom';
 
-import ApplyNavBox from '@gdsc/pages/apply/components/ApplyNavBox';
+import Text from '@gdsc/components/typography/Text';
 
 import {
   ApplyLayout,
@@ -10,15 +10,29 @@ import {
   SubTitle,
   Explain,
   SubLayout,
-  InquiryText,
   InquiryLayout,
+  InquiryText,
 } from '@gdsc/styles/ApplyStyle';
 
-const ApplyNav = () => {
+import styled from '@emotion/styled';
+
+const ApplyLayoutEnd = styled(ApplyLayout)`
+  height: calc(100vh - 95px);
+`;
+
+const TextBox = styled.div`
+  width: 100%;
+  height: calc(100% - 106px);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+`;
+
+const ApplyNavEnd = () => {
   const isMobile = useMediaQuery({ query: '(max-width: 500px)' });
 
   return (
-    <ApplyLayout>
+    <ApplyLayoutEnd>
       {isMobile ? (
         <>
           <TitleLayout>
@@ -47,10 +61,13 @@ const ApplyNav = () => {
           </InquiryLayout>
         </TitleLayout>
       )}
-
-      <ApplyNavBox />
-    </ApplyLayout>
+      <TextBox>
+        <Text color='white' weight='700' size='xxl'>
+          지원가능한 공고가 없습니다
+        </Text>
+      </TextBox>
+    </ApplyLayoutEnd>
   );
 };
 
-export default ApplyNav;
+export default ApplyNavEnd;

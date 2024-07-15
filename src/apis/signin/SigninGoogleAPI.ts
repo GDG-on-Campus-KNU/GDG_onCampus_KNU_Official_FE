@@ -1,6 +1,6 @@
 import { instance } from '@gdsc/apis/Api';
 
-import { SigninAPIInterface } from '@gdsc/interface/OAuthInterface';
+import { SigninAPIInterface } from '@gdsc/types/OAuthInterface';
 
 export const SigninGoogleAPI = (
   code: string,

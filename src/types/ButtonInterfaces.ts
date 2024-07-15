@@ -8,14 +8,14 @@ export interface IButton {
 }
 
 export interface ICButton extends IButton {
-  width: string;
-  height: string;
+  width?: string;
+  height?: string;
   mdWidth?: string;
   mdHeight?: string;
   mdSize?: string;
   mWidth?: string;
   mHeight?: string;
-  padding: string;
+  padding?: string;
   mPadding?: string;
   mSize?: string;
   onClick?: () => void;

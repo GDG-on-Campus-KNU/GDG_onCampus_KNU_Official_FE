@@ -4,7 +4,9 @@ interface IInput {
   id: string;
   label: string;
   type: string;
+  value: string;
   placeholder: string;
+  onChange?: (e: React.ChangeEvent<HTMLInputElement>) => void;
 }
 
 const InputWrapper = styled.div`
@@ -66,11 +68,24 @@ const InputElement = styled.input`
   }
 `;
 
-const Input: React.FC<IInput> = ({ id, label, type, placeholder }) => {
+const Input: React.FC<IInput> = ({
+  id,
+  label,
+  value,
+  type,
+  placeholder,
+  onChange,
+}) => {
   return (
     <InputWrapper>
       <InputLabel htmlFor={id}>{label}</InputLabel>
-      <InputElement id={id} type={type} placeholder={placeholder} />
+      <InputElement
+        id={id}
+        type={type}
+        value={value}
+        placeholder={placeholder}
+        onChange={onChange}
+      />
     </InputWrapper>
   );
 };

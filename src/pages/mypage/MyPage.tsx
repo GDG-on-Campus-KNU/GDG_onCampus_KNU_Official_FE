@@ -103,7 +103,7 @@ const TokenContainer = styled.div`
 `;
 
 const SubInfoContainer = styled.div`
-  width: 80%;
+  width: 100%;
   box-sizing: border-box;
 
   display: grid;
