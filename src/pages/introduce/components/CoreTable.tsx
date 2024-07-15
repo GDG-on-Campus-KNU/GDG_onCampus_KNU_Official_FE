@@ -76,49 +76,49 @@ const CoreTable = () => {
       <CoreBox>
         <TableStatusText>LEAD</TableStatusText>
         <TableTextLayout>
-          <IntroText>대동환</IntroText>
+          <IntroText>김규회</IntroText>
         </TableTextLayout>
       </CoreBox>
       <CoreBox>
         <TableStatusText>CORE-FE</TableStatusText>
         <TableTextLayout>
-          <IntroText>코어 이름</IntroText>
+          <IntroText>김강민</IntroText>
         </TableTextLayout>
       </CoreBox>
       <CoreBox>
         <TableStatusText>CORE-FE</TableStatusText>
         <TableTextLayout>
-          <IntroText>코어 이름</IntroText>
+          <IntroText>조동필</IntroText>
         </TableTextLayout>
       </CoreBox>
       <CoreBox>
         <TableStatusText>CORE-BE</TableStatusText>
         <TableTextLayout>
-          <IntroText>코어 이름</IntroText>
+          <IntroText>권수현</IntroText>
         </TableTextLayout>
       </CoreBox>
       <CoreBox>
         <TableStatusText>CORE-BE</TableStatusText>
         <TableTextLayout>
-          <IntroText>코어 이름</IntroText>
+          <IntroText>김영인</IntroText>
         </TableTextLayout>
       </CoreBox>
       <CoreBox>
         <TableStatusText>CORE-BE</TableStatusText>
         <TableTextLayout>
-          <IntroText>코어 이름</IntroText>
+          <IntroText>윤재용</IntroText>
         </TableTextLayout>
       </CoreBox>
       <CoreBox>
         <TableStatusText>CORE-AI</TableStatusText>
         <TableTextLayout>
-          <IntroText>코어 이름</IntroText>
+          <IntroText>백보성</IntroText>
         </TableTextLayout>
       </CoreBox>
       <CoreBox>
         <TableStatusText>CORE-DESIGNER</TableStatusText>
         <TableTextLayout>
-          <IntroText>코어 이름</IntroText>
+          <IntroText>김현민</IntroText>
         </TableTextLayout>
       </CoreBox>
     </CoreTableBox>
