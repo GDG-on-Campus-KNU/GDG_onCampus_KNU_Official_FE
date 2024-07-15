@@ -1,15 +1,17 @@
 import { RouterProvider } from 'react-router-dom';
 
-import { Router } from './Router';
-import { GlobalStyle } from './styles/GlobalStyle';
+import { GlobalStyle } from '@gdsc/styles/GlobalStyle';
+
 import { Global } from '@emotion/react';
+import { AuthProvider } from '@gdsc/provider/auth';
+import { Router } from '@gdsc/router/Router';
 
 function App() {
   return (
-    <>
+    <AuthProvider>
       <Global styles={GlobalStyle} />
       <RouterProvider router={Router} />
-    </>
+    </AuthProvider>
   );
 }
 
