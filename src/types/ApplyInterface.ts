@@ -10,11 +10,6 @@ export interface ApplyExInterface {
 }
 
 export interface ApplyFormInterface {
-  name?: string;
-  studentNumber?: string;
-  major?: string;
-  email?: string;
-  phoneNumber?: string;
   techStack?: string;
   links?: string;
   applicationStatus?: string;

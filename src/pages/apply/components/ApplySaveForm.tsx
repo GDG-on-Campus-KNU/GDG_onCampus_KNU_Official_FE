@@ -21,9 +21,6 @@ import {
   ButtonWrapper,
   CommonWrapper,
   InputWrapper,
-  InputNameWrapper,
-  InputSNWrapper,
-  InputMJWrapper,
 } from '@gdsc/pages/apply/components/ApplyForm.style';
 import {
   FrontendData,
@@ -70,11 +67,6 @@ const ApplySaveForm = ({ SaveData }: ApplySaveFormProps) => {
     handleSubmit,
   } = useForm<ApplyFormInterface>({
     defaultValues: {
-      name: `${SaveData.name}`,
-      studentNumber: `${SaveData.studentNumber}`,
-      major: `${SaveData.major}`,
-      email: `${SaveData.email}`,
-      phoneNumber: `${SaveData.phoneNumber}`,
       techStack: `${SaveData.techStack}`,
       links: `${SaveData.links}`,
       applicationStatus: `${SaveData.applicationStatus}`,
@@ -175,90 +167,6 @@ const ApplySaveForm = ({ SaveData }: ApplySaveFormProps) => {
             유의해주세요.
           </FormSubTitle>
         </TextLayout>
-        <FormInputLine>
-          <InputNameWrapper>
-            <FormInput
-              id='name'
-              width='100%'
-              margin='0px 15px 0px 0px'
-              title='이름'
-              placeholder='이름을 입력해주세요'
-              type='text'
-              register={register('name')}
-            />
-            <ErrorMessage
-              errors={errors}
-              name='name'
-              render={({ message }) => <Error role='alert'>{message}</Error>}
-            />
-          </InputNameWrapper>
-          <InputSNWrapper>
-            <FormInput
-              id='studentNumber'
-              width='100%'
-              margin='0px 15px 0px 0px'
-              title='학번'
-              placeholder='ex) 2019xxxx'
-              type='text'
-              register={register('studentNumber')}
-            />
-            <ErrorMessage
-              errors={errors}
-              name='studentNumber'
-              render={({ message }) => <Error role='alert'>{message}</Error>}
-            />
-          </InputSNWrapper>
-          <InputMJWrapper>
-            <FormInput
-              id='major'
-              width='100%'
-              margin='0px 0px 0px 0px'
-              title='학과'
-              placeholder='학과를 입력해주세요.'
-              type='text'
-              register={register('major')}
-            />
-            <ErrorMessage
-              errors={errors}
-              name='major'
-              render={({ message }) => <Error role='alert'>{message}</Error>}
-            />
-          </InputMJWrapper>
-        </FormInputLine>
-        <FormInputLine>
-          <InputWrapper>
-            <FormInput
-              id='phoneNumber'
-              width='100%'
-              margin='0px 15px 0px 0px'
-              title='전화번호'
-              placeholder='ex) 010-xxxx-xxxx'
-              type='text'
-              register={register('phoneNumber')}
-            />
-            <ErrorMessage
-              errors={errors}
-              name='phoneNumber'
-              render={({ message }) => <Error role='alert'>{message}</Error>}
-            />
-          </InputWrapper>
-          <InputWrapper>
-            <FormInput
-              id='email'
-              width='100%'
-              margin='0px 0px 0px 0px'
-              title='이메일'
-              placeholder='ex) google@gmail.com'
-              type='text'
-              register={register('email')}
-            />
-            <ErrorMessage
-              errors={errors}
-              name='email'
-              render={({ message }) => <Error role='alert'>{message}</Error>}
-            />
-          </InputWrapper>
-        </FormInputLine>
         <FormInputLine>
           <InputWrapper>
             <FormInput

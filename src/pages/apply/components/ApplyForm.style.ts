@@ -15,18 +15,6 @@ export const InputWrapper = styled.div`
   width: 100%;
 `;
 
-export const InputNameWrapper = styled(InputWrapper)`
-  width: 20%;
-`;
-
-export const InputSNWrapper = styled(InputWrapper)`
-  width: 30%;
-`;
-
-export const InputMJWrapper = styled(InputWrapper)`
-  width: 50%;
-`;
-
 export const TitleWrapper = styled.div`
   display: flex;
   flex-direction: column;
