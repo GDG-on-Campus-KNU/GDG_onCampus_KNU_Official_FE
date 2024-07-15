@@ -32,7 +32,7 @@ const colorAlto = '#d9d9d9';
 const colorDoveGray = '#979ca4';
 const colorSantasGray = '#9D9AA5';
 const colorCornflowerBlue = '#4285F4';
-const colorCinnabar = '#FF0000';
+const colorCinnabar = '#EA4335';
 const colorTransParent = 'rgba(255, 255, 255, 0.8)';
 const colorGradient = 'linear-gradient(to top, #1f1632 0%, #392f4f 100%)';
 
