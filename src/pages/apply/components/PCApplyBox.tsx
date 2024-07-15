@@ -4,7 +4,7 @@ import CommonBtn from '@gdsc/components/button/CommonBtn';
 import Text from '@gdsc/components/typography/Text';
 
 import styled from '@emotion/styled';
-import { ApplyExInterface } from '@gdsc/interface/ApplyInterface';
+import { ApplyExInterface } from '@gdsc/types/ApplyInterface';
 
 const ApplyBox = styled.div`
   background-color: var(--color-white);
