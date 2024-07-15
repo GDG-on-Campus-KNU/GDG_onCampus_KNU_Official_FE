@@ -2,9 +2,9 @@ import { useNavigate } from 'react-router-dom';
 
 import { queryClient } from '@gdsc/hooks/queries/Http';
 
-import { ApplyAPI } from '@gdsc/apis/apply/ApplyAPI';
+import { ApplySaveAPI } from '@gdsc/apis/apply/ApplySaveAPI';
 
-import { ApplyFormInterface } from '@gdsc/interface/ApplyInterface';
+import { ApplyFormInterface } from '@gdsc/types/ApplyInterface';
 import { useMutation, UseMutationOptions } from '@tanstack/react-query';
 
 export const useApplySaveMutation = (
@@ -16,7 +16,7 @@ export const useApplySaveMutation = (
   const navigate = useNavigate();
 
   return useMutation<void, Error, ApplyFormInterface>({
-    mutationFn: (formData: ApplyFormInterface) => ApplyAPI(formData),
+    mutationFn: (formData: ApplyFormInterface) => ApplySaveAPI(formData),
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: ['ApplyForm'] });
       alert('지원서가 성공적으로 제출되었습니다.');

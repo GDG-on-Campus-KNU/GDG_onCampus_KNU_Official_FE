@@ -1,6 +1,6 @@
 import { instanceJWT } from '@gdsc/apis/Api_JWT';
 
-import { signUpUserInterface } from '@gdsc/interface/UserInterface';
+import { signUpUserInterface } from '@gdsc/types/UserInterface';
 
 export const SignupAPI = (
   userData: signUpUserInterface

@@ -4,7 +4,7 @@ import { queryClient } from '@gdsc/hooks/queries/Http';
 
 import { ApplyAPI } from '@gdsc/apis/apply/ApplyAPI';
 
-import { ApplyFormInterface } from '@gdsc/interface/ApplyInterface';
+import { ApplyFormInterface } from '@gdsc/types/ApplyInterface';
 import { useMutation, UseMutationOptions } from '@tanstack/react-query';
 
 export const useApplyFormMutation = (

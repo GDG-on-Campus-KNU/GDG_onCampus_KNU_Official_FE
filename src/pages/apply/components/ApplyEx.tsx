@@ -23,7 +23,7 @@ import {
 } from '@gdsc/styles/ApplyStyle';
 
 import styled from '@emotion/styled';
-import { ApplyExInterface } from '@gdsc/interface/ApplyInterface';
+import { ApplyExInterface } from '@gdsc/types/ApplyInterface';
 
 const AppLayout = styled(ApplyLayout)`
   width: 70%;
