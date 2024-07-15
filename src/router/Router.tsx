@@ -16,6 +16,8 @@ import SigninPage from '@gdsc/pages/signin/SigninPage';
 import SignupPage from '@gdsc/pages/signup/SignupPage';
 import TechBlogPage from '@gdsc/pages/tech_blog/TechBlogPage';
 
+import PrivateRoute from './components/PrivateRoute';
+
 // import { BASE_URI } from '@gdsc/constants/URI';
 
 export const Router = createBrowserRouter([
@@ -30,9 +32,9 @@ export const Router = createBrowserRouter([
       { path: 'signup', element: <SignupPage /> },
       {
         path: 'apply',
+        element: <PrivateRoute />,
         children: [
           { path: '', element: <ApplyPage /> },
-
           {
             path: ':tech',
             children: [
@@ -53,8 +55,4 @@ export const Router = createBrowserRouter([
     path: '/oauth/:provider/redirect',
     element: <AuthCallBackPage />,
   },
-  // {
-  //   path: `${BASE_URI}/api/auth/logout`,
-  //   action: logoutAction,
-  // },
 ]);
