@@ -1,56 +1,62 @@
 import Text from '@gdsc/components/typography/Text';
-import Title from '@gdsc/components/typography/Title';
 
 import { AuthBox } from '@gdsc/styles/AuthModalStyle';
+import { displayCenter } from '@gdsc/styles/LayoutStyle';
 
 import logo from '../../../public/GDSC.svg';
 import styled from '@emotion/styled';
 
 interface ISignModal {
-  title: string;
-  text: string;
+  title?: string;
+  text?: string;
   children: React.ReactNode;
 }
 
-const SigninContainer = styled.div`
-  width: 100%;
-  height: 500px;
-  @media (max-width: 767px) {
-    height: auto;
-  }
-  margin: 10px;
-  display: flex;
+const TitleContainer = styled.h2`
+  ${displayCenter}
   flex-direction: column;
-  align-items: flex-start;
-  justify-content: flex-start;
-  @media (max-width: 767px) {
-    align-items: center;
-    justify-content: center;
-  }
+  align-items: center;
+
+  gap: 20px;
+
+  padding: 0px;
+  margin-top: 0px;
+  margin-bottom: 40px;
 `;
 
-const TitleItem = styled.div`
-  margin: 50px 0px;
-  @media (max-width: 767px) {
-    margin: 30px 0px;
+const ButtonContainer = styled.div`
+  width: 70%;
+  @media (max-width: 600px) {
+    width: 100%;
   }
+  ${displayCenter}
+  flex-direction: column;
+  align-items: center;
+
+  gap: 20px;
 `;
 
 const AuthModal: React.FC<ISignModal> = ({ title, text, children }) => {
   return (
-    <AuthBox>
-      <SigninContainer>
-        <img src={logo} alt='logo' width='80px' height='40px' />
-        <TitleItem>
-          <Title color='var(--color-black)'>{title}</Title>
-        </TitleItem>
-        <Text color='var(--color-black)' size='md'>
-          {text}
+    <AuthBox variant='primary'>
+      <TitleContainer>
+        <img src={logo} alt='logo' width='50px' height='25px' />
+        <Text color='white' size='xl' weight='bold' whiteSpace='nowrap'>
+          {title}
         </Text>
-      </SigninContainer>
-      <SigninContainer>{children}</SigninContainer>
+        {text ? (
+          <Text color='white' size='sm'>
+            {text}
+          </Text>
+        ) : null}
+      </TitleContainer>
+      <ButtonContainer>{children}</ButtonContainer>
     </AuthBox>
   );
 };
+
+//title: GDSC 로그인
+//text: Google 계정을 이용하여 GDSC knu에 로그인하세요
+//children: 로그인버튼 컴포넌트
 
 export default AuthModal;

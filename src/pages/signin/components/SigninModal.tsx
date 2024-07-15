@@ -1,3 +1,5 @@
+import { useMediaQuery } from 'react-responsive';
+
 import AuthModal from '@gdsc/components/auth/AuthModal';
 import SigninBtn from '@gdsc/components/button/SigninBtn';
 
@@ -13,14 +15,17 @@ const SigninModal = () => {
   const google_login = () => {
     window.open(GoogleLoginUrl, '_self');
   };
+  const isMobile = useMediaQuery({ query: '(max-width: 500px)' });
 
   return (
     <>
       <AuthModal
-        title='GDSC 로그인'
-        text={`Google 계정을 이용하여\n GDSC KNU에 로그인하세요.`}
+        title='GDSC KNU Log In'
+        {...(isMobile && {
+          text: 'Google 계정을 이용하여\nGDSC KNU에 로그인하세요!',
+        })}
       >
-        <SigninBtn onClick={google_login} width='80%'>
+        <SigninBtn onClick={google_login} width='100%'>
           Google 계정으로 로그인
         </SigninBtn>
       </AuthModal>

@@ -11,7 +11,7 @@ interface IInput {
 }
 
 const SignFormTitle = styled.label`
-  font-size: var(--font-size-md);
+  font-size: var(--font-size-lg);
 
   color: var(--color-white);
 
@@ -19,7 +19,7 @@ const SignFormTitle = styled.label`
 `;
 
 const InputContainer = styled.div`
-  width: 90%;
+  width: 100%;
 
   margin-top: 5px;
   margin-bottom: 15px;
@@ -37,6 +37,8 @@ const InputElement = styled.input`
   padding: 12px;
   margin-top: 6px;
 
+  box-sizing: border-box;
+
   border: none;
   border-radius: 12px;
 
@@ -50,7 +52,7 @@ const InputElement = styled.input`
 
   &::placeholder {
     color: #979ca4;
-    font-size: var(--font-size-xs);
+    font-size: var(--font-size-sm);
   }
 `;
 
@@ -63,8 +65,8 @@ const SignupInput: React.FC<IInput> = ({
 }) => {
   return (
     <>
-      <SignFormTitle htmlFor={id}>{title}</SignFormTitle>
       <InputContainer>
+        <SignFormTitle htmlFor={id}>{title}</SignFormTitle>
         <InputElement
           id={id}
           type={type}

@@ -3,4 +3,5 @@ export interface signUpUserInterface {
   age: number;
   studentNumber: string;
   major: string;
+  phoneNumber: string;
 }

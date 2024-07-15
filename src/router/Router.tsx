@@ -30,6 +30,7 @@ export const Router = createBrowserRouter([
       { index: true, element: <MainPage /> },
       { path: 'signin', element: <SigninPage /> },
       { path: 'signup', element: <SignupPage /> },
+
       {
         path: 'apply',
         element: <PrivateRoute />,

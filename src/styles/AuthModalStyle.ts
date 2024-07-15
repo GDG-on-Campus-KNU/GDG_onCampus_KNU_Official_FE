@@ -9,11 +9,11 @@ export const AuthWrapper = styled.section`
   width: 100%;
 `;
 
-export const AuthBox = styled.div`
+export const AuthBox = styled.div<{
+  variant?: 'primary' | 'transparent' | 'warning';
+}>`
   width: 60%;
-  @media (max-width: 500px) {
-    width: 80%;
-  }
+  min-width: 296px;
   height: 360px;
   padding: 35px;
 
@@ -23,21 +23,25 @@ export const AuthBox = styled.div`
   gap: 35px;
 
   background-color: ${(props) => {
-    switch (props.color) {
-      case 'navy':
-        return 'var(--color-navy)';
-      case 'white':
+    switch (props.variant) {
+      case 'primary':
         return 'rgba(255,255,255,0.15)';
+      case 'transparent':
+        return 'rgba(255,255,255,0.15)';
+      case 'warning':
+        return 'var(--color-white)';
     }
   }};
 
   @media (max-width: 500px) {
     background-color: ${(props) => {
-      switch (props.color) {
-        case 'navy':
-          return 'transparent';
-        case 'white':
+      switch (props.variant) {
+        case 'primary':
           return 'rgba(255,255,255,0.15)';
+        case 'transparent':
+          return 'transparent';
+        case 'warning':
+          return 'var(--color-white)';
       }
     }};
   }
