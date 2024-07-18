@@ -1,4 +1,4 @@
-import NavigationSlideMobile from '@gdsc/components/ui/header/NavigationSlideMobile';
+import NavigationSlideMobile from '@gdsc/components/feature/header/NavigationSlideMobile';
 
 import MenuHamburger from '@gdsc/assets/MenuHamburger.svg';
 

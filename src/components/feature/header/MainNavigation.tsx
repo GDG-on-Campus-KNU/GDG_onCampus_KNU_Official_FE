@@ -1,7 +1,7 @@
 import { useMediaQuery } from 'react-responsive';
 import { NavLink } from 'react-router-dom';
 
-import Text from '@gdsc/components/typography/Text';
+import Text from '@gdsc/components/common/typography/Text';
 
 import NavigationLogo768 from '@gdsc/assets/NavigationLogo768.svg';
 import NavigationLogo from '@gdsc/assets/NavigationLogo.svg';

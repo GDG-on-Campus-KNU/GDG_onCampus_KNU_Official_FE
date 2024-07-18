@@ -2,7 +2,7 @@ import { useForm } from 'react-hook-form';
 import { useMediaQuery } from 'react-responsive';
 
 import CommonBtn from '@gdsc/components/common/button/CommonBtn';
-import SignupInput from '@gdsc/components/form/SignupInput';
+import SignupInput from '@gdsc/components/common/form/SignupInput';
 
 import { InputWrapper } from '@gdsc/pages/apply/components/ApplyForm.style';
 import MobileSignUpForm from '@gdsc/pages/signup/components/MobileSignUpForm';

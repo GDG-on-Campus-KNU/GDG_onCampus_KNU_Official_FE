@@ -5,8 +5,8 @@ import { useMediaQuery } from 'react-responsive';
 import { useParams } from 'react-router-dom';
 
 import CommonBtn from '@gdsc/components/common/button/CommonBtn';
-import FormInput from '@gdsc/components/form/FormInput';
-import FormTextArea from '@gdsc/components/form/FormTextArea';
+import FormInput from '@gdsc/components/common/form/FormInput';
+import FormTextArea from '@gdsc/components/common/form/FormTextArea';
 
 import {
   Error,

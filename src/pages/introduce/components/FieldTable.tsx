@@ -2,7 +2,7 @@ import { useEffect } from 'react';
 
 import gsap from 'gsap';
 
-import Text from '@gdsc/components/typography/Text';
+import Text from '@gdsc/components/common/typography/Text';
 
 import styled from '@emotion/styled';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';

@@ -1,7 +1,7 @@
 import { NavLink } from 'react-router-dom';
 
 import CommonBtn from '@gdsc/components/common/button/CommonBtn';
-import Text from '@gdsc/components/typography/Text';
+import Text from '@gdsc/components/common/typography/Text';
 
 import styled from '@emotion/styled';
 import { ApplyExInterface } from '@gdsc/types/ApplyInterface';

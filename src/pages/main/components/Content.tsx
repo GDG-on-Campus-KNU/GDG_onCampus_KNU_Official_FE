@@ -2,7 +2,7 @@ import { useEffect, useRef } from 'react';
 
 import gsap from 'gsap';
 
-import Text from '@gdsc/components/typography/Text';
+import Text from '@gdsc/components/common/typography/Text';
 
 import SpaceShip from '@gdsc/assets/SpaceShip.svg';
 

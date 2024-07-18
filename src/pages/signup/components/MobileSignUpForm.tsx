@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { useForm } from 'react-hook-form';
 
-import SignupInput from '@gdsc/components/form/SignupInput';
+import SignupInput from '@gdsc/components/common/form/SignupInput';
 
 import { InputWrapper } from '@gdsc/pages/apply/components/ApplyForm.style';
 
