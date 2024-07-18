@@ -1,6 +1,5 @@
-import { queryClient } from '@gdsc/hooks/queries/Http';
-
 import { SigninGoogleAPI } from '@gdsc/apis/hooks/signin/SigninGoogleAPI';
+import { queryClient } from '@gdsc/apis/instance/Http';
 
 import { SigninAPIInterface } from '@gdsc/types/OAuthInterface';
 import { useMutation } from '@tanstack/react-query';

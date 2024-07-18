@@ -1,6 +1,5 @@
-import { queryClient } from '@gdsc/hooks/queries/Http';
-
-import { SignupAPI } from '@gdsc/apis/signup/SignupAPI';
+import { SignupAPI } from '@gdsc/apis/hooks/signup/SignupAPI';
+import { queryClient } from '@gdsc/apis/instance/Http';
 
 import { useMutation } from '@tanstack/react-query';
 

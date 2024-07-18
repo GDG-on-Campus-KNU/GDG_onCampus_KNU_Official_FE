@@ -1,8 +1,7 @@
 import { useNavigate } from 'react-router-dom';
 
-import { queryClient } from '@gdsc/hooks/queries/Http';
-
 import { ApplyAPI } from '@gdsc/apis/hooks/apply/ApplyAPI';
+import { queryClient } from '@gdsc/apis/instance/Http';
 
 import { ApplyFormInterface } from '@gdsc/types/ApplyInterface';
 import { useMutation, UseMutationOptions } from '@tanstack/react-query';
