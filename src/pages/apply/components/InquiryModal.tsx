@@ -5,7 +5,7 @@ import { useNavigate } from 'react-router-dom';
 
 import dayjs from 'dayjs';
 
-import CommonBtn from '@gdsc/components/button/CommonBtn';
+import CommonBtn from '@gdsc/components/common/button/CommonBtn';
 import Input from '@gdsc/components/form/Input';
 import Text from '@gdsc/components/typography/Text';
 

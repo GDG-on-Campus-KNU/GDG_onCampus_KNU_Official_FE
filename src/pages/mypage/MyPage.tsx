@@ -1,6 +1,6 @@
 import { useMediaQuery } from 'react-responsive';
 
-import CompleteBtn from '@gdsc/components/button/CompleteBtn';
+import CompleteBtn from '@gdsc/components/common/button/CompleteBtn';
 import Input from '@gdsc/components/form/Input';
 import Profile from '@gdsc/components/form/Profile';
 import TextArea from '@gdsc/components/form/TextArea';

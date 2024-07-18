@@ -1,7 +1,7 @@
 import { useMediaQuery } from 'react-responsive';
 
-import AuthModal from '@gdsc/components/auth/AuthModal';
-import SigninBtn from '@gdsc/components/button/SigninBtn';
+import SigninBtn from '@gdsc/components/common/button/SigninBtn';
+import AuthModal from '@gdsc/components/feature/auth/AuthModal';
 
 import {
   GOOGLE_AUTH_CLIENT_ID,

@@ -1,7 +1,7 @@
 import { useMediaQuery } from 'react-responsive';
 import { useParams, useNavigate } from 'react-router-dom';
 
-import CommonBtn from '@gdsc/components/button/CommonBtn';
+import CommonBtn from '@gdsc/components/common/button/CommonBtn';
 
 import {
   FrontendData,

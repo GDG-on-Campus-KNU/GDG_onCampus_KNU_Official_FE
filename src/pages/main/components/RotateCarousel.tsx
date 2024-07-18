@@ -1,6 +1,6 @@
 import { useMediaQuery } from 'react-responsive';
 
-import CompleteBtn from '@gdsc/components/button/CompleteBtn';
+import CompleteBtn from '@gdsc/components/common/button/CompleteBtn';
 import Text from '@gdsc/components/typography/Text';
 
 import { useColTz } from '@gdsc/hooks/custom_hooks/useColTz';

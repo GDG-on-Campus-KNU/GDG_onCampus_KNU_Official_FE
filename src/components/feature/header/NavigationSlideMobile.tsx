@@ -1,6 +1,6 @@
 import { NavLink } from 'react-router-dom';
 
-import MobileBtn from '@gdsc/components/button/MobileBtn';
+import MobileBtn from '@gdsc/components/common/button/MobileBtn';
 import Text from '@gdsc/components/typography/Text';
 
 import Apply from '@gdsc/assets/Apply.svg';

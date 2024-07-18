@@ -1,4 +1,4 @@
-import CommonBtn from '@gdsc/components/button/CommonBtn';
+import CommonBtn from '@gdsc/components/common/button/CommonBtn';
 import Text from '@gdsc/components/typography/Text';
 
 import homeIcon from '@gdsc/assets/HomeIcon.svg';

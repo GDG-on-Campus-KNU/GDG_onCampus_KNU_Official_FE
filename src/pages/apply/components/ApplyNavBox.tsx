@@ -1,6 +1,6 @@
 import { NavLink } from 'react-router-dom';
 
-import CommonBtn from '@gdsc/components/button/CommonBtn';
+import CommonBtn from '@gdsc/components/common/button/CommonBtn';
 import Text from '@gdsc/components/typography/Text';
 
 import styled from '@emotion/styled';
