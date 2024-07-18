@@ -11,7 +11,7 @@ import Text from '@gdsc/components/typography/Text';
 
 import ApplySaveForm from '@gdsc/pages/apply/components/ApplySaveForm';
 
-import { ApplyInquiryQuery } from '@gdsc/hooks/queries/get/ApplyInquiryQuery';
+import { ApplyInquiryQuery } from '@gdsc/apis/hooks/apply/ApplyInquiryQuery';
 
 import { AuthWrapper, AuthForm } from '@gdsc/styles/AuthModalStyle';
 import { displayCenter, DisplayLayout } from '@gdsc/styles/LayoutStyle';

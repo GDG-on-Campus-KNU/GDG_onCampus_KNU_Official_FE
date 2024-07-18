@@ -31,9 +31,9 @@ import {
   DesignerData,
 } from '@gdsc/pages/apply/components/ApplyFormDocs';
 
-import { useApplyFormMutation } from '@gdsc/hooks/queries/post/ApplyFormQuery';
-
 import { ApplyFormSchema } from '@gdsc/utils/ApplyFormScehma.util';
+
+import { useApplyFormMutation } from '@gdsc/apis/hooks/apply/ApplyFormQuery';
 
 import {
   TitleLayout,

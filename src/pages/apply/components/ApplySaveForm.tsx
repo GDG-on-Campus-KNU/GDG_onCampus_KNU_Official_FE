@@ -30,9 +30,9 @@ import {
   DesignerData,
 } from '@gdsc/pages/apply/components/ApplyFormDocs';
 
-import { useApplySaveMutation } from '@gdsc/hooks/queries/put/ApplySaveQuery';
-
 import { ApplyFormSchema } from '@gdsc/utils/ApplyFormScehma.util';
+
+import { useApplySaveMutation } from '@gdsc/apis/hooks/apply/ApplySaveQuery';
 
 import {
   TitleLayout,

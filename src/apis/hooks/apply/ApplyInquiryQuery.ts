@@ -1,4 +1,4 @@
-import { ApplyInquiryAPI } from '@gdsc/apis/apply/ApplyInquiryAPI';
+import { ApplyInquiryAPI } from '@gdsc/apis/hooks/apply/ApplyInquiryAPI';
 
 import { useQuery } from '@tanstack/react-query';
 

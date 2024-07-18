@@ -1,6 +1,6 @@
 import { AxiosError } from 'axios';
 
-import { instanceJWT } from '@gdsc/apis/Api_JWT';
+import { instanceJWT } from '@gdsc/apis/instance/Api_JWT';
 
 export const ApplyInquiryAPI = async (name: string, studentNumber: string) => {
   try {

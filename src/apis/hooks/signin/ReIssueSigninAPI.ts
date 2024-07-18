@@ -1,4 +1,4 @@
-import { instanceJWT } from '@gdsc/apis/Api_JWT';
+import { instanceJWT } from '@gdsc/apis/instance/Api_JWT';
 
 import { SigninAPIInterface } from '@gdsc/types/OAuthInterface';
 

@@ -1,4 +1,4 @@
-import { instanceJWT } from '@gdsc/apis/Api_JWT';
+import { instanceJWT } from '@gdsc/apis/instance/Api_JWT';
 
 import { signUpUserInterface } from '@gdsc/types/UserInterface';
 
@@ -11,7 +11,7 @@ export const SignupAPI = (
       console.log(response);
       return response.data;
     })
-    .catch(function (error) {
+    .catch(function (error: unknown) {
       console.log(error);
       throw error;
     });

@@ -1,4 +1,4 @@
-import { instance } from '@gdsc/apis/Api';
+import { instance } from '@gdsc/apis/instance/Api';
 
 import { SigninAPIInterface } from '@gdsc/types/OAuthInterface';
 

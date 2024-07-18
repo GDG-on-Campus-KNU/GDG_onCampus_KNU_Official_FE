@@ -2,7 +2,7 @@ import { useNavigate } from 'react-router-dom';
 
 import { queryClient } from '@gdsc/hooks/queries/Http';
 
-import { ApplySaveAPI } from '@gdsc/apis/apply/ApplySaveAPI';
+import { ApplySaveAPI } from '@gdsc/apis/hooks/apply/ApplySaveAPI';
 
 import { ApplyFormInterface } from '@gdsc/types/ApplyInterface';
 import { useMutation, UseMutationOptions } from '@tanstack/react-query';
