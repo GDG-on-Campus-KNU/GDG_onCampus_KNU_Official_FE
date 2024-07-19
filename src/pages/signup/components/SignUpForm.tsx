@@ -193,7 +193,7 @@ const SignUpForm = () => {
                 mHeight='45px'
                 mPadding='5px'
               >
-                회원가입
+                추가정보 입력하기
               </CommonBtn>
             )}
           </ButtonItem>
