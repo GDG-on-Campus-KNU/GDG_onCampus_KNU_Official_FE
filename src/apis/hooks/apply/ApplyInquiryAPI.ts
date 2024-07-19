@@ -1,10 +1,10 @@
 import { AxiosError } from 'axios';
 
-import { instanceJWT } from '@gdsc/apis/instance/Api_JWT';
+import { fetchInstance } from '@gdsc/apis/instance/Api_JWT';
 
 export const ApplyInquiryAPI = async (name: string, studentNumber: string) => {
   try {
-    const response = await instanceJWT.get(
+    const response = await fetchInstance.get(
       `/api/application?name=${name}&studentNumber=${studentNumber}`
     );
     return response.data;
