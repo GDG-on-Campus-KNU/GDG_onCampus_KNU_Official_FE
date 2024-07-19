@@ -14,7 +14,6 @@ export const createInstanceJWT = (
   config: AxiosRequestConfig
 ): AxiosInstance => {
   const instance = axios.create({
-    baseURL: BASE_URI,
     timeout: 5000,
     ...config,
     headers: {
@@ -64,4 +63,6 @@ export const createInstanceJWT = (
   return instance;
 };
 
-export const instanceJWT = createInstanceJWT({});
+export const fetchInstance = createInstanceJWT({
+  baseURL: BASE_URI,
+});
