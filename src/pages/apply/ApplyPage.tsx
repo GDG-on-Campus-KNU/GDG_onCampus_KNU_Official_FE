@@ -23,7 +23,7 @@ const ApplyPage = () => {
 
   useEffect(() => {
     const today = dayjs();
-    const deadline = dayjs('2024-08-31'); //추후 날짜 건드려야함 주의!
+    const deadline = dayjs('2024-09-05');
     setShowForm(today.isBefore(deadline));
   }, []);
 
