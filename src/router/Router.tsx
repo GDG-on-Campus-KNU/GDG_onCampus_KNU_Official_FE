@@ -28,8 +28,6 @@ export const Router = createBrowserRouter([
     children: [
       { index: true, element: <MainPage /> },
       { path: 'signin', element: <SigninPage /> },
-      { path: 'signup', element: <SignupPage /> },
-
       {
         path: 'apply',
         element: <PrivateRoute />,
@@ -68,5 +66,9 @@ export const Router = createBrowserRouter([
   {
     path: '/oauth/:provider/redirect',
     element: <AuthCallBackPage />,
+  },
+  {
+    path: 'signup',
+    element: <SignupPage />,
   },
 ]);
