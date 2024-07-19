@@ -2,12 +2,25 @@ import { useEffect } from 'react';
 
 import gsap from 'gsap';
 
+import Bosung from '@gdsc/assets/gdscknu4/Core-Bosung.jpg';
+import Dongpil from '@gdsc/assets/gdscknu4/Core-Dongpil.jpg';
+import Kangmin from '@gdsc/assets/gdscknu4/Core-Gangmin.jpeg';
+import Hyunmin from '@gdsc/assets/gdscknu4/Core-Hyeonmin.jpeg';
+import Jaeyong from '@gdsc/assets/gdscknu4/Core-Jaeyong.jpg';
+import Suhyeon from '@gdsc/assets/gdscknu4/Core-Suhyeon.jpg';
+import Yeongin from '@gdsc/assets/gdscknu4/Core-Yeongin.jpg';
+import Kyuhoi from '@gdsc/assets/gdscknu4/Lead-Kyuhoi.png';
+
 import { IntroText, IntroTextStyle } from '@gdsc/styles/IntroduceStyle';
 
 import styled from '@emotion/styled';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 
 gsap.registerPlugin(ScrollTrigger);
+
+type CoreBoxProps = {
+  backgroundImage: string;
+};
 
 const CoreTableBox = styled.div`
   display: grid;
@@ -28,12 +41,15 @@ const CoreTableBox = styled.div`
   }
 `;
 
-const CoreBox = styled.div`
+const CoreBox = styled.div<CoreBoxProps>`
   width: 140px;
   height: 132px;
   padding: 24px 20px;
   border-radius: var(--size-xs);
   background-color: var(--color-app);
+  background-image: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)),
+    url(${(props) => props.backgroundImage});
+  background-size: contain;
 
   @media (max-width: 750px) {
     width: 120px;
@@ -73,49 +89,49 @@ const CoreTable = () => {
 
   return (
     <CoreTableBox className='animateTable'>
-      <CoreBox>
+      <CoreBox backgroundImage={Kyuhoi}>
         <TableStatusText>LEAD</TableStatusText>
         <TableTextLayout>
           <IntroText>김규회</IntroText>
         </TableTextLayout>
       </CoreBox>
-      <CoreBox>
+      <CoreBox backgroundImage={Kangmin}>
         <TableStatusText>CORE-FE</TableStatusText>
         <TableTextLayout>
           <IntroText>김강민</IntroText>
         </TableTextLayout>
       </CoreBox>
-      <CoreBox>
+      <CoreBox backgroundImage={Dongpil}>
         <TableStatusText>CORE-FE</TableStatusText>
         <TableTextLayout>
           <IntroText>조동필</IntroText>
         </TableTextLayout>
       </CoreBox>
-      <CoreBox>
+      <CoreBox backgroundImage={Suhyeon}>
         <TableStatusText>CORE-BE</TableStatusText>
         <TableTextLayout>
           <IntroText>권수현</IntroText>
         </TableTextLayout>
       </CoreBox>
-      <CoreBox>
+      <CoreBox backgroundImage={Yeongin}>
         <TableStatusText>CORE-BE</TableStatusText>
         <TableTextLayout>
           <IntroText>김영인</IntroText>
         </TableTextLayout>
       </CoreBox>
-      <CoreBox>
+      <CoreBox backgroundImage={Jaeyong}>
         <TableStatusText>CORE-BE</TableStatusText>
         <TableTextLayout>
           <IntroText>윤재용</IntroText>
         </TableTextLayout>
       </CoreBox>
-      <CoreBox>
+      <CoreBox backgroundImage={Bosung}>
         <TableStatusText>CORE-AI</TableStatusText>
         <TableTextLayout>
           <IntroText>백보성</IntroText>
         </TableTextLayout>
       </CoreBox>
-      <CoreBox>
+      <CoreBox backgroundImage={Hyunmin}>
         <TableStatusText>CORE-DESIGNER</TableStatusText>
         <TableTextLayout>
           <IntroText>김현민</IntroText>
