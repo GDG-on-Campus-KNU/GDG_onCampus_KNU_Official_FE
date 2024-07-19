@@ -1,5 +1,6 @@
+import { useEffect } from 'react';
 import { useMediaQuery } from 'react-responsive';
-import { NavLink } from 'react-router-dom';
+import { NavLink, useNavigate } from 'react-router-dom';
 
 import { motion } from 'framer-motion';
 
@@ -80,7 +81,18 @@ const MainNavigation = () => {
   const closeDropdown = useHeaderDropDownState((state) => state.closeDropdown);
 
   const { data: MyData } = useGetMyData();
+  const navigate = useNavigate();
 
+  useEffect(() => {
+    if (MyData && MyData?.role === 'ROLE_TEMP') {
+      alert(
+        '추가 정보가 입력이 되지 않은 상태입니다. \n추가 정보 입력을 위해 페이지를 이동합니다.'
+      );
+      navigate('/signup');
+    }
+  }, [MyData, navigate]);
+
+  console.log(MyData);
   return (
     <Header>
       <DisplayHeader>
