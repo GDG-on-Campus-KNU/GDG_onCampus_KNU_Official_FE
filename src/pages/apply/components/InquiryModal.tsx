@@ -5,13 +5,13 @@ import { useNavigate } from 'react-router-dom';
 
 import dayjs from 'dayjs';
 
-import CommonBtn from '@gdsc/components/button/CommonBtn';
-import Input from '@gdsc/components/form/Input';
-import Text from '@gdsc/components/typography/Text';
+import CommonBtn from '@gdsc/components/common/button/CommonBtn';
+import Input from '@gdsc/components/common/form/Input';
+import Text from '@gdsc/components/common/typography/Text';
 
 import ApplySaveForm from '@gdsc/pages/apply/components/ApplySaveForm';
 
-import { ApplyInquiryQuery } from '@gdsc/hooks/queries/get/ApplyInquiryQuery';
+import { ApplyInquiryQuery } from '@gdsc/apis/hooks/apply/ApplyInquiryQuery';
 
 import { AuthWrapper, AuthForm } from '@gdsc/styles/AuthModalStyle';
 import { displayCenter, DisplayLayout } from '@gdsc/styles/LayoutStyle';

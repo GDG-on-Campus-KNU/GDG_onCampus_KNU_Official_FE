@@ -1,15 +1,15 @@
 import { useForm } from 'react-hook-form';
 import { useMediaQuery } from 'react-responsive';
 
-import CommonBtn from '@gdsc/components/button/CommonBtn';
-import SignupInput from '@gdsc/components/form/SignupInput';
+import CommonBtn from '@gdsc/components/common/button/CommonBtn';
+import SignupInput from '@gdsc/components/common/form/SignupInput';
 
 import { InputWrapper } from '@gdsc/pages/apply/components/ApplyForm.style';
 import MobileSignUpForm from '@gdsc/pages/signup/components/MobileSignUpForm';
 
-import { SignupQuery } from '@gdsc/hooks/queries/post/SignupQuery';
-
 import { SignUpSchema, SignUpSchemaType } from '@gdsc/utils/SignUpSchema.util';
+
+import { SignupQuery } from '@gdsc/apis/hooks/signup/SignupQuery';
 
 import { AuthBox } from '@gdsc/styles/AuthModalStyle';
 import { Error, InputLine } from '@gdsc/styles/SignUpForm.style';

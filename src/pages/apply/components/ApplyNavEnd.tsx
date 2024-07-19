@@ -1,7 +1,7 @@
 import { useMediaQuery } from 'react-responsive';
 import { Link } from 'react-router-dom';
 
-import Text from '@gdsc/components/typography/Text';
+import Text from '@gdsc/components/common/typography/Text';
 
 import {
   ApplyLayout,

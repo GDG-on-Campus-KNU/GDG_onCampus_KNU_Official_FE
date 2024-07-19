@@ -1,4 +1,4 @@
-import Text from '@gdsc/components/typography/Text';
+import Text from '@gdsc/components/common/typography/Text';
 
 import styled from '@emotion/styled';
 

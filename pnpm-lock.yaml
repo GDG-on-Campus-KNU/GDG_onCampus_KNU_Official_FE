@@ -29,6 +29,9 @@ dependencies:
   dayjs:
     specifier: ^1.11.11
     version: 1.11.11
+  framer-motion:
+    specifier: ^11.3.7
+    version: 11.3.7(react-dom@18.3.1)(react@18.3.1)
   gsap:
     specifier: ^3.12.5
     version: 3.12.5
@@ -3355,6 +3358,25 @@ packages:
       asynckit: 0.4.0
       combined-stream: 1.0.8
       mime-types: 2.1.35
+    dev: false
+
+  /framer-motion@11.3.7(react-dom@18.3.1)(react@18.3.1):
+    resolution: {integrity: sha512-wolMesg8ruYgZX8nMELY2a/ZgMMpYhggLNIexx1blaYN0yb2+SdQ78sEkGDKde+3LTCeFy/wCi97i5Br4yT0GQ==}
+    peerDependencies:
+      '@emotion/is-prop-valid': '*'
+      react: ^18.0.0
+      react-dom: ^18.0.0
+    peerDependenciesMeta:
+      '@emotion/is-prop-valid':
+        optional: true
+      react:
+        optional: true
+      react-dom:
+        optional: true
+    dependencies:
+      react: 18.3.1
+      react-dom: 18.3.1(react@18.3.1)
+      tslib: 2.6.2
     dev: false
 
   /fs.realpath@1.0.0:

@@ -106,6 +106,7 @@ export const GlobalStyle = css`
     font-family: 'Noto+Sans', monospace;
     background-color: var(--color-revolver);
     color: var(--color-white);
+    line-height: 1.4;
   }
 
   img {

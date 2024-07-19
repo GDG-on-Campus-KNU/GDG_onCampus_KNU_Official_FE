@@ -1,9 +1,9 @@
 import { useMediaQuery } from 'react-responsive';
 
-import CompleteBtn from '@gdsc/components/button/CompleteBtn';
-import Text from '@gdsc/components/typography/Text';
+import CompleteBtn from '@gdsc/components/common/button/CompleteBtn';
+import Text from '@gdsc/components/common/typography/Text';
 
-import { useColTz } from '@gdsc/hooks/custom_hooks/useColTz';
+import { useColTz } from '@gdsc/hooks/useColTz';
 
 import Earth from '@gdsc/assets/Earth.gif';
 import LeftArrow from '@gdsc/assets/LeftArrow.svg';

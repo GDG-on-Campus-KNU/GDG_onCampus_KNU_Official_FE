@@ -4,9 +4,9 @@ import { Oval } from 'react-loader-spinner';
 import { useMediaQuery } from 'react-responsive';
 import { useParams } from 'react-router-dom';
 
-import CommonBtn from '@gdsc/components/button/CommonBtn';
-import FormInput from '@gdsc/components/form/FormInput';
-import FormTextArea from '@gdsc/components/form/FormTextArea';
+import CommonBtn from '@gdsc/components/common/button/CommonBtn';
+import FormInput from '@gdsc/components/common/form/FormInput';
+import FormTextArea from '@gdsc/components/common/form/FormTextArea';
 
 import {
   Error,
@@ -31,9 +31,9 @@ import {
   DesignerData,
 } from '@gdsc/pages/apply/components/ApplyFormDocs';
 
-import { useApplyFormMutation } from '@gdsc/hooks/queries/post/ApplyFormQuery';
-
 import { ApplyFormSchema } from '@gdsc/utils/ApplyFormScehma.util';
+
+import { useApplyFormMutation } from '@gdsc/apis/hooks/apply/ApplyFormQuery';
 
 import {
   TitleLayout,

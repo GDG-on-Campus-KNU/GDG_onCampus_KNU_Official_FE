@@ -1,10 +1,10 @@
 import { useMediaQuery } from 'react-responsive';
 
-import CompleteBtn from '@gdsc/components/button/CompleteBtn';
-import Input from '@gdsc/components/form/Input';
-import Profile from '@gdsc/components/form/Profile';
-import TextArea from '@gdsc/components/form/TextArea';
-import PageTitle from '@gdsc/components/title/PageTitle';
+import CompleteBtn from '@gdsc/components/common/button/CompleteBtn';
+import Input from '@gdsc/components/common/form/Input';
+import Profile from '@gdsc/components/common/form/Profile';
+import TextArea from '@gdsc/components/common/form/TextArea';
+import PageTitle from '@gdsc/components/common/title/PageTitle';
 
 import { displayCenter } from '@gdsc/styles/LayoutStyle';
 

@@ -3,9 +3,9 @@ import { useForm } from 'react-hook-form';
 import { Oval } from 'react-loader-spinner';
 import { useMediaQuery } from 'react-responsive';
 
-import CommonBtn from '@gdsc/components/button/CommonBtn';
-import FormInput from '@gdsc/components/form/FormInput';
-import FormTextArea from '@gdsc/components/form/FormTextArea';
+import CommonBtn from '@gdsc/components/common/button/CommonBtn';
+import FormInput from '@gdsc/components/common/form/FormInput';
+import FormTextArea from '@gdsc/components/common/form/FormTextArea';
 
 import {
   Error,
@@ -30,9 +30,9 @@ import {
   DesignerData,
 } from '@gdsc/pages/apply/components/ApplyFormDocs';
 
-import { useApplySaveMutation } from '@gdsc/hooks/queries/put/ApplySaveQuery';
-
 import { ApplyFormSchema } from '@gdsc/utils/ApplyFormScehma.util';
+
+import { useApplySaveMutation } from '@gdsc/apis/hooks/apply/ApplySaveQuery';
 
 import {
   TitleLayout,

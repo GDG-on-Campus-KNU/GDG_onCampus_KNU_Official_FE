@@ -1,5 +1,5 @@
-import Text from '@gdsc/components/typography/Text';
-import Title from '@gdsc/components/typography/Title';
+import Text from '@gdsc/components/common/typography/Text';
+import Title from '@gdsc/components/common/typography/Title';
 
 import styled from '@emotion/styled';
 

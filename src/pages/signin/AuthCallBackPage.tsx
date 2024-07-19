@@ -1,7 +1,7 @@
 import { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 
-import { SigninQuery } from '@gdsc/hooks/queries/post/SigninQuery';
+import { SigninQuery } from '@gdsc/apis/hooks/signin/SigninQuery';
 
 import { SigninAPIInterface } from '@gdsc/types/OAuthInterface';
 
