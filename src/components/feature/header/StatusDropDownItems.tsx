@@ -4,6 +4,7 @@ import { NavLink } from 'react-router-dom';
 import Text from '@gdsc/components/common/typography/Text';
 
 import { DropdownItem } from './MainNavigation';
+import styled from '@emotion/styled';
 import { userDataInterface } from '@gdsc/types/UserInterface';
 
 const handleLogout = () => {
@@ -21,15 +22,15 @@ export const renderDropdownItems = (
         <React.Fragment>
           <DropdownItem onClick={closeDropdown}>
             <NavLink to='/mypage'>
-              <Text size='sm' color='black'>
+              <ResponsiveText size='sm' color='black'>
                 마이페이지
-              </Text>
+              </ResponsiveText>
             </NavLink>
           </DropdownItem>
           <DropdownItem onClick={handleLogout}>
-            <Text size='sm' color='black'>
+            <ResponsiveText size='sm' color='black'>
               로그아웃
-            </Text>
+            </ResponsiveText>
           </DropdownItem>
         </React.Fragment>
       );
@@ -38,22 +39,22 @@ export const renderDropdownItems = (
         <>
           <DropdownItem onClick={closeDropdown}>
             <NavLink to='/mypage'>
-              <Text size='sm' color='black'>
+              <ResponsiveText size='sm' color='black'>
                 마이페이지
-              </Text>
+              </ResponsiveText>
             </NavLink>
           </DropdownItem>
           <DropdownItem onClick={closeDropdown}>
             <NavLink to='/team'>
-              <Text size='sm' color='black'>
+              <ResponsiveText size='sm' color='black'>
                 팀페이지
-              </Text>
+              </ResponsiveText>
             </NavLink>
           </DropdownItem>
           <DropdownItem onClick={handleLogout}>
-            <Text size='sm' color='black'>
+            <ResponsiveText size='sm' color='black'>
               로그아웃
-            </Text>
+            </ResponsiveText>
           </DropdownItem>
         </>
       );
@@ -62,9 +63,9 @@ export const renderDropdownItems = (
         <>
           <DropdownItem onClick={closeDropdown}>
             <NavLink to='/mypage'>
-              <Text size='sm' color='black'>
+              <ResponsiveText size='sm' color='black'>
                 마이페이지
-              </Text>
+              </ResponsiveText>
             </NavLink>
           </DropdownItem>
           <DropdownItem onClick={closeDropdown}>
@@ -76,15 +77,15 @@ export const renderDropdownItems = (
           </DropdownItem>
           <DropdownItem onClick={closeDropdown}>
             <NavLink to='/admin'>
-              <Text size='sm' color='black'>
+              <ResponsiveText size='sm' color='black'>
                 어드민페이지
-              </Text>
+              </ResponsiveText>
             </NavLink>
           </DropdownItem>
           <DropdownItem onClick={handleLogout}>
-            <Text size='sm' color='black'>
+            <ResponsiveText size='sm' color='black'>
               로그아웃
-            </Text>
+            </ResponsiveText>
           </DropdownItem>
         </>
       );
@@ -92,3 +93,9 @@ export const renderDropdownItems = (
       return null;
   }
 };
+
+const ResponsiveText = styled(Text)`
+  @media screen and (max-width: 500px) {
+    font-size: var(--font-size-xs);
+  }
+`;

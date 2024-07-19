@@ -124,7 +124,7 @@ const MobileSubInfoContainer = styled.div`
 
 const ButtonContainer = styled.div`
   width: 90%;
-  max-width: 596px;
+  max-width: 800px;
 
   display: flex;
   flex-direction: column;
