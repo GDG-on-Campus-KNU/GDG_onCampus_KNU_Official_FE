@@ -1,13 +1,21 @@
+import { useState } from 'react';
 import { useMediaQuery } from 'react-responsive';
 import { NavLink } from 'react-router-dom';
 
+import { motion } from 'framer-motion';
+
 import Text from '@gdsc/components/common/typography/Text';
 
+import HdDropDown from '@gdsc/assets/HdDropDown.svg';
+import HdDropUp from '@gdsc/assets/HdDropUp.svg';
 import NavigationLogo768 from '@gdsc/assets/NavigationLogo768.svg';
 import NavigationLogo from '@gdsc/assets/NavigationLogo.svg';
 
+import { useGetMyData } from '@gdsc/apis/hooks/mypage/useGetMyData';
+
 import { displayCenter } from '@gdsc/styles/LayoutStyle';
 
+import { renderDropdownItems } from './StatusDropDownItems';
 import styled from '@emotion/styled';
 
 const Header = styled.div`
@@ -34,25 +42,85 @@ const Menu = styled.ul`
   list-style: none;
   display: flex;
   flex-direction: row;
+
   background-color: var(--color-navy);
 `;
 const MenuList = styled.li`
   display: flex;
+  flex-direction: row;
   align-items: center;
   margin-right: 20px;
+  position: relative;
 `;
 
 const NavImg = styled.img`
   margin-left: 20px;
 `;
 
-const LogoutDiv = styled.div`
+const ImgList = styled.img`
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  margin-right: 10px;
+`;
+
+const DropDownImg = styled.img`
+  margin-left: 10px;
   cursor: pointer;
 `;
+
+const DropdownMenu = styled(motion.ul)<DropdownMenuProps>`
+  position: absolute;
+  top: 160%;
+  right: 0;
+
+  background-color: var(--color-white);
+  list-style: none;
+  border-radius: 10px;
+  width: 104px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+  display: ${(props) => (props.isOpen ? 'block' : 'none')};
+`;
+
+export const DropdownItem = styled.li`
+  padding: 15px 10px 15px 10px;
+  height: 12px;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  text-align: center;
+
+  cursor: pointer;
+  border-bottom: 1px solid var(--color-alto);
+
+  &:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+  }
+
+  &:last-child {
+    border-bottom: none;
+  }
+`;
+
+type DropdownMenuProps = {
+  isOpen: boolean;
+};
 
 const MainNavigation = () => {
   const accessToken = localStorage.getItem('accessToken'); // 상태관리를 통해서 액세스 토큰 가져올 계획입니다. 수정해야됩니다.
   const isTablet = useMediaQuery({ query: '(max-width: 767px)' });
+
+  const [dropdownOpen, setDropdownOpen] = useState<boolean>(false);
+
+  const toggleDropdown = () => {
+    setDropdownOpen(!dropdownOpen);
+  };
+
+  const closeDropdown = () => {
+    setDropdownOpen(false);
+  };
+
+  const { data: MyData } = useGetMyData();
 
   return (
     <Header>
@@ -95,19 +163,35 @@ const MainNavigation = () => {
         {accessToken ? (
           <Menu>
             <MenuList>
-              <LogoutDiv
-                onClick={() => {
-                  localStorage.removeItem('accessToken');
-                  window.location.href = '/';
+              <ImgList src={MyData?.profileUrl} alt='profile' />
+              <div>
+                <Text color='white'>{MyData?.name}</Text>
+              </div>
+              {dropdownOpen ? (
+                <DropDownImg
+                  src={HdDropUp}
+                  alt='dropdown'
+                  onClick={toggleDropdown}
+                />
+              ) : (
+                <DropDownImg
+                  src={HdDropDown}
+                  alt='dropdown'
+                  onClick={toggleDropdown}
+                />
+              )}
+
+              <DropdownMenu
+                isOpen={dropdownOpen}
+                initial={{ opacity: 0, y: -10 }}
+                animate={{
+                  opacity: dropdownOpen ? 1 : 0,
+                  y: dropdownOpen ? 0 : -10,
                 }}
+                transition={{ duration: 0.3 }}
               >
-                <Text color='white'>로그아웃</Text>
-              </LogoutDiv>
-            </MenuList>
-            <MenuList>
-              <NavLink to='/mypage'>
-                <Text color='white'>마이페이지</Text>
-              </NavLink>
+                {MyData && renderDropdownItems(MyData, closeDropdown)}
+              </DropdownMenu>
             </MenuList>
           </Menu>
         ) : (
