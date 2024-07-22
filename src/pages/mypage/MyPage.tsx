@@ -9,10 +9,12 @@ import Profile from '@gdsc/components/common/form/Profile';
 import TextArea from '@gdsc/components/common/form/TextArea';
 import PageTitle from '@gdsc/components/common/title/PageTitle';
 
+import TeamToken from '@gdsc/pages/mypage/components/TeamToken';
+
+import { useUserInfo } from '@gdsc/apis/hooks/mypage/useUserInfo';
+
 import { displayCenter } from '@gdsc/styles/LayoutStyle';
 
-import TeamToken from './components/TeamToken';
-import { useUserInfo } from './hooks/useUserInfo';
 import styled from '@emotion/styled';
 import { useMutation, useQueryClient } from '@tanstack/react-query';
 
