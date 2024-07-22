@@ -144,7 +144,7 @@ const ApplyForm = () => {
         submitApplication(finalFormData);
         // console.log(finalFormData);
       } else if (submitType === 'save') {
-        console.log(saveFormData);
+        // console.log(saveFormData);
         submitApplication(saveFormData);
       }
     }
