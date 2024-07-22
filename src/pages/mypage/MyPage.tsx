@@ -11,7 +11,7 @@ import PageTitle from '@gdsc/components/common/title/PageTitle';
 
 import TeamToken from '@gdsc/pages/mypage/components/TeamToken';
 
-import { useUserInfo } from '@gdsc/apis/hooks/mypage/useUserInfo';
+import { IUserInfo, useUserInfo } from '@gdsc/apis/hooks/mypage/useUserInfo';
 
 import { displayCenter } from '@gdsc/styles/LayoutStyle';
 
@@ -144,15 +144,6 @@ const ButtonContainer = styled.div`
   }
 `;
 
-interface IUserInfo {
-  name: string;
-  age: number;
-  major: string;
-  studentNumber: string;
-  email: string;
-  teamInfos: string[];
-}
-
 const MyPage = () => {
   const [userInfo, setUserInfo] = useState<IUserInfo>({
     name: '',
@@ -161,13 +152,14 @@ const MyPage = () => {
     studentNumber: '',
     email: '',
     teamInfos: [],
+    introduction: '',
   });
 
   const isMobile = useMediaQuery({ query: '(max-width: 500px)' });
   const accessToken = localStorage.getItem('accessToken');
   const queryClient = useQueryClient();
 
-  const { data, isLoading, isError } = useUserInfo(accessToken);
+  const { data } = useUserInfo(accessToken);
 
   useEffect(() => {
     if (data) {
@@ -186,13 +178,14 @@ const MyPage = () => {
       queryClient.invalidateQueries({ queryKey: ['userInfo'] });
       alert('정보가 성공적으로 저장되었습니다.');
     },
-    onError: (error: string) => {
-      console.error('정보 저장 중 오류가 발생했습니다:', error);
-      alert('정보 저장에 실패했습니다.');
+    onError: () => {
+      alert('정보 저장 중 오류가 발생했습니다. 다시 시도해 주세요.');
     },
   });
 
-  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+  const handleInputChange = (
+    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+  ) => {
     const { id, value } = e.target;
     setUserInfo((prev) => ({
       ...prev,
@@ -203,13 +196,6 @@ const MyPage = () => {
   const handleSave = () => {
     updateUserMutation.mutate(userInfo);
   };
-
-  if (isLoading) {
-    console.log('loading...');
-  }
-  if (isError) {
-    console.log('사용자 정보를 가져오는 중 에러가 발생했습니다.');
-  }
 
   // const teamInfo = [
   //   'FE study 2팀',
@@ -245,11 +231,13 @@ const MyPage = () => {
       </MyPageWrapper>
       <MyPageWrapper color='transparent'>
         <TextArea
-          id='intro'
+          id='introduction'
           label='자기소개'
           placeholder='자기소개를 500자 이내로 입력해주세요.'
           maxLength={500}
           color='var(--color-gradient)'
+          defaultValue={userInfo.introduction}
+          onChange={handleInputChange}
         />
         {isMobile ? (
           <MobileSubInfoContainer>

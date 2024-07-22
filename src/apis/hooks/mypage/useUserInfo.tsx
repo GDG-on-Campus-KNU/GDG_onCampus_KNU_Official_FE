@@ -9,6 +9,7 @@ export interface IUserInfo {
   studentNumber: string;
   email: string;
   teamInfos: string[];
+  introduction: string;
 }
 
 const getUserInfo = async (accessToken: string | null) => {

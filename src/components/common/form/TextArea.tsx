@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 
 import Text from '../typography/Text';
 import styled from '@emotion/styled';
@@ -9,6 +9,8 @@ interface ITextArea {
   placeholder: string;
   maxLength: number;
   color?: string;
+  defaultValue?: string;
+  onChange?: (e: React.ChangeEvent<HTMLTextAreaElement>) => void;
 }
 
 const TextAreaWrapper = styled.div`
@@ -121,13 +123,25 @@ const TextArea: React.FC<ITextArea> = ({
   maxLength,
   placeholder,
   color,
+  defaultValue,
+  onChange,
 }) => {
-  const [text, setText] = useState('');
+  const [text, setText] = useState(defaultValue || '');
+
+  useEffect(() => {
+    setText(defaultValue || '');
+  }, [defaultValue]);
 
   const handleTextLength = (event: React.ChangeEvent<HTMLTextAreaElement>) => {
     const { value } = event.target;
-    if (value.length <= maxLength + 1) {
-      setText(value);
+
+    if (value.length > maxLength) {
+      value.slice(0, maxLength);
+    }
+
+    setText(value);
+    if (onChange) {
+      onChange(event);
     }
   };
 
