@@ -1,8 +1,6 @@
 import { useState, useEffect } from 'react';
 import { useMediaQuery } from 'react-responsive';
 
-import axios from 'axios';
-
 import CompleteBtn from '@gdsc/components/common/button/CompleteBtn';
 import Input from '@gdsc/components/common/form/Input';
 import Profile from '@gdsc/components/common/form/Profile';
@@ -11,12 +9,13 @@ import PageTitle from '@gdsc/components/common/title/PageTitle';
 
 import TeamToken from '@gdsc/pages/mypage/components/TeamToken';
 
-import { IUserInfo, useUserInfo } from '@gdsc/apis/hooks/mypage/useUserInfo';
+import { useGetMyData } from '@gdsc/apis/hooks/mypage/useGetMyData';
+import { usePutMyData } from '@gdsc/apis/hooks/mypage/usePutMyData';
 
 import { displayCenter } from '@gdsc/styles/LayoutStyle';
 
 import styled from '@emotion/styled';
-import { useMutation, useQueryClient } from '@tanstack/react-query';
+import { putUserDataInterface } from '@gdsc/types/UserInterface';
 
 const MyPageWrapper = styled.div<{ color: string }>`
   ${displayCenter}
@@ -145,21 +144,18 @@ const ButtonContainer = styled.div`
 `;
 
 const MyPage = () => {
-  const [userInfo, setUserInfo] = useState<IUserInfo>({
+  const [userInfo, setUserInfo] = useState<putUserDataInterface>({
     name: '',
     age: 0,
     major: '',
     studentNumber: '',
     email: '',
-    teamInfos: [],
     introduction: '',
   });
 
   const isMobile = useMediaQuery({ query: '(max-width: 500px)' });
-  const accessToken = localStorage.getItem('accessToken');
-  const queryClient = useQueryClient();
 
-  const { data } = useUserInfo(accessToken);
+  const { data } = useGetMyData();
 
   useEffect(() => {
     if (data) {
@@ -167,36 +163,34 @@ const MyPage = () => {
     }
   }, [data]);
 
-  const updateUserMutation = useMutation({
-    mutationFn: (updatedInfo: IUserInfo) =>
-      axios.put('http://43.202.198.49:8080/api/user', updatedInfo, {
-        headers: {
-          Authorization: `Bearer ${accessToken}`,
-        },
-      }),
-    onSuccess: () => {
-      queryClient.invalidateQueries({ queryKey: ['userInfo'] });
-      alert('정보가 성공적으로 저장되었습니다.');
-      window.location.reload(); // 페이지 리로드
-    },
-    onError: () => {
-      alert('정보 저장 중 오류가 발생했습니다. 다시 시도해 주세요.');
-    },
-  });
-
   const handleInputChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
   ) => {
     const { id, value } = e.target;
-    setUserInfo((prev) => ({
+    setUserInfo((prev: putUserDataInterface) => ({
       ...prev,
       [id]: id === 'age' ? parseInt(value) : value,
     }));
   };
 
-  const handleSave = () => {
-    updateUserMutation.mutate(userInfo);
+  const mutation = usePutMyData();
+
+  const handleData = {
+    name: userInfo.name,
+    profileUrl: data?.profileUrl,
+    age: userInfo.age,
+    major: userInfo.major,
+    studentNumber: userInfo.studentNumber,
+    email: userInfo.email,
+    introduction: userInfo.introduction,
   };
+
+  const handleSave = () => {
+    // console.log(123, handleData);
+    mutation.mutate(handleData);
+  };
+
+  // console.log(data);
 
   // const teamInfo = [
   //   'FE study 2팀',
@@ -223,8 +217,8 @@ const MyPage = () => {
           <EmptyDiv>
             <InputLabel>소속 팀</InputLabel>
             <TokenContainer>
-              {userInfo.teamInfos.map((e, i) => {
-                return <TeamToken key={`${e}-${i}`} teamname={e} />;
+              {data?.teamInfos.map((teamInfo, index) => {
+                return <TeamToken key={index} teamData={teamInfo} />;
               })}
             </TokenContainer>
           </EmptyDiv>
