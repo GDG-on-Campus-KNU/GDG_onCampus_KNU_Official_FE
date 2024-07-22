@@ -1,8 +1,6 @@
 import { useState, useEffect } from 'react';
 import { useMediaQuery } from 'react-responsive';
 
-import axios from 'axios';
-
 import CompleteBtn from '@gdsc/components/common/button/CompleteBtn';
 import Input from '@gdsc/components/common/form/Input';
 import Profile from '@gdsc/components/common/form/Profile';
@@ -11,12 +9,13 @@ import PageTitle from '@gdsc/components/common/title/PageTitle';
 
 import TeamToken from '@gdsc/pages/mypage/components/TeamToken';
 
-import { useUserInfo } from '@gdsc/apis/hooks/mypage/useUserInfo';
+import { useGetMyData } from '@gdsc/apis/hooks/mypage/useGetMyData';
+import { usePutMyData } from '@gdsc/apis/hooks/mypage/usePutMyData';
 
 import { displayCenter } from '@gdsc/styles/LayoutStyle';
 
 import styled from '@emotion/styled';
-import { useMutation, useQueryClient } from '@tanstack/react-query';
+import { putUserDataInterface } from '@gdsc/types/UserInterface';
 
 const MyPageWrapper = styled.div<{ color: string }>`
   ${displayCenter}
@@ -144,30 +143,19 @@ const ButtonContainer = styled.div`
   }
 `;
 
-interface IUserInfo {
-  name: string;
-  age: number;
-  major: string;
-  studentNumber: string;
-  email: string;
-  teamInfos: string[];
-}
-
 const MyPage = () => {
-  const [userInfo, setUserInfo] = useState<IUserInfo>({
+  const [userInfo, setUserInfo] = useState<putUserDataInterface>({
     name: '',
     age: 0,
     major: '',
     studentNumber: '',
     email: '',
-    teamInfos: [],
+    introduction: '',
   });
 
   const isMobile = useMediaQuery({ query: '(max-width: 500px)' });
-  const accessToken = localStorage.getItem('accessToken');
-  const queryClient = useQueryClient();
 
-  const { data, isLoading, isError } = useUserInfo(accessToken);
+  const { data } = useGetMyData();
 
   useEffect(() => {
     if (data) {
@@ -175,41 +163,34 @@ const MyPage = () => {
     }
   }, [data]);
 
-  const updateUserMutation = useMutation({
-    mutationFn: (updatedInfo: IUserInfo) =>
-      axios.put('http://43.202.198.49:8080/api/user', updatedInfo, {
-        headers: {
-          Authorization: `Bearer ${accessToken}`,
-        },
-      }),
-    onSuccess: () => {
-      queryClient.invalidateQueries({ queryKey: ['userInfo'] });
-      alert('정보가 성공적으로 저장되었습니다.');
-    },
-    onError: (error: string) => {
-      console.error('정보 저장 중 오류가 발생했습니다:', error);
-      alert('정보 저장에 실패했습니다.');
-    },
-  });
-
-  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+  const handleInputChange = (
+    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+  ) => {
     const { id, value } = e.target;
-    setUserInfo((prev) => ({
+    setUserInfo((prev: putUserDataInterface) => ({
       ...prev,
       [id]: id === 'age' ? parseInt(value) : value,
     }));
   };
 
-  const handleSave = () => {
-    updateUserMutation.mutate(userInfo);
+  const mutation = usePutMyData();
+
+  const handleData = {
+    name: userInfo.name,
+    profileUrl: data?.profileUrl,
+    age: userInfo.age,
+    major: userInfo.major,
+    studentNumber: userInfo.studentNumber,
+    email: userInfo.email,
+    introduction: userInfo.introduction,
   };
 
-  if (isLoading) {
-    console.log('loading...');
-  }
-  if (isError) {
-    console.log('사용자 정보를 가져오는 중 에러가 발생했습니다.');
-  }
+  const handleSave = () => {
+    // console.log(123, handleData);
+    mutation.mutate(handleData);
+  };
+
+  // console.log(data);
 
   // const teamInfo = [
   //   'FE study 2팀',
@@ -236,8 +217,8 @@ const MyPage = () => {
           <EmptyDiv>
             <InputLabel>소속 팀</InputLabel>
             <TokenContainer>
-              {userInfo.teamInfos.map((e, i) => {
-                return <TeamToken key={`${e}-${i}`} teamname={e} />;
+              {data?.teamInfos.map((teamInfo, index) => {
+                return <TeamToken key={index} teamData={teamInfo} />;
               })}
             </TokenContainer>
           </EmptyDiv>
@@ -245,11 +226,13 @@ const MyPage = () => {
       </MyPageWrapper>
       <MyPageWrapper color='transparent'>
         <TextArea
-          id='intro'
+          id='introduction'
           label='자기소개'
           placeholder='자기소개를 500자 이내로 입력해주세요.'
           maxLength={500}
           color='var(--color-gradient)'
+          defaultValue={userInfo.introduction}
+          onChange={handleInputChange}
         />
         {isMobile ? (
           <MobileSubInfoContainer>

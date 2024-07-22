@@ -1,6 +1,13 @@
+import { Link } from 'react-router-dom';
+
 import { displayCenter } from '@gdsc/styles/LayoutStyle';
 
 import styled from '@emotion/styled';
+
+type teamData = {
+  teamName: string;
+  teamPageUrl: string;
+};
 
 const TokenContainer = styled.div`
   ${displayCenter}
@@ -21,8 +28,12 @@ const TokenContainer = styled.div`
   padding: 0px 10px;
 `;
 
-const TeamToken = ({ teamname }: { teamname: string }) => {
-  return <TokenContainer>{teamname}</TokenContainer>;
+const TeamToken = ({ teamData }: { teamData: teamData }) => {
+  return (
+    <Link to={teamData.teamPageUrl}>
+      <TokenContainer>{teamData.teamName}</TokenContainer>
+    </Link>
+  );
 };
 
 export default TeamToken;
