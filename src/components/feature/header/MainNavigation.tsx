@@ -54,6 +54,7 @@ const MenuList = styled.li`
   align-items: center;
   margin-right: 20px;
   position: relative;
+  cursor: pointer;
 `;
 
 const NavImg = styled.img`
@@ -134,7 +135,7 @@ const MainNavigation = () => {
         </Menu>
         {accessToken ? (
           <Menu>
-            <MenuList>
+            <MenuList onClick={toggleDropdown}>
               <ImgList
                 src={MyData?.profileUrl ? MyData.profileUrl : NoneProfile}
                 alt='profile'
