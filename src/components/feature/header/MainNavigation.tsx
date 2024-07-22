@@ -10,6 +10,7 @@ import HdDropDown from '@gdsc/assets/HdDropDown.svg';
 import HdDropUp from '@gdsc/assets/HdDropUp.svg';
 import NavigationLogo768 from '@gdsc/assets/NavigationLogo768.svg';
 import NavigationLogo from '@gdsc/assets/NavigationLogo.svg';
+import NoneProfile from '@gdsc/assets/NoneProfile.png';
 
 import { useGetMyData } from '@gdsc/apis/hooks/mypage/useGetMyData';
 
@@ -92,7 +93,7 @@ const MainNavigation = () => {
     }
   }, [MyData, navigate]);
 
-  console.log(MyData);
+  // console.log(MyData);
   return (
     <Header>
       <DisplayHeader>
@@ -134,7 +135,10 @@ const MainNavigation = () => {
         {accessToken ? (
           <Menu>
             <MenuList>
-              <ImgList src={MyData?.profileUrl} alt='profile' />
+              <ImgList
+                src={MyData?.profileUrl ? MyData.profileUrl : NoneProfile}
+                alt='profile'
+              />
               <div>
                 <Text color='white'>{MyData?.name}</Text>
               </div>
