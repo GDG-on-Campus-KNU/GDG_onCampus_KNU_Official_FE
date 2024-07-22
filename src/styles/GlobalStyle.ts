@@ -92,7 +92,7 @@ export const GlobalStyle = css`
   }
 
   ::-webkit-scrollbar {
-    display: none;
+    visibility: hidden;
   }
 
   body {
