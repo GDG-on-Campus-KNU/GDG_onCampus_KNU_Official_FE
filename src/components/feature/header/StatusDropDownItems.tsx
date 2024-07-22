@@ -12,67 +12,56 @@ const handleLogout = () => {
   window.location.href = '/';
 };
 
+const commonDropdownItems = (
+  closeDropdown: () => void,
+  additionalItems: React.ReactNode
+) => (
+  <>
+    <DropdownItem onClick={closeDropdown}>
+      <NavLink to='/mypage'>
+        <ResponsiveText size='sm' color='black'>
+          마이페이지
+        </ResponsiveText>
+      </NavLink>
+    </DropdownItem>
+    {additionalItems}
+    <DropdownItem onClick={handleLogout}>
+      <ResponsiveText size='sm' color='black'>
+        로그아웃
+      </ResponsiveText>
+    </DropdownItem>
+  </>
+);
+
 export const renderDropdownItems = (
   MyData: userDataInterface,
   closeDropdown: () => void
 ) => {
+  let additionalItems;
+
   switch (MyData.role) {
     case 'ROLE_GUEST':
-      return (
+      additionalItems = null;
+      break;
+    case 'ROLE_MEMBER':
+      additionalItems = (
+        <DropdownItem onClick={closeDropdown}>
+          <NavLink to='/team'>
+            <ResponsiveText size='sm' color='black'>
+              팀페이지
+            </ResponsiveText>
+          </NavLink>
+        </DropdownItem>
+      );
+      break;
+    case 'ROLE_CORE':
+      additionalItems = (
         <React.Fragment>
           <DropdownItem onClick={closeDropdown}>
-            <NavLink to='/mypage'>
-              <ResponsiveText size='sm' color='black'>
-                마이페이지
-              </ResponsiveText>
-            </NavLink>
-          </DropdownItem>
-          <DropdownItem onClick={handleLogout}>
-            <ResponsiveText size='sm' color='black'>
-              로그아웃
-            </ResponsiveText>
-          </DropdownItem>
-        </React.Fragment>
-      );
-    case 'ROLE_MEMBER':
-      return (
-        <>
-          <DropdownItem onClick={closeDropdown}>
-            <NavLink to='/mypage'>
-              <ResponsiveText size='sm' color='black'>
-                마이페이지
-              </ResponsiveText>
-            </NavLink>
-          </DropdownItem>
-          <DropdownItem onClick={closeDropdown}>
             <NavLink to='/team'>
               <ResponsiveText size='sm' color='black'>
                 팀페이지
               </ResponsiveText>
-            </NavLink>
-          </DropdownItem>
-          <DropdownItem onClick={handleLogout}>
-            <ResponsiveText size='sm' color='black'>
-              로그아웃
-            </ResponsiveText>
-          </DropdownItem>
-        </>
-      );
-    case 'ROLE_CORE':
-      return (
-        <>
-          <DropdownItem onClick={closeDropdown}>
-            <NavLink to='/mypage'>
-              <ResponsiveText size='sm' color='black'>
-                마이페이지
-              </ResponsiveText>
-            </NavLink>
-          </DropdownItem>
-          <DropdownItem onClick={closeDropdown}>
-            <NavLink to='/team'>
-              <Text size='sm' color='black'>
-                팀페이지
-              </Text>
             </NavLink>
           </DropdownItem>
           <DropdownItem onClick={closeDropdown}>
@@ -82,16 +71,14 @@ export const renderDropdownItems = (
               </ResponsiveText>
             </NavLink>
           </DropdownItem>
-          <DropdownItem onClick={handleLogout}>
-            <ResponsiveText size='sm' color='black'>
-              로그아웃
-            </ResponsiveText>
-          </DropdownItem>
-        </>
+        </React.Fragment>
       );
+      break;
     default:
       return null;
   }
+
+  return commonDropdownItems(closeDropdown, additionalItems);
 };
 
 const ResponsiveText = styled(Text)`
