@@ -1,7 +1,7 @@
 import { fetchInstance } from '@gdsc/apis/instance/Api_JWT';
 
 import { userDataInterface } from '@gdsc/types/UserInterface';
-import { useQuery } from '@tanstack/react-query';
+import { useQuery, UseQueryResult } from '@tanstack/react-query';
 
 const getMyDataPath = () => '/api/user';
 
@@ -13,8 +13,12 @@ export const getMyData = async (): Promise<userDataInterface> => {
   return response.data;
 };
 
-export const useGetMyData = () =>
-  useQuery<userDataInterface>({
+export const useGetMyData = (): UseQueryResult<userDataInterface, Error> => {
+  const accessToken = localStorage.getItem('accessToken');
+
+  return useQuery<userDataInterface, Error>({
     queryKey: myDataQueryKey,
     queryFn: getMyData,
+    enabled: !!accessToken,
   });
+};

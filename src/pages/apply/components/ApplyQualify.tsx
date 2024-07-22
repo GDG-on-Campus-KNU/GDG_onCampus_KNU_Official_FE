@@ -60,7 +60,7 @@ const ApplyListItem = styled.li`
   text-align: -webkit-match-parent;
   font-size: var(--font-size-sm);
   font-weight: 400;
-  line-height: 1.5;
+  line-height: 2;
 `;
 
 const ImageBox = styled.div`

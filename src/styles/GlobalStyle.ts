@@ -92,8 +92,10 @@ export const GlobalStyle = css`
   }
 
   ::-webkit-scrollbar {
-    visibility: hidden;
+    display: none;
   }
+  scrollbar-width: none; /* For Firefox */
+  -ms-overflow-style: none; /* For Internet Explorer and Edge */
 
   body {
     margin: 0;

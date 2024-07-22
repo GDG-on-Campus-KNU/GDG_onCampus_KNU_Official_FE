@@ -55,7 +55,7 @@ interface ApplySaveFormProps {
 }
 
 const ApplySaveForm = ({ SaveData }: ApplySaveFormProps) => {
-  console.log(SaveData);
+  // console.log(SaveData);
   const isMobile = useMediaQuery({ query: '(max-width: 500px)' });
   const [submitType, setSubmitType] = useState<'submit' | 'save'>('submit');
   const { mutate: saveApplication, isPending: saveLoading } =
