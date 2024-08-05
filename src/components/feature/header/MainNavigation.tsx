@@ -21,7 +21,7 @@ import { displayCenter } from '@gdsc/styles/LayoutStyle';
 import { renderDropdownItems } from './StatusDropDownItems';
 import styled from '@emotion/styled';
 
-const Header = styled.div`
+export const Header = styled.div`
   z-index: 1000;
   position: fixed;
   top: 0;
@@ -31,7 +31,7 @@ const Header = styled.div`
   ${displayCenter}
 `;
 
-const DisplayHeader = styled.nav`
+export const DisplayHeader = styled.nav`
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -41,14 +41,14 @@ const DisplayHeader = styled.nav`
   background-color: var(--color-navy);
 `;
 
-const Menu = styled.ul`
+export const Menu = styled.ul`
   list-style: none;
   display: flex;
   flex-direction: row;
 
   background-color: var(--color-navy);
 `;
-const MenuList = styled.li`
+export const MenuList = styled.li`
   display: flex;
   flex-direction: row;
   align-items: center;
@@ -57,11 +57,11 @@ const MenuList = styled.li`
   cursor: pointer;
 `;
 
-const NavImg = styled.img`
+export const NavImg = styled.img`
   margin-left: 20px;
 `;
 
-const ImgList = styled.img`
+export const ImgList = styled.img`
   width: 20px;
   height: 20px;
   border-radius: 50%;

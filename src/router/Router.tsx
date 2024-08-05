@@ -1,6 +1,7 @@
 import { createBrowserRouter } from 'react-router-dom';
 
 import ErrorPage from '@gdsc/pages/ErrorPage';
+import AdminRootPage from '@gdsc/pages/AdminRootPage';
 import RootPage from '@gdsc/pages/RootPage';
 import { AdminPage } from '@gdsc/pages/admin';
 import ApplyExPage from '@gdsc/pages/apply/ApplyExPage';
@@ -56,11 +57,15 @@ export const Router = createBrowserRouter([
       { path: 'introduce', element: <IntroducePage /> },
       { path: 'community', element: <CommunityPage /> },
       { path: 'techblog', element: <TechBlogPage /> },
-      {
-        path: 'admin',
-        element: <PrivateRoute />,
-        children: [{ path: '', element: <AdminPage /> }],
-      },
+    ],
+  },
+  {
+    path: '/admin',
+    element: <AdminRootPage />,
+    id: 'adminRoot',
+    errorElement: <ErrorPage />,
+    children: [
+      { index: true, element: <AdminPage />},
     ],
   },
   {
