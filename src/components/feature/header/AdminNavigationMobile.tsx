@@ -1,3 +1,4 @@
+import AdminNavigationSlide from './AdminNavigationSlide';
 import MenuHamburger from '@gdsc/assets/MenuHamburger.svg';
 
 import { useNavigationStore } from '@gdsc/store/useNavigationStore';
@@ -12,6 +13,7 @@ const AdminMainNavigationMobile = () => {
       <DisplayMobileHeader>
         <MobileImg src={MenuHamburger} alt='menu' onClick={open} />
       </DisplayMobileHeader>
+      <AdminNavigationSlide open={isOpen} />
     </MobileHeader>
   );
 };
