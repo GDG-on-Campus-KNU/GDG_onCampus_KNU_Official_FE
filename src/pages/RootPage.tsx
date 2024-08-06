@@ -16,6 +16,10 @@ export const MainContent = styled.main`
   flex-direction: column;
   align-items: center;
   overflow: hidden;
+
+  @media (max-width: 500px) {
+    padding-top: 75px;
+  }
 `;
 
 const RootPage = () => {
