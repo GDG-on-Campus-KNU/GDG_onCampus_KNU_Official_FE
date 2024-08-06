@@ -1,3 +1,5 @@
+import { useNavigate } from 'react-router-dom';
+
 import CompleteBtn from '@gdsc/components/common/button/CompleteBtn';
 import { LazyLoadImg } from '@gdsc/components/common/img/LazyLoadingImg';
 
@@ -13,6 +15,8 @@ import {
 } from './AdminTitle.style';
 
 const MobileErrorPage = () => {
+  const navigate = useNavigate();
+
   return (
     <>
       <MobileTitleWrapper>ADMIN PAGE</MobileTitleWrapper>
@@ -39,6 +43,7 @@ const MobileErrorPage = () => {
               backgroundColor='navy'
               hoverColor='gray'
               size='md'
+              onClick={() => navigate('/')}
             >
               홈으로 돌아가기
             </CompleteBtn>
