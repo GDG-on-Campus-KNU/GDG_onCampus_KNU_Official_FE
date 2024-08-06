@@ -1,7 +1,7 @@
-import AdminTitle from "./components/AdminTitle";
+import AdminTitle from './components/AdminTitle';
 
 const AdminDocConfirmPage = () => {
-    return <><AdminTitle /></>
-}
+  return <AdminTitle />;
+};
 
 export default AdminDocConfirmPage;

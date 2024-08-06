@@ -1,8 +1,8 @@
 import { useMediaQuery } from 'react-responsive';
 import { Outlet, useNavigation } from 'react-router-dom';
 
-import AdminMainNavigation from '@gdsc/components/feature/header/AdminNavigation';
-import AdminMainNavigationMobile from '@gdsc/components/feature/header/AdminNavigationMobile';
+import AdminMainNavigation from '@gdsc/components/feature/header/admin/AdminNavigation';
+import AdminMainNavigationMobile from '@gdsc/components/feature/header/admin/AdminNavigationMobile';
 
 import { MainContent } from './RootPage';
 

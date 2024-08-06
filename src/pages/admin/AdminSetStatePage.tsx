@@ -1,10 +1,7 @@
-import AdminTitle from "./components/AdminTitle";
+import AdminTitle from './components/AdminTitle';
 
 const AdminSetStatePage = () => {
-    return (
-    <>
-        <AdminTitle />
-    </>);
-}
+  return <AdminTitle />;
+};
 
 export default AdminSetStatePage;

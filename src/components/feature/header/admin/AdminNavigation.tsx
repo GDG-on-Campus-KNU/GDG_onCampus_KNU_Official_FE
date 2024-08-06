@@ -10,7 +10,7 @@ import {
   Menu,
   MenuList,
   NavImg,
-} from './MainNavigation';
+} from '../MainNavigation';
 
 export type DropdownMenuProps = {
   isOpen: boolean;

@@ -3,6 +3,7 @@ import { NavLink } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
 
 import Text from '@gdsc/components/common/typography/Text';
+
 import Home from '@gdsc/assets/Home.svg';
 import NavSlideClose from '@gdsc/assets/NavSlideClose.svg';
 
@@ -73,7 +74,7 @@ const MobileMenu = styled(motion.div)`
   border-radius: 12px 0 0 12px;
   background: linear-gradient(#392f4f, var(--color-revolver));
   z-index: 2000;
-  display:flex;
+  display: flex;
   align-items: flex-start;
   padding-top: 80px;
 `;
