@@ -4,7 +4,13 @@ import { NavLink } from 'react-router-dom';
 import NavigationLogo768 from '@gdsc/assets/NavigationLogo768.svg';
 import NavigationLogo from '@gdsc/assets/NavigationLogo.svg';
 
-import {Header, DisplayHeader, Menu, MenuList, NavImg } from "./MainNavigation";
+import {
+  Header,
+  DisplayHeader,
+  Menu,
+  MenuList,
+  NavImg,
+} from './MainNavigation';
 
 export type DropdownMenuProps = {
   isOpen: boolean;
@@ -30,8 +36,8 @@ const AdminMainNavigation = () => {
               </NavLink>
             </MenuList>
           )}
-          </Menu>
-        </DisplayHeader>  
+        </Menu>
+      </DisplayHeader>
     </Header>
   );
 };
