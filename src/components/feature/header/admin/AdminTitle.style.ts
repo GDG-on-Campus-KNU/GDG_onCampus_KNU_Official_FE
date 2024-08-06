@@ -71,3 +71,10 @@ export const MobileWarningContent = styled.span`
 export const MobileButtonWrapper = styled.div`
   width: 85%;
 `;
+
+export const MobileContainer = styled.div`
+  width: 100%;
+  height: calc(100vh - 75px);
+  display: flex;
+  flex-direction: column;
+`;

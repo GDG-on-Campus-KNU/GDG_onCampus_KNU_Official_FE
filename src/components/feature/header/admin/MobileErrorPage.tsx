@@ -12,13 +12,14 @@ import {
   MobileWarningContent,
   MobileButtonWrapper,
   MobileContentWrapper,
+  MobileContainer,
 } from './AdminTitle.style';
 
 const MobileErrorPage = () => {
   const navigate = useNavigate();
 
   return (
-    <>
+    <MobileContainer>
       <MobileTitleWrapper>ADMIN PAGE</MobileTitleWrapper>
       <MobileContentWrapper>
         <MobileContentContainer>
@@ -50,7 +51,7 @@ const MobileErrorPage = () => {
           </MobileButtonWrapper>
         </MobileContentContainer>
       </MobileContentWrapper>
-    </>
+    </MobileContainer>
   );
 };
 

@@ -67,11 +67,11 @@ export default AdminTitle;
 
 const HeaderLayout = styled.div`
   width: 100%;
-  height: calc(100vh - 45px);
+  height: calc(100% - 45px);
   margin-top: 45px;
 
   @media (max-width: 500px) {
-    height: calc(100vh - 75px);
+    height: calc(100% - 75px);
     margin-top: 75px;
   }
 `;
