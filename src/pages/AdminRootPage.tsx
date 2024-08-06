@@ -1,6 +1,7 @@
 import { useMediaQuery } from 'react-responsive';
 import { Outlet, useNavigation } from 'react-router-dom';
 
+import MainNavigationMobile from '@gdsc/components/feature/header/MainNavigationMobile';
 import AdminMainNavigation from '@gdsc/components/feature/header/admin/AdminNavigation';
 import AdminTitle from '@gdsc/components/feature/header/admin/AdminTitle';
 
@@ -15,7 +16,7 @@ const AdminRootPage = () => {
 
   return (
     <>
-      {isMobile ? null : <AdminMainNavigation />}
+      {isMobile ? <MainNavigationMobile /> : <AdminMainNavigation />}
       <AdminTitle />
       <MainContent>
         {[...Array(10)].map((_, index) => (
