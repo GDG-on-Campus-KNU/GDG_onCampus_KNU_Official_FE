@@ -1,5 +1,7 @@
+import AdminTitle from "./components/AdminTitle";
+
 const AdminTeamArrangePage = () => {
-    return <>AdminTeamArrangePage</>
+    return <><AdminTitle /></>
 }
 
 export default AdminTeamArrangePage;
