@@ -8,7 +8,7 @@ import { displayCenter } from '@gdsc/styles/LayoutStyle';
 
 import styled from '@emotion/styled';
 
-const MobileHeader = styled.div`
+export const MobileHeader = styled.div`
   z-index: 1000;
   position: fixed;
   top: 0;
@@ -18,7 +18,7 @@ const MobileHeader = styled.div`
   ${displayCenter}
 `;
 
-const DisplayMobileHeader = styled.nav`
+export const DisplayMobileHeader = styled.nav`
   display: flex;
   justify-content: flex-end;
   align-items: center;
@@ -27,7 +27,7 @@ const DisplayMobileHeader = styled.nav`
   height: 75px;
 `;
 
-const MobileImg = styled.img`
+export const MobileImg = styled.img`
   margin-right: 34px;
   cursor: pointer;
 `;

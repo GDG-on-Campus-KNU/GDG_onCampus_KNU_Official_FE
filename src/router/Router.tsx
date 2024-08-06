@@ -1,8 +1,11 @@
 import { createBrowserRouter } from 'react-router-dom';
 
+import AdminRootPage from '@gdsc/pages/AdminRootPage';
 import ErrorPage from '@gdsc/pages/ErrorPage';
 import RootPage from '@gdsc/pages/RootPage';
-import { AdminPage } from '@gdsc/pages/admin';
+import AdminDocConfirmPage from '@gdsc/pages/admin/AdminDocConfirmPage';
+import AdminSetStatePage from '@gdsc/pages/admin/AdminSetStatePage';
+import AdminTeamArrangePage from '@gdsc/pages/admin/AdminTeamArrangePage';
 import ApplyExPage from '@gdsc/pages/apply/ApplyExPage';
 import ApplyFormPage from '@gdsc/pages/apply/ApplyFormPage';
 import ApplyPage from '@gdsc/pages/apply/ApplyPage';
@@ -56,10 +59,28 @@ export const Router = createBrowserRouter([
       { path: 'introduce', element: <IntroducePage /> },
       { path: 'community', element: <CommunityPage /> },
       { path: 'techblog', element: <TechBlogPage /> },
+    ],
+  },
+  {
+    path: '/admin',
+    element: <AdminRootPage />,
+    id: 'adminRoot',
+    errorElement: <ErrorPage />,
+    children: [
       {
-        path: 'admin',
+        path: '',
         element: <PrivateRoute />,
-        children: [{ path: '', element: <AdminPage /> }],
+        children: [{ path: '', element: <AdminSetStatePage /> }],
+      },
+      {
+        path: 'team',
+        element: <PrivateRoute />,
+        children: [{ path: '', element: <AdminTeamArrangePage /> }],
+      },
+      {
+        path: 'document',
+        element: <PrivateRoute />,
+        children: [{ path: '', element: <AdminDocConfirmPage /> }],
       },
     ],
   },

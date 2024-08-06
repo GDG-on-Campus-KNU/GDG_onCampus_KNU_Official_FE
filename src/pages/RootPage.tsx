@@ -8,7 +8,7 @@ import { displayCenter } from '@gdsc/styles/LayoutStyle';
 import MainNavigation from '../components/feature/header/MainNavigation';
 import styled from '@emotion/styled';
 
-const MainContent = styled.main`
+export const MainContent = styled.main`
   padding-top: 45px;
   width: 100%;
   height: calc(auto - 45px);
@@ -16,6 +16,10 @@ const MainContent = styled.main`
   flex-direction: column;
   align-items: center;
   overflow: hidden;
+
+  @media (max-width: 500px) {
+    padding-top: 75px;
+  }
 `;
 
 const RootPage = () => {

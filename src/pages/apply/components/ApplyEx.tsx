@@ -193,7 +193,7 @@ const ApplyEx = () => {
               </SubLayout>
               <TitleWrapper>
                 <MainTitle color=' var(--color-white)'>{data.korean}</MainTitle>
-                <SubTitle>Frontend Developer</SubTitle>
+                <SubTitle>{data.english}</SubTitle>
                 <AppEx>{data.explain}</AppEx>
               </TitleWrapper>
             </TitleLayout>

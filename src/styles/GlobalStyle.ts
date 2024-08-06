@@ -41,12 +41,14 @@ const colorFireBrick = '#a42f25';
 const colorGoldenRod = '#b08404';
 const colorMidnightBlue = '#1f1a2c';
 const colorSunsetRed = '#ea4335';
+const colorGrayishPurple = '#645f78';
+const colorSmokyGray = '#807c8f';
+const colorLavendarGray = '#b9b7c0';
 const colorTransParent = 'rgba(255, 255, 255, 0.8)';
+const colorMoreTransParent = 'rgba(255, 255, 255, 0.15)';
 const colorGradient = 'linear-gradient(to top, #1f1632 0%, #392f4f 100%)';
 
 export const GlobalStyle = css`
-  @import url('https://fonts.googleapis.com/css2?family=Noto+Sans:ital,wdth,wght@0,62.5..100,100..900;1,62.5..100,100..900&display=swap');
-
   :root {
     --font-size-xxl: ${fontSizeXxl};
     --font-size-mxl: ${fontSizeMxl};
@@ -89,6 +91,10 @@ export const GlobalStyle = css`
     --color-midnight: ${colorMidnightBlue};
     --color-red: ${colorSunsetRed};
     --color-gradient: ${colorGradient};
+    --color-grayish: ${colorGrayishPurple};
+    --color-smoky: ${colorSmokyGray};
+    --color-lavendar: ${colorLavendarGray};
+    --color-more-transparent: ${colorMoreTransParent};
   }
 
   ::-webkit-scrollbar {
@@ -105,7 +111,8 @@ export const GlobalStyle = css`
     -ms-overflow-style: none;
     scrollbar-width: none;
     flex-direction: column;
-    font-family: 'Noto+Sans', monospace;
+    font-family: 'Noto Sans KR', sans-serif;
+    font-optical-sizing: auto;
     background-color: var(--color-revolver);
     color: var(--color-white);
     line-height: 1.4;

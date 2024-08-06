@@ -5,6 +5,7 @@ const Button = styled.button<IButton>`
   display: flex;
   align-items: center;
   justify-content: center;
+  width: 100%;
 
   padding: 10px 20px;
 
