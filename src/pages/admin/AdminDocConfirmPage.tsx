@@ -1,7 +1,7 @@
-import AdminTitle from './components/AdminTitle';
+import { DisplayLayout } from '@gdsc/styles/LayoutStyle';
 
 const AdminDocConfirmPage = () => {
-  return <AdminTitle />;
+  return <DisplayLayout>123</DisplayLayout>;
 };
 
 export default AdminDocConfirmPage;

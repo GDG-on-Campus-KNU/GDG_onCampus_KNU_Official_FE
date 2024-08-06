@@ -1,7 +1,7 @@
-import AdminTitle from './components/AdminTitle';
+import { DisplayLayout } from '@gdsc/styles/LayoutStyle';
 
 const AdminTeamArrangePage = () => {
-  return <AdminTitle />;
+  return <DisplayLayout></DisplayLayout>;
 };
 
 export default AdminTeamArrangePage;
