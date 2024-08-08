@@ -21,7 +21,7 @@ import styled from '@emotion/styled';
 const getTitle = (pathname: string): string => {
   switch (pathname) {
     case '/admin':
-      return '상태조정';
+      return '상태 조정';
     case '/admin/team':
       return '팀 배치';
     case '/admin/document':
