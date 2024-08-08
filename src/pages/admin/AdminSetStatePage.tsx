@@ -18,7 +18,7 @@ const AdminSetStatePage = () => {
             height='43px'
             color='navy'
             backgroundColor='navy'
-            hoverColor='navy'
+            hoverColor='red'
           >
             삭제하기
           </CommonBtn>
