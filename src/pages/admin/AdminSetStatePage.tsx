@@ -4,6 +4,7 @@ import { DisplayLayout } from '@gdsc/styles/LayoutStyle';
 
 import { ButtonContainer, TopContainer } from './AdminSetStatePage.style';
 import AdminSearchBar from './components/AdminSearchBar';
+import MemberTable from './components/MemberTable';
 
 const AdminSetStatePage = () => {
   return (
@@ -35,6 +36,7 @@ const AdminSetStatePage = () => {
         </ButtonContainer>
         <AdminSearchBar />
       </TopContainer>
+      <MemberTable />
     </DisplayLayout>
   );
 };
