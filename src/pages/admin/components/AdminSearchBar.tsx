@@ -4,7 +4,7 @@ import {
   SearchBarContainer,
   SearchIconImg,
   SearchInput,
-} from './AdmiinSearchBar.style';
+} from './AdminSearchBar.style';
 
 const AdminSearchBar = () => {
   return (
