@@ -9,6 +9,8 @@ import {
   useGetUserList,
 } from '@gdsc/apis/hooks/admin/useGetUserList';
 
+import { useSelectedUserStore } from '@gdsc/store/useSelectedUserStore';
+
 import {
   StyledTable,
   TableHeader,
@@ -26,8 +28,10 @@ import {
 const MemberTable = () => {
   const [currentPage, setCurrentPage] = useState<number>(0);
   const [currentGroup, setCurrentGroup] = useState<number>(0);
-  const { data } = useGetUserList(currentPage, 7);
   const [userList, setUserList] = useState<userListInterface | null>(null);
+
+  const { data } = useGetUserList(currentPage, 7);
+  const { selectedUsers, addSelectedUser } = useSelectedUserStore();
 
   useEffect(() => {
     setUserList(data ?? null);
@@ -51,20 +55,20 @@ const MemberTable = () => {
     }
   };
 
-  const [selectedUser, setSelectedUser] = useState<number[]>([]);
+  // const [selectedUser, setSelectedUser] = useState<number[]>([]);
 
-  const addSelectedUser = (userId: number) => {
-    setSelectedUser((prev) => {
-      if (prev.includes(userId)) {
-        return prev.filter((id) => id !== userId);
-      } else {
-        return [...prev, userId];
-      }
-    });
-  };
+  // const addSelectedUser = (userId: number) => {
+  //   setSelectedUser((prev) => {
+  //     if (prev.includes(userId)) {
+  //       return prev.filter((id) => id !== userId);
+  //     } else {
+  //       return [...prev, userId];
+  //     }
+  //   });
+  // };
 
   const table = useReactTable({
-    columns: columns(selectedUser, addSelectedUser),
+    columns: columns(selectedUsers, addSelectedUser),
     data: userList?.data || [],
     getCoreRowModel: getCoreRowModel(),
   });
