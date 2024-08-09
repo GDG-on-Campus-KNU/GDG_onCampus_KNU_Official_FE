@@ -34,6 +34,7 @@ export const TableCell = styled.td`
   &:last-child {
     border-top-right-radius: 12px;
     border-bottom-right-radius: 12px;
+    padding-right: 10px;
   }
 `;
 
