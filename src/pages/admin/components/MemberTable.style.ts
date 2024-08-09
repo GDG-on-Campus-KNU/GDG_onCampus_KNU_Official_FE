@@ -23,6 +23,8 @@ export const TableCell = styled.td`
   border: none;
   white-space: nowrap;
 
+  font-size: 14px;
+
   &:first-child {
     border-top-left-radius: 12px;
     border-bottom-left-radius: 12px;
