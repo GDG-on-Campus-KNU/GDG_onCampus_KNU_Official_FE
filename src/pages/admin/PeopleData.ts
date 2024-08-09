@@ -30,7 +30,28 @@ export const tableData: Person = {
       studentNumber: '2020114614',
       email: 'scwcart2004@gmail.com',
       phoneNumber: '010-3167-7193',
-      teams: [],
+      teams: [
+        {
+          teamName: 'FE study 2팀',
+          TeamPageUrl: 'url',
+        },
+        {
+          teamName: 'Solution Challenge 3팀',
+          TeamPageUrl: 'url',
+        },
+        {
+          teamName: 'Solution Challenge 3팀',
+          TeamPageUrl: 'url',
+        },
+        {
+          teamName: 'Solution Challenge 3팀',
+          TeamPageUrl: 'url',
+        },
+        {
+          teamName: 'Solution Challenge 3팀',
+          TeamPageUrl: 'url',
+        },
+      ],
       role: 'ROLE_CORE',
     },
     {
