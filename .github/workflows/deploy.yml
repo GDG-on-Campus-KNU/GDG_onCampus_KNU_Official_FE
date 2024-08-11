@@ -5,7 +5,7 @@ on:
     branches: ['main']
 env:
   AWS_REGION: ap-northeast-2
-  S3_BUCKET_NAME: gdsc-knu-4
+  S3_BUCKET_NAME: gdsc-knu.com
 
 permissions:
   contents: read
