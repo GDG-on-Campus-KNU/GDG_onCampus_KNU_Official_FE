@@ -32,7 +32,7 @@ jobs:
           npm install -g pnpm
 
       - name: Install Dependencies
-        run: pnpm install --force
+        run: pnpm install --no-frozen-lockfile --force
 
       - name: Build
         run: CI='' pnpm run build
