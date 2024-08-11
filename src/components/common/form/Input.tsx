@@ -31,8 +31,6 @@ const InputLabel = styled.label`
   @media (max-width: 500px) {
     font-weight: normal;
   }
-
-  font-family: 'Noto+Sans';
 `;
 
 const InputElement = styled.input`
@@ -51,7 +49,6 @@ const InputElement = styled.input`
   border-radius: 12px;
 
   font-size: var(--font-size-md);
-  font-family: 'Noto+Sans';
 
   background-color: var(--color-que);
   opacity: 100%;

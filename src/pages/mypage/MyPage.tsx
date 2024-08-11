@@ -63,8 +63,6 @@ const EmptyDiv = styled.div`
 const InputLabel = styled.label`
   font-size: var(--font-size-md);
   font-weight: bold;
-
-  font-family: 'Noto+Sans';
 `;
 
 const TokenContainer = styled.div`

@@ -45,12 +45,13 @@ const TextLayout = styled.div`
 `;
 
 const ExplainLayout = styled.div`
-  margin-top: 21.54px;
+  margin-top: 16px;
 `;
 
 const HighlightText = styled(Text)<{ highlightColor?: string }>`
   position: relative;
   z-index: 1;
+
   ::before {
     content: '';
     position: absolute;
@@ -169,7 +170,7 @@ const FieldTable = () => {
             DESIGNER
           </HighlightText>
           <ExplainLayout>
-            <Text color='black' size='md'>
+            <Text color='black' size='xs'>
               사용자 조사, 정보 구조 설계, 와이어 프레임 및 프로토타입 제작 등의
               작업을 담당합니다. 디자이너는 사용자의 니즈와 목표를 이해하고,
               해당 제품 또는 서비스가 사용자에게 제공하는 가치를 극대화하기 위해

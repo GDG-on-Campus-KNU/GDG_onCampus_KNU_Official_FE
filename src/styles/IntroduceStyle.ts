@@ -3,7 +3,7 @@ import styled from '@emotion/styled';
 export const GDSCText = styled.div`
   color: var(--color-white);
   font-size: var(--font-size-xl);
-  font-weight: 600;
+  font-weight: 700;
   text-align: center;
 
   @media (max-width: 500px) {
