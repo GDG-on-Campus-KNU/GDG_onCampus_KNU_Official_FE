@@ -63,8 +63,6 @@ const MemberTable = () => {
     });
   };
 
-  console.log(selectedUser);
-
   const table = useReactTable({
     columns: columns(selectedUser, addSelectedUser),
     data: userList?.data || [],
