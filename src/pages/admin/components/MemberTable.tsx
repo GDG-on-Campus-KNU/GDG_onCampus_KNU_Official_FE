@@ -51,8 +51,22 @@ const MemberTable = () => {
     }
   };
 
+  const [selectedUser, setSelectedUser] = useState<number[]>([]);
+
+  const addSelectedUser = (userId: number) => {
+    setSelectedUser((prev) => {
+      if (prev.includes(userId)) {
+        return prev.filter((id) => id !== userId);
+      } else {
+        return [...prev, userId];
+      }
+    });
+  };
+
+  console.log(selectedUser);
+
   const table = useReactTable({
-    columns,
+    columns: columns(selectedUser, addSelectedUser),
     data: userList?.data || [],
     getCoreRowModel: getCoreRowModel(),
   });
