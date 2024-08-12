@@ -37,11 +37,6 @@ jobs:
       - name: Build
         run: CI='' pnpm run build
 
-      - name: Invalidate CloudFront Cache
-        run:
-          aws cloudfront create-invalidation --distribution-id ${{
-          secrets.AWS_DISTRIBUTION_ID }} --paths "/*"
-
       - name: Configure AWS credentials
         uses: aws-actions/configure-aws-credentials@v1
         with:
@@ -55,3 +50,7 @@ jobs:
             --recursive \
             --region ap-northeast-2 \
             ./dist s3://${{env.S3_BUCKET_NAME}}
+
+      - name: Invalidate CloudFront Cache
+        run:
+          aws cloudfront create-invalidation --distribution-id ${{secrets.AWS_DISTRIBUTION_ID }} --paths "/*"
