@@ -11,14 +11,22 @@ const Role: { [key: string]: string } = {
 };
 
 const columnHelper = createColumnHelper<PersonData>();
-export const columns = [
+export const columns = (
+  selectedUser: number[],
+  addSelectedUser: (id: number) => void
+) => [
   columnHelper.display({
     id: 'actions',
-    cell: () => {
+    cell: ({ row }) => {
       return (
         <>
-          <input type='checkbox' id='checkbox-action' />
-          <label htmlFor='checkbox-action'>{''}</label>
+          <input
+            type='checkbox'
+            id={`checkbox-action-${row.id}`}
+            checked={selectedUser.includes(row.original.id)}
+            onChange={() => addSelectedUser(row.original.id)}
+          />
+          <label htmlFor={`checkbox-action-${row.id}`}>{''}</label>
         </>
       );
     },
