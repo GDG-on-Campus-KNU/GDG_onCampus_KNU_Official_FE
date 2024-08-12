@@ -1,5 +1,6 @@
-import { PersonData } from '@gdsc/pages/admin/PeopleData';
 import TeamCell from '@gdsc/pages/admin/components/TeamCell';
+
+import { PersonData } from '@gdsc/apis/hooks/admin/useGetUserList';
 
 import { createColumnHelper } from '@tanstack/react-table';
 

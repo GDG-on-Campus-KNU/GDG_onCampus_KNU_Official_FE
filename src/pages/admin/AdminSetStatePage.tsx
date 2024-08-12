@@ -1,5 +1,7 @@
 import CommonBtn from '@gdsc/components/common/button/CommonBtn';
 
+import { useGetUserList } from '@gdsc/apis/hooks/admin/useGetUserList';
+
 import { DisplayLayout } from '@gdsc/styles/LayoutStyle';
 
 import { ButtonContainer, TopContainer } from './AdminSetStatePage.style';
@@ -7,6 +9,9 @@ import AdminSearchBar from './components/AdminSearchBar';
 import MemberTable from './components/MemberTable';
 
 const AdminSetStatePage = () => {
+  const { data } = useGetUserList(1, 7);
+  console.log(data);
+
   return (
     <DisplayLayout>
       <TopContainer>
