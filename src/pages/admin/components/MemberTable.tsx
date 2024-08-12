@@ -1,7 +1,14 @@
-//import { useState } from 'react';
+import { useState, useEffect } from 'react';
+
+import Pagination from '@gdsc/components/common/pagination/pagination';
+
 import { columns } from '@gdsc/constants/MemberTableColumns';
 
-import { PersonData, tableData } from '../PeopleData';
+import {
+  userListInterface,
+  useGetUserList,
+} from '@gdsc/apis/hooks/admin/useGetUserList';
+
 import {
   StyledTable,
   TableHeader,
@@ -17,46 +24,80 @@ import {
 } from '@tanstack/react-table';
 
 const MemberTable = () => {
-  //const [data, setData] = useState<PersonData[]>([...tableData.data]);
-  const data: PersonData[] = [...tableData.data];
+  const [currentPage, setCurrentPage] = useState<number>(0);
+  const [currentGroup, setCurrentGroup] = useState<number>(0);
+  const { data } = useGetUserList(currentPage, 7);
+  const [userList, setUserList] = useState<userListInterface | null>(null);
+
+  useEffect(() => {
+    setUserList(data ?? null);
+  }, [data]);
+
+  const totalPages = data ? data.totalPage : 0;
+
+  const handlePageChange = (page: number) => {
+    setCurrentPage(page - 1);
+  };
+
+  const handleNextGroup = () => {
+    if (currentGroup < Math.ceil(totalPages / 5) - 1) {
+      setCurrentGroup(currentGroup + 1);
+    }
+  };
+
+  const handlePrevGroup = () => {
+    if (currentGroup > 0) {
+      setCurrentGroup(currentGroup - 1);
+    }
+  };
 
   const table = useReactTable({
     columns,
-    data,
+    data: userList?.data || [],
     getCoreRowModel: getCoreRowModel(),
   });
 
   return (
-    <StyledTable>
-      <TableHeader>
-        {table.getHeaderGroups().map((headerGroup) => (
-          <TableHeaderRow key={headerGroup.id}>
-            {headerGroup.headers.map((header) => (
-              <TableHeaderCell key={header.id}>
-                {header.isPlaceholder
-                  ? null
-                  : flexRender(
-                      header.column.columnDef.header,
-                      header.getContext()
-                    )}
-              </TableHeaderCell>
-            ))}
-          </TableHeaderRow>
-        ))}
-      </TableHeader>
+    <>
+      <StyledTable>
+        <TableHeader>
+          {table.getHeaderGroups().map((headerGroup) => (
+            <TableHeaderRow key={headerGroup.id}>
+              {headerGroup.headers.map((header) => (
+                <TableHeaderCell key={header.id}>
+                  {header.isPlaceholder
+                    ? null
+                    : flexRender(
+                        header.column.columnDef.header,
+                        header.getContext()
+                      )}
+                </TableHeaderCell>
+              ))}
+            </TableHeaderRow>
+          ))}
+        </TableHeader>
 
-      <tbody>
-        {table.getRowModel().rows.map((row) => (
-          <TableRow key={row.id}>
-            {row.getVisibleCells().map((cell) => (
-              <TableCell key={cell.id}>
-                {flexRender(cell.column.columnDef.cell, cell.getContext())}
-              </TableCell>
-            ))}
-          </TableRow>
-        ))}
-      </tbody>
-    </StyledTable>
+        <tbody>
+          {table.getRowModel().rows.map((row) => (
+            <TableRow key={row.id}>
+              {row.getVisibleCells().map((cell) => (
+                <TableCell key={cell.id}>
+                  {flexRender(cell.column.columnDef.cell, cell.getContext())}
+                </TableCell>
+              ))}
+            </TableRow>
+          ))}
+        </tbody>
+      </StyledTable>
+      <Pagination
+        currentPage={currentPage}
+        totalPages={totalPages}
+        currentGroup={currentGroup}
+        onPageChange={handlePageChange}
+        onNextGroup={handleNextGroup}
+        onPrevGroup={handlePrevGroup}
+      />
+    </>
   );
 };
 
