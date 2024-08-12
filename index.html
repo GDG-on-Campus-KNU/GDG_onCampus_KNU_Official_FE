@@ -1,23 +1,9 @@
 <!doctype html>
 <html lang="ko">
   <head>
-    <!-- Google Tag Manager -->
-    <script>
-      (function (w, d, s, l, i) {
-        w[l] = w[l] || [];
-        w[l].push({ 'gtm.start': new Date().getTime(), event: 'gtm.js' });
-        var f = d.getElementsByTagName(s)[0],
-          j = d.createElement(s),
-          dl = l != 'dataLayer' ? '&l=' + l : '';
-        j.async = true;
-        j.src = 'https://www.googletagmanager.com/gtm.js?id=' + i + dl;
-        f.parentNode.insertBefore(j, f);
-      })(window, document, 'script', 'dataLayer', 'GTM-W32WWP7S');
-    </script>
-    <!-- End Google Tag Manager -->
-
     <meta charset="UTF-8" />
     <link rel="icon" type="image/svg+xml" href="/GDSC.svg" />
+    <link rel="apple-touch-icon" href="/GDSC.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>GDSC_KNU_OFFICIAL</title>
 
@@ -33,21 +19,46 @@
       content="591d63b39f14870ba53863f0f1ee27abdc89f5c2"
     />
 
-    <!-- 구글 애널리틱스 -->
+    <!-- 기본 메타데이터 -->
+    <meta
+      name="description"
+      content="GDSC 경북대의 공식 홈페이지에 오신걸 환영합니다. GDSC 활동과 관련된 최신 정보와 이벤트 소식을 확인하세요."
+    />
+    <meta
+      name="keywords"
+      content="GDSC, 경북대학교, Google Developer Student Clubs, KNU, 프로그래밍, 개발자 커뮤니티"
+    />
+    <meta name="author" content="GDSC KNU Team" />
+    <meta name="theme-color" content="#4285f4" />
+    <link rel="canonical" href="https://gdsc-knu.com" />
+    <meta name="robots" content="index, follow" />
+
+    <!-- 오픈그래프 메타데이터 -->
+    <meta property="og:title" content="GDSC_KNU_OFFICIAL" />
+    <meta
+      name="og:description"
+      content="GDSC 경북대의 공식 홈페이지에 오신걸 환영합니다. GDSC 활동과 관련된 최신 정보와 이벤트 소식을 확인하세요."
+    />
+
+    <meta property="og:image" content="/public/WhiteLogo.png" />
+    <meta property="og:url" content="https://gdsc-knu.com" />
+    <meta property="og:type" content="website" />
+    <meta property="og:locale" content="ko_KR" />
+    <meta property="og:site_name" content="GDSC KNU Official" />
+
+    <!-- 트위터 카드 메타데이터 -->
+    <meta name="twitter:card" content="/public/WhiteLogo.png" />
+    <meta name="twitter:title" content="GDSC_KNU_OFFICIAL" />
+    <meta
+      name="twitter:description"
+      content="GDSC 경북대의 공식 홈페이지에 오신걸 환영합니다. GDSC 활동과 관련된 최신 정보와 이벤트 소식을 확인하세요."
+    />
+
+    <meta name="twitter:image" content="/public/WhiteLogo.png" />
+    <meta name="twitter:url" content="https://gdsc-knu.com" />
   </head>
   <body>
     <div id="root"></div>
     <script type="module" src="/src/main.tsx"></script>
-
-    <!-- Google Tag Manager (noscript) -->
-    <noscript
-      ><iframe
-        src="https://www.googletagmanager.com/ns.html?id=GTM-W32WWP7S"
-        height="0"
-        width="0"
-        style="display: none; visibility: hidden"
-      ></iframe
-    ></noscript>
-    <!-- End Google Tag Manager (noscript) -->
   </body>
 </html>
