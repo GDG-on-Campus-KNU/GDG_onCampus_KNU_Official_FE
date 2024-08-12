@@ -1,4 +1,4 @@
-export interface IButton {
+export interface IButton extends React.ButtonHTMLAttributes<HTMLButtonElement> {
   color: string;
   backgroundColor: string;
   hoverColor: string;
