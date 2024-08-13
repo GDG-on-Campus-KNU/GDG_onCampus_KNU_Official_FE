@@ -144,6 +144,10 @@ const ArrowImg = styled.img`
   }
 `;
 
+const CompleteBtnWrapper = styled.div`
+  width: 90%;
+`;
+
 const RotateCarousel = () => {
   const { angle, setAngle, opacityArray, setOpacityArray } = useCarouselStore();
   const isNotPC = useMediaQuery({ query: '(max-width: 767px)' });
@@ -219,15 +223,17 @@ const RotateCarousel = () => {
                   >
                     {cardData[index].contentText}
                   </MobileContentText>
-                  <CompleteBtn
-                    size='md'
-                    type='button'
-                    color='blue'
-                    backgroundColor='blue'
-                    hoverColor='blue'
-                  >
-                    팀블로그 바로가기
-                  </CompleteBtn>
+                  <CompleteBtnWrapper>
+                    <CompleteBtn
+                      size='xs'
+                      type='button'
+                      color='blue'
+                      backgroundColor='blue'
+                      hoverColor='blue'
+                    >
+                      팀블로그 바로가기
+                    </CompleteBtn>
+                  </CompleteBtnWrapper>
                 </Card>
               ))}
             </Carousel>
@@ -289,15 +295,17 @@ const RotateCarousel = () => {
                   >
                     {cardData[index].contentText}
                   </ContentText>
-                  <CompleteBtn
-                    size='md'
-                    type='button'
-                    color='blue'
-                    backgroundColor='blue'
-                    hoverColor='blue'
-                  >
-                    팀블로그 바로가기
-                  </CompleteBtn>
+                  <CompleteBtnWrapper>
+                    <CompleteBtn
+                      size='md'
+                      type='button'
+                      color='blue'
+                      backgroundColor='blue'
+                      hoverColor='blue'
+                    >
+                      팀블로그 바로가기
+                    </CompleteBtn>
+                  </CompleteBtnWrapper>
                 </Card>
               ))}
             </Carousel>
