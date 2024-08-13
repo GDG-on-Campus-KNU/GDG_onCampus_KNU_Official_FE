@@ -27,7 +27,7 @@ const getUserListPath = () => '/api/admin/member';
 
 const userListQueryKey = [getUserListPath()];
 
-export const getUserList = async (
+const getUserList = async (
   page: number,
   size: number
 ): Promise<userListInterface> => {

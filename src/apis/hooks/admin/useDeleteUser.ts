@@ -1,25 +1,29 @@
 import { fetchInstance } from '@gdsc/apis/instance/Api_JWT';
 
-import { useQuery } from '@tanstack/react-query';
+import { useMutation } from '@tanstack/react-query';
 
 const deleteUserListPath = () => '/api/admin/member';
 
-const userListQueryKey = [deleteUserListPath()];
-
-export const deleteUserList = async (selectedUser: number[]) => {
+const deleteUserList = async (selectedUser: number[]): Promise<void> => {
   await fetchInstance.delete(deleteUserListPath(), {
-    params: {
+    data: {
       userIds: selectedUser,
     },
   });
 };
 
-export const useDeleteUserList = (selectedUser: number[]) => {
+export const useDeleteUserList = () => {
   const accessToken = localStorage.getItem('accessToken');
 
-  return useQuery({
-    queryKey: [userListQueryKey, selectedUser],
-    queryFn: () => deleteUserList(selectedUser),
-    enabled: !!accessToken,
+  const mutation = useMutation<void, Error, number[]>({
+    mutationFn: (selectedUser: number[]) => {
+      console.log(selectedUser);
+      if (!accessToken) {
+        return Promise.reject(new Error('액세스 토큰이 없습니다.'));
+      }
+      return deleteUserList(selectedUser);
+    },
   });
+
+  return mutation;
 };

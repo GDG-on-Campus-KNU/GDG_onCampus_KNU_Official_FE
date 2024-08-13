@@ -71,6 +71,7 @@ const Button = styled.button<ICButton>`
   }};
 
   &:hover {
+    cursor: pointer;
     background-color: ${(props) => {
       switch (props.hoverColor) {
         case 'blue':

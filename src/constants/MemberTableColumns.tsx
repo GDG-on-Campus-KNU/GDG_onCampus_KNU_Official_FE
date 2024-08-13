@@ -1,4 +1,4 @@
-import TeamCell from '@gdsc/pages/admin/components/TeamCell';
+import TeamCell from '@gdsc/pages/admin/components/status/TeamCell';
 
 import { PersonData } from '@gdsc/apis/hooks/admin/useGetUserList';
 

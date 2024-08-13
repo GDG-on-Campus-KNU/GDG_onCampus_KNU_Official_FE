@@ -1,16 +1,24 @@
-import CommonBtn from '@gdsc/components/common/button/CommonBtn';
+import { useState } from 'react';
 
-import { useGetUserList } from '@gdsc/apis/hooks/admin/useGetUserList';
+import CommonBtn from '@gdsc/components/common/button/CommonBtn';
 
 import { DisplayLayout } from '@gdsc/styles/LayoutStyle';
 
 import { ButtonContainer, TopContainer } from './AdminSetStatePage.style';
-import AdminSearchBar from './components/AdminSearchBar';
-import MemberTable from './components/MemberTable';
+import AdminSearchBar from './components/status/AdminSearchBar';
+import DeleteModal from './components/status/DeleteModal';
+import MemberTable from './components/status/MemberTable';
 
 const AdminSetStatePage = () => {
-  const { data } = useGetUserList(1, 7);
-  console.log(data);
+  const [deleteModalOpen, setDeleteModalOpen] = useState<boolean>(false);
+
+  const handleDeleteClick = () => {
+    setDeleteModalOpen(true);
+  };
+
+  const handleCloseModal = () => {
+    setDeleteModalOpen(false);
+  };
 
   return (
     <DisplayLayout>
@@ -24,6 +32,7 @@ const AdminSetStatePage = () => {
             color='navy'
             backgroundColor='navy'
             hoverColor='red'
+            onClick={handleDeleteClick}
           >
             삭제하기
           </CommonBtn>
@@ -42,6 +51,7 @@ const AdminSetStatePage = () => {
         <AdminSearchBar />
       </TopContainer>
       <MemberTable />
+      {deleteModalOpen && <DeleteModal onClose={handleCloseModal} />}
     </DisplayLayout>
   );
 };
