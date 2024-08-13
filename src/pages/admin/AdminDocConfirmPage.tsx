@@ -1,17 +1,14 @@
 import { useState } from 'react';
 
-import SearchIcon from '@gdsc/assets/admin/Search.svg';
-
-import { useGetApplyDocs } from '@gdsc/apis/hooks/admin/useGetApplyDocs';
+import { useGetStatistic } from '@gdsc/apis/hooks/admin/useGetStatistic';
 
 import { DisplayLayout } from '@gdsc/styles/LayoutStyle';
 
-import AdminConfirmTable from './components/docs/AdminConfirmTable';
 import CurrentApplyInfo from './components/docs/CurrentApplyInfo';
+import DocsSearchBar from './components/docs/DocsSearchBar';
 import Stars from './components/docs/Stars';
-import TrackSelectButtons from './components/docs/TrackSelectButtons';
+import TableSection from './components/docs/TableSection';
 import styled from '@emotion/styled';
-import { Track } from '@gdsc/types/AdminInterface';
 
 const PassBtn = styled.button<{ isSelected: boolean }>`
   display: flex;
@@ -38,46 +35,7 @@ const ButtonBox = styled.div`
   margin-bottom: 1rem;
 `;
 
-const Icon = styled.img`
-  width: 20px;
-  height: 20px;
-`;
-
-const InputWrapper = styled.div`
-  display: flex;
-  width: 100%;
-  flex-direction: row;
-  align-items: center;
-  justify-content: center;
-  padding: 10px 1rem;
-  gap: 10px;
-  margin-bottom: 10px;
-  background-color: var(--color-que);
-  border-radius: 12px;
-`;
-
-const SearchInput = styled.input`
-  width: 100%;
-  height: 100%;
-  border: none;
-  background-color: transparent;
-  color: white;
-
-  :focus {
-    outline: none;
-  }
-`;
-
-const InputBox = styled.div`
-  display: flex;
-  flex-direction: row;
-  margin-bottom: 10px;
-  text-align: center;
-  align-items: center;
-  justify-content: center;
-`;
-
-const Wrapper = styled.div`
+const InfoBox = styled.div`
   display: flex;
   flex-direction: row;
   justify-content: space-between;
@@ -87,53 +45,30 @@ const Wrapper = styled.div`
 
 const AdminDocConfirmPage = () => {
   const [isSelected, setIsSelected] = useState(false);
-  const [currentPage, setCurrentPage] = useState<number>(0);
   const [isMarked, setIsMarked] = useState<boolean>(false);
-  const [track, setTrack] = useState<Track | ''>('');
+
+  const [name, setName] = useState<string>('');
 
   const handlePassCheck = () => {
     setIsSelected((prev) => !prev);
     setIsMarked((prev) => !prev);
   };
 
-  const { data } = useGetApplyDocs(track, isMarked, currentPage, 12);
-
-  const allApply = data?.data.length || 0;
+  const { data } = useGetStatistic();
 
   return (
     <DisplayLayout>
-      <Wrapper>
+      <InfoBox>
         <ButtonBox>
           <PassBtn isSelected={isSelected} onClick={handlePassCheck}>
             <Stars color='white' />
             서류합격자 조회
           </PassBtn>
         </ButtonBox>
-        <InputBox>
-          <InputWrapper>
-            <label htmlFor='search'>
-              <Icon src={SearchIcon} />
-            </label>
-            <SearchInput type='text' id='search' />
-          </InputWrapper>
-        </InputBox>
-      </Wrapper>
-      {data && <CurrentApplyInfo response={data.data} all={allApply} />}
-      {data && (
-        <TrackSelectButtons
-          data={data}
-          track={track}
-          setTrack={setTrack}
-          applyData={allApply}
-        />
-      )}
-      {data && (
-        <AdminConfirmTable
-          data={data}
-          currentPage={currentPage}
-          setCurrentPage={setCurrentPage}
-        />
-      )}
+        <DocsSearchBar name={name} setName={setName} />
+      </InfoBox>
+      {data && <CurrentApplyInfo response={data} />}
+      <TableSection total={data?.total} marked={isMarked} name={name} />
     </DisplayLayout>
   );
 };
