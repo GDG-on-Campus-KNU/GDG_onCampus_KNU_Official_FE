@@ -4,7 +4,7 @@ import { useMutation } from '@tanstack/react-query';
 
 const deleteUserListPath = () => '/api/admin/member';
 
-export const deleteUserList = async (selectedUser: number[]): Promise<void> => {
+const deleteUserList = async (selectedUser: number[]): Promise<void> => {
   await fetchInstance.delete(deleteUserListPath(), {
     data: {
       userIds: selectedUser,
