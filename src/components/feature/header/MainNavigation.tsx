@@ -15,6 +15,7 @@ import NoneProfile from '@gdsc/assets/NoneProfile.png';
 import { useGetMyData } from '@gdsc/apis/hooks/mypage/useGetMyData';
 
 import { useHeaderDropDownState } from '@gdsc/store/useHeaderDropDownStore';
+import useUserStatusStore from '@gdsc/store/useUserStatusStore';
 
 import { displayCenter } from '@gdsc/styles/LayoutStyle';
 
@@ -85,6 +86,8 @@ const MainNavigation = () => {
   const { data: MyData } = useGetMyData();
   const navigate = useNavigate();
 
+  const setUser = useUserStatusStore((state) => state.setUser);
+
   useEffect(() => {
     if (MyData && MyData?.role === 'ROLE_TEMP') {
       alert(
@@ -92,7 +95,16 @@ const MainNavigation = () => {
       );
       navigate('/signup');
     }
-  }, [MyData, navigate]);
+
+    if (MyData) {
+      const userStatus = MyData.role.replace('ROLE_', '') as
+        | 'TEMP'
+        | 'GUEST'
+        | 'MEMBER'
+        | 'CORE';
+      setUser({ name: MyData.name, status: userStatus });
+    }
+  }, [MyData, navigate, setUser]);
 
   // console.log(MyData);
   return (
