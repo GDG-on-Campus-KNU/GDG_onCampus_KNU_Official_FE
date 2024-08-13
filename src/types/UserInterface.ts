@@ -27,3 +27,11 @@ export interface putUserDataInterface {
   email?: string;
   introduction?: string;
 }
+
+export interface User {
+  name: string;
+  status: 'TEMP' | 'CORE' | 'MEMBER' | 'GUEST';
+}
+
+export type AuthenticatedUser = User;
+export type UnauthenticatedUser = 'TEMP';
