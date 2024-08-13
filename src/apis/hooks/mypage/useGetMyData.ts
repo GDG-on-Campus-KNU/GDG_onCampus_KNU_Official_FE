@@ -7,7 +7,7 @@ const getMyDataPath = () => '/api/user';
 
 const myDataQueryKey = [getMyDataPath()];
 
-export const getMyData = async (): Promise<userDataInterface> => {
+const getMyData = async (): Promise<userDataInterface> => {
   const response = await fetchInstance.get<userDataInterface>(getMyDataPath());
 
   return response.data;
