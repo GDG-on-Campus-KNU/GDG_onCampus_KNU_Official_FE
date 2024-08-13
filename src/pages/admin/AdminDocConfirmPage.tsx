@@ -6,10 +6,10 @@ import { useGetApplyDocs } from '@gdsc/apis/hooks/admin/useGetApplyDocs';
 
 import { DisplayLayout } from '@gdsc/styles/LayoutStyle';
 
-import AdminConfirmTable from './components/AdminConfirmTable';
-import CurrentApplyInfo from './components/CurrentApplyInfo';
-import Stars from './components/Stars';
-import TrackSelectButtons from './components/TrackSelectButtons';
+import AdminConfirmTable from './components/docs/AdminConfirmTable';
+import CurrentApplyInfo from './components/docs/CurrentApplyInfo';
+import Stars from './components/docs/Stars';
+import TrackSelectButtons from './components/docs/TrackSelectButtons';
 import styled from '@emotion/styled';
 import { Track } from '@gdsc/types/AdminInterface';
 
