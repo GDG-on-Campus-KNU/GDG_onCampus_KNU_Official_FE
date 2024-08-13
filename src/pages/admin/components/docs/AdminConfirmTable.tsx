@@ -3,9 +3,11 @@ import { useState, useEffect } from 'react';
 import Pagination from '@gdsc/components/common/pagination/pagination';
 
 import { applyDocsInterface } from '@gdsc/apis/hooks/admin/useGetApplyDocs';
+import { useGetSearch } from '@gdsc/apis/hooks/admin/useGetSearch';
 
 import { columns } from './AdminTableDocs';
 import styled from '@emotion/styled';
+import { MemberData } from '@gdsc/types/AdminInterface';
 import {
   flexRender,
   getCoreRowModel,
@@ -16,6 +18,7 @@ type Props = {
   data: applyDocsInterface;
   currentPage: number;
   setCurrentPage: (page: number) => void;
+  name: string;
 };
 
 const StyledTable = styled.table`
@@ -75,16 +78,30 @@ const TableRow = styled.tr`
   }
 `;
 
-const AdminConfirmTable = ({ data, currentPage, setCurrentPage }: Props) => {
-  // const [currentPage, setCurrentPage] = useState<number>(0);
+const AdminConfirmTable = ({
+  data,
+  currentPage,
+  setCurrentPage,
+  name,
+}: Props) => {
   const [currentGroup, setCurrentGroup] = useState<number>(0);
-  const [confirmList, setConfirmList] = useState<applyDocsInterface | null>(
-    null
-  );
+  const [confirmList, setConfirmList] = useState<{
+    data: MemberData[];
+    totalPage: number;
+  } | null>(null);
+
+  const { data: searchData } = useGetSearch(name, currentPage, 10);
 
   useEffect(() => {
-    setConfirmList(data ?? null);
-  }, [data]);
+    if (Array.isArray(searchData?.data)) {
+      setConfirmList({
+        data: searchData.data,
+        totalPage: Math.ceil(searchData.data.length / 10),
+      });
+    } else {
+      setConfirmList(data ?? null);
+    }
+  }, [searchData, data]);
 
   const totalPages = data?.totalPage ?? 0;
 
@@ -106,7 +123,7 @@ const AdminConfirmTable = ({ data, currentPage, setCurrentPage }: Props) => {
 
   const table = useReactTable({
     columns: columns(),
-    data: confirmList?.data || [],
+    data: confirmList?.data || searchData?.data || [],
     getCoreRowModel: getCoreRowModel(),
   });
 
