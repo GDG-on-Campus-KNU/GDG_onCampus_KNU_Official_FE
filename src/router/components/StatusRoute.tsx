@@ -23,10 +23,6 @@ const StatusRoute = ({ allowedStatuses }: PrivateRouteProps) => {
         | 'MEMBER'
         | 'CORE';
       setUser({ name: data.name, status: userStatus });
-      sessionStorage.setItem(
-        'user',
-        JSON.stringify({ name: data.name, status: userStatus })
-      );
     } else if (error) {
       setUser(null);
     }

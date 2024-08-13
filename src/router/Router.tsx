@@ -20,7 +20,7 @@ import SignupPage from '@gdsc/pages/signup/SignupPage';
 import { TeamPage } from '@gdsc/pages/team';
 import TechBlogPage from '@gdsc/pages/tech_blog/TechBlogPage';
 
-import PrivateRoute from './components/PrivateRoute';
+import StatusRoute from '@gdsc/router/components/StatusRoute';
 
 export const Router = createBrowserRouter([
   {
@@ -33,7 +33,7 @@ export const Router = createBrowserRouter([
       { path: 'signin', element: <SigninPage /> },
       {
         path: 'apply',
-        element: <PrivateRoute />,
+        element: <StatusRoute allowedStatuses={['CORE', 'MEMBER', 'GUEST']} />,
         children: [
           { path: '', element: <ApplyPage /> },
           {
@@ -48,12 +48,12 @@ export const Router = createBrowserRouter([
       },
       {
         path: 'mypage',
-        element: <PrivateRoute />,
+        element: <StatusRoute allowedStatuses={['CORE', 'MEMBER', 'GUEST']} />,
         children: [{ path: '', element: <MyPage /> }],
       },
       {
         path: 'team',
-        element: <PrivateRoute />,
+        element: <StatusRoute allowedStatuses={['CORE', 'MEMBER']} />,
         children: [{ path: '', element: <TeamPage /> }],
       },
       { path: 'introduce', element: <IntroducePage /> },
@@ -69,17 +69,17 @@ export const Router = createBrowserRouter([
     children: [
       {
         path: '',
-        element: <PrivateRoute />,
+        element: <StatusRoute allowedStatuses={['CORE']} />,
         children: [{ path: '', element: <AdminSetStatePage /> }],
       },
       {
         path: 'team',
-        element: <PrivateRoute />,
+        element: <StatusRoute allowedStatuses={['CORE']} />,
         children: [{ path: '', element: <AdminTeamArrangePage /> }],
       },
       {
         path: 'document',
-        element: <PrivateRoute />,
+        element: <StatusRoute allowedStatuses={['CORE']} />,
         children: [{ path: '', element: <AdminDocConfirmPage /> }],
       },
     ],
