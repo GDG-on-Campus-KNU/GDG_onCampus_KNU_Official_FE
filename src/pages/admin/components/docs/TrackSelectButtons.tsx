@@ -8,7 +8,7 @@ import { Track } from '@gdsc/types/AdminInterface';
 type Props = {
   data: applyDocsInterface;
   track: Track | '';
-  applyData: number;
+  applyData: number | undefined;
   setTrack: (track: Track | '') => void;
 };
 
@@ -20,7 +20,10 @@ const SelectBtn = styled.button<{ isClicked: boolean }>`
   justify-content: center;
   text-align: center;
   border: 0;
-  border-bottom: ${({ isClicked }) => (isClicked ? '4px' : '1px')} solid white;
+  border-bottom: ${({ isClicked }) => (isClicked ? '4px' : '1px')} solid;
+  border-color: ${({ isClicked }) =>
+    isClicked ? 'var(--color-white)' : '#ffffff26;'};
+
   padding: 10px 20px;
   background-color: var(--color-revolver);
   color: white;
