@@ -2,13 +2,14 @@ import Text from '@gdsc/components/common/typography/Text';
 
 import styled from '@emotion/styled';
 
-type CurrentApplyInfoProps = {
-  response: Array<{
-    open: boolean;
-    marked: boolean;
-    track: string;
-  }>;
-  all: number;
+type Props = {
+  response: {
+    total: number;
+    openCount: number;
+    notOpenCount: number;
+    approvedCount: number;
+    rejectedCount: number;
+  };
 };
 const DocsInfoBox = styled.section`
   display: flex;
@@ -34,42 +35,37 @@ const TextBox = styled.div`
   }
 `;
 
-const CurrentApplyInfo = ({ response, all }: CurrentApplyInfoProps) => {
-  const allApply = response.length;
-  const open = response.filter((item) => item.open).length;
-  const notOpen = allApply - open;
-  const docsPass = response.filter((item) => item.marked).length;
-  const notPass = allApply - docsPass;
+const CurrentApplyInfo = ({ response }: Props) => {
   return (
     <DocsInfoBox>
       <TextBox>
         <Text size='md'>전체 지원자</Text>
         <Text size='xxl' weight='700'>
-          {all}
+          {response.total}
         </Text>
       </TextBox>
       <TextBox>
         <Text size='md'>미열람</Text>
         <Text size='xxl' weight='700'>
-          {notOpen}
+          {response.notOpenCount}
         </Text>
       </TextBox>
       <TextBox>
         <Text size='md'>열람</Text>
         <Text size='xxl' weight='700'>
-          {open}
+          {response.openCount}
         </Text>
       </TextBox>
       <TextBox>
         <Text size='md'>불합격</Text>
         <Text size='xxl' weight='700'>
-          {notPass}
+          {response.rejectedCount}
         </Text>
       </TextBox>
       <TextBox>
         <Text size='md'>최종합격</Text>
         <Text size='xxl' weight='700'>
-          {docsPass}
+          {response.approvedCount}
         </Text>
       </TextBox>
     </DocsInfoBox>
