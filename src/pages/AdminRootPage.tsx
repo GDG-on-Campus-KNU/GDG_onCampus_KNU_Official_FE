@@ -1,3 +1,4 @@
+import { Oval } from 'react-loader-spinner';
 import { useMediaQuery } from 'react-responsive';
 import { Outlet, useNavigation } from 'react-router-dom';
 
@@ -27,7 +28,17 @@ const AdminRootPage = () => {
               left={`${Math.random() * 100}%`}
             />
           ))}
-          {navigation.state === 'loading' && <p>Loading...</p>}
+          {navigation.state === 'loading' && (
+            <Oval
+              visible={true}
+              height='30'
+              width='30'
+              color='#fff'
+              ariaLabel='oval-loading'
+              wrapperStyle={{}}
+              wrapperClass=''
+            />
+          )}
           <Outlet />
         </MainContent>
       )}

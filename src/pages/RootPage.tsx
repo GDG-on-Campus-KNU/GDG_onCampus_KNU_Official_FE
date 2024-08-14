@@ -1,3 +1,4 @@
+import { Oval } from 'react-loader-spinner';
 import { useMediaQuery } from 'react-responsive';
 import { Outlet, useNavigation } from 'react-router-dom';
 
@@ -30,7 +31,17 @@ const RootPage = () => {
     <>
       {isMobile ? <MainNavigationMobile /> : <MainNavigation />}
       <MainContent>
-        {navigation.state === 'loading' && <p>Loading...</p>}
+        {navigation.state === 'loading' && (
+          <Oval
+            visible={true}
+            height='30'
+            width='30'
+            color='#fff'
+            ariaLabel='oval-loading'
+            wrapperStyle={{}}
+            wrapperClass=''
+          />
+        )}
         <Outlet />
       </MainContent>
     </>
