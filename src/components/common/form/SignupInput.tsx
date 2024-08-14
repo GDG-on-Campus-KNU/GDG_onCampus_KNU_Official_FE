@@ -14,8 +14,6 @@ const SignFormTitle = styled.label`
   font-size: var(--font-size-lg);
 
   color: var(--color-white);
-
-  font-family: 'Noto+Sans';
 `;
 
 const InputContainer = styled.div`
@@ -43,7 +41,6 @@ const InputElement = styled.input`
   border-radius: 12px;
 
   font-size: var(--font-size-md);
-  font-family: 'Noto+Sans';
 
   background-color: #392f4f;
   opacity: 100%;

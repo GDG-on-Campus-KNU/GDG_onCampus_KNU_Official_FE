@@ -26,8 +26,6 @@ const TextAreaWrapper = styled.div`
 const TextAreaLabel = styled.label`
   font-size: var(--font-size-md);
   font-weight: bold;
-
-  font-family: 'Noto+Sans';
 `;
 
 const TextAreaContainer = styled.div`
@@ -49,7 +47,6 @@ const TextAreaElement = styled.textarea<{ color?: string; hasError?: boolean }>`
   box-sizing: border-box;
 
   font-size: var(--font-size-md);
-  font-family: 'Noto+Sans';
 
   background: ${(props) => props.color || 'var(--color-que)'};
   opacity: 1;
@@ -114,7 +111,6 @@ const CharacterCount = styled.div<{ hasError?: boolean }>`
 
   font-size: var(--font-size-sm);
   color: ${(props) => (props.hasError ? 'red' : 'var(--color-dove)')};
-  font-family: 'Noto+Sans';
 `;
 
 const TextArea: React.FC<ITextArea> = ({
