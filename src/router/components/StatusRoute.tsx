@@ -1,5 +1,5 @@
 import { useEffect } from 'react';
-import Spinner from 'react-bootstrap/Spinner';
+import { Oval } from 'react-loader-spinner';
 import { Navigate, Outlet } from 'react-router-dom';
 
 import { useGetMyData } from '@gdsc/apis/hooks/mypage/useGetMyData';
@@ -40,9 +40,15 @@ const StatusRoute = ({ allowedStatuses }: PrivateRouteProps) => {
 
   if (isLoading) {
     return (
-      <Spinner animation='border' role='status'>
-        <span className='visually-hidden'>Loading...</span>
-      </Spinner>
+      <Oval
+        visible={true}
+        height='30'
+        width='30'
+        color='#fff'
+        ariaLabel='oval-loading'
+        wrapperStyle={{}}
+        wrapperClass=''
+      />
     );
   }
 
