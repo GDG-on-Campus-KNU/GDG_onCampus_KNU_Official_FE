@@ -78,4 +78,9 @@ const Layout = styled.div`
 const HeaderLayout = styled(DisplayLayout)`
   padding-top: 52px;
   margin-top: 45px;
+
+  @media (max-width: 500px) {
+    margin-top: 75px;
+    padding-bottom: 20px;
+  }
 `;

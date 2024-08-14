@@ -18,17 +18,19 @@ const AdminRootPage = () => {
     <>
       {isMobile ? <MainNavigationMobile /> : <AdminMainNavigation />}
       <AdminTitle />
-      <MainContent>
-        {[...Array(10)].map((_, index) => (
-          <Star
-            key={index}
-            top={`${Math.random() * 20}%`}
-            left={`${Math.random() * 100}%`}
-          />
-        ))}
-        {navigation.state === 'loading' && <p>Loading...</p>}
-        <Outlet />
-      </MainContent>
+      {isMobile ? null : (
+        <MainContent>
+          {[...Array(10)].map((_, index) => (
+            <Star
+              key={index}
+              top={`${Math.random() * 20}%`}
+              left={`${Math.random() * 100}%`}
+            />
+          ))}
+          {navigation.state === 'loading' && <p>Loading...</p>}
+          <Outlet />
+        </MainContent>
+      )}
     </>
   );
 };
