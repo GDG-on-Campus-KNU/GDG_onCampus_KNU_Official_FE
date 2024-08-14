@@ -8,15 +8,15 @@ import { Track } from '@gdsc/types/AdminInterface';
 
 type Props = {
   total?: number;
-  marked: boolean;
+  isMarked: boolean;
   name: string;
 };
 
-const TableSection = ({ total, marked, name }: Props) => {
+const TableSection = ({ total, isMarked, name }: Props) => {
   const [track, setTrack] = useState<Track | ''>('');
   const [currentPage, setCurrentPage] = useState<number>(0);
 
-  const { data } = useGetApplyDocs(track, marked, currentPage, 10);
+  const { data } = useGetApplyDocs(track, isMarked, currentPage, 10);
 
   return (
     <>
@@ -34,6 +34,7 @@ const TableSection = ({ total, marked, name }: Props) => {
           currentPage={currentPage}
           setCurrentPage={setCurrentPage}
           name={name}
+          isMarked={isMarked}
         />
       )}
     </>

@@ -19,6 +19,7 @@ type Props = {
   currentPage: number;
   setCurrentPage: (page: number) => void;
   name: string;
+  isMarked: boolean;
 };
 
 const StyledTable = styled.table`
@@ -83,6 +84,7 @@ const AdminConfirmTable = ({
   currentPage,
   setCurrentPage,
   name,
+  isMarked,
 }: Props) => {
   const [currentGroup, setCurrentGroup] = useState<number>(0);
   const [confirmList, setConfirmList] = useState<{
@@ -93,17 +95,26 @@ const AdminConfirmTable = ({
   const { data: searchData } = useGetSearch(name, currentPage, 10);
 
   useEffect(() => {
+    let filteredData = data?.data || [];
+
+    if (isMarked) {
+      filteredData = filteredData.filter((item) => item.marked);
+    }
+
     if (Array.isArray(searchData?.data)) {
       setConfirmList({
-        data: searchData.data,
+        data: searchData.data.filter((item) => !isMarked || item.marked),
         totalPage: Math.ceil(searchData.data.length / 10),
       });
     } else {
-      setConfirmList(data ?? null);
+      setConfirmList({
+        data: filteredData,
+        totalPage: Math.ceil(filteredData.length / 10),
+      });
     }
-  }, [searchData, data]);
+  }, [searchData, data, isMarked]);
 
-  const totalPages = data?.totalPage ?? 0;
+  const totalPages = confirmList?.totalPage ?? 0;
 
   const handlePageChange = (page: number) => {
     setCurrentPage(page - 1);
@@ -123,7 +134,7 @@ const AdminConfirmTable = ({
 
   const table = useReactTable({
     columns: columns(),
-    data: confirmList?.data || searchData?.data || [],
+    data: confirmList?.data || [],
     getCoreRowModel: getCoreRowModel(),
   });
 
