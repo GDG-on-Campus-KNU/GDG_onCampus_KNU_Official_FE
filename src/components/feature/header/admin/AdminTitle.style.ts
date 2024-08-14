@@ -5,7 +5,6 @@ export const TitleWrapper = styled.h1`
 
   display: flex;
   justify-content: space-between;
-  padding: 40px 60px;
 
   box-sizing: border-box;
 `;
