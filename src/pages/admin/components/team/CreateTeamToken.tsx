@@ -73,6 +73,7 @@ const CreateTeamToken = () => {
             <TeamBox
               teamId={selectedTeam.id}
               teamName={selectedTeam.teamName}
+              subTeams={selectedTeam.subTeams}
             />
           )}
         </TeamBoxContainer>
