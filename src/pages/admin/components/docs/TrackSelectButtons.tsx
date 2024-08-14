@@ -1,3 +1,5 @@
+import { useEffect, useState } from 'react';
+
 import Text from '@gdsc/components/common/typography/Text';
 
 import { applyDocsInterface } from '@gdsc/apis/hooks/admin/useGetApplyDocs';
@@ -41,20 +43,35 @@ const SelectBox = styled.div`
 `;
 
 const TrackSelectButtons = ({ data, track, setTrack, applyData }: Props) => {
-  const response = data?.data;
+  const [frontend, setFrontend] = useState<number>(0);
+  const [backend, setBackend] = useState<number>(0);
+  const [aos, setAos] = useState<number>(0);
+  const [ai, setAi] = useState<number>(0);
+  const [designer, setDesigner] = useState<number>(0);
 
-  const frontend =
-    response?.filter((item) => item.track === 'FRONT_END').length || 0;
-  const backend =
-    response?.filter((item) => item.track === 'BACK_END').length || 0;
-  const aos = response?.filter((item) => item.track === 'ANDROID').length || 0;
-  const ai = response?.filter((item) => item.track === 'AI').length || 0;
-  const designer =
-    response?.filter((item) => item.track === 'DESIGNER').length || 0;
+  useEffect(() => {
+    const frontendCount =
+      data?.data.filter((item) => item.track === 'FRONT_END').length || 0;
+    const backendCount =
+      data?.data.filter((item) => item.track === 'BACK_END').length || 0;
+    const aosCount =
+      data?.data.filter((item) => item.track === 'ANDROID').length || 0;
+    const aiCount =
+      data?.data.filter((item) => item.track === 'AI').length || 0;
+    const designerCount =
+      data?.data.filter((item) => item.track === 'DESIGNER').length || 0;
+
+    setFrontend(frontendCount);
+    setBackend(backendCount);
+    setAos(aosCount);
+    setAi(aiCount);
+    setDesigner(designerCount);
+  }, [data]);
 
   const handleTrackSelect = (selectedTrack: Track | '') => {
     setTrack(selectedTrack);
   };
+
   return (
     <SelectBox>
       <SelectBtn isClicked={track === ''} onClick={() => handleTrackSelect('')}>
