@@ -16,15 +16,25 @@ const StatusRoute = ({ allowedStatuses }: PrivateRouteProps) => {
   const { data, error, isLoading } = useGetMyData();
 
   useEffect(() => {
+    const savedUser = sessionStorage.getItem('user');
+    if (savedUser) {
+      setUser(JSON.parse(savedUser));
+    }
+  }, [setUser]);
+
+  useEffect(() => {
     if (data) {
       const userStatus = data.role.replace('ROLE_', '') as
         | 'TEMP'
         | 'GUEST'
         | 'MEMBER'
         | 'CORE';
-      setUser({ name: data.name, status: userStatus });
+      const userData = { name: data.name, status: userStatus };
+      setUser(userData);
+      sessionStorage.setItem('user', JSON.stringify(userData));
     } else if (error) {
       setUser(null);
+      sessionStorage.removeItem('user');
     }
   }, [data, error, setUser]);
 
