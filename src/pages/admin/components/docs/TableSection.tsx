@@ -35,6 +35,7 @@ const TableSection = ({ total, isMarked, name }: Props) => {
           setCurrentPage={setCurrentPage}
           name={name}
           isMarked={isMarked}
+          track={track}
         />
       )}
     </>

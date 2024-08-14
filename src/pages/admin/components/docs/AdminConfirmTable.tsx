@@ -16,10 +16,11 @@ import {
 
 type Props = {
   data: applyDocsInterface;
+  name: string;
+  track: '' | 'FRONT_END' | 'BACK_END' | 'ANDROID' | 'AI' | 'DESIGNER';
+  isMarked: boolean;
   currentPage: number;
   setCurrentPage: (page: number) => void;
-  name: string;
-  isMarked: boolean;
 };
 
 const StyledTable = styled.table`
@@ -85,6 +86,7 @@ const AdminConfirmTable = ({
   setCurrentPage,
   name,
   isMarked,
+  track,
 }: Props) => {
   const [currentGroup, setCurrentGroup] = useState<number>(0);
   const [confirmList, setConfirmList] = useState<{
@@ -97,14 +99,32 @@ const AdminConfirmTable = ({
   useEffect(() => {
     let filteredData = data?.data || [];
 
+    // Filter by isMarked if applicable
     if (isMarked) {
       filteredData = filteredData.filter((item) => item.marked);
     }
 
+    // Filter by track if applicable
+    if (track) {
+      filteredData = filteredData.filter((item) => item.track === track);
+    }
+
     if (Array.isArray(searchData?.data)) {
+      let searchFilteredData = searchData.data;
+
+      if (isMarked) {
+        searchFilteredData = searchFilteredData.filter((item) => item.marked);
+      }
+
+      if (track) {
+        searchFilteredData = searchFilteredData.filter(
+          (item) => item.track === track
+        );
+      }
+
       setConfirmList({
-        data: searchData.data.filter((item) => !isMarked || item.marked),
-        totalPage: Math.ceil(searchData.data.length / 10),
+        data: searchFilteredData,
+        totalPage: Math.ceil(searchFilteredData.length / 10),
       });
     } else {
       setConfirmList({
@@ -112,7 +132,7 @@ const AdminConfirmTable = ({
         totalPage: Math.ceil(filteredData.length / 10),
       });
     }
-  }, [searchData, data, isMarked]);
+  }, [searchData, data, isMarked, track]);
 
   const totalPages = confirmList?.totalPage ?? 0;
 
