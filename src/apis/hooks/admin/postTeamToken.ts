@@ -11,8 +11,10 @@ export const postTeamToken = async ({
   teamName,
   track,
 }: PostTeamTokenParams): Promise<void> => {
-  await fetchInstance.post(postTeamTokenPath(), {
+  const response = await fetchInstance.post(postTeamTokenPath(), {
     teamName,
     track,
   });
+
+  return response.data;
 };

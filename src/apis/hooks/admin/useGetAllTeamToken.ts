@@ -2,7 +2,7 @@ import { fetchInstance } from '@gdsc/apis/instance/Api_JWT';
 
 import { useQuery, UseQueryResult } from '@tanstack/react-query';
 
-interface SubTeam {
+export interface SubTeam {
   id: number;
   teamName: string;
   teamPageUrl: string;
@@ -15,12 +15,12 @@ export interface Team {
   subTeams: SubTeam[];
 }
 
-const getAllTeamTokentPath = () => '/api/admin/team';
+const getAllTeamTokenPath = () => '/api/admin/team';
 
-const allTeamTokenQueryKey = [getAllTeamTokentPath()];
+export const allTeamTokenQueryKey = [getAllTeamTokenPath()];
 
 const getAllTeamToken = async (): Promise<Team> => {
-  const response = await fetchInstance.get<Team>(getAllTeamTokentPath());
+  const response = await fetchInstance.get<Team>(getAllTeamTokenPath());
 
   return response.data;
 };
