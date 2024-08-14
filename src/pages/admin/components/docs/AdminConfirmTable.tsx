@@ -7,7 +7,7 @@ import { useGetSearch } from '@gdsc/apis/hooks/admin/useGetSearch';
 
 import { columns } from './AdminTableDocs';
 import styled from '@emotion/styled';
-import { MemberData } from '@gdsc/types/AdminInterface';
+import { MemberData, Track } from '@gdsc/types/AdminInterface';
 import {
   flexRender,
   getCoreRowModel,
@@ -17,7 +17,7 @@ import {
 type Props = {
   data: applyDocsInterface;
   name: string;
-  track: '' | 'FRONT_END' | 'BACK_END' | 'ANDROID' | 'AI' | 'DESIGNER';
+  track: Track | '';
   isMarked: boolean;
   currentPage: number;
   setCurrentPage: (page: number) => void;
@@ -99,12 +99,10 @@ const AdminConfirmTable = ({
   useEffect(() => {
     let filteredData = data?.data || [];
 
-    // Filter by isMarked if applicable
     if (isMarked) {
       filteredData = filteredData.filter((item) => item.marked);
     }
 
-    // Filter by track if applicable
     if (track) {
       filteredData = filteredData.filter((item) => item.track === track);
     }
