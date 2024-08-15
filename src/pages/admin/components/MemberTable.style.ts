@@ -25,13 +25,13 @@ export const TableCell = styled.td`
 
   font-size: 14px;
 
-  &:first-child {
+  &:first-of-type {
     border-top-left-radius: 12px;
     border-bottom-left-radius: 12px;
     padding-left: 10px;
   }
 
-  &:last-child {
+  &:last-of-type {
     border-top-right-radius: 12px;
     border-bottom-right-radius: 12px;
     padding-right: 10px;
@@ -45,19 +45,19 @@ export const TableCell = styled.td`
 export const TableHeaderCell = styled.th`
   border: none;
 
-  &:first-child {
+  &:first-of-type {
     border-top-left-radius: 12px;
     border-bottom-left-radius: 12px;
   }
 
-  &:last-child {
+  &:last-of-type {
     border-top-right-radius: 12px;
     border-bottom-right-radius: 12px;
   }
 `;
 
 export const TableRow = styled.tr`
-  &:nth-child(even) {
+  &:nth-of-type(even) {
     background-color: rgba(255, 255, 255, 0.15);
   }
 `;

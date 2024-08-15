@@ -17,7 +17,6 @@ export const useDeleteUserList = () => {
 
   const mutation = useMutation<void, Error, number[]>({
     mutationFn: (selectedUser: number[]) => {
-      console.log(selectedUser);
       if (!accessToken) {
         return Promise.reject(new Error('액세스 토큰이 없습니다.'));
       }

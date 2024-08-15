@@ -8,6 +8,7 @@ import {
   userListInterface,
   useGetUserList,
 } from '@gdsc/apis/hooks/admin/status/useGetUserList';
+import { useGetSearchList } from '@gdsc/apis/hooks/admin/useGetSearchList';
 
 import { useSelectedUserStore } from '@gdsc/store/useSelectedUserStore';
 
@@ -25,19 +26,24 @@ import {
   useReactTable,
 } from '@tanstack/react-table';
 
-const MemberTable = () => {
+const MemberTable = ({ searchName }: { searchName?: string | undefined }) => {
   const [currentPage, setCurrentPage] = useState<number>(0);
   const [currentGroup, setCurrentGroup] = useState<number>(0);
   const [userList, setUserList] = useState<userListInterface | null>(null);
 
-  const { data } = useGetUserList(currentPage, 7);
+  const { data: userData } = useGetUserList(currentPage, 7);
+  const { data: searchData } = useGetSearchList(searchName, currentPage, 7);
   const { selectedUsers, addSelectedUser } = useSelectedUserStore();
 
   useEffect(() => {
-    setUserList(data ?? null);
-  }, [data]);
+    if (searchName) {
+      setUserList(searchData ?? null);
+    } else {
+      setUserList(userData ?? null);
+    }
+  }, [searchName, userData, searchData]);
 
-  const totalPages = data ? data.totalPage : 0;
+  const totalPages = userList ? userList.totalPage : 0;
 
   const handlePageChange = (page: number) => {
     setCurrentPage(page - 1);
@@ -54,18 +60,6 @@ const MemberTable = () => {
       setCurrentGroup(currentGroup - 1);
     }
   };
-
-  // const [selectedUser, setSelectedUser] = useState<number[]>([]);
-
-  // const addSelectedUser = (userId: number) => {
-  //   setSelectedUser((prev) => {
-  //     if (prev.includes(userId)) {
-  //       return prev.filter((id) => id !== userId);
-  //     } else {
-  //       return [...prev, userId];
-  //     }
-  //   });
-  // };
 
   const table = useReactTable({
     columns: columns(selectedUsers, addSelectedUser),
