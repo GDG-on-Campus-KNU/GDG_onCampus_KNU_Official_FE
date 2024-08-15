@@ -3,7 +3,7 @@ import { useState, useEffect } from 'react';
 import Pagination from '@gdsc/components/common/pagination/pagination';
 
 import { applyDocsInterface } from '@gdsc/apis/hooks/admin/docs/useGetApplyDocs';
-import { useGetSearch } from '@gdsc/apis/hooks/admin/useGetSearch';
+import { useGetSearch } from '@gdsc/apis/hooks/admin/docs/useGetSearch';
 
 import {
   StyledTable,

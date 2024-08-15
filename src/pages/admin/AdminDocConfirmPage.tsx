@@ -1,9 +1,10 @@
 import { useState } from 'react';
 
-import { useGetStatistic } from '@gdsc/apis/hooks/admin/useGetStatistic';
+import { useGetStatistic } from '@gdsc/apis/hooks/admin/docs/useGetStatistic';
 
 import { DisplayLayout } from '@gdsc/styles/LayoutStyle';
 
+import ApplyDetailModal from './components/docs/ApplyDetailModal';
 import CurrentApplyInfo from './components/docs/CurrentApplyInfo';
 import DocsSearchBar from './components/docs/DocsSearchBar';
 import Stars from './components/docs/Stars';
@@ -68,6 +69,7 @@ const AdminDocConfirmPage = () => {
         <DocsSearchBar name={name} setName={setName} />
       </InfoBox>
       {data && <CurrentApplyInfo response={data} />}
+      <ApplyDetailModal />
       <TableSection total={data?.total} isMarked={isMarked} name={name} />
     </DisplayLayout>
   );

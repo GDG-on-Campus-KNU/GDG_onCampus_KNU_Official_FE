@@ -2,21 +2,25 @@ import styled from '@emotion/styled';
 
 interface StarProps {
   color: 'white' | 'yellow';
+  width?: string;
+  height?: string;
 }
 
 const StarIcon = styled.svg<StarProps>`
-  width: 21px;
-  height: 21px;
+  width: ${({ width }) => width || '21px'}; /* width가 없을 경우 기본값 21px */
+  height: ${({ height }) => height || '21px'};
   fill: ${({ color }) =>
     color === 'yellow' ? 'var(--color-selective)' : 'var(--color-white)'};
   stroke: ${({ color }) =>
     color === 'yellow' ? 'var(--color-selective)' : 'var(--color-white)'};
 `;
 
-const Stars = ({ color }: StarProps) => {
+const Stars = ({ color, width, height }: StarProps) => {
   return (
     <StarIcon
       color={color}
+      width={width}
+      height={height}
       viewBox='0 0 21 21'
       xmlns='http://www.w3.org/2000/svg'
     >

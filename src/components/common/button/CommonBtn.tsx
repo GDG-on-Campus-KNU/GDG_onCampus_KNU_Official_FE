@@ -8,7 +8,8 @@ const Button = styled.button<ICButton>`
 
   gap: 10px;
 
-  border: 0;
+  border: ${({ color }) =>
+    color === 'innerYellow' ? '1px solid var(--color-selective)' : '0'};
   border-radius: 12px;
 
   padding: ${({ padding }) => padding || '10px 20px'};
@@ -50,6 +51,8 @@ const Button = styled.button<ICButton>`
         return 'var(--color-navy)';
       case 'white':
         return 'var(--color-white)';
+      case 'innerYellow':
+        return 'var(--color-white)';
     }
   }};
 
@@ -67,11 +70,17 @@ const Button = styled.button<ICButton>`
         return 'var(--color-white)';
       case 'white':
         return 'var(--color-black)';
+      case 'innerYellow':
+        return 'var(--color-selective)';
     }
   }};
 
   &:hover {
     cursor: pointer;
+
+    border: ${({ color }) =>
+      color === 'innerYellow' ? '1px solid var(--color-golden)' : '0'};
+
     background-color: ${(props) => {
       switch (props.hoverColor) {
         case 'blue':
@@ -86,6 +95,8 @@ const Button = styled.button<ICButton>`
           return 'var(--color-white)';
         case 'white':
           return 'var(--color-alto)';
+        case 'innerYellow':
+          return 'var(--color-white)';
       }
     }};
 
@@ -103,6 +114,8 @@ const Button = styled.button<ICButton>`
           return 'var(--color-midnight)';
         case 'white':
           return 'var(--color-white)';
+        case 'innerYellow':
+          return 'var(--color-golden)';
       }
     }};
   }
