@@ -5,7 +5,7 @@ import CommonBtn from '@gdsc/components/common/button/CommonBtn';
 import { DisplayLayout } from '@gdsc/styles/LayoutStyle';
 
 import { ButtonContainer, TopContainer } from './AdminSetStatePage.style';
-import AdminSearchBar from './components/status/AdminSearchBar';
+import AdminSearchBar from './components/AdminSearchBar';
 import ApproveModal from './components/status/ApproveModal';
 import DeleteModal from './components/status/DeleteModal';
 import MemberTable from './components/status/MemberTable';
