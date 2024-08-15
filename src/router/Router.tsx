@@ -20,6 +20,7 @@ import SignupPage from '@gdsc/pages/signup/SignupPage';
 import { TeamPage } from '@gdsc/pages/team';
 import TechBlogPage from '@gdsc/pages/tech_blog/TechBlogPage';
 
+import { TeamUpdateProvider } from '@gdsc/provider/TeamUpdate';
 import StatusRoute from '@gdsc/router/components/StatusRoute';
 
 export const Router = createBrowserRouter([
@@ -75,7 +76,16 @@ export const Router = createBrowserRouter([
       {
         path: 'team',
         element: <StatusRoute allowedStatuses={['CORE']} />,
-        children: [{ path: '', element: <AdminTeamArrangePage /> }],
+        children: [
+          {
+            path: '',
+            element: (
+              <TeamUpdateProvider>
+                <AdminTeamArrangePage />
+              </TeamUpdateProvider>
+            ),
+          },
+        ],
       },
       {
         path: 'document',
