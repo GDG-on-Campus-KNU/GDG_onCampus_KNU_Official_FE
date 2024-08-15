@@ -68,11 +68,14 @@ const TeamBox = ({
 
       {subTeams &&
         subTeams.length > 0 &&
-        subTeams.map((subTeam) => (
+        subTeams.map((subTeam, index) => (
           <SubTeamBox
             key={subTeam.id}
             subTeamId={subTeam.id}
             subTeamName={subTeam.teamName}
+            index={index}
+            totalLength={subTeams.length}
+            teamId={teamId}
           />
         ))}
 

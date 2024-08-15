@@ -48,6 +48,12 @@ export const CloseButton = styled.div`
   cursor: pointer;
 `;
 
+export const RemoveBtn = styled.div`
+  margin-left: 8px;
+  cursor: pointer;
+  display: block;
+`;
+
 export const BtnWrapper = styled.div`
   max-height: 96px;
   flex-wrap: wrap;

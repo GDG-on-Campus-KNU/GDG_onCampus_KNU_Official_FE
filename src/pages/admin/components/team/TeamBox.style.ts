@@ -94,3 +94,9 @@ export const PlusBox = styled.div`
   cursor: pointer;
   flex-shrink: 0;
 `;
+
+export const TitleWrapper = styled.div`
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+`;
