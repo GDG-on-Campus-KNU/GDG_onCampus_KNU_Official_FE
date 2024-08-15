@@ -4,11 +4,11 @@ import Pagination from '@gdsc/components/common/pagination/pagination';
 
 import { columns } from '@gdsc/constants/MemberTableColumns';
 
-import { useGetSearchList } from '@gdsc/apis/hooks/admin/useGetSearchList';
 import {
   userListInterface,
   useGetUserList,
-} from '@gdsc/apis/hooks/admin/useGetUserList';
+} from '@gdsc/apis/hooks/admin/status/useGetUserList';
+import { useGetSearchList } from '@gdsc/apis/hooks/admin/useGetSearchList';
 
 import { useSelectedUserStore } from '@gdsc/store/useSelectedUserStore';
 

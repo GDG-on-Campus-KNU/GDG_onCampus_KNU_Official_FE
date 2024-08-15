@@ -4,24 +4,25 @@ import { useMutation } from '@tanstack/react-query';
 
 const patchMarkPath = () => '/api/admin/application/mark';
 
-export const patchMark = async (id: number) => {
-  const response = await fetchInstance.patch(patchMarkPath(), {
+const patchMark = async (userId: number) => {
+  await fetchInstance.patch(patchMarkPath(), null, {
     params: {
-      id: id,
+      id: userId,
     },
   });
-  return response.data;
 };
 
 export const usePatchMark = () => {
   const accessToken = localStorage.getItem('accessToken');
 
-  return useMutation<void, Error, number>({
-    mutationFn: (id) => {
+  const mutation = useMutation<void, Error, number>({
+    mutationFn: (id: number) => {
       if (!accessToken) {
-        throw new Error('No access token');
+        return Promise.reject(new Error('액세스 토큰이 없습니다.'));
       }
       return patchMark(id);
     },
   });
+
+  return mutation;
 };

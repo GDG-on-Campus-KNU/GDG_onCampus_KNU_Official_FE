@@ -1,22 +1,50 @@
 import styled from '@emotion/styled';
 
 interface StarProps {
-  color: 'white' | 'yellow';
+  color: 'white' | 'yellow' | string;
+  width?: string;
+  height?: string;
 }
 
 const StarIcon = styled.svg<StarProps>`
-  width: 21px;
-  height: 21px;
-  fill: ${({ color }) =>
-    color === 'yellow' ? 'var(--color-selective)' : 'var(--color-white)'};
-  stroke: ${({ color }) =>
-    color === 'yellow' ? 'var(--color-selective)' : 'var(--color-white)'};
+  width: ${({ width }) => width || '21px'};
+  height: ${({ height }) => height || '21px'};
+  fill: ${({ color }) => {
+    switch (color) {
+      case 'yellow':
+        return 'var(--color-selective)';
+      case 'white':
+        return 'var(--color-white)';
+      case 'silver':
+        return 'var(--color-alto)';
+      default:
+        return 'var(--color-white)';
+    }
+  }};
+  stroke: ${({ color }) => {
+    switch (color) {
+      case 'yellow':
+        return 'var(--color-selective)';
+      case 'white':
+        return 'var(--color-white)';
+      case 'silver':
+        return 'var(--color-alto)';
+      default:
+        return 'var(--color-white)';
+    }
+  }};
+
+  &:hover {
+    cursor: pointer;
+  }
 `;
 
-const Stars = ({ color }: StarProps) => {
+const Stars = ({ color, width, height }: StarProps) => {
   return (
     <StarIcon
       color={color}
+      width={width}
+      height={height}
       viewBox='0 0 21 21'
       xmlns='http://www.w3.org/2000/svg'
     >

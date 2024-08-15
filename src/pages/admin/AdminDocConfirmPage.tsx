@@ -1,6 +1,6 @@
 import { useState } from 'react';
 
-import { useGetStatistic } from '@gdsc/apis/hooks/admin/useGetStatistic';
+import { useGetStatistic } from '@gdsc/apis/hooks/admin/docs/useGetStatistic';
 
 import { DisplayLayout } from '@gdsc/styles/LayoutStyle';
 
