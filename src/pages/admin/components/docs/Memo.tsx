@@ -1,3 +1,5 @@
+import { useState } from 'react';
+
 import CommonBtn from '@gdsc/components/common/button/CommonBtn';
 import Text from '@gdsc/components/common/typography/Text';
 
@@ -36,7 +38,13 @@ const MemoBox = styled.textarea`
   outline: none;
 `;
 
-const Memo = () => {
+const Memo = ({ note }: { note: string | null }) => {
+  const [memo, setMemo] = useState<string | null>(note || null);
+
+  const handleMemoBoxChange = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
+    setMemo(e.target.value);
+  };
+
   return (
     <MemoWrapper>
       <TitleWrapper>
@@ -56,12 +64,10 @@ const Memo = () => {
           저장
         </CommonBtn>
       </TitleWrapper>
-
       <MemoBox
         placeholder='간단한 메모를 해보세요!'
-        value='Pizza ipsum dolor meat lovers buffalo. Ipsum cheese parmesan lovers tomato melted tossed Chicago meatball. Sautéed meatball Chicago pie sautéed Hawaiian thin red mozzarella. 
-
-Chicken rib buffalo fresh lasagna Bianca black marinara stuffed NY. Aussie sautéed red white.'
+        value={memo ? memo : ''}
+        onChange={handleMemoBoxChange}
       />
     </MemoWrapper>
   );

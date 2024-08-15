@@ -29,6 +29,14 @@ const CardContainer = styled.div`
   white-space: nowrap;
 `;
 
+interface IBasicInfo {
+  name: string;
+  studentNumber: string;
+  major: string;
+  phoneNumber: string;
+  email: string;
+}
+
 const InfoCard = ({ category, info }: { category: string; info: string }) => {
   const isTablet = useMediaQuery({ query: '(max-width: 1200px)' });
   return (
@@ -44,17 +52,23 @@ const InfoCard = ({ category, info }: { category: string; info: string }) => {
   );
 };
 
-const BasicInfo = () => {
+const BasicInfo = ({
+  name,
+  studentNumber,
+  major,
+  phoneNumber,
+  email,
+}: IBasicInfo) => {
   return (
     <>
       <CardWrapper>
-        <InfoCard category='이름' info='김구글' />
-        <InfoCard category='학번' info='2020111222' />
-        <InfoCard category='학과' info='컴퓨터학부 글로벌소프트웨어융합전공' />
+        <InfoCard category='이름' info={name} />
+        <InfoCard category='학번' info={studentNumber} />
+        <InfoCard category='학과' info={major} />
       </CardWrapper>
       <CardWrapper>
-        <InfoCard category='전화번호' info='010-0000-0000' />
-        <InfoCard category='이메일' info='Googlegoogle456@gmail.com' />
+        <InfoCard category='전화번호' info={phoneNumber} />
+        <InfoCard category='이메일' info={email} />
       </CardWrapper>
     </>
   );

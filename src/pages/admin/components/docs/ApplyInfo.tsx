@@ -18,7 +18,19 @@ const InfoContainer = styled.div`
   gap: 25px;
 `;
 
-const ApplyInfo = () => {
+interface IApplyInfo {
+  track: string;
+  submittedAt: string;
+}
+
+const ApplyInfo = ({ track, submittedAt }: IApplyInfo) => {
+  const datePart = submittedAt.split(' ')[0];
+
+  // 형식 변환
+  const formattedDate = datePart.replace(/-/g, '. ');
+
+  console.log(formattedDate); // "2024. 08. 13"
+
   return (
     <InfoWrapper>
       <InfoContainer>
@@ -26,7 +38,7 @@ const ApplyInfo = () => {
           지원영역
         </Text>
         <Text size='sm' weight='normal' color='black'>
-          백엔드 개발자
+          {track}
         </Text>
       </InfoContainer>
       <InfoContainer>
@@ -34,7 +46,7 @@ const ApplyInfo = () => {
           지원일자
         </Text>
         <Text size='sm' weight='normal' color='black'>
-          2024. 08. 14
+          {formattedDate}
         </Text>
       </InfoContainer>
     </InfoWrapper>

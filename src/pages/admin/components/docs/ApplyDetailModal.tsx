@@ -1,5 +1,9 @@
+import { useState, useEffect } from 'react';
+
 import CommonBtn from '@gdsc/components/common/button/CommonBtn';
 import Text from '@gdsc/components/common/typography/Text';
+
+import { useGetDocsDetail } from '@gdsc/apis/hooks/admin/docs/useGetDocsDetail';
 
 import {
   ModalBackdrop,
@@ -19,7 +23,37 @@ import Memo from './Memo';
 import Stars from './Stars';
 import TechStack from './TechStack';
 
-const ApplyDetailModal = () => {
+interface Answer {
+  questionNumber: number;
+  answer: string;
+}
+
+interface DetailInfo {
+  id: number;
+  name: string;
+  studentNumber: string;
+  major: string;
+  phoneNumber: string;
+  email: string;
+  track: string;
+  submittedAt: string;
+  techStack: string;
+  link: string;
+  note: string;
+  answers: Answer[];
+  marked: boolean;
+}
+
+const ApplyDetailModal = ({ id }: { id: number }) => {
+  const [detail, setDetail] = useState<DetailInfo | null>(null);
+  const { data, isPending } = useGetDocsDetail(id);
+  useEffect(() => {
+    if (data) {
+      setDetail(data);
+    }
+  }, [data]);
+
+  console.log(detail);
   return (
     <ModalBackdrop>
       <ModalWrapper>
@@ -34,49 +68,62 @@ const ApplyDetailModal = () => {
             <Text size='md' weight='bold' color='black'>
               기본정보
             </Text>
-            <BasicInfo />
+            {isPending && <Text>회원 기본 정보를 불러오는 중입니다... </Text>}
+            {detail && (
+              <BasicInfo
+                name={detail.name}
+                studentNumber={detail.studentNumber}
+                major={detail.major}
+                phoneNumber={detail.phoneNumber}
+                email={detail.email}
+              />
+            )}
+            {!detail && (
+              <BasicInfo
+                name=''
+                studentNumber=''
+                major=''
+                phoneNumber=''
+                email=''
+              />
+            )}
             <DividingLine />
             <Text size='md' weight='bold' color='black'>
               자기소개
             </Text>
             <SelfIntroduce>
-              Lorem ipsum dolor sit amet consectetur. Ipsum auctor ullamcorper
-              vitae ultrices vitae ullamcorper ultrices commodo. Quam libero
-              massa lacus eget dui. Pharetra amet nam pellentesque ultricies
-              cras blandit lectus aliquam enim. Amet commodo sed diam sed
-              volutpat netus augue. Lectus montes aliquet morbi pharetra et
-              placerat fusce pellentesque. Velit mauris ipsum et elit fermentum
-              turpis ornare id mi. In ultricies interdum tortor enim. Quis
-              aliquam consequat fermentum aliquam venenatis. Eleifend lorem sit
-              sollicitudin ac. Quam a ipsum fermentum morbi bibendum mauris est
-              interdum. Sed interdum risus nulla senectus. Ac auctor viverra
-              etiam sed eu amet mi. Ultricies ornare vel tortor tempor sit
-              varius iaculis. Sed quis facilisis justo ac. Tincidunt urna
-              posuere morbi elementum tristique utmi justo vulputate. Tellus
-              quam sagittis odio sem dui nunc cursus. Pretium auctor semper
-              vulputate vel dictum lorem. Purus etiam aliquam tellus est proin
-              at dignissim. Enim morbi donec cras in vitae lorem porttitor
-              penatibus vitae. Nulla eu orci massa feugiat. Risus blandit nec in
-              volutpat justo. Sapien malesuada et quisque mi nunc. Fusce et sit
-              ac consequat sapien venenatis senectus dignissim malesuada. Sit
-              lorem sed at auctor. Lacus ac proin vulputate sagittis sed eget
-              nisi. Vitae orci in nisl volutpat. Et pretium in nibh arcu diam
-              integer diam. Ac tortor fames velit nulla mauris faucibus felis.
-              Dolor viverra at dictum eget iaculis est posuere.
+              {isPending && '자기소개 정보를 불러오는 중입니다...'}
+              {detail && `${detail.answers[0].answer}`}
+              {!detail && '빈 자기소개 란입니다.'}
             </SelfIntroduce>
           </IntroContainer>
           <ProfileContainer>
             <TitleWrapper>
               <Text size='xl' weight='bold' color='black'>
-                김머글
+                {isPending && 'OOO'}
+                {detail && `${detail.name}`}
               </Text>
               <Stars color='yellow' width='25px' height='23.75px' />
             </TitleWrapper>
-            <ApplyInfo />
+            {isPending && <ApplyInfo track='' submittedAt='' />}
+            {!detail && <ApplyInfo track='' submittedAt='' />}
+            {detail && (
+              <ApplyInfo
+                track={detail.track}
+                submittedAt={detail.submittedAt}
+              />
+            )}
             <DividingLine />
-            <TechStack />
+            {isPending && <TechStack techStack='' link='' />}
+            {!detail && <TechStack techStack='' link='' />}
+            {detail && (
+              <TechStack techStack={detail.techStack} link={detail.link} />
+            )}
             <DividingLine />
-            <Memo />
+
+            {isPending && <Memo note='' />}
+            {!detail && <Memo note='' />}
+            {detail && <Memo note={detail.note} />}
             <DividingLine />
             <ButtonContainer>
               <CommonBtn

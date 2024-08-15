@@ -5,8 +5,6 @@ import linkIcon from '@gdsc/assets/admin/linkIcon.svg';
 
 import styled from '@emotion/styled';
 
-const TechStackList: string[] = ['JAVA', 'PHP'];
-
 const TechStackWrapper = styled.div`
   width: 100%;
 
@@ -35,7 +33,26 @@ const TechStackCard = styled.div`
   font-weight: bold;
 `;
 
-const TechStack = () => {
+const TechStack = ({
+  techStack,
+  link,
+}: {
+  techStack: string;
+  link: string;
+}) => {
+  const TechStackList: string[] = techStack
+    .split(', ')
+    .map((tech) => tech.trim());
+
+  const gotoGitHub = () => {
+    const url = link;
+    if (url.trim() === '') {
+      alert('존재하지 않는 링크입니다.');
+    } else {
+      window.open(url, '_blank');
+    }
+  };
+
   return (
     <TechStackWrapper>
       <Text size='sm' weight='bold' color='black'>
@@ -53,6 +70,7 @@ const TechStack = () => {
         color='yellow'
         hoverColor='yellow'
         backgroundColor='yellow'
+        onClick={gotoGitHub}
       >
         <img src={linkIcon} alt='link' />
         <Text size='sm' weight='bold' color='white'>
