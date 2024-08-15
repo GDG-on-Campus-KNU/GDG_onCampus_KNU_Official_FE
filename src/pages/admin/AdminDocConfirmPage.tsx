@@ -69,7 +69,7 @@ const AdminDocConfirmPage = () => {
         <DocsSearchBar name={name} setName={setName} />
       </InfoBox>
       {data && <CurrentApplyInfo response={data} />}
-      <ApplyDetailModal id={1} />
+      {/* <ApplyDetailModal id={1} /> */}
       <TableSection total={data?.total} isMarked={isMarked} name={name} />
     </DisplayLayout>
   );

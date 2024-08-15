@@ -36,6 +36,10 @@ export const TableCell = styled.td`
     border-bottom-right-radius: 12px;
     padding-right: 10px;
   }
+
+  &:hover {
+    cursor: pointer;
+  }
 `;
 
 export const TableHeaderCell = styled.th`

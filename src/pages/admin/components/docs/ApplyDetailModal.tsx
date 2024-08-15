@@ -46,7 +46,13 @@ interface DetailInfo {
   marked: boolean;
 }
 
-const ApplyDetailModal = ({ id }: { id: number }) => {
+const ApplyDetailModal = ({
+  id,
+  onClose,
+}: {
+  id: number;
+  onClose: () => void;
+}) => {
   const [detail, setDetail] = useState<DetailInfo | null>(null);
   const { data, isPending } = useGetDocsDetail(id);
   useEffect(() => {
@@ -93,7 +99,7 @@ const ApplyDetailModal = ({ id }: { id: number }) => {
           <Text size='xl' weight='bold' color='black'>
             지원자 정보 조회
           </Text>
-          <CloseBtn />
+          <CloseBtn onClick={onClose} />
         </TitleWrapper>
         <ContentWrapper>
           <IntroContainer>
@@ -125,8 +131,9 @@ const ApplyDetailModal = ({ id }: { id: number }) => {
             </Text>
             <SelfIntroduce>
               {isPending && '자기소개 정보를 불러오는 중입니다...'}
-              {detail && `${detail.answers[0].answer}`}
-              {!detail && '빈 자기소개 란입니다.'}
+              {detail && detail.answers.length > 0
+                ? `${detail.answers[0].answer}`
+                : '빈 자기소개 란입니다.'}
             </SelfIntroduce>
           </IntroContainer>
           <ProfileContainer>

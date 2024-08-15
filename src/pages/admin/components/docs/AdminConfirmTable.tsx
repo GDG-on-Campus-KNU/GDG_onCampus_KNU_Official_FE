@@ -14,6 +14,7 @@ import {
   TableRow,
 } from '../MemberTable.style';
 import { columns } from './AdminTableDocs';
+import ApplyDetailModal from './ApplyDetailModal';
 import { MemberData, Track } from '@gdsc/types/AdminInterface';
 import {
   flexRender,
@@ -43,6 +44,7 @@ const AdminConfirmTable = ({
     data: MemberData[];
     totalPage: number;
   } | null>(null);
+  const [openDetail, setOpenDetail] = useState<number | null>(null);
 
   const { data: searchData } = useGetSearch(name, currentPage, 10);
 
@@ -100,6 +102,14 @@ const AdminConfirmTable = ({
     }
   };
 
+  const handleOpenModal = (id: number) => {
+    setOpenDetail(id);
+  };
+
+  const handleCloseModal = () => {
+    setOpenDetail(null);
+  };
+
   const table = useReactTable({
     columns: columns(),
     data: confirmList?.data || [],
@@ -130,12 +140,18 @@ const AdminConfirmTable = ({
           {table.getRowModel().rows.map((row) => (
             <TableRow key={row.id}>
               {row.getVisibleCells().map((cell) => (
-                <TableCell key={cell.id}>
+                <TableCell
+                  key={cell.id}
+                  onClick={() => handleOpenModal(cell.row.original.id)}
+                >
                   {flexRender(cell.column.columnDef.cell, cell.getContext())}
                 </TableCell>
               ))}
             </TableRow>
           ))}
+          {openDetail && (
+            <ApplyDetailModal id={openDetail} onClose={handleCloseModal} />
+          )}
         </tbody>
       </StyledTable>
       <Pagination
