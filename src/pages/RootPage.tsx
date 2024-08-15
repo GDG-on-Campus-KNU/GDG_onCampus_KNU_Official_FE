@@ -1,5 +1,5 @@
 import { useMediaQuery } from 'react-responsive';
-import { Outlet, useNavigation } from 'react-router-dom';
+import { Outlet } from 'react-router-dom';
 
 import MainNavigationMobile from '@gdsc/components/feature/header/MainNavigationMobile';
 
@@ -23,14 +23,12 @@ export const MainContent = styled.main`
 `;
 
 const RootPage = () => {
-  const navigation = useNavigation();
   const isMobile = useMediaQuery({ query: '(max-width: 500px)' });
 
   return (
     <>
       {isMobile ? <MainNavigationMobile /> : <MainNavigation />}
       <MainContent>
-        {navigation.state === 'loading' && <p>Loading...</p>}
         <Outlet />
       </MainContent>
     </>

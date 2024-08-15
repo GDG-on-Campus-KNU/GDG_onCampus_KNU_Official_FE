@@ -8,6 +8,8 @@ import MenuHamburger from '@gdsc/assets/MenuHamburger.svg';
 
 import { useNavigationStore } from '@gdsc/store/useNavigationStore';
 
+import { DisplayLayout } from '@gdsc/styles/LayoutStyle';
+
 import AdminSideBar from './AdminSideBar';
 import {
   TitleWrapper,
@@ -37,41 +39,48 @@ const AdminTitle = () => {
   const isMobile = useMediaQuery({ query: '(max-width: 500px)' });
 
   return (
-    <HeaderLayout>
-      {isMobile ? (
-        <MobileErrorPage />
-      ) : (
-        <TitleWrapper>
-          <TitleTextContainer>
-            <SubtitleTextContainer>
-              <Text size='lg' weight='bold'>
-                Admin Page
+    <Layout>
+      <HeaderLayout>
+        {isMobile ? (
+          <MobileErrorPage />
+        ) : (
+          <TitleWrapper>
+            <TitleTextContainer>
+              <SubtitleTextContainer>
+                <Text size='lg' weight='bold'>
+                  Admin Page
+                </Text>
+                <Text size='sm'>GDSC KNU</Text>
+              </SubtitleTextContainer>
+              <Text size='xxl' weight='bold'>
+                {getTitle(pathName.pathname)}
               </Text>
-              <Text size='sm'>GDSC KNU</Text>
-            </SubtitleTextContainer>
-            <Text size='xxl' weight='bold'>
-              {getTitle(pathName.pathname)}
-            </Text>
-          </TitleTextContainer>
-          <React.Fragment>
-            <HamburgerMenu src={MenuHamburger} alt='menu' onClick={open} />
-            <AdminSideBar open={isOpen} />
-          </React.Fragment>
-        </TitleWrapper>
-      )}
-    </HeaderLayout>
+            </TitleTextContainer>
+            <React.Fragment>
+              <HamburgerMenu src={MenuHamburger} alt='menu' onClick={open} />
+              <AdminSideBar open={isOpen} />
+            </React.Fragment>
+          </TitleWrapper>
+        )}
+      </HeaderLayout>
+    </Layout>
   );
 };
 
 export default AdminTitle;
 
-const HeaderLayout = styled.div`
+const Layout = styled.div`
   width: 100%;
-  height: calc(100% - 45px);
+  display: flex;
+  justify-content: center;
+`;
+
+const HeaderLayout = styled(DisplayLayout)`
+  padding-top: 52px;
   margin-top: 45px;
 
   @media (max-width: 500px) {
-    height: calc(100% - 75px);
     margin-top: 75px;
+    padding-bottom: 20px;
   }
 `;

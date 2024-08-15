@@ -89,7 +89,7 @@ export const GlobalStyle = css`
     --color-que: ${colorMartinique};
     --color-navy: ${colorMartiniNavy};
     --color-selective: ${colorSelectiveYellow};
-    --color-dpuprle: ${colorDarkPurple};
+    --color-dpurple: ${colorDarkPurple};
     --color-alto: ${colorAlto};
     --color-dove: ${colorDoveGray};
     --color-santas: ${colorSantasGray};

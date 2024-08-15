@@ -83,10 +83,17 @@ const MainNavigation = () => {
   );
   const closeDropdown = useHeaderDropDownState((state) => state.closeDropdown);
 
-  const { data: MyData } = useGetMyData();
+  const { data: MyData, error } = useGetMyData();
   const navigate = useNavigate();
 
   const setUser = useUserStatusStore((state) => state.setUser);
+
+  useEffect(() => {
+    const savedUser = sessionStorage.getItem('user');
+    if (savedUser) {
+      setUser(JSON.parse(savedUser));
+    }
+  }, [setUser]);
 
   useEffect(() => {
     if (MyData && MyData?.role === 'ROLE_TEMP') {
@@ -102,9 +109,14 @@ const MainNavigation = () => {
         | 'GUEST'
         | 'MEMBER'
         | 'CORE';
-      setUser({ name: MyData.name, status: userStatus });
+      const userData = { name: MyData.name, status: userStatus };
+      setUser(userData);
+      sessionStorage.setItem('user', JSON.stringify(userData));
+    } else if (error) {
+      setUser(null);
+      sessionStorage.removeItem('user');
     }
-  }, [MyData, navigate, setUser]);
+  }, [MyData, navigate, setUser, error]);
 
   // console.log(MyData);
   return (

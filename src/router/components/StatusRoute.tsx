@@ -1,6 +1,7 @@
 import { useEffect } from 'react';
-import Spinner from 'react-bootstrap/Spinner';
 import { Navigate, Outlet } from 'react-router-dom';
+
+import { LoadingView } from '@gdsc/components/common/View/LoadingView';
 
 import { useGetMyData } from '@gdsc/apis/hooks/mypage/useGetMyData';
 
@@ -16,24 +17,44 @@ const StatusRoute = ({ allowedStatuses }: PrivateRouteProps) => {
   const { data, error, isLoading } = useGetMyData();
 
   useEffect(() => {
+    const savedUser = sessionStorage.getItem('user');
+    if (savedUser) {
+      setUser(JSON.parse(savedUser));
+    }
+  }, [setUser]);
+
+  useEffect(() => {
     if (data) {
       const userStatus = data.role.replace('ROLE_', '') as
         | 'TEMP'
         | 'GUEST'
         | 'MEMBER'
         | 'CORE';
-      setUser({ name: data.name, status: userStatus });
+      const userData = { name: data.name, status: userStatus };
+      setUser(userData);
+      sessionStorage.setItem('user', JSON.stringify(userData));
     } else if (error) {
       setUser(null);
+      sessionStorage.removeItem('user');
     }
   }, [data, error, setUser]);
 
+  useEffect(() => {
+    const handleBeforeUnload = () => {
+      const currentUser = useUserStatusStore.getState().user;
+      if (currentUser) {
+        sessionStorage.setItem('user', JSON.stringify(currentUser));
+      }
+    };
+
+    window.addEventListener('beforeunload', handleBeforeUnload);
+    return () => {
+      window.removeEventListener('beforeunload', handleBeforeUnload);
+    };
+  }, []);
+
   if (isLoading) {
-    return (
-      <Spinner animation='border' role='status'>
-        <span className='visually-hidden'>Loading...</span>
-      </Spinner>
-    );
+    return <LoadingView />;
   }
 
   if (error || user === null) {

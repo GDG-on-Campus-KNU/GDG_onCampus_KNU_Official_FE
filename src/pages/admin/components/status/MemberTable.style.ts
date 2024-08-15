@@ -25,7 +25,7 @@ export const TableCell = styled.td`
 
   font-size: 14px;
 
-  &:first-child {
+  &:first-of-type {
     border-top-left-radius: 12px;
     border-bottom-left-radius: 12px;
     padding-left: 10px;
@@ -41,7 +41,7 @@ export const TableCell = styled.td`
 export const TableHeaderCell = styled.th`
   border: none;
 
-  &:first-child {
+  &:first-of-type {
     border-top-left-radius: 12px;
     border-bottom-left-radius: 12px;
   }
@@ -53,7 +53,7 @@ export const TableHeaderCell = styled.th`
 `;
 
 export const TableRow = styled.tr`
-  &:nth-child(even) {
+  &:nth-of-type(even) {
     background-color: rgba(255, 255, 255, 0.15);
   }
 `;
