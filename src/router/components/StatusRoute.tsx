@@ -39,6 +39,20 @@ const StatusRoute = ({ allowedStatuses }: PrivateRouteProps) => {
     }
   }, [data, error, setUser]);
 
+  useEffect(() => {
+    const handleBeforeUnload = () => {
+      const currentUser = useUserStatusStore.getState().user;
+      if (currentUser) {
+        sessionStorage.setItem('user', JSON.stringify(currentUser));
+      }
+    };
+
+    window.addEventListener('beforeunload', handleBeforeUnload);
+    return () => {
+      window.removeEventListener('beforeunload', handleBeforeUnload);
+    };
+  }, []);
+
   if (isLoading) {
     return <LoadingView />;
   }
