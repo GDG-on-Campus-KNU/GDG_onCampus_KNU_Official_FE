@@ -49,6 +49,19 @@ const colorMoreTransParent = 'rgba(255, 255, 255, 0.15)';
 const colorGradient = 'linear-gradient(to top, #1f1632 0%, #392f4f 100%)';
 
 export const GlobalStyle = css`
+  @font-face {
+    font-family: 'Noto Sans KR';
+    src:
+      url('/fonts/NotoSansKR-VariableFont_wght.otf')
+        format('opentype-variations'),
+      url('/fonts/NotoSansKR-VariableFont_wght.woff') format('woff-variations'),
+      url('/fonts/NotoSansKR-VariableFont_wght.ttf')
+        format('truetype-variations');
+    font-weight: 100 900;
+    font-style: normal;
+    font-display: swap;
+  }
+
   :root {
     --font-size-xxl: ${fontSizeXxl};
     --font-size-mxl: ${fontSizeMxl};
@@ -111,7 +124,7 @@ export const GlobalStyle = css`
     -ms-overflow-style: none;
     scrollbar-width: none;
     flex-direction: column;
-    font-family: 'Noto Sans KR', sans-serif;
+    font-family: 'NotoSansKR-VariableFont_wght', monospace;
     font-optical-sizing: auto;
     background-color: var(--color-revolver);
     color: var(--color-white);

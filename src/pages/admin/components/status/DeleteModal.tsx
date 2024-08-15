@@ -4,7 +4,7 @@ import { CloseBtn } from '@gdsc/components/feature/header/admin/AdminSideBar.sty
 
 import trashcanIcon from '@gdsc/assets/admin/trashcanIcon.svg';
 
-import { useDeleteUserList } from '@gdsc/apis/hooks/admin/useDeleteUser';
+import { useDeleteUserList } from '@gdsc/apis/hooks/admin/status/useDeleteUser';
 
 import { useSelectedUserStore } from '@gdsc/store/useSelectedUserStore';
 

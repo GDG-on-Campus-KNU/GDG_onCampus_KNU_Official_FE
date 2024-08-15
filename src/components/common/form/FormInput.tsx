@@ -24,9 +24,8 @@ const InputWrapper = styled.div<InputLabelInterface>`
 `;
 
 const SignFormTitle = styled.label`
-  font-size: var(--font-size-lg);
+  font-size: var(--font-size-md);
   color: var(--color-white);
-  font-family: 'Noto+Sans';
   font-weight: 400;
 
   @media (max-width: 500px) {
@@ -55,7 +54,6 @@ const InputElement = styled.input`
   border-radius: 12px;
 
   font-size: var(--font-size-md);
-  font-family: 'Noto+Sans';
 
   background-color: #392f4f;
   opacity: 100%;

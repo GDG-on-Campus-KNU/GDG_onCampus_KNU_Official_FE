@@ -54,8 +54,6 @@ const Text = styled.span<IText>`
     }
   }};
 
-  font-family: 'Noto+Sans';
-
   white-space: ${(props) => {
     switch (props.whiteSpace) {
       case 'nowrap':
