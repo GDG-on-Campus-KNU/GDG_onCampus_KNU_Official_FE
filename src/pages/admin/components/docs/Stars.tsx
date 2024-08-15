@@ -1,19 +1,38 @@
 import styled from '@emotion/styled';
 
 interface StarProps {
-  color: 'white' | 'yellow';
+  color: 'white' | 'yellow' | string;
   width?: string;
   height?: string;
-  onClick?: (id: number) => void;
 }
 
 const StarIcon = styled.svg<StarProps>`
-  width: ${({ width }) => width || '21px'}; /* width가 없을 경우 기본값 21px */
+  width: ${({ width }) => width || '21px'};
   height: ${({ height }) => height || '21px'};
-  fill: ${({ color }) =>
-    color === 'yellow' ? 'var(--color-selective)' : 'var(--color-white)'};
-  stroke: ${({ color }) =>
-    color === 'yellow' ? 'var(--color-selective)' : 'var(--color-white)'};
+  fill: ${({ color }) => {
+    switch (color) {
+      case 'yellow':
+        return 'var(--color-selective)';
+      case 'white':
+        return 'var(--color-white)';
+      case 'silver':
+        return 'var(--color-alto)';
+      default:
+        return 'var(--color-white)';
+    }
+  }};
+  stroke: ${({ color }) => {
+    switch (color) {
+      case 'yellow':
+        return 'var(--color-selective)';
+      case 'white':
+        return 'var(--color-white)';
+      case 'silver':
+        return 'var(--color-alto)';
+      default:
+        return 'var(--color-white)';
+    }
+  }};
 
   &:hover {
     cursor: pointer;

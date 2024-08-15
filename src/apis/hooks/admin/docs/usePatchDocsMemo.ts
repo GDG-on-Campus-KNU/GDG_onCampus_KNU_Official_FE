@@ -2,26 +2,24 @@ import { fetchInstance } from '@gdsc/apis/instance/Api_JWT';
 
 import { useMutation } from '@tanstack/react-query';
 
-const patchDocsMemoPath = () => `/api/admin/application/note`;
+const patchMemoPath = () => '/api/admin/application/note';
 
-export const patchDocsMemo = async (id: number, memo: string) => {
-  await fetchInstance.patch(patchDocsMemoPath(), {
-    params: {
-      id: id,
-    },
-    memo,
-  });
+const patchDocsMemo = async (id: number, memo: string): Promise<void> => {
+  console.log(memo);
+  await fetchInstance.patch(patchMemoPath(), memo, { params: { id } });
 };
 
 export const usePatchDocsMemo = () => {
   const accessToken = localStorage.getItem('accessToken');
 
-  return useMutation<void, Error, { id: number; memo: string }>({
+  const mutation = useMutation<void, Error, { id: number; memo: string }>({
     mutationFn: ({ id, memo }) => {
       if (!accessToken) {
-        throw new Error('No access token');
+        return Promise.reject(new Error('액세스 토큰이 없습니다.'));
       }
       return patchDocsMemo(id, memo);
     },
   });
+
+  return mutation;
 };

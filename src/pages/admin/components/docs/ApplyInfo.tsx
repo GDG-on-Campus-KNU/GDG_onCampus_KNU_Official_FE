@@ -25,11 +25,7 @@ interface IApplyInfo {
 
 const ApplyInfo = ({ track, submittedAt }: IApplyInfo) => {
   const datePart = submittedAt.split(' ')[0];
-
-  // 형식 변환
   const formattedDate = datePart.replace(/-/g, '. ');
-
-  console.log(formattedDate); // "2024. 08. 13"
 
   return (
     <InfoWrapper>

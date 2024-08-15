@@ -108,6 +108,7 @@ const AdminConfirmTable = ({
 
   const handleCloseModal = () => {
     setOpenDetail(null);
+    window.location.reload();
   };
 
   const table = useReactTable({

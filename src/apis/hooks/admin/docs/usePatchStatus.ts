@@ -5,7 +5,7 @@ import { useMutation } from '@tanstack/react-query';
 const patchStatusPath = () => '/api/admin/application/status';
 
 export const patchStatus = async (id: number, status: string) => {
-  await fetchInstance.patch(patchStatusPath(), {
+  await fetchInstance.patch(patchStatusPath(), null, {
     params: {
       id: id,
       status: status,
