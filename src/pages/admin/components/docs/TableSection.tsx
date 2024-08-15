@@ -1,6 +1,6 @@
 import { useState } from 'react';
 
-import { useGetApplyDocs } from '@gdsc/apis/hooks/admin/useGetApplyDocs';
+import { useGetApplyDocs } from '@gdsc/apis/hooks/admin/docs/useGetApplyDocs';
 
 import AdminConfirmTable from './AdminConfirmTable';
 import TrackSelectButtons from './TrackSelectButtons';

@@ -7,7 +7,7 @@ import { columns } from '@gdsc/constants/MemberTableColumns';
 import {
   userListInterface,
   useGetUserList,
-} from '@gdsc/apis/hooks/admin/useGetUserList';
+} from '@gdsc/apis/hooks/admin/status/useGetUserList';
 
 import { useSelectedUserStore } from '@gdsc/store/useSelectedUserStore';
 

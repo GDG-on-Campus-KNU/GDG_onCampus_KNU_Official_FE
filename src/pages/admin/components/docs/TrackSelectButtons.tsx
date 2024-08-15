@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 
 import Text from '@gdsc/components/common/typography/Text';
 
-import { applyDocsInterface } from '@gdsc/apis/hooks/admin/useGetApplyDocs';
+import { applyDocsInterface } from '@gdsc/apis/hooks/admin/docs/useGetApplyDocs';
 
 import styled from '@emotion/styled';
 import { Track } from '@gdsc/types/AdminInterface';
