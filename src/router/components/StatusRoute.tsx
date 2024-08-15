@@ -1,6 +1,7 @@
 import { useEffect } from 'react';
-import { Oval } from 'react-loader-spinner';
 import { Navigate, Outlet } from 'react-router-dom';
+
+import { LoadingView } from '@gdsc/components/common/View/LoadingView';
 
 import { useGetMyData } from '@gdsc/apis/hooks/mypage/useGetMyData';
 
@@ -39,17 +40,7 @@ const StatusRoute = ({ allowedStatuses }: PrivateRouteProps) => {
   }, [data, error, setUser]);
 
   if (isLoading) {
-    return (
-      <Oval
-        visible={true}
-        height='30'
-        width='30'
-        color='#fff'
-        ariaLabel='oval-loading'
-        wrapperStyle={{}}
-        wrapperClass=''
-      />
-    );
+    return <LoadingView />;
   }
 
   if (error || user === null) {
