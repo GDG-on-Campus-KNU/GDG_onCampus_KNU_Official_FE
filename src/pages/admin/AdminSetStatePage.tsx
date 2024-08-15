@@ -5,19 +5,34 @@ import CommonBtn from '@gdsc/components/common/button/CommonBtn';
 import { DisplayLayout } from '@gdsc/styles/LayoutStyle';
 
 import { ButtonContainer, TopContainer } from './AdminSetStatePage.style';
-import AdminSearchBar from './components/status/AdminSearchBar';
+import AdminSearchBar from './components/AdminSearchBar';
+import MemberTable from './components/MemberTable';
+import ApproveModal from './components/status/ApproveModal';
 import DeleteModal from './components/status/DeleteModal';
-import MemberTable from './components/status/MemberTable';
 
 const AdminSetStatePage = () => {
   const [deleteModalOpen, setDeleteModalOpen] = useState<boolean>(false);
+  const [approveModalOpen, setApproveModalOpen] = useState<boolean>(false);
+  const [searchName, setSearchName] = useState<string>('');
 
   const handleDeleteClick = () => {
     setDeleteModalOpen(true);
   };
 
-  const handleCloseModal = () => {
+  const handleCloseDeleteModal = () => {
     setDeleteModalOpen(false);
+  };
+
+  const handleApproveClick = () => {
+    setApproveModalOpen(true);
+  };
+
+  const handleCloseApproveModal = () => {
+    setApproveModalOpen(false);
+  };
+
+  const handleSearchNameChange = (name: string) => {
+    setSearchName(name);
   };
 
   return (
@@ -43,15 +58,17 @@ const AdminSetStatePage = () => {
             height='43px'
             color='navy'
             backgroundColor='navy'
-            hoverColor='navy'
+            hoverColor='blue'
+            onClick={handleApproveClick}
           >
             승인하기
           </CommonBtn>
         </ButtonContainer>
-        <AdminSearchBar />
+        <AdminSearchBar onSearch={handleSearchNameChange} />
       </TopContainer>
-      <MemberTable />
-      {deleteModalOpen && <DeleteModal onClose={handleCloseModal} />}
+      <MemberTable searchName={searchName} />
+      {deleteModalOpen && <DeleteModal onClose={handleCloseDeleteModal} />}
+      {approveModalOpen && <ApproveModal onClose={handleCloseApproveModal} />}
     </DisplayLayout>
   );
 };

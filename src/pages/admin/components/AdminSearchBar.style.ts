@@ -1,6 +1,6 @@
 import styled from '@emotion/styled';
 
-export const SearchBarContainer = styled.div`
+export const SearchBarContainer = styled.form`
   width: 250px;
   height: 44px;
 
