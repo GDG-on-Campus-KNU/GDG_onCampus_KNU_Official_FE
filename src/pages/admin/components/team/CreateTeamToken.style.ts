@@ -36,6 +36,18 @@ export const TokenContainer = styled.div`
   }
 `;
 
+export const CloseButton = styled.div`
+  position: absolute;
+  top: 20%;
+  right: 0%;
+  transform: translate(-50%, -50%);
+  display: block;
+  background: none;
+  border: none;
+  margin-left: 8px;
+  cursor: pointer;
+`;
+
 export const BtnWrapper = styled.div`
   max-height: 96px;
   flex-wrap: wrap;
@@ -56,4 +68,8 @@ export const TeamBoxContainer = styled.div`
   width: 100%;
   overflow: auto;
   margin-top: 20px;
+`;
+
+export const ButtonContainer = styled.div`
+  position: relative;
 `;
