@@ -8,13 +8,17 @@ const getSearchListPath = () => '/api/admin/member/search';
 const searchListQueryKey = [getSearchListPath()];
 
 const getSearchList = async (
-  searchName: string
+  searchName: string | undefined,
+  page: number,
+  size: number
 ): Promise<userListInterface> => {
   const response = await fetchInstance.get<userListInterface>(
     getSearchListPath(),
     {
       params: {
         name: searchName,
+        page: page,
+        size: size,
       },
     }
   );
@@ -23,13 +27,15 @@ const getSearchList = async (
 };
 
 export const useGetSearchList = (
-  searchName: string
+  searchName: string | undefined,
+  page: number,
+  size: number
 ): UseQueryResult<userListInterface, Error> => {
   const accessToken = localStorage.getItem('accessToken');
 
   return useQuery<userListInterface, Error>({
-    queryKey: [searchListQueryKey, searchName],
-    queryFn: () => getSearchList(searchName),
+    queryKey: [searchListQueryKey, searchName, page, size],
+    queryFn: () => getSearchList(searchName, page, size),
     enabled: !!accessToken,
   });
 };

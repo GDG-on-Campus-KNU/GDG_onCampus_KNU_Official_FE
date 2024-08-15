@@ -21,14 +21,14 @@ const InputField = forwardRef<HTMLInputElement>((props, ref) => {
 
 InputField.displayName = 'InputField';
 
-const AdminSearchBar = () => {
+const AdminSearchBar = ({ onSearch }: { onSearch: (name: string) => void }) => {
   const inputRef = useRef<HTMLInputElement>(null);
   const [clickTrigger, setClickTrigger] = useState<boolean>(false);
 
   const handleClick = () => {
     if (inputRef.current) {
       inputRef.current.focus();
-      console.log(inputRef.current.value);
+      onSearch(inputRef.current.value);
     }
     setClickTrigger((prev) => !prev);
   };
