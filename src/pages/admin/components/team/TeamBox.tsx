@@ -1,3 +1,5 @@
+import { useEffect, lazy } from 'react';
+
 import Text from '@gdsc/components/common/typography/Text';
 
 import PlusBtn from '@gdsc/assets/admin/PlusBtn.svg';
@@ -6,15 +8,17 @@ import { postSubTeam } from '@gdsc/apis/hooks/admin/postSubTeam';
 import type { SubTeam } from '@gdsc/apis/hooks/admin/useGetAllTeamToken';
 import { useGetTeamMember } from '@gdsc/apis/hooks/admin/useGetTeamMember';
 
-import MemberProfile from './MemberProfile';
-import SubTeamBox from './SubTeamBox';
 import {
   MemberTable,
   ParentTeamBox,
   PlusBox,
   TeamBoxContainer,
 } from './TeamBox.style';
+import { useTeamUpdate } from '@gdsc/provider/TeamUpdate';
 import { Droppable } from '@hello-pangea/dnd';
+
+const MemberProfile = lazy(() => import('./MemberProfile'));
+const SubTeamBox = lazy(() => import('./SubTeamBox'));
 
 const TeamBox = ({
   teamId,
@@ -25,7 +29,15 @@ const TeamBox = ({
   teamName: string;
   subTeams: SubTeam[];
 }) => {
-  const { data: ParentTeamMember } = useGetTeamMember(teamId);
+  const { data: ParentTeamMember, refetch } = useGetTeamMember(teamId);
+  const { isTeamUpdate, setIsTeamUpdate } = useTeamUpdate();
+
+  useEffect(() => {
+    if (isTeamUpdate) {
+      refetch();
+      setIsTeamUpdate(false);
+    }
+  }, [isTeamUpdate, refetch, setIsTeamUpdate]);
 
   const onClickTeamBox = async () => {
     const isConfirmed = confirm('팀을 추가하시겠습니까?');

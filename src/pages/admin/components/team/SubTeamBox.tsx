@@ -1,12 +1,15 @@
-import { Oval } from 'react-loader-spinner';
+import { useEffect, lazy } from 'react';
 
+import { LoadingView } from '@gdsc/components/common/View/LoadingView';
 import Text from '@gdsc/components/common/typography/Text';
 
 import { useGetTeamMember } from '@gdsc/apis/hooks/admin/useGetTeamMember';
 
-import MemberProfile from './MemberProfile';
 import { MemberTable, ParentTeamBox } from './TeamBox.style';
+import { useTeamUpdate } from '@gdsc/provider/TeamUpdate';
 import { Droppable } from '@hello-pangea/dnd';
+
+const MemberProfile = lazy(() => import('./MemberProfile'));
 
 const SubTeamBox = ({
   subTeamId,
@@ -15,20 +18,23 @@ const SubTeamBox = ({
   subTeamId: number;
   subTeamName: string;
 }) => {
-  const { data: SubTeamMember, isLoading } = useGetTeamMember(subTeamId);
+  const {
+    data: SubTeamMember,
+    isLoading,
+    refetch,
+  } = useGetTeamMember(subTeamId);
+
+  const { isTeamUpdate, setIsTeamUpdate } = useTeamUpdate();
+
+  useEffect(() => {
+    if (isTeamUpdate) {
+      refetch();
+      setIsTeamUpdate(false);
+    }
+  }, [isTeamUpdate, refetch, setIsTeamUpdate]);
 
   if (isLoading) {
-    return (
-      <Oval
-        visible={true}
-        height='30'
-        width='30'
-        color='#fff'
-        ariaLabel='oval-loading'
-        wrapperStyle={{}}
-        wrapperClass=''
-      />
-    );
+    return <LoadingView />;
   }
 
   return (
