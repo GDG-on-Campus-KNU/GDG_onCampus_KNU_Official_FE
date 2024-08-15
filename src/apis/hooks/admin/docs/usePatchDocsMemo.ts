@@ -2,18 +2,15 @@ import { fetchInstance } from '@gdsc/apis/instance/Api_JWT';
 
 import { useMutation } from '@tanstack/react-query';
 
-const patchDocsMemoPath = () => `/api/admin/application/memo`;
+const patchDocsMemoPath = () => `/api/admin/application/note`;
 
 export const patchDocsMemo = async (id: number, memo: string) => {
-  const response = await fetchInstance.patch(patchDocsMemoPath(), {
+  await fetchInstance.patch(patchDocsMemoPath(), {
     params: {
       id: id,
     },
-    data: {
-      memo: memo,
-    },
+    memo,
   });
-  return response.data;
 };
 
 export const usePatchDocsMemo = () => {

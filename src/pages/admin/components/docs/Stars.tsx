@@ -4,6 +4,7 @@ interface StarProps {
   color: 'white' | 'yellow';
   width?: string;
   height?: string;
+  onClick?: (id: number) => void;
 }
 
 const StarIcon = styled.svg<StarProps>`
@@ -13,6 +14,10 @@ const StarIcon = styled.svg<StarProps>`
     color === 'yellow' ? 'var(--color-selective)' : 'var(--color-white)'};
   stroke: ${({ color }) =>
     color === 'yellow' ? 'var(--color-selective)' : 'var(--color-white)'};
+
+  &:hover {
+    cursor: pointer;
+  }
 `;
 
 const Stars = ({ color, width, height }: StarProps) => {

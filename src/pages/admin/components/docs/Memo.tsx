@@ -3,6 +3,8 @@ import { useState } from 'react';
 import CommonBtn from '@gdsc/components/common/button/CommonBtn';
 import Text from '@gdsc/components/common/typography/Text';
 
+import { usePatchDocsMemo } from '@gdsc/apis/hooks/admin/docs/usePatchDocsMemo';
+
 import styled from '@emotion/styled';
 
 const MemoWrapper = styled.div`
@@ -38,11 +40,31 @@ const MemoBox = styled.textarea`
   outline: none;
 `;
 
-const Memo = ({ note }: { note: string | null }) => {
+const Memo = ({ id, note }: { id: number | null; note: string | null }) => {
   const [memo, setMemo] = useState<string | null>(note || null);
+  const { mutate } = usePatchDocsMemo();
 
   const handleMemoBoxChange = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
     setMemo(e.target.value);
+  };
+
+  const handleSaveClick = () => {
+    if (id !== null && memo !== null) {
+      mutate(
+        { id, memo },
+        {
+          onSuccess: () => {
+            window.location.reload();
+          },
+          onError: (error) => {
+            console.error('API 호출 실패:', error);
+            alert('메모 저장에 실패했습니다.');
+          },
+        }
+      );
+    } else {
+      alert('변경된 메모 내용이 없습니다.');
+    }
   };
 
   return (
@@ -60,6 +82,7 @@ const Memo = ({ note }: { note: string | null }) => {
           color='innerYellow'
           hoverColor='innerYellow'
           backgroundColor='innerYellow'
+          onClick={handleSaveClick}
         >
           저장
         </CommonBtn>

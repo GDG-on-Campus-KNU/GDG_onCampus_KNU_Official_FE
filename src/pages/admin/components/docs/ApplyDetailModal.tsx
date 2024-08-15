@@ -4,6 +4,8 @@ import CommonBtn from '@gdsc/components/common/button/CommonBtn';
 import Text from '@gdsc/components/common/typography/Text';
 
 import { useGetDocsDetail } from '@gdsc/apis/hooks/admin/docs/useGetDocsDetail';
+import { usePatchMark } from '@gdsc/apis/hooks/admin/docs/usePatchMark';
+import { usePatchStatus } from '@gdsc/apis/hooks/admin/docs/usePatchStatus';
 
 import {
   ModalBackdrop,
@@ -53,7 +55,37 @@ const ApplyDetailModal = ({ id }: { id: number }) => {
     }
   }, [data]);
 
-  console.log(detail);
+  const { mutate: patchStatus } = usePatchStatus();
+  const { mutate: mark } = usePatchMark();
+
+  const handleApprove = (id: number, status: string) => {
+    patchStatus(
+      { id, status },
+      {
+        onSuccess: () => {
+          window.location.reload();
+        },
+        onError: (error) => {
+          console.error('API 호출 실패:', error);
+          alert('합불 여부 저장에 실패하였습니다.');
+        },
+      }
+    );
+  };
+
+  const handleMark = (id: number) => {
+    mark(id, {
+      // id를 직접 전달
+      onSuccess: () => {
+        window.location.reload(); // 성공 시 페이지 새로고침
+      },
+      onError: (error) => {
+        console.error('API 호출 실패:', error); // 에러 로그 출력
+        alert('합불 여부 저장에 실패하였습니다.'); // 에러 알림
+      },
+    });
+  };
+
   return (
     <ModalBackdrop>
       <ModalWrapper>
@@ -103,7 +135,20 @@ const ApplyDetailModal = ({ id }: { id: number }) => {
                 {isPending && 'OOO'}
                 {detail && `${detail.name}`}
               </Text>
-              <Stars color='yellow' width='25px' height='23.75px' />
+              {isPending && (
+                <Stars color='white' width='25px' height='23.75px' />
+              )}
+              {!detail && <Stars color='white' width='25px' height='23.75px' />}
+              {detail && detail.marked === true ? (
+                <Stars color='yellow' width='25px' height='23.75px' />
+              ) : (
+                <Stars
+                  color='white'
+                  width='25px'
+                  height='23.75px'
+                  onClick={handleMark}
+                />
+              )}
             </TitleWrapper>
             {isPending && <ApplyInfo track='' submittedAt='' />}
             {!detail && <ApplyInfo track='' submittedAt='' />}
@@ -121,32 +166,61 @@ const ApplyDetailModal = ({ id }: { id: number }) => {
             )}
             <DividingLine />
 
-            {isPending && <Memo note='' />}
-            {!detail && <Memo note='' />}
-            {detail && <Memo note={detail.note} />}
+            {isPending && <Memo id={null} note='' />}
+            {!detail && <Memo id={null} note='' />}
+            {detail && <Memo id={detail.id} note={detail.note} />}
             <DividingLine />
-            <ButtonContainer>
-              <CommonBtn
-                type='button'
-                width='45%'
-                height='30px'
-                color='yellow'
-                hoverColor='yellow'
-                backgroundColor='yellow'
-              >
-                합격
-              </CommonBtn>
-              <CommonBtn
-                type='button'
-                width='45%'
-                height='30px'
-                color='innerYellow'
-                hoverColor='innerYellow'
-                backgroundColor='innerYellow'
-              >
-                불합격
-              </CommonBtn>
-            </ButtonContainer>
+
+            {!detail && (
+              <ButtonContainer>
+                <CommonBtn
+                  type='button'
+                  width='45%'
+                  height='30px'
+                  color='yellow'
+                  hoverColor='yellow'
+                  backgroundColor='yellow'
+                >
+                  합격
+                </CommonBtn>
+                <CommonBtn
+                  type='button'
+                  width='45%'
+                  height='30px'
+                  color='innerYellow'
+                  hoverColor='innerYellow'
+                  backgroundColor='innerYellow'
+                >
+                  불합격
+                </CommonBtn>
+              </ButtonContainer>
+            )}
+            {detail && (
+              <ButtonContainer>
+                <CommonBtn
+                  type='button'
+                  width='45%'
+                  height='30px'
+                  color='yellow'
+                  hoverColor='yellow'
+                  backgroundColor='yellow'
+                  onClick={() => handleApprove(detail.id, 'APPROVED')}
+                >
+                  합격
+                </CommonBtn>
+                <CommonBtn
+                  type='button'
+                  width='45%'
+                  height='30px'
+                  color='innerYellow'
+                  hoverColor='innerYellow'
+                  backgroundColor='innerYellow'
+                  onClick={() => handleApprove(detail.id, 'REJECTED')}
+                >
+                  불합격
+                </CommonBtn>
+              </ButtonContainer>
+            )}
           </ProfileContainer>
         </ContentWrapper>
       </ModalWrapper>
