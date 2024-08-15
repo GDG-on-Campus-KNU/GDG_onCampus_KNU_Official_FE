@@ -2,7 +2,7 @@ import { fetchInstance } from '@gdsc/apis/instance/Api_JWT';
 
 import { useQuery, UseQueryResult } from '@tanstack/react-query';
 
-interface TeamMember {
+export interface TeamMember {
   id: number;
   name: string;
   studentNumber: string;
