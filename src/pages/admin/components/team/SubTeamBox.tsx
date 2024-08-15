@@ -2,18 +2,21 @@ import Text from '@gdsc/components/common/typography/Text';
 
 import { useGetTeamMember } from '@gdsc/apis/hooks/admin/useGetTeamMember';
 
-import { MemberBox, MemberTable, ParentTeamBox, TextWrapper } from './TeamBox';
+import {
+  MemberBox,
+  MemberTable,
+  ParentTeamBox,
+  TextWrapper,
+} from './TeamBox.style';
 
 const SubTeamBox = ({
   subTeamId,
   subTeamName,
-  teamId,
 }: {
   subTeamId: number;
   subTeamName: string;
-  teamId: number;
 }) => {
-  const { data: SubTeamMember } = useGetTeamMember(teamId, subTeamId);
+  const { data: SubTeamMember } = useGetTeamMember(subTeamId);
 
   return (
     <ParentTeamBox>

@@ -4,16 +4,10 @@ const postSubTeamPath = (teamId: number) => `/api/admin/team/${teamId}/subTeam`;
 
 export const postSubTeam = async ({
   teamId,
-  subTeamId,
 }: {
   teamId: number;
-  subTeamId?: number;
 }): Promise<void> => {
-  const response = await fetchInstance.post(postSubTeamPath(teamId), {
-    params: {
-      teamId: subTeamId,
-    },
-  });
+  const response = await fetchInstance.post(postSubTeamPath(teamId));
 
   return response.data;
 };
