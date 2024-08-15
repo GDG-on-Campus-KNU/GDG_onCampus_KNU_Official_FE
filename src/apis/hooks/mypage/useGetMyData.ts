@@ -14,7 +14,7 @@ const getMyData = async (): Promise<userDataInterface> => {
 };
 
 export const useGetMyData = (): UseQueryResult<userDataInterface, Error> => {
-  const accessToken = localStorage.getItem('accessToken');
+  const accessToken = sessionStorage.getItem('accessToken');
 
   return useQuery<userDataInterface, Error>({
     queryKey: myDataQueryKey,

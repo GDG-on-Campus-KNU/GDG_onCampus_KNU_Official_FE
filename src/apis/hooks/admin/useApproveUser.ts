@@ -15,7 +15,7 @@ const approveUserList = async (
 };
 
 export const useApproveUserList = () => {
-  const accessToken = localStorage.getItem('accessToken');
+  const accessToken = sessionStorage.getItem('accessToken');
 
   const mutation = useMutation<
     void,

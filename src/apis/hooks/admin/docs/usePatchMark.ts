@@ -13,7 +13,7 @@ const patchMark = async (userId: number) => {
 };
 
 export const usePatchMark = () => {
-  const accessToken = localStorage.getItem('accessToken');
+  const accessToken = sessionStorage.getItem('accessToken');
 
   const mutation = useMutation<void, Error, number>({
     mutationFn: (id: number) => {

@@ -42,7 +42,7 @@ export const getDocsDetail = async (
 };
 
 export const useGetDocsDetail = (id: number) => {
-  const accessToken = localStorage.getItem('accessToken');
+  const accessToken = sessionStorage.getItem('accessToken');
 
   return useQuery<DocsDetailInterface, Error>({
     queryKey: [docsDetailQueryKey, id],

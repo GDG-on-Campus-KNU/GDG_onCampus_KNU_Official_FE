@@ -48,7 +48,7 @@ export const useGetUserList = (
   page: number,
   size: number
 ): UseQueryResult<userListInterface, Error> => {
-  const accessToken = localStorage.getItem('accessToken');
+  const accessToken = sessionStorage.getItem('accessToken');
 
   return useQuery<userListInterface, Error>({
     queryKey: [userListQueryKey, page, size],

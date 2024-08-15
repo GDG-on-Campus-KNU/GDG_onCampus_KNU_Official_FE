@@ -11,7 +11,8 @@ const AuthCallBackPage = () => {
   const code = params.get('code');
 
   const handleSuccess = (data: SigninAPIInterface) => {
-    localStorage.setItem('accessToken', data.accessToken);
+    sessionStorage.setItem('accessToken', data.accessToken);
+    sessionStorage.setItem('refreshToken', data.refreshToken);
     if (data.newMember === true) {
       navigate('/signup');
     } else {

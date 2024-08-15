@@ -120,7 +120,7 @@ const MobileDropdownMenu = styled(motion.ul)<SlideMenuProps>`
 
 const NavigationSlideMobile = ({ open }: { open: boolean }) => {
   const { close } = useNavigationStore();
-  const accessToken = localStorage.getItem('accessToken');
+  const accessToken = sessionStorage.getItem('accessToken');
   const dropdownOpen = useHeaderDropDownState((state) => state.dropdownOpen);
   const toggleDropdown = useHeaderDropDownState(
     (state) => state.toggleDropdown

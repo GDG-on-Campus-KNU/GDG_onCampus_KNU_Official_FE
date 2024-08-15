@@ -30,7 +30,7 @@ export const getSearch = async (
 };
 
 export const useGetSearch = (name: string, page: number, size: number) => {
-  const accessToken = localStorage.getItem('accessToken');
+  const accessToken = sessionStorage.getItem('accessToken');
 
   return useQuery<SearchInterface, Error>({
     queryKey: [searchQueryKey, name, page, size],

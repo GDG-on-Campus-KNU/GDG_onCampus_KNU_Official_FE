@@ -26,7 +26,7 @@ const getAllTeamToken = async (): Promise<Team> => {
 };
 
 export const useGetAllTeamToken = (): UseQueryResult<Team, Error> => {
-  const accessToken = localStorage.getItem('accessToken');
+  const accessToken = sessionStorage.getItem('accessToken');
 
   return useQuery<Team, Error>({
     queryKey: allTeamTokenQueryKey,

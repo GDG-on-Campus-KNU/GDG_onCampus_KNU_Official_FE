@@ -10,7 +10,7 @@ const patchDocsMemo = async (id: number, memo: string): Promise<void> => {
 };
 
 export const usePatchDocsMemo = () => {
-  const accessToken = localStorage.getItem('accessToken');
+  const accessToken = sessionStorage.getItem('accessToken');
 
   const mutation = useMutation<void, Error, { id: number; memo: string }>({
     mutationFn: ({ id, memo }) => {
