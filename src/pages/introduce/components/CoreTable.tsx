@@ -3,6 +3,7 @@ import { useEffect } from 'react';
 import gsap from 'gsap';
 
 import Bosung from '@gdsc/assets/gdscknu4/Core-Bosung.jpg';
+import Daegun from '@gdsc/assets/gdscknu4/Core-Daegun.jpg';
 import Dongpil from '@gdsc/assets/gdscknu4/Core-Dongpil.jpg';
 import Kangmin from '@gdsc/assets/gdscknu4/Core-Gangmin.jpeg';
 import Hyunmin from '@gdsc/assets/gdscknu4/Core-Hyeonmin.jpeg';
@@ -105,6 +106,12 @@ const CoreTable = () => {
         <TableStatusText>CORE-FE</TableStatusText>
         <TableTextLayout>
           <IntroText>조동필</IntroText>
+        </TableTextLayout>
+      </CoreBox>
+      <CoreBox backgroundImage={Daegun}>
+        <TableStatusText>CORE-FE</TableStatusText>
+        <TableTextLayout>
+          <IntroText>김대건</IntroText>
         </TableTextLayout>
       </CoreBox>
       <CoreBox backgroundImage={Suhyeon}>
