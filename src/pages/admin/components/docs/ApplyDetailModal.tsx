@@ -83,6 +83,7 @@ const ApplyDetailModal = ({
       { id, status },
       {
         onSuccess: () => {
+          alert('합불 여부가 저장되었습니다.');
           window.location.reload();
         },
         onError: (error) => {

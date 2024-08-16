@@ -8,7 +8,7 @@ export const SignupAPI = (
   return fetchInstance
     .post('/api/user/additional-info', userData)
     .then(function (response) {
-      console.log(response);
+      // console.log(response);
       return response.data;
     })
     .catch(function (error: unknown) {

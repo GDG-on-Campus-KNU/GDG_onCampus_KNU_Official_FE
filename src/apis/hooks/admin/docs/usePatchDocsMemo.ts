@@ -5,7 +5,7 @@ import { useMutation } from '@tanstack/react-query';
 const patchMemoPath = () => '/api/admin/application/note';
 
 const patchDocsMemo = async (id: number, memo: string): Promise<void> => {
-  console.log(memo);
+  // console.log(memo);
   await fetchInstance.patch(patchMemoPath(), memo, { params: { id } });
 };
 

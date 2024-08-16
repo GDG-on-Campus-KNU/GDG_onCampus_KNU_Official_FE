@@ -62,7 +62,7 @@ const ApplyEx = () => {
   const isTablet = useMediaQuery({ query: '(max-width: 767px)' });
   const navigate = useNavigate();
 
-  console.log(tech);
+  // console.log(tech);
 
   const getData = (tech: string): ApplyExInterface | null => {
     switch (tech) {
