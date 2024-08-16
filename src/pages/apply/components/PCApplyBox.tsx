@@ -51,18 +51,18 @@ const PCApplyBox = ({ data }: PCApplyBoxProps) => {
     <ApplyBox>
       <TextWrapper>
         <TextLine>
-          <AppText color='black' weight='400' size='lg'>
+          <AppText color='black' weight='400' size='md'>
             지원직무
           </AppText>
-          <Text color='black' weight='700' size='lg'>
+          <Text color='black' weight='700' size='md'>
             {data.korean}
           </Text>
         </TextLine>
         <TextLine>
-          <AppText color='black' weight='400' size='lg'>
+          <AppText color='black' weight='400' size='md'>
             기한 일자
           </AppText>
-          <Text color='black' weight='700' size='lg'>
+          <Text color='black' weight='700' size='md'>
             {data.duedate}
           </Text>
         </TextLine>

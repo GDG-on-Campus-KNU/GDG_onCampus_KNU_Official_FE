@@ -42,7 +42,7 @@ const AdminSetStatePage = () => {
           <CommonBtn
             type='button'
             size='md'
-            width='99px'
+            width='120px'
             height='43px'
             color='navy'
             backgroundColor='navy'
@@ -54,7 +54,7 @@ const AdminSetStatePage = () => {
           <CommonBtn
             type='button'
             size='md'
-            width='99px'
+            width='120px'
             height='43px'
             color='navy'
             backgroundColor='navy'

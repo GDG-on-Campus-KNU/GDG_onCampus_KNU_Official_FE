@@ -21,14 +21,13 @@ const QualifyContainer = styled.div`
 `;
 
 const TitleBox = styled.div`
-  width: auto;
-  max-width: 300px;
+  width: 330px;
   height: 43px;
   border-radius: 12px;
   background-color: #ffffff26;
 
   display: flex;
-  justify-content: center;
+  justify-content: left;
   align-items: center;
   font-weight: 700;
   font-size: var(--font-size-lg);
@@ -36,9 +35,10 @@ const TitleBox = styled.div`
 
   @media (max-width: 500px) {
     width: 240px;
+    max-width: 250px;
     height: 30px;
     border-radius: 8px;
-    font-size: var(--font-size-md);
+    font-size: var(--font-size-sm);
   }
 `;
 
@@ -61,6 +61,10 @@ const ApplyListItem = styled.li`
   font-size: var(--font-size-sm);
   font-weight: 400;
   line-height: 2;
+
+  @media (max-width: 500px) {
+    font-size: var(--font-size-xs);
+  }
 `;
 
 const ImageBox = styled.div`
