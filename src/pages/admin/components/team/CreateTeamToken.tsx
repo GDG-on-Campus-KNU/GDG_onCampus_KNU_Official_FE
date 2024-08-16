@@ -2,7 +2,7 @@ import { useEffect, useState, lazy } from 'react';
 
 import CommonBtn from '@gdsc/components/common/button/CommonBtn';
 
-import PlusBtn from '@gdsc/assets/admin/plusBtn.svg';
+import PlusBtn from '@gdsc/assets/admin/PlusBtn.svg';
 import close from '@gdsc/assets/admin/remove.svg';
 
 import { deleteParentTeam } from '@gdsc/apis/hooks/admin/team/deleteParentTeam';
