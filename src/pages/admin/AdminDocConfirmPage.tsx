@@ -4,8 +4,8 @@ import { useGetStatistic } from '@gdsc/apis/hooks/admin/docs/useGetStatistic';
 
 import { DisplayLayout } from '@gdsc/styles/LayoutStyle';
 
+import AdminSearchBar from './components/AdminSearchBar';
 import CurrentApplyInfo from './components/docs/CurrentApplyInfo';
-import DocsSearchBar from './components/docs/DocsSearchBar';
 import Stars from './components/docs/Stars';
 import TableSection from './components/docs/TableSection';
 import styled from '@emotion/styled';
@@ -46,8 +46,7 @@ const InfoBox = styled.div`
 const AdminDocConfirmPage = () => {
   const [isSelected, setIsSelected] = useState(false);
   const [isMarked, setIsMarked] = useState<boolean>(false);
-
-  const [name, setName] = useState<string>('');
+  const [searchName, setSearchName] = useState<string>('');
 
   const handlePassCheck = () => {
     setIsSelected((prev) => !prev);
@@ -55,6 +54,10 @@ const AdminDocConfirmPage = () => {
   };
 
   const { data } = useGetStatistic();
+
+  const handleSearchNameChange = (name: string) => {
+    setSearchName(name);
+  };
 
   return (
     <DisplayLayout>
@@ -65,10 +68,10 @@ const AdminDocConfirmPage = () => {
             서류합격자 조회
           </PassBtn>
         </ButtonBox>
-        <DocsSearchBar name={name} setName={setName} />
+        <AdminSearchBar onSearch={handleSearchNameChange} />
       </InfoBox>
       {data && <CurrentApplyInfo response={data} />}
-      <TableSection total={data?.total} isMarked={isMarked} name={name} />
+      <TableSection total={data?.total} isMarked={isMarked} name={searchName} />
     </DisplayLayout>
   );
 };
