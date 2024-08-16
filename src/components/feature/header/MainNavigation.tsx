@@ -147,14 +147,16 @@ const MainNavigation = () => {
             </NavLink>
           </MenuList>
           <MenuList>
-            <NavLink to='/techblog'>
+            {/* <NavLink to='/techblog'>
               <Text color='white'>테크블로그</Text>
-            </NavLink>
+            </NavLink> */}
+            <Text color='white'>테크블로그</Text>
           </MenuList>
           <MenuList>
-            <NavLink to='/community'>
+            {/* <NavLink to='/community'>
               <Text color='white'>커뮤니티</Text>
-            </NavLink>
+            </NavLink> */}
+            <Text color='white'>커뮤니티</Text>
           </MenuList>
         </Menu>
         {accessToken ? (
