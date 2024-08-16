@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://gdsc-knu.com/sitemap.xml

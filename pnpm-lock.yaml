@@ -2036,6 +2036,7 @@ packages:
       }
     engines: { node: '>=0.4.0' }
     hasBin: true
+    dev: true
 
   ajv@6.12.6:
     resolution:
@@ -4143,6 +4144,7 @@ packages:
         integrity: sha512-dQUtn90WanSNl+7mQKcXAgZxvUe7Z0SqXlgzv0za4LwiUhyzBC58yQO3liFoUgu8GiJVInAhJjkj1N0EtQ5nkQ==,
       }
     hasBin: true
+    dev: true
 
   resolve-from@4.0.0:
     resolution:
@@ -4529,6 +4531,7 @@ packages:
       }
     engines: { node: '>=14.17' }
     hasBin: true
+    dev: true
 
   unbox-primitive@1.0.2:
     resolution:
@@ -7873,6 +7876,7 @@ snapshots:
       is-number-object: 1.0.7
       is-string: 1.0.7
       is-symbol: 1.0.4
+    dev: true
 
   which-builtin-type@1.1.4:
     dependencies:
@@ -7903,10 +7907,12 @@ snapshots:
       for-each: 0.3.3
       gopd: 1.0.1
       has-tostringtag: 1.0.2
+    dev: true
 
   which@2.0.2:
     dependencies:
       isexe: 2.0.0
+    dev: true
 
   word-wrap@1.2.5: {}
 
