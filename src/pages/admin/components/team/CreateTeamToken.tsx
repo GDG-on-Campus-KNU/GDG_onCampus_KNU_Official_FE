@@ -5,10 +5,10 @@ import CommonBtn from '@gdsc/components/common/button/CommonBtn';
 import PlusBtn from '@gdsc/assets/admin/plusBtn.svg';
 import close from '@gdsc/assets/admin/remove.svg';
 
-import { deleteParentTeam } from '@gdsc/apis/hooks/admin/deleteParentTeam';
-import { putTeamMember } from '@gdsc/apis/hooks/admin/putTeamMember';
-import { useGetAllTeamToken } from '@gdsc/apis/hooks/admin/useGetAllTeamToken';
-import type { Team } from '@gdsc/apis/hooks/admin/useGetAllTeamToken';
+import { deleteParentTeam } from '@gdsc/apis/hooks/admin/team/deleteParentTeam';
+import { putTeamMember } from '@gdsc/apis/hooks/admin/team/putTeamMember';
+import { useGetAllTeamToken } from '@gdsc/apis/hooks/admin/team/useGetAllTeamToken';
+import type { Team } from '@gdsc/apis/hooks/admin/team/useGetAllTeamToken';
 
 import {
   BtnWrapper,

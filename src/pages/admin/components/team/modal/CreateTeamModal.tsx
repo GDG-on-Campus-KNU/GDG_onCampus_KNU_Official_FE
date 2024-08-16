@@ -1,8 +1,8 @@
 import { useState } from 'react';
 import { useForm } from 'react-hook-form';
 
-import { postTeamToken } from '@gdsc/apis/hooks/admin/postTeamToken';
-import { useGetAllTeamToken } from '@gdsc/apis/hooks/admin/useGetAllTeamToken';
+import { postTeamToken } from '@gdsc/apis/hooks/admin/team/postTeamToken';
+import { useGetAllTeamToken } from '@gdsc/apis/hooks/admin/team/useGetAllTeamToken';
 
 import { ModalBackdrop, ModalOverlay } from '@gdsc/styles/GlobalModal.style';
 
