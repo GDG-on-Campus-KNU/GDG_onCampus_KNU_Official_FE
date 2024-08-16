@@ -27,7 +27,7 @@ const TitleBox = styled.div`
   background-color: #ffffff26;
 
   display: flex;
-  justify-content: left;
+  justify-content: center;
   align-items: center;
   font-weight: 700;
   font-size: var(--font-size-lg);
