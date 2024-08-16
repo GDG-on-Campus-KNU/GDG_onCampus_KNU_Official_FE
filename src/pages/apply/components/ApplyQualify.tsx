@@ -34,8 +34,7 @@ const TitleBox = styled.div`
   padding: 4px 17px 4px 17px;
 
   @media (max-width: 500px) {
-    width: 240px;
-    max-width: 250px;
+    width: 250px;
     height: 30px;
     border-radius: 8px;
     font-size: var(--font-size-sm);
