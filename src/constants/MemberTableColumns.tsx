@@ -1,6 +1,6 @@
 import TeamCell from '@gdsc/pages/admin/components/status/TeamCell';
 
-import { PersonData } from '@gdsc/apis/hooks/admin/useGetUserList';
+import { PersonData } from '@gdsc/apis/hooks/admin/status/useGetUserList';
 
 import { createColumnHelper } from '@tanstack/react-table';
 
