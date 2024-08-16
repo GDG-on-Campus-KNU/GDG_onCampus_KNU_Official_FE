@@ -31,6 +31,13 @@ jobs:
         run: |
           npm install -g pnpm
 
+      - name: Create .env file
+        run: |
+          echo "VITE_APP_GA_TRACKING_ID=${{ secrets.VITE_APP_GA_TRACKING_ID }}" >> .env
+          echo "VITE_APP_BASE_URL=${{ secrets.VITE_APP_BASE_URL }}" >> .env
+          echo "VITE_APP_GOOGLE_AUTH_CLIENT_ID=${{ secrets.VITE_APP_GOOGLE_AUTH_CLIENT_ID }}" >> .env
+          echo "VITE_APP_GOOGLE_AUTH_REDIRECT_URI=${{ secrets.VITE_APP_GOOGLE_AUTH_REDIRECT_URI }}" >> .env
+
       - name: Install Dependencies
         run: pnpm install --no-frozen-lockfile --force
 
