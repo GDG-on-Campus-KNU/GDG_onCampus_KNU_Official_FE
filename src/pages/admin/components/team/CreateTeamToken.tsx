@@ -26,7 +26,7 @@ const TeamBox = lazy(() => import('./TeamBox'));
 const CreateTeamModal = lazy(() => import('./modal/CreateTeamModal'));
 
 const CreateTeamToken = () => {
-  const { data, refetch } = useGetAllTeamToken();
+  const { data } = useGetAllTeamToken();
   const TeamData: Team[] = Array.isArray(data) ? data : [];
   const { setIsTeamUpdate } = useTeamUpdate();
 
@@ -48,7 +48,7 @@ const CreateTeamToken = () => {
 
     if (isConfirm) {
       await deleteParentTeam({ parentTeamId });
-      await refetch();
+      window.location.reload();
     }
   };
 
