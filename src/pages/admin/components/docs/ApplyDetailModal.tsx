@@ -140,13 +140,41 @@ const ApplyDetailModal = ({
                 />
                 <DividingLine />
                 <Text size='md' weight='bold' color='black'>
-                  자기소개
+                  본인이 생각하기에 좋은 개발자란 무엇인가요?
                 </Text>
                 <SelfIntroduce>
                   {detail.answers.length > 0
                     ? `${detail.answers[0].answer}`
-                    : '빈 자기소개 란입니다.'}
+                    : '좋은 개발자에 대한 설명란이 비어있습니다.'}
                 </SelfIntroduce>
+                <DividingLine />
+                <Text size='md' weight='bold' color='black'>
+                  지원하게 된 동기가 무엇인가요?
+                </Text>
+                <SelfIntroduce>
+                  {detail.answers.length > 1
+                    ? `${detail.answers[1].answer}`
+                    : '지원동기란이 비어있습니다.'}
+                </SelfIntroduce>
+                <DividingLine />
+                <Text size='md' weight='bold' color='black'>
+                  본인이 겪었던 힘들었던 문제 상황을 적어주세요.
+                </Text>
+                <SelfIntroduce>
+                  {detail.answers.length > 1
+                    ? `${detail.answers[2].answer}`
+                    : '힘들었던 문제 상황란이 비어있습니다.'}
+                </SelfIntroduce>
+                <DividingLine />
+                <Text size='md' weight='bold' color='black'>
+                  본인이 협업해본 경험에 대해 적어주세요.
+                </Text>
+                <SelfIntroduce>
+                  {detail.answers.length > 1
+                    ? `${detail.answers[3].answer}`
+                    : '협업 경험란이 비어있습니다.'}
+                </SelfIntroduce>
+                <DividingLine />
               </IntroContainer>
               <ProfileContainer>
                 <TitleWrapper>
