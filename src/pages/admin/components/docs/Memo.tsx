@@ -53,9 +53,6 @@ const Memo = ({ id, note }: { id: number | null; note: string | null }) => {
       mutate(
         { id, memo },
         {
-          onSuccess: () => {
-            window.location.reload();
-          },
           onError: (error) => {
             console.error('API 호출 실패:', error);
             alert('메모 저장에 실패했습니다.');
