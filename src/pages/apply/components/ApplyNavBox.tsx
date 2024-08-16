@@ -135,7 +135,7 @@ const ApplyNavBox = () => {
             <CommonBtn
               width='200px'
               height='50px'
-              size='lg'
+              size='md'
               mdWidth='150px'
               mdHeight='40px'
               mdSize='md'
