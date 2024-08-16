@@ -21,7 +21,7 @@ const QualifyContainer = styled.div`
 `;
 
 const TitleBox = styled.div`
-  width: 330px;
+  width: 350px;
   height: 43px;
   border-radius: 12px;
   background-color: #ffffff26;
