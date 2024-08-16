@@ -1,11 +1,11 @@
-import ReactDOM from 'react-dom/client';
+import { createRoot } from 'react-dom/client';
 
-import App from './App.tsx';
-import { QueryClientProvider, QueryClient } from '@tanstack/react-query';
+import { queryClient } from '@gdsc/apis/instance/Http';
 
-const queryClient = new QueryClient();
+import App from '@gdsc/App.tsx';
+import { QueryClientProvider } from '@tanstack/react-query';
 
-ReactDOM.createRoot(document.getElementById('root')!).render(
+createRoot(document.getElementById('root')!).render(
   <QueryClientProvider client={queryClient}>
     <App />
   </QueryClientProvider>
