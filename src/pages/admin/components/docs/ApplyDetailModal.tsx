@@ -19,6 +19,7 @@ import {
   SelfIntroduce,
   ButtonContainer,
 } from './ApplyDetailModal.style';
+import ApplyDetailModalSkeleton from './ApplyDetailModalSkeleton';
 import ApplyInfo from './ApplyInfo';
 import BasicInfo from './BasicInfo';
 import Memo from './Memo';
@@ -115,130 +116,90 @@ const ApplyDetailModal = ({
   return (
     <ModalBackdrop>
       <ModalWrapper>
-        <TitleWrapper>
-          <Text size='xl' weight='bold' color='black'>
-            지원자 정보 조회
-          </Text>
-          <CloseBtn onClick={onClose} />
-        </TitleWrapper>
-        <ContentWrapper>
-          <IntroContainer>
-            <Text size='md' weight='bold' color='black'>
-              기본정보
-            </Text>
-            {isPending && <Text>회원 기본 정보를 불러오는 중입니다... </Text>}
-            {detail && (
-              <BasicInfo
-                name={detail.name}
-                studentNumber={detail.studentNumber}
-                major={detail.major}
-                phoneNumber={detail.phoneNumber}
-                email={detail.email}
-              />
-            )}
-            <DividingLine />
-            <Text size='md' weight='bold' color='black'>
-              자기소개
-            </Text>
-            <SelfIntroduce>
-              {isPending && '자기소개 정보를 불러오는 중입니다...'}
-              {detail && detail.answers.length > 0
-                ? `${detail.answers[0].answer}`
-                : '빈 자기소개 란입니다.'}
-            </SelfIntroduce>
-          </IntroContainer>
-          <ProfileContainer>
+        {isPending && <ApplyDetailModalSkeleton />}
+        {detail && (
+          <>
             <TitleWrapper>
               <Text size='xl' weight='bold' color='black'>
-                {isPending && 'OOO'}
-                {detail && `${detail.name}`}
+                지원자 정보 조회
               </Text>
-              {isPending && (
-                <MarkBtn>
-                  <Stars color='silver' width='25px' height='24px' />
-                </MarkBtn>
-              )}
-              {detail && detail.marked === true && (
-                <MarkBtn onClick={() => handleMark(detail.id)}>
-                  <Stars color='yellow' width='25px' height='24px' />
-                </MarkBtn>
-              )}
-              {detail && detail.marked === false && (
-                <MarkBtn onClick={() => handleMark(detail.id)}>
-                  <Stars color='silver' width='25px' height='24px' />
-                </MarkBtn>
-              )}
+              <CloseBtn onClick={onClose} />
             </TitleWrapper>
-            {isPending && <ApplyInfo track='' submittedAt='' />}
-            {detail && (
-              <ApplyInfo
-                track={detail.track}
-                submittedAt={detail.submittedAt}
-              />
-            )}
-            <DividingLine />
-            {isPending && <TechStack techStack='' link='' />}
-            {detail && (
-              <TechStack techStack={detail.techStack} link={detail.link} />
-            )}
-            <DividingLine />
-
-            {isPending && <Memo id={null} note='' />}
-            {detail && <Memo id={detail.id} note={detail.note} />}
-            <DividingLine />
-
-            {isPending && (
-              <ButtonContainer>
-                <CommonBtn
-                  type='button'
-                  width='45%'
-                  height='30px'
-                  color='yellow'
-                  hoverColor='yellow'
-                  backgroundColor='yellow'
-                >
-                  합격
-                </CommonBtn>
-                <CommonBtn
-                  type='button'
-                  width='45%'
-                  height='30px'
-                  color='innerYellow'
-                  hoverColor='innerYellow'
-                  backgroundColor='innerYellow'
-                >
-                  불합격
-                </CommonBtn>
-              </ButtonContainer>
-            )}
-            {detail && (
-              <ButtonContainer>
-                <CommonBtn
-                  type='button'
-                  width='45%'
-                  height='30px'
-                  color='yellow'
-                  hoverColor='yellow'
-                  backgroundColor='yellow'
-                  onClick={() => handleApprove(detail.id, 'APPROVED')}
-                >
-                  합격
-                </CommonBtn>
-                <CommonBtn
-                  type='button'
-                  width='45%'
-                  height='30px'
-                  color='innerYellow'
-                  hoverColor='innerYellow'
-                  backgroundColor='innerYellow'
-                  onClick={() => handleApprove(detail.id, 'REJECTED')}
-                >
-                  불합격
-                </CommonBtn>
-              </ButtonContainer>
-            )}
-          </ProfileContainer>
-        </ContentWrapper>
+            <ContentWrapper>
+              <IntroContainer>
+                <Text size='md' weight='bold' color='black'>
+                  기본정보
+                </Text>
+                <BasicInfo
+                  name={detail.name}
+                  studentNumber={detail.studentNumber}
+                  major={detail.major}
+                  phoneNumber={detail.phoneNumber}
+                  email={detail.email}
+                />
+                <DividingLine />
+                <Text size='md' weight='bold' color='black'>
+                  자기소개
+                </Text>
+                <SelfIntroduce>
+                  {detail.answers.length > 0
+                    ? `${detail.answers[0].answer}`
+                    : '빈 자기소개 란입니다.'}
+                </SelfIntroduce>
+              </IntroContainer>
+              <ProfileContainer>
+                <TitleWrapper>
+                  <Text size='xl' weight='bold' color='black'>
+                    {detail.name}
+                  </Text>
+                  {detail.marked === true && (
+                    <MarkBtn onClick={() => handleMark(detail.id)}>
+                      <Stars color='yellow' width='25px' height='24px' />
+                    </MarkBtn>
+                  )}
+                  {detail.marked === false && (
+                    <MarkBtn onClick={() => handleMark(detail.id)}>
+                      <Stars color='silver' width='25px' height='24px' />
+                    </MarkBtn>
+                  )}
+                </TitleWrapper>
+                <ApplyInfo
+                  track={detail.track}
+                  submittedAt={detail.submittedAt}
+                />
+                <DividingLine />
+                <TechStack techStack={detail.techStack} link={detail.link} />
+                <DividingLine />
+                <Memo id={detail.id} note={detail.note} />
+                <DividingLine />
+                <ButtonContainer>
+                  <CommonBtn
+                    type='button'
+                    width='45%'
+                    height='30px'
+                    color='yellow'
+                    hoverColor='yellow'
+                    backgroundColor='yellow'
+                    onClick={() => handleApprove(detail.id, 'APPROVED')}
+                  >
+                    합격
+                  </CommonBtn>
+                  <CommonBtn
+                    type='button'
+                    width='45%'
+                    height='30px'
+                    color='innerYellow'
+                    hoverColor='innerYellow'
+                    backgroundColor='innerYellow'
+                    onClick={() => handleApprove(detail.id, 'REJECTED')}
+                  >
+                    불합격
+                  </CommonBtn>
+                </ButtonContainer>
+              </ProfileContainer>
+            </ContentWrapper>
+          </>
+        )}
       </ModalWrapper>
     </ModalBackdrop>
   );
