@@ -31,7 +31,7 @@ export const useGetSearchList = (
   page: number,
   size: number
 ): UseQueryResult<userListInterface, Error> => {
-  const accessToken = localStorage.getItem('accessToken');
+  const accessToken = sessionStorage.getItem('accessToken');
 
   return useQuery<userListInterface, Error>({
     queryKey: [searchListQueryKey, searchName, page, size],

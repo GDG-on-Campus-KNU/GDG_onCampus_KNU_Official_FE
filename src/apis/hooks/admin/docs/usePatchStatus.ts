@@ -14,7 +14,7 @@ export const patchStatus = async (id: number, status: string) => {
 };
 
 export const usePatchStatus = () => {
-  const accessToken = localStorage.getItem('accessToken');
+  const accessToken = sessionStorage.getItem('accessToken');
 
   return useMutation<void, Error, { id: number; status: string }>({
     mutationFn: ({ id, status }) => {

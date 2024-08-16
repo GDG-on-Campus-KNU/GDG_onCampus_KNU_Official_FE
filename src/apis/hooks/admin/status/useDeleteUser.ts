@@ -13,7 +13,7 @@ const deleteUserList = async (selectedUser: number[]): Promise<void> => {
 };
 
 export const useDeleteUserList = () => {
-  const accessToken = localStorage.getItem('accessToken');
+  const accessToken = sessionStorage.getItem('accessToken');
 
   const mutation = useMutation<void, Error, number[]>({
     mutationFn: (selectedUser: number[]) => {

@@ -21,7 +21,7 @@ export const getStatistic = async (): Promise<statisticInterface> => {
 };
 
 export const useGetStatistic = () => {
-  const accessToken = localStorage.getItem('accessToken');
+  const accessToken = sessionStorage.getItem('accessToken');
 
   return useQuery<statisticInterface, Error>({
     queryKey: [statisticQueryKey],

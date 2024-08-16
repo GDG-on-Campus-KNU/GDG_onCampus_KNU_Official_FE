@@ -74,7 +74,7 @@ export type DropdownMenuProps = {
 };
 
 const MainNavigation = () => {
-  const accessToken = localStorage.getItem('accessToken'); // 상태관리를 통해서 액세스 토큰 가져올 계획입니다. 수정해야됩니다.
+  const accessToken = sessionStorage.getItem('accessToken'); // 상태관리를 통해서 액세스 토큰 가져올 계획입니다. 수정해야됩니다.
   const isTablet = useMediaQuery({ query: '(max-width: 767px)' });
 
   const dropdownOpen = useHeaderDropDownState((state) => state.dropdownOpen);
@@ -147,14 +147,16 @@ const MainNavigation = () => {
             </NavLink>
           </MenuList>
           <MenuList>
-            <NavLink to='/techblog'>
+            {/* <NavLink to='/techblog'>
               <Text color='white'>테크블로그</Text>
-            </NavLink>
+            </NavLink> */}
+            <Text color='white'>테크블로그</Text>
           </MenuList>
           <MenuList>
-            <NavLink to='/community'>
+            {/* <NavLink to='/community'>
               <Text color='white'>커뮤니티</Text>
-            </NavLink>
+            </NavLink> */}
+            <Text color='white'>커뮤니티</Text>
           </MenuList>
         </Menu>
         {accessToken ? (

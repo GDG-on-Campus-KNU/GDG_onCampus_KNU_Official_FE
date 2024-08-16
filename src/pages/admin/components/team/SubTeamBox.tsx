@@ -5,8 +5,8 @@ import Text from '@gdsc/components/common/typography/Text';
 
 import close from '@gdsc/assets/admin/remove.svg';
 
-import { deleteSubTeam } from '@gdsc/apis/hooks/admin/deleteSubTeam';
-import { useGetTeamMember } from '@gdsc/apis/hooks/admin/useGetTeamMember';
+import { deleteSubTeam } from '@gdsc/apis/hooks/admin/team/deleteSubTeam';
+import { useGetTeamMember } from '@gdsc/apis/hooks/admin/team/useGetTeamMember';
 
 import { RemoveBtn } from './CreateTeamToken.style';
 import { MemberTable, ParentTeamBox, TitleWrapper } from './TeamBox.style';

@@ -22,7 +22,7 @@ const getTeamMember = async (teamId: number): Promise<TeamMember[]> => {
 export const useGetTeamMember = (
   teamId: number
 ): UseQueryResult<TeamMember[], Error> => {
-  const accessToken = localStorage.getItem('accessToken');
+  const accessToken = sessionStorage.getItem('accessToken');
 
   return useQuery<TeamMember[], Error>({
     queryKey: [getTeamMemberPath(teamId)],

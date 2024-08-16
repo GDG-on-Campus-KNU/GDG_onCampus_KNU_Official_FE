@@ -8,7 +8,9 @@ import styled from '@emotion/styled';
 import { userDataInterface } from '@gdsc/types/UserInterface';
 
 const handleLogout = () => {
-  localStorage.removeItem('accessToken');
+  sessionStorage.removeItem('accessToken');
+  sessionStorage.removeItem('refreshToken');
+  sessionStorage.removeItem('user');
   window.location.href = '/';
 };
 

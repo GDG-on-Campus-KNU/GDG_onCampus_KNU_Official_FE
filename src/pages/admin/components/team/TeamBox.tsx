@@ -4,9 +4,9 @@ import Text from '@gdsc/components/common/typography/Text';
 
 import PlusBtn from '@gdsc/assets/admin/PlusBtn.svg';
 
-import { postSubTeam } from '@gdsc/apis/hooks/admin/postSubTeam';
-import type { SubTeam } from '@gdsc/apis/hooks/admin/useGetAllTeamToken';
-import { useGetTeamMember } from '@gdsc/apis/hooks/admin/useGetTeamMember';
+import { postSubTeam } from '@gdsc/apis/hooks/admin/team/postSubTeam';
+import type { SubTeam } from '@gdsc/apis/hooks/admin/team/useGetAllTeamToken';
+import { useGetTeamMember } from '@gdsc/apis/hooks/admin/team/useGetTeamMember';
 
 import {
   MemberTable,

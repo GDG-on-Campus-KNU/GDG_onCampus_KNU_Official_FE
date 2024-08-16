@@ -120,7 +120,7 @@ const MobileDropdownMenu = styled(motion.ul)<SlideMenuProps>`
 
 const NavigationSlideMobile = ({ open }: { open: boolean }) => {
   const { close } = useNavigationStore();
-  const accessToken = localStorage.getItem('accessToken');
+  const accessToken = sessionStorage.getItem('accessToken');
   const dropdownOpen = useHeaderDropDownState((state) => state.dropdownOpen);
   const toggleDropdown = useHeaderDropDownState(
     (state) => state.toggleDropdown
@@ -210,22 +210,34 @@ const NavigationSlideMobile = ({ open }: { open: boolean }) => {
                   </Text>
                 </NavList>
               </NavLink>
-              <NavLink to='/techblog' onClick={close}>
+              {/* <NavLink to='/techblog' onClick={close}>
                 <NavList>
                   <NavImg src={Techblog} alt='techblog' />
                   <Text color='white' size='md'>
                     테크블로그
                   </Text>
                 </NavList>
-              </NavLink>
-              <NavLink to='/community' onClick={close}>
+              </NavLink> */}
+              <NavList>
+                <NavImg src={Techblog} alt='techblog' />
+                <Text color='white' size='md'>
+                  테크블로그
+                </Text>
+              </NavList>
+              {/* <NavLink to='/community' onClick={close}>
                 <NavList>
                   <NavImg src={Community} alt='community' />
                   <Text color='white' size='md'>
                     커뮤니티
                   </Text>
                 </NavList>
-              </NavLink>
+              </NavLink> */}
+              <NavList>
+                <NavImg src={Community} alt='community' />
+                <Text color='white' size='md'>
+                  커뮤니티
+                </Text>
+              </NavList>
             </NavMenu>
           </NavSection>
         </MobileMenu>

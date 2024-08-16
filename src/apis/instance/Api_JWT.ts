@@ -6,10 +6,6 @@ import axios, {
 
 import { BASE_URI } from '@gdsc/constants/URI';
 
-// import { ReIssueSigninAPI } from '@gdsc/apis/signin/ReIssueSigninAPI';
-
-// import { useTokenStore } from '@gdsc/store/useTokenStore';
-
 export const createInstanceJWT = (
   config: AxiosRequestConfig
 ): AxiosInstance => {
@@ -25,9 +21,7 @@ export const createInstanceJWT = (
 
   instance.interceptors.request.use(
     (config: InternalAxiosRequestConfig) => {
-      // const { getAccessToken } = useTokenStore();
-      // const accessToken = getAccessToken();
-      const accessToken = localStorage.getItem('accessToken');
+      const accessToken = sessionStorage.getItem('accessToken');
       if (accessToken !== undefined) {
         config.headers['Content-Type'] = 'application/json';
         config.headers.Authorization = `Bearer ${accessToken}`;
@@ -39,26 +33,45 @@ export const createInstanceJWT = (
     }
   );
 
-  // instanceJWT.interceptors.response.use(
-  //   (response) => {
-  //     return response;
-  //   },
-  //   (error) => {
-  //     if (error.response && error.response.status === 401) {
-  //       const { setAccessToken } = useTokenStore();
-  //       return ReIssueSigninAPI()
-  //         .then((data) => {
-  //           setAccessToken(data.accessToken);
-  //           error.config.headers['Authorization'] = `Bearer ${data.accessToken}`;
-  //           return instanceJWT(error.config);
-  //         })
-  //         .catch((error) => {
-  //           return Promise.reject(error);
-  //         });
-  //     }
-  //     return Promise.reject(error);
-  //   }
-  // );
+  instance.interceptors.response.use(
+    (response) => response,
+    async (error) => {
+      const originalRequest = error.config;
+
+      if (error.response?.status === 401 && !originalRequest._retry) {
+        originalRequest._retry = true;
+        try {
+          const refreshToken = sessionStorage.getItem('refreshToken');
+          const { data } = await axios.get(`${BASE_URI}/api/jwt/reissue`, {
+            headers: {
+              Authorization: `Bearer ${refreshToken}`,
+            },
+          });
+
+          sessionStorage.setItem('accessToken', data.accessToken);
+          sessionStorage.setItem('refreshToken', data.refreshToken);
+
+          instance.defaults.headers.Authorization = `Bearer ${data.accessToken}`;
+          originalRequest.headers.Authorization = `Bearer ${data.accessToken}`;
+
+          return instance(originalRequest);
+        } catch (refreshError) {
+          console.error('Token refresh failed:', refreshError);
+          throw new Error('토큰 갱신에 실패했습니다.');
+        }
+      }
+
+      if (error.response) {
+        return Promise.reject(error.response.data);
+      } else if (error.request) {
+        return Promise.reject(
+          '네트워크 오류입니다. 인터넷 연결을 확인해주세요.'
+        );
+      } else {
+        return Promise.reject('요청을 전송할 수 없습니다.');
+      }
+    }
+  );
 
   return instance;
 };

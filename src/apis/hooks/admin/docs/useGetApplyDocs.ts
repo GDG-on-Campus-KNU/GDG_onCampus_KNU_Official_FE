@@ -40,7 +40,7 @@ export const useGetApplyDocs = (
   page: number,
   size: number
 ) => {
-  const accessToken = localStorage.getItem('accessToken');
+  const accessToken = sessionStorage.getItem('accessToken');
 
   return useQuery<applyDocsInterface, Error>({
     queryKey: [applyDocsQueryKey, track, isMarked, page, size],
