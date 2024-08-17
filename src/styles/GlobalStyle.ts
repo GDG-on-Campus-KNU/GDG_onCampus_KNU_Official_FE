@@ -52,10 +52,11 @@ export const GlobalStyle = css`
   @font-face {
     font-family: 'Noto Sans KR';
     src:
-      url('/fonts/NotoSansKR-VariableFont_wght.otf')
+      url('https://gdsc-knu.com/fonts/NotoSansKR-VariableFont_wght.otf')
         format('opentype-variations'),
-      url('/fonts/NotoSansKR-VariableFont_wght.woff') format('woff-variations'),
-      url('/fonts/NotoSansKR-VariableFont_wght.ttf')
+      url('https://gdsc-knu.com/fonts/NotoSansKR-VariableFont_wght.woff')
+        format('woff-variations'),
+      url('https://gdsc-knu.com/fonts/NotoSansKR-VariableFont_wght.ttf')
         format('truetype-variations');
     font-weight: 100 900;
     font-style: normal;
