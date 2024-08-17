@@ -20,7 +20,7 @@ const IntroducePage = () => {
   return (
     <>
       <SEO
-        title='GDSC KNU - 소개 페이지'
+        title='GDSC_KNU_OFFICIAL'
         description='4기를 앞으로 이어나갈 GDSC KNU의 소개 페이지입니다.'
         url='https://gdsc-knu.com/introduce'
         image='https://gdsc-knu.com/Introduce.png'

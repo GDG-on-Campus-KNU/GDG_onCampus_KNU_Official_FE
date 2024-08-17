@@ -32,7 +32,7 @@ const ApplyPage = () => {
   return (
     <>
       <SEO
-        title='GDSC KNU - 지원목록'
+        title='GDSC_KNU_OFFICIAL'
         description='GDSC KNU는 모든 경북대 학생들을 환영합니다.'
         url='https://gdsc-knu.com/apply'
         image='https://gdsc-knu.com/ApplyNav.png'

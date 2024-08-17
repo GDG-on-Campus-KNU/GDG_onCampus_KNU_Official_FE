@@ -1,4 +1,3 @@
-import { Helmet } from 'react-helmet-async';
 import { useMediaQuery } from 'react-responsive';
 
 import MainFooter from '@gdsc/components/feature/footer/MainFooter';
@@ -23,20 +22,6 @@ const MainPage = () => {
 
   return (
     <>
-      <Helmet>
-        <title>GDSC KNU - 메인 페이지</title>
-        <meta name='description' content='GDSC 경북대의 메인 페이지입니다.' />
-        <meta property='og:title' content='GDSC KNU - 메인 페이지' />
-        <meta
-          property='og:description'
-          content='GDSC 경북대의 메인 페이지입니다.'
-        />
-        <meta
-          property='og:image'
-          content='https://gdsc-knu.com/WhiteLogo.png'
-        />
-        <meta property='og:url' content='https://gdsc-knu.com' />
-      </Helmet>
       <DisplayMainLayout>
         <Content />
         <MainRound />

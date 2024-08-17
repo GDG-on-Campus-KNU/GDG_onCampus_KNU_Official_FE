@@ -23,7 +23,7 @@ const ApplyExPage = () => {
   return (
     <>
       <SEO
-        title='GDSC KNU - 지원서 작성'
+        title='GDSC_KNU_OFFICIAL'
         description='GDSC KNU는 모든 경북대 학생들을 환영합니다.'
         url={`https://gdsc-knu.com/${tech}`}
         image='https://gdsc-knu.com/WhiteLogo.png'
