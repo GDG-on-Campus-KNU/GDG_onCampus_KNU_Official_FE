@@ -29,7 +29,8 @@ export default defineConfig({
       ],
       renderer: new PuppeteerRenderer({
         maxConcurrentRoutes: 1,
-        renderAfterTime: 500,
+        renderAfterElementExists: '#seo-ready',
+        renderAfterTime: 1000,
       }),
       postProcess(route) {
         route.html = route.html
