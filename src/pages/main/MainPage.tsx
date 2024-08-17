@@ -1,3 +1,4 @@
+import { Helmet } from 'react-helmet-async';
 import { useMediaQuery } from 'react-responsive';
 
 import MainFooter from '@gdsc/components/feature/footer/MainFooter';
@@ -21,18 +22,34 @@ const MainPage = () => {
   const isMobile = useMediaQuery({ query: '(max-width: 500px)' });
 
   return (
-    <DisplayMainLayout>
-      <Content />
-      <MainRound />
-      {[...Array(25)].map((_, index) => (
-        <Star
-          key={index}
-          top={`${Math.random() * 30}%`}
-          left={`${Math.random() * 100}%`}
+    <>
+      <Helmet>
+        <title>GDSC KNU - 메인 페이지</title>
+        <meta name='description' content='GDSC 경북대의 메인 페이지입니다.' />
+        <meta property='og:title' content='GDSC KNU - 메인 페이지' />
+        <meta
+          property='og:description'
+          content='GDSC 경북대의 메인 페이지입니다.'
         />
-      ))}
-      {isMobile ? <MobileFooterMobile /> : <MainFooter />}
-    </DisplayMainLayout>
+        <meta
+          property='og:image'
+          content='https://gdsc-knu.com/WhiteLogo.png'
+        />
+        <meta property='og:url' content='https://gdsc-knu.com' />
+      </Helmet>
+      <DisplayMainLayout>
+        <Content />
+        <MainRound />
+        {[...Array(25)].map((_, index) => (
+          <Star
+            key={index}
+            top={`${Math.random() * 30}%`}
+            left={`${Math.random() * 100}%`}
+          />
+        ))}
+        {isMobile ? <MobileFooterMobile /> : <MainFooter />}
+      </DisplayMainLayout>
+    </>
   );
 };
 
