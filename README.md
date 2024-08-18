@@ -1,30 +1,21 @@
-# React + TypeScript + Vite
+# ✨ GDSC-KNU 홈페이지가 제작되었어요!
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+<img src="https://github.com/user-attachments/assets/226ba1ab-2ab1-41d9-ade7-45ff4e0d0702" />
 
-Currently, two official plugins are available:
+### 홈페이지 : https://gdsc-knu.com/
+## 🧐 왜 만들게 되었나요??
+기존에 GDSC 지원 서류를 Google Form으로 제출받고, Memeber Info를 별도로 관리하였습니다. <br />
+또한 GDSC 활동시 팀원들의 프로젝트나 일정 관리의 경우 Notion에서 별도로 관리하였는데 이러한 모든 기능들을 하나의 홈페이지에서 관리할 수 있도록 **"GDSC-KNU 만의 홈페이지를 만들어보자!"** 라는 생각으로 기획하여 만들게 되었습니다.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
-
-## Expanding the ESLint configuration
-
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
-
-- Configure the top-level `parserOptions` property like this:
-
-```js
-export default {
-  // other rules...
-  parserOptions: {
-    ecmaVersion: "latest",
-    sourceType: "module",
-    project: ["./tsconfig.json", "./tsconfig.node.json"],
-    tsconfigRootDir: __dirname,
-  },
-};
-```
-
-- Replace `plugin:@typescript-eslint/recommended` to `plugin:@typescript-eslint/recommended-type-checked` or `plugin:@typescript-eslint/strict-type-checked`
-- Optionally add `plugin:@typescript-eslint/stylistic-type-checked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and add `plugin:react/recommended` & `plugin:react/jsx-runtime` to the `extends` list
+## 🥰 홈페이지에서 이용가능한 기능들이에요!
+### GDSC-KNU
+- 간단한 소개 및 운영진 (Lead, Core) 소개
+- 지원서류 작성하기
+- 일정 관리
+### Team Blog
+- 프로젝트 진행 시 팀 블로그 작성하기
+- 직렬별(프론트엔드 / 백엔드 / 안드로이드 / AI / 디자이너)로 블로그 글 검색하기
+### Admin Page (운영진만 접근가능해요!)
+- 지원서류 관리하기
+- Member 상태 관리
+- Member Team 관리
