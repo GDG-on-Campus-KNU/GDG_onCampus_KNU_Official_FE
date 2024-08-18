@@ -19,7 +19,7 @@ const FieldTableBox = styled.div`
   row-gap: 23px;
   column-gap: 29px;
 
-  @media (max-width: 767px) {
+  @media (max-width: 900px) {
     grid-template-columns: 1fr;
     row-gap: 33px;
   }
@@ -39,11 +39,15 @@ const FieldTableBox = styled.div`
 
 const CoreBox = styled.div`
   position: relative;
-  width: 379px;
-  height: 123px;
+  width: 90%;
+  height: auto;
   padding: 22px 26px 28px 18px;
   border-radius: 15px;
   background-color: var(--color-white);
+
+  /* @media (max-width: 1024px) {
+    width: 100%;
+  } */
 
   @media (max-width: 500px) {
     width: 100%;
@@ -79,9 +83,9 @@ const HighlightText = styled(Text)<{ highlightColor?: string }>`
 `;
 
 const FieldTable = () => {
-  const isMobile = useMediaQuery({ query: '(max-width: 500px)' });
-  const titleSize = isMobile ? 'lg' : 'xl';
-  const expSize = isMobile ? 'sm' : 'md';
+  const isTablet = useMediaQuery({ query: '(max-width: 767px)' });
+  const titleSize = isTablet ? 'md' : 'lg';
+  const expSize = isTablet ? 'sm' : 'md';
 
   useEffect(() => {
     gsap.to('.animateFieldTable', {
