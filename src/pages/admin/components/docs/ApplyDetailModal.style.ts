@@ -1,5 +1,3 @@
-import CloseIcon from '@gdsc/assets/CloseIcon.svg';
-
 import { displayCenter } from '@gdsc/styles/LayoutStyle';
 
 import styled from '@emotion/styled';
@@ -49,12 +47,14 @@ export const TitleWrapper = styled.h3`
 `;
 
 export const CloseBtn = styled.button`
+  display: flex;
   width: 18px;
   height: 18px;
-  background-image: url(${CloseIcon});
   background-size: cover;
   background-repeat: no-repeat;
   background-color: transparent;
+  align-items: center;
+  justify-content: center;
 
   border: none;
   outline: none;
@@ -63,6 +63,10 @@ export const CloseBtn = styled.button`
   &:hover {
     transform: scale(1.1);
   }
+`;
+
+export const CloseIconImg = styled.img`
+  width: 18px;
 `;
 
 export const ContentWrapper = styled.div`
