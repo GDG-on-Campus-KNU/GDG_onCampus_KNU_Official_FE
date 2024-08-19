@@ -3,6 +3,8 @@ import { useState, useEffect } from 'react';
 import CommonBtn from '@gdsc/components/common/button/CommonBtn';
 import Text from '@gdsc/components/common/typography/Text';
 
+import CloseIcon from '@gdsc/assets/CloseIcon.svg';
+
 import { useGetDocsDetail } from '@gdsc/apis/hooks/admin/docs/useGetDocsDetail';
 import { usePatchMark } from '@gdsc/apis/hooks/admin/docs/usePatchMark';
 import { usePatchStatus } from '@gdsc/apis/hooks/admin/docs/usePatchStatus';
@@ -18,6 +20,7 @@ import {
   DividingLine,
   SelfIntroduce,
   ButtonContainer,
+  Icon,
 } from './ApplyDetailModal.style';
 import ApplyDetailModalSkeleton from './ApplyDetailModalSkeleton';
 import ApplyInfo from './ApplyInfo';
@@ -124,7 +127,9 @@ const ApplyDetailModal = ({
               <Text size='xl' weight='bold' color='black'>
                 지원자 정보 조회
               </Text>
-              <CloseBtn onClick={onClose} />
+              <CloseBtn onClick={onClose}>
+                <Icon src={CloseIcon} alt='close' />
+              </CloseBtn>
             </TitleWrapper>
             <ContentWrapper>
               <IntroContainer>
