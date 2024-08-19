@@ -49,13 +49,16 @@ export const TitleWrapper = styled.h3`
 `;
 
 export const CloseBtn = styled.button`
+  display: flex;
   width: 18px;
   height: 18px;
-  background-image: url(${CloseIcon});
+  // 이 부분이 실제로 동작하지 않는 것 같습니다.
+  // background-image: url(${CloseIcon});
   background-size: cover;
   background-repeat: no-repeat;
   background-color: transparent;
 
+  justify-content: center;
   border: none;
   outline: none;
   cursor: pointer;
@@ -63,6 +66,11 @@ export const CloseBtn = styled.button`
   &:hover {
     transform: scale(1.1);
   }
+`;
+
+// CloseIcon이 보이지 않는 Bug fix
+export const Icon = styled.img`
+  width: 18px;
 `;
 
 export const ContentWrapper = styled.div`
