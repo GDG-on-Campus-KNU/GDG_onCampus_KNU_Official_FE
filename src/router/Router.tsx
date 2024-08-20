@@ -12,6 +12,7 @@ import ErrorPage from '@gdsc/pages/ErrorPage';
 import { TeamUpdateProvider } from '@gdsc/provider/TeamUpdate';
 import StatusRoute from '@gdsc/router/components/StatusRoute';
 
+const CommingSoonPage = lazy(() => import('@gdsc/pages/CommingSoonPage'));
 const RootPage = lazy(() => import('@gdsc/pages/RootPage'));
 const MainPage = lazy(() => import('@gdsc/pages/main/MainPage'));
 const SigninPage = lazy(() => import('@gdsc/pages/signin/SigninPage'));
@@ -120,11 +121,20 @@ export const Router = createBrowserRouter([
           },
         ],
       },
-      // {
-      //   path: 'team',
-      //   element: <StatusRoute allowedStatuses={['CORE', 'MEMBER']} />,
-      //   children: [{ path: '', element: <TeamPage /> }],
-      // },
+      {
+        path: 'team',
+        element: <StatusRoute allowedStatuses={['CORE', 'MEMBER', 'GUEST']} />,
+        children: [
+          {
+            path: '',
+            element: (
+              <AsyncBoundary pendingFallback={<LoadingView />}>
+                <CommingSoonPage />
+              </AsyncBoundary>
+            ),
+          },
+        ],
+      },
       {
         path: 'introduce',
         element: (
@@ -133,8 +143,34 @@ export const Router = createBrowserRouter([
           </AsyncBoundary>
         ),
       },
-      // { path: 'community', element: <CommunityPage /> },
-      // { path: 'techblog', element: <TechBlogPage /> },
+      {
+        path: 'community',
+        element: <StatusRoute allowedStatuses={['CORE', 'MEMBER', 'GUEST']} />,
+        children: [
+          {
+            path: '',
+            element: (
+              <AsyncBoundary pendingFallback={<LoadingView />}>
+                <CommingSoonPage />
+              </AsyncBoundary>
+            ),
+          },
+        ],
+      },
+      {
+        path: 'techblog',
+        element: <StatusRoute allowedStatuses={['CORE', 'MEMBER', 'GUEST']} />,
+        children: [
+          {
+            path: '',
+            element: (
+              <AsyncBoundary pendingFallback={<LoadingView />}>
+                <CommingSoonPage />
+              </AsyncBoundary>
+            ),
+          },
+        ],
+      },
     ],
   },
   {
