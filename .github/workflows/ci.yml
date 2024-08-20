@@ -1,0 +1,26 @@
+name: Test
+
+on:
+    pull_request:
+        branches:
+            - main
+    workflow_dispatch:
+
+jobs:
+    test:
+        runs-on: ubuntu-latest
+        
+        steps:
+            - name: Checkout Code
+              uses: actions/checkout@v4
+
+            - name: Install Pnpm package manager
+              run: |
+                npm install -g pnpm
+
+            - name: Install Dependencies
+              run: pnpm install 
+            
+            - name: Run Test
+              run: pnpm run test
+        
