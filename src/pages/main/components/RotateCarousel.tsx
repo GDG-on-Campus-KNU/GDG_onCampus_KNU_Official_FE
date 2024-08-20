@@ -1,6 +1,7 @@
 import { useMediaQuery } from 'react-responsive';
 
 import CompleteBtn from '@gdsc/components/common/button/CompleteBtn';
+import { LazyLoadImg } from '@gdsc/components/common/img/LazyLoadingImg';
 import Text from '@gdsc/components/common/typography/Text';
 
 import { useColTz } from '@gdsc/hooks/useColTz';
@@ -65,6 +66,7 @@ const Scene = styled.div`
 const Carousel = styled.div`
   width: 100%;
   height: 100%;
+  top: 10%;
   position: absolute;
   transform-style: preserve-3d;
   transition: all 0.5s;
@@ -89,18 +91,23 @@ const ButtonLayout = styled.div`
   display: flex;
   flex-direction: row;
   position: absolute;
-  top: 180%;
+  top: 170%;
   left: 50%;
   transform: translate(-50%, 0%);
 `;
 
-const EarthImage = styled.img`
-  width: 150%;
-  height: auto;
+const EarthImageWrapper = styled.div`
   position: absolute;
   top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
+  left: 0%;
+  transform: translate(-25%, -40%);
+`;
+
+const EarthImageTabletWrapper = styled.div`
+  position: absolute;
+  top: 50%;
+  left: 0%;
+  transform: translate(0%, -40%);
 `;
 
 const CardMainText = styled(Text)`
@@ -181,7 +188,16 @@ const RotateCarousel = () => {
       {isNotPC ? (
         <NotPCContainer>
           <Scene>
-            <EarthImage src={Earth} alt='earth' />
+            <EarthImageTabletWrapper>
+              <LazyLoadImg
+                image={{
+                  src: Earth,
+                  alt: 'earth',
+                  width: '100%',
+                  height: 'auto',
+                }}
+              />
+            </EarthImageTabletWrapper>
             <Carousel style={{ transform: `rotateY(${-angle}deg)` }}>
               {[...Array(6)].map((_, index) => (
                 <Card
@@ -253,7 +269,17 @@ const RotateCarousel = () => {
             <ArrowImg src={LeftArrow} alt='arrow' />
           </Button>
           <Scene>
-            <EarthImage src={Earth} alt='earth' />
+            <EarthImageWrapper>
+              <LazyLoadImg
+                image={{
+                  src: Earth,
+                  alt: 'earth',
+                  width: '150%',
+                  height: 'auto',
+                }}
+              />
+            </EarthImageWrapper>
+            {/* <EarthImage src={Earth} alt='earth' /> */}
             <Carousel style={{ transform: `rotateY(${-angle}deg)` }}>
               {[...Array(6)].map((_, index) => (
                 <Card
