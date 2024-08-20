@@ -1,10 +1,11 @@
-import { useState } from 'react';
+import { useState, lazy } from 'react';
 
 import { useGetApplyDocs } from '@gdsc/apis/hooks/admin/docs/useGetApplyDocs';
 
-import AdminConfirmTable from './AdminConfirmTable';
-import TrackSelectButtons from './TrackSelectButtons';
 import { Track } from '@gdsc/types/AdminInterface';
+
+const TrackSelectButtons = lazy(() => import('./TrackSelectButtons'));
+const AdminConfirmTable = lazy(() => import('./AdminConfirmTable'));
 
 type Props = {
   total?: number;

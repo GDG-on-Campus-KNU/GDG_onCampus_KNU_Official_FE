@@ -1,7 +1,5 @@
 import { useEffect, useState, lazy } from 'react';
 
-import CommonBtn from '@gdsc/components/common/button/CommonBtn';
-
 import PlusBtn from '@gdsc/assets/admin/PlusBtn.svg';
 import close from '@gdsc/assets/admin/remove.svg';
 
@@ -24,6 +22,9 @@ import { DragDropContext, DropResult } from '@hello-pangea/dnd';
 
 const TeamBox = lazy(() => import('./TeamBox'));
 const CreateTeamModal = lazy(() => import('./modal/CreateTeamModal'));
+const CommonBtn = lazy(
+  () => import('@gdsc/components/common/button/CommonBtn')
+);
 
 const CreateTeamToken = () => {
   const { data } = useGetAllTeamToken();
