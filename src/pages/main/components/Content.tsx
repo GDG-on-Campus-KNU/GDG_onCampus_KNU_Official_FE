@@ -65,6 +65,10 @@ const MainSubText = styled(Text)`
   @media (max-width: 500px) {
     font-size: 20px;
   }
+
+  @media (max-width: 400px) {
+    font-size: 16px;
+  }
 `;
 
 const MainText = styled(Text)`
@@ -73,6 +77,10 @@ const MainText = styled(Text)`
   }
   @media (max-width: 500px) {
     font-size: 20px;
+  }
+
+  @media (max-width: 400px) {
+    font-size: 16px;
   }
 `;
 

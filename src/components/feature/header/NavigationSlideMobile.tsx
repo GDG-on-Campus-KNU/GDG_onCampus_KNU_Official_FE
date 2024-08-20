@@ -1,4 +1,5 @@
-import { NavLink } from 'react-router-dom';
+import { useEffect } from 'react';
+import { NavLink, useNavigate } from 'react-router-dom';
 
 import { motion, AnimatePresence } from 'framer-motion';
 
@@ -19,6 +20,7 @@ import { useGetMyData } from '@gdsc/apis/hooks/mypage/useGetMyData';
 
 import { useHeaderDropDownState } from '@gdsc/store/useHeaderDropDownStore';
 import { useNavigationStore } from '@gdsc/store/useNavigationStore';
+import useUserStatusStore from '@gdsc/store/useUserStatusStore';
 
 import { displayCenter } from '@gdsc/styles/LayoutStyle';
 
@@ -91,6 +93,7 @@ const InformationBox = styled.div`
   align-items: center;
   font-size: var(--font-size-sm);
   font-weight: 700;
+  cursor: pointer;
 `;
 
 const MobileMenu = styled(motion.div)`
@@ -133,7 +136,40 @@ const NavigationSlideMobile = ({ open }: { open: boolean }) => {
     }
   };
 
-  const { data: MyData } = useGetMyData();
+  const { data: MyData, error } = useGetMyData();
+  const navigate = useNavigate();
+
+  const setUser = useUserStatusStore((state) => state.setUser);
+
+  useEffect(() => {
+    const savedUser = sessionStorage.getItem('user');
+    if (savedUser) {
+      setUser(JSON.parse(savedUser));
+    }
+  }, [setUser]);
+
+  useEffect(() => {
+    if (MyData && MyData?.role === 'ROLE_TEMP') {
+      alert(
+        '추가 정보가 입력이 되지 않은 상태입니다. \n추가 정보 입력을 위해 페이지를 이동합니다.'
+      );
+      navigate('/signup');
+    }
+
+    if (MyData) {
+      const userStatus = MyData.role.replace('ROLE_', '') as
+        | 'TEMP'
+        | 'GUEST'
+        | 'MEMBER'
+        | 'CORE';
+      const userData = { name: MyData.name, status: userStatus };
+      setUser(userData);
+      sessionStorage.setItem('user', JSON.stringify(userData));
+    } else if (error) {
+      setUser(null);
+      sessionStorage.removeItem('user');
+    }
+  }, [MyData, navigate, setUser, error]);
 
   return (
     <AnimatePresence>
@@ -146,12 +182,11 @@ const NavigationSlideMobile = ({ open }: { open: boolean }) => {
         >
           <NavHeader>
             {accessToken ? (
-              <InformationBox>
+              <InformationBox onClick={toggleDropdown}>
                 {MyData?.name}
                 <DropDownImg
                   src={dropdownOpen ? HdDropUp : HdDropDown}
                   alt='dropdown'
-                  onClick={toggleDropdown}
                 />
                 <AnimatePresence>
                   {dropdownOpen && (
