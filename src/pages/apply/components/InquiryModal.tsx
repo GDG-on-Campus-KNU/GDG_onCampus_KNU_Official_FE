@@ -75,17 +75,16 @@ const InquiryModal = () => {
   const [name, setName] = useState('');
   const [studentNumber, setStudentNumber] = useState('');
 
-  const { data, isLoading, isFetching, isError, error, refetch } =
-    ApplyInquiryQuery(name, studentNumber);
+  const { data, isLoading, isFetching, refetch } = ApplyInquiryQuery(
+    name,
+    studentNumber
+  );
 
   const queryClient = useQueryClient();
 
   useEffect(() => {
     queryClient.resetQueries({ queryKey: ['getApplyData'] });
-    if (isError) {
-      alert(`${error?.message}`);
-    }
-  }, [isError, error, queryClient]);
+  }, [queryClient]);
 
   const handleSubmit = async (e: { preventDefault: () => void }) => {
     e.preventDefault();
