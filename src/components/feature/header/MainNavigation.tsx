@@ -190,7 +190,7 @@ const MainNavigation = () => {
                 }}
                 transition={{ duration: 0.3 }}
               >
-                {MyData && renderDropdownItems(MyData, toggleDropdown)}
+                {MyData && renderDropdownItems(MyData, closeDropdown)}
               </DropdownMenu>
             </MenuList>
           </Menu>

@@ -73,6 +73,11 @@ const NavigationSlideMobile = ({ open }: { open: boolean }) => {
     }
   };
 
+  const handleMenuItemClick = () => {
+    close();
+    closeDropdown();
+  };
+
   const { data: MyData, error } = useGetMyData();
   const navigate = useNavigate();
 
@@ -149,7 +154,8 @@ const NavigationSlideMobile = ({ open }: { open: boolean }) => {
                       exit={{ opacity: 0, y: -10 }}
                       transition={{ duration: 0.3 }}
                     >
-                      {MyData && renderDropdownItems(MyData, closeDropdown)}
+                      {MyData &&
+                        renderDropdownItems(MyData, handleMenuItemClick)}
                     </MobileDropdownMenu>
                   )}
                 </AnimatePresence>
@@ -180,7 +186,7 @@ const NavigationSlideMobile = ({ open }: { open: boolean }) => {
                   src={item.src}
                   alt={item.alt}
                   label={item.label}
-                  onClick={close}
+                  onClick={handleMenuItemClick}
                 />
               ))}
             </NavMenu>
