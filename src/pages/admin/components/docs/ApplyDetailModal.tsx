@@ -74,15 +74,15 @@ interface DetailInfo {
 
 const getQuestionsByTrack = (track: string) => {
   switch (track) {
-    case 'Frontend':
+    case 'FRONT_END':
       return FrontendData;
-    case 'Backend':
+    case 'BACK_END':
       return BackendData;
     case 'AI':
       return AIData;
-    case 'Android':
+    case 'ANDROID':
       return AndroidData;
-    case 'Designer':
+    case 'DESIGNER':
       return DesignerData;
     default:
       return null;
@@ -187,11 +187,6 @@ const ApplyDetailModal = ({
                 <Text size='md' weight='bold' color='black'>
                   {trackData.Question2.main}
                 </Text>
-                {trackData.Question2.sub && (
-                  <Text size='sm' weight='normal' color='gray'>
-                    {trackData.Question2.sub}
-                  </Text>
-                )}
                 <SelfIntroduce>
                   {detail.answers.length > 1
                     ? `${detail.answers[1].answer}`
@@ -202,11 +197,6 @@ const ApplyDetailModal = ({
                 <Text size='md' weight='bold' color='black'>
                   {trackData.Question3.main}
                 </Text>
-                {trackData.Question3.sub && (
-                  <Text size='sm' weight='normal' color='gray'>
-                    {trackData.Question3.sub}
-                  </Text>
-                )}
                 <SelfIntroduce>
                   {detail.answers.length > 2
                     ? `${detail.answers[2].answer}`
@@ -217,11 +207,6 @@ const ApplyDetailModal = ({
                 <Text size='md' weight='bold' color='black'>
                   {trackData.Question4.main}
                 </Text>
-                {trackData.Question4.sub && (
-                  <Text size='sm' weight='normal' color='gray'>
-                    {trackData.Question4.sub}
-                  </Text>
-                )}
                 <SelfIntroduce>
                   {detail.answers.length > 3
                     ? `${detail.answers[3].answer}`
