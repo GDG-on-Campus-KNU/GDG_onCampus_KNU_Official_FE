@@ -1,8 +1,6 @@
+import { lazy } from 'react';
 import { Helmet } from 'react-helmet-async';
 import { useMediaQuery } from 'react-responsive';
-
-import MainFooter from '@gdsc/components/feature/footer/MainFooter';
-import MobileFooterMobile from '@gdsc/components/feature/footer/MainFooterMobile';
 
 import Content from '@gdsc/pages/main/components/Content';
 import MainRound from '@gdsc/pages/main/components/MainRound';
@@ -11,6 +9,13 @@ import Star from '@gdsc/pages/main/components/Star';
 import { DisplayLayout } from '@gdsc/styles/LayoutStyle';
 
 import styled from '@emotion/styled';
+
+const MainFooterMobile = lazy(
+  () => import('@gdsc/components/feature/footer/MainFooterMobile')
+);
+const MainFooter = lazy(
+  () => import('@gdsc/components/feature/footer/MainFooter')
+);
 
 const DisplayMainLayout = styled(DisplayLayout)`
   display: flex;
@@ -47,7 +52,7 @@ const MainPage = () => {
             left={`${Math.random() * 100}%`}
           />
         ))}
-        {isMobile ? <MobileFooterMobile /> : <MainFooter />}
+        {isMobile ? <MainFooterMobile /> : <MainFooter />}
       </DisplayMainLayout>
     </>
   );

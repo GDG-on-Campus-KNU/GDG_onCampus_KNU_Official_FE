@@ -1,6 +1,6 @@
-import { AxiosError } from 'axios';
-
 import { fetchInstance } from '@gdsc/apis/instance/Api_JWT';
+
+import type { ErrorInterface } from '@gdsc/types/ErrorInterface';
 
 export const ApplyInquiryAPI = async (name: string, studentNumber: string) => {
   try {
@@ -9,19 +9,13 @@ export const ApplyInquiryAPI = async (name: string, studentNumber: string) => {
     );
     return response.data;
   } catch (err: unknown) {
-    if (err instanceof AxiosError) {
-      if (err.response?.status === 409) {
-        console.error('Failed to fetch theme products:', err);
+    if (typeof err === 'object' && err !== null && 'code' in err) {
+      const typedError = err as ErrorInterface;
+      if (typedError.code === 409) {
+        alert('최종지원된 서류는 확인하실 수 없습니다.');
         throw new Error('최종지원된 서류는 확인하실 수 없습니다.');
-      } else {
-        console.error('Failed to fetch theme products:', err);
-        throw new Error(
-          'Failed to fetch theme products. Please try again later.'
-        );
       }
-    } else {
-      console.error('An unexpected error occurred:', err);
-      throw new Error('An unexpected error occurred. Please try again later.');
     }
+    throw new Error('아직 서류를 제출하지 않으셨습니다.');
   }
 };

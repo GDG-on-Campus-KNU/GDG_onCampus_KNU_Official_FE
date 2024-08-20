@@ -1,12 +1,17 @@
+import { lazy } from 'react';
 import { useMediaQuery } from 'react-responsive';
 import { Outlet } from 'react-router-dom';
 
-import MainNavigationMobile from '@gdsc/components/feature/header/MainNavigationMobile';
-
 import { displayCenter } from '@gdsc/styles/LayoutStyle';
 
-import MainNavigation from '../components/feature/header/MainNavigation';
 import styled from '@emotion/styled';
+
+const MainNavigation = lazy(
+  () => import('@gdsc/components/feature/header/MainNavigation')
+);
+const MainNavigationMobile = lazy(
+  () => import('@gdsc/components/feature/header/MainNavigationMobile')
+);
 
 export const MainContent = styled.main`
   padding-top: 45px;

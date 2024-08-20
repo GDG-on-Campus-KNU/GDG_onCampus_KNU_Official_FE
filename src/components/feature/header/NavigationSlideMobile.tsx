@@ -1,6 +1,7 @@
-import { NavLink } from 'react-router-dom';
+import { useEffect } from 'react';
+import { NavLink, useNavigate } from 'react-router-dom';
 
-import { motion, AnimatePresence } from 'framer-motion';
+import { AnimatePresence } from 'framer-motion';
 
 import MobileBtn from '@gdsc/components/common/button/MobileBtn';
 import Text from '@gdsc/components/common/typography/Text';
@@ -19,104 +20,43 @@ import { useGetMyData } from '@gdsc/apis/hooks/mypage/useGetMyData';
 
 import { useHeaderDropDownState } from '@gdsc/store/useHeaderDropDownStore';
 import { useNavigationStore } from '@gdsc/store/useNavigationStore';
+import useUserStatusStore from '@gdsc/store/useUserStatusStore';
 
-import { displayCenter } from '@gdsc/styles/LayoutStyle';
-
+import {
+  CloseButton,
+  InformationBox,
+  MobileDropdownMenu,
+  MobileMenu,
+  NameText,
+  NavHeader,
+  NavImg,
+  NavList,
+  NavMenu,
+  NavSection,
+  StyledImg,
+} from './NavigationSlideMobile.style';
 import { renderDropdownItems } from './StatusDropDownItems';
-import styled from '@emotion/styled';
 
-interface SlideMenuProps {
-  isOpen: boolean;
+interface MenuItemProps {
+  to: string;
+  src: string;
+  alt: string;
+  label: string;
+  onClick: () => void;
 }
 
-const StyledImg = styled.img`
-  width: auto;
-  height: auto;
-`;
-
-const CloseButton = styled.button`
-  background-color: transparent;
-  border: none;
-  cursor: pointer;
-`;
-
-const NavHeader = styled.header`
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  align-items: center;
-  position: fixed;
-  padding: 28px 37px 0 50px;
-  width: calc(100% - 78px);
-  top: 0;
-`;
-
-const NavSection = styled.section`
-  ${displayCenter}
-  align-items: center;
-  width: 100%;
-`;
-
-const NavMenu = styled.ul`
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  background-color: inherit;
-  width: 90%;
-`;
-
-const NavList = styled.li`
-  height: 22px;
-  display: flex;
-  flex-direction: row;
-  justify-content: flex-start;
-  align-items: center;
-  cursor: pointer;
-  padding: 30px 0 30px 27px;
-  border-bottom: 1px solid var(--color-white);
-`;
-
-const NavImg = styled.img`
-  margin-right: 20px;
-`;
-
-const InformationBox = styled.div`
-  position: relative;
-  background-color: rgba(255, 255, 255, 0.15);
-  width: 80px;
-  height: 31px;
-  border-radius: 8px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  font-size: var(--font-size-sm);
-  font-weight: 700;
-`;
-
-const MobileMenu = styled(motion.div)`
-  position: fixed;
-  top: 0;
-  right: 0;
-  width: 90%;
-  height: 100%;
-  border-radius: 12px 0 0 12px;
-  background: linear-gradient(#392f4f, var(--color-revolver));
-  z-index: 2000;
-  ${displayCenter}
-  align-items: center;
-`;
-
-const MobileDropdownMenu = styled(motion.ul)<SlideMenuProps>`
-  position: absolute;
-  top: 110%;
-  left: 0%;
-  background-color: var(--color-white);
-  list-style: none;
-  border-radius: 10px;
-  width: 80px;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
-  display: ${(props) => (props.isOpen ? 'block' : 'none')};
-`;
+export const MenuItem = ({ to, src, alt, label, onClick }: MenuItemProps) => {
+  return (
+    <NavLink key={to} to={to} onClick={onClick}>
+      <NavList>
+        <NavImg src={src} alt={alt} />
+        <Text color='white' size='md'>
+          {label}
+        </Text>
+      </NavList>
+    </NavLink>
+  );
+};
 
 const NavigationSlideMobile = ({ open }: { open: boolean }) => {
   const { close } = useNavigationStore();
@@ -133,7 +73,58 @@ const NavigationSlideMobile = ({ open }: { open: boolean }) => {
     }
   };
 
-  const { data: MyData } = useGetMyData();
+  const handleMenuItemClick = () => {
+    close();
+    closeDropdown();
+  };
+
+  const { data: MyData, error } = useGetMyData();
+  const navigate = useNavigate();
+
+  const setUser = useUserStatusStore((state) => state.setUser);
+
+  useEffect(() => {
+    const savedUser = sessionStorage.getItem('user');
+    if (savedUser) {
+      setUser(JSON.parse(savedUser));
+    }
+  }, [setUser]);
+
+  useEffect(() => {
+    if (MyData && MyData?.role === 'ROLE_TEMP') {
+      alert(
+        '추가 정보가 입력이 되지 않은 상태입니다. \n추가 정보 입력을 위해 페이지를 이동합니다.'
+      );
+      navigate('/signup');
+    }
+
+    if (MyData) {
+      const userStatus = MyData.role.replace('ROLE_', '') as
+        | 'TEMP'
+        | 'GUEST'
+        | 'MEMBER'
+        | 'CORE';
+      const userData = { name: MyData.name, status: userStatus };
+      setUser(userData);
+      sessionStorage.setItem('user', JSON.stringify(userData));
+    } else if (error) {
+      setUser(null);
+      sessionStorage.removeItem('user');
+    }
+  }, [MyData, navigate, setUser, error]);
+
+  const menuItems = [
+    { to: '/', src: Home, alt: 'home', label: '홈' },
+    {
+      to: '/introduce',
+      src: Introduce,
+      alt: 'introduce',
+      label: '동아리 소개',
+    },
+    { to: '/apply', src: Apply, alt: 'apply', label: '지원하기' },
+    { to: '/techblog', src: Techblog, alt: 'techblog', label: '테크블로그' },
+    { to: '/community', src: Community, alt: 'community', label: '커뮤니티' },
+  ];
 
   return (
     <AnimatePresence>
@@ -146,12 +137,13 @@ const NavigationSlideMobile = ({ open }: { open: boolean }) => {
         >
           <NavHeader>
             {accessToken ? (
-              <InformationBox>
-                {MyData?.name}
+              <InformationBox onClick={toggleDropdown}>
+                <NameText weight='700' size='sm' whiteSpace='nowrap'>
+                  {MyData?.name}
+                </NameText>
                 <DropDownImg
                   src={dropdownOpen ? HdDropUp : HdDropDown}
                   alt='dropdown'
-                  onClick={toggleDropdown}
                 />
                 <AnimatePresence>
                   {dropdownOpen && (
@@ -162,7 +154,8 @@ const NavigationSlideMobile = ({ open }: { open: boolean }) => {
                       exit={{ opacity: 0, y: -10 }}
                       transition={{ duration: 0.3 }}
                     >
-                      {MyData && renderDropdownItems(MyData, closeDropdown)}
+                      {MyData &&
+                        renderDropdownItems(MyData, handleMenuItemClick)}
                     </MobileDropdownMenu>
                   )}
                 </AnimatePresence>
@@ -186,58 +179,16 @@ const NavigationSlideMobile = ({ open }: { open: boolean }) => {
           </NavHeader>
           <NavSection>
             <NavMenu>
-              <NavLink to='/' onClick={close}>
-                <NavList>
-                  <NavImg src={Home} alt='home' />
-                  <Text color='white' size='md'>
-                    홈
-                  </Text>
-                </NavList>
-              </NavLink>
-              <NavLink to='/introduce' onClick={close}>
-                <NavList>
-                  <NavImg src={Introduce} alt='introduce' />
-                  <Text color='white' size='md'>
-                    동아리 소개
-                  </Text>
-                </NavList>
-              </NavLink>
-              <NavLink to='/apply' onClick={close}>
-                <NavList>
-                  <NavImg src={Apply} alt='apply' />
-                  <Text color='white' size='md'>
-                    지원하기
-                  </Text>
-                </NavList>
-              </NavLink>
-              {/* <NavLink to='/techblog' onClick={close}>
-                <NavList>
-                  <NavImg src={Techblog} alt='techblog' />
-                  <Text color='white' size='md'>
-                    테크블로그
-                  </Text>
-                </NavList>
-              </NavLink> */}
-              <NavList>
-                <NavImg src={Techblog} alt='techblog' />
-                <Text color='white' size='md'>
-                  테크블로그
-                </Text>
-              </NavList>
-              {/* <NavLink to='/community' onClick={close}>
-                <NavList>
-                  <NavImg src={Community} alt='community' />
-                  <Text color='white' size='md'>
-                    커뮤니티
-                  </Text>
-                </NavList>
-              </NavLink> */}
-              <NavList>
-                <NavImg src={Community} alt='community' />
-                <Text color='white' size='md'>
-                  커뮤니티
-                </Text>
-              </NavList>
+              {menuItems.map((item) => (
+                <MenuItem
+                  key={item.to}
+                  to={item.to}
+                  src={item.src}
+                  alt={item.alt}
+                  label={item.label}
+                  onClick={handleMenuItemClick}
+                />
+              ))}
             </NavMenu>
           </NavSection>
         </MobileMenu>

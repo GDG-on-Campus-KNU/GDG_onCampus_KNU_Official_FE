@@ -1,4 +1,4 @@
-import NavigationSlideMobile from '@gdsc/components/feature/header/NavigationSlideMobile';
+import { lazy } from 'react';
 
 import MenuHamburger from '@gdsc/assets/MenuHamburger.svg';
 
@@ -7,6 +7,10 @@ import { useNavigationStore } from '@gdsc/store/useNavigationStore';
 import { displayCenter } from '@gdsc/styles/LayoutStyle';
 
 import styled from '@emotion/styled';
+
+const NavigationSlideMobile = lazy(
+  () => import('@gdsc/components/feature/header/NavigationSlideMobile')
+);
 
 export const MobileHeader = styled.div`
   z-index: 1000;

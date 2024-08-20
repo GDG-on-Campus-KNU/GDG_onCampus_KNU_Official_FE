@@ -14,12 +14,20 @@ const handleLogout = () => {
   window.location.href = '/';
 };
 
+const handleItemClick =
+  (closeDropdown?: () => void) => (event: React.MouseEvent) => {
+    event.stopPropagation();
+    if (closeDropdown) {
+      closeDropdown();
+    }
+  };
+
 const commonDropdownItems = (
-  closeDropdown: () => void,
+  closeDropdown: (() => void) | undefined,
   additionalItems: React.ReactNode
 ) => (
   <>
-    <DropdownItem onClick={closeDropdown}>
+    <DropdownItem onClick={handleItemClick(closeDropdown)}>
       <NavLink to='/mypage'>
         <ResponsiveText size='sm' color='black'>
           마이페이지
@@ -37,7 +45,7 @@ const commonDropdownItems = (
 
 export const renderDropdownItems = (
   MyData: userDataInterface,
-  closeDropdown: () => void
+  closeDropdown?: () => void
 ) => {
   let additionalItems;
 
@@ -47,7 +55,7 @@ export const renderDropdownItems = (
       break;
     case 'ROLE_MEMBER':
       additionalItems = (
-        <DropdownItem onClick={closeDropdown}>
+        <DropdownItem onClick={handleItemClick(closeDropdown)}>
           <NavLink to='/team'>
             <ResponsiveText size='sm' color='black'>
               팀페이지
@@ -59,14 +67,14 @@ export const renderDropdownItems = (
     case 'ROLE_CORE':
       additionalItems = (
         <React.Fragment>
-          <DropdownItem onClick={closeDropdown}>
+          <DropdownItem onClick={handleItemClick(closeDropdown)}>
             <NavLink to='/team'>
               <ResponsiveText size='sm' color='black'>
                 팀페이지
               </ResponsiveText>
             </NavLink>
           </DropdownItem>
-          <DropdownItem onClick={closeDropdown}>
+          <DropdownItem onClick={handleItemClick(closeDropdown)}>
             <NavLink to='/admin'>
               <ResponsiveText size='sm' color='black'>
                 어드민페이지

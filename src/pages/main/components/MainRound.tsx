@@ -1,10 +1,10 @@
-import { useEffect, useRef } from 'react';
+import { useEffect, useRef, lazy } from 'react';
 
 import gsap from 'gsap';
 
-import RotateCarousel from '@gdsc/pages/main/components/RotateCarousel';
-
 import styled from '@emotion/styled';
+
+const RotateCarousel = lazy(() => import('./RotateCarousel'));
 
 const FirstRound = styled.div`
   width: 800px;
