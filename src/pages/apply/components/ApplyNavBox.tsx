@@ -9,9 +9,15 @@ const ApplyGrid = styled.div`
   display: grid;
   grid-template-columns: 1fr;
   row-gap: 20px;
+  margin-bottom: 64px;
+
+  @media (max-width: 767px) {
+    margin-bottom: 242px;
+  }
 
   @media (max-width: 500px) {
     row-gap: 30px;
+    margin-bottom: 189px;
   }
 `;
 
