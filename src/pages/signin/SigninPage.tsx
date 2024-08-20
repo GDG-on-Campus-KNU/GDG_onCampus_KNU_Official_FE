@@ -1,10 +1,26 @@
+import { useEffect } from 'react';
+
 import SigninModal from '@gdsc/pages/signin/components/SigninModal';
 
 import { SEO } from '@gdsc/utils/Seo';
+import { detectUserAgent } from '@gdsc/utils/detectUserAgent';
+import {
+  openLinkInKakaoExternal,
+  openLinkInSupportedBrowsers,
+} from '@gdsc/utils/openLinkInExternalBrowser';
 
 import { AuthWrapper } from '@gdsc/styles/AuthModalStyle';
 
 const SigninPage = () => {
+  useEffect(function RedirectByUserAgent() {
+    const signInUrl = 'https://gdsc-knu.com/signin';
+    if (detectUserAgent() === 'KAKAOTALK') {
+      openLinkInKakaoExternal(signInUrl);
+    } else if (detectUserAgent() !== 'DEFAULT') {
+      openLinkInSupportedBrowsers(signInUrl);
+    }
+  }, []);
+
   return (
     <>
       <SEO
