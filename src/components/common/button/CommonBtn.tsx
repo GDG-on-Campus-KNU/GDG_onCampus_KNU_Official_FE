@@ -5,6 +5,7 @@ const Button = styled.button<ICButton>`
   display: flex;
   align-items: center;
   justify-content: center;
+  flex-shrink: 0;
 
   gap: 10px;
 
@@ -121,8 +122,8 @@ const Button = styled.button<ICButton>`
   }
 
   @media (max-width: 767px) {
-    width: ${({ mdWidth }) => mdWidth || 'auto'};
-    height: ${({ mdHeight }) => mdHeight || 'auto'};
+    width: ${({ mdWidth }) => mdWidth || 'inherit'};
+    height: ${({ mdHeight }) => mdHeight || 'inherit'};
     padding: ${({ mPadding }) => mPadding || '5px 10px'};
     font-size: ${(props) => {
       switch (props.mdSize) {
@@ -146,8 +147,8 @@ const Button = styled.button<ICButton>`
 
   @media (max-width: 500px) {
     border-radius: 8px;
-    width: ${({ mWidth }) => mWidth || 'auto'};
-    height: ${({ mHeight }) => mHeight || 'auto'};
+    width: ${({ mWidth }) => mWidth || 'inherit'};
+    height: ${({ mHeight }) => mHeight || 'inherit'};
     padding: ${({ mPadding }) => mPadding || '5px 10px'};
     font-size: ${(props) => {
       switch (props.mSize) {
