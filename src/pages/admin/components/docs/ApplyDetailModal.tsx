@@ -3,6 +3,14 @@ import { useState, useEffect } from 'react';
 import CommonBtn from '@gdsc/components/common/button/CommonBtn';
 import Text from '@gdsc/components/common/typography/Text';
 
+import {
+  FrontendData,
+  BackendData,
+  AIData,
+  AndroidData,
+  DesignerData,
+} from '@gdsc/pages/apply/components/ApplyFormDocs';
+
 import CloseIcon from '@gdsc/assets/CloseIcon.svg';
 
 import { useGetDocsDetail } from '@gdsc/apis/hooks/admin/docs/useGetDocsDetail';
@@ -29,6 +37,8 @@ import Memo from './Memo';
 import Stars from './Stars';
 import TechStack from './TechStack';
 import styled from '@emotion/styled';
+
+// 트랙별 질문 데이터 가져오기
 
 const MarkBtn = styled.button`
   width: 30px;
@@ -61,6 +71,23 @@ interface DetailInfo {
   answers: Answer[];
   marked: boolean;
 }
+
+const getQuestionsByTrack = (track: string) => {
+  switch (track) {
+    case 'FRONT_END':
+      return FrontendData;
+    case 'BACK_END':
+      return BackendData;
+    case 'AI':
+      return AIData;
+    case 'ANDROID':
+      return AndroidData;
+    case 'DESIGNER':
+      return DesignerData;
+    default:
+      return null;
+  }
+};
 
 const ApplyDetailModal = ({
   id,
@@ -112,16 +139,18 @@ const ApplyDetailModal = ({
       },
       onError: (error) => {
         console.error('API 호출 실패:', error);
-        alert('합불 여부 저장에 실패하였습니다.');
+        alert('즐겨찾기 저장에 실패하였습니다.');
       },
     });
   };
+
+  const trackData = detail ? getQuestionsByTrack(detail.track) : null;
 
   return (
     <ModalBackdrop>
       <ModalWrapper>
         {isPending && <ApplyDetailModalSkeleton />}
-        {detail && (
+        {detail && trackData && (
           <>
             <TitleWrapper>
               <Text size='xl' weight='bold' color='black'>
@@ -144,40 +173,44 @@ const ApplyDetailModal = ({
                   email={detail.email}
                 />
                 <DividingLine />
+
                 <Text size='md' weight='bold' color='black'>
-                  본인이 생각하기에 좋은 개발자란 무엇인가요?
+                  {trackData.Question1.main}
                 </Text>
                 <SelfIntroduce>
                   {detail.answers.length > 0
                     ? `${detail.answers[0].answer}`
-                    : '좋은 개발자에 대한 설명란이 비어있습니다.'}
+                    : `${trackData.Question1.main}란이 비어있습니다.`}
                 </SelfIntroduce>
                 <DividingLine />
+
                 <Text size='md' weight='bold' color='black'>
-                  지원하게 된 동기가 무엇인가요?
+                  {trackData.Question2.main}
                 </Text>
                 <SelfIntroduce>
                   {detail.answers.length > 1
                     ? `${detail.answers[1].answer}`
-                    : '지원동기란이 비어있습니다.'}
+                    : `${trackData.Question2.main}란이 비어있습니다.`}
                 </SelfIntroduce>
                 <DividingLine />
+
                 <Text size='md' weight='bold' color='black'>
-                  본인이 겪었던 힘들었던 문제 상황을 적어주세요.
+                  {trackData.Question3.main}
                 </Text>
                 <SelfIntroduce>
-                  {detail.answers.length > 1
+                  {detail.answers.length > 2
                     ? `${detail.answers[2].answer}`
-                    : '힘들었던 문제 상황란이 비어있습니다.'}
+                    : `${trackData.Question3.main}란이 비어있습니다.`}
                 </SelfIntroduce>
                 <DividingLine />
+
                 <Text size='md' weight='bold' color='black'>
-                  본인이 협업해본 경험에 대해 적어주세요.
+                  {trackData.Question4.main}
                 </Text>
                 <SelfIntroduce>
-                  {detail.answers.length > 1
+                  {detail.answers.length > 3
                     ? `${detail.answers[3].answer}`
-                    : '협업 경험란이 비어있습니다.'}
+                    : `${trackData.Question4.main}란이 비어있습니다.`}
                 </SelfIntroduce>
                 <DividingLine />
               </IntroContainer>
