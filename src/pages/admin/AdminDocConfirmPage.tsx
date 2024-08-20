@@ -1,14 +1,17 @@
-import { useState } from 'react';
+import { useState, lazy } from 'react';
 
 import { useGetStatistic } from '@gdsc/apis/hooks/admin/docs/useGetStatistic';
 
 import { DisplayLayout } from '@gdsc/styles/LayoutStyle';
 
 import { PassBtn, ButtonBox, InfoBox } from './AdminDocConfirmPage.style';
-import AdminSearchBar from './components/AdminSearchBar';
-import CurrentApplyInfo from './components/docs/CurrentApplyInfo';
-import Stars from './components/docs/Stars';
-import TableSection from './components/docs/TableSection';
+
+const TableSection = lazy(() => import('./components/docs/TableSection'));
+const Stars = lazy(() => import('./components/docs/Stars'));
+const CurrentApplyInfo = lazy(
+  () => import('./components/docs/CurrentApplyInfo')
+);
+const AdminSearchBar = lazy(() => import('./components/AdminSearchBar'));
 
 const AdminDocConfirmPage = () => {
   const [isSelected, setIsSelected] = useState(false);

@@ -1,6 +1,4 @@
-import { useState, useEffect } from 'react';
-
-import Pagination from '@gdsc/components/common/pagination/pagination';
+import { useState, useEffect, lazy } from 'react';
 
 import { applyDocsInterface } from '@gdsc/apis/hooks/admin/docs/useGetApplyDocs';
 import { useGetSearch } from '@gdsc/apis/hooks/admin/docs/useGetSearch';
@@ -14,13 +12,17 @@ import {
   TableRow,
 } from '../MemberTable.style';
 import { columns } from './AdminTableDocs';
-import ApplyDetailModal from './ApplyDetailModal';
 import { MemberData, Track } from '@gdsc/types/AdminInterface';
 import {
   flexRender,
   getCoreRowModel,
   useReactTable,
 } from '@tanstack/react-table';
+
+const ApplyDetailModal = lazy(() => import('./ApplyDetailModal'));
+const Pagination = lazy(
+  () => import('@gdsc/components/common/pagination/pagination')
+);
 
 type Props = {
   data: applyDocsInterface;

@@ -1,77 +1,165 @@
+import { lazy } from 'react';
 import { createBrowserRouter } from 'react-router-dom';
 
-import AdminRootPage from '@gdsc/pages/AdminRootPage';
-import ErrorPage from '@gdsc/pages/ErrorPage';
-import RootPage from '@gdsc/pages/RootPage';
-import AdminDocConfirmPage from '@gdsc/pages/admin/AdminDocConfirmPage';
-import AdminSetStatePage from '@gdsc/pages/admin/AdminSetStatePage';
-import AdminTeamArrangePage from '@gdsc/pages/admin/AdminTeamArrangePage';
-import ApplyExPage from '@gdsc/pages/apply/ApplyExPage';
-import ApplyFormPage from '@gdsc/pages/apply/ApplyFormPage';
-import ApplyPage from '@gdsc/pages/apply/ApplyPage';
-import InquiryPage from '@gdsc/pages/apply/InquiryPage';
-// import CommunityPage from '@gdsc/pages/community/CommunityPage';
-import IntroducePage from '@gdsc/pages/introduce/IntroducePage';
-import MainPage from '@gdsc/pages/main/MainPage';
-import MyPage from '@gdsc/pages/mypage/MyPage';
-import AuthCallBackPage from '@gdsc/pages/signin/AuthCallBackPage';
-import SigninPage from '@gdsc/pages/signin/SigninPage';
-import SignupPage from '@gdsc/pages/signup/SignupPage';
-import { TeamPage } from '@gdsc/pages/team';
+import { AsyncBoundary } from '@gdsc/components/common/AsyncBoundary';
+import { LoadingView } from '@gdsc/components/common/View/LoadingView';
 
+// import { TeamPage } from '@gdsc/pages/team';
 // import TechBlogPage from '@gdsc/pages/tech_blog/TechBlogPage';
+import ErrorPage from '@gdsc/pages/ErrorPage';
+
+// import CommunityPage from '@gdsc/pages/community/CommunityPage';
 import { TeamUpdateProvider } from '@gdsc/provider/TeamUpdate';
 import StatusRoute from '@gdsc/router/components/StatusRoute';
+
+const RootPage = lazy(() => import('@gdsc/pages/RootPage'));
+const MainPage = lazy(() => import('@gdsc/pages/main/MainPage'));
+const SigninPage = lazy(() => import('@gdsc/pages/signin/SigninPage'));
+const SignupPage = lazy(() => import('@gdsc/pages/signup/SignupPage'));
+const ApplyPage = lazy(() => import('@gdsc/pages/apply/ApplyPage'));
+const ApplyFormPage = lazy(() => import('@gdsc/pages/apply/ApplyFormPage'));
+const ApplyExPage = lazy(() => import('@gdsc/pages/apply/ApplyExPage'));
+const InquiryPage = lazy(() => import('@gdsc/pages/apply/InquiryPage'));
+const IntroducePage = lazy(() => import('@gdsc/pages/introduce/IntroducePage'));
+const MyPage = lazy(() => import('@gdsc/pages/mypage/MyPage'));
+const AuthCallBackPage = lazy(
+  () => import('@gdsc/pages/signin/AuthCallBackPage')
+);
+const AdminRootPage = lazy(() => import('@gdsc/pages/AdminRootPage'));
+const AdminDocConfirmPage = lazy(
+  () => import('@gdsc/pages/admin/AdminDocConfirmPage')
+);
+const AdminSetStatePage = lazy(
+  () => import('@gdsc/pages/admin/AdminSetStatePage')
+);
+const AdminTeamArrangePage = lazy(
+  () => import('@gdsc/pages/admin/AdminTeamArrangePage')
+);
 
 export const Router = createBrowserRouter([
   {
     path: '/',
-    element: <RootPage />,
+    element: (
+      <AsyncBoundary pendingFallback={<LoadingView />}>
+        <RootPage />
+      </AsyncBoundary>
+    ),
     id: 'root',
     errorElement: <ErrorPage />,
     children: [
-      { index: true, element: <MainPage /> },
-      { path: 'signin', element: <SigninPage /> },
+      {
+        index: true,
+        element: (
+          <AsyncBoundary pendingFallback={<LoadingView />}>
+            <MainPage />
+          </AsyncBoundary>
+        ),
+      },
+      {
+        path: 'signin',
+        element: (
+          <AsyncBoundary pendingFallback={<LoadingView />}>
+            <SigninPage />
+          </AsyncBoundary>
+        ),
+      },
       {
         path: 'apply',
         element: <StatusRoute allowedStatuses={['CORE', 'MEMBER', 'GUEST']} />,
         children: [
-          { path: '', element: <ApplyPage /> },
+          {
+            path: '',
+            element: (
+              <AsyncBoundary pendingFallback={<LoadingView />}>
+                <ApplyPage />
+              </AsyncBoundary>
+            ),
+          },
           {
             path: ':tech',
             children: [
-              { path: '', element: <ApplyExPage /> },
-              { path: 'form', element: <ApplyFormPage /> },
+              {
+                path: '',
+                element: (
+                  <AsyncBoundary pendingFallback={<LoadingView />}>
+                    <ApplyExPage />
+                  </AsyncBoundary>
+                ),
+              },
+              {
+                path: 'form',
+                element: (
+                  <AsyncBoundary pendingFallback={<LoadingView />}>
+                    <ApplyFormPage />
+                  </AsyncBoundary>
+                ),
+              },
             ],
           },
-          { path: 'inquiry', element: <InquiryPage /> },
+          {
+            path: 'inquiry',
+            element: (
+              <AsyncBoundary pendingFallback={<LoadingView />}>
+                <InquiryPage />
+              </AsyncBoundary>
+            ),
+          },
         ],
       },
       {
         path: 'mypage',
         element: <StatusRoute allowedStatuses={['CORE', 'MEMBER', 'GUEST']} />,
-        children: [{ path: '', element: <MyPage /> }],
+        children: [
+          {
+            path: '',
+            element: (
+              <AsyncBoundary pendingFallback={<LoadingView />}>
+                <MyPage />
+              </AsyncBoundary>
+            ),
+          },
+        ],
       },
+      // {
+      //   path: 'team',
+      //   element: <StatusRoute allowedStatuses={['CORE', 'MEMBER']} />,
+      //   children: [{ path: '', element: <TeamPage /> }],
+      // },
       {
-        path: 'team',
-        element: <StatusRoute allowedStatuses={['CORE', 'MEMBER']} />,
-        children: [{ path: '', element: <TeamPage /> }],
+        path: 'introduce',
+        element: (
+          <AsyncBoundary pendingFallback={<LoadingView />}>
+            <IntroducePage />
+          </AsyncBoundary>
+        ),
       },
-      { path: 'introduce', element: <IntroducePage /> },
       // { path: 'community', element: <CommunityPage /> },
       // { path: 'techblog', element: <TechBlogPage /> },
     ],
   },
   {
     path: '/admin',
-    element: <AdminRootPage />,
+    element: (
+      <AsyncBoundary pendingFallback={<LoadingView />}>
+        <AdminRootPage />
+      </AsyncBoundary>
+    ),
     id: 'adminRoot',
     errorElement: <ErrorPage />,
     children: [
       {
         path: '',
         element: <StatusRoute allowedStatuses={['CORE']} />,
-        children: [{ path: '', element: <AdminSetStatePage /> }],
+        children: [
+          {
+            path: '',
+            element: (
+              <AsyncBoundary pendingFallback={<LoadingView />}>
+                <AdminSetStatePage />
+              </AsyncBoundary>
+            ),
+          },
+        ],
       },
       {
         path: 'team',
@@ -80,9 +168,11 @@ export const Router = createBrowserRouter([
           {
             path: '',
             element: (
-              <TeamUpdateProvider>
-                <AdminTeamArrangePage />
-              </TeamUpdateProvider>
+              <AsyncBoundary pendingFallback={<LoadingView />}>
+                <TeamUpdateProvider>
+                  <AdminTeamArrangePage />
+                </TeamUpdateProvider>
+              </AsyncBoundary>
             ),
           },
         ],
@@ -90,16 +180,33 @@ export const Router = createBrowserRouter([
       {
         path: 'document',
         element: <StatusRoute allowedStatuses={['CORE']} />,
-        children: [{ path: '', element: <AdminDocConfirmPage /> }],
+        children: [
+          {
+            path: '',
+            element: (
+              <AsyncBoundary pendingFallback={<LoadingView />}>
+                <AdminDocConfirmPage />
+              </AsyncBoundary>
+            ),
+          },
+        ],
       },
     ],
   },
   {
     path: '/oauth/:provider/redirect',
-    element: <AuthCallBackPage />,
+    element: (
+      <AsyncBoundary pendingFallback={<LoadingView />}>
+        <AuthCallBackPage />
+      </AsyncBoundary>
+    ),
   },
   {
     path: 'signup',
-    element: <SignupPage />,
+    element: (
+      <AsyncBoundary pendingFallback={<LoadingView />}>
+        <SignupPage />
+      </AsyncBoundary>
+    ),
   },
 ]);
