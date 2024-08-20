@@ -4,16 +4,15 @@ import { createBrowserRouter } from 'react-router-dom';
 import { AsyncBoundary } from '@gdsc/components/common/AsyncBoundary';
 import { LoadingView } from '@gdsc/components/common/View/LoadingView';
 
-import AdminRootPage from '@gdsc/pages/AdminRootPage';
 // import { TeamPage } from '@gdsc/pages/team';
 // import TechBlogPage from '@gdsc/pages/tech_blog/TechBlogPage';
 import ErrorPage from '@gdsc/pages/ErrorPage';
-import RootPage from '@gdsc/pages/RootPage';
 
 // import CommunityPage from '@gdsc/pages/community/CommunityPage';
 import { TeamUpdateProvider } from '@gdsc/provider/TeamUpdate';
 import StatusRoute from '@gdsc/router/components/StatusRoute';
 
+const RootPage = lazy(() => import('@gdsc/pages/RootPage'));
 const MainPage = lazy(() => import('@gdsc/pages/main/MainPage'));
 const SigninPage = lazy(() => import('@gdsc/pages/signin/SigninPage'));
 const SignupPage = lazy(() => import('@gdsc/pages/signup/SignupPage'));
@@ -26,6 +25,7 @@ const MyPage = lazy(() => import('@gdsc/pages/mypage/MyPage'));
 const AuthCallBackPage = lazy(
   () => import('@gdsc/pages/signin/AuthCallBackPage')
 );
+const AdminRootPage = lazy(() => import('@gdsc/pages/AdminRootPage'));
 const AdminDocConfirmPage = lazy(
   () => import('@gdsc/pages/admin/AdminDocConfirmPage')
 );
@@ -39,7 +39,11 @@ const AdminTeamArrangePage = lazy(
 export const Router = createBrowserRouter([
   {
     path: '/',
-    element: <RootPage />,
+    element: (
+      <AsyncBoundary pendingFallback={<LoadingView />}>
+        <RootPage />
+      </AsyncBoundary>
+    ),
     id: 'root',
     errorElement: <ErrorPage />,
     children: [
@@ -135,7 +139,11 @@ export const Router = createBrowserRouter([
   },
   {
     path: '/admin',
-    element: <AdminRootPage />,
+    element: (
+      <AsyncBoundary pendingFallback={<LoadingView />}>
+        <AdminRootPage />
+      </AsyncBoundary>
+    ),
     id: 'adminRoot',
     errorElement: <ErrorPage />,
     children: [
