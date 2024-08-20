@@ -1,6 +1,6 @@
 import { useEffect } from 'react';
 import { useMediaQuery } from 'react-responsive';
-import { NavLink, useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 
 import { motion } from 'framer-motion';
 
@@ -125,38 +125,36 @@ const MainNavigation = () => {
         <Menu>
           {isTablet ? (
             <MenuList>
-              <NavLink to='/'>
+              <Link to='/'>
                 <NavImg src={NavigationLogo768} alt='logo' />
-              </NavLink>
+              </Link>
             </MenuList>
           ) : (
             <MenuList>
-              <NavLink to='/'>
+              <Link to='/'>
                 <NavImg src={NavigationLogo} alt='logo' />
-              </NavLink>
+              </Link>
             </MenuList>
           )}
           <MenuList>
-            <NavLink to='/introduce'>
+            <Link to='/introduce'>
               <Text color='white'>동아리 소개</Text>
-            </NavLink>
+            </Link>
           </MenuList>
           <MenuList>
-            <NavLink to='/apply'>
+            <Link to='/apply'>
               <Text color='white'>지원하기</Text>
-            </NavLink>
+            </Link>
           </MenuList>
           <MenuList>
-            {/* <NavLink to='/techblog'>
+            <Link to='/techblog'>
               <Text color='white'>테크블로그</Text>
-            </NavLink> */}
-            <Text color='white'>테크블로그</Text>
+            </Link>
           </MenuList>
           <MenuList>
-            {/* <NavLink to='/community'>
+            <Link to='/community'>
               <Text color='white'>커뮤니티</Text>
-            </NavLink> */}
-            <Text color='white'>커뮤니티</Text>
+            </Link>
           </MenuList>
         </Menu>
         {accessToken ? (
@@ -192,16 +190,16 @@ const MainNavigation = () => {
                 }}
                 transition={{ duration: 0.3 }}
               >
-                {MyData && renderDropdownItems(MyData, closeDropdown)}
+                {MyData && renderDropdownItems(MyData, toggleDropdown)}
               </DropdownMenu>
             </MenuList>
           </Menu>
         ) : (
           <Menu>
             <MenuList>
-              <NavLink to='/signin'>
+              <Link to='/signin'>
                 <Text color='white'>로그인</Text>
-              </NavLink>
+              </Link>
             </MenuList>
           </Menu>
         )}
