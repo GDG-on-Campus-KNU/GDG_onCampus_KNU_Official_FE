@@ -152,11 +152,11 @@ const AdminConfirmTable = ({
               ))}
             </TableRow>
           ))}
-          {openDetail && (
-            <ApplyDetailModal id={openDetail} onClose={handleCloseModal} />
-          )}
         </tbody>
       </StyledTable>
+      {openDetail && (
+        <ApplyDetailModal id={openDetail} onClose={handleCloseModal} />
+      )}
       <Pagination
         currentPage={currentPage}
         totalPages={totalPages}
