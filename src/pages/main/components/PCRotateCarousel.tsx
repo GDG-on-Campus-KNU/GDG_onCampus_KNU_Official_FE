@@ -44,7 +44,6 @@ const PCRotateCarousel = ({
       </Button>
       <Scene>
         <EarthVideo src={EarthWebM} autoPlay={true} muted={true} loop={true} />
-
         <Carousel style={{ transform: `rotateY(${-angle}deg)` }}>
           {[...Array(6)].map((_, index) => (
             <Card
