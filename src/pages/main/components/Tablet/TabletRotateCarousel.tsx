@@ -1,10 +1,9 @@
 import CompleteBtn from '@gdsc/components/common/button/CompleteBtn';
-import { LazyLoadImg } from '@gdsc/components/common/img/LazyLoadingImg';
 import Text from '@gdsc/components/common/typography/Text';
 
 import { useColTz } from '@gdsc/hooks/useColTz';
 
-import Earth from '@gdsc/assets/Earth.gif';
+import EarthWebM from '@gdsc/assets/Earth.webm';
 import LeftArrow from '@gdsc/assets/LeftArrow.svg';
 import RightArrow from '@gdsc/assets/RightArrow.svg';
 
@@ -21,6 +20,7 @@ import {
   CompleteBtnWrapper,
   ContentText,
   Scene,
+  EarthVideo,
 } from '../RotateCarousel.style';
 import styled from '@emotion/styled';
 
@@ -35,16 +35,7 @@ const TabletRotateCarousel = ({
   return (
     <NotPCContainer>
       <Scene>
-        <EarthImageTabletWrapper>
-          <LazyLoadImg
-            image={{
-              src: Earth,
-              alt: 'earth',
-              width: '100%',
-              height: 'auto',
-            }}
-          />
-        </EarthImageTabletWrapper>
+        <EarthVideo src={EarthWebM} autoPlay={true} muted={true} loop={true} />
         <Carousel style={{ transform: `rotateY(${-angle}deg)` }}>
           {[...Array(6)].map((_, index) => (
             <Card
@@ -128,13 +119,6 @@ const ButtonLayout = styled.div`
   top: 170%;
   left: 50%;
   transform: translate(-50%, 0%);
-`;
-
-const EarthImageTabletWrapper = styled.div`
-  position: absolute;
-  top: 50%;
-  left: 0%;
-  transform: translate(0%, -40%);
 `;
 
 const MobileContentText = styled(ContentText)`
