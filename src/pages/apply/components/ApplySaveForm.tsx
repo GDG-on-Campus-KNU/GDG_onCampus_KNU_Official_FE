@@ -120,6 +120,7 @@ const ApplySaveForm = ({ SaveData }: ApplySaveFormProps) => {
       };
       const saveFormData = {
         ...formData,
+        applicationStatus: (formData.applicationStatus = 'TEMPORAL'),
         answers:
           formData.answers?.map((answer, index) => ({
             questionNumber: index,
@@ -131,6 +132,7 @@ const ApplySaveForm = ({ SaveData }: ApplySaveFormProps) => {
         // console.log(finalFormData);
       } else if (submitType === 'save') {
         // submitApplication(saveFormData);
+        // console.log(saveFormData);
         saveApplication(saveFormData);
       }
     }
