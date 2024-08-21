@@ -1,3 +1,4 @@
+import { memo } from 'react';
 import { Link } from 'react-router-dom';
 
 import CompleteBtn from '@gdsc/components/common/button/CompleteBtn';
@@ -106,4 +107,7 @@ const PCRotateCarousel = ({
   );
 };
 
-export default PCRotateCarousel;
+const MemoizedRotateCarousel = memo(PCRotateCarousel);
+MemoizedRotateCarousel.displayName = 'PCRotateCarousel';
+
+export default MemoizedRotateCarousel;
