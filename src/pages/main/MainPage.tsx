@@ -4,7 +4,6 @@ import { useMediaQuery } from 'react-responsive';
 
 import Content from '@gdsc/pages/main/components/Content';
 import MainRound from '@gdsc/pages/main/components/MainRound';
-import Star from '@gdsc/pages/main/components/Star';
 
 import { DisplayLayout } from '@gdsc/styles/LayoutStyle';
 
@@ -16,6 +15,8 @@ const MainFooterMobile = lazy(
 const MainFooter = lazy(
   () => import('@gdsc/components/feature/footer/MainFooter')
 );
+
+const Star = lazy(() => import('@gdsc/pages/main/components/Star'));
 
 const DisplayMainLayout = styled(DisplayLayout)`
   display: flex;
