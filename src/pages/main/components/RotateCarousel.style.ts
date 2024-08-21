@@ -109,3 +109,13 @@ export const ArrowImg = styled.img`
 export const CompleteBtnWrapper = styled.div`
   width: 90%;
 `;
+
+export const EarthVideo = styled.video`
+  width: 150%;
+  height: auto;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  clip-path: view-box ellipse(44% 44%);
+`;
