@@ -1,3 +1,5 @@
+import { Link } from 'react-router-dom';
+
 import CompleteBtn from '@gdsc/components/common/button/CompleteBtn';
 import Text from '@gdsc/components/common/typography/Text';
 
@@ -81,15 +83,17 @@ const PCRotateCarousel = ({
                 {cardData[index].contentText}
               </ContentText>
               <CompleteBtnWrapper>
-                <CompleteBtn
-                  size='md'
-                  type='button'
-                  color='blue'
-                  backgroundColor='blue'
-                  hoverColor='blue'
-                >
-                  팀블로그 바로가기
-                </CompleteBtn>
+                <Link to='/techblog'>
+                  <CompleteBtn
+                    size='md'
+                    type='button'
+                    color='blue'
+                    backgroundColor='blue'
+                    hoverColor='blue'
+                  >
+                    팀블로그 바로가기
+                  </CompleteBtn>
+                </Link>
               </CompleteBtnWrapper>
             </Card>
           ))}
