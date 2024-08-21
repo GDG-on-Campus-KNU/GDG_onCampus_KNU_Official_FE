@@ -3,8 +3,8 @@ import { useMediaQuery } from 'react-responsive';
 
 import { useCarouselStore } from '@gdsc/store/useCarouselStore';
 
-const PCRotateCarousel = lazy(() => import('./PCRotateCarousel'));
-const TabletRotateCarousel = lazy(
+const MemoizedRotateCarousel = lazy(() => import('./PCRotateCarousel'));
+const MemoizedTabletRotateCarousel = lazy(
   () => import('./Tablet/TabletRotateCarousel')
 );
 
@@ -38,13 +38,13 @@ const RotateCarousel = () => {
   return (
     <>
       {isNotPC ? (
-        <TabletRotateCarousel
+        <MemoizedTabletRotateCarousel
           handlePrevClick={handlePrevClick}
           handleNextClick={handleNextClick}
           rotateAngle={rotateAngle}
         />
       ) : (
-        <PCRotateCarousel
+        <MemoizedRotateCarousel
           handlePrevClick={handlePrevClick}
           handleNextClick={handleNextClick}
           rotateAngle={rotateAngle}

@@ -1,3 +1,5 @@
+import { memo } from 'react';
+
 import CompleteBtn from '@gdsc/components/common/button/CompleteBtn';
 import Text from '@gdsc/components/common/typography/Text';
 
@@ -32,11 +34,13 @@ const TabletRotateCarousel = ({
   const { angle, opacityArray } = useCarouselStore();
   const colTz = useColTz();
 
+  const carouselTransform = `rotateY(${-angle}deg)`;
+
   return (
     <NotPCContainer>
       <Scene>
         <EarthVideo src={EarthWebM} autoPlay={true} muted={true} loop={true} />
-        <Carousel style={{ transform: `rotateY(${-angle}deg)` }}>
+        <Carousel style={{ transform: carouselTransform }}>
           {[...Array(6)].map((_, index) => (
             <Card
               key={index}
@@ -99,7 +103,10 @@ const TabletRotateCarousel = ({
   );
 };
 
-export default TabletRotateCarousel;
+const MemoizedTabletRotateCarousel = memo(TabletRotateCarousel);
+MemoizedTabletRotateCarousel.displayName = 'TabletRotateCarousel';
+
+export default MemoizedTabletRotateCarousel;
 
 const NotPCContainer = styled.div`
   display: flex;

@@ -13,6 +13,7 @@ const Text = styled.span<IText>`
     text-align: center;
   } */
   display: inline;
+  font-display: swap;
 
   font-weight: ${(props) => props.weight ?? 'normal'};
 
