@@ -76,12 +76,12 @@ const AdminConfirmTable = ({
 
       setConfirmList({
         data: searchFilteredData,
-        totalPage: Math.ceil(searchFilteredData.length / 10),
+        totalPage: searchData.totalPage,
       });
     } else {
       setConfirmList({
         data: filteredData,
-        totalPage: Math.ceil(filteredData.length / 10),
+        totalPage: data.totalPage,
       });
     }
   }, [searchData, data, isMarked, track]);
