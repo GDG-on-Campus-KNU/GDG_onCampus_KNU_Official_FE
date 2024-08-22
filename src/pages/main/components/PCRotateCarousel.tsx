@@ -1,10 +1,12 @@
+import { memo } from 'react';
+import { Link } from 'react-router-dom';
+
 import CompleteBtn from '@gdsc/components/common/button/CompleteBtn';
-import { LazyLoadImg } from '@gdsc/components/common/img/LazyLoadingImg';
 import Text from '@gdsc/components/common/typography/Text';
 
 import { useColTz } from '@gdsc/hooks/useColTz';
 
-import Earth from '@gdsc/assets/Earth.gif';
+import EarthWebM from '@gdsc/assets/Earth.webm';
 import LeftArrow from '@gdsc/assets/LeftArrow.svg';
 import RightArrow from '@gdsc/assets/RightArrow.svg';
 
@@ -20,8 +22,8 @@ import {
   CompleteBtnWrapper,
   Container,
   ContentText,
-  EarthImageWrapper,
   Scene,
+  EarthVideo,
 } from './RotateCarousel.style';
 
 export interface RotateCarouselProps {
@@ -44,17 +46,7 @@ const PCRotateCarousel = ({
         <ArrowImg src={LeftArrow} alt='arrow' />
       </Button>
       <Scene>
-        <EarthImageWrapper>
-          <LazyLoadImg
-            image={{
-              src: Earth,
-              alt: 'earth',
-              width: '150%',
-              height: 'auto',
-            }}
-          />
-        </EarthImageWrapper>
-        {/* <EarthImage src={Earth} alt='earth' /> */}
+        <EarthVideo src={EarthWebM} autoPlay={true} muted={true} loop={true} />
         <Carousel style={{ transform: `rotateY(${-angle}deg)` }}>
           {[...Array(6)].map((_, index) => (
             <Card
@@ -92,15 +84,17 @@ const PCRotateCarousel = ({
                 {cardData[index].contentText}
               </ContentText>
               <CompleteBtnWrapper>
-                <CompleteBtn
-                  size='md'
-                  type='button'
-                  color='blue'
-                  backgroundColor='blue'
-                  hoverColor='blue'
-                >
-                  팀블로그 바로가기
-                </CompleteBtn>
+                <Link to='/techblog'>
+                  <CompleteBtn
+                    size='md'
+                    type='button'
+                    color='blue'
+                    backgroundColor='blue'
+                    hoverColor='blue'
+                  >
+                    팀블로그 바로가기
+                  </CompleteBtn>
+                </Link>
               </CompleteBtnWrapper>
             </Card>
           ))}
@@ -113,4 +107,7 @@ const PCRotateCarousel = ({
   );
 };
 
-export default PCRotateCarousel;
+const MemoizedRotateCarousel = memo(PCRotateCarousel);
+MemoizedRotateCarousel.displayName = 'PCRotateCarousel';
+
+export default MemoizedRotateCarousel;
