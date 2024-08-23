@@ -6,7 +6,8 @@ import { useGetTrack } from '@gdsc/apis/hooks/admin/docs/useGetTrack';
 import { DisplayLayout } from '@gdsc/styles/LayoutStyle';
 
 import { PassBtn, ButtonBox, InfoBox } from './AdminDocConfirmPage.style';
-import TrackSelectBar from './components/docs/TrackSelectBar';
+
+const TrackSelectBar = lazy(() => import('./components/docs/TrackSelectBar'));
 
 const DocsTable = lazy(
   () => import('@gdsc/pages/admin/components/docs/DocsTable')
