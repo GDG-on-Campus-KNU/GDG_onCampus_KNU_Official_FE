@@ -25,12 +25,44 @@ import {
   useReactTable,
 } from '@tanstack/react-table';
 
-const MemberTable = ({ searchName }: { searchName?: string | undefined }) => {
+const DocsTable = ({
+  searchName,
+  trackIdx,
+}: {
+  searchName?: string | undefined;
+  trackIdx: number;
+}) => {
   const [currentPage, setCurrentPage] = useState<number>(0);
   const [currentGroup, setCurrentGroup] = useState<number>(0);
   const [docsList, setDocsList] = useState<applyDocsInterface | null>(null);
 
-  const { data: docsData } = useGetApplyDocs('', false, currentPage, 7);
+  const getTrack = (index: number) => {
+    switch (index) {
+      case 0:
+        return '';
+      case 1:
+        return 'FRONT_END';
+      case 2:
+        return 'BACK_END';
+      case 3:
+        return 'ANDROID';
+      case 4:
+        return 'AI';
+      case 5:
+        return 'DESIGNER';
+      default:
+        return '';
+    }
+  };
+
+  console.log(getTrack(trackIdx));
+
+  const { data: docsData } = useGetApplyDocs(
+    getTrack(trackIdx),
+    false,
+    currentPage,
+    7
+  );
   const { data: searchData } = useGetSearch(searchName, currentPage, 7);
 
   useEffect(() => {
@@ -109,4 +141,4 @@ const MemberTable = ({ searchName }: { searchName?: string | undefined }) => {
   );
 };
 
-export default MemberTable;
+export default DocsTable;
