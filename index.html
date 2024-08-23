@@ -49,18 +49,20 @@
     />
 
     <!-- Google tag (gtag.js) -->
-    <script
-      async
-      src="https://www.googletagmanager.com/gtag/js?id=G-MLL2Z47LWL"
-    ></script>
-    <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag() {
-        dataLayer.push(arguments);
-      }
-      gtag('js', new Date());
+    <script type="text/javascript">
+      if (import.meta.env.VITE_ENV === 'production') {
+        (function() {
+          var gtagScript = document.createElement('script');
+          gtagScript.async = true;
+          gtagScript.src = 'https://www.googletagmanager.com/gtag/js?id=G-MLL2Z47LWL';
+          document.head.appendChild(gtagScript);
 
-      gtag('config', 'G-MLL2Z47LWL');
+          window.dataLayer = window.dataLayer || [];
+          function gtag(){ dataLayer.push(arguments); }
+          gtag('js', new Date());
+          gtag('config', 'G-MLL2Z47LWL');
+        })();
+      }
     </script>
   </head>
   <body>
