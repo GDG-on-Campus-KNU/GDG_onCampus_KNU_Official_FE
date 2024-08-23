@@ -19,11 +19,31 @@ import {
 } from '@gdsc/apis/hooks/admin/docs/useGetApplyDocs';
 import { useGetSearch } from '@gdsc/apis/hooks/admin/docs/useGetSearch';
 
+import ApplyDetailModal from './ApplyDetailModal';
 import {
   flexRender,
   getCoreRowModel,
   useReactTable,
 } from '@tanstack/react-table';
+
+const getTrack = (index: number) => {
+  switch (index) {
+    case 0:
+      return '';
+    case 1:
+      return 'FRONT_END';
+    case 2:
+      return 'BACK_END';
+    case 3:
+      return 'ANDROID';
+    case 4:
+      return 'AI';
+    case 5:
+      return 'DESIGNER';
+    default:
+      return '';
+  }
+};
 
 const DocsTable = ({
   searchName,
@@ -37,25 +57,7 @@ const DocsTable = ({
   const [currentPage, setCurrentPage] = useState<number>(0);
   const [currentGroup, setCurrentGroup] = useState<number>(0);
   const [docsList, setDocsList] = useState<applyDocsInterface | null>(null);
-
-  const getTrack = (index: number) => {
-    switch (index) {
-      case 0:
-        return '';
-      case 1:
-        return 'FRONT_END';
-      case 2:
-        return 'BACK_END';
-      case 3:
-        return 'ANDROID';
-      case 4:
-        return 'AI';
-      case 5:
-        return 'DESIGNER';
-      default:
-        return '';
-    }
-  };
+  const [openDetail, setOpenDetail] = useState<number | null>(null);
 
   const { data: docsData } = useGetApplyDocs(
     getTrack(trackIdx),
@@ -64,6 +66,15 @@ const DocsTable = ({
     7
   );
   const { data: searchData } = useGetSearch(searchName, currentPage, 7);
+
+  const handleOpenModal = (id: number) => {
+    setOpenDetail(id);
+  };
+
+  const handleCloseModal = () => {
+    setOpenDetail(null);
+    window.location.reload();
+  };
 
   useEffect(() => {
     if (searchName) {
@@ -121,7 +132,10 @@ const DocsTable = ({
           {table.getRowModel().rows.map((row) => (
             <TableRow key={row.id}>
               {row.getVisibleCells().map((cell) => (
-                <TableCell key={cell.id}>
+                <TableCell
+                  key={cell.id}
+                  onClick={() => handleOpenModal(cell.row.original.id)}
+                >
                   {flexRender(cell.column.columnDef.cell, cell.getContext())}
                 </TableCell>
               ))}
@@ -129,6 +143,10 @@ const DocsTable = ({
           ))}
         </tbody>
       </StyledTable>
+      {openDetail && (
+        <ApplyDetailModal id={openDetail} onClose={handleCloseModal} />
+      )}
+
       <Pagination
         currentPage={currentPage}
         totalPages={totalPages}
