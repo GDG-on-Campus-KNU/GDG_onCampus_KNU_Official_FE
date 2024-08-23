@@ -28,9 +28,11 @@ import {
 const DocsTable = ({
   searchName,
   trackIdx,
+  isMarked,
 }: {
   searchName?: string | undefined;
   trackIdx: number;
+  isMarked: boolean;
 }) => {
   const [currentPage, setCurrentPage] = useState<number>(0);
   const [currentGroup, setCurrentGroup] = useState<number>(0);
@@ -55,11 +57,9 @@ const DocsTable = ({
     }
   };
 
-  console.log(getTrack(trackIdx));
-
   const { data: docsData } = useGetApplyDocs(
     getTrack(trackIdx),
-    false,
+    isMarked,
     currentPage,
     7
   );

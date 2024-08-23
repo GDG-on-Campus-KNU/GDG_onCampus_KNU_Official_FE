@@ -55,7 +55,11 @@ const AdminDocConfirmPage = () => {
       {trackData && (
         <TrackSelectBar trackData={trackData} onSelect={handleTrackSelect} />
       )}
-      <DocsTable searchName={searchName} trackIdx={trackIdx} />
+      <DocsTable
+        searchName={searchName}
+        trackIdx={trackIdx}
+        isMarked={isMarked}
+      />
     </DisplayLayout>
   );
 };
