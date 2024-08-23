@@ -6,7 +6,11 @@ import { DisplayLayout } from '@gdsc/styles/LayoutStyle';
 
 import { PassBtn, ButtonBox, InfoBox } from './AdminDocConfirmPage.style';
 
-const TableSection = lazy(() => import('./components/docs/TableSection'));
+//import TableSection from './components/docs/TableSection';
+
+const DocsTable = lazy(
+  () => import('@gdsc/pages/admin/components/docs/DocsTable')
+);
 const Stars = lazy(() => import('./components/docs/Stars'));
 const CurrentApplyInfo = lazy(
   () => import('./components/docs/CurrentApplyInfo')
@@ -14,16 +18,14 @@ const CurrentApplyInfo = lazy(
 const AdminSearchBar = lazy(() => import('./components/AdminSearchBar'));
 
 const AdminDocConfirmPage = () => {
-  const [isSelected, setIsSelected] = useState(false);
   const [isMarked, setIsMarked] = useState<boolean>(false);
   const [searchName, setSearchName] = useState<string>('');
 
   const handlePassCheck = () => {
-    setIsSelected((prev) => !prev);
     setIsMarked((prev) => !prev);
   };
 
-  const { data } = useGetStatistic();
+  const { data: applyData } = useGetStatistic();
 
   const handleSearchNameChange = (name: string) => {
     setSearchName(name);
@@ -33,15 +35,16 @@ const AdminDocConfirmPage = () => {
     <DisplayLayout>
       <InfoBox>
         <ButtonBox>
-          <PassBtn isSelected={isSelected} onClick={handlePassCheck}>
+          <PassBtn isSelected={isMarked} onClick={handlePassCheck}>
             <Stars color='white' />
             서류합격자 조회
           </PassBtn>
         </ButtonBox>
         <AdminSearchBar onSearch={handleSearchNameChange} />
       </InfoBox>
-      {data && <CurrentApplyInfo response={data} />}
-      <TableSection total={data?.total} isMarked={isMarked} name={searchName} />
+      {applyData && <CurrentApplyInfo response={applyData} />}
+      {/* <TableSection total={data?.total} isMarked={isMarked} name={searchName} /> */}
+      <DocsTable searchName={searchName} />
     </DisplayLayout>
   );
 };

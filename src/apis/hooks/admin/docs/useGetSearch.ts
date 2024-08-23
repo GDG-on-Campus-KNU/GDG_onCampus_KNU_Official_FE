@@ -15,7 +15,7 @@ const getSearchPath = () => '/api/admin/application/search';
 const searchQueryKey = [getSearchPath()];
 
 export const getSearch = async (
-  name: string,
+  name: string | undefined,
   page: number,
   size: number
 ): Promise<SearchInterface> => {
@@ -29,7 +29,11 @@ export const getSearch = async (
   return response.data;
 };
 
-export const useGetSearch = (name: string, page: number, size: number) => {
+export const useGetSearch = (
+  name: string | undefined,
+  page: number,
+  size: number
+) => {
   const accessToken = sessionStorage.getItem('accessToken');
 
   return useQuery<SearchInterface, Error>({
