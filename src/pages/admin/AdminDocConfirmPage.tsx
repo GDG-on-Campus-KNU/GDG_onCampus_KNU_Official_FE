@@ -8,8 +8,6 @@ import { DisplayLayout } from '@gdsc/styles/LayoutStyle';
 import { PassBtn, ButtonBox, InfoBox } from './AdminDocConfirmPage.style';
 import TrackSelectBar from './components/docs/TrackSelectBar';
 
-//import TableSection from './components/docs/TableSection';
-
 const DocsTable = lazy(
   () => import('@gdsc/pages/admin/components/docs/DocsTable')
 );
@@ -51,7 +49,6 @@ const AdminDocConfirmPage = () => {
         <AdminSearchBar onSearch={handleSearchNameChange} />
       </InfoBox>
       {applyData && <CurrentApplyInfo response={applyData} />}
-      {/* <TableSection total={data?.total} isMarked={isMarked} name={searchName} /> */}
       {trackData && (
         <TrackSelectBar trackData={trackData} onSelect={handleTrackSelect} />
       )}
