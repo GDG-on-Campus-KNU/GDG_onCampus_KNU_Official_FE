@@ -1,4 +1,5 @@
 import { memo } from 'react';
+import { Link } from 'react-router-dom';
 
 import CompleteBtn from '@gdsc/components/common/button/CompleteBtn';
 import Text from '@gdsc/components/common/typography/Text';
@@ -77,15 +78,17 @@ const TabletRotateCarousel = ({
                 {cardData[index].contentText}
               </MobileContentText>
               <CompleteBtnWrapper>
-                <CompleteBtn
-                  size='xs'
-                  type='button'
-                  color='blue'
-                  backgroundColor='blue'
-                  hoverColor='blue'
-                >
-                  팀블로그 바로가기
-                </CompleteBtn>
+                <Link to='/techblog'>
+                  <CompleteBtn
+                    size='xs'
+                    type='button'
+                    color='blue'
+                    backgroundColor='blue'
+                    hoverColor='blue'
+                  >
+                    팀블로그 바로가기
+                  </CompleteBtn>
+                </Link>
               </CompleteBtnWrapper>
             </Card>
           ))}
