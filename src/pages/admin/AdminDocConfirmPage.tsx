@@ -1,12 +1,17 @@
 import { useState, lazy } from 'react';
 
 import { useGetStatistic } from '@gdsc/apis/hooks/admin/docs/useGetStatistic';
+import { useGetTrack } from '@gdsc/apis/hooks/admin/docs/useGetTrack';
 
 import { DisplayLayout } from '@gdsc/styles/LayoutStyle';
 
 import { PassBtn, ButtonBox, InfoBox } from './AdminDocConfirmPage.style';
 
-const TableSection = lazy(() => import('./components/docs/TableSection'));
+const TrackSelectBar = lazy(() => import('./components/docs/TrackSelectBar'));
+
+const DocsTable = lazy(
+  () => import('@gdsc/pages/admin/components/docs/DocsTable')
+);
 const Stars = lazy(() => import('./components/docs/Stars'));
 const CurrentApplyInfo = lazy(
   () => import('./components/docs/CurrentApplyInfo')
@@ -14,16 +19,20 @@ const CurrentApplyInfo = lazy(
 const AdminSearchBar = lazy(() => import('./components/AdminSearchBar'));
 
 const AdminDocConfirmPage = () => {
-  const [isSelected, setIsSelected] = useState(false);
   const [isMarked, setIsMarked] = useState<boolean>(false);
   const [searchName, setSearchName] = useState<string>('');
+  const [trackIdx, setTrackIdx] = useState<number>(0);
 
   const handlePassCheck = () => {
-    setIsSelected((prev) => !prev);
     setIsMarked((prev) => !prev);
   };
 
-  const { data } = useGetStatistic();
+  const { data: applyData } = useGetStatistic();
+  const { data: trackData } = useGetTrack();
+
+  const handleTrackSelect = (index: number) => {
+    setTrackIdx(index);
+  };
 
   const handleSearchNameChange = (name: string) => {
     setSearchName(name);
@@ -33,15 +42,22 @@ const AdminDocConfirmPage = () => {
     <DisplayLayout>
       <InfoBox>
         <ButtonBox>
-          <PassBtn isSelected={isSelected} onClick={handlePassCheck}>
+          <PassBtn isSelected={isMarked} onClick={handlePassCheck}>
             <Stars color='white' />
             서류합격자 조회
           </PassBtn>
         </ButtonBox>
         <AdminSearchBar onSearch={handleSearchNameChange} />
       </InfoBox>
-      {data && <CurrentApplyInfo response={data} />}
-      <TableSection total={data?.total} isMarked={isMarked} name={searchName} />
+      {applyData && <CurrentApplyInfo response={applyData} />}
+      {trackData && (
+        <TrackSelectBar trackData={trackData} onSelect={handleTrackSelect} />
+      )}
+      <DocsTable
+        searchName={searchName}
+        trackIdx={trackIdx}
+        isMarked={isMarked}
+      />
     </DisplayLayout>
   );
 };
