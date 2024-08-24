@@ -11,7 +11,7 @@ export const SearchBarContainer = styled.form`
   display: flex;
   justify-content: flex-start;
   align-items: center;
-  gap: 20px;
+  gap: 10px;
 
   padding: 0px 20px;
   box-sizing: border-box;

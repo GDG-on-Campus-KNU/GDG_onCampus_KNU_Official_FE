@@ -1,7 +1,6 @@
-import { useState, useEffect, lazy } from 'react';
+import { useState, useEffect } from 'react';
 
-import { applyDocsInterface } from '@gdsc/apis/hooks/admin/docs/useGetApplyDocs';
-import { useGetSearch } from '@gdsc/apis/hooks/admin/docs/useGetSearch';
+import Pagination from '@gdsc/components/common/pagination/pagination';
 
 import {
   StyledTable,
@@ -10,83 +9,82 @@ import {
   TableCell,
   TableHeaderCell,
   TableRow,
-} from '../MemberTable.style';
-import { columns } from './AdminTableDocs';
-import { MemberData, Track } from '@gdsc/types/AdminInterface';
+} from '@gdsc/pages/admin/components/MemberTable.style';
+
+import { columns } from '@gdsc/constants/DocsTableColumns';
+
+import {
+  applyDocsInterface,
+  useGetApplyDocs,
+} from '@gdsc/apis/hooks/admin/docs/useGetApplyDocs';
+import { useGetSearch } from '@gdsc/apis/hooks/admin/docs/useGetSearch';
+
+import ApplyDetailModal from './ApplyDetailModal';
 import {
   flexRender,
   getCoreRowModel,
   useReactTable,
 } from '@tanstack/react-table';
 
-const ApplyDetailModal = lazy(() => import('./ApplyDetailModal'));
-const Pagination = lazy(
-  () => import('@gdsc/components/common/pagination/pagination')
-);
-
-type Props = {
-  data: applyDocsInterface;
-  name: string;
-  track: Track | '';
-  isMarked: boolean;
-  currentPage: number;
-  setCurrentPage: (page: number) => void;
+const getTrack = (index: number) => {
+  switch (index) {
+    case 0:
+      return '';
+    case 1:
+      return 'FRONT_END';
+    case 2:
+      return 'BACK_END';
+    case 3:
+      return 'ANDROID';
+    case 4:
+      return 'AI';
+    case 5:
+      return 'DESIGNER';
+    default:
+      return '';
+  }
 };
 
-const AdminConfirmTable = ({
-  data,
-  currentPage,
-  setCurrentPage,
-  name,
+const DocsTable = ({
+  searchName,
+  trackIdx,
   isMarked,
-  track,
-}: Props) => {
+}: {
+  searchName?: string | undefined;
+  trackIdx: number;
+  isMarked: boolean;
+}) => {
+  const [currentPage, setCurrentPage] = useState<number>(0);
   const [currentGroup, setCurrentGroup] = useState<number>(0);
-  const [confirmList, setConfirmList] = useState<{
-    data: MemberData[];
-    totalPage: number;
-  } | null>(null);
+  const [docsList, setDocsList] = useState<applyDocsInterface | null>(null);
   const [openDetail, setOpenDetail] = useState<number | null>(null);
 
-  const { data: searchData } = useGetSearch(name, currentPage, 10);
+  const { data: docsData } = useGetApplyDocs(
+    getTrack(trackIdx),
+    isMarked,
+    currentPage,
+    7
+  );
+  const { data: searchData } = useGetSearch(searchName, currentPage, 7);
+
+  const handleOpenModal = (id: number) => {
+    setOpenDetail(id);
+  };
+
+  const handleCloseModal = () => {
+    setOpenDetail(null);
+    window.location.reload();
+  };
 
   useEffect(() => {
-    let filteredData = data?.data || [];
-
-    if (isMarked) {
-      filteredData = filteredData.filter((item) => item.marked);
-    }
-
-    if (track) {
-      filteredData = filteredData.filter((item) => item.track === track);
-    }
-
-    if (Array.isArray(searchData?.data)) {
-      let searchFilteredData = searchData.data;
-
-      if (isMarked) {
-        searchFilteredData = searchFilteredData.filter((item) => item.marked);
-      }
-
-      if (track) {
-        searchFilteredData = searchFilteredData.filter(
-          (item) => item.track === track
-        );
-      }
-
-      setConfirmList({
-        data: searchFilteredData,
-        totalPage: searchData.totalPage,
-      });
+    if (searchName) {
+      setDocsList(searchData ?? null);
     } else {
-      setConfirmList({
-        data: filteredData,
-        totalPage: data.totalPage,
-      });
+      setDocsList(docsData ?? null);
     }
-  }, [searchData, data, isMarked, track]);
+  }, [searchName, docsData, searchData]);
 
-  const totalPages = confirmList?.totalPage ?? 0;
+  const totalPages = docsList ? docsList.totalPage : 0;
 
   const handlePageChange = (page: number) => {
     setCurrentPage(page - 1);
@@ -104,18 +102,9 @@ const AdminConfirmTable = ({
     }
   };
 
-  const handleOpenModal = (id: number) => {
-    setOpenDetail(id);
-  };
-
-  const handleCloseModal = () => {
-    setOpenDetail(null);
-    window.location.reload();
-  };
-
   const table = useReactTable({
     columns: columns(),
-    data: confirmList?.data || [],
+    data: docsList?.data || [],
     getCoreRowModel: getCoreRowModel(),
   });
 
@@ -157,6 +146,7 @@ const AdminConfirmTable = ({
       {openDetail && (
         <ApplyDetailModal id={openDetail} onClose={handleCloseModal} />
       )}
+
       <Pagination
         currentPage={currentPage}
         totalPages={totalPages}
@@ -169,4 +159,4 @@ const AdminConfirmTable = ({
   );
 };
 
-export default AdminConfirmTable;
+export default DocsTable;
