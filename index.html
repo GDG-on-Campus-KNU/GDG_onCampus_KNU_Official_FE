@@ -19,16 +19,19 @@
     />
 
     <!-- Google tag (gtag.js) -->
-    <script type="text/javascript">
+    <script type="module">
       if (import.meta.env.VITE_ENV === 'production') {
-        (function() {
+        (function () {
           var gtagScript = document.createElement('script');
           gtagScript.async = true;
-          gtagScript.src = 'https://www.googletagmanager.com/gtag/js?id=G-MLL2Z47LWL';
+          gtagScript.src =
+            'https://www.googletagmanager.com/gtag/js?id=G-MLL2Z47LWL';
           document.head.appendChild(gtagScript);
 
           window.dataLayer = window.dataLayer || [];
-          function gtag(){ dataLayer.push(arguments); }
+          function gtag() {
+            dataLayer.push(arguments);
+          }
           gtag('js', new Date());
           gtag('config', 'G-MLL2Z47LWL');
         })();
