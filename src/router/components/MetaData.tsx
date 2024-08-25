@@ -5,7 +5,7 @@ import { SEO } from '@gdsc/router/components/Seo';
 export const MainMetaData = () => {
   return (
     <SEO
-      title='GDSC KNU1'
+      title='GDSC KNU'
       description='GDSC 경북대의 공식 홈페이지에 오신걸 환영합니다. GDSC 활동과 관련된 최신 정보와 이벤트 소식을 확인하세요.'
       url='https://gdsc-knu.com'
       image='https://gdsc-knu.com/WhiteLogo.png'
@@ -16,7 +16,7 @@ export const MainMetaData = () => {
 export const SigninMetaData = () => {
   return (
     <SEO
-      title='GDSC KNU2'
+      title='GDSC KNU'
       description='로그인 후 서비스를 이용해보세요.'
       url='https://gdsc-knu.com/signin'
       image='https://gdsc-knu.com/Login.png'
@@ -27,7 +27,7 @@ export const SigninMetaData = () => {
 export const MypageMetaData = () => {
   return (
     <SEO
-      title='GDSC KNU3'
+      title='GDSC KNU'
       description='마이페이지 정보 확인하기'
       url='https://gdsc-knu.com/mypage'
       image='https://gdsc-knu.com/WhiteLogo.png'
@@ -38,7 +38,7 @@ export const MypageMetaData = () => {
 export const IntroduceMetaData = () => {
   return (
     <SEO
-      title='GDSC KNU4'
+      title='GDSC KNU'
       description='4기를 앞으로 이어나갈 GDSC KNU의 소개 페이지입니다.'
       url='https://gdsc-knu.com/introduce'
       image='https://gdsc-knu.com/Introduce.png'
