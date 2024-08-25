@@ -1,5 +1,13 @@
+import CommingSoonPage from '../CommingSoonPage';
+import { TeamBlogMetaData } from '@gdsc/router/components/MetaData';
+
 const TechBlogPage = () => {
-  return <>테크블로그 페이지</>;
+  return (
+    <>
+      <TeamBlogMetaData />
+      <CommingSoonPage />
+    </>
+  );
 };
 
 export default TechBlogPage;

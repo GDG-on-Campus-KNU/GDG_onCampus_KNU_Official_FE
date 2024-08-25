@@ -15,6 +15,7 @@ import { usePutMyData } from '@gdsc/apis/hooks/mypage/usePutMyData';
 import { displayCenter } from '@gdsc/styles/LayoutStyle';
 
 import styled from '@emotion/styled';
+import { MypageMetaData } from '@gdsc/router/components/MetaData';
 import { putUserDataInterface } from '@gdsc/types/UserInterface';
 
 const MyPageWrapper = styled.div<{ color: string }>`
@@ -199,6 +200,7 @@ const MyPage = () => {
 
   return (
     <>
+      <MypageMetaData />
       <PageTitle MainTitle='마이페이지' SubTitle='My Page' />
       <MyPageWrapper color='var(--color-abony)'>
         <MainInfoContainer>

@@ -6,11 +6,10 @@ import ApplyNav from '@gdsc/pages/apply/components/ApplyNav';
 import ApplyNavEnd from '@gdsc/pages/apply/components/ApplyNavEnd';
 import Star from '@gdsc/pages/main/components/Star';
 
-import { SEO } from '@gdsc/utils/Seo';
-
 import { DisplayLayout } from '@gdsc/styles/LayoutStyle';
 
 import styled from '@emotion/styled';
+import { ApplyMetaData } from '@gdsc/router/components/MetaData';
 
 const ApplyLayout = styled(DisplayLayout)`
   height: 100%;
@@ -31,12 +30,7 @@ const ApplyPage = () => {
 
   return (
     <>
-      <SEO
-        title='GDSC KNU - 지원목록'
-        description='GDSC KNU는 모든 경북대 학생들을 환영합니다.'
-        url='https://gdsc-knu.com/apply'
-        image='https://gdsc-knu.com/ApplyNav.png'
-      />
+      <ApplyMetaData />
       <ApplyLayout>
         {showForm ? <ApplyNav /> : <ApplyNavEnd />}
         {[...Array(25)].map((_, index) => (

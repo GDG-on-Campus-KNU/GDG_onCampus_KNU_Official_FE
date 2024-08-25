@@ -8,10 +8,9 @@ import FieldTable from '@gdsc/pages/introduce/components/FieldTable';
 import IntroduceEvent from '@gdsc/pages/introduce/components/IntroduceEvent';
 import LineEvent from '@gdsc/pages/introduce/components/LineEvent';
 
-import { SEO } from '@gdsc/utils/Seo';
-
 import { DisplayLayout } from '@gdsc/styles/LayoutStyle';
 
+import { IntroduceMetaData } from '@gdsc/router/components/MetaData';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 
 gsap.registerPlugin(ScrollTrigger);
@@ -19,12 +18,7 @@ gsap.registerPlugin(ScrollTrigger);
 const IntroducePage = () => {
   return (
     <>
-      <SEO
-        title='GDSC KNU - 소개 페이지'
-        description='4기를 앞으로 이어나갈 GDSC KNU의 소개 페이지입니다.'
-        url='https://gdsc-knu.com/introduce'
-        image='https://gdsc-knu.com/Introduce.png'
-      />
+      <IntroduceMetaData />
       <DisplayLayout>
         <AboutEvent />
         <LineEvent />

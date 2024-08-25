@@ -4,11 +4,11 @@ import { createBrowserRouter } from 'react-router-dom';
 import { AsyncBoundary } from '@gdsc/components/common/AsyncBoundary';
 import { LoadingView } from '@gdsc/components/common/View/LoadingView';
 
-// import { TeamPage } from '@gdsc/pages/team';
-// import TechBlogPage from '@gdsc/pages/tech_blog/TechBlogPage';
 import ErrorPage from '@gdsc/pages/ErrorPage';
+import CommunityPage from '@gdsc/pages/community/CommunityPage';
+import { TeamPage } from '@gdsc/pages/team';
+import TechBlogPage from '@gdsc/pages/tech_blog/TechBlogPage';
 
-// import CommunityPage from '@gdsc/pages/community/CommunityPage';
 import { TeamUpdateProvider } from '@gdsc/provider/TeamUpdate';
 import StatusRoute from '@gdsc/router/components/StatusRoute';
 
@@ -129,7 +129,7 @@ export const Router = createBrowserRouter([
             path: '',
             element: (
               <AsyncBoundary pendingFallback={<LoadingView />}>
-                <CommingSoonPage />
+                <TeamPage />
               </AsyncBoundary>
             ),
           },
@@ -151,7 +151,7 @@ export const Router = createBrowserRouter([
             path: '',
             element: (
               <AsyncBoundary pendingFallback={<LoadingView />}>
-                <CommingSoonPage />
+                <CommunityPage />
               </AsyncBoundary>
             ),
           },
@@ -165,7 +165,7 @@ export const Router = createBrowserRouter([
             path: '',
             element: (
               <AsyncBoundary pendingFallback={<LoadingView />}>
-                <CommingSoonPage />
+                <TechBlogPage />
               </AsyncBoundary>
             ),
           },

@@ -1,5 +1,4 @@
 import { lazy } from 'react';
-import { Helmet } from 'react-helmet-async';
 import { useMediaQuery } from 'react-responsive';
 
 import Content from '@gdsc/pages/main/components/Content';
@@ -8,6 +7,7 @@ import MainRound from '@gdsc/pages/main/components/MainRound';
 import { DisplayLayout } from '@gdsc/styles/LayoutStyle';
 
 import styled from '@emotion/styled';
+import { MainMetaData } from '@gdsc/router/components/MetaData';
 
 const MainFooterMobile = lazy(
   () => import('@gdsc/components/feature/footer/MainFooterMobile')
@@ -29,20 +29,7 @@ const MainPage = () => {
 
   return (
     <>
-      <Helmet>
-        <title>GDSC KNU - 메인 페이지</title>
-        <meta name='description' content='GDSC 경북대의 메인 페이지입니다.' />
-        <meta property='og:title' content='GDSC KNU - 메인 페이지' />
-        <meta
-          property='og:description'
-          content='GDSC 경북대의 메인 페이지입니다.'
-        />
-        <meta
-          property='og:image'
-          content='https://gdsc-knu.com/WhiteLogo.png'
-        />
-        <meta property='og:url' content='https://gdsc-knu.com' />
-      </Helmet>
+      <MainMetaData />
       <DisplayMainLayout>
         <Content />
         <MainRound />
