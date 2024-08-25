@@ -1,18 +1,21 @@
 import { lazy } from 'react';
-import { createBrowserRouter } from 'react-router-dom';
+import {
+  createBrowserRouter,
+  IndexRouteObject,
+  NonIndexRouteObject,
+  Outlet,
+} from 'react-router-dom';
 
 import { AsyncBoundary } from '@gdsc/components/common/AsyncBoundary';
 import { LoadingView } from '@gdsc/components/common/View/LoadingView';
 
-import ErrorPage from '@gdsc/pages/ErrorPage';
-import CommunityPage from '@gdsc/pages/community/CommunityPage';
-import { TeamPage } from '@gdsc/pages/team';
-import TechBlogPage from '@gdsc/pages/tech_blog/TechBlogPage';
-
 import { TeamUpdateProvider } from '@gdsc/provider/TeamUpdate';
 import StatusRoute from '@gdsc/router/components/StatusRoute';
 
-const CommingSoonPage = lazy(() => import('@gdsc/pages/CommingSoonPage'));
+const TechBlogPage = lazy(() => import('@gdsc/pages/tech_blog/TechBlogPage'));
+const ErrorPage = lazy(() => import('@gdsc/pages/ErrorPage'));
+const CommunityPage = lazy(() => import('@gdsc/pages/community/CommunityPage'));
+const TeamPage = lazy(() => import('@gdsc/pages/team'));
 const RootPage = lazy(() => import('@gdsc/pages/RootPage'));
 const MainPage = lazy(() => import('@gdsc/pages/main/MainPage'));
 const SigninPage = lazy(() => import('@gdsc/pages/signin/SigninPage'));
@@ -37,32 +40,24 @@ const AdminTeamArrangePage = lazy(
   () => import('@gdsc/pages/admin/AdminTeamArrangePage')
 );
 
-export const Router = createBrowserRouter([
+type AppRouteObject = (IndexRouteObject | NonIndexRouteObject) & {
+  children?: AppRouteObject[];
+};
+
+const routesConfig: AppRouteObject[] = [
   {
     path: '/',
-    element: (
-      <AsyncBoundary pendingFallback={<LoadingView />}>
-        <RootPage />
-      </AsyncBoundary>
-    ),
+    element: <RootPage />,
     id: 'root',
     errorElement: <ErrorPage />,
     children: [
       {
         index: true,
-        element: (
-          <AsyncBoundary pendingFallback={<LoadingView />}>
-            <MainPage />
-          </AsyncBoundary>
-        ),
+        element: <MainPage />,
       },
       {
         path: 'signin',
-        element: (
-          <AsyncBoundary pendingFallback={<LoadingView />}>
-            <SigninPage />
-          </AsyncBoundary>
-        ),
+        element: <SigninPage />,
       },
       {
         path: 'apply',
@@ -70,40 +65,25 @@ export const Router = createBrowserRouter([
         children: [
           {
             path: '',
-            element: (
-              <AsyncBoundary pendingFallback={<LoadingView />}>
-                <ApplyPage />
-              </AsyncBoundary>
-            ),
+            element: <ApplyPage />,
           },
           {
             path: ':tech',
+            element: <Outlet />,
             children: [
               {
                 path: '',
-                element: (
-                  <AsyncBoundary pendingFallback={<LoadingView />}>
-                    <ApplyExPage />
-                  </AsyncBoundary>
-                ),
+                element: <ApplyExPage />,
               },
               {
                 path: 'form',
-                element: (
-                  <AsyncBoundary pendingFallback={<LoadingView />}>
-                    <ApplyFormPage />
-                  </AsyncBoundary>
-                ),
+                element: <ApplyFormPage />,
               },
             ],
           },
           {
             path: 'inquiry',
-            element: (
-              <AsyncBoundary pendingFallback={<LoadingView />}>
-                <InquiryPage />
-              </AsyncBoundary>
-            ),
+            element: <InquiryPage />,
           },
         ],
       },
@@ -113,11 +93,7 @@ export const Router = createBrowserRouter([
         children: [
           {
             path: '',
-            element: (
-              <AsyncBoundary pendingFallback={<LoadingView />}>
-                <MyPage />
-              </AsyncBoundary>
-            ),
+            element: <MyPage />,
           },
         ],
       },
@@ -127,21 +103,13 @@ export const Router = createBrowserRouter([
         children: [
           {
             path: '',
-            element: (
-              <AsyncBoundary pendingFallback={<LoadingView />}>
-                <TeamPage />
-              </AsyncBoundary>
-            ),
+            element: <TeamPage />,
           },
         ],
       },
       {
         path: 'introduce',
-        element: (
-          <AsyncBoundary pendingFallback={<LoadingView />}>
-            <IntroducePage />
-          </AsyncBoundary>
-        ),
+        element: <IntroducePage />,
       },
       {
         path: 'community',
@@ -149,11 +117,7 @@ export const Router = createBrowserRouter([
         children: [
           {
             path: '',
-            element: (
-              <AsyncBoundary pendingFallback={<LoadingView />}>
-                <CommunityPage />
-              </AsyncBoundary>
-            ),
+            element: <CommunityPage />,
           },
         ],
       },
@@ -163,11 +127,7 @@ export const Router = createBrowserRouter([
         children: [
           {
             path: '',
-            element: (
-              <AsyncBoundary pendingFallback={<LoadingView />}>
-                <TechBlogPage />
-              </AsyncBoundary>
-            ),
+            element: <TechBlogPage />,
           },
         ],
       },
@@ -175,11 +135,7 @@ export const Router = createBrowserRouter([
   },
   {
     path: '/admin',
-    element: (
-      <AsyncBoundary pendingFallback={<LoadingView />}>
-        <AdminRootPage />
-      </AsyncBoundary>
-    ),
+    element: <AdminRootPage />,
     id: 'adminRoot',
     errorElement: <ErrorPage />,
     children: [
@@ -189,11 +145,7 @@ export const Router = createBrowserRouter([
         children: [
           {
             path: '',
-            element: (
-              <AsyncBoundary pendingFallback={<LoadingView />}>
-                <AdminSetStatePage />
-              </AsyncBoundary>
-            ),
+            element: <AdminSetStatePage />,
           },
         ],
       },
@@ -204,11 +156,9 @@ export const Router = createBrowserRouter([
           {
             path: '',
             element: (
-              <AsyncBoundary pendingFallback={<LoadingView />}>
-                <TeamUpdateProvider>
-                  <AdminTeamArrangePage />
-                </TeamUpdateProvider>
-              </AsyncBoundary>
+              <TeamUpdateProvider>
+                <AdminTeamArrangePage />
+              </TeamUpdateProvider>
             ),
           },
         ],
@@ -219,11 +169,7 @@ export const Router = createBrowserRouter([
         children: [
           {
             path: '',
-            element: (
-              <AsyncBoundary pendingFallback={<LoadingView />}>
-                <AdminDocConfirmPage />
-              </AsyncBoundary>
-            ),
+            element: <AdminDocConfirmPage />,
           },
         ],
       },
@@ -231,18 +177,45 @@ export const Router = createBrowserRouter([
   },
   {
     path: '/oauth/:provider/redirect',
-    element: (
-      <AsyncBoundary pendingFallback={<LoadingView />}>
-        <AuthCallBackPage />
-      </AsyncBoundary>
-    ),
+    element: <AuthCallBackPage />,
   },
   {
     path: 'signup',
-    element: (
-      <AsyncBoundary pendingFallback={<LoadingView />}>
-        <SignupPage />
-      </AsyncBoundary>
-    ),
+    element: <SignupPage />,
   },
-]);
+];
+
+const createRoutesWithAsyncBoundary = (
+  routes: AppRouteObject[]
+): AppRouteObject[] => {
+  return routes.map((route) => {
+    const { element, children, ...rest } = route;
+
+    if ('index' in route) {
+      return {
+        ...rest,
+        element: (
+          <AsyncBoundary pendingFallback={<LoadingView />}>
+            {element}
+          </AsyncBoundary>
+        ),
+      } as AppRouteObject;
+    } else {
+      return {
+        ...rest,
+        element: (
+          <AsyncBoundary pendingFallback={<LoadingView />}>
+            {element}
+          </AsyncBoundary>
+        ),
+        children: children
+          ? createRoutesWithAsyncBoundary(children)
+          : undefined,
+      } as AppRouteObject;
+    }
+  });
+};
+
+export const Router = createBrowserRouter(
+  createRoutesWithAsyncBoundary(routesConfig)
+);

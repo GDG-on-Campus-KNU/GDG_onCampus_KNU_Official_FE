@@ -1,7 +1,7 @@
 import CommingSoonPage from '../CommingSoonPage';
 import { TeamMetaData } from '@gdsc/router/components/MetaData';
 
-export const TeamPage = () => {
+const TeamPage = () => {
   return (
     <>
       <TeamMetaData />
@@ -9,3 +9,5 @@ export const TeamPage = () => {
     </>
   );
 };
+
+export default TeamPage;
