@@ -32,6 +32,7 @@ import {
 } from '@gdsc/pages/apply/components/ApplyFormDocs';
 
 import { ApplyFormSchema } from '@gdsc/utils/ApplyFormScehma.util';
+import { handleFormSubmit } from '@gdsc/utils/anlytics';
 
 import { useApplyFormMutation } from '@gdsc/apis/hooks/apply/ApplyFormQuery';
 
@@ -141,10 +142,12 @@ const ApplyForm = () => {
           })) || [],
       };
       if (submitType === 'submit') {
+        handleFormSubmit('Final Submit');
         submitApplication(finalFormData);
         // console.log(finalFormData);
       } else if (submitType === 'save') {
         // console.log(saveFormData);
+        handleFormSubmit('Save Submit');
         submitApplication(saveFormData);
       }
     }

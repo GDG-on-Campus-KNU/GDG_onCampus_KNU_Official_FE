@@ -8,6 +8,8 @@ import FieldTable from '@gdsc/pages/introduce/components/FieldTable';
 import IntroduceEvent from '@gdsc/pages/introduce/components/IntroduceEvent';
 import LineEvent from '@gdsc/pages/introduce/components/LineEvent';
 
+import useScrollTracker from '@gdsc/hooks/useScrollTracker';
+
 import { DisplayLayout } from '@gdsc/styles/LayoutStyle';
 
 import { IntroduceMetaData } from '@gdsc/router/components/MetaData';
@@ -16,6 +18,8 @@ import { ScrollTrigger } from 'gsap/ScrollTrigger';
 gsap.registerPlugin(ScrollTrigger);
 
 const IntroducePage = () => {
+  useScrollTracker();
+
   return (
     <>
       <IntroduceMetaData />
