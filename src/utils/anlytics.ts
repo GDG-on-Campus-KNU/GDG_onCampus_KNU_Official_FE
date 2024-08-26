@@ -26,3 +26,10 @@ export const handleScroll = () => {
     value: 50,
   });
 };
+
+export const trackPageView = (path: string) => {
+  if (import.meta.env.VITE_ENV === 'production') {
+    ReactGA.set({ page: path });
+    ReactGA.send('pageview');
+  }
+};

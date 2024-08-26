@@ -9,6 +9,7 @@ import {
 import { AsyncBoundary } from '@gdsc/components/common/AsyncBoundary';
 import { LoadingView } from '@gdsc/components/common/View/LoadingView';
 
+import RouteChangeTracker from './components/RouteChangeTracker';
 import { TeamUpdateProvider } from '@gdsc/provider/TeamUpdate';
 import StatusRoute from '@gdsc/router/components/StatusRoute';
 
@@ -196,6 +197,7 @@ const createRoutesWithAsyncBoundary = (
         ...rest,
         element: (
           <AsyncBoundary pendingFallback={<LoadingView />}>
+            <RouteChangeTracker />
             {element}
           </AsyncBoundary>
         ),
@@ -205,6 +207,7 @@ const createRoutesWithAsyncBoundary = (
         ...rest,
         element: (
           <AsyncBoundary pendingFallback={<LoadingView />}>
+            <RouteChangeTracker />
             {element}
           </AsyncBoundary>
         ),
