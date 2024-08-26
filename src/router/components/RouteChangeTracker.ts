@@ -2,22 +2,25 @@ import { useEffect, useState } from 'react';
 import ReactGA from 'react-ga4';
 import { useLocation } from 'react-router-dom';
 
+import { trackPageView } from '@gdsc/utils/anlytics';
+
 const RouteChangeTracker = () => {
   const location = useLocation();
-  const [initialized, setInitialized] = useState(false);
+  const [initialized, setInitialized] = useState<boolean>(false);
 
   useEffect(() => {
-    if (!window.location.href.includes('localhost')) {
-      ReactGA.initialize(import.meta.env.VITE_APP_GA_TRACKING_ID);
+    if (import.meta.env.VITE_ENV === 'production') {
+      ReactGA.initialize(import.meta.env.VITE_APP_GA_TRACKING_ID as string);
     }
     setInitialized(true);
   }, []);
+
   useEffect(() => {
     if (initialized) {
-      ReactGA.set({ page: location.pathname });
-      ReactGA.send('pageview');
+      trackPageView(location.pathname);
     }
   }, [initialized, location]);
+
   return null;
 };
 

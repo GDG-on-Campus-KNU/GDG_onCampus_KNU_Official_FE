@@ -31,6 +31,7 @@ import {
 } from '@gdsc/pages/apply/components/ApplyFormDocs';
 
 import { ApplyFormSchema } from '@gdsc/utils/ApplyFormScehma.util';
+import { handleFormSubmit } from '@gdsc/utils/anlytics';
 
 import { useApplySaveMutation } from '@gdsc/apis/hooks/apply/ApplySaveQuery';
 
@@ -45,8 +46,8 @@ import {
 import {
   ApplyFormInterface,
   ApplyFormQuestionInterface,
+  ApplyFormAPIInterface,
 } from '@gdsc/types/ApplyInterface';
-import { ApplyFormAPIInterface } from '@gdsc/types/ApplyInterface';
 import { ErrorMessage } from '@hookform/error-message';
 import { zodResolver } from '@hookform/resolvers/zod';
 
@@ -128,11 +129,13 @@ const ApplySaveForm = ({ SaveData }: ApplySaveFormProps) => {
           })) || [],
       };
       if (submitType === 'submit') {
+        handleFormSubmit('Sub-Final Submit');
         saveApplication(finalFormData);
         // console.log(finalFormData);
       } else if (submitType === 'save') {
         // submitApplication(saveFormData);
         // console.log(saveFormData);
+        handleFormSubmit('Sub-Save Submit');
         saveApplication(saveFormData);
       }
     }

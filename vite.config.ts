@@ -13,7 +13,6 @@ export default defineConfig({
         '/',
         '/signin',
         '/introduce',
-        '/signup',
         '/apply',
         '/apply/inquiry',
         '/apply/frontend',
@@ -26,6 +25,10 @@ export default defineConfig({
         '/apply/android/form',
         '/apply/designer',
         '/apply/designer/form',
+        '/mypage',
+        '/team',
+        '/community',
+        '/techblog',
       ],
       renderer: new PuppeteerRenderer({
         maxConcurrentRoutes: 1,

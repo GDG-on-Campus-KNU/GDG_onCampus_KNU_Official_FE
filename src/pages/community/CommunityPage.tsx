@@ -1,5 +1,13 @@
+import CommingSoonPage from '../CommingSoonPage';
+import { CommunityMetaData } from '@gdsc/router/components/MetaData';
+
 const CommunityPage = () => {
-  return <>커뮤니티 페이지</>;
+  return (
+    <>
+      <CommunityMetaData />
+      <CommingSoonPage />
+    </>
+  );
 };
 
 export default CommunityPage;
