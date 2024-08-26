@@ -45,8 +45,8 @@ import {
 import {
   ApplyFormInterface,
   ApplyFormQuestionInterface,
+  ApplyFormAPIInterface,
 } from '@gdsc/types/ApplyInterface';
-import { ApplyFormAPIInterface } from '@gdsc/types/ApplyInterface';
 import { ErrorMessage } from '@hookform/error-message';
 import { zodResolver } from '@hookform/resolvers/zod';
 
