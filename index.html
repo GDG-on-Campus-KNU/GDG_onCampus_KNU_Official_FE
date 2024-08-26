@@ -17,26 +17,6 @@
       name="naver-site-verification"
       content="591d63b39f14870ba53863f0f1ee27abdc89f5c2"
     />
-
-    <!-- Google tag (gtag.js) -->
-    <script type="module">
-      if (import.meta.env.VITE_ENV === 'production') {
-        (function () {
-          var gtagScript = document.createElement('script');
-          gtagScript.async = true;
-          gtagScript.src =
-            'https://www.googletagmanager.com/gtag/js?id=G-MLL2Z47LWL';
-          document.head.appendChild(gtagScript);
-
-          window.dataLayer = window.dataLayer || [];
-          function gtag() {
-            dataLayer.push(arguments);
-          }
-          gtag('js', new Date());
-          gtag('config', 'G-MLL2Z47LWL');
-        })();
-      }
-    </script>
   </head>
   <body>
     <div id="root"></div>
