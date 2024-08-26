@@ -19,6 +19,9 @@ const CardWrapper = styled.div`
   display: flex;
   justify-content: flex-start;
   gap: 5px;
+
+  overflow: auto;
+  white-space: nowrap;
 `;
 
 const TechStackCard = styled.div`
