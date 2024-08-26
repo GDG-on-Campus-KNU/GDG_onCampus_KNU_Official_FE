@@ -19,7 +19,7 @@ jobs:
         uses: actions/checkout@master
 
       - name: Cache node modules
-        uses: actions/cache@v1
+        uses: actions/cache@v3
         with:
           path: node_modules
           key: ${{ runner.OS }}-build-${{ hashFiles('**/package-lock.json') }}
@@ -40,6 +40,9 @@ jobs:
 
       - name: Install Dependencies
         run: pnpm install --no-frozen-lockfile --force
+
+      - name: Lint Code
+        run: pnpm lint
 
       - name: Build
         run: CI='' pnpm run build

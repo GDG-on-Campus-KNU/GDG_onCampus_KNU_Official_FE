@@ -3,7 +3,6 @@ import Text from '@gdsc/components/common/typography/Text';
 import { AuthBox } from '@gdsc/styles/AuthModalStyle';
 import { displayCenter } from '@gdsc/styles/LayoutStyle';
 
-// eslint-disable-next-line import/no-unresolved
 import logo from '/GDSC.svg';
 import styled from '@emotion/styled';
 

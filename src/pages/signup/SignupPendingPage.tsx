@@ -6,7 +6,6 @@ import homeIcon from '@gdsc/assets/HomeIcon.svg';
 import { AuthWrapper, AuthBox } from '@gdsc/styles/AuthModalStyle';
 import { displayCenter } from '@gdsc/styles/LayoutStyle';
 
-// eslint-disable-next-line import/no-unresolved
 import logo from '/GDSC.svg';
 import styled from '@emotion/styled';
 
