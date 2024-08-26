@@ -10,6 +10,7 @@ import { AsyncBoundary } from '@gdsc/components/common/AsyncBoundary';
 import { LoadingView } from '@gdsc/components/common/View/LoadingView';
 
 import { TeamUpdateProvider } from '@gdsc/provider/TeamUpdate';
+import RouteChangeTracker from '@gdsc/router/components/RouteChangeTracker';
 import StatusRoute from '@gdsc/router/components/StatusRoute';
 
 const TechBlogPage = lazy(() => import('@gdsc/pages/tech_blog/TechBlogPage'));
@@ -196,6 +197,7 @@ const createRoutesWithAsyncBoundary = (
         ...rest,
         element: (
           <AsyncBoundary pendingFallback={<LoadingView />}>
+            <RouteChangeTracker />
             {element}
           </AsyncBoundary>
         ),
@@ -205,6 +207,7 @@ const createRoutesWithAsyncBoundary = (
         ...rest,
         element: (
           <AsyncBoundary pendingFallback={<LoadingView />}>
+            <RouteChangeTracker />
             {element}
           </AsyncBoundary>
         ),
