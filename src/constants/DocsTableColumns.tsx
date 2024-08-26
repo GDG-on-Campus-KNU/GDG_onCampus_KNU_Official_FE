@@ -1,3 +1,4 @@
+import CheckIcon from '@gdsc/assets/admin/check.svg';
 import star from '@gdsc/assets/admin/miniStar.svg';
 
 import { MemberData } from '@gdsc/types/AdminInterface';
@@ -14,6 +15,23 @@ const formatDate = (dateString: string) => {
   return `${year}-${month}-${day}`;
 };
 
+const translateTrack = (track: string): string => {
+  switch (track) {
+    case 'FRONT_END':
+      return '프론트엔드';
+    case 'BACK_END':
+      return '백엔드';
+    case 'ANDROID':
+      return '안드로이드';
+    case 'AI':
+      return 'AI';
+    case 'DESIGNER':
+      return '디자이너';
+    default:
+      return track;
+  }
+};
+
 export const columns = () => [
   columnHelper.accessor('marked', {
     header: '',
@@ -28,6 +46,13 @@ export const columns = () => [
   }),
   columnHelper.accessor('studentNumber', { header: '학번' }),
   columnHelper.accessor('major', { header: '학과' }),
-  columnHelper.accessor('track', { header: '지원영역' }),
-  columnHelper.accessor('open', { header: '열람' }),
+  columnHelper.accessor('track', {
+    header: '지원영역',
+    cell: ({ getValue }) => translateTrack(getValue() as string),
+  }),
+  columnHelper.accessor('open', {
+    header: '열람',
+    cell: ({ getValue }) =>
+      getValue() ? <img src={CheckIcon} alt='Checked' /> : null,
+  }),
 ];
