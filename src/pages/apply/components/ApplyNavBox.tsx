@@ -146,7 +146,7 @@ const ApplyNavBox = () => {
               mdHeight='40px'
               mdSize='md'
               mSize='sm'
-              mWidth='100px'
+              mWidth='112px'
               mHeight='30px'
               padding='8px 63px'
               mPadding='5.5px 24px'
