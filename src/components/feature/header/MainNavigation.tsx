@@ -22,6 +22,10 @@ import { displayCenter } from '@gdsc/styles/LayoutStyle';
 import { renderDropdownItems } from './StatusDropDownItems';
 import styled from '@emotion/styled';
 
+export const LinkText = styled(Link)`
+  margin-top: 3px;
+`;
+
 export const Header = styled.div`
   z-index: 1000;
   position: fixed;
@@ -46,12 +50,15 @@ export const Menu = styled.ul`
   list-style: none;
   display: flex;
   flex-direction: row;
-
+  align-items: center;
+  padding: 9px 0px;
+  height: calc(100% - 18px);
   background-color: var(--color-navy);
 `;
 export const MenuList = styled.li`
   display: flex;
   flex-direction: row;
+  -webkit-box-align: center;
   align-items: center;
   margin-right: 20px;
   position: relative;
@@ -137,24 +144,32 @@ const MainNavigation = () => {
             </MenuList>
           )}
           <MenuList>
-            <Link to='/introduce'>
-              <Text color='white'>동아리 소개</Text>
-            </Link>
+            <LinkText to='/introduce'>
+              <Text size='md' color='white'>
+                동아리 소개
+              </Text>
+            </LinkText>
           </MenuList>
           <MenuList>
-            <Link to='/apply'>
-              <Text color='white'>지원하기</Text>
-            </Link>
+            <LinkText to='/apply'>
+              <Text size='md' color='white'>
+                지원하기
+              </Text>
+            </LinkText>
           </MenuList>
           <MenuList>
-            <Link to='/techblog'>
-              <Text color='white'>테크블로그</Text>
-            </Link>
+            <LinkText to='/techblog'>
+              <Text size='md' color='white'>
+                테크블로그
+              </Text>
+            </LinkText>
           </MenuList>
           <MenuList>
-            <Link to='/community'>
-              <Text color='white'>커뮤니티</Text>
-            </Link>
+            <LinkText to='/community'>
+              <Text size='md' color='white'>
+                커뮤니티
+              </Text>
+            </LinkText>
           </MenuList>
         </Menu>
         {accessToken ? (
@@ -164,7 +179,7 @@ const MainNavigation = () => {
                 src={MyData?.profileUrl ? MyData.profileUrl : NoneProfile}
                 alt='profile'
               />
-              <div>
+              <div style={{ marginTop: '3px' }}>
                 <Text color='white'>{MyData?.name}</Text>
               </div>
               {dropdownOpen ? (
@@ -198,7 +213,9 @@ const MainNavigation = () => {
           <Menu>
             <MenuList>
               <Link to='/signin'>
-                <Text color='white'>로그인</Text>
+                <Text size='md' color='white'>
+                  로그인
+                </Text>
               </Link>
             </MenuList>
           </Menu>
