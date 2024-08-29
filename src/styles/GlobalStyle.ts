@@ -125,7 +125,7 @@ export const GlobalStyle = css`
     -ms-overflow-style: none;
     scrollbar-width: none;
     flex-direction: column;
-    font-family: 'NotoSansKR-VariableFont_wght', monospace;
+    font-family: 'NotoSansKR-VariableFont_wght';
     font-optical-sizing: auto;
     background-color: var(--color-revolver);
     color: var(--color-white);
