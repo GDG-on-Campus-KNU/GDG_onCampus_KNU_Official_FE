@@ -1,4 +1,4 @@
-import CheckIcon from '@gdsc/assets/admin/check.svg';
+import CheckIcon from '@gdsc/assets/admin/Check.svg';
 import star from '@gdsc/assets/admin/miniStar.svg';
 
 import { MemberData } from '@gdsc/types/AdminInterface';
