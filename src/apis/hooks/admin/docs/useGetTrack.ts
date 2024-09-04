@@ -19,12 +19,7 @@ const statisticQueryKey = [getTrackPath()];
 const getTrack = async (): Promise<TrackInterface> => {
   const response = await fetchInstance.get<TrackInterface>(getTrackPath());
 
-  const total = Object.values(response.data).reduce((accumulator, current) => {
-    return accumulator + current;
-  }, 0);
-
-  const trackData: TrackInterface = { ...response.data, TOTAL: total };
-  return trackData;
+  return response.data;
 };
 
 export const useGetTrack = () => {
