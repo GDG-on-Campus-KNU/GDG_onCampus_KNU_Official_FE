@@ -191,7 +191,7 @@ const ApplyForm = () => {
               id='links'
               width='100%'
               margin='0px 15px 0px 0px'
-              title='깃허브 링크 (디자이너 분들은 포트폴리오 링크 올려주세요)'
+              title='깃허브 링크 (디자이너 분들은 포트폴리오 링크 올려주세요 없으면 안 올려주셔도 됩니다 :))'
               placeholder='깃허브(포트폴리오) 링크를 입력해주세요'
               type='text'
               register={register('links')}
