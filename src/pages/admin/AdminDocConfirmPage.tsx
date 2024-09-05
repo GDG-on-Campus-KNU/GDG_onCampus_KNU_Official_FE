@@ -30,8 +30,6 @@ const AdminDocConfirmPage = () => {
   const { data: applyData } = useGetStatistic();
   const { data: trackData } = useGetTrack();
 
-  console.log(trackData);
-
   const handleTrackSelect = (index: number) => {
     setTrackIdx(index);
   };
