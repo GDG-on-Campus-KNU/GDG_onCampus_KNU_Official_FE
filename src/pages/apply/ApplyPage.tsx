@@ -24,7 +24,7 @@ const ApplyPage = () => {
 
   useEffect(() => {
     const today = dayjs();
-    const deadline = dayjs('2024-09-06');
+    const deadline = dayjs('2024-09-06 04:00');
     setShowForm(today.isBefore(deadline));
   }, []);
 
