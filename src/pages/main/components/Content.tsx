@@ -113,7 +113,7 @@ const Content = () => {
           안녕하세요.
         </MainSubText>
         <MainText color='white' size='xxl' weight='700'>
-          우리는 GDSC KNU 입니다!
+          우리는 GDG on Campus KNU 입니다!
         </MainText>
       </TextLayout>
       <ImgLayout ref={imageRef}>

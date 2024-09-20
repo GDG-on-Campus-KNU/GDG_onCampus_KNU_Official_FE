@@ -1,8 +1,8 @@
 export const cardData = [
   {
-    mainText: 'GDSC KNU',
-    subText: 'GDSC KNU Team Blog',
-    contentText: 'GDSC KNU 팀의 활동과 정보를 담은 블로그입니다.',
+    mainText: 'GDG on Campus KNU',
+    subText: 'GDG on Campus KNU Team Blog',
+    contentText: 'GDG on Campus KNU 팀의 활동과 정보를 담은 블로그입니다.',
   },
   {
     mainText: '프론트엔드 팀 블로그',

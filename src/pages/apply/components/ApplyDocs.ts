@@ -24,8 +24,8 @@ export const FrontendData = {
   ],
   event: [
     '격주마다 온라인 세미나 참여할 수 있어요.',
-    'GDSC KOR나 GDSC KNU가 기획 및 운영하는 이벤트에 참여할 수 있어요.',
-    'GDSC KNU에서 진행하는 프로젝트에 참여할 수 있어요.',
+    'GDSC KOR나 GDG on Campus KNU가 기획 및 운영하는 이벤트에 참여할 수 있어요.',
+    'GDG on Campus KNU에서 진행하는 프로젝트에 참여할 수 있어요.',
   ],
 };
 
@@ -52,8 +52,8 @@ export const BackendData = {
   ],
   event: [
     '격주마다 온라인 세미나 참여할 수 있어요.',
-    'GDSC KOR나 GDSC KNU가 기획 및 운영하는 이벤트에 참여할 수 있어요.',
-    'GDSC KNU에서 진행하는 프로젝트에 참여할 수 있어요.',
+    'GDSC KOR나 GDG on Campus KNU가 기획 및 운영하는 이벤트에 참여할 수 있어요.',
+    'GDG on Campus KNU에서 진행하는 프로젝트에 참여할 수 있어요.',
   ],
 };
 
@@ -79,8 +79,8 @@ export const AIData = {
   ],
   event: [
     '격주마다 온라인 세미나 참여할 수 있어요.',
-    'GDSC KOR나 GDSC KNU가 기획 및 운영하는 이벤트에 참여할 수 있어요.',
-    'GDSC KNU에서 진행하는 프로젝트에 참여할 수 있어요.',
+    'GDSC KOR나 GDG on Campus KNU가 기획 및 운영하는 이벤트에 참여할 수 있어요.',
+    'GDG on Campus KNU에서 진행하는 프로젝트에 참여할 수 있어요.',
   ],
 };
 
@@ -108,8 +108,8 @@ export const AndroidData = {
   ],
   event: [
     '격주마다 온라인 세미나 참여할 수 있어요.',
-    'GDSC KOR나 GDSC KNU가 기획 및 운영하는 이벤트에 참여할 수 있어요.',
-    'GDSC KNU에서 진행하는 프로젝트에 참여할 수 있어요.',
+    'GDSC KOR나 GDG on Campus KNU가 기획 및 운영하는 이벤트에 참여할 수 있어요.',
+    'GDG on Campus KNU에서 진행하는 프로젝트에 참여할 수 있어요.',
   ],
 };
 
@@ -135,7 +135,7 @@ export const DesignerData = {
   ],
   event: [
     '격주마다 온라인 세미나 참여할 수 있어요.',
-    'GDSC KOR나 GDSC KNU가 기획 및 운영하는 이벤트에 참여할 수 있어요.',
-    'GDSC KNU에서 진행하는 프로젝트에 참여할 수 있어요.',
+    'GDSC KOR나 GDG on Campus KNU가 기획 및 운영하는 이벤트에 참여할 수 있어요.',
+    'GDG on Campus KNU에서 진행하는 프로젝트에 참여할 수 있어요.',
   ],
 };
