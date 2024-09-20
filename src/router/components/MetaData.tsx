@@ -105,17 +105,6 @@ export const TeamBlogMetaData = () => {
   );
 };
 
-export const TeamMetaData = () => {
-  return (
-    <SEO
-      title='GDG on Campus KNU'
-      description='빠른 시일 내에 더 좋은 서비스를 제공할 수 있도록 노력하겠습니다.'
-      url={`https://gdsc-knu.com/team`}
-      image='https://gdsc-knu.com/CommingSoon.png'
-    />
-  );
-};
-
 export const CommunityMetaData = () => {
   return (
     <SEO
