@@ -56,7 +56,9 @@ const FieldEvent = () => {
         <GDSCText>Recruitment Field Composition</GDSCText>
       </RecruitFieldBox>
       <RecruitIntroBox>
-        <IntroText>GDSC KNU는 5가지 직렬로 구성되어 있습니다.</IntroText>
+        <IntroText>
+          GDG on Campus KNU는 5가지 직렬로 구성되어 있습니다.
+        </IntroText>
       </RecruitIntroBox>
     </FieldLayout>
   );

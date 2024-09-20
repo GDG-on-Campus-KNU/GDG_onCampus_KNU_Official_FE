@@ -152,7 +152,7 @@ const ApplySaveForm = ({ SaveData }: ApplySaveFormProps) => {
           <TitleLayout>
             <SubLayout>
               <SubTitle color=' var(--color-white)'>To Apply</SubTitle>
-              <Explain>GDSC KNU</Explain>
+              <Explain>GDG on Campus KNU</Explain>
             </SubLayout>
             <TitleWrapper>
               <MainTitle color=' var(--color-white)'>{data?.korean}</MainTitle>

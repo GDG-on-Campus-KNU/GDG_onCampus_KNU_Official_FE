@@ -56,7 +56,7 @@ const AuthModal: React.FC<ISignModal> = ({ title, text, children }) => {
 };
 
 //title: GDSC 로그인
-//text: Google 계정을 이용하여 GDSC knu에 로그인하세요
+//text: Google 계정을 이용하여 GDG on Campus KNU에 로그인하세요
 //children: 로그인버튼 컴포넌트
 
 export default AuthModal;
