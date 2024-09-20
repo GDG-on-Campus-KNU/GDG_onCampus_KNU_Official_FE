@@ -60,7 +60,7 @@ const PageTitle = ({
         <Text size='lg' weight='bold'>
           {SubTitle}
         </Text>
-        <Text>GDSC KNU</Text>
+        <Text>GDG on Campus KNU</Text>
       </SubTitleLayout>
     </MainTitlelayout>
   );

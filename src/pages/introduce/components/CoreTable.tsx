@@ -3,13 +3,15 @@ import { useEffect } from 'react';
 import gsap from 'gsap';
 
 import Bosung from '@gdsc/assets/gdscknu4/Core-Bosung.jpg';
+import Chaewon from '@gdsc/assets/gdscknu4/Core-Chaewon.png';
 import Daegun from '@gdsc/assets/gdscknu4/Core-Daegun.jpg';
 import Dongpil from '@gdsc/assets/gdscknu4/Core-Dongpil.jpg';
 import Kangmin from '@gdsc/assets/gdscknu4/Core-Gangmin.jpeg';
 import Hyunmin from '@gdsc/assets/gdscknu4/Core-Hyeonmin.jpeg';
 import Jaeyong from '@gdsc/assets/gdscknu4/Core-Jaeyong.jpg';
+import Jeongmin from '@gdsc/assets/gdscknu4/Core-Jeongmin.png';
 import Suhyeon from '@gdsc/assets/gdscknu4/Core-Suhyeon.jpg';
-import Yeongin from '@gdsc/assets/gdscknu4/Core-Yeongin.jpg';
+import Yeongin from '@gdsc/assets/gdscknu4/Core-Yeongin.jpeg';
 import Kyuhoi from '@gdsc/assets/gdscknu4/Lead-Kyuhoi.png';
 
 import { IntroText, IntroTextStyle } from '@gdsc/styles/IntroduceStyle';
@@ -114,6 +116,12 @@ const CoreTable = () => {
           <IntroText>김대건</IntroText>
         </TableTextLayout>
       </CoreBox>
+      <CoreBox backgroundImage={Chaewon}>
+        <TableStatusText>CORE-FE</TableStatusText>
+        <TableTextLayout>
+          <IntroText>신채원</IntroText>
+        </TableTextLayout>
+      </CoreBox>
       <CoreBox backgroundImage={Suhyeon}>
         <TableStatusText>CORE-BE</TableStatusText>
         <TableTextLayout>
@@ -130,6 +138,12 @@ const CoreTable = () => {
         <TableStatusText>CORE-BE</TableStatusText>
         <TableTextLayout>
           <IntroText>윤재용</IntroText>
+        </TableTextLayout>
+      </CoreBox>
+      <CoreBox backgroundImage={Jeongmin}>
+        <TableStatusText>CORE-BE</TableStatusText>
+        <TableTextLayout>
+          <IntroText>채정민</IntroText>
         </TableTextLayout>
       </CoreBox>
       <CoreBox backgroundImage={Bosung}>

@@ -29,7 +29,7 @@ const MobileFooterMobile = () => {
         <Display>
           <TextBorder>
             <Text color='white' size='md'>
-              GDSC KNU
+              GDG on Campus KNU
             </Text>
           </TextBorder>
           <Table>

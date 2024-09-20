@@ -36,7 +36,7 @@ const ApplyNav = () => {
           <MainTitle color=' var(--color-white)'>지원하기</MainTitle>
           <SubLayout>
             <SubTitle color=' var(--color-white)'>To Apply</SubTitle>
-            <Explain>GDSC KNU</Explain>
+            <Explain>GDG on Campus KNU</Explain>
           </SubLayout>
           <Explain>각 분야별로 선택해서 지원을 해주세요.</Explain>
           <InquiryLayout>

@@ -50,7 +50,7 @@ const AdminTitle = () => {
                 <Text size='lg' weight='bold'>
                   Admin Page
                 </Text>
-                <Text size='sm'>GDSC KNU</Text>
+                <Text size='sm'>GDG on Campus KNU</Text>
               </SubtitleTextContainer>
               <Text size='xxl' weight='bold'>
                 {getTitle(pathName.pathname)}

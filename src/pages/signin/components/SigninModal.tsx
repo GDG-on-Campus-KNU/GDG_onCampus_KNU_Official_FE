@@ -20,9 +20,9 @@ const SigninModal = () => {
   return (
     <>
       <AuthModal
-        title='GDSC KNU Log In'
+        title='GDG on Campus KNU Log In'
         {...(isMobile && {
-          text: 'Google 계정을 이용하여\nGDSC KNU에 로그인하세요!',
+          text: 'Google 계정을 이용하여\nGDG on Campus KNU에 로그인하세요!',
         })}
       >
         <SigninBtn onClick={google_login} width='100%'>

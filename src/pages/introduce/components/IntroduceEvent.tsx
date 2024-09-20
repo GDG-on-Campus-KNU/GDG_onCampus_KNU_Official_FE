@@ -66,7 +66,9 @@ const IntroduceEvent = () => {
         <GDSCText>Introduction of GDSC Core Members</GDSCText>
       </IntroductionBox>
       <IntroTableBox>
-        <IntroText>GDSC KNU를 이끌어가는 운영진 멤버들을 소개합니다.</IntroText>
+        <IntroText>
+          GDG on Campus KNU를 이끌어가는 운영진 멤버들을 소개합니다.
+        </IntroText>
       </IntroTableBox>
     </IntroBox>
   );

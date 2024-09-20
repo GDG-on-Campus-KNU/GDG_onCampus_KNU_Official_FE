@@ -34,10 +34,13 @@ export const SubTitle = styled(Text)`
 export const Explain = styled.span`
   font-size: var(--font-size-sm);
   font-weight: 300;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 `;
 
 export const SubLayout = styled.div`
-  margin-bottom: 10px;
+  display: flex;
 `;
 
 export const InquiryText = styled.span`

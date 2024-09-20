@@ -1,5 +1,3 @@
-import { Link } from 'react-router-dom';
-
 import { displayCenter } from '@gdsc/styles/LayoutStyle';
 
 import styled from '@emotion/styled';
@@ -29,11 +27,7 @@ const TokenContainer = styled.div`
 `;
 
 const TeamToken = ({ teamData }: { teamData: teamData }) => {
-  return (
-    <Link to={teamData.teamPageUrl}>
-      <TokenContainer>{teamData.teamName}</TokenContainer>
-    </Link>
-  );
+  return <TokenContainer>{teamData.teamName}</TokenContainer>;
 };
 
 export default TeamToken;
