@@ -50,12 +50,14 @@ const colorGradient = 'linear-gradient(to top, #1f1632 0%, #392f4f 100%)';
 
 export const GlobalStyle = css`
   @font-face {
-    font-family: 'Noto Sans KR';
+    font-family: 'Noto Sans KR-VariableFont_wght';
     src:
-      url('https://gdsc-knu.com/fonts/NotoSansKR-VariableFont_wght.otf')
-        format('opentype-variations'),
+      url('https://gdsc-knu.com/fonts/NotoSansKR-VariableFont_wght.woff2')
+        format('woff2-variations'),
       url('https://gdsc-knu.com/fonts/NotoSansKR-VariableFont_wght.woff')
         format('woff-variations'),
+      url('https://gdsc-knu.com/fonts/NotoSansKR-VariableFont_wght.otf')
+        format('opentype-variations'),
       url('https://gdsc-knu.com/fonts/NotoSansKR-VariableFont_wght.ttf')
         format('truetype-variations');
     font-weight: 100 900;
@@ -125,7 +127,8 @@ export const GlobalStyle = css`
     -ms-overflow-style: none;
     scrollbar-width: none;
     flex-direction: column;
-    font-family: 'NotoSansKR-VariableFont_wght';
+    font-family: 'NotoSansKR-VariableFont_wght', 'Apple SD Gothic Neo',
+      Sans-serif;
     font-optical-sizing: auto;
     background-color: var(--color-revolver);
     color: var(--color-white);
