@@ -54,11 +54,11 @@ const TabletRotateCarousel = ({
                 weight='700'
                 color='black'
                 whiteSpace='normal'
-                size='sm'
+                size='xs'
               >
                 {cardData[index].mainText}
               </CardMainText>
-              <Text weight='500' color='black' whiteSpace='normal' size='xs'>
+              <Text weight='500' color='black' whiteSpace='normal' size='xxs'>
                 {cardData[index].subText}
               </Text>
               <hr
@@ -71,7 +71,7 @@ const TabletRotateCarousel = ({
               />
               <MobileContentText
                 color='black'
-                size='xs'
+                size='xxs'
                 weight='500'
                 whiteSpace='normal'
               >
@@ -80,7 +80,7 @@ const TabletRotateCarousel = ({
               <CompleteBtnWrapper>
                 <Link to='/techblog'>
                   <CompleteBtn
-                    size='xs'
+                    size='xxs'
                     type='button'
                     color='blue'
                     backgroundColor='blue'

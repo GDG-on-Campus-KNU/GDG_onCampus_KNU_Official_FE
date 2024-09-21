@@ -8,6 +8,7 @@ const fontSizeLg = '1.25rem'; // 20px
 const fontSizeMd = '1rem'; // 16px
 const fontSizeSm = '0.875rem'; // 14px
 const fontSizeXs = '0.75rem'; // 12px
+const fontSizeXxs = '0.625rem'; // 10px
 
 const sizeXxl = '2.5rem'; //40px
 const sizeMxl = '2.25rem'; // 36px
@@ -16,6 +17,7 @@ const sizeLg = '1.25rem'; // 20px
 const sizeMd = '1rem'; // 16px
 const sizeSm = '0.875rem'; // 14px
 const sizeXs = '0.75rem'; // 12px
+const sizeXxs = '0.625rem'; // 10px
 
 //color 정의
 const colorAbony = '#1A122B';
@@ -73,6 +75,7 @@ export const GlobalStyle = css`
     --font-size-md: ${fontSizeMd};
     --font-size-sm: ${fontSizeSm};
     --font-size-xs: ${fontSizeXs};
+    --font-size-xxs: ${fontSizeXxs};
 
     --size-xxl: ${sizeXxl};
     --size-mxl: ${sizeMxl};
@@ -81,6 +84,7 @@ export const GlobalStyle = css`
     --size-md: ${sizeMd};
     --size-sm: ${sizeSm};
     --size-xs: ${sizeXs};
+    --size-xxs: ${sizeXxs};
 
     --color-transparent: ${colorTransParent};
     --color-white: ${colorWhite};

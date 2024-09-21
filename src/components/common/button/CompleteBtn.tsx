@@ -26,6 +26,8 @@ const Button = styled.button<IButton>`
         return 'var(--font-size-sm)';
       case 'xs':
         return 'var(--font-size-xs)';
+      case 'xxs':
+        return 'var(--font-size-xxs)';
       default:
         return 'var(--font-size-md)';
     }

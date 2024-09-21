@@ -60,11 +60,11 @@ const PCRotateCarousel = ({
                 weight='700'
                 color='black'
                 whiteSpace='normal'
-                size='lg'
+                size='md'
               >
                 {cardData[index].mainText}
               </CardMainText>
-              <Text weight='500' color='black' whiteSpace='normal' size='sm'>
+              <Text weight='500' color='black' whiteSpace='normal' size='xs'>
                 {cardData[index].subText}
               </Text>
               <hr
@@ -86,7 +86,7 @@ const PCRotateCarousel = ({
               <CompleteBtnWrapper>
                 <Link to='/techblog'>
                   <CompleteBtn
-                    size='md'
+                    size='xs'
                     type='button'
                     color='blue'
                     backgroundColor='blue'

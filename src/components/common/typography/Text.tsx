@@ -1,7 +1,7 @@
 import styled from '@emotion/styled';
 
 interface IText {
-  size?: 'xs' | 'sm' | 'md' | 'lg' | 'mxl' | 'xl' | 'xxl';
+  size?: 'xxs' | 'xs' | 'sm' | 'md' | 'lg' | 'mxl' | 'xl' | 'xxl';
   color?: 'white' | 'black' | 'placeholder' | string;
   weight?: 'light' | 'normal' | 'bold' | string;
   whiteSpace?: 'nowrap' | 'normal' | 'pre-line';
@@ -34,6 +34,8 @@ const Text = styled.span<IText>`
 
   font-size: ${(props) => {
     switch (props.size) {
+      case 'xxs':
+        return 'var(--font-size-xxs)';
       case 'xs':
         return 'var(--font-size-xs)';
       case 'sm':
