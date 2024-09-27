@@ -6,7 +6,7 @@ export const SignupAPI = (
   userData: signUpUserInterface
 ): Promise<signUpUserInterface> => {
   return fetchInstance
-    .post('/api/user', userData)
+    .put('/api/user', userData)
     .then(function (response) {
       // console.log(response);
       return response.data;
