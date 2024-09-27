@@ -18,6 +18,6 @@ export const useGetTeamMate = (
   return useQuery<TeamData[], Error>({
     queryKey: [getTeamMatePath(teamId)],
     queryFn: () => getTeamMate(teamId),
-    enabled: !!accessToken,
+    enabled: !!accessToken && teamId !== 0,
   });
 };
