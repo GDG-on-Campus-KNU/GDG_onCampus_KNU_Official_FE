@@ -1,10 +1,8 @@
-import ApplyEx from '@gdsc/pages/apply/components/ApplyEx';
-import Star from '@gdsc/pages/main/components/Star';
-
-import { DisplayLayout } from '@gdsc/styles/LayoutStyle';
-
 import styled from '@emotion/styled';
-import { ApplyExMetaData } from '@gdsc/router/components/MetaData';
+import ApplyEx from '@gdg/pages/apply/components/ApplyEx';
+import Star from '@gdg/pages/main/components/Star';
+import { ApplyExMetaData } from '@gdg/router/components/MetaData';
+import { DisplayLayout } from '@gdg/styles/LayoutStyle';
 
 const ApplyLayout = styled(DisplayLayout)`
   height: 100%;

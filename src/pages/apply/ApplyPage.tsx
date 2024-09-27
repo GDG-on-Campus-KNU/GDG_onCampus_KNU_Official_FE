@@ -2,14 +2,12 @@ import { useEffect, useState } from 'react';
 
 import dayjs from 'dayjs';
 
-import ApplyNav from '@gdsc/pages/apply/components/ApplyNav';
-import ApplyNavEnd from '@gdsc/pages/apply/components/ApplyNavEnd';
-import Star from '@gdsc/pages/main/components/Star';
-
-import { DisplayLayout } from '@gdsc/styles/LayoutStyle';
-
 import styled from '@emotion/styled';
-import { ApplyMetaData } from '@gdsc/router/components/MetaData';
+import ApplyNav from '@gdg/pages/apply/components/ApplyNav';
+import ApplyNavEnd from '@gdg/pages/apply/components/ApplyNavEnd';
+import Star from '@gdg/pages/main/components/Star';
+import { ApplyMetaData } from '@gdg/router/components/MetaData';
+import { DisplayLayout } from '@gdg/styles/LayoutStyle';
 
 const ApplyLayout = styled(DisplayLayout)`
   height: 100%;

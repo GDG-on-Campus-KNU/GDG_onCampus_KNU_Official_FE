@@ -1,16 +1,5 @@
 import { useState, useEffect } from 'react';
 
-import Pagination from '@gdsc/components/common/pagination/pagination';
-
-import { columns } from '@gdsc/constants/MemberTableColumns';
-
-import {
-  userListInterface,
-  useGetUserList,
-} from '@gdsc/apis/hooks/admin/status/useGetUserList';
-
-import { useSelectedUserStore } from '@gdsc/store/useSelectedUserStore';
-
 import {
   StyledTable,
   TableHeader,
@@ -19,6 +8,13 @@ import {
   TableHeaderCell,
   TableRow,
 } from './MemberTable.style';
+import {
+  userListInterface,
+  useGetUserList,
+} from '@gdg/apis/hooks/admin/status/useGetUserList';
+import Pagination from '@gdg/components/common/pagination/pagination';
+import { columns } from '@gdg/constants/MemberTableColumns';
+import { useSelectedUserStore } from '@gdg/store/useSelectedUserStore';
 import {
   flexRender,
   getCoreRowModel,

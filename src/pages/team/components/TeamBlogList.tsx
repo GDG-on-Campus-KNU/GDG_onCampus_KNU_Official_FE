@@ -1,7 +1,6 @@
-import { Grid } from '@gdsc/components/common/layouts/grid';
-import ThumbNailCard from '@gdsc/components/feature/blog/ThumbNailCard';
-
-import MaksGroup from '@gdsc/assets/thumbnail/Mask group.png';
+import MaksGroup from '@gdg/assets/thumbnail/Mask group.png';
+import { Grid } from '@gdg/components/common/layouts/grid';
+import ThumbNailCard from '@gdg/components/feature/blog/ThumbNailCard';
 
 const TeamBlogList = () => {
   return (

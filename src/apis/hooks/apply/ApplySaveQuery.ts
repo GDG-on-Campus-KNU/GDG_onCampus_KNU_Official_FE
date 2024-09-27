@@ -1,9 +1,8 @@
 import { useNavigate } from 'react-router-dom';
 
-import { ApplySaveAPI } from '@gdsc/apis/hooks/apply/ApplySaveAPI';
-import { queryClient } from '@gdsc/apis/instance/Http';
-
-import { ApplyFormInterface } from '@gdsc/types/ApplyInterface';
+import { ApplySaveAPI } from '@gdg/apis/hooks/apply/ApplySaveAPI';
+import { queryClient } from '@gdg/apis/instance/Http';
+import { ApplyFormInterface } from '@gdg/types/ApplyInterface';
 import { useMutation, UseMutationOptions } from '@tanstack/react-query';
 
 export const useApplySaveMutation = (

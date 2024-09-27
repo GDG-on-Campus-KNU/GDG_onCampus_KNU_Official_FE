@@ -1,18 +1,15 @@
 import gsap from 'gsap';
 
-import AboutEvent from '@gdsc/pages/introduce/components/AboutEvent';
-import CoreTable from '@gdsc/pages/introduce/components/CoreTable';
-import Diagonal from '@gdsc/pages/introduce/components/Diagonal';
-import FieldEvent from '@gdsc/pages/introduce/components/FieldEvent';
-import FieldTable from '@gdsc/pages/introduce/components/FieldTable';
-import IntroduceEvent from '@gdsc/pages/introduce/components/IntroduceEvent';
-import LineEvent from '@gdsc/pages/introduce/components/LineEvent';
-
-import useScrollTracker from '@gdsc/hooks/useScrollTracker';
-
-import { DisplayLayout } from '@gdsc/styles/LayoutStyle';
-
-import { IntroduceMetaData } from '@gdsc/router/components/MetaData';
+import useScrollTracker from '@gdg/hooks/useScrollTracker';
+import AboutEvent from '@gdg/pages/introduce/components/AboutEvent';
+import CoreTable from '@gdg/pages/introduce/components/CoreTable';
+import Diagonal from '@gdg/pages/introduce/components/Diagonal';
+import FieldEvent from '@gdg/pages/introduce/components/FieldEvent';
+import FieldTable from '@gdg/pages/introduce/components/FieldTable';
+import IntroduceEvent from '@gdg/pages/introduce/components/IntroduceEvent';
+import LineEvent from '@gdg/pages/introduce/components/LineEvent';
+import { IntroduceMetaData } from '@gdg/router/components/MetaData';
+import { DisplayLayout } from '@gdg/styles/LayoutStyle';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 
 gsap.registerPlugin(ScrollTrigger);

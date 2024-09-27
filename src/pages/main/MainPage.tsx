@@ -1,22 +1,20 @@
 import { lazy } from 'react';
 import { useMediaQuery } from 'react-responsive';
 
-import Content from '@gdsc/pages/main/components/Content';
-import MainRound from '@gdsc/pages/main/components/MainRound';
-
-import { DisplayLayout } from '@gdsc/styles/LayoutStyle';
-
 import styled from '@emotion/styled';
-import { MainMetaData } from '@gdsc/router/components/MetaData';
+import Content from '@gdg/pages/main/components/Content';
+import MainRound from '@gdg/pages/main/components/MainRound';
+import { MainMetaData } from '@gdg/router/components/MetaData';
+import { DisplayLayout } from '@gdg/styles/LayoutStyle';
 
 const MainFooterMobile = lazy(
-  () => import('@gdsc/components/feature/footer/MainFooterMobile')
+  () => import('@gdg/components/feature/footer/MainFooterMobile')
 );
 const MainFooter = lazy(
-  () => import('@gdsc/components/feature/footer/MainFooter')
+  () => import('@gdg/components/feature/footer/MainFooter')
 );
 
-const Star = lazy(() => import('@gdsc/pages/main/components/Star'));
+const Star = lazy(() => import('@gdg/pages/main/components/Star'));
 
 const DisplayMainLayout = styled(DisplayLayout)`
   display: flex;

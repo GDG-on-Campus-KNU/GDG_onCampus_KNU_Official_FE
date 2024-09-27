@@ -1,8 +1,7 @@
 import { motion } from 'framer-motion';
 
-import CloseIcon from '@gdsc/assets/CloseIcon.svg';
-
 import styled from '@emotion/styled';
+import CloseIcon from '@gdg/assets/CloseIcon.svg';
 
 export const NavMenu = styled(motion.ul)`
   width: 200px;

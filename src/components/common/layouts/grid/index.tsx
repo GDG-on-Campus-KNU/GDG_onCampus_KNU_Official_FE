@@ -1,6 +1,5 @@
-import { breakpoints } from '@gdsc/styles/variants';
-
 import styled from '@emotion/styled';
+import { breakpoints } from '@gdg/styles/variants';
 
 type ResponseGridStyle = {
   [key in keyof typeof breakpoints]?: number;

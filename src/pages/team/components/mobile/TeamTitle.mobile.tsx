@@ -1,13 +1,11 @@
 import { lazy } from 'react';
 
-import { DropBoxContainer } from '@gdsc/pages/team/components/TeamTitle';
-
-import { TeamList } from '@gdsc/apis/hooks/team/useGetTeamList';
-
 import styled from '@emotion/styled';
+import { TeamList } from '@gdg/apis/hooks/team/useGetTeamList';
+import { DropBoxContainer } from '@gdg/pages/team/components/TeamTitle';
 
-const DropDown = lazy(() => import('@gdsc/components/common/dropdown'));
-const Text = lazy(() => import('@gdsc/components/common/typography/Text'));
+const DropDown = lazy(() => import('@gdg/components/common/dropdown'));
+const Text = lazy(() => import('@gdg/components/common/typography/Text'));
 
 const TeamTitleMobile = ({
   dropDownData,

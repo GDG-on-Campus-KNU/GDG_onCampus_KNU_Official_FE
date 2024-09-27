@@ -1,18 +1,17 @@
 import { useMediaQuery } from 'react-responsive';
 import { useParams, useNavigate } from 'react-router-dom';
 
-import CommonBtn from '@gdsc/components/common/button/CommonBtn';
-
+import styled from '@emotion/styled';
+import CommonBtn from '@gdg/components/common/button/CommonBtn';
 import {
   FrontendData,
   BackendData,
   AIData,
   AndroidData,
   DesignerData,
-} from '@gdsc/pages/apply/components/ApplyDocs';
-import ApplyQualify from '@gdsc/pages/apply/components/ApplyQualify';
-import PCApplyBox from '@gdsc/pages/apply/components/PCApplyBox';
-
+} from '@gdg/pages/apply/components/ApplyDocs';
+import ApplyQualify from '@gdg/pages/apply/components/ApplyQualify';
+import PCApplyBox from '@gdg/pages/apply/components/PCApplyBox';
 import {
   ApplyLayout,
   TitleLayout,
@@ -20,10 +19,8 @@ import {
   SubTitle,
   Explain,
   SubLayout,
-} from '@gdsc/styles/ApplyStyle';
-
-import styled from '@emotion/styled';
-import { ApplyExInterface } from '@gdsc/types/ApplyInterface';
+} from '@gdg/styles/ApplyStyle';
+import { ApplyExInterface } from '@gdg/types/ApplyInterface';
 
 const AppLayout = styled(ApplyLayout)`
   width: 70%;

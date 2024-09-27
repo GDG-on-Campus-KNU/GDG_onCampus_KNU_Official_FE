@@ -1,8 +1,8 @@
 import { useMediaQuery } from 'react-responsive';
 import { Link } from 'react-router-dom';
 
-import Text from '@gdsc/components/common/typography/Text';
-
+import styled from '@emotion/styled';
+import Text from '@gdg/components/common/typography/Text';
 import {
   ApplyLayout,
   TitleLayout,
@@ -12,9 +12,7 @@ import {
   SubLayout,
   InquiryLayout,
   InquiryText,
-} from '@gdsc/styles/ApplyStyle';
-
-import styled from '@emotion/styled';
+} from '@gdg/styles/ApplyStyle';
 
 const ApplyLayoutEnd = styled(ApplyLayout)`
   height: calc(100vh - 95px);

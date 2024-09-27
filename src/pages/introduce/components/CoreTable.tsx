@@ -2,21 +2,19 @@ import { useEffect } from 'react';
 
 import gsap from 'gsap';
 
-import Bosung from '@gdsc/assets/gdscknu4/Core-Bosung.jpg';
-import Chaewon from '@gdsc/assets/gdscknu4/Core-Chaewon.png';
-import Daegun from '@gdsc/assets/gdscknu4/Core-Daegun.jpg';
-import Dongpil from '@gdsc/assets/gdscknu4/Core-Dongpil.jpg';
-import Kangmin from '@gdsc/assets/gdscknu4/Core-Gangmin.jpeg';
-import Hyunmin from '@gdsc/assets/gdscknu4/Core-Hyeonmin.jpeg';
-import Jaeyong from '@gdsc/assets/gdscknu4/Core-Jaeyong.jpg';
-import Jeongmin from '@gdsc/assets/gdscknu4/Core-Jeongmin.png';
-import Suhyeon from '@gdsc/assets/gdscknu4/Core-Suhyeon.jpg';
-import Yeongin from '@gdsc/assets/gdscknu4/Core-Yeongin.jpeg';
-import Kyuhoi from '@gdsc/assets/gdscknu4/Lead-Kyuhoi.png';
-
-import { IntroText, IntroTextStyle } from '@gdsc/styles/IntroduceStyle';
-
 import styled from '@emotion/styled';
+import Bosung from '@gdg/assets/gdscknu4/Core-Bosung.jpg';
+import Chaewon from '@gdg/assets/gdscknu4/Core-Chaewon.png';
+import Daegun from '@gdg/assets/gdscknu4/Core-Daegun.jpg';
+import Dongpil from '@gdg/assets/gdscknu4/Core-Dongpil.jpg';
+import Kangmin from '@gdg/assets/gdscknu4/Core-Gangmin.jpeg';
+import Hyunmin from '@gdg/assets/gdscknu4/Core-Hyeonmin.jpeg';
+import Jaeyong from '@gdg/assets/gdscknu4/Core-Jaeyong.jpg';
+import Jeongmin from '@gdg/assets/gdscknu4/Core-Jeongmin.png';
+import Suhyeon from '@gdg/assets/gdscknu4/Core-Suhyeon.jpg';
+import Yeongin from '@gdg/assets/gdscknu4/Core-Yeongin.jpeg';
+import Kyuhoi from '@gdg/assets/gdscknu4/Lead-Kyuhoi.png';
+import { IntroText, IntroTextStyle } from '@gdg/styles/IntroduceStyle';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 
 gsap.registerPlugin(ScrollTrigger);

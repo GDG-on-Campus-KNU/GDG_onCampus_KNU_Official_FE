@@ -2,7 +2,7 @@ import { lazy } from 'react';
 
 import styled from '@emotion/styled';
 
-const Text = lazy(() => import('@gdsc/components/common/typography/Text'));
+const Text = lazy(() => import('@gdg/components/common/typography/Text'));
 
 const TeamName = ({ selectedTeamName }: { selectedTeamName: string }) => {
   return (

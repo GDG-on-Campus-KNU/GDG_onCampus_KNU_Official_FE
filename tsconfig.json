@@ -22,7 +22,7 @@
 
     "baseUrl": ".",
     "paths": {
-      "@gdsc/*": ["src/*"]
+      "@gdg/*": ["src/*"]
     }
   },
   "include": ["src"],

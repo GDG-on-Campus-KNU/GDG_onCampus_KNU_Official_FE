@@ -1,9 +1,9 @@
 import { lazy } from 'react';
 
-import { DisplayLayout } from '@gdsc/styles/LayoutStyle';
+import { DisplayLayout } from '@gdg/styles/LayoutStyle';
 
 const TeamContent = lazy(() => import('./components/TeamContent'));
-const Star = lazy(() => import('@gdsc/pages/main/components/Star'));
+const Star = lazy(() => import('@gdg/pages/main/components/Star'));
 
 const TeamPage = () => {
   return (

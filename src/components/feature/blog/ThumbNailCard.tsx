@@ -1,9 +1,8 @@
 import { memo } from 'react';
 
-import Text from '@gdsc/components/common/typography/Text';
-
 import RatioImg from './RatioImg';
 import styled from '@emotion/styled';
+import Text from '@gdg/components/common/typography/Text';
 
 type CardType = {
   src: string;

@@ -1,9 +1,7 @@
-import ApplyForm from '@gdsc/pages/apply/components/ApplyForm';
-import Star from '@gdsc/pages/main/components/Star';
-
-import { DisplayLayout } from '@gdsc/styles/LayoutStyle';
-
-import { ApplyFormMetaData } from '@gdsc/router/components/MetaData';
+import ApplyForm from '@gdg/pages/apply/components/ApplyForm';
+import Star from '@gdg/pages/main/components/Star';
+import { ApplyFormMetaData } from '@gdg/router/components/MetaData';
+import { DisplayLayout } from '@gdg/styles/LayoutStyle';
 
 const ApplyFormPage = () => {
   return (

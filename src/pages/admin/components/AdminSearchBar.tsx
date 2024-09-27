@@ -1,14 +1,12 @@
 import { useState, useEffect } from 'react';
 
-import { useDebounce } from '@gdsc/hooks/useDebounce';
-
-import SearchIcon from '@gdsc/assets/SearchIcon.svg';
-
 import {
   SearchBarContainer,
   SearchIconImg,
   SearchInput,
 } from './AdminSearchBar.style';
+import SearchIcon from '@gdg/assets/SearchIcon.svg';
+import { useDebounce } from '@gdg/hooks/useDebounce';
 
 const AdminSearchBar = ({ onSearch }: { onSearch: (name: string) => void }) => {
   const [inputValue, setInputValue] = useState<string>('');

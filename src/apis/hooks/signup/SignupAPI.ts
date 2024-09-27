@@ -1,6 +1,5 @@
-import { fetchInstance } from '@gdsc/apis/instance/Api_JWT';
-
-import { signUpUserInterface } from '@gdsc/types/UserInterface';
+import { fetchInstance } from '@gdg/apis/instance/Api_JWT';
+import { signUpUserInterface } from '@gdg/types/UserInterface';
 
 export const SignupAPI = (
   userData: signUpUserInterface

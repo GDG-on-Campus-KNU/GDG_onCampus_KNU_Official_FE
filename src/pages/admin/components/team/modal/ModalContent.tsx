@@ -2,13 +2,12 @@ import { UseFormRegister, UseFormHandleSubmit } from 'react-hook-form';
 
 import { motion } from 'framer-motion';
 
-import Text from '@gdsc/components/common/typography/Text';
-
 import ButtonContainer from './ButtonContainer';
 import type { FormData } from './CreateTeamModal';
 import FormField from './FormField';
 import { TextContainer } from './TextContainer';
 import styled from '@emotion/styled';
+import Text from '@gdg/components/common/typography/Text';
 
 interface ModalContentProps {
   register: UseFormRegister<FormData>;

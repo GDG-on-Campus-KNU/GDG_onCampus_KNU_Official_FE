@@ -1,6 +1,5 @@
-import { displayCenter } from '@gdsc/styles/LayoutStyle';
-
 import styled from '@emotion/styled';
+import { displayCenter } from '@gdg/styles/LayoutStyle';
 
 type teamData = {
   teamName: string;

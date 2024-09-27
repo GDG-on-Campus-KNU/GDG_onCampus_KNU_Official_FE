@@ -1,10 +1,5 @@
 import { useNavigate } from 'react-router-dom';
 
-import CompleteBtn from '@gdsc/components/common/button/CompleteBtn';
-import { LazyLoadImg } from '@gdsc/components/common/img/LazyLoadingImg';
-
-import ErrorImg from '@gdsc/assets/admin/error.png';
-
 import {
   MobileTitleWrapper,
   MobileContentContainer,
@@ -14,6 +9,9 @@ import {
   MobileContentWrapper,
   MobileContainer,
 } from './AdminTitle.style';
+import ErrorImg from '@gdg/assets/admin/error.png';
+import CompleteBtn from '@gdg/components/common/button/CompleteBtn';
+import { LazyLoadImg } from '@gdg/components/common/img/LazyLoadingImg';
 
 const MobileErrorPage = () => {
   const navigate = useNavigate();

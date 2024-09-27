@@ -1,9 +1,8 @@
 import { useState, lazy, useEffect } from 'react';
 import { useMediaQuery } from 'react-responsive';
 
-import { useGetTeamList } from '@gdsc/apis/hooks/team/useGetTeamList';
-
 import styled from '@emotion/styled';
+import { useGetTeamList } from '@gdg/apis/hooks/team/useGetTeamList';
 
 const TeamMember = lazy(() => import('./TeamMember'));
 const TeamName = lazy(() => import('./TeamName'));

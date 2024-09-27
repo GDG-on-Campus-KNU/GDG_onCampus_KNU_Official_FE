@@ -1,6 +1,3 @@
-import CommonBtn from '@gdsc/components/common/button/CommonBtn';
-import Text from '@gdsc/components/common/typography/Text';
-
 import {
   TitleWrapper,
   CloseBtn,
@@ -17,6 +14,8 @@ import Memo from './Memo';
 import Stars from './Stars';
 import TechStack from './TechStack';
 import styled from '@emotion/styled';
+import CommonBtn from '@gdg/components/common/button/CommonBtn';
+import Text from '@gdg/components/common/typography/Text';
 
 const MarkBtn = styled.button`
   width: 30px;

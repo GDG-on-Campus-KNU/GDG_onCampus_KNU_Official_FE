@@ -1,14 +1,12 @@
 import { useMediaQuery } from 'react-responsive';
 import { Outlet } from 'react-router-dom';
 
-import MainNavigationMobile from '@gdsc/components/feature/header/MainNavigationMobile';
-import AdminMainNavigation from '@gdsc/components/feature/header/admin/AdminNavigation';
-import AdminTitle from '@gdsc/components/feature/header/admin/AdminTitle';
-
-import Star from '@gdsc/pages/main/components/Star';
-
-// import AdminMainNavigationMobile from '@gdsc/components/feature/header/admin/AdminNavigationMobile';
+// import AdminMainNavigationMobile from '@gdg/components/feature/header/admin/AdminNavigationMobile';
 import { MainContent } from './RootPage';
+import MainNavigationMobile from '@gdg/components/feature/header/MainNavigationMobile';
+import AdminMainNavigation from '@gdg/components/feature/header/admin/AdminNavigation';
+import AdminTitle from '@gdg/components/feature/header/admin/AdminTitle';
+import Star from '@gdg/pages/main/components/Star';
 
 const AdminRootPage = () => {
   const isMobile = useMediaQuery({ query: '(max-width: 500px)' });

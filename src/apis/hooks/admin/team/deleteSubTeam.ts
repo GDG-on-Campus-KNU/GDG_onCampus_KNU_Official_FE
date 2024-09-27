@@ -1,4 +1,4 @@
-import { fetchInstance } from '@gdsc/apis/instance/Api_JWT';
+import { fetchInstance } from '@gdg/apis/instance/Api_JWT';
 
 const deleteSubTeamPath = (parentTeamId: number) =>
   `/api/admin/team/${parentTeamId}/subTeam`;

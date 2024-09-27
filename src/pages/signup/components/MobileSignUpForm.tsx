@@ -1,14 +1,10 @@
 import * as React from 'react';
 import { useForm } from 'react-hook-form';
 
-import SignupInput from '@gdsc/components/common/form/SignupInput';
-
-import { InputWrapper } from '@gdsc/pages/apply/components/ApplyForm.style';
-
-import { SignUpSchema, SignUpSchemaType } from '@gdsc/utils/SignUpSchema.util';
-
-import { Error, InputLine } from '@gdsc/styles/SignUpForm.style';
-
+import SignupInput from '@gdg/components/common/form/SignupInput';
+import { InputWrapper } from '@gdg/pages/apply/components/ApplyForm.style';
+import { Error, InputLine } from '@gdg/styles/SignUpForm.style';
+import { SignUpSchema, SignUpSchemaType } from '@gdg/utils/SignUpSchema.util';
 import { ErrorMessage } from '@hookform/error-message';
 import { zodResolver } from '@hookform/resolvers/zod';
 
