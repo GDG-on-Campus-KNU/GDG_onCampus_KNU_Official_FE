@@ -3,8 +3,11 @@ import axios, {
   AxiosRequestConfig,
   InternalAxiosRequestConfig,
 } from 'axios';
+import { jwtDecode } from 'jwt-decode';
 
 import { BASE_URI } from '@gdsc/constants/URI';
+
+export const accessToken = sessionStorage.getItem('accessToken');
 
 export const createInstanceJWT = (
   config: AxiosRequestConfig
@@ -21,7 +24,6 @@ export const createInstanceJWT = (
 
   instance.interceptors.request.use(
     (config: InternalAxiosRequestConfig) => {
-      const accessToken = sessionStorage.getItem('accessToken');
       if (accessToken !== undefined) {
         config.headers['Content-Type'] = 'application/json';
         config.headers.Authorization = `Bearer ${accessToken}`;
@@ -33,13 +35,17 @@ export const createInstanceJWT = (
     }
   );
 
-  instance.interceptors.response.use(
-    (response) => response,
-    async (error) => {
-      const originalRequest = error.config;
+  const isTokenExpired = (token: string | null): boolean => {
+    if (!token) return true;
+    const decodedToken: { exp: number } = jwtDecode(token);
+    console.log;
+    const currentTime = Math.floor(Date.now() / 1000);
+    return decodedToken.exp < currentTime;
+  };
 
-      if (error.response?.status === 401 && !originalRequest._retry) {
-        originalRequest._retry = true;
+  instance.interceptors.request.use(
+    async (config) => {
+      if (isTokenExpired(accessToken)) {
         try {
           const refreshToken = sessionStorage.getItem('refreshToken');
           const { data } = await axios.get(`${BASE_URI}/api/jwt/reissue`, {
@@ -51,16 +57,21 @@ export const createInstanceJWT = (
           sessionStorage.setItem('accessToken', data.accessToken);
           sessionStorage.setItem('refreshToken', data.refreshToken);
 
-          instance.defaults.headers.Authorization = `Bearer ${data.accessToken}`;
-          originalRequest.headers.Authorization = `Bearer ${data.accessToken}`;
-
-          return instance(originalRequest);
-        } catch (refreshError) {
-          console.error('Token refresh failed:', refreshError);
+          config.headers.Authorization = `Bearer ${data.accessToken}`;
+        } catch (error) {
+          console.error('토큰 갱신 실패:', error);
           throw new Error('토큰 갱신에 실패했습니다.');
         }
       }
 
+      return config;
+    },
+    (error) => Promise.reject(error)
+  );
+
+  instance.interceptors.response.use(
+    (response) => response,
+    async (error) => {
       if (error.response) {
         return Promise.reject(error.response.data);
       } else if (error.request) {
