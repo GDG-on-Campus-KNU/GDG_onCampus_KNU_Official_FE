@@ -7,7 +7,12 @@ import { jwtDecode } from 'jwt-decode';
 
 import { BASE_URI } from '@gdsc/constants/URI';
 
-export const accessToken = sessionStorage.getItem('accessToken');
+export const isTokenExpired = (token: string | null): boolean => {
+  if (!token) return true;
+  const decodedToken: { exp: number } = jwtDecode(token);
+  const currentTime = Math.floor(Date.now() / 1000);
+  return decodedToken.exp < currentTime;
+};
 
 export const createInstanceJWT = (
   config: AxiosRequestConfig
@@ -24,6 +29,7 @@ export const createInstanceJWT = (
 
   instance.interceptors.request.use(
     (config: InternalAxiosRequestConfig) => {
+      const accessToken = sessionStorage.getItem('accessToken');
       if (accessToken !== undefined) {
         config.headers['Content-Type'] = 'application/json';
         config.headers.Authorization = `Bearer ${accessToken}`;
@@ -35,16 +41,11 @@ export const createInstanceJWT = (
     }
   );
 
-  const isTokenExpired = (token: string | null): boolean => {
-    if (!token) return true;
-    const decodedToken: { exp: number } = jwtDecode(token);
-    const currentTime = Math.floor(Date.now() / 1000);
-    return decodedToken.exp < currentTime;
-  };
-
   instance.interceptors.request.use(
-    async (config) => {
-      if (isTokenExpired(accessToken)) {
+    async (config: InternalAxiosRequestConfig) => {
+      let currentAccessToken = sessionStorage.getItem('accessToken');
+
+      if (currentAccessToken && isTokenExpired(currentAccessToken)) {
         try {
           const refreshToken = sessionStorage.getItem('refreshToken');
           const { data } = await axios.get(`${BASE_URI}/api/jwt/reissue`, {
@@ -56,16 +57,20 @@ export const createInstanceJWT = (
           sessionStorage.setItem('accessToken', data.accessToken);
           sessionStorage.setItem('refreshToken', data.refreshToken);
 
-          config.headers.Authorization = `Bearer ${data.accessToken}`;
+          currentAccessToken = data.accessToken;
         } catch (error) {
           console.error('토큰 갱신 실패:', error);
           throw new Error('토큰 갱신에 실패했습니다.');
         }
       }
 
+      if (currentAccessToken) {
+        config.headers.Authorization = `Bearer ${currentAccessToken}`;
+      }
+
       return config;
     },
-    (error) => Promise.reject(error)
+    (error: unknown) => Promise.reject(error)
   );
 
   instance.interceptors.response.use(
