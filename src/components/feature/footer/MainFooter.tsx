@@ -1,8 +1,10 @@
+import Text from '@gdg/components/common/typography/Text';
+
 import CompanyLogo from '@gdg/assets/CompanyLogo.svg';
 import GithubLogo from '@gdg/assets/GithubLogo.svg';
 import InstagramLogo from '@gdg/assets/InstagramLogo.svg';
 import Phone from '@gdg/assets/Phone.svg';
-import Text from '@gdg/components/common/typography/Text';
+
 import {
   Footer,
   DisplayFooter,
@@ -46,7 +48,7 @@ const MainFooter = () => {
                 </TableData>
                 <TableData>
                   <Text color='white' size='md'>
-                    GDSC 팀 깃허브
+                    GDG KNU 팀 깃허브
                   </Text>
                 </TableData>
                 <TableData>
@@ -68,23 +70,23 @@ const MainFooter = () => {
                 </TableData>
                 <TableData>
                   <a
-                    href='https://github.com/GDSC-KNU'
+                    href='https://github.com/GDG-on-Campus-KNU'
                     target='_blank'
                     rel='noopener noreferrer'
                   >
                     <Text color='white' size='xs' whiteSpace='normal'>
-                      https://github.com/GDSC-KNU
+                      Github 바로가기
                     </Text>
                   </a>
                 </TableData>
                 <TableData>
                   <a
-                    href='https://www.instagram.com/gdsc.knu/'
+                    href='https://www.instagram.com/gdg.knu/'
                     target='_blank'
                     rel='noopener noreferrer'
                   >
                     <Text color='white' size='xs' whiteSpace='normal'>
-                      https://www.instagram.com/gdsc.knu/
+                      @gdg.knu 바로가기
                     </Text>
                   </a>
                 </TableData>
