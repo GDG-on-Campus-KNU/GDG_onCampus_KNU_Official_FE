@@ -3,16 +3,8 @@ import axios, {
   AxiosRequestConfig,
   InternalAxiosRequestConfig,
 } from 'axios';
-import { jwtDecode } from 'jwt-decode';
 
 import { BASE_URI } from '@gdg/constants/URI';
-
-export const isTokenExpired = (token: string | null): boolean => {
-  if (!token) return true;
-  const decodedToken: { exp: number } = jwtDecode(token);
-  const currentTime = Math.floor(Date.now() / 1000);
-  return decodedToken.exp < currentTime;
-};
 
 export const createInstanceJWT = (
   config: AxiosRequestConfig
@@ -41,11 +33,13 @@ export const createInstanceJWT = (
     }
   );
 
-  instance.interceptors.request.use(
-    async (config: InternalAxiosRequestConfig) => {
-      let currentAccessToken = sessionStorage.getItem('accessToken');
+  instance.interceptors.response.use(
+    (response) => response,
+    async (error) => {
+      const originalRequest = error.config;
 
-      if (currentAccessToken && isTokenExpired(currentAccessToken)) {
+      if (error.response?.status === 401 && !originalRequest._retry) {
+        originalRequest._retry = true;
         try {
           const refreshToken = sessionStorage.getItem('refreshToken');
           const { data } = await axios.get(`${BASE_URI}/api/jwt/reissue`, {
@@ -57,25 +51,16 @@ export const createInstanceJWT = (
           sessionStorage.setItem('accessToken', data.accessToken);
           sessionStorage.setItem('refreshToken', data.refreshToken);
 
-          currentAccessToken = data.accessToken;
-        } catch (error) {
-          console.error('토큰 갱신 실패:', error);
+          instance.defaults.headers.Authorization = `Bearer ${data.accessToken}`;
+          originalRequest.headers.Authorization = `Bearer ${data.accessToken}`;
+
+          return instance(originalRequest);
+        } catch (refreshError) {
+          console.error('Token refresh failed:', refreshError);
           throw new Error('토큰 갱신에 실패했습니다.');
         }
       }
 
-      if (currentAccessToken) {
-        config.headers.Authorization = `Bearer ${currentAccessToken}`;
-      }
-
-      return config;
-    },
-    (error: unknown) => Promise.reject(error)
-  );
-
-  instance.interceptors.response.use(
-    (response) => response,
-    async (error) => {
       if (error.response) {
         return Promise.reject(error.response.data);
       } else if (error.request) {
