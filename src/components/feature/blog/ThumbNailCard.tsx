@@ -1,8 +1,9 @@
 import { memo } from 'react';
 
+import Text from '@gdg/components/common/typography/Text';
+
 import RatioImg from './RatioImg';
 import styled from '@emotion/styled';
-import Text from '@gdg/components/common/typography/Text';
 
 type CardType = {
   src: string;
@@ -17,7 +18,6 @@ const ThumbNailCard = memo<CardType>(
     return (
       <Card>
         <RatioImg src={src} breakpoint='md' />
-
         <CardContent>
           <MainTitle>{title}</MainTitle>
           <SubTitle>{subtitle}</SubTitle>
@@ -36,7 +36,7 @@ ThumbNailCard.displayName = 'ThumbNailCard';
 export default ThumbNailCard;
 
 const Card = styled.div`
-  width: inherit;
+  width: 100%;
   display: flex;
   flex-direction: column;
 `;
