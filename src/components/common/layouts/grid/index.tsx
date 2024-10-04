@@ -1,52 +1,91 @@
-import styled from '@emotion/styled';
 import { breakpoints } from '@gdg/styles/variants';
 
+import styled from '@emotion/styled';
+
 type ResponseGridStyle = {
-  [key in keyof typeof breakpoints]?: number;
+  [key in keyof typeof breakpoints]?: number | string;
 };
 
 type Props = {
   columns: number | ResponseGridStyle;
-  gap?: number;
+  gap: number | ResponseGridStyle;
+  padding: number | ResponseGridStyle;
 } & React.HTMLAttributes<HTMLDivElement>;
 
 export const Grid: React.FC<Props> = ({
   children,
   columns,
+  padding,
   gap,
   ...props
 }: Props) => {
   return (
-    <Wrapper columns={columns} gap={gap} {...props}>
+    <Wrapper columns={columns} gap={gap} padding={padding} {...props}>
       {children}
     </Wrapper>
   );
 };
 
-const Wrapper = styled.div<Pick<Props, 'columns' | 'gap'>>(
+const Wrapper = styled.div<Pick<Props, 'columns' | 'gap' | 'padding'>>(
   {
-    width: '100%',
     display: 'grid',
   },
-  ({ gap }) => ({
-    gap: gap ? `${gap}px` : '0',
-  }),
-  ({ columns }) => {
-    if (typeof columns === 'number') {
+  ({ padding }) => {
+    if (typeof padding === 'number') {
       return {
-        gridTemplateColumns: `repeat(${columns}, minmax(0, 1fr))`,
+        padding: `0 ${padding}px`,
+        width: `calc(100% - (2 * ${padding}))`,
       };
     }
 
-    const breakpointsKeys = Object.keys(
-      columns
-    ) as (keyof typeof breakpoints)[];
-    return breakpointsKeys
-      .map((breakpoint) => {
-        return `@media screen and (min-width: ${breakpoints[breakpoint]}) { 
-          grid-template-columns: repeat(${columns[breakpoint]}, minmax(0, 1fr)); 
-        }`;
-      })
-      .join(' ');
+    let defaultPadding = padding?.lg;
+
+    const responsive = Object.keys(padding) as (keyof typeof breakpoints)[];
+    return [
+      `padding: 0 ${defaultPadding}px; width: calc(100% - (2 * ${defaultPadding}));`,
+      responsive
+        .map((breakpoint) => {
+          return `@media screen and (max-width: ${breakpoints[breakpoint]}) { padding: 0 ${padding[breakpoint]}px; width: calc(100% - (2 * ${padding[breakpoint]})); }`;
+        })
+        .join(' '),
+    ];
+  },
+  ({ gap }) => {
+    if (typeof gap === 'number') {
+      return {
+        gap: `${gap}px`,
+      };
+    }
+
+    let defaultGap = gap?.lg;
+
+    const responsive = Object.keys(gap) as (keyof typeof breakpoints)[];
+    return [
+      `gap: ${defaultGap}px;`,
+      responsive
+        .map((breakpoint) => {
+          return `@media screen and (max-width: ${breakpoints[breakpoint]}) { gap: ${gap[breakpoint]}px; }`;
+        })
+        .join(' '),
+    ];
+  },
+  ({ columns }) => {
+    if (typeof columns === 'number') {
+      return {
+        gridTemplateColumns: `repeat(${columns}, calc(100% / ${columns}))`,
+      };
+    }
+
+    let defaultColumns = columns?.lg;
+
+    const responsive = Object.keys(columns) as (keyof typeof breakpoints)[];
+    return [
+      `grid-template-columns: repeat(${defaultColumns}, calc(100% / ${defaultColumns}));`,
+      responsive
+        .map((breakpoint) => {
+          return `@media screen and (max-width: ${breakpoints[breakpoint]}) { grid-template-columns: repeat(${columns[breakpoint]}, calc(100% / ${columns[breakpoint]})); }`;
+        })
+        .join(' '),
+    ];
   }
 );
