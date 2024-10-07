@@ -20,6 +20,7 @@ const glowAnimation = keyframes`
 
 const starStyle = (top: string, left: string) => css`
   position: absolute;
+  z-index: -1;
   width: 3px;
   height: 3px;
   background-color: var(--color-white);
