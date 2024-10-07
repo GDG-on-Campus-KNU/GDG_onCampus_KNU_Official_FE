@@ -1,8 +1,11 @@
-import styled from '@emotion/styled';
+import Star from '@gdg/components/feature/star/Star';
+
 import ApplyEx from '@gdg/pages/apply/components/ApplyEx';
-import Star from '@gdg/pages/main/components/Star';
-import { ApplyExMetaData } from '@gdg/router/components/MetaData';
+
 import { DisplayLayout } from '@gdg/styles/LayoutStyle';
+
+import styled from '@emotion/styled';
+import { ApplyExMetaData } from '@gdg/router/components/MetaData';
 
 const ApplyLayout = styled(DisplayLayout)`
   height: 100%;
