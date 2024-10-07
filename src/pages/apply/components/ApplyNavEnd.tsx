@@ -1,8 +1,8 @@
 import { useMediaQuery } from 'react-responsive';
 import { Link } from 'react-router-dom';
 
-import styled from '@emotion/styled';
 import Text from '@gdg/components/common/typography/Text';
+
 import {
   ApplyLayout,
   TitleLayout,
@@ -14,6 +14,8 @@ import {
   InquiryText,
 } from '@gdg/styles/ApplyStyle';
 
+import styled from '@emotion/styled';
+
 const ApplyLayoutEnd = styled(ApplyLayout)`
   height: calc(100vh - 95px);
 `;
@@ -24,6 +26,12 @@ const TextBox = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
+`;
+
+const ApplyText = styled(Text)`
+  @media (max-width: 500px) {
+    font-size: var(--font-size-xl);
+  }
 `;
 
 const ApplyNavEnd = () => {
@@ -60,9 +68,9 @@ const ApplyNavEnd = () => {
         </TitleLayout>
       )}
       <TextBox>
-        <Text color='white' weight='700' size='xxl'>
+        <ApplyText color='white' weight='700' size='xxl'>
           지원가능한 공고가 없습니다
-        </Text>
+        </ApplyText>
       </TextBox>
     </ApplyLayoutEnd>
   );
