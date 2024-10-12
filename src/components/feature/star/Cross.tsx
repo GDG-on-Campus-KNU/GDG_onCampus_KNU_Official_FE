@@ -35,7 +35,6 @@ const MotionCrossShape = styled(motion.div)<{ top: string; left: string }>`
   height: 4px;
   background-color: #ffc838;
   border-radius: 50%;
-  z-index: -1;
 
   top: ${(props) => props.top};
   left: ${(props) => props.left};

@@ -1,6 +1,7 @@
-import styled from '@emotion/styled';
 import Text from '@gdg/components/common/typography/Text';
 import Title from '@gdg/components/common/typography/Title';
+
+import styled from '@emotion/styled';
 
 export const ApplyLayout = styled.div`
   display: flex;
@@ -22,12 +23,14 @@ export const TitleLayout = styled.div`
 export const MainTitle = styled(Title)`
   font-size: var(--font-size-xxl);
   font-weight: 700;
+  z-index: 1;
 `;
 
 export const SubTitle = styled(Text)`
   font-size: var(--font-size-xl);
   font-weight: 700;
   margin-right: 5px;
+  z-index: 1;
 `;
 
 export const Explain = styled.span`
@@ -36,6 +39,7 @@ export const Explain = styled.span`
   display: flex;
   flex-direction: column;
   justify-content: center;
+  z-index: 1;
 `;
 
 export const SubLayout = styled.div`

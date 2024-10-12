@@ -2,9 +2,11 @@ import { useEffect, useRef } from 'react';
 
 import gsap from 'gsap';
 
-import styled from '@emotion/styled';
-import SpaceShip from '@gdg/assets/SpaceShip.svg';
 import Text from '@gdg/components/common/typography/Text';
+
+import SpaceShip from '@gdg/assets/SpaceShip.svg';
+
+import styled from '@emotion/styled';
 
 const ContentLayout = styled.div`
   display: flex;
@@ -49,6 +51,7 @@ const TextLayout = styled.div`
 `;
 
 const ImgLayout = styled(TextLayout)`
+  z-index: 1;
   align-items: center;
   margin-left: 40px;
   @media (max-width: 500px) {
@@ -57,6 +60,7 @@ const ImgLayout = styled(TextLayout)`
 `;
 
 const MainSubText = styled(Text)`
+  z-index: 1;
   @media (max-width: 767px) {
     font-size: 32px;
   }
@@ -70,6 +74,7 @@ const MainSubText = styled(Text)`
 `;
 
 const MainText = styled(Text)`
+  z-index: 1;
   @media (max-width: 767px) {
     font-size: var(--font-size-mxl);
   }
