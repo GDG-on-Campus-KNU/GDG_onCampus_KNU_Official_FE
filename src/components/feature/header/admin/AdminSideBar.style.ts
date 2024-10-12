@@ -1,10 +1,11 @@
 import { motion } from 'framer-motion';
 
-import CloseIcon from '@gdsc/assets/CloseIcon.svg';
+import CloseIcon from '@gdg/assets/CloseIcon.svg';
 
 import styled from '@emotion/styled';
 
 export const NavMenu = styled(motion.ul)`
+  z-index: 4;
   width: 200px;
   height: calc(100vh - 45px);
 
@@ -75,6 +76,7 @@ export const CloseBtn = styled.button`
   position: absolute;
   top: 26px;
   right: 26px;
+  z-index: 4;
 
   width: 18px;
   height: 18px;

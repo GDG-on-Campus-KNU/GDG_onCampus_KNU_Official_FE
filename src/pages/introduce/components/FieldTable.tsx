@@ -3,9 +3,8 @@ import { useMediaQuery } from 'react-responsive';
 
 import gsap from 'gsap';
 
-import Text from '@gdsc/components/common/typography/Text';
-
 import styled from '@emotion/styled';
+import Text from '@gdg/components/common/typography/Text';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 
 gsap.registerPlugin(ScrollTrigger);

@@ -1,7 +1,13 @@
 import { useState, useEffect } from 'react';
 
-import Pagination from '@gdsc/components/common/pagination/pagination';
-
+import ApplyDetailModal from './ApplyDetailModal';
+import {
+  applyDocsInterface,
+  useGetApplyDocs,
+} from '@gdg/apis/hooks/admin/docs/useGetApplyDocs';
+import { useGetSearch } from '@gdg/apis/hooks/admin/docs/useGetSearch';
+import Pagination from '@gdg/components/common/pagination/pagination';
+import { columns } from '@gdg/constants/DocsTableColumns';
 import {
   StyledTable,
   TableHeader,
@@ -9,17 +15,7 @@ import {
   TableCell,
   TableHeaderCell,
   TableRow,
-} from '@gdsc/pages/admin/components/MemberTable.style';
-
-import { columns } from '@gdsc/constants/DocsTableColumns';
-
-import {
-  applyDocsInterface,
-  useGetApplyDocs,
-} from '@gdsc/apis/hooks/admin/docs/useGetApplyDocs';
-import { useGetSearch } from '@gdsc/apis/hooks/admin/docs/useGetSearch';
-
-import ApplyDetailModal from './ApplyDetailModal';
+} from '@gdg/pages/admin/components/MemberTable.style';
 import {
   flexRender,
   getCoreRowModel,

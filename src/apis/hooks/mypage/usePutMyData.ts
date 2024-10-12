@@ -1,7 +1,6 @@
-import { fetchInstance } from '@gdsc/apis/instance/Api_JWT';
-import { queryClient } from '@gdsc/apis/instance/Http';
-
-import { putUserDataInterface } from '@gdsc/types/UserInterface';
+import { fetchInstance } from '@gdg/apis/instance/Api_JWT';
+import { queryClient } from '@gdg/apis/instance/Http';
+import { putUserDataInterface } from '@gdg/types/UserInterface';
 import { useMutation, UseMutationResult } from '@tanstack/react-query';
 
 const getMyDataPath = () => '/api/user';

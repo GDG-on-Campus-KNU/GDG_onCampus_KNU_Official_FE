@@ -1,18 +1,16 @@
 import { lazy } from 'react';
 
-import type { TeamList } from '@gdsc/apis/hooks/team/useGetTeamList';
-
+import styled from '@emotion/styled';
+import type { TeamList } from '@gdg/apis/hooks/team/useGetTeamList';
 import {
   TitleLayout,
   MainTitle,
   SubTitle,
   Explain,
   SubLayout,
-} from '@gdsc/styles/ApplyStyle';
+} from '@gdg/styles/ApplyStyle';
 
-import styled from '@emotion/styled';
-
-const DropDown = lazy(() => import('@gdsc/components/common/dropdown'));
+const DropDown = lazy(() => import('@gdg/components/common/dropdown'));
 
 const TeamTitle = ({
   dropDownData,

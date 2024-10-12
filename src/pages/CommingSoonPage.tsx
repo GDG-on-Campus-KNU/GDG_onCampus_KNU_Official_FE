@@ -1,14 +1,11 @@
 import { useMediaQuery } from 'react-responsive';
 import { Link } from 'react-router-dom';
 
-import CommonBtn from '@gdsc/components/common/button/CommonBtn';
-import Text from '@gdsc/components/common/typography/Text';
-
-import Home from '@gdsc/assets/GDSCLogo.svg';
-
-import { displayCenter } from '@gdsc/styles/LayoutStyle';
-
 import styled from '@emotion/styled';
+import Home from '@gdg/assets/GDSCLogo.svg';
+import CommonBtn from '@gdg/components/common/button/CommonBtn';
+import Text from '@gdg/components/common/typography/Text';
+import { displayCenter } from '@gdg/styles/LayoutStyle';
 
 const ErrorMessageWrapper = styled.div`
   ${displayCenter}

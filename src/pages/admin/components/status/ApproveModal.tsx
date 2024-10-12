@@ -1,16 +1,13 @@
-import CommonBtn from '@gdsc/components/common/button/CommonBtn';
-import Text from '@gdsc/components/common/typography/Text';
-import { CloseBtn } from '@gdsc/components/feature/header/admin/AdminSideBar.style';
-
-import { useApproveUserList } from '@gdsc/apis/hooks/admin/useApproveUser';
-
-import { useSelectedUserStore } from '@gdsc/store/useSelectedUserStore';
-
 import {
   ModalBackdrop,
   ModalWrapper,
   ButtonContainer,
 } from './ApproveModal.style';
+import { useApproveUserList } from '@gdg/apis/hooks/admin/useApproveUser';
+import CommonBtn from '@gdg/components/common/button/CommonBtn';
+import Text from '@gdg/components/common/typography/Text';
+import { CloseBtn } from '@gdg/components/feature/header/admin/AdminSideBar.style';
+import { useSelectedUserStore } from '@gdg/store/useSelectedUserStore';
 
 interface ApproveModalProps {
   onClose: () => void;

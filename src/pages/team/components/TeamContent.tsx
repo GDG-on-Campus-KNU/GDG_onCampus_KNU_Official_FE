@@ -1,12 +1,12 @@
 import { useState, lazy, useEffect } from 'react';
 import { useMediaQuery } from 'react-responsive';
 
-import { useGetTeamList } from '@gdsc/apis/hooks/team/useGetTeamList';
+import { useGetTeamList } from '@gdg/apis/hooks/team/useGetTeamList';
 
 import styled from '@emotion/styled';
 
+const TeamBlogList = lazy(() => import('./TeamBlogList'));
 const TeamMember = lazy(() => import('./TeamMember'));
-const TeamName = lazy(() => import('./TeamName'));
 const TeamTitle = lazy(() => import('./TeamTitle'));
 const TeamTitleMobile = lazy(() => import('./mobile/TeamTitle.mobile'));
 
@@ -38,8 +38,11 @@ const TeamContent = () => {
         />
       )}
 
-      <TeamName selectedTeamName={selectedTeamName} />
-      <TeamMember selectedTeamId={selectedTeamId} />
+      <TeamMember
+        selectedTeamId={selectedTeamId}
+        selectedTeamName={selectedTeamName}
+      />
+      <TeamBlogList selectedTeamName={selectedTeamName} />
     </TeamContainer>
   );
 };

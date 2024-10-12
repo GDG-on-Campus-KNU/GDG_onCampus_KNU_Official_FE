@@ -1,31 +1,41 @@
 import { memo } from 'react';
 
-import Text from '@gdsc/components/common/typography/Text';
+import Text from '@gdg/components/common/typography/Text';
 
-import gdgknu from '@gdsc/assets/gdgknu.png';
+import gdgknu from '@gdg/assets/gdgknu.png';
 
-import { useGetTeamMate } from '@gdsc/apis/hooks/team/useGetTeamMate';
+import { useGetTeamMate } from '@gdg/apis/hooks/team/useGetTeamMate';
 
+import TeamName from './TeamName';
 import styled from '@emotion/styled';
 
-const TeamMember = ({ selectedTeamId }: { selectedTeamId: number }) => {
+const TeamMember = ({
+  selectedTeamId,
+  selectedTeamName,
+}: {
+  selectedTeamId: number;
+  selectedTeamName: string;
+}) => {
   const { data } = useGetTeamMate(selectedTeamId);
 
   return (
-    <MemberListContainer>
-      {data?.map((member) => (
-        <MemberBox key={member.id}>
-          <TextWrapper>
-            <MemberText weight='700' size='md'>
-              {member.track}
-            </MemberText>
-            <MemberText weight='500' size='sm'>
-              {member.name}
-            </MemberText>
-          </TextWrapper>
-        </MemberBox>
-      ))}
-    </MemberListContainer>
+    <>
+      <TeamName selectedTeamName={selectedTeamName} />
+      <MemberListContainer>
+        {data?.map((member) => (
+          <MemberBox key={member.id}>
+            <TextWrapper>
+              <MemberText weight='700' size='md'>
+                {member.track}
+              </MemberText>
+              <MemberText weight='500' size='sm'>
+                {member.name}
+              </MemberText>
+            </TextWrapper>
+          </MemberBox>
+        ))}
+      </MemberListContainer>
+    </>
   );
 };
 
@@ -64,6 +74,7 @@ const MemberListContainer = styled.div`
 
 const MemberBox = styled.div`
   min-width: 140px;
+  z-index: 1;
   height: 140px;
   border-radius: 12px;
   padding: 20px;

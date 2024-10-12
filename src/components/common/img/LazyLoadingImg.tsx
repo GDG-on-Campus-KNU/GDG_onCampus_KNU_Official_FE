@@ -3,6 +3,7 @@ import 'react-lazy-load-image-component/src/effects/blur.css';
 
 export const LazyLoadImg = ({
   image,
+  style,
 }: {
   image: {
     alt: string;
@@ -10,15 +11,18 @@ export const LazyLoadImg = ({
     width?: number | string;
     height?: number | string;
   };
+  className?: string;
+  style?: React.CSSProperties;
 }) => (
   <LazyLoadImage
     alt={image.alt}
     effect='blur'
     wrapperProps={{
-      style: { transitionDelay: '0.7s' },
+      style: { transitionDelay: '1s' },
     }}
     src={image.src}
     width={image.width}
     height={image.height}
+    style={style}
   />
 );

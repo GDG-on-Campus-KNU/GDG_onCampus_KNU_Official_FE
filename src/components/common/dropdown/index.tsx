@@ -1,11 +1,9 @@
 import { useEffect, useState } from 'react';
 
-import HdDropDown from '@gdsc/assets/HdDropDown.svg';
-import HdDropUp from '@gdsc/assets/HdDropUp.svg';
-
-import type { TeamList } from '@gdsc/apis/hooks/team/useGetTeamList';
-
 import styled from '@emotion/styled';
+import type { TeamList } from '@gdg/apis/hooks/team/useGetTeamList';
+import HdDropDown from '@gdg/assets/HdDropDown.svg';
+import HdDropUp from '@gdg/assets/HdDropUp.svg';
 
 type DropDownProps = {
   options: TeamList[];

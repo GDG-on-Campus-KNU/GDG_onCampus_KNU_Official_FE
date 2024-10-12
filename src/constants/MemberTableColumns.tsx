@@ -1,7 +1,5 @@
-import TeamCell from '@gdsc/pages/admin/components/status/TeamCell';
-
-import { PersonData } from '@gdsc/apis/hooks/admin/status/useGetUserList';
-
+import { PersonData } from '@gdg/apis/hooks/admin/status/useGetUserList';
+import TeamCell from '@gdg/pages/admin/components/status/TeamCell';
 import { createColumnHelper } from '@tanstack/react-table';
 
 const Role: { [key: string]: string } = {

@@ -2,9 +2,9 @@ import { useEffect, useRef } from 'react';
 
 import gsap from 'gsap';
 
-import Text from '@gdsc/components/common/typography/Text';
+import Text from '@gdg/components/common/typography/Text';
 
-import SpaceShip from '@gdsc/assets/SpaceShip.svg';
+import SpaceShip from '@gdg/assets/SpaceShip.svg';
 
 import styled from '@emotion/styled';
 
@@ -51,6 +51,7 @@ const TextLayout = styled.div`
 `;
 
 const ImgLayout = styled(TextLayout)`
+  z-index: 1;
   align-items: center;
   margin-left: 40px;
   @media (max-width: 500px) {
@@ -59,6 +60,7 @@ const ImgLayout = styled(TextLayout)`
 `;
 
 const MainSubText = styled(Text)`
+  z-index: 1;
   @media (max-width: 767px) {
     font-size: 32px;
   }
@@ -72,6 +74,7 @@ const MainSubText = styled(Text)`
 `;
 
 const MainText = styled(Text)`
+  z-index: 1;
   @media (max-width: 767px) {
     font-size: var(--font-size-mxl);
   }
@@ -118,14 +121,14 @@ const Content = () => {
       </TextLayout>
       <ImgLayout ref={imageRef}>
         <a
-          href='https://sites.google.com/view/gdeveloperskorea/gdsc'
+          href='https://sites.google.com/view/gdeveloperskorea/gdg'
           target='_blank'
           rel='noopener noreferrer'
         >
           <SpaceShipImg src={SpaceShip} alt='GDSC' />
         </a>
-        <Text color='white' size='sm' weight='700'>
-          GDSC KOREA
+        <Text color='white' size='xs' weight='700'>
+          GDG KOREA
         </Text>
       </ImgLayout>
     </ContentLayout>

@@ -1,21 +1,16 @@
 import { useForm } from 'react-hook-form';
 import { useMediaQuery } from 'react-responsive';
 
-import CommonBtn from '@gdsc/components/common/button/CommonBtn';
-import SignupInput from '@gdsc/components/common/form/SignupInput';
-
-import { InputWrapper } from '@gdsc/pages/apply/components/ApplyForm.style';
-import MobileSignUpForm from '@gdsc/pages/signup/components/MobileSignUpForm';
-
-import { SignUpSchema, SignUpSchemaType } from '@gdsc/utils/SignUpSchema.util';
-
-import { SignupQuery } from '@gdsc/apis/hooks/signup/SignupQuery';
-
-import { AuthBox } from '@gdsc/styles/AuthModalStyle';
-import { Error, InputLine } from '@gdsc/styles/SignUpForm.style';
-
 import styled from '@emotion/styled';
-import { signUpUserInterface } from '@gdsc/types/UserInterface';
+import { SignupQuery } from '@gdg/apis/hooks/signup/SignupQuery';
+import CommonBtn from '@gdg/components/common/button/CommonBtn';
+import SignupInput from '@gdg/components/common/form/SignupInput';
+import { InputWrapper } from '@gdg/pages/apply/components/ApplyForm.style';
+import MobileSignUpForm from '@gdg/pages/signup/components/MobileSignUpForm';
+import { AuthBox } from '@gdg/styles/AuthModalStyle';
+import { Error, InputLine } from '@gdg/styles/SignUpForm.style';
+import { signUpUserInterface } from '@gdg/types/UserInterface';
+import { SignUpSchema, SignUpSchemaType } from '@gdg/utils/SignUpSchema.util';
 import { ErrorMessage } from '@hookform/error-message';
 import { zodResolver } from '@hookform/resolvers/zod';
 

@@ -4,23 +4,18 @@ import { Link, useNavigate } from 'react-router-dom';
 
 import { motion } from 'framer-motion';
 
-import Text from '@gdsc/components/common/typography/Text';
-
-import HdDropDown from '@gdsc/assets/HdDropDown.svg';
-import HdDropUp from '@gdsc/assets/HdDropUp.svg';
-import NavigationLogo768 from '@gdsc/assets/NavigationLogo768.svg';
-import NavigationLogo from '@gdsc/assets/NavigationLogo.svg';
-import NoneProfile from '@gdsc/assets/NoneProfile.png';
-
-import { useGetMyData } from '@gdsc/apis/hooks/mypage/useGetMyData';
-
-import { useHeaderDropDownState } from '@gdsc/store/useHeaderDropDownStore';
-import useUserStatusStore from '@gdsc/store/useUserStatusStore';
-
-import { displayCenter } from '@gdsc/styles/LayoutStyle';
-
 import { renderDropdownItems } from './StatusDropDownItems';
 import styled from '@emotion/styled';
+import { useGetMyData } from '@gdg/apis/hooks/mypage/useGetMyData';
+import HdDropDown from '@gdg/assets/HdDropDown.svg';
+import HdDropUp from '@gdg/assets/HdDropUp.svg';
+import NavigationLogo768 from '@gdg/assets/NavigationLogo768.svg';
+import NavigationLogo from '@gdg/assets/NavigationLogo.svg';
+import NoneProfile from '@gdg/assets/NoneProfile.png';
+import Text from '@gdg/components/common/typography/Text';
+import { useHeaderDropDownState } from '@gdg/store/useHeaderDropDownStore';
+import useUserStatusStore from '@gdg/store/useUserStatusStore';
+import { displayCenter } from '@gdg/styles/LayoutStyle';
 
 export const LinkText = styled(Link)`
   margin-top: 3px;

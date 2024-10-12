@@ -1,16 +1,13 @@
 import { useEffect } from 'react';
 
-import SigninModal from '@gdsc/pages/signin/components/SigninModal';
-
-import { detectUserAgent } from '@gdsc/utils/detectUserAgent';
+import SigninModal from '@gdg/pages/signin/components/SigninModal';
+import { SigninMetaData } from '@gdg/router/components/MetaData';
+import { AuthWrapper } from '@gdg/styles/AuthModalStyle';
+import { detectUserAgent } from '@gdg/utils/detectUserAgent';
 import {
   openLinkInKakaoExternal,
   openLinkInSupportedBrowsers,
-} from '@gdsc/utils/openLinkInExternalBrowser';
-
-import { AuthWrapper } from '@gdsc/styles/AuthModalStyle';
-
-import { SigninMetaData } from '@gdsc/router/components/MetaData';
+} from '@gdg/utils/openLinkInExternalBrowser';
 
 const SigninPage = () => {
   useEffect(function RedirectByUserAgent() {

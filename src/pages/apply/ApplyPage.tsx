@@ -2,14 +2,17 @@ import { useEffect, useState } from 'react';
 
 import dayjs from 'dayjs';
 
-import ApplyNav from '@gdsc/pages/apply/components/ApplyNav';
-import ApplyNavEnd from '@gdsc/pages/apply/components/ApplyNavEnd';
-import Star from '@gdsc/pages/main/components/Star';
+import InnerCircle from '@gdg/components/feature/background/InnerCircle';
+import CrossShape from '@gdg/components/feature/star/Cross';
+import Star from '@gdg/components/feature/star/Star';
 
-import { DisplayLayout } from '@gdsc/styles/LayoutStyle';
+import ApplyNav from '@gdg/pages/apply/components/ApplyNav';
+import ApplyNavEnd from '@gdg/pages/apply/components/ApplyNavEnd';
+
+import { DisplayLayout } from '@gdg/styles/LayoutStyle';
 
 import styled from '@emotion/styled';
-import { ApplyMetaData } from '@gdsc/router/components/MetaData';
+import { ApplyMetaData } from '@gdg/router/components/MetaData';
 
 const ApplyLayout = styled(DisplayLayout)`
   height: 100%;
@@ -17,6 +20,7 @@ const ApplyLayout = styled(DisplayLayout)`
   display: flex;
   flex-direction: row;
   justify-content: center;
+  position: relative;
 `;
 
 const ApplyPage = () => {
@@ -33,11 +37,20 @@ const ApplyPage = () => {
       <ApplyMetaData />
       <ApplyLayout>
         {showForm ? <ApplyNav /> : <ApplyNavEnd />}
-        {[...Array(25)].map((_, index) => (
+        <InnerCircle />
+
+        {[...Array(5)].map((_, index) => (
+          <CrossShape
+            key={index}
+            top={`${Math.random() * (50 - 15) + 15}%`}
+            left={`${Math.random() * (85 - 15) + 15}%`}
+          />
+        ))}
+        {[...Array(10)].map((_, index) => (
           <Star
             key={index}
-            top={`${Math.random() * 30}%`}
-            left={`${Math.random() * 100}%`}
+            top={`${Math.random() * (50 - 15) + 15}%`}
+            left={`${Math.random() * (85 - 15) + 15}%`}
           />
         ))}
       </ApplyLayout>

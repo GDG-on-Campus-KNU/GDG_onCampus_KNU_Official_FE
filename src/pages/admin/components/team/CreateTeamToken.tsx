@@ -1,13 +1,5 @@
 import { useEffect, useState, lazy } from 'react';
 
-import PlusBtn from '@gdsc/assets/admin/PlusBtn.svg';
-import close from '@gdsc/assets/admin/remove.svg';
-
-import { deleteParentTeam } from '@gdsc/apis/hooks/admin/team/deleteParentTeam';
-import { putTeamMember } from '@gdsc/apis/hooks/admin/team/putTeamMember';
-import { useGetAllTeamToken } from '@gdsc/apis/hooks/admin/team/useGetAllTeamToken';
-import type { Team } from '@gdsc/apis/hooks/admin/team/useGetAllTeamToken';
-
 import {
   BtnWrapper,
   PlusBtnImg,
@@ -17,14 +9,18 @@ import {
   CloseButton,
   ButtonContainer,
 } from './CreateTeamToken.style';
-import { useTeamUpdate } from '@gdsc/provider/TeamUpdate';
+import { deleteParentTeam } from '@gdg/apis/hooks/admin/team/deleteParentTeam';
+import { putTeamMember } from '@gdg/apis/hooks/admin/team/putTeamMember';
+import { useGetAllTeamToken } from '@gdg/apis/hooks/admin/team/useGetAllTeamToken';
+import type { Team } from '@gdg/apis/hooks/admin/team/useGetAllTeamToken';
+import PlusBtn from '@gdg/assets/admin/PlusBtn.svg';
+import close from '@gdg/assets/admin/remove.svg';
+import { useTeamUpdate } from '@gdg/provider/TeamUpdate';
 import { DragDropContext, DropResult } from '@hello-pangea/dnd';
 
 const TeamBox = lazy(() => import('./TeamBox'));
 const CreateTeamModal = lazy(() => import('./modal/CreateTeamModal'));
-const CommonBtn = lazy(
-  () => import('@gdsc/components/common/button/CommonBtn')
-);
+const CommonBtn = lazy(() => import('@gdg/components/common/button/CommonBtn'));
 
 const CreateTeamToken = () => {
   const { data } = useGetAllTeamToken();

@@ -1,6 +1,6 @@
 import { useEffect } from 'react';
 
-import { useColTzStore } from '@gdsc/store/useColTzStore';
+import { useColTzStore } from '@gdg/store/useColTzStore';
 
 export const useColTz = () => {
   const { colTz, setColTz } = useColTzStore();

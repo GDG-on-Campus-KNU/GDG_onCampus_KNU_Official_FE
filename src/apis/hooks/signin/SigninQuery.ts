@@ -1,7 +1,6 @@
-import { SigninGoogleAPI } from '@gdsc/apis/hooks/signin/SigninGoogleAPI';
-import { queryClient } from '@gdsc/apis/instance/Http';
-
-import { SigninAPIInterface } from '@gdsc/types/OAuthInterface';
+import { SigninGoogleAPI } from '@gdg/apis/hooks/signin/SigninGoogleAPI';
+import { queryClient } from '@gdg/apis/instance/Http';
+import { SigninAPIInterface } from '@gdg/types/OAuthInterface';
 import { useMutation } from '@tanstack/react-query';
 
 export const SigninQuery = (onSuccess: (data: SigninAPIInterface) => void) => {

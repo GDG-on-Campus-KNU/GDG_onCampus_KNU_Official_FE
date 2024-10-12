@@ -4,7 +4,7 @@ import axios, {
   InternalAxiosRequestConfig,
 } from 'axios';
 
-import { BASE_URI } from '@gdsc/constants/URI';
+import { BASE_URI } from '@gdg/constants/URI';
 
 export const createInstanceJWT = (
   config: AxiosRequestConfig

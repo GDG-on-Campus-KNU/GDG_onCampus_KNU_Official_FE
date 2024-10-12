@@ -1,6 +1,6 @@
 import { create } from 'zustand';
 
-import type { User, UnauthenticatedUser } from '@gdsc/types/UserInterface';
+import type { User, UnauthenticatedUser } from '@gdg/types/UserInterface';
 
 interface UserState {
   user: User | UnauthenticatedUser | null;

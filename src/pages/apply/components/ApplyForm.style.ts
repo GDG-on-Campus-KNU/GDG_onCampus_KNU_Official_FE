@@ -1,6 +1,5 @@
-import Text from '@gdsc/components/common/typography/Text';
-
 import styled from '@emotion/styled';
+import Text from '@gdg/components/common/typography/Text';
 
 export const Error = styled.small`
   color: var(--color-cinarbar);

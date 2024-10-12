@@ -2,14 +2,6 @@ import * as React from 'react';
 import { useMediaQuery } from 'react-responsive';
 import { useLocation, Location } from 'react-router-dom';
 
-import Text from '@gdsc/components/common/typography/Text';
-
-import MenuHamburger from '@gdsc/assets/MenuHamburger.svg';
-
-import { useNavigationStore } from '@gdsc/store/useNavigationStore';
-
-import { DisplayLayout } from '@gdsc/styles/LayoutStyle';
-
 import AdminSideBar from './AdminSideBar';
 import {
   TitleWrapper,
@@ -19,6 +11,10 @@ import {
 } from './AdminTitle.style';
 import MobileErrorPage from './MobileErrorPage';
 import styled from '@emotion/styled';
+import MenuHamburger from '@gdg/assets/MenuHamburger.svg';
+import Text from '@gdg/components/common/typography/Text';
+import { useNavigationStore } from '@gdg/store/useNavigationStore';
+import { DisplayLayout } from '@gdg/styles/LayoutStyle';
 
 const getTitle = (pathname: string): string => {
   switch (pathname) {

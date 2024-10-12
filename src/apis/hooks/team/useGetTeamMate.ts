@@ -1,6 +1,5 @@
-import { fetchInstance } from '@gdsc/apis/instance/Api_JWT';
-
-import type { TeamData } from '@gdsc/types/TeamData.type';
+import { fetchInstance } from '@gdg/apis/instance/Api_JWT';
+import type { TeamData } from '@gdg/types/TeamData.type';
 import { useQuery, UseQueryResult } from '@tanstack/react-query';
 
 const getTeamMatePath = (teamId: number) => `/api/team/${teamId}/member`;
@@ -18,6 +17,6 @@ export const useGetTeamMate = (
   return useQuery<TeamData[], Error>({
     queryKey: [getTeamMatePath(teamId)],
     queryFn: () => getTeamMate(teamId),
-    enabled: !!accessToken,
+    enabled: !!accessToken && teamId !== 0,
   });
 };

@@ -4,10 +4,10 @@ import { Oval } from 'react-loader-spinner';
 import { useMediaQuery } from 'react-responsive';
 import { useParams } from 'react-router-dom';
 
-import CommonBtn from '@gdsc/components/common/button/CommonBtn';
-import FormInput from '@gdsc/components/common/form/FormInput';
-import FormTextArea from '@gdsc/components/common/form/FormTextArea';
-
+import { useApplyFormMutation } from '@gdg/apis/hooks/apply/ApplyFormQuery';
+import CommonBtn from '@gdg/components/common/button/CommonBtn';
+import FormInput from '@gdg/components/common/form/FormInput';
+import FormTextArea from '@gdg/components/common/form/FormTextArea';
 import {
   Error,
   TitleWrapper,
@@ -22,32 +22,27 @@ import {
   ButtonWrapper,
   CommonWrapper,
   InputWrapper,
-} from '@gdsc/pages/apply/components/ApplyForm.style';
+} from '@gdg/pages/apply/components/ApplyForm.style';
 import {
   FrontendData,
   BackendData,
   AndroidData,
   AIData,
   DesignerData,
-} from '@gdsc/pages/apply/components/ApplyFormDocs';
-
-import { ApplyFormSchema } from '@gdsc/utils/ApplyFormScehma.util';
-import { handleFormSubmit } from '@gdsc/utils/anlytics';
-
-import { useApplyFormMutation } from '@gdsc/apis/hooks/apply/ApplyFormQuery';
-
+} from '@gdg/pages/apply/components/ApplyFormDocs';
 import {
   TitleLayout,
   MainTitle,
   SubTitle,
   Explain,
   SubLayout,
-} from '@gdsc/styles/ApplyStyle';
-
+} from '@gdg/styles/ApplyStyle';
 import {
   ApplyFormInterface,
   ApplyFormQuestionInterface,
-} from '@gdsc/types/ApplyInterface';
+} from '@gdg/types/ApplyInterface';
+import { ApplyFormSchema } from '@gdg/utils/ApplyFormScehma.util';
+import { handleFormSubmit } from '@gdg/utils/anlytics';
 import { ErrorMessage } from '@hookform/error-message';
 import { zodResolver } from '@hookform/resolvers/zod';
 
