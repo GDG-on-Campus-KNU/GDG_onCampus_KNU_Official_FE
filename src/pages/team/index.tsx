@@ -11,7 +11,7 @@ const TeamContent = lazy(() => import('./components/TeamContent'));
 const Star = lazy(() => import('@gdg/components/feature/star/Star'));
 
 const TeamLayout = styled(DisplayLayout)`
-  height: 100vh;
+  height: 100%;
   display: block;
   overflow: auto;
 `;
