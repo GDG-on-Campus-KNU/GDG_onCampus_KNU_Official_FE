@@ -195,7 +195,6 @@ const MyPage = () => {
       <PageTitle MainTitle='마이페이지' SubTitle='My Page' />
       <MyPageWrapper color='var(--color-abony)'>
         <MainInfoContainer>
-          <button onClick={handleSubmit}>상태 변경</button>
           <Profile />
           <Input
             id='name'
