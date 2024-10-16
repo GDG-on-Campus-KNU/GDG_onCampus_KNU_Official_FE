@@ -1,34 +1,49 @@
-import { useState, useEffect } from 'react';
+import { useState, useRef, useEffect, forwardRef } from 'react';
+
+import SearchIcon from '@gdg/assets/SearchIcon.svg';
 
 import {
   SearchBarContainer,
   SearchIconImg,
   SearchInput,
 } from './AdminSearchBar.style';
-import SearchIcon from '@gdg/assets/SearchIcon.svg';
-import { useDebounce } from '@gdg/hooks/useDebounce';
+
+const InputField = forwardRef<HTMLInputElement>((props, ref) => {
+  return (
+    <SearchInput
+      ref={ref}
+      type='text'
+      placeholder='검색할 이름을 입력하세요'
+      {...props}
+    />
+  );
+});
+
+InputField.displayName = 'InputField';
 
 const AdminSearchBar = ({ onSearch }: { onSearch: (name: string) => void }) => {
-  const [inputValue, setInputValue] = useState<string>('');
-  const debouncedInputValue = useDebounce(inputValue, 400);
+  const inputRef = useRef<HTMLInputElement>(null);
+  const [clickTrigger, setClickTrigger] = useState<boolean>(false);
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setInputValue(e.target.value);
+  const handleClick = () => {
+    if (inputRef.current) {
+      inputRef.current.focus();
+      onSearch(inputRef.current.value);
+    }
+    setClickTrigger((prev) => !prev);
   };
 
-  useEffect(() => {
-    onSearch(debouncedInputValue);
-  }, [debouncedInputValue, onSearch]);
+  const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+    handleClick();
+  };
+
+  useEffect(() => {}, [clickTrigger]);
 
   return (
-    <SearchBarContainer>
+    <SearchBarContainer onSubmit={handleSubmit}>
       <SearchIconImg src={SearchIcon} alt='search' />
-      <SearchInput
-        type='text'
-        value={inputValue}
-        onChange={handleChange}
-        placeholder='검색할 이름을 입력하세요.'
-      />
+      <InputField ref={inputRef} />
     </SearchBarContainer>
   );
 };
