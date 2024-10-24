@@ -3,6 +3,7 @@ import { useForm, Controller, SubmitHandler } from 'react-hook-form';
 
 import Prism from 'prismjs';
 
+import useImageHandler from '../hooks/useImageHandler';
 import {
   Wrapper,
   Container,
@@ -30,6 +31,7 @@ const MarkdownEditor = () => {
   const [title, setTitle] = useState<string>('');
   const { control, handleSubmit } = useForm<IFormInput>();
   const [width, setWidth] = useState<boolean>(window.innerWidth > 860);
+  const { handleImage } = useImageHandler();
 
   useEffect(() => {
     const handleResize = () => {
@@ -80,6 +82,9 @@ const MarkdownEditor = () => {
               //theme='dark'
               usageStatistics={false}
               useCommandShortcut={true}
+              hooks={{
+                addImageBlobHook: handleImage,
+              }}
               {...field}
             />
           )}

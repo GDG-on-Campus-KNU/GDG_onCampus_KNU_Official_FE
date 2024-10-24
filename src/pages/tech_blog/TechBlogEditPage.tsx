@@ -2,8 +2,8 @@ import { useState } from 'react';
 
 import CommonBtn from '@gdg/components/common/button/CommonBtn';
 
-import MarkdownEditor from './Components/MarkdownEditor';
-import TechBlogTitle from './Components/TechBlogTitle';
+import MarkdownEditor from './components/MarkdownEditor';
+import TechBlogTitle from './components/TechBlogTitle';
 import styled from '@emotion/styled';
 
 const TitleContainer = styled.div`
