@@ -1,34 +1,46 @@
 import { useState } from 'react';
 
-import CommonBtn from '@gdg/components/common/button/CommonBtn';
-
-import MarkdownEditor from './components/MarkdownEditor';
-import TechBlogTitle from './components/TechBlogTitle';
-import styled from '@emotion/styled';
-
-const TitleContainer = styled.div`
-  width: 100%;
-  display: flex;
-  justify-content: space-between;
-`;
-
-const ButtonContainer = styled.div`
-  width: 218px;
-
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-
-  justify-self: flex-end;
-  margin-right: 63px;
-`;
+import {
+  Wrapper,
+  Container,
+  TitleContainer,
+  NavBarContainer,
+  StyledOutBtn,
+  StyledModeBtn,
+  StyledPostBtn,
+  StyledSaveBtn,
+  Box,
+} from './components/MarkdownEditor.style';
+import MarkdownEditorDark from './components/MarkdownEditorDark';
+import MarkdownEditorLight from './components/MarkdownEditorLight';
 
 const TechBlogEditPage = () => {
-  const [value, setValue] = useState<string | undefined>('');
+  const [mode, setMode] = useState(true);
+
+  const handleMode = () => {
+    setMode(!mode);
+  };
+
   return (
-    <>
-      <MarkdownEditor />
-    </>
+    <Wrapper>
+      <Container>
+        <TitleContainer placeholder='제목을 입력하세요' />
+        {mode && <MarkdownEditorDark />}
+        {!mode && <MarkdownEditorLight />}
+        <NavBarContainer>
+          <Box>
+            <StyledOutBtn>나가기</StyledOutBtn>
+            <StyledModeBtn onClick={handleMode}>
+              {mode ? '다크 모드' : '라이트 모드'}
+            </StyledModeBtn>
+          </Box>
+          <Box>
+            <StyledSaveBtn>임시저장</StyledSaveBtn>
+            <StyledPostBtn>출간하기</StyledPostBtn>
+          </Box>
+        </NavBarContainer>
+      </Container>
+    </Wrapper>
   );
 };
 
