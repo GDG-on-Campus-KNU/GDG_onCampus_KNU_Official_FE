@@ -2,7 +2,6 @@ import { useEffect, useState } from 'react';
 
 import Prism from 'prismjs';
 
-import useImageHandler from '../hooks/useImageHandler';
 import codeSyntaxHighlight from '@toast-ui/editor-plugin-code-syntax-highlight';
 import '@toast-ui/editor-plugin-code-syntax-highlight/dist/toastui-editor-plugin-code-syntax-highlight.css';
 import colorSyntax from '@toast-ui/editor-plugin-color-syntax';
@@ -12,9 +11,18 @@ import '@toast-ui/editor/dist/toastui-editor.css';
 import { Editor } from '@toast-ui/react-editor';
 import 'prismjs/themes/prism.css';
 
-const MarkdownEditorDark = () => {
+export type EditorCommonProps = {
+  editorRef: React.RefObject<Editor> | null;
+  handleImage: (file: File, callback: (url: string) => void) => Promise<void>;
+  initialContent?: string;
+};
+
+const MarkdownEditorDark = ({
+  editorRef,
+  handleImage,
+  initialContent = '',
+}: EditorCommonProps) => {
   const [width, setWidth] = useState<boolean>(window.innerWidth > 860);
-  const { handleImage } = useImageHandler();
 
   useEffect(() => {
     const handleResize = () => {
@@ -30,10 +38,12 @@ const MarkdownEditorDark = () => {
 
   return (
     <Editor
+      ref={editorRef}
       height='100%'
-      placeholder='내용을 입력하세요.'
+      placeholder='내용을 입력해주세요.'
       plugins={[colorSyntax, [codeSyntaxHighlight, { highlighter: Prism }]]}
       previewStyle={width ? 'vertical' : 'tab'}
+      initialValue={initialContent}
       initialEditType='markdown'
       hideModeSwitch={true}
       toolbarItems={[
