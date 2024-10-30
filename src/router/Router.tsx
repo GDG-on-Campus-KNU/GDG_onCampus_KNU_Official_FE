@@ -17,6 +17,9 @@ const TechBlogPage = lazy(() => import('@gdg/pages/tech_blog/TechBlogPage'));
 const TechBlogEditPage = lazy(
   () => import('@gdg/pages/tech_blog/TechBlogEditPage')
 );
+const TechBlogPostPage = lazy(
+  () => import('@gdg/pages/tech_blog/TechBlogPostPage')
+);
 const TechBlogRootPage = lazy(
   () => import('@gdg/pages/tech_blog/TechBlogRootPage')
 );
@@ -202,7 +205,17 @@ const routesConfig: AppRouteObject[] = [
   },
   {
     path: 'write',
-    element: <TechBlogEditPage />,
+    element: <StatusRoute allowedStatuses={['CORE', 'MEMBER']} />,
+    children: [
+      {
+        path: '',
+        element: <TechBlogEditPage />,
+      },
+      {
+        path: 'post',
+        element: <TechBlogPostPage />,
+      },
+    ],
   },
 ];
 

@@ -1,4 +1,5 @@
-import { useState, useRef, useCallback, useEffect, useContext } from 'react';
+import { useState, useRef, useCallback, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 import {
   Wrapper,
@@ -24,6 +25,7 @@ const TechBlogEditPage = () => {
   const titleRef = useRef<HTMLInputElement>(null);
   const editorRef = useRef<Editor>(null);
   const { handleImage } = useImageHandler();
+  const navigate = useNavigate();
 
   useEffect(() => {
     titleRef.current?.focus();
@@ -45,6 +47,8 @@ const TechBlogEditPage = () => {
       content: markdown || prev.content,
       status: 'SAVED',
     }));
+
+    navigate('/write/post');
   }, [setBlogPost]);
 
   const handleTempSave = useCallback(() => {
@@ -58,6 +62,8 @@ const TechBlogEditPage = () => {
       content: markdown || prev.content,
       status: 'TEMPORAL',
     }));
+
+    alert('게시글이 성공적으로 저장되었습니다.');
   }, [setBlogPost]);
 
   return (
