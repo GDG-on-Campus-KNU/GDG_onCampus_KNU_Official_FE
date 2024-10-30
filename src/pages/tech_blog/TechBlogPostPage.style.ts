@@ -1,5 +1,3 @@
-import { close } from '@gdg/assets/admin/remove.svg';
-
 import styled from '@emotion/styled';
 
 export const Wrapper = styled.div`
