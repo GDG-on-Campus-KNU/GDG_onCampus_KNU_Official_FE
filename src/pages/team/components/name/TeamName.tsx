@@ -1,8 +1,6 @@
-import { lazy } from 'react';
+import Text from '@gdg/components/common/typography/Text';
 
 import styled from '@emotion/styled';
-
-const Text = lazy(() => import('@gdg/components/common/typography/Text'));
 
 type TeamNameProps = {
   selectedTeamName?: string;

@@ -3,11 +3,14 @@ import { lazy } from 'react';
 import InnerCircle from '@gdg/components/feature/background/InnerCircle';
 import CrossShape from '@gdg/components/feature/star/Cross';
 
+import { TeamContent } from '@gdg/pages/team/components/content';
+
+import { useGetTeamList } from '@gdg/apis/hooks/team/useGetTeamList';
+
 import { DisplayLayout } from '@gdg/styles/LayoutStyle';
 
 import styled from '@emotion/styled';
 
-const TeamContent = lazy(() => import('./components/TeamContent'));
 const Star = lazy(() => import('@gdg/components/feature/star/Star'));
 
 const TeamLayout = styled(DisplayLayout)`
@@ -17,10 +20,12 @@ const TeamLayout = styled(DisplayLayout)`
 `;
 
 const TeamPage = () => {
+  const { data } = useGetTeamList();
+
   return (
     <>
       <TeamLayout>
-        <TeamContent />
+        {data && <TeamContent data={data} />}
         <InnerCircle />
 
         {[...Array(5)].map((_, index) => (
