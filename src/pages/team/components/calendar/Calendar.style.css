@@ -1,0 +1,117 @@
+.fc.fc-media-screen.fc-direction-ltr.fc-theme-standard {
+  padding: 0 64px;
+
+  @media (max-width: 768px) {
+    padding: 0 60px;
+  }
+
+  @media (max-width: 500px) {
+    padding: 0 32px;
+  }
+}
+
+.fc-theme-standard td,
+.fc-theme-standard .fc-scrollgrid,
+.fc-theme-standard th {
+  border: none;
+  padding-bottom: 12px;
+
+  @media (max-width: 768px) {
+    padding-bottom: 9px;
+  }
+
+  @media (max-width: 500px) {
+    padding-bottom: 5px;
+  }
+}
+
+/* 공통 스타일 적용 */
+.fc-daygrid-day {
+  border-radius: 12px;
+  box-shadow: 0 0 0 0.5px var(--color-dove);
+}
+
+/* 주말 스타일 */
+.fc-daygrid-day:nth-child(7n),
+.fc-daygrid-day:nth-child(7n + 1) {
+  background-color: var(--color-bh-transparent);
+}
+
+/* 평일 스타일 */
+.fc-daygrid-day:not(:nth-child(7n)):not(:nth-child(7n + 1)) {
+  background-color: var(--color-more-transparent);
+}
+
+/* 헤더와 이벤트 스타일 */
+.fc-col-header-cell {
+  font-size: var(--size-sm);
+  font-weight: 700;
+
+  @media (max-width: 500px) {
+    font-size: var(--font-size-xxs);
+  }
+}
+
+.fc-direction-ltr .fc-daygrid-event.fc-event-end,
+.fc-direction-rtl .fc-daygrid-event.fc-event-start {
+  background-color: transparent;
+  border: none;
+}
+
+.fc-daygrid-day-number {
+  font-size: var(--font-size-sm);
+  font-weight: 700;
+  margin: 11px 10px 0px 0px;
+
+  @media (max-width: 768px) {
+    font-size: var(--font-size-xxs);
+    margin: 5px 8px 0px 0px;
+  }
+
+  @media (max-width: 500px) {
+    font-size: var(--font-size-xxs);
+    margin: 3px 4px 0px 0px;
+  }
+}
+
+/* 이전/다음 버튼 스타일 */
+.fc-toolbar-chunk > div {
+  display: flex;
+}
+
+.fc .fc-prev-button,
+.fc .fc-next-button {
+  background-color: var(--color-more-transparent);
+  color: var(--color-white);
+  padding: 10px;
+  border: none;
+  cursor: pointer;
+  font-size: 10px;
+}
+
+.fc .fc-prev-button {
+  border-radius: 8px 0 0 8px;
+  padding-right: 6px;
+}
+
+.fc .fc-next-button {
+  border-radius: 0 8px 8px 0;
+  padding-left: 6px;
+}
+
+.fc .fc-prev-button:hover,
+.fc .fc-next-button:hover {
+  background-color: var(--color-more-transparent);
+}
+
+/* 제목 스타일 */
+.fc .fc-toolbar-title {
+  display: flex;
+  font-size: 16px;
+  font-weight: bold;
+  background-color: var(--color-more-transparent);
+  color: var(--color-white);
+  padding: 6px;
+  text-align: center;
+  align-items: center;
+}
