@@ -75,6 +75,7 @@ export const StyledModeBtn = styled.button`
 
   &:hover {
     color: var(--color-silver);
+    cursor: pointer;
   }
 `;
 
@@ -94,6 +95,7 @@ export const StyledOutBtn = styled.button`
 
   &:hover {
     color: var(--color-silver);
+    cursor: pointer;
   }
 `;
 
@@ -114,6 +116,7 @@ export const StyledPostBtn = styled.button`
   &:hover {
     color: var(--color-silver);
     background-color: var(--color-ocean);
+    cursor: pointer;
   }
 `;
 
@@ -133,6 +136,7 @@ export const StyledSaveBtn = styled.button`
 
   &:hover {
     color: var(--color-silver);
+    cursor: pointer;
   }
 `;
 

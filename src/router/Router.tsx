@@ -10,6 +10,7 @@ import { AsyncBoundary } from '@gdg/components/common/AsyncBoundary';
 import { LoadingView } from '@gdg/components/common/View/LoadingView';
 
 import { TeamUpdateProvider } from '@gdg/provider/TeamUpdate';
+import { BlogPostProvider } from '@gdg/provider/TechBlog';
 import RouteChangeTracker from '@gdg/router/components/RouteChangeTracker';
 import StatusRoute from '@gdg/router/components/StatusRoute';
 
@@ -205,7 +206,11 @@ const routesConfig: AppRouteObject[] = [
   },
   {
     path: 'write',
-    element: <StatusRoute allowedStatuses={['CORE', 'MEMBER']} />,
+    element: (
+      <BlogPostProvider>
+        <StatusRoute allowedStatuses={['CORE', 'MEMBER']} />
+      </BlogPostProvider>
+    ),
     children: [
       {
         path: '',

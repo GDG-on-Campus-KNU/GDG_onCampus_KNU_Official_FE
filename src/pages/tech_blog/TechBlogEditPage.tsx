@@ -14,13 +14,12 @@ import {
 } from './components/MarkdownEditor.style';
 import MarkdownEditorDark from './components/MarkdownEditorDark';
 import MarkdownEditorLight from './components/MarkdownEditorLight';
-import { BlogPostContext } from './context/BlogPostContext';
 import useImageHandler from './hooks/useImageHandler';
-import { useInitRequest } from './hooks/useInitRequest';
+import { useBlogPost } from '@gdg/provider/TechBlog/index';
 import { Editor } from '@toast-ui/react-editor';
 
 const TechBlogEditPage = () => {
-  const context = useInitRequest();
+  const context = useBlogPost();
   const [mode, setMode] = useState(true);
   const titleRef = useRef<HTMLInputElement>(null);
   const editorRef = useRef<Editor>(null);
@@ -67,37 +66,32 @@ const TechBlogEditPage = () => {
   }, [setBlogPost]);
 
   return (
-    <BlogPostContext.Provider value={context}>
-      <Wrapper>
-        <Container>
-          <TitleContainer ref={titleRef} placeholder='제목을 입력해주세요' />
-          {mode && (
-            <MarkdownEditorDark
-              editorRef={editorRef}
-              handleImage={handleImage}
-            />
-          )}
-          {!mode && (
-            <MarkdownEditorLight
-              editorRef={editorRef}
-              handleImage={handleImage}
-            />
-          )}
-          <NavBarContainer>
-            <Box>
-              <StyledOutBtn>나가기</StyledOutBtn>
-              <StyledModeBtn onClick={handleMode}>
-                {mode ? '다크 모드' : '라이트 모드'}
-              </StyledModeBtn>
-            </Box>
-            <Box>
-              <StyledSaveBtn onClick={handleTempSave}>임시저장</StyledSaveBtn>
-              <StyledPostBtn onClick={handleSubmit}>출간하기</StyledPostBtn>
-            </Box>
-          </NavBarContainer>
-        </Container>
-      </Wrapper>
-    </BlogPostContext.Provider>
+    <Wrapper>
+      <Container>
+        <TitleContainer ref={titleRef} placeholder='제목을 입력해주세요' />
+        {mode && (
+          <MarkdownEditorDark editorRef={editorRef} handleImage={handleImage} />
+        )}
+        {!mode && (
+          <MarkdownEditorLight
+            editorRef={editorRef}
+            handleImage={handleImage}
+          />
+        )}
+        <NavBarContainer>
+          <Box>
+            <StyledOutBtn>나가기</StyledOutBtn>
+            <StyledModeBtn onClick={handleMode}>
+              {mode ? '다크 모드' : '라이트 모드'}
+            </StyledModeBtn>
+          </Box>
+          <Box>
+            <StyledSaveBtn onClick={handleTempSave}>임시저장</StyledSaveBtn>
+            <StyledPostBtn onClick={handleSubmit}>출간하기</StyledPostBtn>
+          </Box>
+        </NavBarContainer>
+      </Container>
+    </Wrapper>
   );
 };
 
