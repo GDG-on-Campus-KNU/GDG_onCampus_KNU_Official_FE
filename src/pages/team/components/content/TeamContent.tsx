@@ -1,7 +1,8 @@
-import { useState, lazy } from 'react';
+import { useState, lazy, useCallback } from 'react';
 import { useMediaQuery } from 'react-responsive';
 
 import LazyLoad from '@gdg/components/common/View/LazyLoad';
+import { Spacing } from '@gdg/components/common/layouts/spacing';
 
 import { TeamList } from '@gdg/apis/hooks/team/useGetTeamList';
 
@@ -41,7 +42,7 @@ const TeamContent = ({ data }: { data: TeamList[] }) => {
           }}
         />
       )}
-
+      {/* <Spacing height={1100} /> */}
       <LazyLoad
         component={TeamMember}
         props={{
@@ -49,7 +50,9 @@ const TeamContent = ({ data }: { data: TeamList[] }) => {
           selectedTeamName,
         }}
       />
+      {/* <Spacing height={1100} /> */}
       <LazyLoad component={TeamCalendar} props={{ selectedTeamName }} />
+      <Spacing height={1100} />
       <LazyLoad component={TeamBlogList} props={{ selectedTeamName }} />
     </TeamContainer>
   );

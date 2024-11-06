@@ -21,6 +21,7 @@ const TeamCalendar = ({ selectedTeamName }: { selectedTeamName: string }) => {
     right: '',
   });
   const [hoveredDate, setHoveredDate] = useState<string | null>(null);
+  console.log(2);
 
   useEffect(() => {
     const updateHeaderToolbar = () => {

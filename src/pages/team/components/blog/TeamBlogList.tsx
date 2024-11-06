@@ -1,13 +1,23 @@
+import { lazy } from 'react';
+
 import { Grid } from '@gdg/components/common/layouts/grid';
 import { Spacing } from '@gdg/components/common/layouts/spacing';
-import ThumbNailCard from '@gdg/components/feature/blog/ThumbNailCard';
 
+// import ThumbNailCard from '@gdg/components/feature/blog/ThumbNailCard';
 import MaskGroup from '@gdg/assets/thumbnail/Mask group.png';
 
 import { TeamName } from '../name';
 import styled from '@emotion/styled';
 
+const ThumbNailCard = lazy(
+  () => import('@gdg/components/feature/blog/ThumbNailCard')
+);
+
+// const Grid = lazy(() => import('@gdg/components/common/layouts/grid'));
+
 const TeamBlogList = ({ selectedTeamName }: { selectedTeamName: string }) => {
+  console.log(3);
+
   return (
     <>
       <Spacing
