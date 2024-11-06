@@ -3,7 +3,7 @@ import { createContext, useContext, useState } from 'react';
 export interface IBlogPost {
   title: string;
   content: string;
-  thumbnailUrl: string;
+  thumbnailUrl: string | null;
   category: 'BACKEND' | 'FRONTEND' | 'ANDROID' | 'AI' | 'DESIGN' | 'ETC';
   status: 'TEMPORAL' | 'SAVED';
 }
@@ -23,7 +23,7 @@ export const BlogPostProvider: React.FC<{ children: React.ReactNode }> = ({
   const [blogPost, setBlogPost] = useState<IBlogPost>({
     title: '',
     content: '',
-    thumbnailUrl: '',
+    thumbnailUrl: null,
     category: 'ETC',
     status: 'TEMPORAL',
   });

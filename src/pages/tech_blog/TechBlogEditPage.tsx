@@ -1,6 +1,8 @@
 import { useState, useRef, useCallback, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 
+import { usePostBlog } from '@gdg/apis/hooks/techblog/usePostBlog';
+
 import {
   Wrapper,
   Container,
@@ -24,6 +26,7 @@ const TechBlogEditPage = () => {
   const titleRef = useRef<HTMLInputElement>(null);
   const editorRef = useRef<Editor>(null);
   const { handleImage } = useImageHandler();
+  const { mutate } = usePostBlog();
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -34,7 +37,7 @@ const TechBlogEditPage = () => {
     setMode(!mode);
   };
 
-  const { setBlogPost } = context;
+  const { blogPost, setBlogPost } = context;
   const handleSubmit = useCallback(() => {
     if (!editorRef.current) return;
 
@@ -54,21 +57,39 @@ const TechBlogEditPage = () => {
     if (!editorRef.current) return;
 
     const markdown = editorRef.current.getInstance().getMarkdown();
+    const newTitle = titleRef.current?.value || blogPost.title;
+    const newContent = markdown || blogPost.content;
 
     setBlogPost((prev) => ({
       ...prev,
-      title: titleRef.current?.value || prev.title,
-      content: markdown || prev.content,
+      title: newTitle,
+      content: newContent,
       status: 'TEMPORAL',
     }));
 
-    alert('게시글이 성공적으로 저장되었습니다.');
-  }, [setBlogPost]);
+    mutate({
+      title: newTitle,
+      content: newContent,
+      status: 'TEMPORAL',
+      thumbnailUrl: null,
+      category: 'ETC',
+    });
+  }, [setBlogPost, mutate]);
+
+  useEffect(() => {
+    if (editorRef.current) {
+      editorRef.current.getInstance().setMarkdown(blogPost.content);
+    }
+  }, [blogPost.content]);
 
   return (
     <Wrapper>
       <Container>
-        <TitleContainer ref={titleRef} placeholder='제목을 입력해주세요' />
+        <TitleContainer
+          ref={titleRef}
+          placeholder='제목을 입력해주세요'
+          defaultValue={blogPost.title}
+        />
         {mode && (
           <MarkdownEditorDark editorRef={editorRef} handleImage={handleImage} />
         )}
@@ -76,6 +97,7 @@ const TechBlogEditPage = () => {
           <MarkdownEditorLight
             editorRef={editorRef}
             handleImage={handleImage}
+            initialContent={blogPost.content}
           />
         )}
         <NavBarContainer>

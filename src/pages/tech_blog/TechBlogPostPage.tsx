@@ -4,6 +4,7 @@ import Text from '@gdg/components/common/typography/Text';
 
 import uploadthumbnail from '@gdg/assets/thumbnail/uploadthumbnail.svg';
 
+import { usePostBlog } from '../../apis/hooks/techblog/usePostBlog';
 import { useBlogPost } from '../../provider/TechBlog/index';
 import {
   Wrapper,
@@ -22,25 +23,31 @@ import {
   StyledSaveBtn,
   StyledPostBtn,
 } from './components/MarkdownEditor.style';
+import useImageHandler from './hooks/useImageHandler';
 import styled from '@emotion/styled';
 
 const TechBlogPostPage = () => {
   const context = useBlogPost();
   const [thumbnail, setThumbnail] = useState(uploadthumbnail);
   const inputFileRef = useRef<HTMLInputElement>(null);
+  const { handleImage } = useImageHandler();
+  const { mutate } = usePostBlog();
 
-  const { blogPost } = context;
-  console.log(blogPost);
+  const { blogPost, setBlogPost } = context;
 
   const thumbnailUploadClick = () => {
     // 이미지 input으로 받아서
     // useImageUpload로 이미지 url 반환받고
     // 그걸 blogPost의 thumbnailUrl에 저장
-    alert('삭제');
+    setBlogPost((prev) => ({
+      ...prev,
+      thumbnailUrl: null,
+    }));
   };
 
   const thumbnailDeleteClick = () => {
     setThumbnail(uploadthumbnail);
+    alert('업로드한 썸네일 이미지가 삭제되었습니다.');
   };
 
   const handleImageUpload = (e: ChangeEvent<HTMLInputElement>) => {
@@ -50,11 +57,29 @@ const TechBlogPostPage = () => {
 
       reader.onloadend = () => {
         const result = reader.result as string;
+        handleImage(file, console.log);
         setThumbnail(result);
       };
 
       reader.readAsDataURL(file);
     }
+  };
+
+  const categoryCardClick = (
+    cate: 'BACKEND' | 'FRONTEND' | 'ANDROID' | 'AI' | 'DESIGN' | 'ETC'
+  ) => {
+    setBlogPost((prev) => ({
+      ...prev,
+      category: cate || prev.category,
+    }));
+  };
+
+  const goBack = () => {
+    window.history.back();
+  };
+
+  const postBlog = () => {
+    mutate(blogPost);
   };
 
   return (
@@ -66,7 +91,10 @@ const TechBlogPostPage = () => {
         <ThumbnailElement>
           <ThumbnailImage src={thumbnail} alt='please upload thumbnail.' />
           {thumbnail === uploadthumbnail && (
-            <ThumbnailUploadButton htmlFor='upload-input'>
+            <ThumbnailUploadButton
+              htmlFor='upload-input'
+              onClick={thumbnailUploadClick}
+            >
               썸네일 업로드
             </ThumbnailUploadButton>
           )}
@@ -91,13 +119,28 @@ const TechBlogPostPage = () => {
           카테고리 설정
         </Text>
         <CategoryElement>
-          {categories.map((category, index) => (
-            <CategoryCard key={index + 1}>{category.kor}</CategoryCard>
+          {categories.map((category) => (
+            <CategoryCard
+              key={category.eng}
+              onClick={() =>
+                categoryCardClick(
+                  category.eng as
+                    | 'BACKEND'
+                    | 'FRONTEND'
+                    | 'ANDROID'
+                    | 'AI'
+                    | 'DESIGN'
+                    | 'ETC'
+                )
+              }
+            >
+              {category.kor}
+            </CategoryCard>
           ))}
         </CategoryElement>
         <ButtonContainer>
-          <StyledPostBtn>출간하기</StyledPostBtn>
-          <StyledSaveBtn>취소하기</StyledSaveBtn>
+          <StyledPostBtn onClick={postBlog}>출간하기</StyledPostBtn>
+          <StyledSaveBtn onClick={goBack}>취소하기</StyledSaveBtn>
         </ButtonContainer>
       </CategoryContainer>
     </Wrapper>
