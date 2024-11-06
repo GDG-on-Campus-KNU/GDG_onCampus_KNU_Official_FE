@@ -10,7 +10,10 @@
   }
 }
 
-.fc-theme-standard td,
+.fc-theme-standard td {
+  border: none;
+}
+
 .fc-theme-standard .fc-scrollgrid,
 .fc-theme-standard th {
   border: none;
