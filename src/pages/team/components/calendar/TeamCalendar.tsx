@@ -2,11 +2,14 @@ import { useEffect, useState } from 'react';
 
 import { Spacing } from '@gdg/components/common/layouts/spacing';
 
-import { TeamName } from '../name';
+import {
+  TeamName,
+  DateCell,
+  EventContent,
+  GDGoC_KNU_SCHEDULE,
+} from '@gdg/pages/team/components';
+
 import './Calendar.style.css';
-import DateContent from './DateContent';
-import EventContent from './EventContent';
-import { GDGoC_KNU_SCHEDULE } from './Schedule';
 import dayGridPlugin from '@fullcalendar/daygrid';
 import interactionPlugin from '@fullcalendar/interaction';
 import FullCalendar from '@fullcalendar/react';
@@ -17,12 +20,8 @@ const TeamCalendar = ({ selectedTeamName }: { selectedTeamName: string }) => {
     center: '',
     right: '',
   });
+  const [hoveredDate, setHoveredDate] = useState<string | null>(null);
 
-  const handleDateClick = (arg: { dateStr: string }) => {
-    alert(arg.dateStr);
-  };
-
-  // 윈도우 크기 변경을 감지하여 headerToolbar 위치 조정
   useEffect(() => {
     const updateHeaderToolbar = () => {
       if (window.innerWidth <= 500) {
@@ -41,9 +40,7 @@ const TeamCalendar = ({ selectedTeamName }: { selectedTeamName: string }) => {
     };
 
     updateHeaderToolbar();
-
     window.addEventListener('resize', updateHeaderToolbar);
-
     return () => window.removeEventListener('resize', updateHeaderToolbar);
   }, []);
 
@@ -64,6 +61,10 @@ const TeamCalendar = ({ selectedTeamName }: { selectedTeamName: string }) => {
     return <EventContent title={arg.event.title} time={eventTime} />;
   };
 
+  const handleAddEvent = (date: Date) => {
+    alert(`Add event for: ${date}`);
+  };
+
   return (
     <>
       <Spacing
@@ -77,7 +78,6 @@ const TeamCalendar = ({ selectedTeamName }: { selectedTeamName: string }) => {
         selectedTeamName={`${selectedTeamName} Calendar`}
         description='팀원들과 함께하는 일정을 확인해보세요. 함께하는 즐거움을 느껴보시길 바랍니다!'
       />
-
       <Spacing
         height={{
           lg: 50,
@@ -90,10 +90,25 @@ const TeamCalendar = ({ selectedTeamName }: { selectedTeamName: string }) => {
         headerToolbar={headerToolbar}
         editable={true}
         selectable={true}
-        dateClick={handleDateClick}
+        navLinkHint={'클릭시 해당 날짜로 이동합니다.'}
         initialView='dayGridMonth'
         events={GDGoC_KNU_SCHEDULE}
-        dayCellContent={DateContent}
+        dayCellContent={(props) => (
+          <DateCell
+            date={props.date}
+            hoveredDate={hoveredDate}
+            onAddEvent={handleAddEvent}
+          />
+        )}
+        dayCellDidMount={(arg) => {
+          const cell = arg.el;
+          cell.addEventListener('mouseenter', () => {
+            setHoveredDate(arg.date.toISOString());
+          });
+          cell.addEventListener('mouseleave', () => {
+            setHoveredDate(null);
+          });
+        }}
         locale={'ko'}
         eventContent={handleEventContent}
         eventTimeFormat={{
