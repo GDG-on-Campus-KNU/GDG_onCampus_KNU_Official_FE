@@ -141,15 +141,7 @@ const routesConfig: AppRouteObject[] = [
         children: [
           {
             path: '',
-            element: (
-              <StatusRoute allowedStatuses={['CORE', 'MEMBER', 'GUEST']} />
-            ),
-            children: [
-              {
-                path: '',
-                element: <TechBlogPage />,
-              },
-            ],
+            element: <TechBlogPage />,
           },
         ],
       },
