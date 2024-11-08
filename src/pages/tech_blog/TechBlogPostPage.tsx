@@ -37,16 +37,6 @@ const TechBlogPostPage = () => {
 
   const { blogPost, setBlogPost } = context;
 
-  const thumbnailUploadClick = () => {
-    // 이미지 input으로 받아서
-    // useImageUpload로 이미지 url 반환받고
-    // 그걸 blogPost의 thumbnailUrl에 저장
-    setBlogPost((prev) => ({
-      ...prev,
-      thumbnailUrl: null,
-    }));
-  };
-
   const thumbnailDeleteClick = () => {
     setThumbnail(uploadthumbnail);
     alert('업로드한 썸네일 이미지가 삭제되었습니다.');
@@ -59,7 +49,13 @@ const TechBlogPostPage = () => {
 
       reader.onloadend = () => {
         const result = reader.result as string;
-        handleImage(file, console.log);
+        handleImage(file, (imageUrl: string) => {
+          setBlogPost((prev) => ({
+            ...prev,
+            thumbnailUrl: imageUrl,
+          }));
+        });
+
         setThumbnail(result);
       };
 
@@ -93,10 +89,7 @@ const TechBlogPostPage = () => {
         <ThumbnailElement>
           <ThumbnailImage src={thumbnail} alt='please upload thumbnail.' />
           {thumbnail === uploadthumbnail && (
-            <ThumbnailUploadButton
-              htmlFor='upload-input'
-              onClick={thumbnailUploadClick}
-            >
+            <ThumbnailUploadButton htmlFor='upload-input'>
               썸네일 업로드
             </ThumbnailUploadButton>
           )}

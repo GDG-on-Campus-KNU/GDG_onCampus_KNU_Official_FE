@@ -7,7 +7,6 @@ import { useMutation, UseMutationResult } from '@tanstack/react-query';
 const postBlogPath = () => '/api/post';
 
 const postBlog = async (data: blogPostInterface): Promise<void> => {
-  console.log(data);
   const response = await fetchInstance.post(postBlogPath(), data);
 
   return response.data;
