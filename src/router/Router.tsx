@@ -9,8 +9,9 @@ import {
 import { AsyncBoundary } from '@gdg/components/common/AsyncBoundary';
 import { LoadingView } from '@gdg/components/common/View/LoadingView';
 
+import { BlogPostProvider } from '@gdg/pages/tech_blog/context/index';
+
 import { TeamUpdateProvider } from '@gdg/provider/TeamUpdate';
-import { BlogPostProvider } from '@gdg/provider/TechBlog';
 import RouteChangeTracker from '@gdg/router/components/RouteChangeTracker';
 import StatusRoute from '@gdg/router/components/StatusRoute';
 

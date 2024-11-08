@@ -1,8 +1,6 @@
 import { useState, useRef, useCallback, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 
-import { usePostBlog } from '@gdg/apis/hooks/techblog/usePostBlog';
-
 import {
   Wrapper,
   Container,
@@ -13,11 +11,14 @@ import {
   StyledPostBtn,
   StyledSaveBtn,
   Box,
-} from './components/MarkdownEditor.style';
-import MarkdownEditorDark from './components/MarkdownEditorDark';
-import MarkdownEditorLight from './components/MarkdownEditorLight';
-import useImageHandler from './hooks/useImageHandler';
-import { useBlogPost } from '@gdg/provider/TechBlog/index';
+} from '@gdg/pages/tech_blog/Components/MarkdownEditor.style';
+import MarkdownEditorDark from '@gdg/pages/tech_blog/Components/MarkdownEditorDark';
+import MarkdownEditorLight from '@gdg/pages/tech_blog/Components/MarkdownEditorLight';
+import { useBlogPost } from '@gdg/pages/tech_blog/context/index';
+import useImageHandler from '@gdg/pages/tech_blog/hooks/useImageHandler';
+
+import { usePostBlog } from '@gdg/apis/hooks/techblog/usePostBlog';
+
 import { Editor } from '@toast-ui/react-editor';
 
 const TechBlogEditPage = () => {

@@ -2,10 +2,10 @@ import { useState, useRef, ChangeEvent } from 'react';
 
 import Text from '@gdg/components/common/typography/Text';
 
-import uploadthumbnail from '@gdg/assets/thumbnail/uploadthumbnail.svg';
-
-import { usePostBlog } from '../../apis/hooks/techblog/usePostBlog';
-import { useBlogPost } from '../../provider/TechBlog/index';
+import {
+  StyledSaveBtn,
+  StyledPostBtn,
+} from '@gdg/pages/tech_blog/Components/MarkdownEditor.style';
 import {
   Wrapper,
   ThumbnailContainer,
@@ -18,12 +18,14 @@ import {
   ThumbnailImage,
   ThumbnailButtonContainer,
   ThumbnailButton,
-} from './TechBlogPostPage.style';
-import {
-  StyledSaveBtn,
-  StyledPostBtn,
-} from './components/MarkdownEditor.style';
-import useImageHandler from './hooks/useImageHandler';
+} from '@gdg/pages/tech_blog/TechBlogPostPage.style';
+import { useBlogPost } from '@gdg/pages/tech_blog/context/index';
+import useImageHandler from '@gdg/pages/tech_blog/hooks/useImageHandler';
+
+import uploadthumbnail from '@gdg/assets/thumbnail/uploadthumbnail.svg';
+
+import { usePostBlog } from '@gdg/apis/hooks/techblog/usePostBlog';
+
 import styled from '@emotion/styled';
 
 const TechBlogPostPage = () => {
