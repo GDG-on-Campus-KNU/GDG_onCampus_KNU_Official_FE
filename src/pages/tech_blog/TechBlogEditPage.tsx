@@ -23,6 +23,7 @@ import { Editor } from '@toast-ui/react-editor';
 
 const TechBlogEditPage = () => {
   const context = useBlogPost();
+  const { blogPost, setBlogPost } = context;
   const [mode, setMode] = useState(true);
   const titleRef = useRef<HTMLInputElement>(null);
   const editorRef = useRef<Editor>(null);
@@ -35,10 +36,22 @@ const TechBlogEditPage = () => {
   }, []);
 
   const handleMode = () => {
-    setMode(!mode);
+    if (editorRef.current) {
+      const markdown = editorRef.current.getInstance().getMarkdown();
+      setBlogPost((prev) => ({
+        ...prev,
+        content: markdown,
+      }));
+    }
+    setMode((prevMode) => !prevMode);
   };
 
-  const { blogPost, setBlogPost } = context;
+  useEffect(() => {
+    if (editorRef.current) {
+      editorRef.current.getInstance().setMarkdown(blogPost.content);
+    }
+  }, [blogPost.content]);
+
   const handleSubmit = useCallback(() => {
     if (!editorRef.current) return;
 
@@ -77,12 +90,6 @@ const TechBlogEditPage = () => {
     });
   }, [setBlogPost, mutate]);
 
-  useEffect(() => {
-    if (editorRef.current) {
-      editorRef.current.getInstance().setMarkdown(blogPost.content);
-    }
-  }, [blogPost.content]);
-
   return (
     <Wrapper>
       <Container>
@@ -92,7 +99,11 @@ const TechBlogEditPage = () => {
           defaultValue={blogPost.title}
         />
         {mode && (
-          <MarkdownEditorDark editorRef={editorRef} handleImage={handleImage} />
+          <MarkdownEditorDark
+            editorRef={editorRef}
+            handleImage={handleImage}
+            initialContent={blogPost.content}
+          />
         )}
         {!mode && (
           <MarkdownEditorLight
