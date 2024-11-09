@@ -11,7 +11,7 @@ export const TitleWrapper = styled.h1`
 
 export const SubtitleTextContainer = styled.div`
   display: flex;
-  align-items: flex-end;
+  align-items: center;
   gap: 5px;
 `;
 

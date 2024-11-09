@@ -70,5 +70,13 @@ export interface User {
   status: 'TEMP' | 'CORE' | 'MEMBER' | 'GUEST';
 }
 
+export interface blogPostInterface {
+  title: string;
+  content: string;
+  thumbnailUrl: string | null;
+  category: 'BACKEND' | 'FRONTEND' | 'ANDROID' | 'AI' | 'DESIGN' | 'ETC';
+  status: 'TEMPORAL' | 'SAVED';
+}
+
 export type AuthenticatedUser = User;
 export type UnauthenticatedUser = 'TEMP';
