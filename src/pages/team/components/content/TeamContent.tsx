@@ -52,7 +52,7 @@ const TeamContent = ({ data }: { data: TeamList[] }) => {
       {/* <Spacing height={1100} /> */}
       <LazyLoad component={TeamCalendar} props={{ selectedTeamName }} />
       {/* <Spacing height={1100} /> */}
-      <LazyLoad component={TeamBlogList} props={{ selectedTeamName }} />
+      {/* <LazyLoad component={TeamBlogList} props={{ selectedTeamName }} /> */}
     </TeamContainer>
   );
 };

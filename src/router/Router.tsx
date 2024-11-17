@@ -197,24 +197,24 @@ const routesConfig: AppRouteObject[] = [
     path: 'signup',
     element: <SignupPage />,
   },
-  {
-    path: 'write',
-    element: (
-      <BlogPostProvider>
-        <StatusRoute allowedStatuses={['CORE', 'MEMBER']} />
-      </BlogPostProvider>
-    ),
-    children: [
-      {
-        path: '',
-        element: <TechBlogEditPage />,
-      },
-      {
-        path: 'post',
-        element: <TechBlogPostPage />,
-      },
-    ],
-  },
+  // {
+  //   path: 'write',
+  //   element: (
+  //     <BlogPostProvider>
+  //       <StatusRoute allowedStatuses={['CORE', 'MEMBER']} />
+  //     </BlogPostProvider>
+  //   ),
+  //   children: [
+  //     {
+  //       path: '',
+  //       element: <TechBlogEditPage />,
+  //     },
+  //     {
+  //       path: 'post',
+  //       element: <TechBlogPostPage />,
+  //     },
+  //   ],
+  // },
 ];
 
 const createRoutesWithAsyncBoundary = (
