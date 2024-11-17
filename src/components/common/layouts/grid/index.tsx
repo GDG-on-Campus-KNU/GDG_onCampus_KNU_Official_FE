@@ -12,7 +12,7 @@ type Props = {
   padding: number | ResponseGridStyle;
 } & React.HTMLAttributes<HTMLDivElement>;
 
-export const Grid: React.FC<Props> = ({
+const Grid: React.FC<Props> = ({
   children,
   columns,
   padding,
@@ -25,6 +25,8 @@ export const Grid: React.FC<Props> = ({
     </Wrapper>
   );
 };
+
+export default Grid;
 
 const Wrapper = styled.div<Pick<Props, 'columns' | 'gap' | 'padding'>>(
   {

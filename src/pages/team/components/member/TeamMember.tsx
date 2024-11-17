@@ -6,7 +6,7 @@ import gdgknu from '@gdg/assets/gdgknu.png';
 
 import { useGetTeamMate } from '@gdg/apis/hooks/team/useGetTeamMate';
 
-import TeamName from './TeamName';
+import TeamName from '../name/TeamName';
 import styled from '@emotion/styled';
 
 const TeamMember = ({
@@ -17,6 +17,7 @@ const TeamMember = ({
   selectedTeamName: string;
 }) => {
   const { data } = useGetTeamMate(selectedTeamId);
+  console.log(1);
 
   return (
     <>

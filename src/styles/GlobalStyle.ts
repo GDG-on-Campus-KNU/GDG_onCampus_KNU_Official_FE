@@ -49,6 +49,7 @@ const colorLavendarGray = '#b9b7c0';
 const colorAquaBlue = '#00a3ff';
 const colorOceanBlue = '#008ddd';
 const colorTransParent = 'rgba(255, 255, 255, 0.8)';
+const colorBhTransparent = 'rgba(255, 255, 255, 0.3)';
 const colorMoreTransParent = 'rgba(255, 255, 255, 0.15)';
 const colorGradient = 'linear-gradient(to top, #1f1632 0%, #392f4f 100%)';
 
@@ -116,6 +117,7 @@ export const GlobalStyle = css`
     --color-grayish: ${colorGrayishPurple};
     --color-smoky: ${colorSmokyGray};
     --color-lavendar: ${colorLavendarGray};
+    --color-bh-transparent: ${colorBhTransparent};
     --color-more-transparent: ${colorMoreTransParent};
     --color-aqua: ${colorAquaBlue};
     --color-ocean: ${colorOceanBlue};

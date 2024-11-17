@@ -1,14 +1,32 @@
-import { Grid } from '@gdg/components/common/layouts/grid';
-import ThumbNailCard from '@gdg/components/feature/blog/ThumbNailCard';
+import { lazy } from 'react';
 
+// import Grid from '@gdg/components/common/layouts/grid';
+import { Spacing } from '@gdg/components/common/layouts/spacing';
+
+// import ThumbNailCard from '@gdg/components/feature/blog/ThumbNailCard';
 import MaskGroup from '@gdg/assets/thumbnail/Mask group.png';
 
-import TeamName from './TeamName';
+import { TeamName } from '../name';
 import styled from '@emotion/styled';
 
+const ThumbNailCard = lazy(
+  () => import('@gdg/components/feature/blog/ThumbNailCard')
+);
+
+const Grid = lazy(() => import('@gdg/components/common/layouts/grid'));
+
 const TeamBlogList = ({ selectedTeamName }: { selectedTeamName: string }) => {
+  console.log(3);
+
   return (
     <>
+      <Spacing
+        height={{
+          lg: 152,
+          md: 150,
+          sm: 70,
+        }}
+      />
       <TeamName
         selectedTeamName={`${selectedTeamName} 테크블로그`}
         description='팀원들이 작성한 다양한 글을 통해 새로운 인사이트를 얻어보세요. 함께 성장하는 즐거움을 느껴보시길 바랍니다!'

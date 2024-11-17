@@ -11,6 +11,7 @@ const SpinnerWrapper = styled.div`
   height: calc(100vh - 45px);
   display: flex;
   justify-content: center;
+  align-items: center;
   padding: 80px 16px;
 
   @media (min-width: 500px) {
