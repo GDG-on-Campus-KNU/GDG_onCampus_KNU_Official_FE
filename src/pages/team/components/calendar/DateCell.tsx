@@ -12,7 +12,7 @@ const DateCell = ({ date, hoveredDate, onAddEvent }: DateContentProps) => {
   return (
     <DateCellContainer>
       <DateNumber date={date} />
-      {hoveredDate === date.toISOString() && (
+      {/* {hoveredDate === date.toISOString() && (
         <AddButton
           onClick={(e) => {
             e.preventDefault();
@@ -22,7 +22,7 @@ const DateCell = ({ date, hoveredDate, onAddEvent }: DateContentProps) => {
         >
           +
         </AddButton>
-      )}
+      )} */}
     </DateCellContainer>
   );
 };
