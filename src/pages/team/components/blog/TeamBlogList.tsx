@@ -1,6 +1,6 @@
 import { lazy } from 'react';
 
-import { Grid } from '@gdg/components/common/layouts/grid';
+// import Grid from '@gdg/components/common/layouts/grid';
 import { Spacing } from '@gdg/components/common/layouts/spacing';
 
 // import ThumbNailCard from '@gdg/components/feature/blog/ThumbNailCard';
@@ -13,7 +13,7 @@ const ThumbNailCard = lazy(
   () => import('@gdg/components/feature/blog/ThumbNailCard')
 );
 
-// const Grid = lazy(() => import('@gdg/components/common/layouts/grid'));
+const Grid = lazy(() => import('@gdg/components/common/layouts/grid'));
 
 const TeamBlogList = ({ selectedTeamName }: { selectedTeamName: string }) => {
   console.log(3);
