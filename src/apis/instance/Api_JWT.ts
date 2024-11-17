@@ -23,8 +23,10 @@ export const createInstanceJWT = (
     (config: InternalAxiosRequestConfig) => {
       const accessToken = sessionStorage.getItem('accessToken');
       if (accessToken !== undefined) {
-        config.headers['Content-Type'] = 'application/json';
         config.headers.Authorization = `Bearer ${accessToken}`;
+        if (!(config.data instanceof FormData)) {
+          config.headers['Content-Type'] = 'application/json';
+        }
       }
       return config;
     },
