@@ -118,3 +118,9 @@
   text-align: center;
   align-items: center;
 }
+
+.fc-h-event {
+  display: block;
+  background-color: transparent;
+  border: 0px;
+}
