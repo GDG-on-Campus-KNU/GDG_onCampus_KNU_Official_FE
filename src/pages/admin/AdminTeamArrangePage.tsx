@@ -1,6 +1,7 @@
 import styled from '@emotion/styled';
-import { DisplayLayout } from '@gdg/styles/LayoutStyle';
 import { lazy } from 'react';
+
+import { DisplayLayout } from '@gdg/styles/LayoutStyle';
 
 const CreateTeamToken = lazy(
   () => import('@gdg/pages/admin/components/team/CreateTeamToken')

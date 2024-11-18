@@ -1,11 +1,12 @@
 import styled from '@emotion/styled';
+import { motion, AnimatePresence } from 'framer-motion';
+import { NavLink } from 'react-router-dom';
+
 import Home from '@gdg/assets/Home.svg';
 import NavSlideClose from '@gdg/assets/NavSlideClose.svg';
 import Text from '@gdg/components/common/typography/Text';
 import { useNavigationStore } from '@gdg/store/useNavigationStore';
 import { displayCenter } from '@gdg/styles/LayoutStyle';
-import { motion, AnimatePresence } from 'framer-motion';
-import { NavLink } from 'react-router-dom';
 
 const StyledImg = styled.img`
   width: auto;

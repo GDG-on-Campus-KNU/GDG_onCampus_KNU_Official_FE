@@ -1,4 +1,7 @@
 import styled from '@emotion/styled';
+import dayjs from 'dayjs';
+import { useEffect, useState } from 'react';
+
 import InnerCircle from '@gdg/components/feature/background/InnerCircle';
 import CrossShape from '@gdg/components/feature/star/Cross';
 import Star from '@gdg/components/feature/star/Star';
@@ -6,8 +9,6 @@ import ApplyNav from '@gdg/pages/apply/components/ApplyNav';
 import ApplyNavEnd from '@gdg/pages/apply/components/ApplyNavEnd';
 import { ApplyMetaData } from '@gdg/router/components/MetaData';
 import { DisplayLayout } from '@gdg/styles/LayoutStyle';
-import dayjs from 'dayjs';
-import { useEffect, useState } from 'react';
 
 const ApplyLayout = styled(DisplayLayout)`
   height: 100%;

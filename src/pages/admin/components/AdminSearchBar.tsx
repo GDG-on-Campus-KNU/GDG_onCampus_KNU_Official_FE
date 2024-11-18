@@ -1,5 +1,6 @@
-import SearchIcon from '@gdg/assets/SearchIcon.svg';
 import { useState, useRef, useEffect, forwardRef } from 'react';
+
+import SearchIcon from '@gdg/assets/SearchIcon.svg';
 
 import {
   SearchBarContainer,

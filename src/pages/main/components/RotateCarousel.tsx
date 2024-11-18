@@ -1,6 +1,7 @@
-import { useCarouselStore } from '@gdg/store/useCarouselStore';
 import { lazy } from 'react';
 import { useMediaQuery } from 'react-responsive';
+
+import { useCarouselStore } from '@gdg/store/useCarouselStore';
 
 const MemoizedRotateCarousel = lazy(() => import('./PCRotateCarousel'));
 const MemoizedTabletRotateCarousel = lazy(

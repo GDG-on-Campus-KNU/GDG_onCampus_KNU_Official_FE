@@ -1,4 +1,5 @@
 import styled from '@emotion/styled';
+
 import { breakpoints } from '@gdg/styles/variants';
 
 type ResponseGridStyle = {

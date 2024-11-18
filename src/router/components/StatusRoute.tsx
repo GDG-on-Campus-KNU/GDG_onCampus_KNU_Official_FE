@@ -1,8 +1,9 @@
+import { useEffect } from 'react';
+import { Navigate, Outlet } from 'react-router-dom';
+
 import { useGetMyData } from '@gdg/apis/hooks/mypage/useGetMyData';
 import { LoadingView } from '@gdg/components/common/View/LoadingView';
 import useUserStatusStore from '@gdg/store/useUserStatusStore';
-import { useEffect } from 'react';
-import { Navigate, Outlet } from 'react-router-dom';
 
 interface PrivateRouteProps {
   allowedStatuses: ('TEMP' | 'CORE' | 'MEMBER' | 'GUEST')[];

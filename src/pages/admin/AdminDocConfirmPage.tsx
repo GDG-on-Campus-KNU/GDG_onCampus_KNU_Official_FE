@@ -1,7 +1,8 @@
+import { useState, lazy } from 'react';
+
 import { useGetStatistic } from '@gdg/apis/hooks/admin/docs/useGetStatistic';
 import { useGetTrack } from '@gdg/apis/hooks/admin/docs/useGetTrack';
 import { DisplayLayout } from '@gdg/styles/LayoutStyle';
-import { useState, lazy } from 'react';
 
 import { PassBtn, ButtonBox, InfoBox } from './AdminDocConfirmPage.style';
 

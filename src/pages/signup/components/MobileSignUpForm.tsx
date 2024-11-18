@@ -1,11 +1,12 @@
-import SignupInput from '@gdg/components/common/form/SignupInput';
-import { InputWrapper } from '@gdg/pages/apply/components/ApplyForm.style';
-import { Error, InputLine } from '@gdg/styles/SignUpForm.style';
-import { SignUpSchema, SignUpSchemaType } from '@gdg/utils/SignUpSchema.util';
 import { ErrorMessage } from '@hookform/error-message';
 import { zodResolver } from '@hookform/resolvers/zod';
 import * as React from 'react';
 import { useForm } from 'react-hook-form';
+
+import SignupInput from '@gdg/components/common/form/SignupInput';
+import { InputWrapper } from '@gdg/pages/apply/components/ApplyForm.style';
+import { Error, InputLine } from '@gdg/styles/SignUpForm.style';
+import { SignUpSchema, SignUpSchemaType } from '@gdg/utils/SignUpSchema.util';
 
 const MobileSignUpForm = () => {
   const {

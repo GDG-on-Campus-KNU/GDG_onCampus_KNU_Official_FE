@@ -1,5 +1,6 @@
-import { fetchInstance } from '@gdg/apis/instance/Api_JWT';
 import { useMutation } from '@tanstack/react-query';
+
+import { fetchInstance } from '@gdg/apis/instance/Api_JWT';
 
 type imageResponse = {
   imageUrl: string;

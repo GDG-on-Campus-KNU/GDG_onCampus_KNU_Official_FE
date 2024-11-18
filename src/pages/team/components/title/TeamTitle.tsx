@@ -1,4 +1,6 @@
 import styled from '@emotion/styled';
+import { lazy } from 'react';
+
 import type { TeamList } from '@gdg/apis/hooks/team/useGetTeamList';
 import {
   TitleLayout,
@@ -7,7 +9,6 @@ import {
   Explain,
   SubLayout,
 } from '@gdg/styles/ApplyStyle';
-import { lazy } from 'react';
 
 const DropDown = lazy(() => import('@gdg/components/common/dropdown'));
 

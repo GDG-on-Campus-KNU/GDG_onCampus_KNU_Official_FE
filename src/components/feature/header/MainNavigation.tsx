@@ -1,4 +1,9 @@
 import styled from '@emotion/styled';
+import { motion } from 'framer-motion';
+import { useEffect } from 'react';
+import { useMediaQuery } from 'react-responsive';
+import { Link, useNavigate } from 'react-router-dom';
+
 import { useGetMyData } from '@gdg/apis/hooks/mypage/useGetMyData';
 import HdDropDown from '@gdg/assets/HdDropDown.svg';
 import HdDropUp from '@gdg/assets/HdDropUp.svg';
@@ -9,10 +14,6 @@ import Text from '@gdg/components/common/typography/Text';
 import { useHeaderDropDownState } from '@gdg/store/useHeaderDropDownStore';
 import useUserStatusStore from '@gdg/store/useUserStatusStore';
 import { displayCenter } from '@gdg/styles/LayoutStyle';
-import { motion } from 'framer-motion';
-import { useEffect } from 'react';
-import { useMediaQuery } from 'react-responsive';
-import { Link, useNavigate } from 'react-router-dom';
 
 import { renderDropdownItems } from './StatusDropDownItems';
 

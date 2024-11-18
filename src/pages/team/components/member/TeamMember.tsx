@@ -1,8 +1,9 @@
 import styled from '@emotion/styled';
+import { memo } from 'react';
+
 import { useGetTeamMate } from '@gdg/apis/hooks/team/useGetTeamMate';
 import gdgknu from '@gdg/assets/gdgknu.png';
 import Text from '@gdg/components/common/typography/Text';
-import { memo } from 'react';
 
 import TeamName from '../name/TeamName';
 
@@ -14,7 +15,7 @@ const TeamMember = ({
   selectedTeamName: string;
 }) => {
   const { data } = useGetTeamMate(selectedTeamId);
-  console.log(1);
+  // console.log(1);
 
   return (
     <>

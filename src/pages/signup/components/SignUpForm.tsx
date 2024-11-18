@@ -1,4 +1,9 @@
 import styled from '@emotion/styled';
+import { ErrorMessage } from '@hookform/error-message';
+import { zodResolver } from '@hookform/resolvers/zod';
+import { useForm } from 'react-hook-form';
+import { useMediaQuery } from 'react-responsive';
+
 import { SignupQuery } from '@gdg/apis/hooks/signup/SignupQuery';
 import CommonBtn from '@gdg/components/common/button/CommonBtn';
 import SignupInput from '@gdg/components/common/form/SignupInput';
@@ -8,10 +13,6 @@ import { AuthBox } from '@gdg/styles/AuthModalStyle';
 import { Error, InputLine } from '@gdg/styles/SignUpForm.style';
 import { signUpUserInterface } from '@gdg/types/UserInterface';
 import { SignUpSchema, SignUpSchemaType } from '@gdg/utils/SignUpSchema.util';
-import { ErrorMessage } from '@hookform/error-message';
-import { zodResolver } from '@hookform/resolvers/zod';
-import { useForm } from 'react-hook-form';
-import { useMediaQuery } from 'react-responsive';
 
 const SignFormWrapper = styled.form`
   display: flex;
@@ -54,7 +55,7 @@ const SignUpForm = () => {
       mutate(data);
       // console.log(data);
     }
-    console.log(data);
+    // console.log(data);
   };
 
   return (

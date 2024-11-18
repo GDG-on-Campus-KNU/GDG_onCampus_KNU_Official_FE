@@ -1,9 +1,10 @@
 import styled from '@emotion/styled';
+import { Link } from 'react-router-dom';
+
 import Home from '@gdg/assets/GDSCLogo.svg';
 import CommonBtn from '@gdg/components/common/button/CommonBtn';
 import Text from '@gdg/components/common/typography/Text';
 import { displayCenter } from '@gdg/styles/LayoutStyle';
-import { Link } from 'react-router-dom';
 
 const ErrorMessageWrapper = styled.div`
   ${displayCenter}

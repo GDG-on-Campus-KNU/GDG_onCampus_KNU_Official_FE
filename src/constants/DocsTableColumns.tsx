@@ -1,7 +1,8 @@
+import { createColumnHelper } from '@tanstack/react-table';
+
 import CheckIcon from '@gdg/assets/admin/Check.svg';
 import star from '@gdg/assets/admin/miniStar.svg';
 import { MemberData } from '@gdg/types/AdminInterface';
-import { createColumnHelper } from '@tanstack/react-table';
 
 const columnHelper = createColumnHelper<MemberData>();
 

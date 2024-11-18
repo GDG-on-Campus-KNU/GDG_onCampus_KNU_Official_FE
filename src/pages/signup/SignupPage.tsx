@@ -1,8 +1,9 @@
+import { useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
+
 import { useGetMyData } from '@gdg/apis/hooks/mypage/useGetMyData';
 import SignUpForm from '@gdg/pages/signup/components/SignUpForm';
 import { AuthWrapper } from '@gdg/styles/AuthModalStyle';
-import { useEffect } from 'react';
-import { useNavigate } from 'react-router-dom';
 
 const SignupPage = () => {
   const { data: MyData } = useGetMyData();

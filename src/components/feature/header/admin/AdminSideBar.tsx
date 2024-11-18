@@ -1,6 +1,7 @@
+import { NavLink } from 'react-router-dom';
+
 import Text from '@gdg/components/common/typography/Text';
 import { useNavigationStore } from '@gdg/store/useNavigationStore';
-import { NavLink } from 'react-router-dom';
 
 import {
   NavMenu,

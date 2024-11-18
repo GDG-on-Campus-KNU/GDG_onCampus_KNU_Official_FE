@@ -1,8 +1,9 @@
 import styled from '@emotion/styled';
-import { displayCenter } from '@gdg/styles/LayoutStyle';
 import { lazy } from 'react';
 import { useMediaQuery } from 'react-responsive';
 import { Outlet } from 'react-router-dom';
+
+import { displayCenter } from '@gdg/styles/LayoutStyle';
 
 const MainNavigation = lazy(
   () => import('@gdg/components/feature/header/MainNavigation')

@@ -1,6 +1,7 @@
 import styled from '@emotion/styled';
-import Text from '@gdg/components/common/typography/Text';
 import { memo } from 'react';
+
+import Text from '@gdg/components/common/typography/Text';
 
 import RatioImg from './RatioImg';
 

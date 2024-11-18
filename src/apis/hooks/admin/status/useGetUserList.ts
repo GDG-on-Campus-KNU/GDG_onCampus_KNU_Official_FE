@@ -1,5 +1,6 @@
-import { fetchInstance } from '@gdg/apis/instance/Api_JWT';
 import { useQuery, UseQueryResult } from '@tanstack/react-query';
+
+import { fetchInstance } from '@gdg/apis/instance/Api_JWT';
 
 export type PersonData = {
   id: number;

@@ -1,7 +1,8 @@
+import { useNavigate } from 'react-router-dom';
+
 import ErrorImg from '@gdg/assets/admin/error.png';
 import CompleteBtn from '@gdg/components/common/button/CompleteBtn';
 import { LazyLoadImg } from '@gdg/components/common/img/LazyLoadingImg';
-import { useNavigate } from 'react-router-dom';
 
 import {
   MobileTitleWrapper,

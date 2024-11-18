@@ -1,4 +1,5 @@
 import styled from '@emotion/styled';
+
 import SigninLogo from '@gdg/assets/SigninLogo.svg';
 import Text from '@gdg/components/common/typography/Text';
 

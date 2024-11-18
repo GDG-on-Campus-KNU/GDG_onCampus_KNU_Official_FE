@@ -1,4 +1,5 @@
 import styled from '@emotion/styled';
+
 import Star from '@gdg/components/feature/star/Star';
 import ApplyEx from '@gdg/pages/apply/components/ApplyEx';
 import { ApplyExMetaData } from '@gdg/router/components/MetaData';

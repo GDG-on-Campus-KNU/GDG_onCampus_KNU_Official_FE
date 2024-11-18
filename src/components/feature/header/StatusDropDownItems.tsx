@@ -1,8 +1,9 @@
 import styled from '@emotion/styled';
-import Text from '@gdg/components/common/typography/Text';
-import { userDataInterface } from '@gdg/types/UserInterface';
 import * as React from 'react';
 import { NavLink } from 'react-router-dom';
+
+import Text from '@gdg/components/common/typography/Text';
+import { userDataInterface } from '@gdg/types/UserInterface';
 
 import { DropdownItem } from './MainNavigation';
 

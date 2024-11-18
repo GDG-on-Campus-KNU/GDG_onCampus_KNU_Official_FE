@@ -1,3 +1,7 @@
+import { AnimatePresence } from 'framer-motion';
+import { useEffect } from 'react';
+import { NavLink, useNavigate } from 'react-router-dom';
+
 import { useGetMyData } from '@gdg/apis/hooks/mypage/useGetMyData';
 import Apply from '@gdg/assets/Apply.svg';
 import Community from '@gdg/assets/Community.svg';
@@ -13,9 +17,6 @@ import { DropDownImg } from '@gdg/components/feature/header/MainNavigation';
 import { useHeaderDropDownState } from '@gdg/store/useHeaderDropDownStore';
 import { useNavigationStore } from '@gdg/store/useNavigationStore';
 import useUserStatusStore from '@gdg/store/useUserStatusStore';
-import { AnimatePresence } from 'framer-motion';
-import { useEffect } from 'react';
-import { NavLink, useNavigate } from 'react-router-dom';
 
 import {
   CloseButton,

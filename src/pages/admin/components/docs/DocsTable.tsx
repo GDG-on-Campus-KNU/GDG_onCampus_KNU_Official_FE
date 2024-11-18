@@ -1,4 +1,11 @@
 import {
+  flexRender,
+  getCoreRowModel,
+  useReactTable,
+} from '@tanstack/react-table';
+import { useState, useEffect } from 'react';
+
+import {
   applyDocsInterface,
   useGetApplyDocs,
 } from '@gdg/apis/hooks/admin/docs/useGetApplyDocs';
@@ -13,12 +20,6 @@ import {
   TableHeaderCell,
   TableRow,
 } from '@gdg/pages/admin/components/MemberTable.style';
-import {
-  flexRender,
-  getCoreRowModel,
-  useReactTable,
-} from '@tanstack/react-table';
-import { useState, useEffect } from 'react';
 
 import ApplyDetailModal from './ApplyDetailModal';
 

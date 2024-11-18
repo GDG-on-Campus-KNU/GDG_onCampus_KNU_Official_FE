@@ -1,7 +1,8 @@
 import styled from '@emotion/styled';
-import Text from '@gdg/components/common/typography/Text';
 import { motion } from 'framer-motion';
 import { UseFormRegister, UseFormHandleSubmit } from 'react-hook-form';
+
+import Text from '@gdg/components/common/typography/Text';
 
 import ButtonContainer from './ButtonContainer';
 import type { FormData } from './CreateTeamModal';

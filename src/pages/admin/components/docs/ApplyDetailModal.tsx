@@ -1,4 +1,6 @@
 import styled from '@emotion/styled';
+import { useState, useEffect } from 'react';
+
 import { useGetDocsDetail } from '@gdg/apis/hooks/admin/docs/useGetDocsDetail';
 import { usePatchMark } from '@gdg/apis/hooks/admin/docs/usePatchMark';
 import { usePatchStatus } from '@gdg/apis/hooks/admin/docs/usePatchStatus';
@@ -12,7 +14,6 @@ import {
   AndroidData,
   DesignerData,
 } from '@gdg/pages/apply/components/ApplyFormDocs';
-import { useState, useEffect } from 'react';
 
 import {
   ModalBackdrop,

@@ -1,4 +1,5 @@
 import styled from '@emotion/styled';
+
 import { LazyLoadImg } from '@gdg/components/common/img/LazyLoadingImg';
 
 import { ratioBreakpoints } from './variants';

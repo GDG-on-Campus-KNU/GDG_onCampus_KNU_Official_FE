@@ -1,6 +1,7 @@
+import { useState } from 'react';
+
 import CommonBtn from '@gdg/components/common/button/CommonBtn';
 import { DisplayLayout } from '@gdg/styles/LayoutStyle';
-import { useState } from 'react';
 
 import { ButtonContainer, TopContainer } from './AdminSetStatePage.style';
 import AdminSearchBar from './components/AdminSearchBar';

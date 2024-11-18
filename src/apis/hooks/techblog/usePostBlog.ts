@@ -1,7 +1,8 @@
+import { useMutation, UseMutationResult } from '@tanstack/react-query';
+
 import { fetchInstance } from '@gdg/apis/instance/Api_JWT';
 import { queryClient } from '@gdg/apis/instance/Http';
 import { blogPostInterface } from '@gdg/types/UserInterface';
-import { useMutation, UseMutationResult } from '@tanstack/react-query';
 
 const postBlogPath = () => '/api/post';
 

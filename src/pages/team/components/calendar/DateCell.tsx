@@ -1,4 +1,5 @@
 import styled from '@emotion/styled';
+
 import { DateNumber } from '@gdg/pages/team/components';
 
 type DateContentProps = {

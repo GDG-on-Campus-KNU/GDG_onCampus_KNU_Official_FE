@@ -1,6 +1,7 @@
 import styled from '@emotion/styled';
-import { displayCenter } from '@gdg/styles/LayoutStyle';
 import { useMediaQuery } from 'react-responsive';
+
+import { displayCenter } from '@gdg/styles/LayoutStyle';
 
 import Text from '../typography/Text';
 import Title from '../typography/Title';

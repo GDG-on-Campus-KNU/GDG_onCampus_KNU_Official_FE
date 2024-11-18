@@ -1,4 +1,6 @@
 import styled from '@emotion/styled';
+import { Link } from 'react-router-dom';
+
 import CompanyLogo from '@gdg/assets/CompanyLogo.svg';
 import GithubLogo from '@gdg/assets/GithubLogo.svg';
 import InstagramLogo from '@gdg/assets/InstagramLogo.svg';
@@ -12,7 +14,6 @@ import {
   Table,
   TableData,
 } from '@gdg/styles/FooterLayoutStyle';
-import { Link } from 'react-router-dom';
 
 const MobileImg = styled.img`
   margin-right: 10px;

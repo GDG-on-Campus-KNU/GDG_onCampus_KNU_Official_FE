@@ -1,6 +1,7 @@
+import { useQuery } from '@tanstack/react-query';
+
 import { fetchInstance } from '@gdg/apis/instance/Api_JWT';
 import { MemberData } from '@gdg/types/AdminInterface';
-import { useQuery } from '@tanstack/react-query';
 
 export interface SearchInterface {
   data: MemberData[];

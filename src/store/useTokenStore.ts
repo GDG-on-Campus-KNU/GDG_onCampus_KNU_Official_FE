@@ -1,5 +1,6 @@
-import { AuthAccessInterface } from '@gdg/types/OAuthInterface';
 import { create } from 'zustand';
+
+import { AuthAccessInterface } from '@gdg/types/OAuthInterface';
 
 export interface AuthAccessActionInterface extends AuthAccessInterface {
   getAccessToken: () => void;

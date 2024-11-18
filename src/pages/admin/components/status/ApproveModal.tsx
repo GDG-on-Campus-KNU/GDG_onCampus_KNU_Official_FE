@@ -29,7 +29,8 @@ const ApproveModal = ({ onClose }: ApproveModalProps) => {
           window.location.reload();
         },
         onError: (error) => {
-          console.error('승인 실패:', error);
+          // console.error('승인 실패:', error);
+          throw new Error(error.message || 'Unknown error');
         },
       }
     );

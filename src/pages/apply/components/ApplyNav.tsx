@@ -1,3 +1,6 @@
+import { useMediaQuery } from 'react-responsive';
+import { Link } from 'react-router-dom';
+
 import ApplyNavBox from '@gdg/pages/apply/components/ApplyNavBox';
 import {
   ApplyLayout,
@@ -9,8 +12,6 @@ import {
   InquiryText,
   InquiryLayout,
 } from '@gdg/styles/ApplyStyle';
-import { useMediaQuery } from 'react-responsive';
-import { Link } from 'react-router-dom';
 
 const ApplyNav = () => {
   const isMobile = useMediaQuery({ query: '(max-width: 500px)' });

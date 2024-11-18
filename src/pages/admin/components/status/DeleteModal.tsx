@@ -26,7 +26,7 @@ const DeleteModal = ({ onClose }: DeleteModalProps) => {
       alert('사용자가 성공적으로 삭제되었습니다.');
       window.location.reload();
     } catch (error) {
-      console.error(error);
+      // console.error(error);
       alert('사용자 삭제에 실패했습니다');
     } finally {
       onClose();

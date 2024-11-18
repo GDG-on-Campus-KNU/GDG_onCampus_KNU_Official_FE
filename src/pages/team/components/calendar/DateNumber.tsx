@@ -2,7 +2,7 @@ import styled from '@emotion/styled';
 
 const today = new Date().toLocaleDateString('en-CA');
 
-console.log(today);
+// console.log(today);
 
 const DateNumber = (arg: { date: Date }) => {
   const dateStr = arg.date.toLocaleDateString('en-CA');

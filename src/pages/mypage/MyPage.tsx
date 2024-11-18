@@ -1,4 +1,7 @@
 import styled from '@emotion/styled';
+import { useState, useEffect } from 'react';
+import { useMediaQuery } from 'react-responsive';
+
 import { useGetMyData } from '@gdg/apis/hooks/mypage/useGetMyData';
 import { usePutMyData } from '@gdg/apis/hooks/mypage/usePutMyData';
 import CompleteBtn from '@gdg/components/common/button/CompleteBtn';
@@ -10,8 +13,6 @@ import TeamToken from '@gdg/pages/mypage/components/TeamToken';
 import { MypageMetaData } from '@gdg/router/components/MetaData';
 import { displayCenter } from '@gdg/styles/LayoutStyle';
 import { putUserDataInterface } from '@gdg/types/UserInterface';
-import { useState, useEffect } from 'react';
-import { useMediaQuery } from 'react-responsive';
 
 const MyPageWrapper = styled.div<{ color: string }>`
   ${displayCenter}
