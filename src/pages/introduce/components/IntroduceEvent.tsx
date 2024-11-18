@@ -60,7 +60,7 @@ const IntroduceEvent = () => {
         WITH
       </Text>
       <IntroductionBox>
-        <GDSCText>Introduction of GDSC Core Members</GDSCText>
+        <GDSCText>Introduction of GDGoC KNU Core Members</GDSCText>
       </IntroductionBox>
       <IntroTableBox>
         <IntroText>
