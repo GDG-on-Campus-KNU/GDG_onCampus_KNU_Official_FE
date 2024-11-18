@@ -27,8 +27,7 @@
     "react-hooks",
     "jsx-a11y",
     "import",
-    "prettier",
-    "simple-import-sort"
+    "prettier"
   ],
   "settings": {
     "import/resolver": {
@@ -51,7 +50,8 @@
       "error",
       {
         "endOfLine": "auto",
-        "singleQuote": true
+        "singleQuote": true,
+        "importOrder": "off"
       }
     ],
     "react/react-in-jsx-scope": "off",
@@ -62,10 +62,6 @@
     "prefer-arrow-callback": "off",
     "max-len": "off",
     "no-mixed-operators": "off",
-    "no-multiple-empty-lines": "off",
-
-    // Import sorting rules
-    "simple-import-sort/imports": "error",
-    "simple-import-sort/exports": "error"
+    "no-multiple-empty-lines": "off"
   }
 }
