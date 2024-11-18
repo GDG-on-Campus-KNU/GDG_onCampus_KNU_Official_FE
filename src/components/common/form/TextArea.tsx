@@ -1,7 +1,7 @@
+import styled from '@emotion/styled';
 import { useState, useEffect } from 'react';
 
 import Text from '../typography/Text';
-import styled from '@emotion/styled';
 
 interface ITextArea {
   id: string;

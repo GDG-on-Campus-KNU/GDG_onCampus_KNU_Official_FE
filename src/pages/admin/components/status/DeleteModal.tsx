@@ -1,10 +1,11 @@
-import { ModalWrapper, ButtonContainer } from './DeleteModal.style';
 import { useDeleteUserList } from '@gdg/apis/hooks/admin/status/useDeleteUser';
 import trashcanIcon from '@gdg/assets/admin/trashcanIcon.svg';
 import CommonBtn from '@gdg/components/common/button/CommonBtn';
 import Text from '@gdg/components/common/typography/Text';
 import { CloseBtn } from '@gdg/components/feature/header/admin/AdminSideBar.style';
 import { useSelectedUserStore } from '@gdg/store/useSelectedUserStore';
+
+import { ModalWrapper, ButtonContainer } from './DeleteModal.style';
 
 interface DeleteModalProps {
   onClose: () => void;

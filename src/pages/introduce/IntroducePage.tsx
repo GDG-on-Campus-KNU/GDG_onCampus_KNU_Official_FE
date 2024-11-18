@@ -1,5 +1,3 @@
-import gsap from 'gsap';
-
 import useScrollTracker from '@gdg/hooks/useScrollTracker';
 import AboutEvent from '@gdg/pages/introduce/components/AboutEvent';
 import CoreTable from '@gdg/pages/introduce/components/CoreTable';
@@ -10,6 +8,7 @@ import IntroduceEvent from '@gdg/pages/introduce/components/IntroduceEvent';
 import LineEvent from '@gdg/pages/introduce/components/LineEvent';
 import { IntroduceMetaData } from '@gdg/router/components/MetaData';
 import { DisplayLayout } from '@gdg/styles/LayoutStyle';
+import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 
 gsap.registerPlugin(ScrollTrigger);

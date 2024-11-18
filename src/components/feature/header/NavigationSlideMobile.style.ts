@@ -1,8 +1,7 @@
-import { motion } from 'framer-motion';
-
 import styled from '@emotion/styled';
 import Text from '@gdg/components/common/typography/Text';
 import { displayCenter } from '@gdg/styles/LayoutStyle';
+import { motion } from 'framer-motion';
 
 export const StyledImg = styled.img`
   width: auto;

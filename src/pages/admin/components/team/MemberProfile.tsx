@@ -1,7 +1,8 @@
-import { MemberBox, TextWrapper } from './TeamBox.style';
 import type { TeamMember } from '@gdg/apis/hooks/admin/team/useGetTeamMember';
 import Text from '@gdg/components/common/typography/Text';
 import { Draggable } from '@hello-pangea/dnd';
+
+import { MemberBox, TextWrapper } from './TeamBox.style';
 
 const MemberProfile = ({
   member,

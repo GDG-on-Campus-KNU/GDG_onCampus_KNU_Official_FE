@@ -1,6 +1,5 @@
-import { useState } from 'react';
-
 import styled from '@emotion/styled';
+import { useState } from 'react';
 
 const DropdownBtn = styled.button`
   color: var(--color-white);

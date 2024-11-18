@@ -1,6 +1,5 @@
-import { breakpoints } from '@gdg/styles/variants';
-
 import styled from '@emotion/styled';
+import { breakpoints } from '@gdg/styles/variants';
 
 type ResponseGridStyle = {
   [key in keyof typeof breakpoints]?: number | string;
@@ -40,7 +39,7 @@ const Wrapper = styled.div<Pick<Props, 'columns' | 'gap' | 'padding'>>(
       };
     }
 
-    let defaultPadding = padding?.lg;
+    const defaultPadding = padding?.lg;
 
     const responsive = Object.keys(padding) as (keyof typeof breakpoints)[];
     return [
@@ -59,7 +58,7 @@ const Wrapper = styled.div<Pick<Props, 'columns' | 'gap' | 'padding'>>(
       };
     }
 
-    let defaultGap = gap?.lg;
+    const defaultGap = gap?.lg;
 
     const responsive = Object.keys(gap) as (keyof typeof breakpoints)[];
     return [
@@ -78,7 +77,7 @@ const Wrapper = styled.div<Pick<Props, 'columns' | 'gap' | 'padding'>>(
       };
     }
 
-    let defaultColumns = columns?.lg;
+    const defaultColumns = columns?.lg;
 
     const responsive = Object.keys(columns) as (keyof typeof breakpoints)[];
     return [

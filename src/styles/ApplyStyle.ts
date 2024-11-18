@@ -1,7 +1,6 @@
+import styled from '@emotion/styled';
 import Text from '@gdg/components/common/typography/Text';
 import Title from '@gdg/components/common/typography/Title';
-
-import styled from '@emotion/styled';
 
 export const ApplyLayout = styled.div`
   display: flex;

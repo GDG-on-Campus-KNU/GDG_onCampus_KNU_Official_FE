@@ -1,3 +1,10 @@
+import EarthWebM from '@gdg/assets/Earth.webm';
+import LeftArrow from '@gdg/assets/LeftArrow.svg';
+import RightArrow from '@gdg/assets/RightArrow.svg';
+import CompleteBtn from '@gdg/components/common/button/CompleteBtn';
+import Text from '@gdg/components/common/typography/Text';
+import { useColTz } from '@gdg/hooks/useColTz';
+import { useCarouselStore } from '@gdg/store/useCarouselStore';
 import { memo } from 'react';
 import { Link } from 'react-router-dom';
 
@@ -14,13 +21,6 @@ import {
   Scene,
   EarthVideo,
 } from './RotateCarousel.style';
-import EarthWebM from '@gdg/assets/Earth.webm';
-import LeftArrow from '@gdg/assets/LeftArrow.svg';
-import RightArrow from '@gdg/assets/RightArrow.svg';
-import CompleteBtn from '@gdg/components/common/button/CompleteBtn';
-import Text from '@gdg/components/common/typography/Text';
-import { useColTz } from '@gdg/hooks/useColTz';
-import { useCarouselStore } from '@gdg/store/useCarouselStore';
 
 export interface RotateCarouselProps {
   handleNextClick: () => void;

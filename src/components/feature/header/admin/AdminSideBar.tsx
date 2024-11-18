@@ -1,3 +1,5 @@
+import Text from '@gdg/components/common/typography/Text';
+import { useNavigationStore } from '@gdg/store/useNavigationStore';
 import { NavLink } from 'react-router-dom';
 
 import {
@@ -7,8 +9,6 @@ import {
   GotoDocs,
   CloseBtn,
 } from './AdminSideBar.style';
-import Text from '@gdg/components/common/typography/Text';
-import { useNavigationStore } from '@gdg/store/useNavigationStore';
 
 const AdminSideBar = ({ open }: { open: boolean }) => {
   const { close } = useNavigationStore();

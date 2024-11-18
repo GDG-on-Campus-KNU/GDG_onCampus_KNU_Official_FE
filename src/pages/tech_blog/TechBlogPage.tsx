@@ -1,5 +1,6 @@
-import CommingSoonPage from '../CommingSoonPage';
 import { TeamBlogMetaData } from '@gdg/router/components/MetaData';
+
+import CommingSoonPage from '../CommingSoonPage';
 
 const TechBlogPage = () => {
   return (

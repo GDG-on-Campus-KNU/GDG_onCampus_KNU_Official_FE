@@ -1,13 +1,10 @@
+import styled from '@emotion/styled';
+import { useGetTeamMate } from '@gdg/apis/hooks/team/useGetTeamMate';
+import gdgknu from '@gdg/assets/gdgknu.png';
+import Text from '@gdg/components/common/typography/Text';
 import { memo } from 'react';
 
-import Text from '@gdg/components/common/typography/Text';
-
-import gdgknu from '@gdg/assets/gdgknu.png';
-
-import { useGetTeamMate } from '@gdg/apis/hooks/team/useGetTeamMate';
-
 import TeamName from '../name/TeamName';
-import styled from '@emotion/styled';
 
 const TeamMember = ({
   selectedTeamId,

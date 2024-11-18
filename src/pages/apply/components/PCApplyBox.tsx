@@ -1,9 +1,8 @@
-import { NavLink } from 'react-router-dom';
-
 import styled from '@emotion/styled';
 import CommonBtn from '@gdg/components/common/button/CommonBtn';
 import Text from '@gdg/components/common/typography/Text';
 import { ApplyExInterface } from '@gdg/types/ApplyInterface';
+import { NavLink } from 'react-router-dom';
 
 const ApplyBox = styled.div`
   background-color: var(--color-white);

@@ -1,8 +1,8 @@
+import { TrackInterface } from '@gdg/apis/hooks/admin/docs/useGetTrack';
+import Text from '@gdg/components/common/typography/Text';
 import { useState } from 'react';
 
 import { SelectBarWrapper, TrackBtnStyle } from './TrackSelectBar.style';
-import { TrackInterface } from '@gdg/apis/hooks/admin/docs/useGetTrack';
-import Text from '@gdg/components/common/typography/Text';
 
 interface ITrackButton {
   onClick?: () => void;

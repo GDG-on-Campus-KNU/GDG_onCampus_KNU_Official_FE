@@ -1,13 +1,3 @@
-import { useState, useEffect } from 'react';
-
-import {
-  StyledTable,
-  TableHeader,
-  TableHeaderRow,
-  TableCell,
-  TableHeaderCell,
-  TableRow,
-} from './MemberTable.style';
 import {
   userListInterface,
   useGetUserList,
@@ -21,6 +11,16 @@ import {
   getCoreRowModel,
   useReactTable,
 } from '@tanstack/react-table';
+import { useState, useEffect } from 'react';
+
+import {
+  StyledTable,
+  TableHeader,
+  TableHeaderRow,
+  TableCell,
+  TableHeaderCell,
+  TableRow,
+} from './MemberTable.style';
 
 const MemberTable = ({ searchName }: { searchName?: string | undefined }) => {
   const [currentPage, setCurrentPage] = useState<number>(0);

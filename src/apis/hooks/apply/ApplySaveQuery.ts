@@ -1,9 +1,8 @@
-import { useNavigate } from 'react-router-dom';
-
 import { ApplySaveAPI } from '@gdg/apis/hooks/apply/ApplySaveAPI';
 import { queryClient } from '@gdg/apis/instance/Http';
 import { ApplyFormInterface } from '@gdg/types/ApplyInterface';
 import { useMutation, UseMutationOptions } from '@tanstack/react-query';
+import { useNavigate } from 'react-router-dom';
 
 export const useApplySaveMutation = (
   options?: Omit<

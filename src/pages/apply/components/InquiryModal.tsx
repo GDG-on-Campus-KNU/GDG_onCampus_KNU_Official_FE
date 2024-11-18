@@ -1,10 +1,3 @@
-import { useEffect, useState } from 'react';
-import { Oval } from 'react-loader-spinner';
-import { useMediaQuery } from 'react-responsive';
-import { useNavigate } from 'react-router-dom';
-
-import dayjs from 'dayjs';
-
 import styled from '@emotion/styled';
 import { ApplyInquiryQuery } from '@gdg/apis/hooks/apply/ApplyInquiryQuery';
 import CommonBtn from '@gdg/components/common/button/CommonBtn';
@@ -14,6 +7,11 @@ import ApplySaveForm from '@gdg/pages/apply/components/ApplySaveForm';
 import { AuthWrapper, AuthForm } from '@gdg/styles/AuthModalStyle';
 import { displayCenter, DisplayLayout } from '@gdg/styles/LayoutStyle';
 import { useQueryClient } from '@tanstack/react-query';
+import dayjs from 'dayjs';
+import { useEffect, useState } from 'react';
+import { Oval } from 'react-loader-spinner';
+import { useMediaQuery } from 'react-responsive';
+import { useNavigate } from 'react-router-dom';
 
 const TitleContainer = styled.h2`
   width: 80%;

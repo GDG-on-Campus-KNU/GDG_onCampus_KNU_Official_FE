@@ -1,18 +1,16 @@
-import { useEffect, useState } from 'react';
-
+import dayGridPlugin from '@fullcalendar/daygrid';
+import interactionPlugin from '@fullcalendar/interaction';
+import FullCalendar from '@fullcalendar/react';
 import { Spacing } from '@gdg/components/common/layouts/spacing';
-
 import {
   TeamName,
   DateCell,
   EventContent,
   GDGoC_KNU_SCHEDULE,
 } from '@gdg/pages/team/components';
+import { useEffect, useState } from 'react';
 
 import './Calendar.style.css';
-import dayGridPlugin from '@fullcalendar/daygrid';
-import interactionPlugin from '@fullcalendar/interaction';
-import FullCalendar from '@fullcalendar/react';
 
 const TeamCalendar = ({ selectedTeamName }: { selectedTeamName: string }) => {
   const [headerToolbar, setHeaderToolbar] = useState({

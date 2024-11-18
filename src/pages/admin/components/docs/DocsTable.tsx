@@ -1,6 +1,3 @@
-import { useState, useEffect } from 'react';
-
-import ApplyDetailModal from './ApplyDetailModal';
 import {
   applyDocsInterface,
   useGetApplyDocs,
@@ -21,6 +18,9 @@ import {
   getCoreRowModel,
   useReactTable,
 } from '@tanstack/react-table';
+import { useState, useEffect } from 'react';
+
+import ApplyDetailModal from './ApplyDetailModal';
 
 const getTrack = (index: number) => {
   switch (index) {

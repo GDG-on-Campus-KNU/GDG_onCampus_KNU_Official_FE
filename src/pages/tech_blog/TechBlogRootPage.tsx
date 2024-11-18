@@ -1,6 +1,5 @@
-import { Outlet } from 'react-router-dom';
-
 import Star from '@gdg/components/feature/star/Star';
+import { Outlet } from 'react-router-dom';
 
 import { MainContent } from '../RootPage';
 

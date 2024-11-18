@@ -1,6 +1,5 @@
-import { UseFormRegisterReturn } from 'react-hook-form';
-
 import styled from '@emotion/styled';
+import { UseFormRegisterReturn } from 'react-hook-form';
 
 interface IInput {
   id: string;

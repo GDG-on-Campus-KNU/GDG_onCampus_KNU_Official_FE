@@ -1,8 +1,7 @@
-import { useEffect } from 'react';
-import { useNavigate } from 'react-router-dom';
-
 import { SigninQuery } from '@gdg/apis/hooks/signin/SigninQuery';
 import { SigninAPIInterface } from '@gdg/types/OAuthInterface';
+import { useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 const AuthCallBackPage = () => {
   const navigate = useNavigate();

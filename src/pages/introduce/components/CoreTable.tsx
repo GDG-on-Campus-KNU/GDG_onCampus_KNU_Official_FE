@@ -1,7 +1,3 @@
-import { useEffect } from 'react';
-
-import gsap from 'gsap';
-
 import styled from '@emotion/styled';
 import Bosung from '@gdg/assets/gdscknu4/Core-Bosung.jpg';
 import Chaewon from '@gdg/assets/gdscknu4/Core-Chaewon.png';
@@ -15,7 +11,9 @@ import Suhyeon from '@gdg/assets/gdscknu4/Core-Suhyeon.jpg';
 import Yeongin from '@gdg/assets/gdscknu4/Core-Yeongin.jpeg';
 import Kyuhoi from '@gdg/assets/gdscknu4/Lead-Kyuhoi.png';
 import { IntroText, IntroTextStyle } from '@gdg/styles/IntroduceStyle';
+import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import { useEffect } from 'react';
 
 gsap.registerPlugin(ScrollTrigger);
 

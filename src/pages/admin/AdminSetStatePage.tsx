@@ -1,3 +1,5 @@
+import CommonBtn from '@gdg/components/common/button/CommonBtn';
+import { DisplayLayout } from '@gdg/styles/LayoutStyle';
 import { useState } from 'react';
 
 import { ButtonContainer, TopContainer } from './AdminSetStatePage.style';
@@ -5,8 +7,6 @@ import AdminSearchBar from './components/AdminSearchBar';
 import MemberTable from './components/MemberTable';
 import ApproveModal from './components/status/ApproveModal';
 import DeleteModal from './components/status/DeleteModal';
-import CommonBtn from '@gdg/components/common/button/CommonBtn';
-import { DisplayLayout } from '@gdg/styles/LayoutStyle';
 
 const AdminSetStatePage = () => {
   const [deleteModalOpen, setDeleteModalOpen] = useState<boolean>(false);

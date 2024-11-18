@@ -1,3 +1,9 @@
+import { AsyncBoundary } from '@gdg/components/common/AsyncBoundary';
+import { LoadingView } from '@gdg/components/common/View/LoadingView';
+import { BlogPostProvider } from '@gdg/pages/tech_blog/context/index';
+import { TeamUpdateProvider } from '@gdg/provider/TeamUpdate';
+import RouteChangeTracker from '@gdg/router/components/RouteChangeTracker';
+import StatusRoute from '@gdg/router/components/StatusRoute';
 import { lazy } from 'react';
 import {
   createBrowserRouter,
@@ -5,15 +11,6 @@ import {
   NonIndexRouteObject,
   Outlet,
 } from 'react-router-dom';
-
-import { AsyncBoundary } from '@gdg/components/common/AsyncBoundary';
-import { LoadingView } from '@gdg/components/common/View/LoadingView';
-
-import { BlogPostProvider } from '@gdg/pages/tech_blog/context/index';
-
-import { TeamUpdateProvider } from '@gdg/provider/TeamUpdate';
-import RouteChangeTracker from '@gdg/router/components/RouteChangeTracker';
-import StatusRoute from '@gdg/router/components/StatusRoute';
 
 const TechBlogPage = lazy(() => import('@gdg/pages/tech_blog/TechBlogPage'));
 const TechBlogEditPage = lazy(

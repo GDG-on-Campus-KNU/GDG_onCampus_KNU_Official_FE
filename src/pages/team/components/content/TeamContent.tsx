@@ -1,11 +1,8 @@
+import styled from '@emotion/styled';
+import { TeamList } from '@gdg/apis/hooks/team/useGetTeamList';
+import LazyLoad from '@gdg/components/common/View/LazyLoad';
 import { useState, lazy } from 'react';
 import { useMediaQuery } from 'react-responsive';
-
-import LazyLoad from '@gdg/components/common/View/LazyLoad';
-
-import { TeamList } from '@gdg/apis/hooks/team/useGetTeamList';
-
-import styled from '@emotion/styled';
 
 const TeamMember = lazy(() => import('../member/TeamMember'));
 const TeamCalendar = lazy(() => import('../calendar/TeamCalendar'));

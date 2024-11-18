@@ -1,10 +1,11 @@
-import logo from '/GDSC.svg';
 import styled from '@emotion/styled';
 import homeIcon from '@gdg/assets/HomeIcon.svg';
 import CommonBtn from '@gdg/components/common/button/CommonBtn';
 import Text from '@gdg/components/common/typography/Text';
 import { AuthWrapper, AuthBox } from '@gdg/styles/AuthModalStyle';
 import { displayCenter } from '@gdg/styles/LayoutStyle';
+
+import logo from '/GDSC.svg';
 
 const CompleteContainer = styled.div`
   ${displayCenter}

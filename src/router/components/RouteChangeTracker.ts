@@ -1,8 +1,7 @@
+import { trackPageView } from '@gdg/utils/anlytics';
 import { useEffect, useState } from 'react';
 import ReactGA from 'react-ga4';
 import { useLocation } from 'react-router-dom';
-
-import { trackPageView } from '@gdg/utils/anlytics';
 
 const RouteChangeTracker = () => {
   const location = useLocation();

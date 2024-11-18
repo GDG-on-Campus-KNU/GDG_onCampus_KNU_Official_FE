@@ -1,12 +1,10 @@
+import styled from '@emotion/styled';
 import Text from '@gdg/components/common/typography/Text';
 import {
   SubtitleTextContainer,
   TitleTextContainer,
 } from '@gdg/components/feature/header/admin/AdminTitle.style';
-
 import { TitleWrapper } from '@gdg/pages/apply/components/ApplyForm.style';
-
-import styled from '@emotion/styled';
 
 const TechBlogTitle = () => {
   return (

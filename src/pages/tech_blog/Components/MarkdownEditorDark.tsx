@@ -1,7 +1,3 @@
-import { useEffect, useState } from 'react';
-
-import Prism from 'prismjs';
-
 import codeSyntaxHighlight from '@toast-ui/editor-plugin-code-syntax-highlight';
 import '@toast-ui/editor-plugin-code-syntax-highlight/dist/toastui-editor-plugin-code-syntax-highlight.css';
 import colorSyntax from '@toast-ui/editor-plugin-color-syntax';
@@ -9,7 +5,9 @@ import '@toast-ui/editor-plugin-color-syntax/dist/toastui-editor-plugin-color-sy
 import '@toast-ui/editor/dist/theme/toastui-editor-dark.css';
 import '@toast-ui/editor/dist/toastui-editor.css';
 import { Editor } from '@toast-ui/react-editor';
+import * as Prism from 'prismjs';
 import 'prismjs/themes/prism.css';
+import { useEffect, useState } from 'react';
 
 export type EditorCommonProps = {
   editorRef: React.RefObject<Editor> | null;

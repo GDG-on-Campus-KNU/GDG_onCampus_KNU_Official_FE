@@ -1,12 +1,8 @@
-import { useEffect, useRef } from 'react';
-
-import gsap from 'gsap';
-
-import Text from '@gdg/components/common/typography/Text';
-
-import SpaceShip from '@gdg/assets/SpaceShip.svg';
-
 import styled from '@emotion/styled';
+import SpaceShip from '@gdg/assets/SpaceShip.svg';
+import Text from '@gdg/components/common/typography/Text';
+import gsap from 'gsap';
+import { useEffect, useRef } from 'react';
 
 const ContentLayout = styled.div`
   display: flex;

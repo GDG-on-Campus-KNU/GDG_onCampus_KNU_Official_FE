@@ -1,6 +1,5 @@
 import { fetchInstance } from '@gdg/apis/instance/Api_JWT';
 import { queryClient } from '@gdg/apis/instance/Http';
-
 import {
   patchUserStatusInterface,
   patchUserStatusRequest,

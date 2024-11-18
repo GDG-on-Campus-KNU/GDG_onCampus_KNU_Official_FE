@@ -1,7 +1,6 @@
+import { useGetImage } from '@gdg/apis/hooks/techblog/useGetImage';
 import { useCallback } from 'react';
 import Resizer from 'react-image-file-resizer';
-
-import { useGetImage } from '@gdg/apis/hooks/techblog/useGetImage';
 
 const useImageHandler = () => {
   const { mutateAsync } = useGetImage();

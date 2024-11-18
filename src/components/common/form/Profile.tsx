@@ -1,9 +1,8 @@
-import { useState, useRef, ChangeEvent } from 'react';
-
 import styled from '@emotion/styled';
 import DefaultProfile from '@gdg/assets/DefaultProfile.svg';
 import PencilIcon from '@gdg/assets/EditIcon.svg';
 import { displayCenter } from '@gdg/styles/LayoutStyle';
+import { useState, useRef, ChangeEvent } from 'react';
 
 const ProfileContainer = styled.div`
   ${displayCenter}

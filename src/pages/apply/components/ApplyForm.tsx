@@ -1,9 +1,3 @@
-import { useState } from 'react';
-import { useForm } from 'react-hook-form';
-import { Oval } from 'react-loader-spinner';
-import { useMediaQuery } from 'react-responsive';
-import { useParams } from 'react-router-dom';
-
 import { useApplyFormMutation } from '@gdg/apis/hooks/apply/ApplyFormQuery';
 import CommonBtn from '@gdg/components/common/button/CommonBtn';
 import FormInput from '@gdg/components/common/form/FormInput';
@@ -45,6 +39,11 @@ import { ApplyFormSchema } from '@gdg/utils/ApplyFormScehma.util';
 import { handleFormSubmit } from '@gdg/utils/anlytics';
 import { ErrorMessage } from '@hookform/error-message';
 import { zodResolver } from '@hookform/resolvers/zod';
+import { useState } from 'react';
+import { useForm } from 'react-hook-form';
+import { Oval } from 'react-loader-spinner';
+import { useMediaQuery } from 'react-responsive';
+import { useParams } from 'react-router-dom';
 
 const getTrack = (tech: string): string => {
   switch (tech.toLowerCase()) {

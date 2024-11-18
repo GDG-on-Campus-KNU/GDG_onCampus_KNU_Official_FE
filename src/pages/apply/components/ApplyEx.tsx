@@ -1,6 +1,3 @@
-import { useMediaQuery } from 'react-responsive';
-import { useParams, useNavigate } from 'react-router-dom';
-
 import styled from '@emotion/styled';
 import CommonBtn from '@gdg/components/common/button/CommonBtn';
 import {
@@ -21,6 +18,8 @@ import {
   SubLayout,
 } from '@gdg/styles/ApplyStyle';
 import { ApplyExInterface } from '@gdg/types/ApplyInterface';
+import { useMediaQuery } from 'react-responsive';
+import { useParams, useNavigate } from 'react-router-dom';
 
 const AppLayout = styled(ApplyLayout)`
   width: 70%;

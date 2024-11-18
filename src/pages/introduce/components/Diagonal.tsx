@@ -1,9 +1,7 @@
-import { useEffect } from 'react';
-
-import gsap from 'gsap';
-
 import styled from '@emotion/styled';
+import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import { useEffect } from 'react';
 
 gsap.registerPlugin(ScrollTrigger);
 

@@ -1,6 +1,5 @@
-import { toast } from 'react-hot-toast';
-
 import { QueryClient, QueryCache } from '@tanstack/react-query';
+import { toast } from 'react-hot-toast';
 
 export const queryClient = new QueryClient({
   defaultOptions: {

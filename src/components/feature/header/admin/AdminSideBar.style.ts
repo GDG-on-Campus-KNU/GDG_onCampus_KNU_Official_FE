@@ -1,8 +1,6 @@
-import { motion } from 'framer-motion';
-
-import CloseIcon from '@gdg/assets/CloseIcon.svg';
-
 import styled from '@emotion/styled';
+import CloseIcon from '@gdg/assets/CloseIcon.svg';
+import { motion } from 'framer-motion';
 
 export const NavMenu = styled(motion.ul)`
   z-index: 4;

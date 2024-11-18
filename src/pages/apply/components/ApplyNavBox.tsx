@@ -1,8 +1,7 @@
-import { NavLink } from 'react-router-dom';
-
 import styled from '@emotion/styled';
 import CommonBtn from '@gdg/components/common/button/CommonBtn';
 import Text from '@gdg/components/common/typography/Text';
+import { NavLink } from 'react-router-dom';
 
 const ApplyGrid = styled.div`
   display: grid;

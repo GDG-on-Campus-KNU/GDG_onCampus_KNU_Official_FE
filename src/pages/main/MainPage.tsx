@@ -1,15 +1,11 @@
-import { lazy } from 'react';
-import { useMediaQuery } from 'react-responsive';
-
+import styled from '@emotion/styled';
 import CrossShape from '@gdg/components/feature/star/Cross';
-
 import Content from '@gdg/pages/main/components/Content';
 import MainRound from '@gdg/pages/main/components/MainRound';
-
-import { DisplayLayout } from '@gdg/styles/LayoutStyle';
-
-import styled from '@emotion/styled';
 import { MainMetaData } from '@gdg/router/components/MetaData';
+import { DisplayLayout } from '@gdg/styles/LayoutStyle';
+import { lazy } from 'react';
+import { useMediaQuery } from 'react-responsive';
 
 const MainFooterMobile = lazy(
   () => import('@gdg/components/feature/footer/MainFooterMobile')
