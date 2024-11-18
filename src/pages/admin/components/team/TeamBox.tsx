@@ -1,4 +1,12 @@
+import { Droppable } from '@hello-pangea/dnd';
 import { useEffect, lazy } from 'react';
+
+import { postSubTeam } from '@gdg/apis/hooks/admin/team/postSubTeam';
+import type { SubTeam } from '@gdg/apis/hooks/admin/team/useGetAllTeamToken';
+import { useGetTeamMember } from '@gdg/apis/hooks/admin/team/useGetTeamMember';
+import PlusBtn from '@gdg/assets/admin/PlusBtn.svg';
+import Text from '@gdg/components/common/typography/Text';
+import { useTeamUpdate } from '@gdg/provider/TeamUpdate';
 
 import {
   MemberTable,
@@ -6,13 +14,6 @@ import {
   PlusBox,
   TeamBoxContainer,
 } from './TeamBox.style';
-import { postSubTeam } from '@gdg/apis/hooks/admin/team/postSubTeam';
-import type { SubTeam } from '@gdg/apis/hooks/admin/team/useGetAllTeamToken';
-import { useGetTeamMember } from '@gdg/apis/hooks/admin/team/useGetTeamMember';
-import PlusBtn from '@gdg/assets/admin/PlusBtn.svg';
-import Text from '@gdg/components/common/typography/Text';
-import { useTeamUpdate } from '@gdg/provider/TeamUpdate';
-import { Droppable } from '@hello-pangea/dnd';
 
 const MemberProfile = lazy(() => import('./MemberProfile'));
 const SubTeamBox = lazy(() => import('./SubTeamBox'));

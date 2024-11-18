@@ -1,11 +1,10 @@
+import styled from '@emotion/styled';
+import gsap from 'gsap';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { useEffect } from 'react';
 import { useMediaQuery } from 'react-responsive';
 
-import gsap from 'gsap';
-
-import styled from '@emotion/styled';
 import Text from '@gdg/components/common/typography/Text';
-import { ScrollTrigger } from 'gsap/ScrollTrigger';
 
 gsap.registerPlugin(ScrollTrigger);
 

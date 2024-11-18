@@ -1,9 +1,10 @@
 import { useState, lazy } from 'react';
 
-import { PassBtn, ButtonBox, InfoBox } from './AdminDocConfirmPage.style';
 import { useGetStatistic } from '@gdg/apis/hooks/admin/docs/useGetStatistic';
 import { useGetTrack } from '@gdg/apis/hooks/admin/docs/useGetTrack';
 import { DisplayLayout } from '@gdg/styles/LayoutStyle';
+
+import { PassBtn, ButtonBox, InfoBox } from './AdminDocConfirmPage.style';
 
 const TrackSelectBar = lazy(() => import('./components/docs/TrackSelectBar'));
 

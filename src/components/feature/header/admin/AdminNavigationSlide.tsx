@@ -1,8 +1,7 @@
+import styled from '@emotion/styled';
+import { motion, AnimatePresence } from 'framer-motion';
 import { NavLink } from 'react-router-dom';
 
-import { motion, AnimatePresence } from 'framer-motion';
-
-import styled from '@emotion/styled';
 import Home from '@gdg/assets/Home.svg';
 import NavSlideClose from '@gdg/assets/NavSlideClose.svg';
 import Text from '@gdg/components/common/typography/Text';

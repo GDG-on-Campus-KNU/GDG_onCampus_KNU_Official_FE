@@ -1,4 +1,5 @@
 import styled from '@emotion/styled';
+
 import ApplyArrow from '@gdg/assets/ApplyArrow.svg';
 import ApplyForm from '@gdg/assets/ApplyForm.svg';
 import ApplyInterview from '@gdg/assets/ApplyInterview.svg';

@@ -1,4 +1,17 @@
+import {
+  flexRender,
+  getCoreRowModel,
+  useReactTable,
+} from '@tanstack/react-table';
 import { useState, useEffect } from 'react';
+
+import {
+  userListInterface,
+  useGetUserList,
+} from '@gdg/apis/hooks/admin/status/useGetUserList';
+import Pagination from '@gdg/components/common/pagination/pagination';
+import { columns } from '@gdg/constants/MemberTableColumns';
+import { useSelectedUserStore } from '@gdg/store/useSelectedUserStore';
 
 import {
   StyledTable,
@@ -8,18 +21,6 @@ import {
   TableHeaderCell,
   TableRow,
 } from './MemberTable.style';
-import {
-  userListInterface,
-  useGetUserList,
-} from '@gdg/apis/hooks/admin/status/useGetUserList';
-import Pagination from '@gdg/components/common/pagination/pagination';
-import { columns } from '@gdg/constants/MemberTableColumns';
-import { useSelectedUserStore } from '@gdg/store/useSelectedUserStore';
-import {
-  flexRender,
-  getCoreRowModel,
-  useReactTable,
-} from '@tanstack/react-table';
 
 const MemberTable = () => {
   const [currentPage, setCurrentPage] = useState<number>(0);

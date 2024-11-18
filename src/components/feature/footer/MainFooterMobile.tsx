@@ -1,6 +1,6 @@
+import styled from '@emotion/styled';
 import { Link } from 'react-router-dom';
 
-import styled from '@emotion/styled';
 import CompanyLogo from '@gdg/assets/CompanyLogo.svg';
 import GithubLogo from '@gdg/assets/GithubLogo.svg';
 import InstagramLogo from '@gdg/assets/InstagramLogo.svg';

@@ -1,10 +1,8 @@
+import styled from '@emotion/styled';
 import { lazy } from 'react';
 
-import { DropBoxContainer } from '@gdg/pages/team/components/title/TeamTitle';
-
 import { TeamList } from '@gdg/apis/hooks/team/useGetTeamList';
-
-import styled from '@emotion/styled';
+import { DropBoxContainer } from '@gdg/pages/team/components/title/TeamTitle';
 
 const DropDown = lazy(() => import('@gdg/components/common/dropdown'));
 const Text = lazy(() => import('@gdg/components/common/typography/Text'));

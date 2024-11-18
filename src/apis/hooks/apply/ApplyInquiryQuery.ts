@@ -1,5 +1,6 @@
-import { ApplyInquiryAPI } from '@gdg/apis/hooks/apply/ApplyInquiryAPI';
 import { useQuery } from '@tanstack/react-query';
+
+import { ApplyInquiryAPI } from '@gdg/apis/hooks/apply/ApplyInquiryAPI';
 
 export const ApplyInquiryQuery = (name: string, studentNumber: string) => {
   const { data, isLoading, isFetching, isError, error, refetch } = useQuery({

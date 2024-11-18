@@ -1,14 +1,11 @@
+import styled from '@emotion/styled';
 import { lazy } from 'react';
 
+import { useGetTeamList } from '@gdg/apis/hooks/team/useGetTeamList';
 import InnerCircle from '@gdg/components/feature/background/InnerCircle';
 import CrossShape from '@gdg/components/feature/star/Cross';
 import Star from '@gdg/components/feature/star/Star';
-
-import { useGetTeamList } from '@gdg/apis/hooks/team/useGetTeamList';
-
 import { DisplayLayout } from '@gdg/styles/LayoutStyle';
-
-import styled from '@emotion/styled';
 
 const TeamContent = lazy(() => import('./components/content/TeamContent'));
 

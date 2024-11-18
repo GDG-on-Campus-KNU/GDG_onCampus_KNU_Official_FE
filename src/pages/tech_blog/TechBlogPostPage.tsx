@@ -1,7 +1,9 @@
+import styled from '@emotion/styled';
 import { useState, useRef, ChangeEvent } from 'react';
 
+import { usePostBlog } from '@gdg/apis/hooks/techblog/usePostBlog';
+import uploadthumbnail from '@gdg/assets/thumbnail/uploadthumbnail.svg';
 import Text from '@gdg/components/common/typography/Text';
-
 import {
   StyledSaveBtn,
   StyledPostBtn,
@@ -21,12 +23,6 @@ import {
 } from '@gdg/pages/tech_blog/TechBlogPostPage.style';
 import { useBlogPost } from '@gdg/pages/tech_blog/context/index';
 import useImageHandler from '@gdg/pages/tech_blog/hooks/useImageHandler';
-
-import uploadthumbnail from '@gdg/assets/thumbnail/uploadthumbnail.svg';
-
-import { usePostBlog } from '@gdg/apis/hooks/techblog/usePostBlog';
-
-import styled from '@emotion/styled';
 
 const TechBlogPostPage = () => {
   const context = useBlogPost();

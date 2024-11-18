@@ -1,5 +1,14 @@
+import styled from '@emotion/styled';
 import { memo } from 'react';
 import { Link } from 'react-router-dom';
+
+import EarthWebM from '@gdg/assets/Earth.webm';
+import LeftArrow from '@gdg/assets/LeftArrow.svg';
+import RightArrow from '@gdg/assets/RightArrow.svg';
+import CompleteBtn from '@gdg/components/common/button/CompleteBtn';
+import Text from '@gdg/components/common/typography/Text';
+import { useColTz } from '@gdg/hooks/useColTz';
+import { useCarouselStore } from '@gdg/store/useCarouselStore';
 
 import { cardData } from '../MainIntroduceText';
 import { RotateCarouselProps } from '../PCRotateCarousel';
@@ -14,14 +23,6 @@ import {
   Scene,
   EarthVideo,
 } from '../RotateCarousel.style';
-import styled from '@emotion/styled';
-import EarthWebM from '@gdg/assets/Earth.webm';
-import LeftArrow from '@gdg/assets/LeftArrow.svg';
-import RightArrow from '@gdg/assets/RightArrow.svg';
-import CompleteBtn from '@gdg/components/common/button/CompleteBtn';
-import Text from '@gdg/components/common/typography/Text';
-import { useColTz } from '@gdg/hooks/useColTz';
-import { useCarouselStore } from '@gdg/store/useCarouselStore';
 
 const TabletRotateCarousel = ({
   handleNextClick,

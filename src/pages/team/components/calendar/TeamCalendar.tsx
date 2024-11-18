@@ -1,7 +1,9 @@
+import dayGridPlugin from '@fullcalendar/daygrid';
+import interactionPlugin from '@fullcalendar/interaction';
+import FullCalendar from '@fullcalendar/react';
 import { useEffect, useState } from 'react';
 
 import { Spacing } from '@gdg/components/common/layouts/spacing';
-
 import {
   TeamName,
   DateCell,
@@ -10,9 +12,6 @@ import {
 } from '@gdg/pages/team/components';
 
 import './Calendar.style.css';
-import dayGridPlugin from '@fullcalendar/daygrid';
-import interactionPlugin from '@fullcalendar/interaction';
-import FullCalendar from '@fullcalendar/react';
 
 const TeamCalendar = ({ selectedTeamName }: { selectedTeamName: string }) => {
   const [headerToolbar, setHeaderToolbar] = useState({
@@ -21,7 +20,7 @@ const TeamCalendar = ({ selectedTeamName }: { selectedTeamName: string }) => {
     right: '',
   });
   const [hoveredDate, setHoveredDate] = useState<string | null>(null);
-  console.log(2);
+  // console.log(2);
 
   useEffect(() => {
     const updateHeaderToolbar = () => {

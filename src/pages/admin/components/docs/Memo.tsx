@@ -1,6 +1,6 @@
+import styled from '@emotion/styled';
 import { useState } from 'react';
 
-import styled from '@emotion/styled';
 import { usePatchDocsMemo } from '@gdg/apis/hooks/admin/docs/usePatchDocsMemo';
 import CommonBtn from '@gdg/components/common/button/CommonBtn';
 import Text from '@gdg/components/common/typography/Text';

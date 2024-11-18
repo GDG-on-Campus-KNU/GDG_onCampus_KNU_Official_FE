@@ -1,10 +1,11 @@
-import { ModalWrapper, ButtonContainer } from './DeleteModal.style';
 import { useDeleteUserList } from '@gdg/apis/hooks/admin/status/useDeleteUser';
 import trashcanIcon from '@gdg/assets/admin/trashcanIcon.svg';
 import CommonBtn from '@gdg/components/common/button/CommonBtn';
 import Text from '@gdg/components/common/typography/Text';
 import { CloseBtn } from '@gdg/components/feature/header/admin/AdminSideBar.style';
 import { useSelectedUserStore } from '@gdg/store/useSelectedUserStore';
+
+import { ModalWrapper, ButtonContainer } from './DeleteModal.style';
 
 interface DeleteModalProps {
   onClose: () => void;
@@ -25,7 +26,7 @@ const DeleteModal = ({ onClose }: DeleteModalProps) => {
       alert('사용자가 성공적으로 삭제되었습니다.');
       window.location.reload();
     } catch (error) {
-      console.error(error);
+      // console.error(error);
       alert('사용자 삭제에 실패했습니다');
     } finally {
       onClose();

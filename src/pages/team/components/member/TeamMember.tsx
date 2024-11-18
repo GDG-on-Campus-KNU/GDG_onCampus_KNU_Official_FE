@@ -1,13 +1,11 @@
+import styled from '@emotion/styled';
 import { memo } from 'react';
 
+import { useGetTeamMate } from '@gdg/apis/hooks/team/useGetTeamMate';
+import gdgknu from '@gdg/assets/gdgknu.png';
 import Text from '@gdg/components/common/typography/Text';
 
-import gdgknu from '@gdg/assets/gdgknu.png';
-
-import { useGetTeamMate } from '@gdg/apis/hooks/team/useGetTeamMate';
-
 import TeamName from '../name/TeamName';
-import styled from '@emotion/styled';
 
 const TeamMember = ({
   selectedTeamId,
@@ -17,7 +15,7 @@ const TeamMember = ({
   selectedTeamName: string;
 }) => {
   const { data } = useGetTeamMate(selectedTeamId);
-  console.log(1);
+  // console.log(1);
 
   return (
     <>

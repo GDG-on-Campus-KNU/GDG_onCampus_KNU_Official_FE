@@ -1,8 +1,6 @@
-import { useEffect, useRef, lazy } from 'react';
-
-import gsap from 'gsap';
-
 import styled from '@emotion/styled';
+import gsap from 'gsap';
+import { useEffect, useRef, lazy } from 'react';
 
 const RotateCarousel = lazy(() => import('./RotateCarousel'));
 

@@ -1,10 +1,4 @@
-import React, {
-  Suspense,
-  ComponentType,
-  useEffect,
-  useRef,
-  useState,
-} from 'react';
+import { Suspense, ComponentType, useEffect, useRef, useState } from 'react';
 
 import { LoadingView } from './LoadingView';
 

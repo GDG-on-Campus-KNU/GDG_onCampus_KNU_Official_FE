@@ -1,10 +1,8 @@
-import Text from '@gdg/components/common/typography/Text';
-
 import CompanyLogo from '@gdg/assets/CompanyLogo.svg';
 import GithubLogo from '@gdg/assets/GithubLogo.svg';
 import InstagramLogo from '@gdg/assets/InstagramLogo.svg';
 import Phone from '@gdg/assets/Phone.svg';
-
+import Text from '@gdg/components/common/typography/Text';
 import {
   Footer,
   DisplayFooter,

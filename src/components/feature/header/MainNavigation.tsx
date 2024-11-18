@@ -1,11 +1,9 @@
+import styled from '@emotion/styled';
+import { motion } from 'framer-motion';
 import { useEffect } from 'react';
 import { useMediaQuery } from 'react-responsive';
 import { Link, useNavigate } from 'react-router-dom';
 
-import { motion } from 'framer-motion';
-
-import { renderDropdownItems } from './StatusDropDownItems';
-import styled from '@emotion/styled';
 import { useGetMyData } from '@gdg/apis/hooks/mypage/useGetMyData';
 import HdDropDown from '@gdg/assets/HdDropDown.svg';
 import HdDropUp from '@gdg/assets/HdDropUp.svg';
@@ -16,6 +14,8 @@ import Text from '@gdg/components/common/typography/Text';
 import { useHeaderDropDownState } from '@gdg/store/useHeaderDropDownStore';
 import useUserStatusStore from '@gdg/store/useUserStatusStore';
 import { displayCenter } from '@gdg/styles/LayoutStyle';
+
+import { renderDropdownItems } from './StatusDropDownItems';
 
 export const LinkText = styled(Link)`
   margin-top: 3px;

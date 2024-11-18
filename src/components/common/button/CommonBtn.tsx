@@ -1,4 +1,5 @@
 import styled from '@emotion/styled';
+
 import { ICButton } from '@gdg/types/ButtonInterfaces';
 
 const Button = styled.button<ICButton>`

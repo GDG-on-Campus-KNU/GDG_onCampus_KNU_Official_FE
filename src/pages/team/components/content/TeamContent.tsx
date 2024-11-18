@@ -1,17 +1,15 @@
+import styled from '@emotion/styled';
 import { useState, lazy } from 'react';
 import { useMediaQuery } from 'react-responsive';
 
-import LazyLoad from '@gdg/components/common/View/LazyLoad';
-
 import { TeamList } from '@gdg/apis/hooks/team/useGetTeamList';
-
-import styled from '@emotion/styled';
+import LazyLoad from '@gdg/components/common/View/LazyLoad';
 
 const TeamMember = lazy(() => import('../member/TeamMember'));
 const TeamCalendar = lazy(() => import('../calendar/TeamCalendar'));
 const TeamTitle = lazy(() => import('../title/TeamTitle'));
 const TeamTitleMobile = lazy(() => import('../title/TeamTitle.mobile'));
-const TeamBlogList = lazy(() => import('../blog/TeamBlogList'));
+// const TeamBlogList = lazy(() => import('../blog/TeamBlogList'));
 
 const TeamContent = ({ data }: { data: TeamList[] }) => {
   const [selectedTeamName, setSelectedTeamName] = useState<string>(

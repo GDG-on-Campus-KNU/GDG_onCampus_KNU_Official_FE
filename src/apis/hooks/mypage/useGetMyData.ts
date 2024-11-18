@@ -1,6 +1,7 @@
+import { useQuery, UseQueryResult } from '@tanstack/react-query';
+
 import { fetchInstance } from '@gdg/apis/instance/Api_JWT';
 import { userDataInterface } from '@gdg/types/UserInterface';
-import { useQuery, UseQueryResult } from '@tanstack/react-query';
 
 const getMyDataPath = () => '/api/user';
 

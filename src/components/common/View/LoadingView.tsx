@@ -1,5 +1,6 @@
-import { Spinner } from '../Spinner';
 import styled from '@emotion/styled';
+
+import { Spinner } from '../Spinner';
 
 export const LoadingView = () => (
   <SpinnerWrapper>

@@ -1,7 +1,7 @@
+import styled from '@emotion/styled';
 import { useMediaQuery } from 'react-responsive';
 import { useParams, useNavigate } from 'react-router-dom';
 
-import styled from '@emotion/styled';
 import CommonBtn from '@gdg/components/common/button/CommonBtn';
 import {
   FrontendData,

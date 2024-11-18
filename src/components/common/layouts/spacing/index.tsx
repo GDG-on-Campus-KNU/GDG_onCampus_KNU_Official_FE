@@ -1,6 +1,6 @@
-import { breakpoints } from '@gdg/styles/variants';
-
 import styled from '@emotion/styled';
+
+import { breakpoints } from '@gdg/styles/variants';
 
 type ResponseGridStyle = {
   [key in keyof typeof breakpoints]?: number;
@@ -33,7 +33,7 @@ const Wrapper = styled.div<Pick<Props, 'height' | 'backgroundColor'>>(
       };
     }
 
-    let defaultHeight = height?.lg;
+    const defaultHeight = height?.lg;
 
     const responsive = Object.keys(height) as (keyof typeof breakpoints)[];
     return [

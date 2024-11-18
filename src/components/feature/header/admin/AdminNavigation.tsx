@@ -1,6 +1,9 @@
 import { useMediaQuery } from 'react-responsive';
 import { NavLink } from 'react-router-dom';
 
+import NavigationLogo768 from '@gdg/assets/NavigationLogo768.svg';
+import NavigationLogo from '@gdg/assets/NavigationLogo.svg';
+
 import {
   Header,
   DisplayHeader,
@@ -8,8 +11,6 @@ import {
   MenuList,
   NavImg,
 } from '../MainNavigation';
-import NavigationLogo768 from '@gdg/assets/NavigationLogo768.svg';
-import NavigationLogo from '@gdg/assets/NavigationLogo.svg';
 
 export type DropdownMenuProps = {
   isOpen: boolean;

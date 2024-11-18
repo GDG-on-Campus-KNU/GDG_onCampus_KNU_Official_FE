@@ -1,3 +1,8 @@
+import styled from '@emotion/styled';
+
+import CommonBtn from '@gdg/components/common/button/CommonBtn';
+import Text from '@gdg/components/common/typography/Text';
+
 import {
   TitleWrapper,
   CloseBtn,
@@ -13,9 +18,6 @@ import BasicInfo from './BasicInfo';
 import Memo from './Memo';
 import Stars from './Stars';
 import TechStack from './TechStack';
-import styled from '@emotion/styled';
-import CommonBtn from '@gdg/components/common/button/CommonBtn';
-import Text from '@gdg/components/common/typography/Text';
 
 const MarkBtn = styled.button`
   width: 30px;

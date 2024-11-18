@@ -1,6 +1,5 @@
-import { motion } from 'framer-motion';
-
 import styled from '@emotion/styled';
+import { motion } from 'framer-motion';
 
 // CrossShape 컴포넌트에 top과 left를 props로 전달받도록 설정
 interface CrossShapeProps {

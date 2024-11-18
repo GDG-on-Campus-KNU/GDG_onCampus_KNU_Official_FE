@@ -1,8 +1,3 @@
-import { useEffect, useState } from 'react';
-
-import Prism from 'prismjs';
-
-import { EditorCommonProps } from './MarkdownEditorDark';
 import styled from '@emotion/styled';
 import codeSyntaxHighlight from '@toast-ui/editor-plugin-code-syntax-highlight';
 import '@toast-ui/editor-plugin-code-syntax-highlight/dist/toastui-editor-plugin-code-syntax-highlight.css';
@@ -10,7 +5,11 @@ import colorSyntax from '@toast-ui/editor-plugin-color-syntax';
 import '@toast-ui/editor-plugin-color-syntax/dist/toastui-editor-plugin-color-syntax.css';
 import '@toast-ui/editor/dist/toastui-editor.css';
 import { Editor } from '@toast-ui/react-editor';
+import * as Prism from 'prismjs';
 import 'prismjs/themes/prism.css';
+import { useEffect, useState } from 'react';
+
+import { EditorCommonProps } from './MarkdownEditorDark';
 
 const Container = styled.div`
   width: 100%;

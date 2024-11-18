@@ -1,6 +1,6 @@
+import styled from '@emotion/styled';
 import { lazy } from 'react';
 
-import styled from '@emotion/styled';
 import type { TeamList } from '@gdg/apis/hooks/team/useGetTeamList';
 import {
   TitleLayout,

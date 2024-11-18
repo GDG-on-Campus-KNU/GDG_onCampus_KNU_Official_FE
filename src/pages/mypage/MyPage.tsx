@@ -1,21 +1,17 @@
+import styled from '@emotion/styled';
 import { useState, useEffect } from 'react';
 import { useMediaQuery } from 'react-responsive';
 
+import { useGetMyData } from '@gdg/apis/hooks/mypage/useGetMyData';
+import { usePutMyData } from '@gdg/apis/hooks/mypage/usePutMyData';
 import CompleteBtn from '@gdg/components/common/button/CompleteBtn';
 import Input from '@gdg/components/common/form/Input';
 import Profile from '@gdg/components/common/form/Profile';
 import TextArea from '@gdg/components/common/form/TextArea';
 import PageTitle from '@gdg/components/common/title/PageTitle';
-
 import TeamToken from '@gdg/pages/mypage/components/TeamToken';
-
-import { useGetMyData } from '@gdg/apis/hooks/mypage/useGetMyData';
-import { usePutMyData } from '@gdg/apis/hooks/mypage/usePutMyData';
-
-import { displayCenter } from '@gdg/styles/LayoutStyle';
-
-import styled from '@emotion/styled';
 import { MypageMetaData } from '@gdg/router/components/MetaData';
+import { displayCenter } from '@gdg/styles/LayoutStyle';
 import { putUserDataInterface } from '@gdg/types/UserInterface';
 
 const MyPageWrapper = styled.div<{ color: string }>`

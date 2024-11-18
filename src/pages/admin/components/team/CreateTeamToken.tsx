@@ -1,4 +1,13 @@
+import { DragDropContext, DropResult } from '@hello-pangea/dnd';
 import { useEffect, useState, lazy } from 'react';
+
+import { deleteParentTeam } from '@gdg/apis/hooks/admin/team/deleteParentTeam';
+import { putTeamMember } from '@gdg/apis/hooks/admin/team/putTeamMember';
+import { useGetAllTeamToken } from '@gdg/apis/hooks/admin/team/useGetAllTeamToken';
+import type { Team } from '@gdg/apis/hooks/admin/team/useGetAllTeamToken';
+import PlusBtn from '@gdg/assets/admin/PlusBtn.svg';
+import close from '@gdg/assets/admin/remove.svg';
+import { useTeamUpdate } from '@gdg/provider/TeamUpdate';
 
 import {
   BtnWrapper,
@@ -9,14 +18,6 @@ import {
   CloseButton,
   ButtonContainer,
 } from './CreateTeamToken.style';
-import { deleteParentTeam } from '@gdg/apis/hooks/admin/team/deleteParentTeam';
-import { putTeamMember } from '@gdg/apis/hooks/admin/team/putTeamMember';
-import { useGetAllTeamToken } from '@gdg/apis/hooks/admin/team/useGetAllTeamToken';
-import type { Team } from '@gdg/apis/hooks/admin/team/useGetAllTeamToken';
-import PlusBtn from '@gdg/assets/admin/PlusBtn.svg';
-import close from '@gdg/assets/admin/remove.svg';
-import { useTeamUpdate } from '@gdg/provider/TeamUpdate';
-import { DragDropContext, DropResult } from '@hello-pangea/dnd';
 
 const TeamBox = lazy(() => import('./TeamBox'));
 const CreateTeamModal = lazy(() => import('./modal/CreateTeamModal'));
@@ -84,7 +85,7 @@ const CreateTeamToken = () => {
       await putTeamMember({ oldTeamId, newTeamId, memberId });
       setIsTeamUpdate(true);
     } catch (error) {
-      console.error(error);
+      // console.error(error);
     }
   };
 

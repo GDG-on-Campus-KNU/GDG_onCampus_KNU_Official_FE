@@ -1,6 +1,8 @@
+import { Editor } from '@toast-ui/react-editor';
 import { useState, useRef, useCallback, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 
+import { usePostBlog } from '@gdg/apis/hooks/techblog/usePostBlog';
 import {
   Wrapper,
   Container,
@@ -16,10 +18,6 @@ import MarkdownEditorDark from '@gdg/pages/tech_blog/Components/MarkdownEditorDa
 import MarkdownEditorLight from '@gdg/pages/tech_blog/Components/MarkdownEditorLight';
 import { useBlogPost } from '@gdg/pages/tech_blog/context/index';
 import useImageHandler from '@gdg/pages/tech_blog/hooks/useImageHandler';
-
-import { usePostBlog } from '@gdg/apis/hooks/techblog/usePostBlog';
-
-import { Editor } from '@toast-ui/react-editor';
 
 const TechBlogEditPage = () => {
   const context = useBlogPost();
@@ -65,7 +63,7 @@ const TechBlogEditPage = () => {
     }));
 
     navigate('/write/post');
-  }, [setBlogPost]);
+  }, [setBlogPost, navigate]);
 
   const handleTempSave = useCallback(() => {
     if (!editorRef.current) return;
@@ -88,7 +86,7 @@ const TechBlogEditPage = () => {
       thumbnailUrl: null,
       category: 'ETC',
     });
-  }, [setBlogPost, mutate]);
+  }, [blogPost.content, blogPost.title, setBlogPost, mutate]);
 
   return (
     <Wrapper>

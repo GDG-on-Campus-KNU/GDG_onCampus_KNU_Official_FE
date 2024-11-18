@@ -1,4 +1,5 @@
 import styled from '@emotion/styled';
+
 import { displayCenter } from '@gdg/styles/LayoutStyle';
 
 export const AuthWrapper = styled.section`

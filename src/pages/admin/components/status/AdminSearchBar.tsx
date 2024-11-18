@@ -1,9 +1,10 @@
+import SearchIcon from '@gdg/assets/SearchIcon.svg';
+
 import {
   SearchBarContainer,
   SearchIconImg,
   SearchInput,
 } from './AdminSearchBar.style';
-import SearchIcon from '@gdg/assets/SearchIcon.svg';
 
 const AdminSearchBar = () => {
   return (

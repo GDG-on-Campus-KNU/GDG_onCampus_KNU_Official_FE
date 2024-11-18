@@ -1,6 +1,7 @@
+import { useQuery, UseQueryResult } from '@tanstack/react-query';
+
 import { fetchInstance } from '@gdg/apis/instance/Api_JWT';
 import type { TeamData } from '@gdg/types/TeamData.type';
-import { useQuery, UseQueryResult } from '@tanstack/react-query';
 
 const getTeamMatePath = (teamId: number) => `/api/team/${teamId}/member`;
 

@@ -1,6 +1,12 @@
+import styled from '@emotion/styled';
 import * as React from 'react';
 import { useMediaQuery } from 'react-responsive';
 import { useLocation, Location } from 'react-router-dom';
+
+import MenuHamburger from '@gdg/assets/MenuHamburger.svg';
+import Text from '@gdg/components/common/typography/Text';
+import { useNavigationStore } from '@gdg/store/useNavigationStore';
+import { DisplayLayout } from '@gdg/styles/LayoutStyle';
 
 import AdminSideBar from './AdminSideBar';
 import {
@@ -10,11 +16,6 @@ import {
   HamburgerMenu,
 } from './AdminTitle.style';
 import MobileErrorPage from './MobileErrorPage';
-import styled from '@emotion/styled';
-import MenuHamburger from '@gdg/assets/MenuHamburger.svg';
-import Text from '@gdg/components/common/typography/Text';
-import { useNavigationStore } from '@gdg/store/useNavigationStore';
-import { DisplayLayout } from '@gdg/styles/LayoutStyle';
 
 const getTitle = (pathname: string): string => {
   switch (pathname) {

@@ -1,6 +1,6 @@
+import styled from '@emotion/styled';
 import { lazy } from 'react';
 
-import styled from '@emotion/styled';
 import MenuHamburger from '@gdg/assets/MenuHamburger.svg';
 import { useNavigationStore } from '@gdg/store/useNavigationStore';
 import { displayCenter } from '@gdg/styles/LayoutStyle';

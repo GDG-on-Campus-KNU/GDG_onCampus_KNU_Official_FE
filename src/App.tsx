@@ -1,6 +1,6 @@
+import { Global } from '@emotion/react';
 import { RouterProvider } from 'react-router-dom';
 
-import { Global } from '@emotion/react';
 import { Router } from '@gdg/router/Router';
 import { GlobalStyle } from '@gdg/styles/GlobalStyle';
 

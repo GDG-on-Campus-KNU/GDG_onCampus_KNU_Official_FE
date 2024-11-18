@@ -1,6 +1,6 @@
+import styled from '@emotion/styled';
 import { useEffect, useState } from 'react';
 
-import styled from '@emotion/styled';
 import type { TeamList } from '@gdg/apis/hooks/team/useGetTeamList';
 import HdDropDown from '@gdg/assets/HdDropDown.svg';
 import HdDropUp from '@gdg/assets/HdDropUp.svg';

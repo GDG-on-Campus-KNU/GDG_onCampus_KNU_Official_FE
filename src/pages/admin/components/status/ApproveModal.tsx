@@ -1,13 +1,14 @@
-import {
-  ModalBackdrop,
-  ModalWrapper,
-  ButtonContainer,
-} from './ApproveModal.style';
 import { useApproveUserList } from '@gdg/apis/hooks/admin/useApproveUser';
 import CommonBtn from '@gdg/components/common/button/CommonBtn';
 import Text from '@gdg/components/common/typography/Text';
 import { CloseBtn } from '@gdg/components/feature/header/admin/AdminSideBar.style';
 import { useSelectedUserStore } from '@gdg/store/useSelectedUserStore';
+
+import {
+  ModalBackdrop,
+  ModalWrapper,
+  ButtonContainer,
+} from './ApproveModal.style';
 
 interface ApproveModalProps {
   onClose: () => void;
@@ -28,7 +29,8 @@ const ApproveModal = ({ onClose }: ApproveModalProps) => {
           window.location.reload();
         },
         onError: (error) => {
-          console.error('승인 실패:', error);
+          // console.error('승인 실패:', error);
+          throw new Error(error.message || 'Unknown error');
         },
       }
     );

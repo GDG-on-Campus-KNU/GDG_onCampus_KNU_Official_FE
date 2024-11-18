@@ -1,3 +1,5 @@
+import { ErrorMessage } from '@hookform/error-message';
+import { zodResolver } from '@hookform/resolvers/zod';
 import { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { Oval } from 'react-loader-spinner';
@@ -43,8 +45,6 @@ import {
 } from '@gdg/types/ApplyInterface';
 import { ApplyFormSchema } from '@gdg/utils/ApplyFormScehma.util';
 import { handleFormSubmit } from '@gdg/utils/anlytics';
-import { ErrorMessage } from '@hookform/error-message';
-import { zodResolver } from '@hookform/resolvers/zod';
 
 const getTrack = (tech: string): string => {
   switch (tech.toLowerCase()) {
