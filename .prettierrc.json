@@ -18,28 +18,6 @@
   "useTabs": false,
   "vueIndentScriptAndStyle": false,
 
-  "plugins": ["@trivago/prettier-plugin-sort-imports"],
-  "importOrder": [
-    "^react",
-
-    "<THIRD_PARTY_MODULES>",
-
-    "^(@gdg/components)(.*)$",
-    "^(@gdg/pages)(.*)$",
-    "^(@gdg/hooks)(.*)$",
-    "^(@gdg/assets)(.*)$",
-
-    "^(@gdg/constants)(.*)$",
-    "^(@gdg/utils)(.*)$",
-    "^(@gdg/apis)(.*)$",
-    "^(@gdg/common)(.*)$",
-    "^(@gdg/config)(.*)$",
-    "^(@gdg/store)(.*)$",
-
-    "^(@gdg/styles)(.*)$",
-
-    "^(.*)/(.*)$"
-  ],
   "importOrderSeparation": true,
   "importOrderSortSpecifiers": false
 }

@@ -50,18 +50,28 @@
       "error",
       {
         "endOfLine": "auto",
-        "singleQuote": true,
-        "importOrder": ["^[./]"]
+        "singleQuote": true
       }
     ],
     "react/react-in-jsx-scope": "off",
     "import/no-unresolved": "off",
     "@typescript-eslint/no-unused-vars": "warn",
-    "no-console": "warn",
+    "no-console": "off",
     "arrow-body-style": "off",
     "prefer-arrow-callback": "off",
     "max-len": "off",
     "no-mixed-operators": "off",
-    "no-multiple-empty-lines": "off"
+    "no-multiple-empty-lines": "off",
+    "import/order": [
+      "error",
+      {
+        "groups": [
+          ["builtin", "external"],
+          "internal",
+          ["parent", "sibling", "index"]
+        ],
+        "newlines-between": "always"
+      }
+    ]
   }
 }
