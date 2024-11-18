@@ -4,11 +4,11 @@ import { DateNumber } from '@gdg/pages/team/components';
 
 type DateContentProps = {
   date: Date;
-  hoveredDate: string | null;
-  onAddEvent: (date: Date) => void;
+  hoveredDate?: string | null;
+  onAddEvent?: (date: Date) => void;
 };
 
-const DateCell = ({ date, hoveredDate, onAddEvent }: DateContentProps) => {
+const DateCell = ({ date }: DateContentProps) => {
   return (
     <DateCellContainer>
       <DateNumber date={date} />
@@ -35,16 +35,16 @@ const DateCellContainer = styled.div`
   height: 100%;
 `;
 
-const AddButton = styled.button`
-  position: absolute;
-  top: 0px;
-  right: 80px;
-  background-color: rgba(255, 255, 255, 0.7);
-  border-radius: 4px;
-  padding: 2px 4px;
-  width: 20px;
-  height: 18px;
-  transition: all 0.6s;
-  border: none;
-  cursor: pointer;
-`;
+// const AddButton = styled.button`
+//   position: absolute;
+//   top: 0px;
+//   right: 80px;
+//   background-color: rgba(255, 255, 255, 0.7);
+//   border-radius: 4px;
+//   padding: 2px 4px;
+//   width: 20px;
+//   height: 18px;
+//   transition: all 0.6s;
+//   border: none;
+//   cursor: pointer;
+// `;
