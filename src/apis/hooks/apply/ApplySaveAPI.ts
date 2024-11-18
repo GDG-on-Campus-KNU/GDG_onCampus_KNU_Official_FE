@@ -1,6 +1,5 @@
-import { fetchInstance } from '@gdsc/apis/instance/Api_JWT';
-
-import { ApplyFormInterface } from '@gdsc/types/ApplyInterface';
+import { fetchInstance } from '@gdg/apis/instance/Api_JWT';
+import { ApplyFormInterface } from '@gdg/types/ApplyInterface';
 
 export const ApplySaveAPI = async (
   formData: ApplyFormInterface

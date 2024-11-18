@@ -1,6 +1,6 @@
 import { useEffect } from 'react';
 
-import { handleScroll } from '@gdsc/utils/anlytics';
+import { handleScroll } from '@gdg/utils/anlytics';
 
 // 유틸리티 함수 경로
 

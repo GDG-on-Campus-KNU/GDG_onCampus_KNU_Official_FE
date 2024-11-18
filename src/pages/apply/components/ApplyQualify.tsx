@@ -1,12 +1,10 @@
-import Text from '@gdsc/components/common/typography/Text';
-
-import ApplyArrow from '@gdsc/assets/ApplyArrow.svg';
-import ApplyForm from '@gdsc/assets/ApplyForm.svg';
-import ApplyInterview from '@gdsc/assets/ApplyInterview.svg';
-import ApplyResult from '@gdsc/assets/ApplyResult.svg';
-
 import styled from '@emotion/styled';
-import { ApplyExInterface } from '@gdsc/types/ApplyInterface';
+import ApplyArrow from '@gdg/assets/ApplyArrow.svg';
+import ApplyForm from '@gdg/assets/ApplyForm.svg';
+import ApplyInterview from '@gdg/assets/ApplyInterview.svg';
+import ApplyResult from '@gdg/assets/ApplyResult.svg';
+import Text from '@gdg/components/common/typography/Text';
+import { ApplyExInterface } from '@gdg/types/ApplyInterface';
 
 const QualifyContainer = styled.div`
   width: 100%;

@@ -1,5 +1,5 @@
 import styled from '@emotion/styled';
-import { ICButton } from '@gdsc/types/ButtonInterfaces';
+import { ICButton } from '@gdg/types/ButtonInterfaces';
 
 const Button = styled.button<ICButton>`
   display: flex;

@@ -1,12 +1,11 @@
 import { useMediaQuery } from 'react-responsive';
 
-import SigninBtn from '@gdsc/components/common/button/SigninBtn';
-import AuthModal from '@gdsc/components/feature/auth/AuthModal';
-
+import SigninBtn from '@gdg/components/common/button/SigninBtn';
+import AuthModal from '@gdg/components/feature/auth/AuthModal';
 import {
   GOOGLE_AUTH_CLIENT_ID,
   GOOGLE_AUTH_REDIRECT_URI,
-} from '@gdsc/constants/URI';
+} from '@gdg/constants/URI';
 
 const SigninModal = () => {
   const GoogleLoginUrl = `

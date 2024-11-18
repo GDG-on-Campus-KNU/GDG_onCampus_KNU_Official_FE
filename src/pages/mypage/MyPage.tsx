@@ -1,22 +1,22 @@
 import { useState, useEffect } from 'react';
 import { useMediaQuery } from 'react-responsive';
 
-import CompleteBtn from '@gdsc/components/common/button/CompleteBtn';
-import Input from '@gdsc/components/common/form/Input';
-import Profile from '@gdsc/components/common/form/Profile';
-import TextArea from '@gdsc/components/common/form/TextArea';
-import PageTitle from '@gdsc/components/common/title/PageTitle';
+import CompleteBtn from '@gdg/components/common/button/CompleteBtn';
+import Input from '@gdg/components/common/form/Input';
+import Profile from '@gdg/components/common/form/Profile';
+import TextArea from '@gdg/components/common/form/TextArea';
+import PageTitle from '@gdg/components/common/title/PageTitle';
 
-import TeamToken from '@gdsc/pages/mypage/components/TeamToken';
+import TeamToken from '@gdg/pages/mypage/components/TeamToken';
 
-import { useGetMyData } from '@gdsc/apis/hooks/mypage/useGetMyData';
-import { usePutMyData } from '@gdsc/apis/hooks/mypage/usePutMyData';
+import { useGetMyData } from '@gdg/apis/hooks/mypage/useGetMyData';
+import { usePutMyData } from '@gdg/apis/hooks/mypage/usePutMyData';
 
-import { displayCenter } from '@gdsc/styles/LayoutStyle';
+import { displayCenter } from '@gdg/styles/LayoutStyle';
 
 import styled from '@emotion/styled';
-import { MypageMetaData } from '@gdsc/router/components/MetaData';
-import { putUserDataInterface } from '@gdsc/types/UserInterface';
+import { MypageMetaData } from '@gdg/router/components/MetaData';
+import { putUserDataInterface } from '@gdg/types/UserInterface';
 
 const MyPageWrapper = styled.div<{ color: string }>`
   ${displayCenter}
@@ -188,15 +188,6 @@ const MyPage = () => {
     // console.log(123, handleData);
     mutation.mutate(handleData);
   };
-
-  // console.log(data);
-
-  // const teamInfo = [
-  //   'FE study 2팀',
-  //   'Solution Challenge 3팀',
-  //   '2차 프로젝트 1팀',
-  //   'FE study 2팀',
-  // ];
 
   return (
     <>

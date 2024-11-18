@@ -3,25 +3,6 @@ import { NavLink, useNavigate } from 'react-router-dom';
 
 import { AnimatePresence } from 'framer-motion';
 
-import MobileBtn from '@gdsc/components/common/button/MobileBtn';
-import Text from '@gdsc/components/common/typography/Text';
-import { DropDownImg } from '@gdsc/components/feature/header/MainNavigation';
-
-import Apply from '@gdsc/assets/Apply.svg';
-import Community from '@gdsc/assets/Community.svg';
-import HdDropDown from '@gdsc/assets/HdDropDown.svg';
-import HdDropUp from '@gdsc/assets/HdDropUp.svg';
-import Home from '@gdsc/assets/Home.svg';
-import Introduce from '@gdsc/assets/Introduce.svg';
-import NavSlideClose from '@gdsc/assets/NavSlideClose.svg';
-import Techblog from '@gdsc/assets/Techblog.svg';
-
-import { useGetMyData } from '@gdsc/apis/hooks/mypage/useGetMyData';
-
-import { useHeaderDropDownState } from '@gdsc/store/useHeaderDropDownStore';
-import { useNavigationStore } from '@gdsc/store/useNavigationStore';
-import useUserStatusStore from '@gdsc/store/useUserStatusStore';
-
 import {
   CloseButton,
   InformationBox,
@@ -36,6 +17,21 @@ import {
   StyledImg,
 } from './NavigationSlideMobile.style';
 import { renderDropdownItems } from './StatusDropDownItems';
+import { useGetMyData } from '@gdg/apis/hooks/mypage/useGetMyData';
+import Apply from '@gdg/assets/Apply.svg';
+import Community from '@gdg/assets/Community.svg';
+import HdDropDown from '@gdg/assets/HdDropDown.svg';
+import HdDropUp from '@gdg/assets/HdDropUp.svg';
+import Home from '@gdg/assets/Home.svg';
+import Introduce from '@gdg/assets/Introduce.svg';
+import NavSlideClose from '@gdg/assets/NavSlideClose.svg';
+import Techblog from '@gdg/assets/Techblog.svg';
+import MobileBtn from '@gdg/components/common/button/MobileBtn';
+import Text from '@gdg/components/common/typography/Text';
+import { DropDownImg } from '@gdg/components/feature/header/MainNavigation';
+import { useHeaderDropDownState } from '@gdg/store/useHeaderDropDownStore';
+import { useNavigationStore } from '@gdg/store/useNavigationStore';
+import useUserStatusStore from '@gdg/store/useUserStatusStore';
 
 interface MenuItemProps {
   to: string;

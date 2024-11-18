@@ -5,18 +5,14 @@ import { useNavigate } from 'react-router-dom';
 
 import dayjs from 'dayjs';
 
-import CommonBtn from '@gdsc/components/common/button/CommonBtn';
-import Input from '@gdsc/components/common/form/Input';
-import Text from '@gdsc/components/common/typography/Text';
-
-import ApplySaveForm from '@gdsc/pages/apply/components/ApplySaveForm';
-
-import { ApplyInquiryQuery } from '@gdsc/apis/hooks/apply/ApplyInquiryQuery';
-
-import { AuthWrapper, AuthForm } from '@gdsc/styles/AuthModalStyle';
-import { displayCenter, DisplayLayout } from '@gdsc/styles/LayoutStyle';
-
 import styled from '@emotion/styled';
+import { ApplyInquiryQuery } from '@gdg/apis/hooks/apply/ApplyInquiryQuery';
+import CommonBtn from '@gdg/components/common/button/CommonBtn';
+import Input from '@gdg/components/common/form/Input';
+import Text from '@gdg/components/common/typography/Text';
+import ApplySaveForm from '@gdg/pages/apply/components/ApplySaveForm';
+import { AuthWrapper, AuthForm } from '@gdg/styles/AuthModalStyle';
+import { displayCenter, DisplayLayout } from '@gdg/styles/LayoutStyle';
 import { useQueryClient } from '@tanstack/react-query';
 
 const TitleContainer = styled.h2`

@@ -1,5 +1,5 @@
 import CommingSoonPage from '../CommingSoonPage';
-import { CommunityMetaData } from '@gdsc/router/components/MetaData';
+import { CommunityMetaData } from '@gdg/router/components/MetaData';
 
 const CommunityPage = () => {
   return (

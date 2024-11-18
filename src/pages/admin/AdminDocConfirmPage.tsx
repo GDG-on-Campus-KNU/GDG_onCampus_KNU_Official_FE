@@ -1,16 +1,14 @@
 import { useState, lazy } from 'react';
 
-import { useGetStatistic } from '@gdsc/apis/hooks/admin/docs/useGetStatistic';
-import { useGetTrack } from '@gdsc/apis/hooks/admin/docs/useGetTrack';
-
-import { DisplayLayout } from '@gdsc/styles/LayoutStyle';
-
 import { PassBtn, ButtonBox, InfoBox } from './AdminDocConfirmPage.style';
+import { useGetStatistic } from '@gdg/apis/hooks/admin/docs/useGetStatistic';
+import { useGetTrack } from '@gdg/apis/hooks/admin/docs/useGetTrack';
+import { DisplayLayout } from '@gdg/styles/LayoutStyle';
 
 const TrackSelectBar = lazy(() => import('./components/docs/TrackSelectBar'));
 
 const DocsTable = lazy(
-  () => import('@gdsc/pages/admin/components/docs/DocsTable')
+  () => import('@gdg/pages/admin/components/docs/DocsTable')
 );
 const Stars = lazy(() => import('./components/docs/Stars'));
 const CurrentApplyInfo = lazy(

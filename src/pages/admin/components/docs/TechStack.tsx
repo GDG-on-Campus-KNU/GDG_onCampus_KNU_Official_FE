@@ -1,9 +1,7 @@
-import CommonBtn from '@gdsc/components/common/button/CommonBtn';
-import Text from '@gdsc/components/common/typography/Text';
-
-import linkIcon from '@gdsc/assets/admin/linkIcon.svg';
-
 import styled from '@emotion/styled';
+import linkIcon from '@gdg/assets/admin/linkIcon.svg';
+import CommonBtn from '@gdg/components/common/button/CommonBtn';
+import Text from '@gdg/components/common/typography/Text';
 
 const TechStackWrapper = styled.div`
   width: 100%;

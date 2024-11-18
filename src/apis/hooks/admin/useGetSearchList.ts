@@ -1,6 +1,5 @@
-import { fetchInstance } from '@gdsc/apis/instance/Api_JWT';
-
 import { userListInterface } from './status/useGetUserList';
+import { fetchInstance } from '@gdg/apis/instance/Api_JWT';
 import { useQuery, UseQueryResult } from '@tanstack/react-query';
 
 const getSearchListPath = () => '/api/admin/member/search';

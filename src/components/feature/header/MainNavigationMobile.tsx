@@ -1,15 +1,12 @@
 import { lazy } from 'react';
 
-import MenuHamburger from '@gdsc/assets/MenuHamburger.svg';
-
-import { useNavigationStore } from '@gdsc/store/useNavigationStore';
-
-import { displayCenter } from '@gdsc/styles/LayoutStyle';
-
 import styled from '@emotion/styled';
+import MenuHamburger from '@gdg/assets/MenuHamburger.svg';
+import { useNavigationStore } from '@gdg/store/useNavigationStore';
+import { displayCenter } from '@gdg/styles/LayoutStyle';
 
 const NavigationSlideMobile = lazy(
-  () => import('@gdsc/components/feature/header/NavigationSlideMobile')
+  () => import('@gdg/components/feature/header/NavigationSlideMobile')
 );
 
 export const MobileHeader = styled.div`

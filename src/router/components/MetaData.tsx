@@ -1,6 +1,6 @@
 import { useParams } from 'react-router-dom';
 
-import { SEO } from '@gdsc/router/components/Seo';
+import { SEO } from '@gdg/router/components/Seo';
 
 export const MainMetaData = () => {
   return (

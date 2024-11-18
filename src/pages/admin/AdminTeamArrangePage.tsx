@@ -1,11 +1,10 @@
 import { lazy } from 'react';
 
-import { DisplayLayout } from '@gdsc/styles/LayoutStyle';
-
 import styled from '@emotion/styled';
+import { DisplayLayout } from '@gdg/styles/LayoutStyle';
 
 const CreateTeamToken = lazy(
-  () => import('@gdsc/pages/admin/components/team/CreateTeamToken')
+  () => import('@gdg/pages/admin/components/team/CreateTeamToken')
 );
 
 const AdminTeamArrangePage = () => {

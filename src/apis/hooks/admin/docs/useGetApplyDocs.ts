@@ -1,6 +1,5 @@
-import { fetchInstance } from '@gdsc/apis/instance/Api_JWT';
-
-import { MemberData } from '@gdsc/types/AdminInterface';
+import { fetchInstance } from '@gdg/apis/instance/Api_JWT';
+import { MemberData } from '@gdg/types/AdminInterface';
 import { useQuery } from '@tanstack/react-query';
 
 export interface applyDocsInterface {

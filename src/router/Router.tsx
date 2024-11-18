@@ -6,39 +6,50 @@ import {
   Outlet,
 } from 'react-router-dom';
 
-import { AsyncBoundary } from '@gdsc/components/common/AsyncBoundary';
-import { LoadingView } from '@gdsc/components/common/View/LoadingView';
+import { AsyncBoundary } from '@gdg/components/common/AsyncBoundary';
+import { LoadingView } from '@gdg/components/common/View/LoadingView';
 
-import { TeamUpdateProvider } from '@gdsc/provider/TeamUpdate';
-import RouteChangeTracker from '@gdsc/router/components/RouteChangeTracker';
-import StatusRoute from '@gdsc/router/components/StatusRoute';
+import { BlogPostProvider } from '@gdg/pages/tech_blog/context/index';
 
-const TechBlogPage = lazy(() => import('@gdsc/pages/tech_blog/TechBlogPage'));
-const ErrorPage = lazy(() => import('@gdsc/pages/ErrorPage'));
-const CommunityPage = lazy(() => import('@gdsc/pages/community/CommunityPage'));
-const TeamPage = lazy(() => import('@gdsc/pages/team'));
-const RootPage = lazy(() => import('@gdsc/pages/RootPage'));
-const MainPage = lazy(() => import('@gdsc/pages/main/MainPage'));
-const SigninPage = lazy(() => import('@gdsc/pages/signin/SigninPage'));
-const SignupPage = lazy(() => import('@gdsc/pages/signup/SignupPage'));
-const ApplyPage = lazy(() => import('@gdsc/pages/apply/ApplyPage'));
-const ApplyFormPage = lazy(() => import('@gdsc/pages/apply/ApplyFormPage'));
-const ApplyExPage = lazy(() => import('@gdsc/pages/apply/ApplyExPage'));
-const InquiryPage = lazy(() => import('@gdsc/pages/apply/InquiryPage'));
-const IntroducePage = lazy(() => import('@gdsc/pages/introduce/IntroducePage'));
-const MyPage = lazy(() => import('@gdsc/pages/mypage/MyPage'));
-const AuthCallBackPage = lazy(
-  () => import('@gdsc/pages/signin/AuthCallBackPage')
+import { TeamUpdateProvider } from '@gdg/provider/TeamUpdate';
+import RouteChangeTracker from '@gdg/router/components/RouteChangeTracker';
+import StatusRoute from '@gdg/router/components/StatusRoute';
+
+const TechBlogPage = lazy(() => import('@gdg/pages/tech_blog/TechBlogPage'));
+const TechBlogEditPage = lazy(
+  () => import('@gdg/pages/tech_blog/TechBlogEditPage')
 );
-const AdminRootPage = lazy(() => import('@gdsc/pages/AdminRootPage'));
+const TechBlogPostPage = lazy(
+  () => import('@gdg/pages/tech_blog/TechBlogPostPage')
+);
+const TechBlogRootPage = lazy(
+  () => import('@gdg/pages/tech_blog/TechBlogRootPage')
+);
+const ErrorPage = lazy(() => import('@gdg/pages/ErrorPage'));
+const CommunityPage = lazy(() => import('@gdg/pages/community/CommunityPage'));
+const TeamPage = lazy(() => import('@gdg/pages/team'));
+const RootPage = lazy(() => import('@gdg/pages/RootPage'));
+const MainPage = lazy(() => import('@gdg/pages/main/MainPage'));
+const SigninPage = lazy(() => import('@gdg/pages/signin/SigninPage'));
+const SignupPage = lazy(() => import('@gdg/pages/signup/SignupPage'));
+const ApplyPage = lazy(() => import('@gdg/pages/apply/ApplyPage'));
+const ApplyFormPage = lazy(() => import('@gdg/pages/apply/ApplyFormPage'));
+const ApplyExPage = lazy(() => import('@gdg/pages/apply/ApplyExPage'));
+const InquiryPage = lazy(() => import('@gdg/pages/apply/InquiryPage'));
+const IntroducePage = lazy(() => import('@gdg/pages/introduce/IntroducePage'));
+const MyPage = lazy(() => import('@gdg/pages/mypage/MyPage'));
+const AuthCallBackPage = lazy(
+  () => import('@gdg/pages/signin/AuthCallBackPage')
+);
+const AdminRootPage = lazy(() => import('@gdg/pages/AdminRootPage'));
 const AdminDocConfirmPage = lazy(
-  () => import('@gdsc/pages/admin/AdminDocConfirmPage')
+  () => import('@gdg/pages/admin/AdminDocConfirmPage')
 );
 const AdminSetStatePage = lazy(
-  () => import('@gdsc/pages/admin/AdminSetStatePage')
+  () => import('@gdg/pages/admin/AdminSetStatePage')
 );
 const AdminTeamArrangePage = lazy(
-  () => import('@gdsc/pages/admin/AdminTeamArrangePage')
+  () => import('@gdg/pages/admin/AdminTeamArrangePage')
 );
 
 type AppRouteObject = (IndexRouteObject | NonIndexRouteObject) & {
@@ -123,8 +134,10 @@ const routesConfig: AppRouteObject[] = [
         ],
       },
       {
-        path: 'techblog',
-        element: <StatusRoute allowedStatuses={['CORE', 'MEMBER', 'GUEST']} />,
+        path: '/techblog',
+        element: <TechBlogRootPage />,
+        id: 'techBlogRoot',
+        errorElement: <ErrorPage />,
         children: [
           {
             path: '',
@@ -184,6 +197,24 @@ const routesConfig: AppRouteObject[] = [
     path: 'signup',
     element: <SignupPage />,
   },
+  // {
+  //   path: 'write',
+  //   element: (
+  //     <BlogPostProvider>
+  //       <StatusRoute allowedStatuses={['CORE', 'MEMBER']} />
+  //     </BlogPostProvider>
+  //   ),
+  //   children: [
+  //     {
+  //       path: '',
+  //       element: <TechBlogEditPage />,
+  //     },
+  //     {
+  //       path: 'post',
+  //       element: <TechBlogPostPage />,
+  //     },
+  //   ],
+  // },
 ];
 
 const createRoutesWithAsyncBoundary = (

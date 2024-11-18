@@ -2,16 +2,12 @@ import { NavLink } from 'react-router-dom';
 
 import { motion, AnimatePresence } from 'framer-motion';
 
-import Text from '@gdsc/components/common/typography/Text';
-
-import Home from '@gdsc/assets/Home.svg';
-import NavSlideClose from '@gdsc/assets/NavSlideClose.svg';
-
-import { useNavigationStore } from '@gdsc/store/useNavigationStore';
-
-import { displayCenter } from '@gdsc/styles/LayoutStyle';
-
 import styled from '@emotion/styled';
+import Home from '@gdg/assets/Home.svg';
+import NavSlideClose from '@gdg/assets/NavSlideClose.svg';
+import Text from '@gdg/components/common/typography/Text';
+import { useNavigationStore } from '@gdg/store/useNavigationStore';
+import { displayCenter } from '@gdg/styles/LayoutStyle';
 
 const StyledImg = styled.img`
   width: auto;

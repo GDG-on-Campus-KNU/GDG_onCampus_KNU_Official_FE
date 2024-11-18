@@ -1,4 +1,4 @@
-import { USER_AGENT_REGEX } from '@gdsc/constants/regex';
+import { USER_AGENT_REGEX } from '@gdg/constants/regex';
 
 export const detectUserAgent = () => {
   const detectedUserAgent = navigator.userAgent;

@@ -2,12 +2,10 @@ import { useEffect } from 'react';
 
 import gsap from 'gsap';
 
-import Text from '@gdsc/components/common/typography/Text';
-
-import { GDSCText, IntroText } from '@gdsc/styles/IntroduceStyle';
-import { displayCenter } from '@gdsc/styles/LayoutStyle';
-
 import styled from '@emotion/styled';
+import Text from '@gdg/components/common/typography/Text';
+import { GDSCText, IntroText } from '@gdg/styles/IntroduceStyle';
+import { displayCenter } from '@gdg/styles/LayoutStyle';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 
 gsap.registerPlugin(ScrollTrigger);

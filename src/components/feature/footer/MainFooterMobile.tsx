@@ -1,12 +1,11 @@
 import { Link } from 'react-router-dom';
 
-import Text from '@gdsc/components/common/typography/Text';
-
-import CompanyLogo from '@gdsc/assets/CompanyLogo.svg';
-import GithubLogo from '@gdsc/assets/GithubLogo.svg';
-import InstagramLogo from '@gdsc/assets/InstagramLogo.svg';
-import Phone from '@gdsc/assets/Phone.svg';
-
+import styled from '@emotion/styled';
+import CompanyLogo from '@gdg/assets/CompanyLogo.svg';
+import GithubLogo from '@gdg/assets/GithubLogo.svg';
+import InstagramLogo from '@gdg/assets/InstagramLogo.svg';
+import Phone from '@gdg/assets/Phone.svg';
+import Text from '@gdg/components/common/typography/Text';
 import {
   Footer,
   DisplayFooter,
@@ -14,9 +13,7 @@ import {
   TextBorder,
   Table,
   TableData,
-} from '@gdsc/styles/FooterLayoutStyle';
-
-import styled from '@emotion/styled';
+} from '@gdg/styles/FooterLayoutStyle';
 
 const MobileImg = styled.img`
   margin-right: 10px;

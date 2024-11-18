@@ -1,12 +1,11 @@
-import { fetchInstance } from '@gdsc/apis/instance/Api_JWT';
-
-import { signUpUserInterface } from '@gdsc/types/UserInterface';
+import { fetchInstance } from '@gdg/apis/instance/Api_JWT';
+import { signUpUserInterface } from '@gdg/types/UserInterface';
 
 export const SignupAPI = (
   userData: signUpUserInterface
 ): Promise<signUpUserInterface> => {
   return fetchInstance
-    .post('/api/user/additional-info', userData)
+    .put('/api/user', userData)
     .then(function (response) {
       // console.log(response);
       return response.data;

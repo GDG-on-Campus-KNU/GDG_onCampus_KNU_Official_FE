@@ -1,8 +1,7 @@
 import { useMediaQuery } from 'react-responsive';
 
-import Text from '@gdsc/components/common/typography/Text';
-
 import styled from '@emotion/styled';
+import Text from '@gdg/components/common/typography/Text';
 
 const CardWrapper = styled.div`
   width: 100%;

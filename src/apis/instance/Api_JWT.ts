@@ -4,7 +4,7 @@ import axios, {
   InternalAxiosRequestConfig,
 } from 'axios';
 
-import { BASE_URI } from '@gdsc/constants/URI';
+import { BASE_URI } from '@gdg/constants/URI';
 
 export const createInstanceJWT = (
   config: AxiosRequestConfig
@@ -23,8 +23,10 @@ export const createInstanceJWT = (
     (config: InternalAxiosRequestConfig) => {
       const accessToken = sessionStorage.getItem('accessToken');
       if (accessToken !== undefined) {
-        config.headers['Content-Type'] = 'application/json';
         config.headers.Authorization = `Bearer ${accessToken}`;
+        if (!(config.data instanceof FormData)) {
+          config.headers['Content-Type'] = 'application/json';
+        }
       }
       return config;
     },

@@ -1,5 +1,4 @@
-import { fetchInstance } from '@gdsc/apis/instance/Api_JWT';
-
+import { fetchInstance } from '@gdg/apis/instance/Api_JWT';
 import { useMutation } from '@tanstack/react-query';
 
 const patchStatusPath = () => '/api/admin/application/status';

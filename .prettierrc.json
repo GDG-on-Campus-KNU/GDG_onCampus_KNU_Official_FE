@@ -24,19 +24,19 @@
 
     "<THIRD_PARTY_MODULES>",
 
-    "^(@gdsc/components)(.*)$",
-    "^(@gdsc/pages)(.*)$",
-    "^(@gdsc/hooks)(.*)$",
-    "^(@gdsc/assets)(.*)$",
+    "^(@gdg/components)(.*)$",
+    "^(@gdg/pages)(.*)$",
+    "^(@gdg/hooks)(.*)$",
+    "^(@gdg/assets)(.*)$",
 
-    "^(@gdsc/constants)(.*)$",
-    "^(@gdsc/utils)(.*)$",
-    "^(@gdsc/apis)(.*)$",
-    "^(@gdsc/common)(.*)$",
-    "^(@gdsc/config)(.*)$",
-    "^(@gdsc/store)(.*)$",
+    "^(@gdg/constants)(.*)$",
+    "^(@gdg/utils)(.*)$",
+    "^(@gdg/apis)(.*)$",
+    "^(@gdg/common)(.*)$",
+    "^(@gdg/config)(.*)$",
+    "^(@gdg/store)(.*)$",
 
-    "^(@gdsc/styles)(.*)$",
+    "^(@gdg/styles)(.*)$",
 
     "^(.*)/(.*)$"
   ],

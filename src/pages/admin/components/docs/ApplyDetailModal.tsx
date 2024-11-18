@@ -1,22 +1,5 @@
 import { useState, useEffect } from 'react';
 
-import CommonBtn from '@gdsc/components/common/button/CommonBtn';
-import Text from '@gdsc/components/common/typography/Text';
-
-import {
-  FrontendData,
-  BackendData,
-  AIData,
-  AndroidData,
-  DesignerData,
-} from '@gdsc/pages/apply/components/ApplyFormDocs';
-
-import CloseIcon from '@gdsc/assets/CloseIcon.svg';
-
-import { useGetDocsDetail } from '@gdsc/apis/hooks/admin/docs/useGetDocsDetail';
-import { usePatchMark } from '@gdsc/apis/hooks/admin/docs/usePatchMark';
-import { usePatchStatus } from '@gdsc/apis/hooks/admin/docs/usePatchStatus';
-
 import {
   ModalBackdrop,
   ModalWrapper,
@@ -37,6 +20,19 @@ import Memo from './Memo';
 import Stars from './Stars';
 import TechStack from './TechStack';
 import styled from '@emotion/styled';
+import { useGetDocsDetail } from '@gdg/apis/hooks/admin/docs/useGetDocsDetail';
+import { usePatchMark } from '@gdg/apis/hooks/admin/docs/usePatchMark';
+import { usePatchStatus } from '@gdg/apis/hooks/admin/docs/usePatchStatus';
+import CloseIcon from '@gdg/assets/CloseIcon.svg';
+import CommonBtn from '@gdg/components/common/button/CommonBtn';
+import Text from '@gdg/components/common/typography/Text';
+import {
+  FrontendData,
+  BackendData,
+  AIData,
+  AndroidData,
+  DesignerData,
+} from '@gdg/pages/apply/components/ApplyFormDocs';
 
 // 트랙별 질문 데이터 가져오기
 

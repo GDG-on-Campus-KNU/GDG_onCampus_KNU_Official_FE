@@ -1,6 +1,5 @@
-import { fetchInstance } from '@gdsc/apis/instance/Api_JWT';
-
-import type { ErrorInterface } from '@gdsc/types/ErrorInterface';
+import { fetchInstance } from '@gdg/apis/instance/Api_JWT';
+import type { ErrorInterface } from '@gdg/types/ErrorInterface';
 
 export const ApplyInquiryAPI = async (name: string, studentNumber: string) => {
   try {

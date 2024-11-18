@@ -1,5 +1,4 @@
-import { ApplyInquiryAPI } from '@gdsc/apis/hooks/apply/ApplyInquiryAPI';
-
+import { ApplyInquiryAPI } from '@gdg/apis/hooks/apply/ApplyInquiryAPI';
 import { useQuery } from '@tanstack/react-query';
 
 export const ApplyInquiryQuery = (name: string, studentNumber: string) => {

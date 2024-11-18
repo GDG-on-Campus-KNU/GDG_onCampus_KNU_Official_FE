@@ -1,13 +1,10 @@
-import CommonBtn from '@gdsc/components/common/button/CommonBtn';
-import Text from '@gdsc/components/common/typography/Text';
-
-import homeIcon from '@gdsc/assets/HomeIcon.svg';
-
-import { AuthWrapper, AuthBox } from '@gdsc/styles/AuthModalStyle';
-import { displayCenter } from '@gdsc/styles/LayoutStyle';
-
 import logo from '/GDSC.svg';
 import styled from '@emotion/styled';
+import homeIcon from '@gdg/assets/HomeIcon.svg';
+import CommonBtn from '@gdg/components/common/button/CommonBtn';
+import Text from '@gdg/components/common/typography/Text';
+import { AuthWrapper, AuthBox } from '@gdg/styles/AuthModalStyle';
+import { displayCenter } from '@gdg/styles/LayoutStyle';
 
 const CompleteContainer = styled.div`
   ${displayCenter}
