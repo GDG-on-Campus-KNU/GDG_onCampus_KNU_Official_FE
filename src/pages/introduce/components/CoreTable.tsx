@@ -90,67 +90,67 @@ const CoreTable = () => {
   return (
     <CoreTableBox className='animateTable'>
       <CoreBox backgroundImage={Kyuhoi}>
-        <TableStatusText>LEAD</TableStatusText>
+        <TableStatusText>Organizer</TableStatusText>
         <TableTextLayout>
           <IntroText>김규회</IntroText>
         </TableTextLayout>
       </CoreBox>
       <CoreBox backgroundImage={Kangmin}>
-        <TableStatusText>CORE-FE</TableStatusText>
+        <TableStatusText>TeamMember-FE</TableStatusText>
         <TableTextLayout>
           <IntroText>김강민</IntroText>
         </TableTextLayout>
       </CoreBox>
       <CoreBox backgroundImage={Dongpil}>
-        <TableStatusText>CORE-FE</TableStatusText>
+        <TableStatusText>TeamMember-FE</TableStatusText>
         <TableTextLayout>
           <IntroText>조동필</IntroText>
         </TableTextLayout>
       </CoreBox>
       <CoreBox backgroundImage={Daegun}>
-        <TableStatusText>CORE-FE</TableStatusText>
+        <TableStatusText>TeamMember-FE</TableStatusText>
         <TableTextLayout>
           <IntroText>김대건</IntroText>
         </TableTextLayout>
       </CoreBox>
       <CoreBox backgroundImage={Chaewon}>
-        <TableStatusText>CORE-FE</TableStatusText>
+        <TableStatusText>TeamMember-FE</TableStatusText>
         <TableTextLayout>
           <IntroText>신채원</IntroText>
         </TableTextLayout>
       </CoreBox>
       <CoreBox backgroundImage={Suhyeon}>
-        <TableStatusText>CORE-BE</TableStatusText>
+        <TableStatusText>TeamMember-BE</TableStatusText>
         <TableTextLayout>
           <IntroText>권수현</IntroText>
         </TableTextLayout>
       </CoreBox>
       <CoreBox backgroundImage={Yeongin}>
-        <TableStatusText>CORE-BE</TableStatusText>
+        <TableStatusText>TeamMember-BE</TableStatusText>
         <TableTextLayout>
           <IntroText>김영인</IntroText>
         </TableTextLayout>
       </CoreBox>
       <CoreBox backgroundImage={Jaeyong}>
-        <TableStatusText>CORE-BE</TableStatusText>
+        <TableStatusText>TeamMember-BE</TableStatusText>
         <TableTextLayout>
           <IntroText>윤재용</IntroText>
         </TableTextLayout>
       </CoreBox>
       <CoreBox backgroundImage={Jeongmin}>
-        <TableStatusText>CORE-BE</TableStatusText>
+        <TableStatusText>TeamMember-BE</TableStatusText>
         <TableTextLayout>
           <IntroText>채정민</IntroText>
         </TableTextLayout>
       </CoreBox>
       <CoreBox backgroundImage={Bosung}>
-        <TableStatusText>CORE-AI</TableStatusText>
+        <TableStatusText>TeamMember-AI</TableStatusText>
         <TableTextLayout>
           <IntroText>백보성</IntroText>
         </TableTextLayout>
       </CoreBox>
       <CoreBox backgroundImage={Hyunmin}>
-        <TableStatusText>CORE-DESIGNER</TableStatusText>
+        <TableStatusText>TeamMember-DESIGNER</TableStatusText>
         <TableTextLayout>
           <IntroText>김현민</IntroText>
         </TableTextLayout>

@@ -60,12 +60,13 @@ const AboutEvent = () => {
         ABOUT
       </Text>
       <GdscTextBox className='gdsc-text-box'>
-        <GDSCText>Google Developer Student Clubs KNU</GDSCText>
+        <GDSCText>Google Developer Groups on Campus KNU</GDSCText>
       </GdscTextBox>
       <AboutTextBox className='about-text-box'>
         <IntroText>
-          GDSC는 학생들이 개발/리더십 능력을 키울 수 있도록 지원하는
-          프로그램으로, 성장을 원하는 다양한 학생 개발자들을 기다리고 있습니다.
+          GDG on Campus KNU는 학생들이 개발/리더십 능력을 키울 수 있도록
+          지원하는 프로그램으로, 성장을 원하는 다양한 학생 개발자들을 기다리고
+          있습니다.
         </IntroText>
       </AboutTextBox>
     </AboutLayout>
