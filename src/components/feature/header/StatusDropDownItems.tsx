@@ -5,7 +5,7 @@ import { NavLink } from 'react-router-dom';
 import Text from '@gdg/components/common/typography/Text';
 import { userDataInterface } from '@gdg/types/UserInterface';
 
-import { DropdownItem } from './MainNavigation';
+import { DropdownItem } from './MainNavigation.style';
 
 const handleLogout = () => {
   sessionStorage.removeItem('accessToken');
