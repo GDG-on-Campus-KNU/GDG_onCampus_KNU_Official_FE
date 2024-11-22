@@ -1,12 +1,10 @@
 import { useEffect } from 'react';
-import { useMediaQuery } from 'react-responsive';
 import { Link, useNavigate } from 'react-router-dom';
+import { useMediaQuery } from 'react-responsive';
 
 import { useGetMyData } from '@gdg/apis/hooks/mypage/useGetMyData';
 import HdDropDown from '@gdg/assets/HdDropDown.svg';
 import HdDropUp from '@gdg/assets/HdDropUp.svg';
-import NavigationLogo768 from '@gdg/assets/NavigationLogo768.svg';
-import NavigationLogo from '@gdg/assets/NavigationLogo.svg';
 import NoneProfile from '@gdg/assets/NoneProfile.png';
 import Text from '@gdg/components/common/typography/Text';
 import { useHeaderDropDownState } from '@gdg/store/useHeaderDropDownStore';
@@ -14,6 +12,7 @@ import useUserStatusStore from '@gdg/store/useUserStatusStore';
 import { userDataInterface } from '@gdg/types/UserInterface';
 
 import { renderDropdownItems } from './StatusDropDownItems';
+import Logo from './NavLogo';
 import {
   DisplayHeader,
   DropDownImg,
@@ -23,7 +22,6 @@ import {
   LinkText,
   Menu,
   MenuList,
-  NavImg,
 } from './MainNavigation.style';
 
 const navItems = [
@@ -32,14 +30,6 @@ const navItems = [
   { to: '/techblog', text: '테크블로그' },
   { to: '/community', text: '커뮤니티' },
 ];
-
-const Logo = ({ isTablet }: { isTablet: boolean }) => (
-  <MenuList>
-    <Link to='/'>
-      <NavImg src={isTablet ? NavigationLogo768 : NavigationLogo} alt='logo' />
-    </Link>
-  </MenuList>
-);
 
 const Navigation = () => (
   <Menu>

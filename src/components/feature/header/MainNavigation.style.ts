@@ -51,10 +51,6 @@ export const MenuList = styled.li`
   cursor: pointer;
 `;
 
-export const NavImg = styled.img`
-  margin-left: 20px;
-`;
-
 export const ImgList = styled.img`
   width: 20px;
   height: 20px;
