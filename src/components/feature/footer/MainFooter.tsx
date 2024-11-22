@@ -1,7 +1,3 @@
-import CompanyLogo from '@gdg/assets/CompanyLogo.svg';
-import GithubLogo from '@gdg/assets/GithubLogo.svg';
-import InstagramLogo from '@gdg/assets/InstagramLogo.svg';
-import Phone from '@gdg/assets/Phone.svg';
 import Text from '@gdg/components/common/typography/Text';
 import {
   Footer,
@@ -11,6 +7,22 @@ import {
   Table,
   TableData,
 } from '@gdg/styles/FooterLayoutStyle';
+
+import { footerLinks } from './FooterLink';
+
+const FooterRow = ({
+  items,
+  renderItem,
+}: {
+  items: typeof footerLinks;
+  renderItem: (item: (typeof footerLinks)[0]) => React.ReactNode;
+}) => (
+  <tr>
+    {items.map((item, i) => (
+      <TableData key={i}>{renderItem(item)}</TableData>
+    ))}
+  </tr>
+);
 
 const MainFooter = () => {
   return (
@@ -24,82 +36,34 @@ const MainFooter = () => {
           </TextBorder>
           <Table>
             <tbody>
-              <tr>
-                <TableData>
-                  <img src={Phone} alt='Logo' />
-                </TableData>
-                <TableData>
-                  <img src={GithubLogo} alt='Logo' />
-                </TableData>
-                <TableData>
-                  <img src={InstagramLogo} alt='Logo' />
-                </TableData>
-                <TableData>
-                  <img src={CompanyLogo} alt='Logo' />
-                </TableData>
-              </tr>
-              <tr>
-                <TableData>
+              <FooterRow
+                items={footerLinks}
+                renderItem={({ icon }) => <img src={icon} alt='Logo' />}
+              />
+              <FooterRow
+                items={footerLinks}
+                renderItem={({ title }) => (
                   <Text color='white' size='md'>
-                    대표 연락처
+                    {title}
                   </Text>
-                </TableData>
-                <TableData>
-                  <Text color='white' size='md'>
-                    GDG KNU 팀 깃허브
-                  </Text>
-                </TableData>
-                <TableData>
-                  <Text color='white' size='md'>
-                    인스타그램
-                  </Text>
-                </TableData>
-                <TableData>
-                  <Text color='white' size='md'>
-                    협력사
-                  </Text>
-                </TableData>
-              </tr>
-              <tr>
-                <TableData>
-                  <Text color='white' size='xs'>
-                    010-4922-7687
-                  </Text>
-                </TableData>
-                <TableData>
-                  <a
-                    href='https://github.com/GDG-on-Campus-KNU'
-                    target='_blank'
-                    rel='noopener noreferrer'
-                  >
-                    <Text color='white' size='xs' whiteSpace='normal'>
-                      Github 바로가기
-                    </Text>
-                  </a>
-                </TableData>
-                <TableData>
-                  <a
-                    href='https://www.instagram.com/gdg.knu/'
-                    target='_blank'
-                    rel='noopener noreferrer'
-                  >
-                    <Text color='white' size='xs' whiteSpace='normal'>
-                      @gdg.knu 바로가기
-                    </Text>
-                  </a>
-                </TableData>
-                <TableData>
-                  <a
-                    href='https://datainstitute.knu.ac.kr/contents/main.do'
-                    target='_blank'
-                    rel='noopener noreferrer'
-                  >
+                )}
+              />
+              <FooterRow
+                items={footerLinks}
+                renderItem={({ content, href }) =>
+                  href ? (
+                    <a href={href} target='_blank' rel='noopener noreferrer'>
+                      <Text color='white' size='xs' whiteSpace='normal'>
+                        {content}
+                      </Text>
+                    </a>
+                  ) : (
                     <Text color='white' size='xs'>
-                      데이터융복합연구원 바로가기
+                      {content}
                     </Text>
-                  </a>
-                </TableData>
-              </tr>
+                  )
+                }
+              />
             </tbody>
           </Table>
         </Display>
