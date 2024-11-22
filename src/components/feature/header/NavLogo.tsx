@@ -82,7 +82,7 @@ const NavLogo = ({ isTablet }: { isTablet: boolean }) => (
 
 export default NavLogo;
 
-const NavImg = styled.img<{ $isTablet: boolean }>`
+export const NavImg = styled.img<{ $isTablet?: boolean }>`
   margin-left: 20px;
   width: auto;
   height: ${(props) => (props.$isTablet ? '27px' : '33px')};
