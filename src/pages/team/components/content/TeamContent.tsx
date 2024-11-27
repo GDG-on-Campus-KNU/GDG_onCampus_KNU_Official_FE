@@ -4,12 +4,13 @@ import { useMediaQuery } from 'react-responsive';
 
 import { TeamList } from '@gdg/apis/hooks/team/useGetTeamList';
 import LazyLoad from '@gdg/components/common/View/LazyLoad';
+import { Spacing } from '@gdg/components/common/layouts/spacing';
 
 const TeamMember = lazy(() => import('../member/TeamMember'));
 const TeamCalendar = lazy(() => import('../calendar/TeamCalendar'));
 const TeamTitle = lazy(() => import('../title/TeamTitle'));
 const TeamTitleMobile = lazy(() => import('../title/TeamTitle.mobile'));
-// const TeamBlogList = lazy(() => import('../blog/TeamBlogList'));
+const TeamBlogList = lazy(() => import('../blog/TeamBlogList'));
 
 const TeamContent = ({ data }: { data: TeamList[] }) => {
   const [selectedTeamName, setSelectedTeamName] = useState<string>(
@@ -21,36 +22,37 @@ const TeamContent = ({ data }: { data: TeamList[] }) => {
   return (
     <TeamContainer>
       {isMobile ? (
-        <LazyLoad
-          component={TeamTitleMobile}
-          props={{
-            dropDownData: data ?? [],
-            onSelect: setSelectedTeamName,
-            onSelectId: setSelectedTeamId,
-          }}
-        />
+        <LazyLoad>
+          <TeamTitleMobile
+            dropDownData={data}
+            onSelect={setSelectedTeamName}
+            onSelectId={setSelectedTeamId}
+          />
+        </LazyLoad>
       ) : (
-        <LazyLoad
-          component={TeamTitle}
-          props={{
-            dropDownData: data ?? [],
-            onSelect: setSelectedTeamName,
-            onSelectId: setSelectedTeamId,
-          }}
-        />
+        <LazyLoad>
+          <TeamTitle
+            dropDownData={data}
+            onSelect={setSelectedTeamName}
+            onSelectId={setSelectedTeamId}
+          />
+        </LazyLoad>
       )}
-      {/* <Spacing height={1100} /> */}
-      <LazyLoad
-        component={TeamMember}
-        props={{
-          selectedTeamId,
-          selectedTeamName,
-        }}
-      />
-      {/* <Spacing height={1100} /> */}
-      <LazyLoad component={TeamCalendar} props={{ selectedTeamName }} />
-      {/* <Spacing height={1100} /> */}
-      {/* <LazyLoad component={TeamBlogList} props={{ selectedTeamName }} /> */}
+
+      <LazyLoad>
+        <TeamMember
+          selectedTeamId={selectedTeamId}
+          selectedTeamName={selectedTeamName}
+        />
+      </LazyLoad>
+
+      <LazyLoad>
+        <TeamCalendar selectedTeamName={selectedTeamName} />
+      </LazyLoad>
+
+      <LazyLoad>
+        <TeamBlogList selectedTeamName={selectedTeamName} />
+      </LazyLoad>
     </TeamContainer>
   );
 };

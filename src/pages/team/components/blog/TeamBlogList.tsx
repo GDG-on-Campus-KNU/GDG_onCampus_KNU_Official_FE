@@ -1,9 +1,7 @@
 import styled from '@emotion/styled';
-// import ThumbNailCard from '@gdg/components/feature/blog/ThumbNailCard';
 import { lazy } from 'react';
 
 import MaskGroup from '@gdg/assets/thumbnail/Mask group.png';
-// import Grid from '@gdg/components/common/layouts/grid';
 import { Spacing } from '@gdg/components/common/layouts/spacing';
 
 import { TeamName } from '../name';
