@@ -6,7 +6,7 @@ export const MainMetaData = () => {
   return (
     <SEO
       title='GDG on Campus KNU'
-      description='GDSC 경북대의 공식 홈페이지에 오신걸 환영합니다. GDSC 활동과 관련된 최신 정보와 이벤트 소식을 확인하세요.'
+      description='GDGoC 경북대의 공식 홈페이지에 오신걸 환영합니다. GDGoC 활동과 관련된 최신 정보와 이벤트 소식을 확인하세요.'
       url='https://gdsc-knu.com'
       image='https://gdsc-knu.com/WhiteLogo.png'
     />

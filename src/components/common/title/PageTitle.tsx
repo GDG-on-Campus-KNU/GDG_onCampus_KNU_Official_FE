@@ -13,9 +13,6 @@ const MainTitlelayout = styled.div`
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-
-  margin-top: 50px;
-  margin-left: 60px;
 `;
 
 const MobileMainTitlelayout = styled.div`
