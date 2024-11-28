@@ -25,9 +25,9 @@ import {
   InputWrapper,
 } from '@gdg/pages/apply/components/ApplyForm.style';
 import {
-  FrontendData,
+  // FrontendData,
   BackendData,
-  AndroidData,
+  // AndroidData,
   AIData,
   DesignerData,
 } from '@gdg/pages/apply/components/ApplyFormDocs';
