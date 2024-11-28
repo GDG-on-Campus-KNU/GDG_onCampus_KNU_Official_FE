@@ -26,9 +26,9 @@ import {
   InputWrapper,
 } from '@gdg/pages/apply/components/ApplyForm.style';
 import {
-  FrontendData,
+  // FrontendData,
   BackendData,
-  AndroidData,
+  // AndroidData,
   AIData,
   DesignerData,
 } from '@gdg/pages/apply/components/ApplyFormDocs';
@@ -44,7 +44,10 @@ import {
   ApplyFormQuestionInterface,
 } from '@gdg/types/ApplyInterface';
 import { ApplyFormSchema } from '@gdg/utils/ApplyFormScehma.util';
-import { handleFormSubmit } from '@gdg/utils/anlytics';
+import {
+  handleFinalFormSubmit,
+  handleTemperalFormSave,
+} from '@gdg/utils/anlytics';
 
 const getTrack = (tech: string): string => {
   switch (tech.toLowerCase()) {
@@ -137,12 +140,12 @@ const ApplyForm = () => {
           })) || [],
       };
       if (submitType === 'submit') {
-        handleFormSubmit('Final Submit');
+        handleFinalFormSubmit('Final Submit');
         submitApplication(finalFormData);
         // console.log(finalFormData);
       } else if (submitType === 'save') {
         // console.log(saveFormData);
-        handleFormSubmit('Save Submit');
+        handleTemperalFormSave('Save Submit');
         submitApplication(saveFormData);
       }
     }
