@@ -9,6 +9,7 @@ import Title from '../typography/Title';
 const MainTitlelayout = styled.div`
   width: 100%;
   max-width: 1024px;
+  margin-top: 50px;
 
   display: flex;
   flex-direction: column;
