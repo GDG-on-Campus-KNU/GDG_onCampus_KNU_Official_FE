@@ -50,7 +50,7 @@ const TeamTitle = ({
 export default TeamTitle;
 
 const TitleContainer = styled.div`
-  padding: 50px 62px 64px 62px;
+  padding: 0px 62px 64px 62px;
   width: calc(100% - 134px);
   /* border: 3px solid var(--color-white); */
 `;

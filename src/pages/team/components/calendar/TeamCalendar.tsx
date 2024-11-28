@@ -47,11 +47,11 @@ const TeamCalendar = ({ selectedTeamName }: { selectedTeamName: string }) => {
   const handleEventContent = (arg: {
     event: {
       start: {
-        getHours: () => any;
+        getHours: () => Date;
         getMinutes: () => {
-          (): any;
-          new (): any;
-          toString: { (): string; new (): any };
+          (): Date;
+          new (): Date;
+          toString: { (): string; new (): Date };
         };
       };
       title: string;

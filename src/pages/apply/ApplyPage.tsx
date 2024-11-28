@@ -11,11 +11,10 @@ import { ApplyMetaData } from '@gdg/router/components/MetaData';
 import { DisplayLayout } from '@gdg/styles/LayoutStyle';
 
 const ApplyLayout = styled(DisplayLayout)`
-  height: 100%;
-  margin-top: 50px;
+  height: calc(100vh - 100px);
   display: flex;
-  flex-direction: row;
-  justify-content: center;
+  flex-direction: column;
+  /* justify-content: center; */
   position: relative;
 `;
 
@@ -24,7 +23,7 @@ const ApplyPage = () => {
 
   useEffect(() => {
     const today = dayjs();
-    const deadline = dayjs('2024-09-06 04:00');
+    const deadline = dayjs('2024-12-27 23:59:59');
     setShowForm(today.isBefore(deadline));
   }, []);
 

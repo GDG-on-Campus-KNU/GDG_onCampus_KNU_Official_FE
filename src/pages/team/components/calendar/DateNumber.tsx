@@ -28,7 +28,7 @@ const TodayCircle = styled.div`
   border-radius: 50%;
   top: 8px;
   left: 8px;
-  transform: translate(-65%, -50%);
+  transform: translate(-54%, -46%);
   z-index: -1;
 `;
 

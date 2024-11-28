@@ -7,7 +7,7 @@ export const displayCenter = `
 
 export const DisplayLayout = styled.div`
   width: calc(100% - 124px);
-  max-width: 1024px;
+  max-width: 924px;
   padding: 0 62px;
   display: flex;
   flex-direction: column;
