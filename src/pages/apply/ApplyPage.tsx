@@ -11,8 +11,7 @@ import { ApplyMetaData } from '@gdg/router/components/MetaData';
 import { DisplayLayout } from '@gdg/styles/LayoutStyle';
 
 const ApplyLayout = styled(DisplayLayout)`
-  height: calc(100vh - 50px);
-  margin-top: 50px;
+  height: calc(100vh - 100px);
   display: flex;
   flex-direction: column;
   /* justify-content: center; */
