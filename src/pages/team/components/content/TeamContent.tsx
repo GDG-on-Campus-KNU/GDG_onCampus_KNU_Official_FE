@@ -4,13 +4,13 @@ import { useMediaQuery } from 'react-responsive';
 
 import { TeamList } from '@gdg/apis/hooks/team/useGetTeamList';
 import LazyLoad from '@gdg/components/common/View/LazyLoad';
-
+import {
+  TeamMember,
+  TeamCalendar,
+  TeamTitle,
+  TeamTitleMobile,
+} from '@gdg/pages/team/components';
 const TeamBlogList = lazy(() => import('../blog/TeamBlogList'));
-
-import TeamMember from '../member/TeamMember';
-import TeamCalendar from '../calendar/TeamCalendar';
-import TeamTitle from '../title/TeamTitle';
-import TeamTitleMobile from '../title/TeamTitle.mobile';
 
 const TeamContent = ({ data }: { data: TeamList[] }) => {
   const [selectedTeamName, setSelectedTeamName] = useState<string>(
