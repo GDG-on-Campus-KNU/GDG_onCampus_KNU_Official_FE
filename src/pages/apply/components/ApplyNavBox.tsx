@@ -91,12 +91,12 @@ const ApplySubText = styled(Text)`
 `;
 
 const DeveloperData = [
-  {
-    id: 0,
-    korean: '프론트엔드 개발자',
-    english: 'Frontend Developer',
-    link: '/apply/frontend',
-  },
+  // {
+  //   id: 0,
+  //   korean: '프론트엔드 개발자',
+  //   english: 'Frontend Developer',
+  //   link: '/apply/frontend',
+  // },
   {
     id: 1,
     korean: '백엔드 개발자',
@@ -109,12 +109,12 @@ const DeveloperData = [
     english: 'AI Developer',
     link: '/apply/ai',
   },
-  {
-    id: 3,
-    korean: '안드로이드 개발자',
-    english: 'Android Developer',
-    link: '/apply/android',
-  },
+  // {
+  //   id: 3,
+  //   korean: '안드로이드 개발자',
+  //   english: 'Android Developer',
+  //   link: '/apply/android',
+  // },
   {
     id: 4,
     korean: '디자이너',

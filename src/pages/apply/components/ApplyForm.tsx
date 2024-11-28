@@ -48,14 +48,14 @@ import { handleFormSubmit } from '@gdg/utils/anlytics';
 
 const getTrack = (tech: string): string => {
   switch (tech.toLowerCase()) {
-    case 'frontend':
-      return 'FRONT_END';
+    // case 'frontend':
+    //   return 'FRONT_END';
     case 'backend':
       return 'BACK_END';
     case 'ai':
       return 'AI';
-    case 'android':
-      return 'ANDROID';
+    // case 'android':
+    //   return 'ANDROID';
     case 'designer':
       return 'DESIGNER';
     default:
@@ -94,14 +94,14 @@ const ApplyForm = () => {
 
   const getData = (tech: string): ApplyFormQuestionInterface | null => {
     switch (tech) {
-      case 'frontend':
-        return FrontendData;
+      // case 'frontend':
+      //   return FrontendData;
       case 'backend':
         return BackendData;
       case 'ai':
         return AIData;
-      case 'android':
-        return AndroidData;
+      // case 'android':
+      //   return AndroidData;
       case 'designer':
         return DesignerData;
       default:
@@ -186,7 +186,7 @@ const ApplyForm = () => {
               id='links'
               width='100%'
               margin='0px 15px 0px 0px'
-              title='깃허브 링크 (디자이너 분들은 포트폴리오 링크 올려주세요 없으면 안 올려주셔도 됩니다!)'
+              title='깃허브 or 포트폴리오 링크 (없으면 안 올려주셔도 됩니다!)'
               placeholder='깃허브(포트폴리오) 링크를 입력해주세요'
               type='text'
               register={register('links')}
