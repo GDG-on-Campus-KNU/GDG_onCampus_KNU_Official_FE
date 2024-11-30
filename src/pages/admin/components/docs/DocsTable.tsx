@@ -70,7 +70,7 @@ const DocsTable = ({
 
   const handleCloseModal = () => {
     setOpenDetail(null);
-    window.location.reload();
+    // window.location.reload();
   };
 
   useEffect(() => {
