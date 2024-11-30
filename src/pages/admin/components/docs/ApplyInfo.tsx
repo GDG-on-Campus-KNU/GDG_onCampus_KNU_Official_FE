@@ -24,7 +24,8 @@ interface IApplyInfo {
 }
 
 const ApplyInfo = ({ track, submittedAt }: IApplyInfo) => {
-  const datePart = submittedAt.split(' ')[0];
+  const defaultDate = new Date().toLocaleDateString();
+  const datePart = submittedAt ? submittedAt.split(' ')[0] : defaultDate;
   const formattedDate = datePart.replace(/-/g, '. ');
 
   return (
