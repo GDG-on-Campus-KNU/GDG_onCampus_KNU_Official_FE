@@ -13,7 +13,6 @@ import NavSlideClose from '@gdg/assets/NavSlideClose.svg';
 import Techblog from '@gdg/assets/Techblog.svg';
 import MobileBtn from '@gdg/components/common/button/MobileBtn';
 import Text from '@gdg/components/common/typography/Text';
-import { DropDownImg } from '@gdg/components/feature/header/MainNavigation';
 import { useHeaderDropDownState } from '@gdg/store/useHeaderDropDownStore';
 import { useNavigationStore } from '@gdg/store/useNavigationStore';
 import useUserStatusStore from '@gdg/store/useUserStatusStore';
@@ -32,6 +31,7 @@ import {
   StyledImg,
 } from './NavigationSlideMobile.style';
 import { renderDropdownItems } from './StatusDropDownItems';
+import { DropDownImg } from './MainNavigation.style';
 
 interface MenuItemProps {
   to: string;

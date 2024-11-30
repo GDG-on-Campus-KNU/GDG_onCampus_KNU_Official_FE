@@ -1,82 +1,99 @@
-import styled from '@emotion/styled';
-import { motion } from 'framer-motion';
 import { useEffect } from 'react';
-import { useMediaQuery } from 'react-responsive';
 import { Link, useNavigate } from 'react-router-dom';
+import { useMediaQuery } from 'react-responsive';
 
 import { useGetMyData } from '@gdg/apis/hooks/mypage/useGetMyData';
 import HdDropDown from '@gdg/assets/HdDropDown.svg';
 import HdDropUp from '@gdg/assets/HdDropUp.svg';
-import NavigationLogo768 from '@gdg/assets/NavigationLogo768.svg';
-import NavigationLogo from '@gdg/assets/NavigationLogo.svg';
 import NoneProfile from '@gdg/assets/NoneProfile.png';
 import Text from '@gdg/components/common/typography/Text';
 import { useHeaderDropDownState } from '@gdg/store/useHeaderDropDownStore';
 import useUserStatusStore from '@gdg/store/useUserStatusStore';
-import { displayCenter } from '@gdg/styles/LayoutStyle';
+import { userDataInterface } from '@gdg/types/UserInterface';
 
 import { renderDropdownItems } from './StatusDropDownItems';
+import Logo from './NavLogo';
+import {
+  DisplayHeader,
+  DropDownImg,
+  DropdownMenu,
+  Header,
+  ImgList,
+  LinkText,
+  Menu,
+  MenuList,
+} from './MainNavigation.style';
 
-export const LinkText = styled(Link)`
-  margin-top: 3px;
-`;
+const navItems = [
+  { to: '/introduce', text: '동아리 소개' },
+  { to: '/apply', text: '지원하기' },
+  { to: '/techblog', text: '테크블로그' },
+  { to: '/community', text: '커뮤니티' },
+];
 
-export const Header = styled.div`
-  z-index: 1000;
-  position: fixed;
-  top: 0;
-  width: 100%;
-  background-color: var(--color-navy);
-  height: 45px;
-  ${displayCenter}
-`;
+const Navigation = () => (
+  <Menu>
+    {navItems.map(({ to, text }) => (
+      <MenuList key={to}>
+        <LinkText to={to}>
+          <Text size='md' color='white'>
+            {text}
+          </Text>
+        </LinkText>
+      </MenuList>
+    ))}
+  </Menu>
+);
 
-export const DisplayHeader = styled.nav`
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  width: 100%;
-  max-width: 1024px;
-  height: 45px;
-  background-color: var(--color-navy);
-`;
-
-export const Menu = styled.ul`
-  list-style: none;
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  padding: 9px 0px;
-  height: calc(100% - 18px);
-  background-color: var(--color-navy);
-`;
-export const MenuList = styled.li`
-  display: flex;
-  flex-direction: row;
-  -webkit-box-align: center;
-  align-items: center;
-  margin-right: 20px;
-  position: relative;
-  cursor: pointer;
-`;
-
-export const NavImg = styled.img`
-  margin-left: 20px;
-`;
-
-export const ImgList = styled.img`
-  width: 20px;
-  height: 20px;
-  border-radius: 50%;
-  margin-right: 10px;
-`;
-
-export type DropdownMenuProps = {
-  isOpen: boolean;
+type UserMenuProps = {
+  myData: userDataInterface;
+  dropdownOpen: boolean;
+  toggleDropdown: () => void;
+  closeDropdown: () => void;
 };
 
+const UserMenu = ({
+  myData,
+  dropdownOpen,
+  toggleDropdown,
+  closeDropdown,
+}: UserMenuProps) => (
+  <Menu>
+    <MenuList onClick={toggleDropdown}>
+      <ImgList src={myData?.profileUrl || NoneProfile} alt='profile' />
+      <div style={{ marginTop: '3px' }}>
+        <Text color='white'>{myData?.name}</Text>
+      </div>
+      <DropDownImg src={dropdownOpen ? HdDropUp : HdDropDown} alt='dropdown' />
+      <DropdownMenu
+        isOpen={dropdownOpen}
+        initial={{ opacity: 0, y: -10 }}
+        animate={{
+          opacity: dropdownOpen ? 1 : 0,
+          y: dropdownOpen ? 0 : -10,
+        }}
+        transition={{ duration: 0.3 }}
+      >
+        {myData && renderDropdownItems(myData, closeDropdown)}
+      </DropdownMenu>
+    </MenuList>
+  </Menu>
+);
+
+const LoginMenu = () => (
+  <Menu>
+    <MenuList>
+      <Link to='/signin'>
+        <Text size='md' color='white'>
+          로그인
+        </Text>
+      </Link>
+    </MenuList>
+  </Menu>
+);
+
 const MainNavigation = () => {
-  const accessToken = sessionStorage.getItem('accessToken'); // 상태관리를 통해서 액세스 토큰 가져올 계획입니다. 수정해야됩니다.
+  const accessToken = sessionStorage.getItem('accessToken');
   const isTablet = useMediaQuery({ query: '(max-width: 767px)' });
 
   const dropdownOpen = useHeaderDropDownState((state) => state.dropdownOpen);
@@ -125,95 +142,18 @@ const MainNavigation = () => {
     <Header>
       <DisplayHeader>
         <Menu>
-          {isTablet ? (
-            <MenuList>
-              <Link to='/'>
-                <NavImg src={NavigationLogo768} alt='logo' />
-              </Link>
-            </MenuList>
-          ) : (
-            <MenuList>
-              <Link to='/'>
-                <NavImg src={NavigationLogo} alt='logo' />
-              </Link>
-            </MenuList>
-          )}
-          <MenuList>
-            <LinkText to='/introduce'>
-              <Text size='md' color='white'>
-                동아리 소개
-              </Text>
-            </LinkText>
-          </MenuList>
-          <MenuList>
-            <LinkText to='/apply'>
-              <Text size='md' color='white'>
-                지원하기
-              </Text>
-            </LinkText>
-          </MenuList>
-          <MenuList>
-            <LinkText to='/techblog'>
-              <Text size='md' color='white'>
-                테크블로그
-              </Text>
-            </LinkText>
-          </MenuList>
-          <MenuList>
-            <LinkText to='/community'>
-              <Text size='md' color='white'>
-                커뮤니티
-              </Text>
-            </LinkText>
-          </MenuList>
+          <Logo isTablet={isTablet} />
+          <Navigation />
         </Menu>
-        {accessToken ? (
-          <Menu>
-            <MenuList onClick={toggleDropdown}>
-              <ImgList
-                src={MyData?.profileUrl ? MyData.profileUrl : NoneProfile}
-                alt='profile'
-              />
-              <div style={{ marginTop: '3px' }}>
-                <Text color='white'>{MyData?.name}</Text>
-              </div>
-              {dropdownOpen ? (
-                <DropDownImg
-                  src={HdDropUp}
-                  alt='dropdown'
-                  onClick={toggleDropdown}
-                />
-              ) : (
-                <DropDownImg
-                  src={HdDropDown}
-                  alt='dropdown'
-                  onClick={toggleDropdown}
-                />
-              )}
-
-              <DropdownMenu
-                isOpen={dropdownOpen}
-                initial={{ opacity: 0, y: -10 }}
-                animate={{
-                  opacity: dropdownOpen ? 1 : 0,
-                  y: dropdownOpen ? 0 : -10,
-                }}
-                transition={{ duration: 0.3 }}
-              >
-                {MyData && renderDropdownItems(MyData, closeDropdown)}
-              </DropdownMenu>
-            </MenuList>
-          </Menu>
+        {accessToken && MyData ? (
+          <UserMenu
+            myData={MyData}
+            dropdownOpen={dropdownOpen}
+            toggleDropdown={toggleDropdown}
+            closeDropdown={closeDropdown}
+          />
         ) : (
-          <Menu>
-            <MenuList>
-              <Link to='/signin'>
-                <Text size='md' color='white'>
-                  로그인
-                </Text>
-              </Link>
-            </MenuList>
-          </Menu>
+          <LoginMenu />
         )}
       </DisplayHeader>
     </Header>
@@ -221,41 +161,3 @@ const MainNavigation = () => {
 };
 
 export default MainNavigation;
-
-export const DropDownImg = styled.img`
-  margin-left: 10px;
-  cursor: pointer;
-`;
-
-const DropdownMenu = styled(motion.ul)<DropdownMenuProps>`
-  position: absolute;
-  top: 160%;
-  right: 0;
-
-  background-color: var(--color-white);
-  list-style: none;
-  border-radius: 10px;
-  width: 104px;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
-  display: ${(props) => (props.isOpen ? 'block' : 'none')};
-`;
-
-export const DropdownItem = styled.li`
-  padding: 15px 10px 15px 10px;
-  height: 12px;
-  display: flex;
-  justify-content: center;
-  flex-direction: column;
-  text-align: center;
-
-  cursor: pointer;
-  border-bottom: 1px solid var(--color-alto);
-
-  &:hover {
-    background-color: rgba(255, 255, 255, 0.1);
-  }
-
-  &:last-child {
-    border-bottom: none;
-  }
-`;

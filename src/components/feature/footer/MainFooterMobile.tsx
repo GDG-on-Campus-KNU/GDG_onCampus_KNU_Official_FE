@@ -1,10 +1,6 @@
 import styled from '@emotion/styled';
 import { Link } from 'react-router-dom';
 
-import CompanyLogo from '@gdg/assets/CompanyLogo.svg';
-import GithubLogo from '@gdg/assets/GithubLogo.svg';
-import InstagramLogo from '@gdg/assets/InstagramLogo.svg';
-import Phone from '@gdg/assets/Phone.svg';
 import Text from '@gdg/components/common/typography/Text';
 import {
   Footer,
@@ -15,11 +11,40 @@ import {
   TableData,
 } from '@gdg/styles/FooterLayoutStyle';
 
+import { footerLinks } from './FooterLink';
+
 const MobileImg = styled.img`
   margin-right: 10px;
 `;
 
-const MobileFooterMobile = () => {
+const FooterCell = ({
+  icon,
+  content,
+  href,
+}: {
+  icon: string;
+  content: string;
+  href?: string;
+}) => (
+  <TableData>
+    <MobileImg src={icon} alt='Logo' />
+    {href ? (
+      <Link to={href}>
+        <Text color='white' size='xs'>
+          {content}
+        </Text>
+      </Link>
+    ) : (
+      <Text color='white' size='xs'>
+        {content}
+      </Text>
+    )}
+  </TableData>
+);
+
+const MainFooterMobile = () => {
+  const rows = [footerLinks.slice(0, 2), footerLinks.slice(2, 4)];
+
   return (
     <Footer>
       <DisplayFooter>
@@ -31,40 +56,18 @@ const MobileFooterMobile = () => {
           </TextBorder>
           <Table>
             <tbody>
-              <tr>
-                <TableData>
-                  <MobileImg src={Phone} alt='Logo' />
-                  <Text color='white' size='xs'>
-                    010-4922-7687
-                  </Text>
-                </TableData>
-                <TableData>
-                  <MobileImg src={GithubLogo} alt='Logo' />
-                  <Link to='https://github.com/GDSC-KNU'>
-                    <Text color='white' size='xs'>
-                      Github 바로가기
-                    </Text>
-                  </Link>
-                </TableData>
-              </tr>
-              <tr>
-                <TableData>
-                  <MobileImg src={InstagramLogo} alt='Logo' />
-                  <Link to='https://www.instagram.com/gdsc.knu/'>
-                    <Text color='white' size='xs'>
-                      Instagram 바로가기
-                    </Text>
-                  </Link>
-                </TableData>
-                <TableData>
-                  <MobileImg src={CompanyLogo} alt='Logo' />
-                  <Link to='https://datainstitute.knu.ac.kr/contents/main.do'>
-                    <Text color='white' size='xs'>
-                      데이터융복합연구원
-                    </Text>
-                  </Link>
-                </TableData>
-              </tr>
+              {rows.map((row, rowIndex) => (
+                <tr key={rowIndex}>
+                  {row.map((item, cellIndex) => (
+                    <FooterCell
+                      key={cellIndex}
+                      icon={item.icon}
+                      content={item.content}
+                      href={item.href}
+                    />
+                  ))}
+                </tr>
+              ))}
             </tbody>
           </Table>
         </Display>
@@ -73,4 +76,4 @@ const MobileFooterMobile = () => {
   );
 };
 
-export default MobileFooterMobile;
+export default MainFooterMobile;

@@ -11,6 +11,7 @@ export const ApplyLayout = styled.div`
 
 export const TitleLayout = styled.div`
   margin-bottom: 24.12px;
+  margin-top: 50px;
 
   @media (max-width: 500px) {
     display: flex;
@@ -23,6 +24,7 @@ export const TitleLayout = styled.div`
 export const MainTitle = styled(Title)`
   font-size: var(--font-size-xxl);
   font-weight: 700;
+
   z-index: 1;
 `;
 

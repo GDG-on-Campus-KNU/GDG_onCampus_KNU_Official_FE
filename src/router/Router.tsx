@@ -71,7 +71,7 @@ const routesConfig: AppRouteObject[] = [
       },
       {
         path: 'apply',
-        element: <StatusRoute allowedStatuses={['CORE', 'MEMBER', 'GUEST']} />,
+        element: <Outlet />,
         children: [
           {
             path: '',
@@ -87,13 +87,24 @@ const routesConfig: AppRouteObject[] = [
               },
               {
                 path: 'form',
-                element: <ApplyFormPage />,
+                element: (
+                  <StatusRoute allowedStatuses={['CORE', 'MEMBER', 'GUEST']} />
+                ),
+                children: [
+                  {
+                    path: '',
+                    element: <ApplyFormPage />,
+                  },
+                ],
               },
             ],
           },
           {
             path: 'inquiry',
-            element: <InquiryPage />,
+            element: (
+              <StatusRoute allowedStatuses={['CORE', 'MEMBER', 'GUEST']} />
+            ),
+            children: [{ path: '', element: <InquiryPage /> }],
           },
         ],
       },

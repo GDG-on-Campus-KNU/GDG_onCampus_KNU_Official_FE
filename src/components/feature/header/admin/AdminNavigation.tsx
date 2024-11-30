@@ -1,16 +1,10 @@
 import { useMediaQuery } from 'react-responsive';
 import { NavLink } from 'react-router-dom';
 
-import NavigationLogo768 from '@gdg/assets/NavigationLogo768.svg';
-import NavigationLogo from '@gdg/assets/NavigationLogo.svg';
+import GDGoC from '@gdg/assets/defaultLogo/GDGoC.png';
 
-import {
-  Header,
-  DisplayHeader,
-  Menu,
-  MenuList,
-  NavImg,
-} from '../MainNavigation';
+import { Header, DisplayHeader, Menu, MenuList } from '../MainNavigation.style';
+import { NavImg } from '../NavLogo';
 
 export type DropdownMenuProps = {
   isOpen: boolean;
@@ -26,13 +20,13 @@ const AdminMainNavigation = () => {
           {isTablet ? (
             <MenuList>
               <NavLink to='/'>
-                <NavImg src={NavigationLogo768} alt='logo' />
+                <NavImg src={GDGoC} alt='logo' />
               </NavLink>
             </MenuList>
           ) : (
             <MenuList>
               <NavLink to='/'>
-                <NavImg src={NavigationLogo} alt='logo' />
+                <NavImg src={GDGoC} alt='logo' />
               </NavLink>
             </MenuList>
           )}

@@ -25,9 +25,9 @@ import {
   InputWrapper,
 } from '@gdg/pages/apply/components/ApplyForm.style';
 import {
-  FrontendData,
+  // FrontendData,
   BackendData,
-  AndroidData,
+  // AndroidData,
   AIData,
   DesignerData,
 } from '@gdg/pages/apply/components/ApplyFormDocs';
@@ -44,7 +44,10 @@ import {
   ApplyFormAPIInterface,
 } from '@gdg/types/ApplyInterface';
 import { ApplyFormSchema } from '@gdg/utils/ApplyFormScehma.util';
-import { handleFormSubmit } from '@gdg/utils/anlytics';
+import {
+  handleTemperalAgainFormSave,
+  handleTemperalFinalFormSubmit,
+} from '@gdg/utils/anlytics';
 
 interface ApplySaveFormProps {
   SaveData: ApplyFormAPIInterface;
@@ -81,14 +84,14 @@ const ApplySaveForm = ({ SaveData }: ApplySaveFormProps) => {
 
   const getData = (techStack: string): ApplyFormQuestionInterface | null => {
     switch (techStack) {
-      case 'FRONT_END':
-        return FrontendData;
+      // case 'FRONT_END':
+      //   return FrontendData;
       case 'BACK_END':
         return BackendData;
       case 'AI':
         return AIData;
-      case 'ANDROID':
-        return AndroidData;
+      // case 'ANDROID':
+      //   return AndroidData;
       case 'DESIGNER':
         return DesignerData;
       default:
@@ -124,13 +127,13 @@ const ApplySaveForm = ({ SaveData }: ApplySaveFormProps) => {
           })) || [],
       };
       if (submitType === 'submit') {
-        handleFormSubmit('Sub-Final Submit');
+        handleTemperalFinalFormSubmit('Sub-Final Submit');
         saveApplication(finalFormData);
         // console.log(finalFormData);
       } else if (submitType === 'save') {
         // submitApplication(saveFormData);
         // console.log(saveFormData);
-        handleFormSubmit('Sub-Save Submit');
+        handleTemperalAgainFormSave('Sub-Save Submit');
         saveApplication(saveFormData);
       }
     }

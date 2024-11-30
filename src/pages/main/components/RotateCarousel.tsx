@@ -2,6 +2,7 @@ import { lazy } from 'react';
 import { useMediaQuery } from 'react-responsive';
 
 import { useCarouselStore } from '@gdg/store/useCarouselStore';
+import { handleCarouselClick } from '@gdg/utils/anlytics';
 
 const MemoizedRotateCarousel = lazy(() => import('./PCRotateCarousel'));
 const MemoizedTabletRotateCarousel = lazy(
@@ -16,11 +17,13 @@ const RotateCarousel = () => {
   const handlePrevClick = () => {
     setAngle(angle - rotateAngle);
     rotateOpacityArray(false);
+    handleCarouselClick('Carousel_prev');
   };
 
   const handleNextClick = () => {
     setAngle(angle + rotateAngle);
     rotateOpacityArray(true);
+    handleCarouselClick('Carousel_next');
   };
 
   const rotateOpacityArray = (isClockwise: boolean) => {

@@ -85,10 +85,10 @@ const InquiryModal = () => {
     e.preventDefault();
 
     const currentDate = dayjs();
-    const cutoffDate = dayjs('2024-09-06 04:00');
+    const cutoffDate = dayjs('2024-12-27 23:59:59');
 
     if (currentDate.isAfter(cutoffDate)) {
-      alert('조회 기간이 지났습니다. 09월 05일 이후로는 조회가 불가능합니다.');
+      alert('조회 기간이 지났습니다. 12월 27일 이후로는 조회가 불가능합니다.');
       return;
     }
 
