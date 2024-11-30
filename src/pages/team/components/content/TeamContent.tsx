@@ -1,16 +1,16 @@
 import styled from '@emotion/styled';
-import { useState, lazy } from 'react';
+import { useState } from 'react';
 import { useMediaQuery } from 'react-responsive';
 
 import { TeamList } from '@gdg/apis/hooks/team/useGetTeamList';
-import LazyLoad from '@gdg/components/common/View/LazyLoad';
+// import LazyLoad from '@gdg/components/common/View/LazyLoad';
 import {
   TeamMember,
   TeamCalendar,
   TeamTitle,
   TeamTitleMobile,
 } from '@gdg/pages/team/components';
-const TeamBlogList = lazy(() => import('../blog/TeamBlogList'));
+// const TeamBlogList = lazy(() => import('../blog/TeamBlogList'));
 
 const TeamContent = ({ data }: { data: TeamList[] }) => {
   const [selectedTeamName, setSelectedTeamName] = useState<string>(
@@ -42,9 +42,9 @@ const TeamContent = ({ data }: { data: TeamList[] }) => {
 
       <TeamCalendar selectedTeamName={selectedTeamName} />
 
-      <LazyLoad>
+      {/* <LazyLoad>
         <TeamBlogList selectedTeamName={selectedTeamName} />
-      </LazyLoad>
+      </LazyLoad> */}
     </TeamContainer>
   );
 };
