@@ -46,6 +46,7 @@
     "react-hot-toast": "^2.4.1",
     "react-image-file-resizer": "^0.4.8",
     "react-lazy-load-image-component": "^1.6.2",
+    "react-lazy-observer": "^1.2.0",
     "react-loader-spinner": "^6.1.6",
     "react-responsive": "^10.0.0",
     "react-router-dom": "^6.28.0",
