@@ -143,6 +143,7 @@ const ApplyDetailModal = ({
 
   const trackData = detail ? getQuestionsByTrack(detail.track) : null;
   const emptyAnswer = '해당 질문에 대한 답변이 작성되지 않았습니다.';
+  console.log(detail?.answers);
 
   return (
     <ModalBackdrop>

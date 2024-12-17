@@ -87,7 +87,7 @@ const Memo = ({ id, note }: { id: number | null; note: string | null }) => {
       </TitleWrapper>
       <MemoBox
         placeholder='간단한 메모를 해보세요!'
-        value={memo ? memo.replace(/['"]/g, '') : ''}
+        value={memo ? memo.replace(/['"]/g, '').replace(/\\n/g, '\n') : ''}
         onChange={handleMemoBoxChange}
       />
     </MemoWrapper>
