@@ -38,6 +38,7 @@ export const getDocsDetail = async (
       },
     }
   );
+
   return response.data;
 };
 
