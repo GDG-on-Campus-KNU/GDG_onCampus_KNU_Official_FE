@@ -4,6 +4,9 @@ import styled from '@emotion/styled';
 import Text from '@gdg/components/common/typography/Text';
 import Grid from '@gdg/components/common/layouts/grid';
 import PageTitle from '@gdg/components/common/title/PageTitle';
+import { getPostList } from '@gdg/apis/hooks/techblog/useGetPostList';
+import useInfinity from '@gdg/hooks/useInfinity';
+import { Spinner } from '@gdg/components/common/Spinner';
 
 import PostCard from './Components/PostCard';
 
@@ -18,8 +21,14 @@ const PostListLayout = styled.div`
 `;
 
 const TechBlogPage = () => {
-  const popular = ['', '', '', '', ''];
-  const latest = ['', '', '', '', '', ''];
+  const {
+    observerRef,
+    data: latest,
+    isPending,
+    hasNext,
+  } = useInfinity('', getPostList);
+  // const popular = ['', '', '', '', ''];
+
   return (
     <>
       {/* <TeamBlogMetaData /> */}
@@ -29,9 +38,9 @@ const TechBlogPage = () => {
           인기글 TOP 5
         </Text>
         <Grid columns={2} gap={36} padding={0}>
-          {popular.map((e, i) => {
-            return <PostCard key={i} />;
-          })}
+          {/* {popular.map((e, i) => {
+            return <PostCard key={i}  />;
+          })} */}
         </Grid>
       </PostListLayout>
 
@@ -41,9 +50,11 @@ const TechBlogPage = () => {
         </Text>
         <Grid columns={2} gap={36} padding={0}>
           {latest.map((e, i) => {
-            return <PostCard key={i} />;
+            return <PostCard key={i} title={e.title} />;
           })}
         </Grid>
+        {isPending && <Spinner />}
+        {hasNext && <div ref={observerRef}></div>}
       </PostListLayout>
     </>
   );

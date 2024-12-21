@@ -11,13 +11,13 @@ import {
   Icon,
 } from './PostCard.style';
 
-const PostCard = () => {
+const PostCard = ({ title }: { title: string }) => {
   return (
     <CardWrapper>
       <Image src={gdgknu} alt='thumbnail' />
       <MetaDataLayout $gap={8} $dir='column'>
         <Text size='xl' weight='bold'>
-          테크 블로그 글 제목
+          {title}
         </Text>
         <MetaDataLayout $gap={6} $dir='column'>
           <Text size='md'>본문 미리보기 또는 부제목</Text>
