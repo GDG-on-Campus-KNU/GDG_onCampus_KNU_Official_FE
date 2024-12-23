@@ -4,10 +4,10 @@ import { useParams, useNavigate } from 'react-router-dom';
 
 import CommonBtn from '@gdg/components/common/button/CommonBtn';
 import {
-  // FrontendData,
+  FrontendData,
   BackendData,
   AIData,
-  // AndroidData,
+  AndroidData,
   DesignerData,
 } from '@gdg/pages/apply/components/ApplyDocs';
 import ApplyQualify from '@gdg/pages/apply/components/ApplyQualify';
@@ -63,14 +63,14 @@ const ApplyEx = () => {
 
   const getData = (tech: string): ApplyExInterface | null => {
     switch (tech) {
-      // case 'frontend':
-      //   return FrontendData;
+      case 'frontend':
+        return FrontendData;
       case 'backend':
         return BackendData;
       case 'ai':
         return AIData;
-      // case 'android':
-      //   return AndroidData;
+      case 'android':
+        return AndroidData;
       case 'designer':
         return DesignerData;
       default:
