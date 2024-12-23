@@ -25,9 +25,9 @@ import {
   InputWrapper,
 } from '@gdg/pages/apply/components/ApplyForm.style';
 import {
-  // FrontendData,
+  FrontendData,
   BackendData,
-  // AndroidData,
+  AndroidData,
   AIData,
   DesignerData,
 } from '@gdg/pages/apply/components/ApplyFormDocs';
@@ -84,14 +84,14 @@ const ApplySaveForm = ({ SaveData }: ApplySaveFormProps) => {
 
   const getData = (techStack: string): ApplyFormQuestionInterface | null => {
     switch (techStack) {
-      // case 'FRONT_END':
-      //   return FrontendData;
+      case 'FRONT_END':
+        return FrontendData;
       case 'BACK_END':
         return BackendData;
       case 'AI':
         return AIData;
-      // case 'ANDROID':
-      //   return AndroidData;
+      case 'ANDROID':
+        return AndroidData;
       case 'DESIGNER':
         return DesignerData;
       default:
