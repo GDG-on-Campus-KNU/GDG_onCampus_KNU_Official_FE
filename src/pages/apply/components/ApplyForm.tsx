@@ -26,9 +26,9 @@ import {
   InputWrapper,
 } from '@gdg/pages/apply/components/ApplyForm.style';
 import {
-  FrontendData,
+  // FrontendData,
   BackendData,
-  AndroidData,
+  // AndroidData,
   AIData,
   DesignerData,
 } from '@gdg/pages/apply/components/ApplyFormDocs';
@@ -51,14 +51,14 @@ import {
 
 const getTrack = (tech: string): string => {
   switch (tech.toLowerCase()) {
-    case 'frontend':
-      return 'FRONT_END';
+    // case 'frontend':
+    //   return 'FRONT_END';
     case 'backend':
       return 'BACK_END';
     case 'ai':
       return 'AI';
-    case 'android':
-      return 'ANDROID';
+    // case 'android':
+    //   return 'ANDROID';
     case 'designer':
       return 'DESIGNER';
     default:
@@ -97,14 +97,14 @@ const ApplyForm = () => {
 
   const getData = (tech: string): ApplyFormQuestionInterface | null => {
     switch (tech) {
-      case 'frontend':
-        return FrontendData;
+      // case 'frontend':
+      //   return FrontendData;
       case 'backend':
         return BackendData;
       case 'ai':
         return AIData;
-      case 'android':
-        return AndroidData;
+      // case 'android':
+      //   return AndroidData;
       case 'designer':
         return DesignerData;
       default:
