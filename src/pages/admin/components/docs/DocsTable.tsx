@@ -56,7 +56,7 @@ const DocsTable = ({
   const [docsList, setDocsList] = useState<applyDocsInterface | null>(null);
   const [openDetail, setOpenDetail] = useState<number | null>(null);
 
-  const { data: docsData } = useGetApplyDocs(
+  const { data: docsData, refetch: refetchDocs } = useGetApplyDocs(
     getTrack(trackIdx),
     isMarked,
     currentPage,
@@ -70,7 +70,7 @@ const DocsTable = ({
 
   const handleCloseModal = () => {
     setOpenDetail(null);
-    // window.location.reload();
+    refetchDocs();
   };
 
   useEffect(() => {

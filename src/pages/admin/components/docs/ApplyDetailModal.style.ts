@@ -14,7 +14,7 @@ export const ModalBackdrop = styled.div`
 export const ModalWrapper = styled.div`
   width: 90%;
   height: 85vh;
-  min-width: 900px;
+  max-width: 1100px;
   min-height: 500px;
 
   ${displayCenter}
