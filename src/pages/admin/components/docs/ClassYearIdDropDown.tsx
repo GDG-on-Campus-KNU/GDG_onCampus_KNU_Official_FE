@@ -36,16 +36,23 @@ const YearIdButton = styled.div`
   }
 `;
 
-const ClassYearIdDropDown = () => {
+const ClassYearIdDropDown = ({
+  onYearIdClick,
+}: {
+  onYearIdClick: (id: number) => void;
+}) => {
+  const yearIdList = [1, 2, 3, 4];
+
   return (
     <DropdownContainer>
-      <YearIdButton>1기</YearIdButton>
-      <DividingLine />
-      <YearIdButton>2기</YearIdButton>
-      <DividingLine />
-      <YearIdButton>3기</YearIdButton>
-      <DividingLine />
-      <YearIdButton>4기</YearIdButton>
+      {yearIdList.map((id) => (
+        <div key={id}>
+          <YearIdButton
+            onClick={() => onYearIdClick(id)}
+          >{`${id}기`}</YearIdButton>
+          {id < yearIdList.length && <DividingLine />}
+        </div>
+      ))}
     </DropdownContainer>
   );
 };

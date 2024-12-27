@@ -46,10 +46,12 @@ const DocsTable = ({
   searchName,
   trackIdx,
   isMarked,
+  classYearId,
 }: {
   searchName?: string | undefined;
   trackIdx: number;
   isMarked: boolean;
+  classYearId: number;
 }) => {
   const [currentPage, setCurrentPage] = useState<number>(0);
   const [currentGroup, setCurrentGroup] = useState<number>(0);
@@ -60,7 +62,8 @@ const DocsTable = ({
     getTrack(trackIdx),
     isMarked,
     currentPage,
-    7
+    7,
+    classYearId
   );
   const { data: searchData } = useGetSearch(searchName, currentPage, 7);
 

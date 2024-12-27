@@ -27,7 +27,7 @@ const AdminDocConfirmPage = () => {
   const [searchName, setSearchName] = useState<string>('');
   const [trackIdx, setTrackIdx] = useState<number>(0);
   const [isDropdownOpen, setIsDropdownOpen] = useState<boolean>(false);
-  const [classYearId, setClassYearId] = useState<number>(0);
+  const [classYearId, setClassYearId] = useState<number>(1);
 
   const handlePassCheck = () => {
     setIsMarked((prev) => !prev);
@@ -35,6 +35,10 @@ const AdminDocConfirmPage = () => {
 
   const handleClassYearIdCheck = () => {
     setIsDropdownOpen((prev) => !prev);
+  };
+
+  const handleYearIdClick = (id: number) => {
+    setClassYearId(id);
   };
 
   const { data: applyData } = useGetStatistic();
@@ -63,7 +67,9 @@ const AdminDocConfirmPage = () => {
             >
               기수별 조회
             </PassBtn>
-            {isDropdownOpen && <ClassYearIdDropDown />}
+            {isDropdownOpen && (
+              <ClassYearIdDropDown onYearIdClick={handleYearIdClick} />
+            )}
           </ButtonContainer>
         </ButtonBox>
         <AdminSearchBar onSearch={handleSearchNameChange} />
@@ -77,6 +83,7 @@ const AdminDocConfirmPage = () => {
         searchName={searchName}
         trackIdx={trackIdx}
         isMarked={isMarked}
+        classYearId={classYearId}
       />
     </DisplayLayout>
   );

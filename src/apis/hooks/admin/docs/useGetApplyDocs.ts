@@ -18,7 +18,8 @@ export const getApplyDocs = async (
   track: string,
   isMarked: boolean,
   page: number,
-  size: number
+  size: number,
+  classYearId: number
 ): Promise<applyDocsInterface> => {
   const response = await fetchInstance.get<applyDocsInterface>(
     getApplyDocsPath(),
@@ -28,6 +29,7 @@ export const getApplyDocs = async (
         isMarked,
         page,
         size,
+        classYearId,
       },
     }
   );
@@ -38,17 +40,19 @@ export const useGetApplyDocs = (
   track: string,
   isMarked: boolean,
   page: number,
-  size: number
+  size: number,
+  classYearId: number
 ) => {
   const accessToken = sessionStorage.getItem('accessToken');
 
   return useQuery<applyDocsInterface, Error>({
-    queryKey: [applyDocsQueryKey, track, isMarked, page, size],
-    queryFn: () => getApplyDocs(track, isMarked, page, size),
+    queryKey: [applyDocsQueryKey, track, isMarked, page, size, classYearId],
+    queryFn: () => getApplyDocs(track, isMarked, page, size, classYearId),
     enabled:
       !!accessToken &&
       track !== undefined &&
       isMarked !== undefined &&
-      page !== undefined,
+      page !== undefined &&
+      classYearId !== undefined,
   });
 };
