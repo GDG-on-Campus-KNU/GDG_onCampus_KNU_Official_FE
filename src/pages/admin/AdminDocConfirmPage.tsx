@@ -39,6 +39,7 @@ const AdminDocConfirmPage = () => {
 
   const handleYearIdClick = (id: number) => {
     setClassYearId(id);
+    setIsDropdownOpen(false);
   };
 
   const { data: applyData } = useGetStatistic();
