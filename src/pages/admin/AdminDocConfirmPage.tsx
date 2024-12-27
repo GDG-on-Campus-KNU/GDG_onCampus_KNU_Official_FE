@@ -27,7 +27,7 @@ const AdminDocConfirmPage = () => {
   const [searchName, setSearchName] = useState<string>('');
   const [trackIdx, setTrackIdx] = useState<number>(0);
   const [isDropdownOpen, setIsDropdownOpen] = useState<boolean>(false);
-  const [classYearId, setClassYearId] = useState<number>(1);
+  const [classYearId, setClassYearId] = useState<number>(4);
 
   const handlePassCheck = () => {
     setIsMarked((prev) => !prev);
@@ -66,7 +66,7 @@ const AdminDocConfirmPage = () => {
               isSelected={isDropdownOpen}
               onClick={handleClassYearIdCheck}
             >
-              기수별 조회
+              {`${classYearId}기 ${'\u00A0'} ▾`}
             </PassBtn>
             {isDropdownOpen && (
               <ClassYearIdDropDown onYearIdClick={handleYearIdClick} />
