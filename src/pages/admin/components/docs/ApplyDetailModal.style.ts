@@ -120,10 +120,10 @@ export const SelfIntroduce = styled.div`
   overflow-y: scroll;
 
   color: black;
-  font-size: var(--font-size-xs);
+  font-size: var(--font-size-sm);
   font-weight: 200;
 
-  margin-top: 5px;
+  margin-top: 10px;
 `;
 
 export const ButtonContainer = styled.div`

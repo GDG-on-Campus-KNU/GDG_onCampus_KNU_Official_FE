@@ -9,6 +9,7 @@ export type AnswerData = {
 
 export interface DocsDetailInterface {
   id: number;
+  version: number;
   name: string;
   studentNumber: string;
   major: string;

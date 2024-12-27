@@ -55,6 +55,7 @@ interface Answer {
 
 interface DetailInfo {
   id: number;
+  version: number;
   name: string;
   studentNumber: string;
   major: string;
@@ -143,7 +144,8 @@ const ApplyDetailModal = ({
 
   const trackData = detail ? getQuestionsByTrack(detail.track) : null;
   const emptyAnswer = '해당 질문에 대한 답변이 작성되지 않았습니다.';
-  console.log(detail?.answers);
+
+  console.log(detail);
 
   return (
     <ModalBackdrop>
@@ -236,7 +238,11 @@ const ApplyDetailModal = ({
                 <DividingLine />
                 <TechStack techStack={detail.techStack} link={detail.link} />
                 <DividingLine />
-                <Memo id={detail.id} note={detail.note} />
+                <Memo
+                  id={detail.id}
+                  version={detail.version}
+                  note={detail.note}
+                />
                 <DividingLine />
                 <ButtonContainer>
                   <CommonBtn
