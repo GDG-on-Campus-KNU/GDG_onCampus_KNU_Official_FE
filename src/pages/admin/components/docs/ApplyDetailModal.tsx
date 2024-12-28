@@ -55,6 +55,7 @@ interface Answer {
 
 interface DetailInfo {
   id: number;
+  version: number;
   name: string;
   studentNumber: string;
   major: string;
@@ -142,6 +143,9 @@ const ApplyDetailModal = ({
   };
 
   const trackData = detail ? getQuestionsByTrack(detail.track) : null;
+  const emptyAnswer = '해당 질문에 대한 답변이 작성되지 않았습니다.';
+
+  console.log(detail);
 
   return (
     <ModalBackdrop>
@@ -177,7 +181,7 @@ const ApplyDetailModal = ({
                 <SelfIntroduce>
                   {detail.answers.length > 0
                     ? `${detail.answers[0].answer}`
-                    : `${trackData.Question1.main}란이 비어있습니다.`}
+                    : emptyAnswer}
                 </SelfIntroduce>
                 <DividingLine />
 
@@ -187,7 +191,7 @@ const ApplyDetailModal = ({
                 <SelfIntroduce>
                   {detail.answers.length > 1
                     ? `${detail.answers[1].answer}`
-                    : `${trackData.Question2.main}란이 비어있습니다.`}
+                    : emptyAnswer}
                 </SelfIntroduce>
                 <DividingLine />
 
@@ -197,7 +201,7 @@ const ApplyDetailModal = ({
                 <SelfIntroduce>
                   {detail.answers.length > 2
                     ? `${detail.answers[2].answer}`
-                    : `${trackData.Question3.main}란이 비어있습니다.`}
+                    : emptyAnswer}
                 </SelfIntroduce>
                 <DividingLine />
 
@@ -207,7 +211,7 @@ const ApplyDetailModal = ({
                 <SelfIntroduce>
                   {detail.answers.length > 3
                     ? `${detail.answers[3].answer}`
-                    : `${trackData.Question4.main}란이 비어있습니다.`}
+                    : emptyAnswer}
                 </SelfIntroduce>
                 <DividingLine />
               </IntroContainer>
@@ -234,7 +238,11 @@ const ApplyDetailModal = ({
                 <DividingLine />
                 <TechStack techStack={detail.techStack} link={detail.link} />
                 <DividingLine />
-                <Memo id={detail.id} note={detail.note} />
+                <Memo
+                  id={detail.id}
+                  version={detail.version}
+                  note={detail.note}
+                />
                 <DividingLine />
                 <ButtonContainer>
                   <CommonBtn
