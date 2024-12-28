@@ -38,12 +38,30 @@ const MemoBox = styled.textarea`
   outline: none;
 `;
 
-const Memo = ({ id, note }: { id: number | null; note: string | null }) => {
-  const [memo, setMemo] = useState<string | null>(note || null);
+interface IMemo {
+  note: string;
+  version: number;
+}
+
+const Memo = ({
+  id,
+  version,
+  note,
+}: {
+  id: number | null;
+  version: number;
+  note: string | null;
+}) => {
+  const [memo, setMemo] = useState<IMemo | null>(
+    note !== null ? { note: note, version: version } : null
+  );
   const { mutate } = usePatchDocsMemo();
 
   const handleMemoBoxChange = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
-    setMemo(e.target.value);
+    setMemo({
+      note: e.target.value,
+      version: version,
+    });
   };
 
   const handleSaveClick = () => {
@@ -87,7 +105,7 @@ const Memo = ({ id, note }: { id: number | null; note: string | null }) => {
       </TitleWrapper>
       <MemoBox
         placeholder='간단한 메모를 해보세요!'
-        value={memo ? memo.replace(/['"]/g, '') : ''}
+        value={memo ? memo.note.replace(/['"]/g, '').replace(/\\n/g, '\n') : ''}
         onChange={handleMemoBoxChange}
       />
     </MemoWrapper>

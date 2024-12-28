@@ -4,8 +4,13 @@ import { useGetStatistic } from '@gdg/apis/hooks/admin/docs/useGetStatistic';
 import { useGetTrack } from '@gdg/apis/hooks/admin/docs/useGetTrack';
 import { DisplayLayout } from '@gdg/styles/LayoutStyle';
 
-import { PassBtn, ButtonBox, InfoBox } from './AdminDocConfirmPage.style';
-
+import ClassYearIdDropDown from './components/docs/ClassYearIdDropDown';
+import {
+  PassBtn,
+  ButtonContainer,
+  ButtonBox,
+  InfoBox,
+} from './AdminDocConfirmPage.style';
 const TrackSelectBar = lazy(() => import('./components/docs/TrackSelectBar'));
 
 const DocsTable = lazy(
@@ -21,9 +26,20 @@ const AdminDocConfirmPage = () => {
   const [isMarked, setIsMarked] = useState<boolean>(false);
   const [searchName, setSearchName] = useState<string>('');
   const [trackIdx, setTrackIdx] = useState<number>(0);
+  const [isDropdownOpen, setIsDropdownOpen] = useState<boolean>(false);
+  const [classYearId, setClassYearId] = useState<number>(4);
 
   const handlePassCheck = () => {
     setIsMarked((prev) => !prev);
+  };
+
+  const handleClassYearIdCheck = () => {
+    setIsDropdownOpen((prev) => !prev);
+  };
+
+  const handleYearIdClick = (id: number) => {
+    setClassYearId(id);
+    setIsDropdownOpen(false);
   };
 
   const { data: applyData } = useGetStatistic();
@@ -45,6 +61,17 @@ const AdminDocConfirmPage = () => {
             <Stars color='white' />
             서류합격자 조회
           </PassBtn>
+          <ButtonContainer>
+            <PassBtn
+              isSelected={isDropdownOpen}
+              onClick={handleClassYearIdCheck}
+            >
+              {`${classYearId}기 ${'\u00A0'} ▾`}
+            </PassBtn>
+            {isDropdownOpen && (
+              <ClassYearIdDropDown onYearIdClick={handleYearIdClick} />
+            )}
+          </ButtonContainer>
         </ButtonBox>
         <AdminSearchBar onSearch={handleSearchNameChange} />
       </InfoBox>
@@ -52,10 +79,12 @@ const AdminDocConfirmPage = () => {
       {trackData && (
         <TrackSelectBar trackData={trackData} onSelect={handleTrackSelect} />
       )}
+
       <DocsTable
         searchName={searchName}
         trackIdx={trackIdx}
         isMarked={isMarked}
+        classYearId={classYearId}
       />
     </DisplayLayout>
   );

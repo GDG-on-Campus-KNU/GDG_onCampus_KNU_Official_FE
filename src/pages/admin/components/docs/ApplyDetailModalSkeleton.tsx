@@ -76,7 +76,7 @@ const ApplyDetailModalSkeleton = () => {
           <DividingLine />
           <TechStack techStack='  ,  ,  ' link='' />
           <DividingLine />
-          <Memo id={null} note='' />
+          <Memo id={null} version={0} note='' />
           <DividingLine />
           <ButtonContainer>
             <CommonBtn
