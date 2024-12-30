@@ -1,11 +1,10 @@
 import styled from '@emotion/styled';
 
 import { displayCenter } from '@gdg/styles/LayoutStyle';
-
 import { useGetClassYearList } from '@gdg/apis/hooks/yearId/useGetClassYearList';
 
 import { DividingLine } from './ApplyDetailModal.style';
-        
+
 const DropdownContainer = styled.div`
   position: relative;
   top: 0;
@@ -43,7 +42,6 @@ const ClassYearIdDropDown = ({
 }: {
   onYearIdClick: (id: number) => void;
 }) => {
-
   const { data: yearIdList } = useGetClassYearList();
 
   return (
