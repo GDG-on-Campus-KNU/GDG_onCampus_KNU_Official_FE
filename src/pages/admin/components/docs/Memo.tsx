@@ -83,6 +83,8 @@ const Memo = ({
     }
   };
 
+  const displayNote = memo ? memo.note : note ? JSON.stringify({ note }) : '';
+
   return (
     <MemoWrapper>
       <TitleWrapper>
@@ -105,7 +107,7 @@ const Memo = ({
       </TitleWrapper>
       <MemoBox
         placeholder='간단한 메모를 해보세요!'
-        value={memo ? memo.note.replace(/['"]/g, '').replace(/\\n/g, '\n') : ''}
+        value={displayNote.replace(/['"]/g, '').replace(/\\n/g, '\n')}
         onChange={handleMemoBoxChange}
       />
     </MemoWrapper>
