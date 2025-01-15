@@ -1,7 +1,6 @@
 import styled from '@emotion/styled';
 import { useState } from 'react';
 import { useQueryClient } from '@tanstack/react-query';
-import { isAxiosError } from 'axios';
 
 import { usePatchDocsMemo } from '@gdg/apis/hooks/admin/docs/usePatchDocsMemo';
 import CommonBtn from '@gdg/components/common/button/CommonBtn';
