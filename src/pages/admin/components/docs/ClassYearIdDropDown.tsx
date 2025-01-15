@@ -4,7 +4,6 @@ import { displayCenter } from '@gdg/styles/LayoutStyle';
 import { useGetClassYearList } from '@gdg/apis/hooks/yearId/useGetClassYearList';
 
 import { DividingLine } from './ApplyDetailModal.style';
-
 const DropdownContainer = styled.div`
   position: relative;
   top: 0;
