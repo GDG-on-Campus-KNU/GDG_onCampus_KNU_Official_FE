@@ -2,6 +2,7 @@ import { useState, lazy } from 'react';
 
 import { useGetStatistic } from '@gdg/apis/hooks/admin/docs/useGetStatistic';
 import { useGetTrack } from '@gdg/apis/hooks/admin/docs/useGetTrack';
+import { useGetClassYearList } from '@gdg/apis/hooks/yearId/useGetClassYearList';
 import { DisplayLayout } from '@gdg/styles/LayoutStyle';
 
 import ClassYearIdDropDown from './components/docs/ClassYearIdDropDown';
@@ -23,11 +24,18 @@ const CurrentApplyInfo = lazy(
 const AdminSearchBar = lazy(() => import('./components/AdminSearchBar'));
 
 const AdminDocConfirmPage = () => {
+  const { data: applyData } = useGetStatistic();
+  const { data: trackData } = useGetTrack();
+  const { data: yearIdList } = useGetClassYearList();
+
   const [isMarked, setIsMarked] = useState<boolean>(false);
   const [searchName, setSearchName] = useState<string>('');
   const [trackIdx, setTrackIdx] = useState<number>(0);
   const [isDropdownOpen, setIsDropdownOpen] = useState<boolean>(false);
   const [classYearId, setClassYearId] = useState<number>(4);
+  const [classYearname, setClassYearName] = useState<string>(
+    yearIdList ? yearIdList[yearIdList.length - 1].name : '1기'
+  );
 
   const handlePassCheck = () => {
     setIsMarked((prev) => !prev);
@@ -37,13 +45,11 @@ const AdminDocConfirmPage = () => {
     setIsDropdownOpen((prev) => !prev);
   };
 
-  const handleYearIdClick = (id: number) => {
+  const handleYearIdClick = (id: number, name: string) => {
     setClassYearId(id);
+    setClassYearName(name);
     setIsDropdownOpen(false);
   };
-
-  const { data: applyData } = useGetStatistic();
-  const { data: trackData } = useGetTrack();
 
   const handleTrackSelect = (index: number) => {
     setTrackIdx(index);
@@ -66,10 +72,13 @@ const AdminDocConfirmPage = () => {
               isSelected={isDropdownOpen}
               onClick={handleClassYearIdCheck}
             >
-              {`${classYearId}기 ${'\u00A0'} ▾`}
+              {`${classYearname} ${'\u00A0'} ▾`}
             </PassBtn>
             {isDropdownOpen && (
-              <ClassYearIdDropDown onYearIdClick={handleYearIdClick} />
+              <ClassYearIdDropDown
+                yearIdList={yearIdList}
+                onYearIdClick={handleYearIdClick}
+              />
             )}
           </ButtonContainer>
         </ButtonBox>
