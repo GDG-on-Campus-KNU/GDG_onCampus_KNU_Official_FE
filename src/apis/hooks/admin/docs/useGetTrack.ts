@@ -16,18 +16,22 @@ const getTrackPath = () => '/api/admin/application/statistic/track';
 
 const statisticQueryKey = [getTrackPath()];
 
-const getTrack = async (): Promise<TrackInterface> => {
-  const response = await fetchInstance.get<TrackInterface>(getTrackPath());
+const getTrack = async (classYearId: number): Promise<TrackInterface> => {
+  const response = await fetchInstance.get<TrackInterface>(getTrackPath(), {
+    params: {
+      classYearId: classYearId,
+    },
+  });
 
   return response.data;
 };
 
-export const useGetTrack = () => {
+export const useGetTrack = (classYearId: number) => {
   const accessToken = sessionStorage.getItem('accessToken');
 
   return useQuery<TrackInterface, Error>({
     queryKey: [statisticQueryKey],
-    queryFn: getTrack,
+    queryFn: () => getTrack(classYearId),
     enabled: !!accessToken,
   });
 };

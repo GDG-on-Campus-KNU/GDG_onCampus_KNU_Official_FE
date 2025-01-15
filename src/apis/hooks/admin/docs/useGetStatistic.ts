@@ -14,18 +14,27 @@ const getStatisticPath = () => '/api/admin/application/statistic';
 
 const statisticQueryKey = [getStatisticPath()];
 
-export const getStatistic = async (): Promise<statisticInterface> => {
-  const response =
-    await fetchInstance.get<statisticInterface>(getStatisticPath());
+export const getStatistic = async (
+  classYearId: number
+): Promise<statisticInterface> => {
+  const response = await fetchInstance.get<statisticInterface>(
+    getStatisticPath(),
+    {
+      params: {
+        classYearId: classYearId,
+      },
+    }
+  );
+
   return response.data;
 };
 
-export const useGetStatistic = () => {
+export const useGetStatistic = (classYearId: number) => {
   const accessToken = sessionStorage.getItem('accessToken');
 
   return useQuery<statisticInterface, Error>({
     queryKey: [statisticQueryKey],
-    queryFn: getStatistic,
+    queryFn: () => getStatistic(classYearId),
     enabled: !!accessToken,
   });
 };
