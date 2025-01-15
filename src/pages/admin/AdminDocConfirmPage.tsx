@@ -1,4 +1,4 @@
-import { useState, lazy } from 'react';
+import { useState, useEffect, lazy } from 'react';
 
 import { useGetStatistic } from '@gdg/apis/hooks/admin/docs/useGetStatistic';
 import { useGetTrack } from '@gdg/apis/hooks/admin/docs/useGetTrack';
@@ -24,18 +24,32 @@ const CurrentApplyInfo = lazy(
 const AdminSearchBar = lazy(() => import('./components/AdminSearchBar'));
 
 const AdminDocConfirmPage = () => {
-  const { data: applyData } = useGetStatistic();
-  const { data: trackData } = useGetTrack();
   const { data: yearIdList } = useGetClassYearList();
 
   const [isMarked, setIsMarked] = useState<boolean>(false);
   const [searchName, setSearchName] = useState<string>('');
   const [trackIdx, setTrackIdx] = useState<number>(0);
   const [isDropdownOpen, setIsDropdownOpen] = useState<boolean>(false);
-  const [classYearId, setClassYearId] = useState<number>(4);
-  const [classYearname, setClassYearName] = useState<string>(
-    yearIdList ? yearIdList[yearIdList.length - 1].name : '1기'
-  );
+  const [classYearId, setClassYearId] = useState<number>(1);
+  const [classYearname, setClassYearName] = useState<string>('1기');
+
+  const { data: applyData, refetch: refetchApplyData } =
+    useGetStatistic(classYearId);
+  const { data: trackData, refetch: refetchTrackData } =
+    useGetTrack(classYearId);
+
+  useEffect(() => {
+    if (yearIdList && yearIdList.length > 0) {
+      const lastYear = yearIdList[yearIdList.length - 1];
+      setClassYearId(lastYear.id);
+      setClassYearName(lastYear.name);
+    }
+  }, [yearIdList]);
+
+  useEffect(() => {
+    refetchApplyData();
+    refetchTrackData();
+  }, [classYearId, refetchApplyData, refetchTrackData]);
 
   const handlePassCheck = () => {
     setIsMarked((prev) => !prev);
