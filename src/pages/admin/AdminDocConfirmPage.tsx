@@ -4,9 +4,10 @@ import { useGetStatistic } from '@gdg/apis/hooks/admin/docs/useGetStatistic';
 import { useGetTrack } from '@gdg/apis/hooks/admin/docs/useGetTrack';
 import { DisplayLayout } from '@gdg/styles/LayoutStyle';
 
+const TrackSelectBar = lazy(
+  () => import('@gdg/components/common/select/trackSelectBar')
+);
 import { PassBtn, ButtonBox, InfoBox } from './AdminDocConfirmPage.style';
-
-const TrackSelectBar = lazy(() => import('./components/docs/TrackSelectBar'));
 
 const DocsTable = lazy(
   () => import('@gdg/pages/admin/components/docs/DocsTable')
