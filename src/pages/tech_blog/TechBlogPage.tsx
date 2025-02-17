@@ -1,6 +1,6 @@
 // import { TeamBlogMetaData } from '@gdg/router/components/MetaData';
 import styled from '@emotion/styled';
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useCallback } from 'react';
 
 import { blogPostMetaDataInterface } from '@gdg/types/UserInterface';
 import Text from '@gdg/components/common/typography/Text';
@@ -32,18 +32,21 @@ const TechBlogPage = () => {
     hasNext,
   } = useInfinity('', getPostList);
 
-  const fetchTrendPosts = async (category: string, size: number) => {
-    try {
-      const response = await getTrendPostList(category, size);
-      setTrendPost(response);
-    } catch (error) {
-      console.error(error);
-    }
-  };
+  const fetchTrendPosts = useCallback(
+    async (category: string, size: number) => {
+      try {
+        const response = await getTrendPostList(category, size);
+        setTrendPost(response);
+      } catch (error) {
+        console.error(error);
+      }
+    },
+    []
+  );
 
   useEffect(() => {
     fetchTrendPosts('BACKEND', 5);
-  }, []);
+  }, [fetchTrendPosts]);
 
   return (
     <>
