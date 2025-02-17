@@ -63,7 +63,17 @@ const useInfinity = (
   };
 
   useEffect(() => {
+    setData([]);
+    setPage(0);
+    setHasNext(true);
+
     fetchDataAsync();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [category]);
+
+  useEffect(() => {
+    fetchDataAsync();
+
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [page]);
 

@@ -10,6 +10,8 @@ import { getPostList } from '@gdg/apis/hooks/techblog/useGetPostList';
 import { getTrendPostList } from '@gdg/apis/hooks/techblog/useGetTrendPostList';
 import useInfinity from '@gdg/hooks/useInfinity';
 import { Spinner } from '@gdg/components/common/Spinner';
+import TrackSelectBar from '@gdg/components/common/select/trackSelectBar';
+import { getBlogTrack } from '@gdg/components/common/select/trackSelectBar/getTrack';
 
 import PostCard from './Components/PostCard';
 
@@ -20,17 +22,23 @@ const PostListLayout = styled.div`
 
   display: flex;
   flex-direction: column;
-  gap: 18px;
+  gap: 25px;
 `;
 
 const TechBlogPage = () => {
   const [trendPost, setTrendPost] = useState<blogPostMetaDataInterface[]>([]);
+  const [trackIdx, setTrackIdx] = useState<number>(1);
+
   const {
     observerRef,
     data: latest,
     isPending,
     hasNext,
-  } = useInfinity('', getPostList);
+  } = useInfinity(getBlogTrack(trackIdx), getPostList);
+
+  const handleTrackSelect = (index: number) => {
+    setTrackIdx(index);
+  };
 
   const fetchTrendPosts = useCallback(
     async (category: string, size: number) => {
@@ -45,14 +53,38 @@ const TechBlogPage = () => {
   );
 
   useEffect(() => {
-    fetchTrendPosts('BACKEND', 5);
-  }, [fetchTrendPosts]);
+    fetchTrendPosts(getBlogTrack(trackIdx), 5);
+  }, [fetchTrendPosts, trackIdx]);
+
+  const tracks = [
+    'TOTAL',
+    'FRONTEND',
+    'BACKEND',
+    'ANDROID',
+    'AI',
+    'DESIGN',
+    'ETC',
+  ];
+  const tracksKorean = [
+    '전체',
+    '프론트엔드',
+    '백엔드',
+    '안드로이드',
+    'AI',
+    '디자이너',
+    '기타',
+  ];
 
   return (
     <>
       {/* <TeamBlogMetaData /> */}
       <PageTitle MainTitle='테크 블로그' SubTitle='Tech Blog' />
       <PostListLayout>
+        <TrackSelectBar
+          tracks={tracks}
+          tracksKorean={tracksKorean}
+          onSelect={handleTrackSelect}
+        />
         <Text size='xl' weight='bold'>
           인기글 TOP 5
         </Text>

@@ -38,6 +38,23 @@ const AdminDocConfirmPage = () => {
     setSearchName(name);
   };
 
+  const tracks = [
+    'TOTAL',
+    'FRONT_END',
+    'BACK_END',
+    'ANDROID',
+    'AI',
+    'DESIGNER',
+  ];
+  const tracksKorean = [
+    '전체',
+    '프론트엔드',
+    '백엔드',
+    '안드로이드',
+    'AI',
+    '디자이너',
+  ];
+
   return (
     <DisplayLayout>
       <InfoBox>
@@ -51,7 +68,12 @@ const AdminDocConfirmPage = () => {
       </InfoBox>
       {applyData && <CurrentApplyInfo response={applyData} />}
       {trackData && (
-        <TrackSelectBar trackData={trackData} onSelect={handleTrackSelect} />
+        <TrackSelectBar
+          tracks={tracks}
+          tracksKorean={tracksKorean}
+          trackData={trackData}
+          onSelect={handleTrackSelect}
+        />
       )}
       <DocsTable
         searchName={searchName}
