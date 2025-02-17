@@ -27,7 +27,7 @@ const PostListLayout = styled.div`
 
 const TechBlogPage = () => {
   const [trendPost, setTrendPost] = useState<blogPostMetaDataInterface[]>([]);
-  const [trackIdx, setTrackIdx] = useState<number>(1);
+  const [trackIdx, setTrackIdx] = useState<number>(0);
 
   const {
     observerRef,
@@ -90,7 +90,7 @@ const TechBlogPage = () => {
         </Text>
         <Grid columns={2} gap={36} padding={0}>
           {trendPost.map((e, i) => {
-            return <PostCard key={i} title={e.title} />;
+            return <PostCard key={i} {...e} />;
           })}
         </Grid>
       </PostListLayout>
@@ -101,7 +101,7 @@ const TechBlogPage = () => {
         </Text>
         <Grid columns={2} gap={36} padding={0}>
           {latest.map((e, i) => {
-            return <PostCard key={i} title={e.title} />;
+            return <PostCard key={i} {...e} />;
           })}
         </Grid>
         {isPending && <Spinner />}
