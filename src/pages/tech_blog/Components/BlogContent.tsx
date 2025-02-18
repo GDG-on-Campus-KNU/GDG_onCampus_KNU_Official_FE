@@ -1,6 +1,4 @@
 import ReactMarkDown from 'react-markdown';
-import rehypeHighlight from 'rehype-highlight';
-import 'highlight.js/styles/github.css';
 
 import { blogPostDetailInterface } from '@gdg/types/UserInterface';
 import Text from '@gdg/components/common/typography/Text';
@@ -34,9 +32,7 @@ const BlogContent = ({ postData }: { postData: blogPostDetailInterface }) => {
         </SubTitleContainer>
       </TitleContainer>
       <ContentContainer>
-        <ReactMarkDown rehypePlugins={[rehypeHighlight]}>
-          {postData.content}
-        </ReactMarkDown>
+        <ReactMarkDown>{postData.content}</ReactMarkDown>
       </ContentContainer>
     </>
   );
