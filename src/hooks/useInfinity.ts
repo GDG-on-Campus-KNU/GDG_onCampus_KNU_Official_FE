@@ -23,7 +23,7 @@ const useInfinity = (
 
   const handleObserver = (entries: IntersectionObserverEntry[]) => {
     const target = entries[0];
-    if (target.isIntersecting && !isPending) {
+    if (target.isIntersecting && !isPending && hasNext) {
       setPage((prevPage) => prevPage + 1);
     }
   };
@@ -44,12 +44,13 @@ const useInfinity = (
       }
     };
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  }, [isPending, hasNext]);
 
   const fetchDataAsync = async () => {
     if (!hasNext) return;
 
     setIsPending(true);
+
     try {
       const newData = await fetchData(category, page, 4);
       setData((prevData) => [...prevData, ...newData.data]);
@@ -66,6 +67,7 @@ const useInfinity = (
     setData([]);
     setPage(0);
     setHasNext(true);
+    setIsPending(true);
 
     fetchDataAsync();
     // eslint-disable-next-line react-hooks/exhaustive-deps
