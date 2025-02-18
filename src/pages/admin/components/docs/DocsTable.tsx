@@ -20,27 +20,9 @@ import {
   TableHeaderCell,
   TableRow,
 } from '@gdg/pages/admin/components/MemberTable.style';
+import { getTrack } from '@gdg/components/common/select/trackSelectBar/getTrack';
 
 import ApplyDetailModal from './ApplyDetailModal';
-
-const getTrack = (index: number) => {
-  switch (index) {
-    case 0:
-      return '';
-    case 1:
-      return 'FRONT_END';
-    case 2:
-      return 'BACK_END';
-    case 3:
-      return 'ANDROID';
-    case 4:
-      return 'AI';
-    case 5:
-      return 'DESIGNER';
-    default:
-      return '';
-  }
-};
 
 const DocsTable = ({
   searchName,

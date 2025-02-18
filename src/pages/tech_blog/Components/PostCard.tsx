@@ -2,6 +2,7 @@ import Text from '@gdg/components/common/typography/Text';
 import gdgknu from '@gdg/assets/gdgknu.png';
 import likes from '@gdg/assets/icon/likes.svg';
 import comment from '@gdg/assets/icon/comment.svg';
+import { blogPostMetaDataInterface } from '@gdg/types/UserInterface';
 
 import {
   CardWrapper,
@@ -11,27 +12,37 @@ import {
   Icon,
 } from './PostCard.style';
 
-const PostCard = ({ title }: { title: string }) => {
+const PostCard = (props: blogPostMetaDataInterface) => {
+  const trackKoreanMapping = (track: string) => {
+    if (track === '') return '전체';
+    if (track === 'FRONTEND') return '프론트엔드';
+    if (track === 'BACKEND') return '백엔드';
+    if (track === 'ANDROID') return '안드로이드';
+    if (track === 'AI') return 'AI';
+    if (track === 'DESIGN') return '디자이너';
+    if (track === 'ETC') return '기타';
+  };
+
   return (
     <CardWrapper>
       <Image src={gdgknu} alt='thumbnail' />
       <MetaDataLayout $gap={8} $dir='column'>
         <Text size='xl' weight='bold'>
-          {title}
+          {props.title}
         </Text>
         <MetaDataLayout $gap={6} $dir='column'>
           <Text size='md'>본문 미리보기 또는 부제목</Text>
           <MetaDataLayout $gap={12} $dir='row'>
-            <TrackCard>프론트엔드</TrackCard>
-            <Text>2024.08.24</Text>
+            <TrackCard>{trackKoreanMapping(props.category)}</TrackCard>
+            <Text>{props.createAt.split(' ')[0].replace(/-/g, '.')}</Text>
             <Text>|</Text>
             <MetaDataLayout $gap={5} $dir='row'>
               <Icon src={likes} alt='likes' />
-              <Text>123</Text>
+              <Text>{props.likeCount}</Text>
             </MetaDataLayout>
             <MetaDataLayout $gap={5} $dir='row'>
               <Icon src={comment} alt='likes' />
-              <Text>456</Text>
+              <Text>{props.commentCount}</Text>
             </MetaDataLayout>
           </MetaDataLayout>
         </MetaDataLayout>

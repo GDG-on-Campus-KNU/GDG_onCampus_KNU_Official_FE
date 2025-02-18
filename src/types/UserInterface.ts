@@ -84,7 +84,7 @@ export interface blogPostMetaDataInterface {
   summary: string;
   thumbnailUrl: string;
   category: string;
-  createdAt: string;
+  createAt: string;
   likeCount: number;
   commentCount: number;
   sharedCount: number;
