@@ -1,5 +1,8 @@
 import { useParams } from 'react-router-dom';
 import styled from '@emotion/styled';
+import ReactMarkDown from 'react-markdown';
+import rehypeHighlight from 'rehype-highlight';
+import 'highlight.js/styles/github.css';
 
 import Text from '@gdg/components/common/typography/Text';
 import { Spinner } from '@gdg/components/common/Spinner';
@@ -30,13 +33,23 @@ const SubTitleContainer = styled.div`
   justify-content: space-between;
 `;
 
+const ContentContainer = styled.div`
+  width: 90%;
+  max-width: 724px;
+
+  display: flex;
+  flex-direction: column;
+
+  padding: 50px 0;
+  border-bottom: 1px solid white;
+`;
+
 const TechBlogDetailPage = () => {
   const params = useParams();
   const userId = params.id;
   const postId = userId ? parseInt(userId) : null;
 
   const postData = useGetPostDetail(postId);
-  console.log(postData.data);
 
   return (
     <>
@@ -62,7 +75,11 @@ const TechBlogDetailPage = () => {
               </Text>
             </SubTitleContainer>
           </TitleContainer>
-          <Text>{postData.data.content}</Text>
+          <ContentContainer>
+            <ReactMarkDown rehypePlugins={[rehypeHighlight]}>
+              {postData.data.content}
+            </ReactMarkDown>
+          </ContentContainer>
         </>
       )}
     </>
