@@ -30,31 +30,72 @@ export const Image = styled.img`
   object-fit: contain;
 `;
 
-export const TrackCard = styled.div`
-  width: 80px;
-  height: 20px;
-
+export const TrackCard = styled.div<{ $size?: string }>`
   background-color: var(--color-more-transparent);
-  border-radius: 4px;
+  border-radius: ${(props) => {
+    switch (props.$size) {
+      case 'xs':
+        return '4px';
+      case 'lg':
+        return '12px';
+      case undefined:
+        return '4px';
+      default:
+        return;
+    }
+  }};
 
-  display: flex;
-  justify-content: center;
+  ${displayCenter}
   align-items: center;
+  padding: ${(props) => {
+    switch (props.$size) {
+      case 'xs':
+        return '6px 14px';
+      case 'lg':
+        return '13px 27px';
+      case undefined:
+        return '6px 14px';
+      default:
+        return;
+    }
+  }};
 
-  font-size: var(--font-size-xs);
+  font-size: ${(props) => {
+    switch (props.$size) {
+      case 'xs':
+        return 'var(--font-size-xs)';
+      case 'lg':
+        return 'var(--font-size-lg)';
+      case undefined:
+        return 'var(--font-size-xs)';
+      default:
+        return;
+    }
+  }};
+`;
+
+export const IconContainer = styled.div<{ $width: string; $height: string }>`
+  width: ${(props) => props.$width};
+  height: ${(props) => props.$height};
+  overflow: hidden;
+  ${displayCenter}
+  align-items: center;
 `;
 
 export const Icon = styled.img`
-  width: 12px;
-  height: 20px;
-
-  ${displayCenter}
-  object-fit: contain;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 `;
 
-export const MetaDataLayout = styled.div<{ $gap: number; $dir: string }>`
+export const MetaDataLayout = styled.div<{
+  $gap: number;
+  $dir: string;
+  $center?: boolean;
+}>`
   display: flex;
   flex-direction: ${(props) => props.$dir};
+  align-items: ${(props) => (props.$center ? 'center' : 'flex-start')};
 
   white-space: nowrap;
   gap: ${(props) => props.$gap}px;

@@ -13,6 +13,7 @@ import {
   MetaDataLayout,
   TrackCard,
   Icon,
+  IconContainer,
 } from './PostCard.style';
 
 const PostCard = (props: blogPostMetaDataInterface) => {
@@ -30,12 +31,16 @@ const PostCard = (props: blogPostMetaDataInterface) => {
               <TrackCard>{trackKoreanMapping(props.category)}</TrackCard>
               <Text>{props.createAt.split(' ')[0].replace(/-/g, '.')}</Text>
               <Text>|</Text>
-              <MetaDataLayout $gap={5} $dir='row'>
-                <Icon src={likes} alt='likes' />
+              <MetaDataLayout $gap={5} $dir='row' $center={true}>
+                <IconContainer $width={'14px'} $height={'11.6px'}>
+                  <Icon src={likes} alt='likes' />
+                </IconContainer>
                 <Text>{props.likeCount}</Text>
               </MetaDataLayout>
-              <MetaDataLayout $gap={5} $dir='row'>
-                <Icon src={comment} alt='likes' />
+              <MetaDataLayout $gap={5} $dir='row' $center={true}>
+                <IconContainer $width={'14px'} $height={'11.6px'}>
+                  <Icon src={comment} alt='comment' />
+                </IconContainer>
                 <Text>{props.commentCount}</Text>
               </MetaDataLayout>
             </MetaDataLayout>
