@@ -9,7 +9,7 @@ interface ITrackButton {
   onClick?: () => void;
   isSelected: boolean;
   text: string;
-  peopleNumber: number;
+  peopleNumber?: number;
 }
 
 const TrackButton = ({
@@ -23,37 +23,26 @@ const TrackButton = ({
       <Text size='md' color='white' weight='bold'>
         {text}
       </Text>
-      <Text size='md' color='yellow'>
-        {peopleNumber}
-      </Text>
+      {peopleNumber && (
+        <Text size='md' color='yellow'>
+          {peopleNumber}
+        </Text>
+      )}
     </TrackBtnStyle>
   );
 };
 
 const TrackSelectBar = ({
+  tracks,
+  tracksKorean,
   trackData,
   onSelect,
 }: {
-  trackData: TrackInterface;
+  tracks: string[];
+  tracksKorean: string[];
+  trackData?: TrackInterface;
   onSelect: (index: number) => void;
 }) => {
-  const tracks = [
-    'TOTAL',
-    'FRONT_END',
-    'BACK_END',
-    'ANDROID',
-    'AI',
-    'DESIGNER',
-  ];
-  const tracks_korean = [
-    '전체',
-    '프론트엔드',
-    '백엔드',
-    '안드로이드',
-    'AI',
-    '디자이너',
-  ];
-
   const [selected, setSelected] = useState<number>(0);
   const handleSelect = (index: number) => () => {
     if (index < 0 || index >= tracks.length) return;
@@ -70,8 +59,8 @@ const TrackSelectBar = ({
           key={index + 1}
           onClick={handleSelect(index)}
           isSelected={isSelected(index)}
-          text={tracks_korean[index]}
-          peopleNumber={trackData[track]}
+          text={tracksKorean[index]}
+          peopleNumber={trackData && trackData[track]}
         />
       ))}
     </SelectBarWrapper>

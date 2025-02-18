@@ -12,7 +12,10 @@ import {
   ButtonBox,
   InfoBox,
 } from './AdminDocConfirmPage.style';
-const TrackSelectBar = lazy(() => import('./components/docs/TrackSelectBar'));
+
+const TrackSelectBar = lazy(
+  () => import('@gdg/components/common/select/trackSelectBar')
+);
 
 const DocsTable = lazy(
   () => import('@gdg/pages/admin/components/docs/DocsTable')
@@ -73,6 +76,23 @@ const AdminDocConfirmPage = () => {
     setSearchName(name);
   };
 
+  const tracks = [
+    'TOTAL',
+    'FRONT_END',
+    'BACK_END',
+    'ANDROID',
+    'AI',
+    'DESIGNER',
+  ];
+  const tracksKorean = [
+    '전체',
+    '프론트엔드',
+    '백엔드',
+    '안드로이드',
+    'AI',
+    '디자이너',
+  ];
+
   return (
     <DisplayLayout>
       <InfoBox>
@@ -100,7 +120,12 @@ const AdminDocConfirmPage = () => {
       </InfoBox>
       {applyData && <CurrentApplyInfo response={applyData} />}
       {trackData && (
-        <TrackSelectBar trackData={trackData} onSelect={handleTrackSelect} />
+        <TrackSelectBar
+          tracks={tracks}
+          tracksKorean={tracksKorean}
+          trackData={trackData}
+          onSelect={handleTrackSelect}
+        />
       )}
 
       <DocsTable
