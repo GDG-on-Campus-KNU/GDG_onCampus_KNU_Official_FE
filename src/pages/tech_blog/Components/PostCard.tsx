@@ -25,7 +25,7 @@ const PostCard = (props: blogPostMetaDataInterface) => {
 
   return (
     <CardWrapper>
-      <Image src={gdgknu} alt='thumbnail' />
+      <Image src={props.thumbnailUrl || gdgknu} alt='thumbnail' />
       <MetaDataLayout $gap={8} $dir='column'>
         <Text size='xl' weight='bold'>
           {props.title}

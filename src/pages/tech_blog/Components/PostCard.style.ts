@@ -14,6 +14,8 @@ export const CardWrapper = styled.div`
   display: flex;
   flex-direction: column;
   gap: 18px;
+
+  cursor: pointer;
 `;
 
 export const Image = styled.img`
