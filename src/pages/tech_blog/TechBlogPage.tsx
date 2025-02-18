@@ -78,7 +78,7 @@ const TechBlogPage = () => {
   return (
     <>
       {/* <TeamBlogMetaData /> */}
-      <PageTitle MainTitle='테크 블로그' SubTitle='Tech Blog' />
+
       <PostListLayout>
         <TrackSelectBar
           tracks={tracks}
