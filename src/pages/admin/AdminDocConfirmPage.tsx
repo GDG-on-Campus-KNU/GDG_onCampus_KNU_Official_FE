@@ -5,11 +5,6 @@ import { useGetTrack } from '@gdg/apis/hooks/admin/docs/useGetTrack';
 import { useGetClassYearList } from '@gdg/apis/hooks/yearId/useGetClassYearList';
 import { DisplayLayout } from '@gdg/styles/LayoutStyle';
 
-
-const TrackSelectBar = lazy(
-  () => import('@gdg/components/common/select/trackSelectBar')
-);
-
 import ClassYearIdDropDown from './components/docs/ClassYearIdDropDown';
 import {
   PassBtn,
@@ -18,7 +13,9 @@ import {
   InfoBox,
 } from './AdminDocConfirmPage.style';
 
-
+const TrackSelectBar = lazy(
+  () => import('@gdg/components/common/select/trackSelectBar')
+);
 
 const DocsTable = lazy(
   () => import('@gdg/pages/admin/components/docs/DocsTable')
