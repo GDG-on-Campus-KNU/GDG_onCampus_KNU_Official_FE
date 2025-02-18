@@ -14,6 +14,9 @@ import RouteChangeTracker from '@gdg/router/components/RouteChangeTracker';
 import StatusRoute from '@gdg/router/components/StatusRoute';
 
 const TechBlogPage = lazy(() => import('@gdg/pages/tech_blog/TechBlogPage'));
+const TechBlogDetailPage = lazy(
+  () => import('@gdg/pages/tech_blog/TechBlogDetailPage')
+);
 // const TechBlogEditPage = lazy(
 //   () => import('@gdg/pages/tech_blog/TechBlogEditPage')
 // );
@@ -151,6 +154,10 @@ const routesConfig: AppRouteObject[] = [
           {
             path: '',
             element: <TechBlogPage />,
+          },
+          {
+            path: ':id',
+            element: <TechBlogDetailPage />,
           },
         ],
       },

@@ -1,3 +1,5 @@
+import { Link } from 'react-router-dom';
+
 import Text from '@gdg/components/common/typography/Text';
 import gdgknu from '@gdg/assets/gdgknu.png';
 import likes from '@gdg/assets/icon/likes.svg';
@@ -24,30 +26,32 @@ const PostCard = (props: blogPostMetaDataInterface) => {
   };
 
   return (
-    <CardWrapper>
-      <Image src={props.thumbnailUrl || gdgknu} alt='thumbnail' />
-      <MetaDataLayout $gap={8} $dir='column'>
-        <Text size='xl' weight='bold'>
-          {props.title}
-        </Text>
-        <MetaDataLayout $gap={6} $dir='column'>
-          <Text size='md'>본문 미리보기 또는 부제목</Text>
-          <MetaDataLayout $gap={12} $dir='row'>
-            <TrackCard>{trackKoreanMapping(props.category)}</TrackCard>
-            <Text>{props.createAt.split(' ')[0].replace(/-/g, '.')}</Text>
-            <Text>|</Text>
-            <MetaDataLayout $gap={5} $dir='row'>
-              <Icon src={likes} alt='likes' />
-              <Text>{props.likeCount}</Text>
-            </MetaDataLayout>
-            <MetaDataLayout $gap={5} $dir='row'>
-              <Icon src={comment} alt='likes' />
-              <Text>{props.commentCount}</Text>
+    <Link key={props.id} to={`/techblog/${props.id}`}>
+      <CardWrapper>
+        <Image src={props.thumbnailUrl || gdgknu} alt='thumbnail' />
+        <MetaDataLayout $gap={8} $dir='column'>
+          <Text size='xl' weight='bold'>
+            {props.title}
+          </Text>
+          <MetaDataLayout $gap={6} $dir='column'>
+            <Text size='md'>본문 미리보기 또는 부제목</Text>
+            <MetaDataLayout $gap={12} $dir='row'>
+              <TrackCard>{trackKoreanMapping(props.category)}</TrackCard>
+              <Text>{props.createAt.split(' ')[0].replace(/-/g, '.')}</Text>
+              <Text>|</Text>
+              <MetaDataLayout $gap={5} $dir='row'>
+                <Icon src={likes} alt='likes' />
+                <Text>{props.likeCount}</Text>
+              </MetaDataLayout>
+              <MetaDataLayout $gap={5} $dir='row'>
+                <Icon src={comment} alt='likes' />
+                <Text>{props.commentCount}</Text>
+              </MetaDataLayout>
             </MetaDataLayout>
           </MetaDataLayout>
         </MetaDataLayout>
-      </MetaDataLayout>
-    </CardWrapper>
+      </CardWrapper>
+    </Link>
   );
 };
 
