@@ -78,7 +78,6 @@ const TechBlogPage = () => {
   return (
     <>
       {/* <TeamBlogMetaData /> */}
-
       <PostListLayout>
         <TrackSelectBar
           tracks={tracks}

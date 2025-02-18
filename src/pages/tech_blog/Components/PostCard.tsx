@@ -5,6 +5,7 @@ import gdgknu from '@gdg/assets/gdgknu.png';
 import likes from '@gdg/assets/icon/likes.svg';
 import comment from '@gdg/assets/icon/comment.svg';
 import { blogPostMetaDataInterface } from '@gdg/types/UserInterface';
+import { trackKoreanMapping } from '@gdg/components/common/select/trackSelectBar/getTrack';
 
 import {
   CardWrapper,
@@ -15,16 +16,6 @@ import {
 } from './PostCard.style';
 
 const PostCard = (props: blogPostMetaDataInterface) => {
-  const trackKoreanMapping = (track: string) => {
-    if (track === '') return '전체';
-    if (track === 'FRONTEND') return '프론트엔드';
-    if (track === 'BACKEND') return '백엔드';
-    if (track === 'ANDROID') return '안드로이드';
-    if (track === 'AI') return 'AI';
-    if (track === 'DESIGN') return '디자이너';
-    if (track === 'ETC') return '기타';
-  };
-
   return (
     <Link key={props.id} to={`/techblog/${props.id}`}>
       <CardWrapper>
