@@ -28,21 +28,24 @@ const DocsTable = ({
   searchName,
   trackIdx,
   isMarked,
+  classYearId,
 }: {
   searchName?: string | undefined;
   trackIdx: number;
   isMarked: boolean;
+  classYearId: number;
 }) => {
   const [currentPage, setCurrentPage] = useState<number>(0);
   const [currentGroup, setCurrentGroup] = useState<number>(0);
   const [docsList, setDocsList] = useState<applyDocsInterface | null>(null);
   const [openDetail, setOpenDetail] = useState<number | null>(null);
 
-  const { data: docsData } = useGetApplyDocs(
+  const { data: docsData, refetch: refetchDocs } = useGetApplyDocs(
     getTrack(trackIdx),
     isMarked,
     currentPage,
-    7
+    7,
+    classYearId
   );
   const { data: searchData } = useGetSearch(searchName, currentPage, 7);
 
@@ -52,7 +55,7 @@ const DocsTable = ({
 
   const handleCloseModal = () => {
     setOpenDetail(null);
-    // window.location.reload();
+    refetchDocs();
   };
 
   useEffect(() => {

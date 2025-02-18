@@ -16,6 +16,11 @@ export const PassBtn = styled.button<{ isSelected: boolean }>`
   transition: background-color 0.3s ease;
 `;
 
+export const ButtonContainer = styled.div`
+  width: auto;
+  height: 40px;
+`;
+
 export const ButtonBox = styled.div`
   display: flex;
   flex-direction: row;

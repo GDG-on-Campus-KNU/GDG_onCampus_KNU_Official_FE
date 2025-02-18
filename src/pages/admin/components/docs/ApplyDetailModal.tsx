@@ -55,6 +55,7 @@ interface Answer {
 
 interface DetailInfo {
   id: number;
+  version: number;
   name: string;
   studentNumber: string;
   major: string;
@@ -95,7 +96,7 @@ const ApplyDetailModal = ({
 }) => {
   const [detail, setDetail] = useState<DetailInfo | null>(null);
 
-  const { data, isPending } = useGetDocsDetail(id);
+  const { data, isPending, refetch } = useGetDocsDetail(id);
   useEffect(() => {
     if (data) {
       setDetail(data);
@@ -142,6 +143,12 @@ const ApplyDetailModal = ({
   };
 
   const trackData = detail ? getQuestionsByTrack(detail.track) : null;
+  const emptyAnswer = '해당 질문에 대한 답변이 작성되지 않았습니다.';
+
+  const handleClose = () => {
+    refetch(); // 모달 닫을 때 최신 데이터 가져오기
+    onClose();
+  };
 
   return (
     <ModalBackdrop>
@@ -153,7 +160,7 @@ const ApplyDetailModal = ({
               <Text size='xl' weight='bold' color='black'>
                 지원자 정보 조회
               </Text>
-              <CloseBtn onClick={onClose}>
+              <CloseBtn onClick={handleClose}>
                 <CloseIconImg src={CloseIcon} alt='close' />
               </CloseBtn>
             </TitleWrapper>
@@ -177,7 +184,7 @@ const ApplyDetailModal = ({
                 <SelfIntroduce>
                   {detail.answers.length > 0
                     ? `${detail.answers[0].answer}`
-                    : `${trackData.Question1.main}란이 비어있습니다.`}
+                    : emptyAnswer}
                 </SelfIntroduce>
                 <DividingLine />
 
@@ -187,7 +194,7 @@ const ApplyDetailModal = ({
                 <SelfIntroduce>
                   {detail.answers.length > 1
                     ? `${detail.answers[1].answer}`
-                    : `${trackData.Question2.main}란이 비어있습니다.`}
+                    : emptyAnswer}
                 </SelfIntroduce>
                 <DividingLine />
 
@@ -197,7 +204,7 @@ const ApplyDetailModal = ({
                 <SelfIntroduce>
                   {detail.answers.length > 2
                     ? `${detail.answers[2].answer}`
-                    : `${trackData.Question3.main}란이 비어있습니다.`}
+                    : emptyAnswer}
                 </SelfIntroduce>
                 <DividingLine />
 
@@ -207,7 +214,7 @@ const ApplyDetailModal = ({
                 <SelfIntroduce>
                   {detail.answers.length > 3
                     ? `${detail.answers[3].answer}`
-                    : `${trackData.Question4.main}란이 비어있습니다.`}
+                    : emptyAnswer}
                 </SelfIntroduce>
                 <DividingLine />
               </IntroContainer>
@@ -234,7 +241,11 @@ const ApplyDetailModal = ({
                 <DividingLine />
                 <TechStack techStack={detail.techStack} link={detail.link} />
                 <DividingLine />
-                <Memo id={detail.id} note={detail.note} />
+                <Memo
+                  id={detail.id}
+                  version={detail.version}
+                  note={detail.note}
+                />
                 <DividingLine />
                 <ButtonContainer>
                   <CommonBtn

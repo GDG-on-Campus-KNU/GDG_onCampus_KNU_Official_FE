@@ -1,5 +1,6 @@
 import styled from '@emotion/styled';
 import { useState } from 'react';
+import { useQueryClient } from '@tanstack/react-query';
 
 import { usePatchDocsMemo } from '@gdg/apis/hooks/admin/docs/usePatchDocsMemo';
 import CommonBtn from '@gdg/components/common/button/CommonBtn';
@@ -38,12 +39,31 @@ const MemoBox = styled.textarea`
   outline: none;
 `;
 
-const Memo = ({ id, note }: { id: number | null; note: string | null }) => {
-  const [memo, setMemo] = useState<string | null>(note || null);
+interface IMemo {
+  note: string;
+  version: number;
+}
+
+const Memo = ({
+  id,
+  version,
+  note,
+}: {
+  id: number | null;
+  version: number;
+  note: string | null;
+}) => {
+  const queryClient = useQueryClient();
+  const [memo, setMemo] = useState<IMemo | null>(
+    note !== null ? { note: note, version: version } : null
+  );
   const { mutate } = usePatchDocsMemo();
 
   const handleMemoBoxChange = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
-    setMemo(e.target.value);
+    setMemo({
+      note: e.target.value,
+      version: version,
+    });
   };
 
   const handleSaveClick = () => {
@@ -52,11 +72,13 @@ const Memo = ({ id, note }: { id: number | null; note: string | null }) => {
         { id, memo },
         {
           onSuccess: () => {
+            queryClient.invalidateQueries({ queryKey: ['docs'] });
+            queryClient.invalidateQueries({ queryKey: ['memo', id] });
             alert('메모가 성공적으로 저장되었습니다.');
           },
           onError: (error) => {
             console.error('API 호출 실패:', error);
-            alert('메모 저장에 실패했습니다.');
+            alert(error.message);
           },
         }
       );
@@ -64,6 +86,8 @@ const Memo = ({ id, note }: { id: number | null; note: string | null }) => {
       alert('변경된 메모 내용이 없습니다.');
     }
   };
+
+  const displayNote = memo ? memo.note : note ? JSON.stringify({ note }) : '';
 
   return (
     <MemoWrapper>
@@ -87,7 +111,7 @@ const Memo = ({ id, note }: { id: number | null; note: string | null }) => {
       </TitleWrapper>
       <MemoBox
         placeholder='간단한 메모를 해보세요!'
-        value={memo ? memo.replace(/['"]/g, '') : ''}
+        value={displayNote.replace(/['"]/g, '').replace(/\\n/g, '\n')}
         onChange={handleMemoBoxChange}
       />
     </MemoWrapper>
