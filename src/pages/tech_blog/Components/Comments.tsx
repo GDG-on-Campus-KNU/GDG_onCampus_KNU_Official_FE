@@ -1,3 +1,5 @@
+import { Link } from 'react-router-dom';
+
 import Text from '@gdg/components/common/typography/Text';
 import likes from '@gdg/assets/icon/likes.svg';
 import comment from '@gdg/assets/icon/comment.svg';
@@ -37,7 +39,9 @@ const Comments = ({
             </Text>
           </CountContainer>
         </CountWrapper>
-        <TrackCard $size='lg'>블로그 홈</TrackCard>
+        <Link to='/techblog'>
+          <TrackCard $size='lg'>블로그 홈</TrackCard>
+        </Link>
       </BottomContainer>
     </>
   );

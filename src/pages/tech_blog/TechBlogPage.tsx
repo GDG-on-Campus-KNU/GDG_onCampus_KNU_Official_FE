@@ -52,6 +52,10 @@ const TechBlogPage = () => {
   );
 
   useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+
+  useEffect(() => {
     fetchTrendPosts(getBlogTrack(trackIdx), 5);
   }, [fetchTrendPosts, trackIdx]);
 
