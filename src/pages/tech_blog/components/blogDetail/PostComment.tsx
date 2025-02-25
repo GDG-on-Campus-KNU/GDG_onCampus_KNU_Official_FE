@@ -2,8 +2,7 @@ import { useRef } from 'react';
 import styled from '@emotion/styled';
 
 import { usePostComment } from '@gdg/apis/hooks/techblog/usePostComment';
-
-import { displayCenter } from '../../../styles/LayoutStyle';
+import { displayCenter } from '@gdg/styles/LayoutStyle';
 
 const FormContainer = styled.form`
   width: 90%;

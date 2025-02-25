@@ -3,13 +3,12 @@ import ReactMarkDown from 'react-markdown';
 import { blogPostDetailInterface } from '@gdg/types/UserInterface';
 import Text from '@gdg/components/common/typography/Text';
 import { trackKoreanMapping } from '@gdg/components/common/select/trackSelectBar/getTrack';
-
 import {
   TitleContainer,
   SubTitleContainer,
   ContentContainer,
-} from '../hooks/TechBlogDetailPage.style';
-import { TrackCard } from '../style/PostCard.style';
+} from '@gdg/pages/tech_blog/style/TechBlogDetailPage.style';
+import { TrackCard } from '@gdg/pages/tech_blog/style/PostCard.style';
 
 const BlogContent = ({ postData }: { postData: blogPostDetailInterface }) => {
   return (

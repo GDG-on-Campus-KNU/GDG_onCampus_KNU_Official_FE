@@ -6,16 +6,20 @@ import Text from '@gdg/components/common/typography/Text';
 import likes from '@gdg/assets/icon/likes.svg';
 import comment from '@gdg/assets/icon/comment.svg';
 import { commentDataInterface } from '@gdg/types/UserInterface';
-
-import PostComment from './PostComment';
-import Comment from './Comment';
 import {
   BottomContainer,
   CountWrapper,
   CountContainer,
   CommentWrapper,
-} from '../hooks/TechBlogDetailPage.style';
-import { IconContainer, Icon, TrackCard } from '../style/PostCard.style';
+} from '@gdg/pages/tech_blog/style/TechBlogDetailPage.style';
+import {
+  IconContainer,
+  Icon,
+  TrackCard,
+} from '@gdg/pages/tech_blog/style/PostCard.style';
+
+import PostComment from './PostComment';
+import Comment from './Comment';
 
 const CommentList = ({
   likeCount,
