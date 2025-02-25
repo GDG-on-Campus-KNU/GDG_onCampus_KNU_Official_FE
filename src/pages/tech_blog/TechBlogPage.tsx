@@ -12,7 +12,7 @@ import { Spinner } from '@gdg/components/common/Spinner';
 import TrackSelectBar from '@gdg/components/common/select/trackSelectBar';
 import { getBlogTrack } from '@gdg/components/common/select/trackSelectBar/getTrack';
 
-import PostCard from './Components/PostCard';
+import PostCard from './components/blogList/PostCard';
 
 const PostListLayout = styled.div`
   width: 100%;

@@ -15,7 +15,7 @@ import {
   CountContainer,
   CommentWrapper,
 } from '../hooks/TechBlogDetailPage.style';
-import { IconContainer, Icon, TrackCard } from './PostCard.style';
+import { IconContainer, Icon, TrackCard } from '../style/PostCard.style';
 
 const CommentList = ({
   likeCount,

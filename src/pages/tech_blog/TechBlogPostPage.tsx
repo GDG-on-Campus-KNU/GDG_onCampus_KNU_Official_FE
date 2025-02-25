@@ -7,7 +7,7 @@ import Text from '@gdg/components/common/typography/Text';
 import {
   StyledSaveBtn,
   StyledPostBtn,
-} from '@gdg/pages/tech_blog/Components/MarkdownEditor.style';
+} from '@gdg/pages/tech_blog/style/MarkdownEditor.style';
 import {
   Wrapper,
   ThumbnailContainer,
@@ -20,7 +20,7 @@ import {
   ThumbnailImage,
   ThumbnailButtonContainer,
   ThumbnailButton,
-} from '@gdg/pages/tech_blog/TechBlogPostPage.style';
+} from '@gdg/pages/tech_blog/style/TechBlogPostPage.style';
 import { useBlogPost } from '@gdg/pages/tech_blog/context/index';
 import useImageHandler from '@gdg/pages/tech_blog/hooks/useImageHandler';
 

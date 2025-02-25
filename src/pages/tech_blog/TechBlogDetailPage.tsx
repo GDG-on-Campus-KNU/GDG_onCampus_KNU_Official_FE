@@ -4,8 +4,8 @@ import { useEffect } from 'react';
 import { Spinner } from '@gdg/components/common/Spinner';
 import { useGetPostDetail } from '@gdg/apis/hooks/techblog/useGetPostDetail';
 
-import BlogContent from './Components/BlogContent';
-import CommentList from './Components/CommentList';
+import BlogContent from './components/blogDetail/BlogContent';
+import CommentList from './components/blogDetail/CommentList';
 
 const TechBlogDetailPage = () => {
   const params = useParams();

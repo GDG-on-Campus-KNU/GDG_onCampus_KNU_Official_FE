@@ -9,7 +9,7 @@ import {
   SubTitleContainer,
   ContentContainer,
 } from '../hooks/TechBlogDetailPage.style';
-import { TrackCard } from './PostCard.style';
+import { TrackCard } from '../style/PostCard.style';
 
 const BlogContent = ({ postData }: { postData: blogPostDetailInterface }) => {
   return (

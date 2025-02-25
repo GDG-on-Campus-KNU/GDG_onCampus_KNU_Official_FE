@@ -14,7 +14,7 @@ import {
   TrackCard,
   Icon,
   IconContainer,
-} from './PostCard.style';
+} from '../../style/PostCard.style';
 
 const PostCard = (props: blogPostMetaDataInterface) => {
   return (
