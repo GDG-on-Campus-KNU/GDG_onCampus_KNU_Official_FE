@@ -61,7 +61,7 @@ export const CountWrapper = styled.div`
   justify-content: space-between;
 `;
 
-export const CommentContainer = styled.div`
+export const CommentWrapper = styled.div`
   width: 90%;
   max-width: 724px;
   max-height: 420px;

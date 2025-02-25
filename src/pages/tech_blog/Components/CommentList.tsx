@@ -4,13 +4,15 @@ import { useGetComment } from '@gdg/apis/hooks/techblog/useGetComment';
 import Text from '@gdg/components/common/typography/Text';
 import likes from '@gdg/assets/icon/likes.svg';
 import comment from '@gdg/assets/icon/comment.svg';
+import { commentDataInterface } from '@gdg/types/UserInterface';
 
 import PostComment from './PostComment';
+import Comment from './Comment';
 import {
   BottomContainer,
   CountWrapper,
   CountContainer,
-  CommentContainer,
+  CommentWrapper,
 } from '../hooks/TechBlogDetailPage.style';
 import { IconContainer, Icon, TrackCard } from './PostCard.style';
 
@@ -25,7 +27,6 @@ const CommentList = ({
   const postId = id ? parseInt(id) : null;
 
   const { data: comments, error, isPending } = useGetComment(postId, 0, 5);
-  console.log(comments);
 
   return (
     <>
@@ -52,9 +53,14 @@ const CommentList = ({
           <TrackCard $size='lg'>블로그 홈</TrackCard>
         </Link>
       </BottomContainer>
-      <CommentContainer>
-        {postId !== null && <PostComment postId={postId} groupId={0} />}
-      </CommentContainer>
+      <CommentWrapper>
+        {comments?.data &&
+          comments.data.length > 0 &&
+          comments.data.map((comment: commentDataInterface) => (
+            <Comment key={comment.id} {...comment} />
+          ))}
+      </CommentWrapper>
+      {postId !== null && <PostComment postId={postId} groupId={0} />}
     </>
   );
 };
