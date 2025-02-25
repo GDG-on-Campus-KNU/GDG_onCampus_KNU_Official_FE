@@ -66,8 +66,9 @@ export const CommentWrapper = styled.div`
   max-width: 724px;
   max-height: 420px;
 
-  display: flex;
+  ${displayCenter}
   flex-direction: column;
+  align-items: center;
   padding-top: 40px;
 
   border-top: 2px solid white;
