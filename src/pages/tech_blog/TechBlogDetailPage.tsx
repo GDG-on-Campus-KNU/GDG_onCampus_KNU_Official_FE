@@ -3,7 +3,7 @@ import { useParams } from 'react-router-dom';
 import { Spinner } from '@gdg/components/common/Spinner';
 import { useGetPostDetail } from '@gdg/apis/hooks/techblog/useGetPostDetail';
 
-import BlogContent from './Components/blogContent';
+import BlogContent from './Components/BlogContent';
 import Comments from './Components/Comments';
 
 const TechBlogDetailPage = () => {
