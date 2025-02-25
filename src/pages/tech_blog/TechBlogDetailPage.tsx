@@ -5,7 +5,7 @@ import { Spinner } from '@gdg/components/common/Spinner';
 import { useGetPostDetail } from '@gdg/apis/hooks/techblog/useGetPostDetail';
 
 import BlogContent from './Components/BlogContent';
-import Comments from './Components/Comments';
+import CommentList from './Components/CommentList';
 
 const TechBlogDetailPage = () => {
   const params = useParams();
@@ -24,7 +24,7 @@ const TechBlogDetailPage = () => {
       {postData.data && (
         <>
           <BlogContent postData={postData.data} />
-          <Comments
+          <CommentList
             likeCount={postData.data.likeCount}
             commentCount={postData.data.commentCount}
           />

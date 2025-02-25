@@ -1,23 +1,29 @@
-import { Link } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
 
 import Text from '@gdg/components/common/typography/Text';
 import likes from '@gdg/assets/icon/likes.svg';
 import comment from '@gdg/assets/icon/comment.svg';
 
+import PostComment from './PostComment';
 import {
   BottomContainer,
   CountWrapper,
   CountContainer,
+  CommentContainer,
 } from '../hooks/TechBlogDetailPage.style';
 import { IconContainer, Icon, TrackCard } from './PostCard.style';
 
-const Comments = ({
+const CommentList = ({
   likeCount,
   commentCount,
 }: {
   likeCount: number;
   commentCount: number;
 }) => {
+  const params = useParams();
+  const userId = params.id;
+  const postId = userId ? parseInt(userId) : null;
+
   return (
     <>
       <BottomContainer>
@@ -43,8 +49,11 @@ const Comments = ({
           <TrackCard $size='lg'>블로그 홈</TrackCard>
         </Link>
       </BottomContainer>
+      <CommentContainer>
+        {postId !== null && <PostComment postId={postId} groupId={0} />}
+      </CommentContainer>
     </>
   );
 };
 
-export default Comments;
+export default CommentList;
