@@ -5,7 +5,6 @@ import { useState, useEffect, useCallback } from 'react';
 import { blogPostMetaDataInterface } from '@gdg/types/UserInterface';
 import Text from '@gdg/components/common/typography/Text';
 import Grid from '@gdg/components/common/layouts/grid';
-import PageTitle from '@gdg/components/common/title/PageTitle';
 import { getPostList } from '@gdg/apis/hooks/techblog/useGetPostList';
 import { getTrendPostList } from '@gdg/apis/hooks/techblog/useGetTrendPostList';
 import useInfinity from '@gdg/hooks/useInfinity';
@@ -78,7 +77,6 @@ const TechBlogPage = () => {
   return (
     <>
       {/* <TeamBlogMetaData /> */}
-      <PageTitle MainTitle='테크 블로그' SubTitle='Tech Blog' />
       <PostListLayout>
         <TrackSelectBar
           tracks={tracks}

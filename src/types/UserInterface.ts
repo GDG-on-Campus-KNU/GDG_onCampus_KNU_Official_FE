@@ -97,5 +97,13 @@ export interface blogPostListInterface {
   totalPage: number;
 }
 
+export interface blogPostDetailInterface extends blogPostMetaDataInterface {
+  content: string;
+  authorName: string;
+  canDelete: true;
+  canModify: true;
+  liked: true;
+}
+
 export type AuthenticatedUser = User;
 export type UnauthenticatedUser = 'TEMP';

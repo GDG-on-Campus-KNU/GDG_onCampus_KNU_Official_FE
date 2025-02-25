@@ -37,3 +37,13 @@ export const getBlogTrack = (index: number) => {
       return '';
   }
 };
+
+export const trackKoreanMapping = (track: string) => {
+  if (track === '') return '전체';
+  if (track === 'FRONTEND') return '프론트엔드';
+  if (track === 'BACKEND') return '백엔드';
+  if (track === 'ANDROID') return '안드로이드';
+  if (track === 'AI') return 'AI';
+  if (track === 'DESIGN') return '디자이너';
+  if (track === 'ETC') return '기타';
+};
