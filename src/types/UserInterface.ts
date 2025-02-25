@@ -110,5 +110,23 @@ export interface commentPostInterface {
   content: string;
 }
 
+export interface commentDataInterface {
+  id: number;
+  content: string;
+  createAt: string;
+  name: string;
+  profileUrl: string;
+  isChild: boolean;
+  canDelete: boolean;
+  canModify: boolean;
+}
+
+export interface commentInterface {
+  data: commentDataInterface[];
+  hasNext: boolean;
+  page: number;
+  totalPage: number;
+}
+
 export type AuthenticatedUser = User;
 export type UnauthenticatedUser = 'TEMP';

@@ -1,5 +1,6 @@
 import { Link, useParams } from 'react-router-dom';
 
+import { useGetComment } from '@gdg/apis/hooks/techblog/useGetComment';
 import Text from '@gdg/components/common/typography/Text';
 import likes from '@gdg/assets/icon/likes.svg';
 import comment from '@gdg/assets/icon/comment.svg';
@@ -20,9 +21,11 @@ const CommentList = ({
   likeCount: number;
   commentCount: number;
 }) => {
-  const params = useParams();
-  const userId = params.id;
-  const postId = userId ? parseInt(userId) : null;
+  const { id } = useParams();
+  const postId = id ? parseInt(id) : null;
+
+  const { data: comments, error, isPending } = useGetComment(postId, 0, 5);
+  console.log(comments);
 
   return (
     <>
