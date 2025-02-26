@@ -112,3 +112,13 @@ export const Icon = styled.img`
 
   object-fit: cover;
 `;
+
+export const ButtonContainer = styled.div`
+  width: auto;
+
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-end;
+
+  margin-top: 20px;
+`;

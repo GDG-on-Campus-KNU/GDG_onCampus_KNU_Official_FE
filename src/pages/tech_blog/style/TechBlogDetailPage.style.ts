@@ -68,7 +68,7 @@ export const CommentWrapper = styled.div`
 
   ${displayCenter}
   flex-direction: column;
-  align-items: center;
+  align-items: flex-start;
   padding-top: 40px;
 
   border-top: 2px solid white;

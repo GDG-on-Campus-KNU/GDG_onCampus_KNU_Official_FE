@@ -1,6 +1,8 @@
 import { Link, useParams } from 'react-router-dom';
 import { ErrorMessage } from '@hookform/error-message';
+import { useState, useEffect } from 'react';
 
+import { ButtonContainer } from '@gdg/pages/tech_blog/style/Comment.style';
 import { useGetComment } from '@gdg/apis/hooks/techblog/useGetComment';
 import Text from '@gdg/components/common/typography/Text';
 import likes from '@gdg/assets/icon/likes.svg';
@@ -17,9 +19,9 @@ import {
   Icon,
   TrackCard,
 } from '@gdg/pages/tech_blog/style/PostCard.style';
-
-import PostComment from './PostComment';
-import Comment from './Comment';
+import CommonBtn from '@gdg/components/common/button/CommonBtn';
+import PostComment from '@gdg/pages/tech_blog/components/blogDetail/PostComment';
+import Comment from '@gdg/pages/tech_blog/components/blogDetail/Comment';
 
 const CommentList = ({
   likeCount,
@@ -30,8 +32,36 @@ const CommentList = ({
 }) => {
   const { id } = useParams();
   const postId = id ? parseInt(id) : null;
+  const [page, setPage] = useState<number>(0);
+  const [comments, setComments] = useState<commentDataInterface[]>([]);
+  const [hasNext, setHasNext] = useState<boolean>(false);
 
-  const { data: comments, error, isPending } = useGetComment(postId, 0, 5);
+  const {
+    data: initialComments,
+    error,
+    isPending,
+    refetch,
+  } = useGetComment(postId, page, 5);
+
+  useEffect(() => {
+    if (initialComments) {
+      setComments(initialComments.data);
+      setHasNext(initialComments.hasNext);
+      if (initialComments.hasNext) setPage(page + 1);
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
+  const handleRefetch = () => {
+    refetch().then((newData) => {
+      if (newData.data) {
+        setComments((prev) => [...prev, ...newData.data.data]);
+        setHasNext(newData.data.hasNext);
+        if (newData.data.hasNext) setPage(page + 1);
+      }
+    });
+  };
+
   const pendingMessage = '댓글 정보를 불러오고 있습니다...';
   const errorMessage =
     '댓글 정보를 불러오는 도중 오류가 발생했습니다. 다시 시도해 주세요.';
@@ -70,12 +100,26 @@ const CommentList = ({
             message={errorMessage}
           ></ErrorMessage>
         )}
-        {comments?.data &&
-          comments.data.length > 0 &&
-          comments.data.map((comment: commentDataInterface) => (
-            <Comment key={comment.id} {...comment} />
-          ))}
+        {comments.map((comment: commentDataInterface) => (
+          <Comment key={comment.id} {...comment} />
+        ))}
+        {hasNext && (
+          <ButtonContainer>
+            <CommonBtn
+              height='43px'
+              size='sm'
+              color='navy'
+              backgroundColor='navy'
+              hoverColor='navy'
+              type='button'
+              onClick={handleRefetch}
+            >
+              다음 댓글 더보기
+            </CommonBtn>
+          </ButtonContainer>
+        )}
       </CommentWrapper>
+
       {postId !== null && <PostComment postId={postId} groupId={0} />}
     </>
   );
