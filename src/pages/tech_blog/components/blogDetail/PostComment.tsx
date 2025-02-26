@@ -1,4 +1,4 @@
-import { useRef, useState } from 'react';
+import { useRef } from 'react';
 
 import { usePostComment } from '@gdg/apis/hooks/techblog/usePostComment';
 
