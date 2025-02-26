@@ -1,47 +1,12 @@
-import styled from '@emotion/styled';
-
 import Text from '@gdg/components/common/typography/Text';
 import { commentDataInterface } from '@gdg/types/UserInterface';
 
-const CommentContainer = styled.div`
-  width: 100%;
-  min-height: 80px;
-
-  display: flex;
-  justify-content: flex-start;
-  align-items: center;
-
-  gap: 20px;
-
-  border-bottom: 1px solid var(--color-santas);
-`;
-
-const ProfileImg = styled.img`
-  width: 50px;
-  height: 50px;
-
-  border-radius: 50%;
-  object-fit: cover;
-`;
-
-const InfoContainer = styled.div`
-  min-width: 150px;
-  width: fit-content;
-
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  gap: 12px;
-`;
-
-const CommentContent = styled.div`
-  width: 100%;
-  min-height: 50px;
-
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-`;
+import {
+  CommentContainer,
+  ProfileImg,
+  InfoContainer,
+  CommentContent,
+} from '../../style/Comment.style';
 
 const Comment = (props: commentDataInterface) => {
   const date = new Date(props.createAt);

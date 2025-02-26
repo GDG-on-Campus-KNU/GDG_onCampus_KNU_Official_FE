@@ -1,72 +1,8 @@
 import { useRef } from 'react';
-import styled from '@emotion/styled';
 
 import { usePostComment } from '@gdg/apis/hooks/techblog/usePostComment';
-import { displayCenter } from '@gdg/styles/LayoutStyle';
 
-const FormContainer = styled.form`
-  width: 90%;
-  max-width: 724px;
-  height: auto;
-  min-height: 80px;
-
-  border-radius: 12px;
-  background-color: var(--color-que);
-
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-
-  margin-top: 30px;
-  margin-bottom: 40px;
-  padding: 0 15px;
-  gap: 10px;
-
-  box-sizing: border-box;
-`;
-
-const InputArea = styled.textarea`
-  width: 100%;
-  height: auto;
-  min-height: 50px;
-
-  background-color: transparent;
-  color: var(--color-white);
-  font-size: var(--font-size-md);
-
-  border: none;
-
-  &:focus,
-  &:active {
-    border: none;
-    outline: none;
-  }
-`;
-
-const SubmitBtn = styled.button`
-  width: 10%;
-  min-width: 100px;
-  height: 60px;
-
-  ${displayCenter}
-  align-items: center;
-
-  background-color: var(--color-dpurple);
-  color: var(--color-white);
-
-  font-size: var(--font-size-md);
-  font-weight: 600;
-
-  border-radius: 12px;
-  border: none;
-
-  &:hover,
-  &:focus,
-  &:active {
-    background-color: var(--color-deep);
-    color: var(--color-silver);
-  }
-`;
+import { FormContainer, InputArea, SubmitBtn } from '../../style/Comment.style';
 
 const PostComment = ({
   postId,
