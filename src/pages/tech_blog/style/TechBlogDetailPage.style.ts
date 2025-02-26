@@ -64,7 +64,7 @@ export const CountWrapper = styled.div`
 export const CommentWrapper = styled.div`
   width: 90%;
   max-width: 724px;
-  max-height: 420px;
+  min-height: 420px;
 
   ${displayCenter}
   flex-direction: column;
@@ -72,5 +72,4 @@ export const CommentWrapper = styled.div`
   padding-top: 40px;
 
   border-top: 2px solid white;
-  border-bottom: 1px solid white;
 `;
