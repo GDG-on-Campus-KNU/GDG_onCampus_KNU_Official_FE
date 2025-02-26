@@ -64,7 +64,7 @@ export const CountWrapper = styled.div`
 export const CommentWrapper = styled.div`
   width: 90%;
   max-width: 724px;
-  min-height: 420px;
+  min-height: 20px;
 
   ${displayCenter}
   flex-direction: column;

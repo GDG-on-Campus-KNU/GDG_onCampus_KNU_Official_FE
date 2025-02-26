@@ -1,6 +1,6 @@
 import { Link, useParams } from 'react-router-dom';
 import { ErrorMessage } from '@hookform/error-message';
-import { useState, useEffect } from 'react';
+import { useState, useEffect, lazy } from 'react';
 
 import { ButtonContainer } from '@gdg/pages/tech_blog/style/Comment.style';
 import { useGetComment } from '@gdg/apis/hooks/techblog/useGetComment';
@@ -19,8 +19,10 @@ import {
   Icon,
   TrackCard,
 } from '@gdg/pages/tech_blog/style/PostCard.style';
-import CommonBtn from '@gdg/components/common/button/CommonBtn';
-import PostComment from '@gdg/pages/tech_blog/components/blogDetail/PostComment';
+const CommonBtn = lazy(() => import('@gdg/components/common/button/CommonBtn'));
+const PostComment = lazy(
+  () => import('@gdg/pages/tech_blog/components/blogDetail/PostComment')
+);
 import Comment from '@gdg/pages/tech_blog/components/blogDetail/Comment';
 
 const CommentList = ({
@@ -33,7 +35,10 @@ const CommentList = ({
   const { id } = useParams();
   const postId = id ? parseInt(id) : null;
   const [page, setPage] = useState<number>(0);
-  const [comments, setComments] = useState<commentDataInterface[]>([]);
+  const [comments, setComments] = useState<commentDataInterface[]>(() => {
+    const savedComments = localStorage.getItem(`comments_${postId}`);
+    return savedComments ? JSON.parse(savedComments) : [];
+  });
   const [hasNext, setHasNext] = useState<boolean>(false);
 
   const {
@@ -48,6 +53,11 @@ const CommentList = ({
       setComments(initialComments.data);
       setHasNext(initialComments.hasNext);
       if (initialComments.hasNext) setPage(page + 1);
+
+      localStorage.setItem(
+        `comments_${postId}`,
+        JSON.stringify(initialComments.data)
+      );
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
@@ -55,7 +65,15 @@ const CommentList = ({
   const handleRefetch = () => {
     refetch().then((newData) => {
       if (newData.data) {
-        setComments((prev) => [...prev, ...newData.data.data]);
+        setComments((prev) => {
+          const updatedComments = [...prev, ...newData.data.data];
+          localStorage.setItem(
+            `comments_${postId}`,
+            JSON.stringify(updatedComments)
+          );
+          return updatedComments;
+        });
+
         setHasNext(newData.data.hasNext);
         if (newData.data.hasNext) setPage(page + 1);
       }
