@@ -105,3 +105,10 @@ export const CommentContent = styled.div`
   flex-direction: column;
   justify-content: space-between;
 `;
+
+export const Icon = styled.img`
+  width: 30px;
+  height: 30px;
+
+  object-fit: cover;
+`;

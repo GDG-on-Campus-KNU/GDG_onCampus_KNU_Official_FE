@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { useParams } from 'react-router-dom';
 
+import enter from '@gdg/assets/icon/enter.svg';
 import Text from '@gdg/components/common/typography/Text';
 import { commentDataInterface } from '@gdg/types/UserInterface';
 
@@ -10,6 +11,7 @@ import {
   ProfileImg,
   InfoContainer,
   CommentContent,
+  Icon,
 } from '../../style/Comment.style';
 
 const Comment = (props: commentDataInterface) => {
@@ -33,6 +35,7 @@ const Comment = (props: commentDataInterface) => {
   return (
     <>
       <CommentContainer>
+        {props.isChild && <Icon src={enter} />}
         <ProfileImg src={props.profileUrl} />
         <CommentContent>
           <InfoContainer>
