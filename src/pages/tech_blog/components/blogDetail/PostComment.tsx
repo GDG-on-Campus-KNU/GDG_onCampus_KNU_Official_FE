@@ -8,7 +8,7 @@ interface PostCommentProps {
   postId: number;
   groupId?: number;
   isReply?: boolean;
-  onPostSubmit: () => void;
+  onPostSubmit?: () => void;
   handleVisible?: () => void;
 }
 

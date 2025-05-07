@@ -123,3 +123,18 @@ export const ButtonContainer = styled.div`
   margin-top: 20px;
   gap: 10px;
 `;
+
+export const ReplyButton = styled.button`
+  width: 50px;
+
+  color: white;
+  background-color: transparent;
+
+  border: none;
+  outline: none;
+  cursor: pointer;
+
+  &:hover {
+    color: var(--color-silver);
+  }
+`;

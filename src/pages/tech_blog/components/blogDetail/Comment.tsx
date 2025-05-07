@@ -12,6 +12,7 @@ import {
   InfoContainer,
   CommentContent,
   Icon,
+  ReplyButton,
 } from '../../style/Comment.style';
 
 const Comment = (props: commentDataInterface) => {
@@ -50,7 +51,7 @@ const Comment = (props: commentDataInterface) => {
             {props.content}
           </Text>
         </CommentContent>
-        <button onClick={() => setReplyVisible(true)}>답글 달기</button>
+        <ReplyButton onClick={() => setReplyVisible(true)}>답글</ReplyButton>
       </CommentContainer>
       {replyVisible && (
         <PostComment
