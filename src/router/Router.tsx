@@ -8,7 +8,7 @@ import {
 
 import { AsyncBoundary } from '@gdg/components/common/AsyncBoundary';
 import { LoadingView } from '@gdg/components/common/View/LoadingView';
-// import { BlogPostProvider } from '@gdg/pages/tech_blog/context/index';
+import { BlogPostProvider } from '@gdg/pages/tech_blog/context/index';
 import { TeamUpdateProvider } from '@gdg/provider/TeamUpdate';
 import RouteChangeTracker from '@gdg/router/components/RouteChangeTracker';
 import StatusRoute from '@gdg/router/components/StatusRoute';
@@ -17,12 +17,12 @@ const TechBlogPage = lazy(() => import('@gdg/pages/tech_blog/TechBlogPage'));
 const TechBlogDetailPage = lazy(
   () => import('@gdg/pages/tech_blog/TechBlogDetailPage')
 );
-// const TechBlogEditPage = lazy(
-//   () => import('@gdg/pages/tech_blog/TechBlogEditPage')
-// );
-// const TechBlogPostPage = lazy(
-//   () => import('@gdg/pages/tech_blog/TechBlogPostPage')
-// );
+const TechBlogEditPage = lazy(
+  () => import('@gdg/pages/tech_blog/TechBlogEditPage')
+);
+const TechBlogPostPage = lazy(
+  () => import('@gdg/pages/tech_blog/TechBlogPostPage')
+);
 const TechBlogRootPage = lazy(
   () => import('@gdg/pages/tech_blog/TechBlogRootPage')
 );
@@ -213,24 +213,24 @@ const routesConfig: AppRouteObject[] = [
     path: 'signup',
     element: <SignupPage />,
   },
-  // {
-  //   path: 'write',
-  //   element: (
-  //     <BlogPostProvider>
-  //       <StatusRoute allowedStatuses={['CORE', 'MEMBER']} />
-  //     </BlogPostProvider>
-  //   ),
-  //   children: [
-  //     {
-  //       path: '',
-  //       element: <TechBlogEditPage />,
-  //     },
-  //     {
-  //       path: 'post',
-  //       element: <TechBlogPostPage />,
-  //     },
-  //   ],
-  // },
+  {
+    path: 'write',
+    element: (
+      <BlogPostProvider>
+        <StatusRoute allowedStatuses={['CORE', 'MEMBER']} />
+      </BlogPostProvider>
+    ),
+    children: [
+      {
+        path: '',
+        element: <TechBlogEditPage />,
+      },
+      {
+        path: 'post',
+        element: <TechBlogPostPage />,
+      },
+    ],
+  },
 ];
 
 const createRoutesWithAsyncBoundary = (

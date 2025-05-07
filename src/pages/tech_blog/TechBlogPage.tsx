@@ -1,6 +1,7 @@
 // import { TeamBlogMetaData } from '@gdg/router/components/MetaData';
 import styled from '@emotion/styled';
 import { useState, useEffect, useCallback } from 'react';
+import { Link } from 'react-router-dom';
 
 import { blogPostMetaDataInterface } from '@gdg/types/UserInterface';
 import Text from '@gdg/components/common/typography/Text';
@@ -11,6 +12,7 @@ import useInfinity from '@gdg/hooks/useInfinity';
 import { Spinner } from '@gdg/components/common/Spinner';
 import TrackSelectBar from '@gdg/components/common/select/trackSelectBar';
 import { getBlogTrack } from '@gdg/components/common/select/trackSelectBar/getTrack';
+import CommonBtn from '@gdg/components/common/button/CommonBtn';
 
 import PostCard from './components/blogList/PostCard';
 
@@ -22,6 +24,13 @@ const PostListLayout = styled.div`
   display: flex;
   flex-direction: column;
   gap: 25px;
+`;
+
+const ButtonContainer = styled.div`
+  width: 100%;
+
+  display: flex;
+  justify-content: flex-end;
 `;
 
 const TechBlogPage = () => {
@@ -82,6 +91,21 @@ const TechBlogPage = () => {
     <>
       {/* <TeamBlogMetaData /> */}
       <PostListLayout>
+        <ButtonContainer>
+          <Link to='/write'>
+            <CommonBtn
+              type='button'
+              color='blue'
+              backgroundColor='blue'
+              hoverColor='blue'
+              width='100px'
+              height='42px'
+            >
+              글쓰기
+            </CommonBtn>
+          </Link>
+        </ButtonContainer>
+
         <TrackSelectBar
           tracks={tracks}
           tracksKorean={tracksKorean}
