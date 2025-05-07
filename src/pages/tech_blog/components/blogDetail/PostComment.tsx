@@ -4,17 +4,21 @@ import { usePostComment } from '@gdg/apis/hooks/techblog/usePostComment';
 
 import { FormContainer, InputArea, SubmitBtn } from '../../style/Comment.style';
 
+interface PostCommentProps {
+  postId: number;
+  groupId?: number;
+  isReply?: boolean;
+  onPostSubmit: () => void;
+  handleVisible?: () => void;
+}
+
 const PostComment = ({
   postId,
   groupId = 0,
   isReply = false,
+  onPostSubmit,
   handleVisible,
-}: {
-  postId: number;
-  groupId: number;
-  isReply?: boolean;
-  handleVisible?: () => void;
-}) => {
+}: PostCommentProps) => {
   const commentRef = useRef<HTMLTextAreaElement | null>(null);
   const replyRef = useRef<HTMLTextAreaElement | null>(null);
   const { mutate: postComment } = usePostComment(postId);
@@ -30,7 +34,11 @@ const PostComment = ({
         content: commentText,
       };
 
-      postComment(commentData);
+      postComment(commentData, {
+        onSuccess: () => {
+          if (onPostSubmit) onPostSubmit();
+        },
+      });
 
       if (commentRef.current) {
         commentRef.current.value = '';

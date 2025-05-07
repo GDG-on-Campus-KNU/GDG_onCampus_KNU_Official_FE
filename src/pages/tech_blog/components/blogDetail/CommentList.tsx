@@ -34,7 +34,8 @@ const CommentList = ({
 }) => {
   const { id } = useParams();
   const postId = id ? parseInt(id) : null;
-  const [page, setPage] = useState<number>(0);
+
+  const [page, setPage] = useState(0);
   const [comments, setComments] = useState<commentDataInterface[]>(() => {
     const savedComments = localStorage.getItem(`comments_${postId}`);
     return savedComments ? JSON.parse(savedComments) : [];
@@ -45,39 +46,31 @@ const CommentList = ({
     data: initialComments,
     error,
     isPending,
-    refetch,
   } = useGetComment(postId, page, 5);
 
   useEffect(() => {
     if (initialComments) {
-      setComments(initialComments.data);
+      setComments((prev) =>
+        page === 0 ? initialComments.data : [...prev, ...initialComments.data]
+      );
       setHasNext(initialComments.hasNext);
-      if (initialComments.hasNext) setPage(page + 1);
 
       localStorage.setItem(
         `comments_${postId}`,
-        JSON.stringify(initialComments.data)
+        JSON.stringify(
+          page === 0
+            ? initialComments.data
+            : [...comments, ...initialComments.data]
+        )
       );
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  }, [initialComments]);
 
-  const handleRefetch = () => {
-    refetch().then((newData) => {
-      if (newData.data) {
-        setComments((prev) => {
-          const updatedComments = [...prev, ...newData.data.data];
-          localStorage.setItem(
-            `comments_${postId}`,
-            JSON.stringify(updatedComments)
-          );
-          return updatedComments;
-        });
-
-        setHasNext(newData.data.hasNext);
-        if (newData.data.hasNext) setPage(page + 1);
-      }
-    });
+  const handleNextPage = () => {
+    if (hasNext) {
+      setPage((prev) => prev + 1);
+    }
   };
 
   const pendingMessage = '댓글 정보를 불러오고 있습니다...';
@@ -130,15 +123,21 @@ const CommentList = ({
               backgroundColor='navy'
               hoverColor='navy'
               type='button'
-              onClick={handleRefetch}
+              onClick={handleNextPage}
             >
-              다음 댓글 더보기
+              다음 댓글
             </CommonBtn>
           </ButtonContainer>
         )}
       </CommentWrapper>
 
-      {postId !== null && <PostComment postId={postId} groupId={0} />}
+      {postId !== null && (
+        <PostComment
+          postId={postId}
+          groupId={0}
+          onPostSubmit={handleNextPage}
+        />
+      )}
     </>
   );
 };

@@ -121,4 +121,5 @@ export const ButtonContainer = styled.div`
   align-items: flex-end;
 
   margin-top: 20px;
+  gap: 10px;
 `;
