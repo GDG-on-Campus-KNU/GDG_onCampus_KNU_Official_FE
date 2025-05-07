@@ -23,10 +23,17 @@ const PostComment = ({
   const replyRef = useRef<HTMLTextAreaElement | null>(null);
   const { mutate: postComment } = usePostComment(postId);
 
+  const accessToken = sessionStorage.getItem('accessToken');
+
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
     const commentText = commentRef.current?.value;
+
+    if (!accessToken) {
+      alert('로그인이 필요한 기능입니다.');
+      return;
+    }
 
     if (commentText) {
       const commentData = {
@@ -50,6 +57,11 @@ const PostComment = ({
     e.preventDefault();
 
     const replyText = replyRef.current?.value;
+
+    if (!accessToken) {
+      alert('로그인이 필요한 기능입니다.');
+      return;
+    }
 
     if (replyText) {
       const replyData = {

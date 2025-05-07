@@ -34,6 +34,7 @@ const CommentList = ({
 }) => {
   const { id } = useParams();
   const postId = id ? parseInt(id) : null;
+  const accessToken = sessionStorage.getItem('accessToken');
 
   const [page, setPage] = useState(0);
   const [comments, setComments] = useState<commentDataInterface[]>(() => {
@@ -131,7 +132,7 @@ const CommentList = ({
         )}
       </CommentWrapper>
 
-      {postId !== null && (
+      {accessToken && postId !== null && (
         <PostComment
           postId={postId}
           groupId={0}

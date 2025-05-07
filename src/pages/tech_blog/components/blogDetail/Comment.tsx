@@ -20,6 +20,8 @@ const Comment = (props: commentDataInterface) => {
   const { id } = useParams();
   const postId = id ? parseInt(id) : null;
 
+  const accessToken = sessionStorage.getItem('accessToken');
+
   const date = new Date(props.createAt);
   const year = date.getFullYear();
   const month = date.getMonth() + 1;
@@ -51,9 +53,11 @@ const Comment = (props: commentDataInterface) => {
             {props.content}
           </Text>
         </CommentContent>
-        <ReplyButton onClick={() => setReplyVisible(true)}>답글</ReplyButton>
+        {accessToken && (
+          <ReplyButton onClick={() => setReplyVisible(true)}>답글</ReplyButton>
+        )}
       </CommentContainer>
-      {replyVisible && (
+      {accessToken && replyVisible && (
         <PostComment
           postId={postId!}
           groupId={props.id}
