@@ -7,10 +7,7 @@ import { useGetComment } from '@gdg/apis/hooks/techblog/useGetComment';
 import Text from '@gdg/components/common/typography/Text';
 import likes from '@gdg/assets/icon/likes.svg';
 import comment from '@gdg/assets/icon/comment.svg';
-import {
-  commentDataInterface,
-  commentInterface,
-} from '@gdg/types/UserInterface';
+import { commentDataInterface } from '@gdg/types/UserInterface';
 import {
   BottomContainer,
   CountWrapper,
