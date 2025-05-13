@@ -1,6 +1,7 @@
 import { useRef } from 'react';
 
 import { usePostComment } from '@gdg/apis/hooks/techblog/usePostComment';
+import { commentDataInterface } from '@gdg/types/UserInterface';
 
 import { FormContainer, InputArea, SubmitBtn } from '../../style/Comment.style';
 
@@ -8,7 +9,7 @@ interface PostCommentProps {
   postId: number;
   groupId?: number;
   isReply?: boolean;
-  onPostSubmit?: () => void;
+  onPostSubmit?: (newComment: commentDataInterface) => void;
   handleVisible?: () => void;
 }
 
@@ -42,8 +43,9 @@ const PostComment = ({
       };
 
       postComment(commentData, {
-        onSuccess: () => {
-          if (onPostSubmit) onPostSubmit();
+        onSuccess: (newComment) => {
+          handleVisible?.();
+          onPostSubmit?.(newComment);
         },
       });
 
@@ -70,8 +72,9 @@ const PostComment = ({
       };
 
       postComment(replyData, {
-        onSuccess: () => {
-          if (handleVisible) handleVisible();
+        onSuccess: (newComment) => {
+          handleVisible?.();
+          onPostSubmit?.(newComment);
         },
       });
 

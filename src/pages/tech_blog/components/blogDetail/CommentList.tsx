@@ -7,7 +7,10 @@ import { useGetComment } from '@gdg/apis/hooks/techblog/useGetComment';
 import Text from '@gdg/components/common/typography/Text';
 import likes from '@gdg/assets/icon/likes.svg';
 import comment from '@gdg/assets/icon/comment.svg';
-import { commentDataInterface } from '@gdg/types/UserInterface';
+import {
+  commentDataInterface,
+  commentInterface,
+} from '@gdg/types/UserInterface';
 import {
   BottomContainer,
   CountWrapper,
@@ -74,6 +77,15 @@ const CommentList = ({
     }
   };
 
+  const handleNewComment = (newComment: commentDataInterface) => {
+    setComments((prev) => [newComment, ...prev]);
+
+    localStorage.setItem(
+      `comments_${postId}`,
+      JSON.stringify([...comments, newComment])
+    );
+  };
+
   const pendingMessage = '댓글 정보를 불러오고 있습니다...';
   const errorMessage =
     '댓글 정보를 불러오는 도중 오류가 발생했습니다. 다시 시도해 주세요.';
@@ -136,7 +148,7 @@ const CommentList = ({
         <PostComment
           postId={postId}
           groupId={0}
-          onPostSubmit={handleNextPage}
+          onPostSubmit={handleNewComment}
         />
       )}
     </>
