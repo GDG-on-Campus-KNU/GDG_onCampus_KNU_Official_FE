@@ -1,10 +1,11 @@
 import { useParams } from 'react-router-dom';
+import { useEffect } from 'react';
 
 import { Spinner } from '@gdg/components/common/Spinner';
 import { useGetPostDetail } from '@gdg/apis/hooks/techblog/useGetPostDetail';
 
-import BlogContent from './Components/BlogContent';
-import Comments from './Components/Comments';
+import BlogContent from './components/blogDetail/BlogContent';
+import CommentList from './components/blogDetail/CommentList';
 
 const TechBlogDetailPage = () => {
   const params = useParams();
@@ -13,13 +14,17 @@ const TechBlogDetailPage = () => {
 
   const postData = useGetPostDetail(postId);
 
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+
   return (
     <>
       {postData.isPending && <Spinner />}
       {postData.data && (
         <>
           <BlogContent postData={postData.data} />
-          <Comments
+          <CommentList
             likeCount={postData.data.likeCount}
             commentCount={postData.data.commentCount}
           />

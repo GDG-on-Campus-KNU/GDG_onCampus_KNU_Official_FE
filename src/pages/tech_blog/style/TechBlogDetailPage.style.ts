@@ -43,7 +43,6 @@ export const BottomContainer = styled.div`
   justify-content: space-between;
   align-items: center;
 
-  border-bottom: 2px solid white;
   padding-top: 20px;
   padding-bottom: 34px;
 `;
@@ -60,4 +59,17 @@ export const CountWrapper = styled.div`
   width: 146px;
   display: flex;
   justify-content: space-between;
+`;
+
+export const CommentWrapper = styled.div`
+  width: 90%;
+  max-width: 724px;
+  min-height: 20px;
+
+  ${displayCenter}
+  flex-direction: column;
+  align-items: flex-start;
+  padding-top: 40px;
+
+  border-top: 2px solid white;
 `;

@@ -2,7 +2,7 @@ import { Editor } from '@toast-ui/react-editor';
 import { useState, useRef, useCallback, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 
-import { usePostBlog } from '@gdg/apis/hooks/techblog/usePostBlog';
+import MarkdownEditorLight from '@gdg/pages/tech_blog/components/editor/MarkdownEditorLight';
 import {
   Wrapper,
   Container,
@@ -13,9 +13,9 @@ import {
   StyledPostBtn,
   StyledSaveBtn,
   Box,
-} from '@gdg/pages/tech_blog/Components/MarkdownEditor.style';
-import MarkdownEditorDark from '@gdg/pages/tech_blog/Components/MarkdownEditorDark';
-import MarkdownEditorLight from '@gdg/pages/tech_blog/Components/MarkdownEditorLight';
+} from '@gdg/pages/tech_blog/style/MarkdownEditor.style';
+import { usePostBlog } from '@gdg/apis/hooks/techblog/usePostBlog';
+import MarkdownEditorDark from '@gdg/pages/tech_blog/components/editor/MarkdownEditorDark';
 import { useBlogPost } from '@gdg/pages/tech_blog/context/index';
 import useImageHandler from '@gdg/pages/tech_blog/hooks/useImageHandler';
 

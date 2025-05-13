@@ -105,5 +105,28 @@ export interface blogPostDetailInterface extends blogPostMetaDataInterface {
   liked: true;
 }
 
+export interface commentPostInterface {
+  groupId: number;
+  content: string;
+}
+
+export interface commentDataInterface {
+  id: number;
+  content: string;
+  createAt: string;
+  name: string;
+  profileUrl: string;
+  isChild: boolean;
+  canDelete: boolean;
+  canModify: boolean;
+}
+
+export interface commentInterface {
+  data: commentDataInterface[];
+  hasNext: boolean;
+  page: number;
+  totalPage: number;
+}
+
 export type AuthenticatedUser = User;
 export type UnauthenticatedUser = 'TEMP';

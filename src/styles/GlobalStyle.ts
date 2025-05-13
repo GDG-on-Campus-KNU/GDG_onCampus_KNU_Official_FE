@@ -29,6 +29,7 @@ const colorMartiniqueApp = '#403755';
 const colorMartinique = '#392f4f';
 const colorMartiniNavy = '#2D294A';
 const colorDarkPurple = '#4F416C';
+const colorDeepPurple = '#312844';
 const colorSelectiveYellow = '#FBBC05';
 const colorWhite = '#FFFFFF';
 const colorBlack = '#000000';
@@ -102,6 +103,7 @@ export const GlobalStyle = css`
     --color-app: ${colorMartiniqueApp};
     --color-que: ${colorMartinique};
     --color-navy: ${colorMartiniNavy};
+    --color-deep: ${colorDeepPurple};
     --color-selective: ${colorSelectiveYellow};
     --color-dpurple: ${colorDarkPurple};
     --color-alto: ${colorAlto};
