@@ -3,6 +3,7 @@ import { css } from '@emotion/react';
 // fontSize 정의
 const fontSizeXxl = '2.5rem'; //40px
 const fontSizeMxl = '2.25rem'; // 36px
+const fontSizeSxl = '2rem'; // 32px
 const fontSizeXl = '1.5rem'; // 24px
 const fontSizeLg = '1.25rem'; // 20px
 const fontSizeMd = '1rem'; // 16px
@@ -12,6 +13,7 @@ const fontSizeXxs = '0.625rem'; // 10px
 
 const sizeXxl = '2.5rem'; //40px
 const sizeMxl = '2.25rem'; // 36px
+const sizeSxl = '2rem'; // 32px
 const sizeXl = '1.5rem'; // 24px
 const sizeLg = '1.25rem'; // 20px
 const sizeMd = '1rem'; // 16px
@@ -27,6 +29,7 @@ const colorMartiniqueApp = '#403755';
 const colorMartinique = '#392f4f';
 const colorMartiniNavy = '#2D294A';
 const colorDarkPurple = '#4F416C';
+const colorDeepPurple = '#312844';
 const colorSelectiveYellow = '#FBBC05';
 const colorWhite = '#FFFFFF';
 const colorBlack = '#000000';
@@ -73,6 +76,7 @@ export const GlobalStyle = css`
   :root {
     --font-size-xxl: ${fontSizeXxl};
     --font-size-mxl: ${fontSizeMxl};
+    --font-size-sxl: ${fontSizeSxl};
     --font-size-xl: ${fontSizeXl};
     --font-size-lg: ${fontSizeLg};
     --font-size-md: ${fontSizeMd};
@@ -82,6 +86,7 @@ export const GlobalStyle = css`
 
     --size-xxl: ${sizeXxl};
     --size-mxl: ${sizeMxl};
+    --size-sxl: ${sizeSxl};
     --size-xl: ${sizeXl};
     --size-lg: ${sizeLg};
     --size-md: ${sizeMd};
@@ -98,6 +103,7 @@ export const GlobalStyle = css`
     --color-app: ${colorMartiniqueApp};
     --color-que: ${colorMartinique};
     --color-navy: ${colorMartiniNavy};
+    --color-deep: ${colorDeepPurple};
     --color-selective: ${colorSelectiveYellow};
     --color-dpurple: ${colorDarkPurple};
     --color-alto: ${colorAlto};

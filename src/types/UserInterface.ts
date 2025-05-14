@@ -78,5 +78,55 @@ export interface blogPostInterface {
   status: 'TEMPORAL' | 'SAVED';
 }
 
+export interface blogPostMetaDataInterface {
+  id: number;
+  title: string;
+  summary: string;
+  thumbnailUrl: string;
+  category: string;
+  createAt: string;
+  likeCount: number;
+  commentCount: number;
+  sharedCount: number;
+}
+
+export interface blogPostListInterface {
+  data: blogPostMetaDataInterface[];
+  hasNext: boolean;
+  page: number;
+  totalPage: number;
+}
+
+export interface blogPostDetailInterface extends blogPostMetaDataInterface {
+  content: string;
+  authorName: string;
+  canDelete: true;
+  canModify: true;
+  liked: true;
+}
+
+export interface commentPostInterface {
+  groupId: number;
+  content: string;
+}
+
+export interface commentDataInterface {
+  id: number;
+  content: string;
+  createAt: string;
+  name: string;
+  profileUrl: string;
+  isChild: boolean;
+  canDelete: boolean;
+  canModify: boolean;
+}
+
+export interface commentInterface {
+  data: commentDataInterface[];
+  hasNext: boolean;
+  page: number;
+  totalPage: number;
+}
+
 export type AuthenticatedUser = User;
 export type UnauthenticatedUser = 'TEMP';

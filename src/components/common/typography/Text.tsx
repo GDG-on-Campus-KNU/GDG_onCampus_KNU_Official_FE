@@ -1,7 +1,17 @@
 import styled from '@emotion/styled';
 
 interface IText {
-  size?: 'xxs' | 'xs' | 'sm' | 'md' | 'lg' | 'mxl' | 'xl' | 'xxl';
+  size?:
+    | 'xxs'
+    | 'xs'
+    | 'sm'
+    | 'md'
+    | 'lg'
+    | 'mxl'
+    | 'xl'
+    | 'sxl'
+    | 'mxl'
+    | 'xxl';
   color?: 'white' | 'black' | 'placeholder' | string;
   weight?: 'light' | 'normal' | 'bold' | string;
   whiteSpace?: 'nowrap' | 'normal' | 'pre-line';
@@ -46,6 +56,8 @@ const Text = styled.span<IText>`
         return 'var(--font-size-lg)';
       case 'xl':
         return 'var(--font-size-xl)';
+      case 'sxl':
+        return 'var(--font-size-sxl)';
       case 'mxl':
         return 'var(--font-size-mxl)';
       case 'xxl':

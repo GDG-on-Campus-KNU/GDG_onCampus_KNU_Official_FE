@@ -1,7 +1,8 @@
-import { useState, lazy } from 'react';
+import { useState, useEffect, lazy } from 'react';
 
 import { useGetStatistic } from '@gdg/apis/hooks/admin/docs/useGetStatistic';
 import { useGetTrack } from '@gdg/apis/hooks/admin/docs/useGetTrack';
+import { useGetClassYearList } from '@gdg/apis/hooks/yearId/useGetClassYearList';
 import { DisplayLayout } from '@gdg/styles/LayoutStyle';
 
 import ClassYearIdDropDown from './components/docs/ClassYearIdDropDown';
@@ -11,7 +12,10 @@ import {
   ButtonBox,
   InfoBox,
 } from './AdminDocConfirmPage.style';
-const TrackSelectBar = lazy(() => import('./components/docs/TrackSelectBar'));
+
+const TrackSelectBar = lazy(
+  () => import('@gdg/components/common/select/trackSelectBar')
+);
 
 const DocsTable = lazy(
   () => import('@gdg/pages/admin/components/docs/DocsTable')
@@ -23,11 +27,32 @@ const CurrentApplyInfo = lazy(
 const AdminSearchBar = lazy(() => import('./components/AdminSearchBar'));
 
 const AdminDocConfirmPage = () => {
+  const { data: yearIdList } = useGetClassYearList();
+
   const [isMarked, setIsMarked] = useState<boolean>(false);
   const [searchName, setSearchName] = useState<string>('');
   const [trackIdx, setTrackIdx] = useState<number>(0);
   const [isDropdownOpen, setIsDropdownOpen] = useState<boolean>(false);
-  const [classYearId, setClassYearId] = useState<number>(4);
+  const [classYearId, setClassYearId] = useState<number>(1);
+  const [classYearname, setClassYearName] = useState<string>('1기');
+
+  const { data: applyData, refetch: refetchApplyData } =
+    useGetStatistic(classYearId);
+  const { data: trackData, refetch: refetchTrackData } =
+    useGetTrack(classYearId);
+
+  useEffect(() => {
+    if (yearIdList && yearIdList.length > 0) {
+      const lastYear = yearIdList[yearIdList.length - 1];
+      setClassYearId(lastYear.id);
+      setClassYearName(lastYear.name);
+    }
+  }, [yearIdList]);
+
+  useEffect(() => {
+    refetchApplyData();
+    refetchTrackData();
+  }, [classYearId, refetchApplyData, refetchTrackData]);
 
   const handlePassCheck = () => {
     setIsMarked((prev) => !prev);
@@ -37,13 +62,11 @@ const AdminDocConfirmPage = () => {
     setIsDropdownOpen((prev) => !prev);
   };
 
-  const handleYearIdClick = (id: number) => {
+  const handleYearIdClick = (id: number, name: string) => {
     setClassYearId(id);
+    setClassYearName(name);
     setIsDropdownOpen(false);
   };
-
-  const { data: applyData } = useGetStatistic();
-  const { data: trackData } = useGetTrack();
 
   const handleTrackSelect = (index: number) => {
     setTrackIdx(index);
@@ -52,6 +75,23 @@ const AdminDocConfirmPage = () => {
   const handleSearchNameChange = (name: string) => {
     setSearchName(name);
   };
+
+  const tracks = [
+    'TOTAL',
+    'FRONT_END',
+    'BACK_END',
+    'ANDROID',
+    'AI',
+    'DESIGNER',
+  ];
+  const tracksKorean = [
+    '전체',
+    '프론트엔드',
+    '백엔드',
+    '안드로이드',
+    'AI',
+    '디자이너',
+  ];
 
   return (
     <DisplayLayout>
@@ -66,10 +106,13 @@ const AdminDocConfirmPage = () => {
               isSelected={isDropdownOpen}
               onClick={handleClassYearIdCheck}
             >
-              {`${classYearId}기 ${'\u00A0'} ▾`}
+              {`${classYearname} ${'\u00A0'} ▾`}
             </PassBtn>
             {isDropdownOpen && (
-              <ClassYearIdDropDown onYearIdClick={handleYearIdClick} />
+              <ClassYearIdDropDown
+                yearIdList={yearIdList}
+                onYearIdClick={handleYearIdClick}
+              />
             )}
           </ButtonContainer>
         </ButtonBox>
@@ -77,7 +120,12 @@ const AdminDocConfirmPage = () => {
       </InfoBox>
       {applyData && <CurrentApplyInfo response={applyData} />}
       {trackData && (
-        <TrackSelectBar trackData={trackData} onSelect={handleTrackSelect} />
+        <TrackSelectBar
+          tracks={tracks}
+          tracksKorean={tracksKorean}
+          trackData={trackData}
+          onSelect={handleTrackSelect}
+        />
       )}
 
       <DocsTable
