@@ -1,130 +1,111 @@
-import { Editor } from '@toast-ui/react-editor';
-import { useState, useRef, useCallback, useEffect } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useState, useCallback } from 'react';
+import ReactMarkdown from 'react-markdown';
+import SyntaxHighlighter from 'react-syntax-highlighter';
+import prism from 'react-syntax-highlighter/dist/esm/styles/prism/prism';
+import remarkGfm from 'remark-gfm';
+import styled from '@emotion/styled';
 
-import MarkdownEditorLight from '@gdg/pages/tech_blog/components/editor/MarkdownEditorLight';
-import {
-  Wrapper,
-  Container,
-  TitleContainer,
-  NavBarContainer,
-  StyledOutBtn,
-  StyledModeBtn,
-  StyledPostBtn,
-  StyledSaveBtn,
-  Box,
-} from '@gdg/pages/tech_blog/style/MarkdownEditor.style';
-import { usePostBlog } from '@gdg/apis/hooks/techblog/usePostBlog';
-import MarkdownEditorDark from '@gdg/pages/tech_blog/components/editor/MarkdownEditorDark';
-import { useBlogPost } from '@gdg/pages/tech_blog/context/index';
 import useImageHandler from '@gdg/pages/tech_blog/hooks/useImageHandler';
 
-const TechBlogEditPage = () => {
-  const context = useBlogPost();
-  const { blogPost, setBlogPost } = context;
-  const [mode, setMode] = useState(true);
-  const titleRef = useRef<HTMLInputElement>(null);
-  const editorRef = useRef<Editor>(null);
+import { Wrapper } from './style/MarkdownEditor.style';
+export default function TechBlogEditPage(): JSX.Element {
+  const [input, setInput] = useState<string>('');
   const { handleImage } = useImageHandler();
-  const { mutate } = usePostBlog();
-  const navigate = useNavigate();
 
-  useEffect(() => {
-    titleRef.current?.focus();
+  const insertImageMarkdown = useCallback((url: string) => {
+    const markdown = `![이미지 설명](${url})\n`;
+    setInput((prev) => prev + '\n' + markdown);
   }, []);
 
-  const handleMode = () => {
-    if (editorRef.current) {
-      const markdown = editorRef.current.getInstance().getMarkdown();
-      setBlogPost((prev) => ({
-        ...prev,
-        content: markdown,
-      }));
+  const handlePaste = async (e: React.ClipboardEvent<HTMLTextAreaElement>) => {
+    const items = e.clipboardData.items;
+    for (let i = 0; i < items.length; i++) {
+      const item = items[i];
+      if (item.kind === 'file' && item.type.startsWith('image/')) {
+        const file = item.getAsFile();
+        if (file) {
+          await handleImage(file, insertImageMarkdown);
+          e.preventDefault();
+          return;
+        }
+      }
     }
-    setMode((prevMode) => !prevMode);
   };
 
-  useEffect(() => {
-    if (editorRef.current) {
-      editorRef.current.getInstance().setMarkdown(blogPost.content);
+  const handleDrop = async (e: React.DragEvent<HTMLTextAreaElement>) => {
+    e.preventDefault();
+    const files = Array.from(e.dataTransfer.files);
+    for (const file of files) {
+      if (file.type.startsWith('image/')) {
+        await handleImage(file, insertImageMarkdown);
+      }
     }
-  }, [blogPost.content]);
-
-  const handleSubmit = useCallback(() => {
-    if (!editorRef.current) return;
-
-    const markdown = editorRef.current.getInstance().getMarkdown();
-
-    setBlogPost((prev) => ({
-      ...prev,
-      title: titleRef.current?.value || prev.title,
-      content: markdown || prev.content,
-      status: 'SAVED',
-    }));
-
-    navigate('/write/post');
-  }, [setBlogPost, navigate]);
-
-  const handleTempSave = useCallback(() => {
-    if (!editorRef.current) return;
-
-    const markdown = editorRef.current.getInstance().getMarkdown();
-    const newTitle = titleRef.current?.value || blogPost.title;
-    const newContent = markdown || blogPost.content;
-
-    setBlogPost((prev) => ({
-      ...prev,
-      title: newTitle,
-      content: newContent,
-      status: 'TEMPORAL',
-    }));
-
-    mutate({
-      title: newTitle,
-      content: newContent,
-      status: 'TEMPORAL',
-      thumbnailUrl: null,
-      category: 'ETC',
-    });
-  }, [blogPost.content, blogPost.title, setBlogPost, mutate]);
+  };
 
   return (
-    <Wrapper>
-      <Container>
-        <TitleContainer
-          ref={titleRef}
-          placeholder='제목을 입력해주세요'
-          defaultValue={blogPost.title}
-        />
-        {mode && (
-          <MarkdownEditorDark
-            editorRef={editorRef}
-            handleImage={handleImage}
-            initialContent={blogPost.content}
-          />
-        )}
-        {!mode && (
-          <MarkdownEditorLight
-            editorRef={editorRef}
-            handleImage={handleImage}
-            initialContent={blogPost.content}
-          />
-        )}
-        <NavBarContainer>
-          <Box>
-            <StyledOutBtn>나가기</StyledOutBtn>
-            <StyledModeBtn onClick={handleMode}>
-              {mode ? '다크 모드' : '라이트 모드'}
-            </StyledModeBtn>
-          </Box>
-          <Box>
-            <StyledSaveBtn onClick={handleTempSave}>임시저장</StyledSaveBtn>
-            <StyledPostBtn onClick={handleSubmit}>출간하기</StyledPostBtn>
-          </Box>
-        </NavBarContainer>
-      </Container>
+    <Wrapper className='App'>
+      <Editor
+        placeholder='입력해주세요'
+        className='textarea'
+        value={input}
+        onChange={(e: React.ChangeEvent<HTMLTextAreaElement>) => {
+          setInput(e.target.value);
+        }}
+        onPaste={handlePaste}
+        onDrop={handleDrop}
+      ></Editor>
+      <Preview>
+        <ReactMarkdown
+          remarkPlugins={[remarkGfm]}
+          className='markdown'
+          components={{
+            code({ node, inline, className, children, ...props }: any) {
+              const match = /language-(\w+)/.exec(className || '');
+              return !inline && match ? (
+                <SyntaxHighlighter
+                  style={prism}
+                  language={match[1]}
+                  PreTag='div'
+                  {...props}
+                >
+                  {String(children).replace(/\n$/, '')}
+                </SyntaxHighlighter>
+              ) : (
+                <code className={className} {...props}>
+                  {children}
+                </code>
+              );
+            },
+          }}
+        >
+          {input}
+        </ReactMarkdown>
+      </Preview>
     </Wrapper>
   );
-};
+}
 
-export default TechBlogEditPage;
+const Editor = styled.textarea`
+  width: 100%;
+  height: 100vh;
+
+  padding: 15px;
+  box-sizing: border-box;
+
+  background-color: transparent;
+  color: white;
+
+  font-size: 18px;
+
+  border: none;
+  border-right: 1px solid var(--color-silver);
+  outline: none;
+`;
+
+const Preview = styled.div`
+  width: 100%;
+  height: 100vh;
+
+  padding: 15px;
+  box-sizing: border-box;
+`;
