@@ -61,6 +61,10 @@ const TechBlogEditPage = () => {
     });
   }, [blogPost, markdown, setBlogPost, mutate]);
 
+  const handleExit = () => {
+    navigate('/techblog');
+  };
+
   return (
     <Wrapper>
       <Container>
@@ -72,7 +76,7 @@ const TechBlogEditPage = () => {
         <MarkdownEditor value={markdown} onChange={setMarkdown} />
         <NavBarContainer>
           <Box>
-            <StyledOutBtn>나가기</StyledOutBtn>
+            <StyledOutBtn onClick={handleExit}>나가기</StyledOutBtn>
           </Box>
           <Box>
             <StyledSaveBtn onClick={handleTempSave}>임시저장</StyledSaveBtn>

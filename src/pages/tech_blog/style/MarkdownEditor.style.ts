@@ -66,6 +66,7 @@ export const NavBarContainer = styled.div`
   box-sizing: border-box;
   justify-content: space-between;
   background-color: transparent;
+  padding: 0px 15px;
 `;
 
 export const StyledOutBtn = styled.button`
