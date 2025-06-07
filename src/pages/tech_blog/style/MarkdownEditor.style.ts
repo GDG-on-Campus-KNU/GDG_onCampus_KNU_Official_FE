@@ -10,11 +10,21 @@ export const Wrapper = styled.div`
   background-color: var(--color-midnight);
 `;
 
-export const Container = styled.div`
-  width: 95%;
-  height: 100vh;
+export const EditorWrapper = styled.div`
+  width: 100%;
+  height: 78%;
 
   display: flex;
+  justify-content: center;
+
+  background-color: var(--color-midnight);
+`;
+
+export const Container = styled.div`
+  width: 100%;
+
+  display: flex;
+  flex-direction: column;
   background-color: var(--color-midnight);
 
   box-sizing: border-box;
@@ -22,8 +32,7 @@ export const Container = styled.div`
   border: none;
   outline: none;
 
-  flex-direction: column;
-  box-sizing: border-box;
+  padding: 0px 15px;
 `;
 
 export const TitleContainer = styled.input`
@@ -57,26 +66,7 @@ export const NavBarContainer = styled.div`
   box-sizing: border-box;
   justify-content: space-between;
   background-color: transparent;
-`;
-
-export const StyledModeBtn = styled.button`
-  background-color: var(--color-more-transparent);
-  color: var(--color-white);
-
-  border: none;
-  border-radius: 12px;
-
-  padding: 10px 20px;
-
-  font-weight: 600;
-  font-size: 18px;
-
-  text-transform: none;
-
-  &:hover {
-    color: var(--color-silver);
-    cursor: pointer;
-  }
+  padding: 0px 15px;
 `;
 
 export const StyledOutBtn = styled.button`
@@ -150,4 +140,72 @@ export const Box = styled.div`
 
   border: none;
   box-sizing: border-box;
+`;
+
+export const Editor = styled.textarea`
+  width: 100%;
+  height: 100%;
+
+  padding: 15px;
+  box-sizing: border-box;
+
+  background-color: transparent;
+  color: white;
+
+  font-size: 18px;
+
+  border: none;
+  outline: none;
+`;
+
+export const Preview = styled.div`
+  width: 100%;
+  height: 100%;
+
+  padding: 15px;
+  box-sizing: border-box;
+
+  border-left: 1px solid var(--color-silver);
+
+  @media (max-width: 1024px) {
+    display: none;
+  }
+`;
+
+export const Toolbar = styled.div`
+  display: flex;
+  align-items: center;
+
+  gap: 10px;
+  padding: 10px;
+
+  background-color: transparent;
+`;
+
+export const TransparentInput = styled.input`
+  display: none;
+`;
+
+export const ToolButton = styled.button`
+  background-color: transparent;
+
+  color: var(--color-white);
+
+  border: none;
+
+  padding: 12px;
+  border-radius: 4px;
+  cursor: pointer;
+
+  &:hover {
+    background-color: #555;
+  }
+`;
+
+export const GroupingBar = styled.div`
+  width: 1px;
+  height: 50%;
+
+  margin: 0px 15px;
+  background-color: var(--color-smoky);
 `;

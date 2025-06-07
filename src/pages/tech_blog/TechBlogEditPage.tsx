@@ -1,31 +1,28 @@
-import { Editor } from '@toast-ui/react-editor';
 import { useState, useRef, useCallback, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 
-import MarkdownEditorLight from '@gdg/pages/tech_blog/components/editor/MarkdownEditorLight';
 import {
   Wrapper,
   Container,
   TitleContainer,
   NavBarContainer,
   StyledOutBtn,
-  StyledModeBtn,
   StyledPostBtn,
   StyledSaveBtn,
   Box,
 } from '@gdg/pages/tech_blog/style/MarkdownEditor.style';
 import { usePostBlog } from '@gdg/apis/hooks/techblog/usePostBlog';
-import MarkdownEditorDark from '@gdg/pages/tech_blog/components/editor/MarkdownEditorDark';
 import { useBlogPost } from '@gdg/pages/tech_blog/context/index';
-import useImageHandler from '@gdg/pages/tech_blog/hooks/useImageHandler';
+
+import MarkdownEditor from './components/editor/MarkdownEditor';
 
 const TechBlogEditPage = () => {
   const context = useBlogPost();
   const { blogPost, setBlogPost } = context;
-  const [mode, setMode] = useState(true);
+
+  const [markdown, setMarkdown] = useState<string>(blogPost.content);
   const titleRef = useRef<HTMLInputElement>(null);
-  const editorRef = useRef<Editor>(null);
-  const { handleImage } = useImageHandler();
+
   const { mutate } = usePostBlog();
   const navigate = useNavigate();
 
@@ -33,28 +30,7 @@ const TechBlogEditPage = () => {
     titleRef.current?.focus();
   }, []);
 
-  const handleMode = () => {
-    if (editorRef.current) {
-      const markdown = editorRef.current.getInstance().getMarkdown();
-      setBlogPost((prev) => ({
-        ...prev,
-        content: markdown,
-      }));
-    }
-    setMode((prevMode) => !prevMode);
-  };
-
-  useEffect(() => {
-    if (editorRef.current) {
-      editorRef.current.getInstance().setMarkdown(blogPost.content);
-    }
-  }, [blogPost.content]);
-
   const handleSubmit = useCallback(() => {
-    if (!editorRef.current) return;
-
-    const markdown = editorRef.current.getInstance().getMarkdown();
-
     setBlogPost((prev) => ({
       ...prev,
       title: titleRef.current?.value || prev.title,
@@ -63,12 +39,9 @@ const TechBlogEditPage = () => {
     }));
 
     navigate('/write/post');
-  }, [setBlogPost, navigate]);
+  }, [setBlogPost, navigate, markdown]);
 
   const handleTempSave = useCallback(() => {
-    if (!editorRef.current) return;
-
-    const markdown = editorRef.current.getInstance().getMarkdown();
     const newTitle = titleRef.current?.value || blogPost.title;
     const newContent = markdown || blogPost.content;
 
@@ -86,7 +59,11 @@ const TechBlogEditPage = () => {
       thumbnailUrl: null,
       category: 'ETC',
     });
-  }, [blogPost.content, blogPost.title, setBlogPost, mutate]);
+  }, [blogPost, markdown, setBlogPost, mutate]);
+
+  const handleExit = () => {
+    navigate('/techblog');
+  };
 
   return (
     <Wrapper>
@@ -96,26 +73,10 @@ const TechBlogEditPage = () => {
           placeholder='제목을 입력해주세요'
           defaultValue={blogPost.title}
         />
-        {mode && (
-          <MarkdownEditorDark
-            editorRef={editorRef}
-            handleImage={handleImage}
-            initialContent={blogPost.content}
-          />
-        )}
-        {!mode && (
-          <MarkdownEditorLight
-            editorRef={editorRef}
-            handleImage={handleImage}
-            initialContent={blogPost.content}
-          />
-        )}
+        <MarkdownEditor value={markdown} onChange={setMarkdown} />
         <NavBarContainer>
           <Box>
-            <StyledOutBtn>나가기</StyledOutBtn>
-            <StyledModeBtn onClick={handleMode}>
-              {mode ? '다크 모드' : '라이트 모드'}
-            </StyledModeBtn>
+            <StyledOutBtn onClick={handleExit}>나가기</StyledOutBtn>
           </Box>
           <Box>
             <StyledSaveBtn onClick={handleTempSave}>임시저장</StyledSaveBtn>
