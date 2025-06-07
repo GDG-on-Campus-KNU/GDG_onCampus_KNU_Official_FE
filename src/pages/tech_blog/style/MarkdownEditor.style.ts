@@ -40,7 +40,7 @@ export const TitleContainer = styled.input`
   height: 60px;
 
   margin: 25px 0px;
-  padding: 15px;
+  padding: 25px;
 
   background-color: transparent;
   color: var(--color-white);
