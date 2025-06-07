@@ -11,19 +11,20 @@ export const Wrapper = styled.div`
 `;
 
 export const Container = styled.div`
-  width: 95%;
+  width: 100%;
   height: 100vh;
 
   display: flex;
+  flex-direction: column;
   background-color: var(--color-midnight);
 
   box-sizing: border-box;
 
   border: none;
+  border-right: 1px solid var(--color-silver);
   outline: none;
 
-  flex-direction: column;
-  box-sizing: border-box;
+  padding: 0px 15px;
 `;
 
 export const TitleContainer = styled.input`

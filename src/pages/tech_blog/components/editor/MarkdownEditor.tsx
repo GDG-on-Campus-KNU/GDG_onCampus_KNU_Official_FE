@@ -1,5 +1,6 @@
-import { useState, useRef } from 'react';
+import { useRef } from 'react';
 import ReactMarkdown from 'react-markdown';
+import remarkBreaks from 'remark-breaks';
 import SyntaxHighlighter from 'react-syntax-highlighter';
 import prism from 'react-syntax-highlighter/dist/esm/styles/prism/prism';
 import remarkGfm from 'remark-gfm';
@@ -7,7 +8,11 @@ import styled from '@emotion/styled';
 
 import useImageHandler from '@gdg/pages/tech_blog/hooks/useImageHandler';
 
-import { Wrapper } from '../../style/MarkdownEditor.style';
+import { Wrapper, Container } from '../../style/MarkdownEditor.style';
+import quote from '../../../../assets/quote.svg';
+import link from '../../../../assets/link.svg';
+import insertImage from '../../../../assets/insertImage.svg';
+import code from '../../../../assets/code.svg';
 
 type MarkdownProps = {
   value: string;
@@ -15,8 +20,27 @@ type MarkdownProps = {
 };
 
 export default function MarkdownEditor({ value, onChange }: MarkdownProps) {
+  const textareaRef = useRef<HTMLTextAreaElement>(null);
   const fileInputRef = useRef<HTMLInputElement>(null);
   const { handleImage } = useImageHandler();
+
+  const insertAtCursor = (text: string) => {
+    const textarea = textareaRef.current;
+    if (!textarea) return;
+
+    const start = textarea.selectionStart;
+    const end = textarea.selectionEnd;
+    const before = value.slice(0, start);
+    const after = value.slice(end);
+
+    const updated = `${before}${text}${after}`;
+    onChange(updated);
+
+    setTimeout(() => {
+      textarea.selectionStart = textarea.selectionEnd = start + text.length;
+      textarea.focus();
+    }, 0);
+  };
 
   const handleImageUpload = () => {
     if (fileInputRef.current) {
@@ -52,8 +76,14 @@ export default function MarkdownEditor({ value, onChange }: MarkdownProps) {
     }
   };
 
+  const handleInsertQuote = () => insertAtCursor(`\n> 인용문\n`);
+  const handleInsertLink = () =>
+    insertAtCursor(`[링크 텍스트](https://example.com)`);
+  const handleInsertCode = () =>
+    insertAtCursor(`\n\`\`\`js\n코드 작성\n\`\`\`\n`);
+
   return (
-    <Wrapper className='App'>
+    <Wrapper>
       <input
         style={{ display: 'none' }}
         type='file'
@@ -61,22 +91,37 @@ export default function MarkdownEditor({ value, onChange }: MarkdownProps) {
         onChange={handleImageChange}
         ref={fileInputRef}
       />
+      <Container>
+        <Toolbar>
+          <ToolButton onClick={handleInsertQuote}>
+            <img src={quote} alt='quote' width={20} height={20} />
+          </ToolButton>
+          <ToolButton onClick={handleInsertLink}>
+            <img src={link} alt='link' width={20} height={20} />
+          </ToolButton>
+          <ToolButton onClick={handleImageUpload}>
+            <img src={insertImage} alt='insertImage' width={20} height={20} />
+          </ToolButton>
+          <ToolButton onClick={handleInsertCode}>
+            <img src={code} alt='code' width={20} height={20} />
+          </ToolButton>
+        </Toolbar>
 
-      <UploadButton onClick={handleImageUpload}> 📷 이미지 업로드</UploadButton>
-
-      <Editor
-        placeholder='내용을 입력해주세요'
-        className='textarea'
-        value={value}
-        onChange={(e: React.ChangeEvent<HTMLTextAreaElement>) => {
-          onChange(e.target.value);
-        }}
-        onPaste={handlePasteImage}
-      ></Editor>
+        <Editor
+          ref={textareaRef}
+          placeholder='내용을 입력해주세요'
+          className='textarea'
+          value={value}
+          onChange={(e: React.ChangeEvent<HTMLTextAreaElement>) => {
+            onChange(e.target.value);
+          }}
+          onPaste={handlePasteImage}
+        ></Editor>
+      </Container>
 
       <Preview>
         <ReactMarkdown
-          remarkPlugins={[remarkGfm]}
+          remarkPlugins={[remarkGfm, remarkBreaks]}
           className='markdown'
           components={{
             code({ node, inline, className, children, ...props }: any) {
@@ -148,7 +193,6 @@ const Editor = styled.textarea`
   font-size: 18px;
 
   border: none;
-  border-right: 1px solid var(--color-silver);
   outline: none;
 `;
 
@@ -160,15 +204,27 @@ const Preview = styled.div`
   box-sizing: border-box;
 `;
 
-const UploadButton = styled.button`
-  background-color: #2e2e2e;
-  color: white;
-  padding: 10px;
-  border: none;
-  cursor: pointer;
-  margin: 10px;
+const Toolbar = styled.div`
   display: flex;
-  align-items: center;
-  gap: 8px;
-  border-radius: 5px;
+
+  gap: 10px;
+  padding: 10px;
+
+  background-color: transparent;
+`;
+
+const ToolButton = styled.button`
+  background-color: transparent;
+
+  color: var(--color-white);
+
+  border: none;
+
+  padding: 12px;
+  border-radius: 4px;
+  cursor: pointer;
+
+  &:hover {
+    background-color: #555;
+  }
 `;
