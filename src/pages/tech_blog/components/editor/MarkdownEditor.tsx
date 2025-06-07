@@ -194,7 +194,7 @@ export default function MarkdownEditor({ value, onChange }: MarkdownProps) {
               return (
                 <blockquote
                   style={{
-                    background: '#7afca19b',
+                    background: 'var(--color-que)',
                     padding: '1px 15px',
                     borderRadius: '10px',
                   }}
