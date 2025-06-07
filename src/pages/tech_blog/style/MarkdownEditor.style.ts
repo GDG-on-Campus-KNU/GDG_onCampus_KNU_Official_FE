@@ -59,26 +59,6 @@ export const NavBarContainer = styled.div`
   background-color: transparent;
 `;
 
-export const StyledModeBtn = styled.button`
-  background-color: var(--color-more-transparent);
-  color: var(--color-white);
-
-  border: none;
-  border-radius: 12px;
-
-  padding: 10px 20px;
-
-  font-weight: 600;
-  font-size: 18px;
-
-  text-transform: none;
-
-  &:hover {
-    color: var(--color-silver);
-    cursor: pointer;
-  }
-`;
-
 export const StyledOutBtn = styled.button`
   background-color: var(--color-more-transparent);
   color: var(--color-white);
