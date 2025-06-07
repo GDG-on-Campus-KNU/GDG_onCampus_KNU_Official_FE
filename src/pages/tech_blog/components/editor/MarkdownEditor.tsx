@@ -18,7 +18,7 @@ import insertImage from '@gdg/assets/insertImage.svg';
 import code from '@gdg/assets/code.svg';
 
 import {
-  Wrapper,
+  EditorWrapper,
   Container,
   Editor,
   Preview,
@@ -105,7 +105,7 @@ export default function MarkdownEditor({ value, onChange }: MarkdownProps) {
     insertAtCursor(`\n\`\`\`js\n코드 작성\n\`\`\`\n`);
 
   return (
-    <Wrapper>
+    <EditorWrapper>
       <TransparentInput
         style={{ display: 'none' }}
         type='file'
@@ -225,6 +225,6 @@ export default function MarkdownEditor({ value, onChange }: MarkdownProps) {
           {value}
         </ReactMarkdown>
       </Preview>
-    </Wrapper>
+    </EditorWrapper>
   );
 }

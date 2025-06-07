@@ -10,9 +10,18 @@ export const Wrapper = styled.div`
   background-color: var(--color-midnight);
 `;
 
+export const EditorWrapper = styled.div`
+  width: 100%;
+  height: 78%;
+
+  display: flex;
+  justify-content: center;
+
+  background-color: var(--color-midnight);
+`;
+
 export const Container = styled.div`
   width: 100%;
-  height: 100vh;
 
   display: flex;
   flex-direction: column;
@@ -21,7 +30,6 @@ export const Container = styled.div`
   box-sizing: border-box;
 
   border: none;
-  border-right: 1px solid var(--color-silver);
   outline: none;
 
   padding: 0px 15px;
@@ -135,7 +143,7 @@ export const Box = styled.div`
 
 export const Editor = styled.textarea`
   width: 100%;
-  height: 100vh;
+  height: 100%;
 
   padding: 15px;
   box-sizing: border-box;
@@ -151,10 +159,16 @@ export const Editor = styled.textarea`
 
 export const Preview = styled.div`
   width: 100%;
-  height: 100vh;
+  height: 100%;
 
   padding: 15px;
   box-sizing: border-box;
+
+  border-left: 1px solid var(--color-silver);
+
+  @media (max-width: 1024px) {
+    display: none;
+  }
 `;
 
 export const Toolbar = styled.div`
