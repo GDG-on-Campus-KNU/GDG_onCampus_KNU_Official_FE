@@ -40,7 +40,7 @@ export const TitleContainer = styled.input`
   height: 60px;
 
   margin: 25px 0px;
-  padding: 15px;
+  padding: 25px;
 
   background-color: transparent;
   color: var(--color-white);
@@ -156,6 +156,7 @@ export const Editor = styled.textarea`
 
   border: none;
   outline: none;
+  overflow: auto;
 `;
 
 export const Preview = styled.div`
@@ -164,6 +165,7 @@ export const Preview = styled.div`
 
   padding: 15px;
   box-sizing: border-box;
+  overflow: auto;
 
   border-left: 1px solid var(--color-silver);
 
