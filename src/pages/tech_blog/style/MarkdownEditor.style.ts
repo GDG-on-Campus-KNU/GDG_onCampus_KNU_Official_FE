@@ -132,3 +132,65 @@ export const Box = styled.div`
   border: none;
   box-sizing: border-box;
 `;
+
+export const Editor = styled.textarea`
+  width: 100%;
+  height: 100vh;
+
+  padding: 15px;
+  box-sizing: border-box;
+
+  background-color: transparent;
+  color: white;
+
+  font-size: 18px;
+
+  border: none;
+  outline: none;
+`;
+
+export const Preview = styled.div`
+  width: 100%;
+  height: 100vh;
+
+  padding: 15px;
+  box-sizing: border-box;
+`;
+
+export const Toolbar = styled.div`
+  display: flex;
+  align-items: center;
+
+  gap: 10px;
+  padding: 10px;
+
+  background-color: transparent;
+`;
+
+export const TransparentInput = styled.input`
+  display: none;
+`;
+
+export const ToolButton = styled.button`
+  background-color: transparent;
+
+  color: var(--color-white);
+
+  border: none;
+
+  padding: 12px;
+  border-radius: 4px;
+  cursor: pointer;
+
+  &:hover {
+    background-color: #555;
+  }
+`;
+
+export const GroupingBar = styled.div`
+  width: 1px;
+  height: 50%;
+
+  margin: 0px 15px;
+  background-color: var(--color-smoky);
+`;

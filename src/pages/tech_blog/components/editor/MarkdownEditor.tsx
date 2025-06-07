@@ -4,15 +4,29 @@ import remarkBreaks from 'remark-breaks';
 import SyntaxHighlighter from 'react-syntax-highlighter';
 import prism from 'react-syntax-highlighter/dist/esm/styles/prism/prism';
 import remarkGfm from 'remark-gfm';
-import styled from '@emotion/styled';
 
 import useImageHandler from '@gdg/pages/tech_blog/hooks/useImageHandler';
+import h1 from '@gdg/assets/H1.svg';
+import h2 from '@gdg/assets/H2.svg';
+import h3 from '@gdg/assets/H3.svg';
+import bold from '@gdg/assets/Bold.svg';
+import italic from '@gdg/assets/Italic.svg';
+import strikeThrough from '@gdg/assets/strikeThrough.svg';
+import quote from '@gdg/assets/quote.svg';
+import link from '@gdg/assets/link.svg';
+import insertImage from '@gdg/assets/insertImage.svg';
+import code from '@gdg/assets/code.svg';
 
-import { Wrapper, Container } from '../../style/MarkdownEditor.style';
-import quote from '../../../../assets/quote.svg';
-import link from '../../../../assets/link.svg';
-import insertImage from '../../../../assets/insertImage.svg';
-import code from '../../../../assets/code.svg';
+import {
+  Wrapper,
+  Container,
+  Editor,
+  Preview,
+  Toolbar,
+  ToolButton,
+  GroupingBar,
+  TransparentInput,
+} from '../../style/MarkdownEditor.style';
 
 type MarkdownProps = {
   value: string;
@@ -76,6 +90,14 @@ export default function MarkdownEditor({ value, onChange }: MarkdownProps) {
     }
   };
 
+  const handleInsertH1 = () => insertAtCursor(`# 제목 1`);
+  const handleInsertH2 = () => insertAtCursor(`## 제목 2`);
+  const handleInsertH3 = () => insertAtCursor(`### 제목 3`);
+
+  const handleInsertBold = () => insertAtCursor(`**텍스트**`);
+  const handleInsertItalic = () => insertAtCursor(`*텍스트*`);
+  const handleInsertStrikethrough = () => insertAtCursor(`~~텍스트~~`);
+
   const handleInsertQuote = () => insertAtCursor(`\n> 인용문\n`);
   const handleInsertLink = () =>
     insertAtCursor(`[링크 텍스트](https://example.com)`);
@@ -84,7 +106,7 @@ export default function MarkdownEditor({ value, onChange }: MarkdownProps) {
 
   return (
     <Wrapper>
-      <input
+      <TransparentInput
         style={{ display: 'none' }}
         type='file'
         accept='image/*'
@@ -93,6 +115,33 @@ export default function MarkdownEditor({ value, onChange }: MarkdownProps) {
       />
       <Container>
         <Toolbar>
+          <ToolButton onClick={handleInsertH1}>
+            <img src={h1} alt='h1' width={20} height={20} />
+          </ToolButton>
+          <ToolButton onClick={handleInsertH2}>
+            <img src={h2} alt='h2' width={20} height={20} />
+          </ToolButton>
+          <ToolButton onClick={handleInsertH3}>
+            <img src={h3} alt='h3' width={20} height={20} />
+          </ToolButton>
+          <GroupingBar />
+
+          <ToolButton onClick={handleInsertBold}>
+            <img src={bold} alt='bold' width={20} height={20} />
+          </ToolButton>
+          <ToolButton onClick={handleInsertItalic}>
+            <img src={italic} alt='italic' width={20} height={20} />
+          </ToolButton>
+          <ToolButton onClick={handleInsertStrikethrough}>
+            <img
+              src={strikeThrough}
+              alt='strikeThrough'
+              width={20}
+              height={20}
+            />
+          </ToolButton>
+          <GroupingBar />
+
           <ToolButton onClick={handleInsertQuote}>
             <img src={quote} alt='quote' width={20} height={20} />
           </ToolButton>
@@ -179,52 +228,3 @@ export default function MarkdownEditor({ value, onChange }: MarkdownProps) {
     </Wrapper>
   );
 }
-
-const Editor = styled.textarea`
-  width: 100%;
-  height: 100vh;
-
-  padding: 15px;
-  box-sizing: border-box;
-
-  background-color: transparent;
-  color: white;
-
-  font-size: 18px;
-
-  border: none;
-  outline: none;
-`;
-
-const Preview = styled.div`
-  width: 100%;
-  height: 100vh;
-
-  padding: 15px;
-  box-sizing: border-box;
-`;
-
-const Toolbar = styled.div`
-  display: flex;
-
-  gap: 10px;
-  padding: 10px;
-
-  background-color: transparent;
-`;
-
-const ToolButton = styled.button`
-  background-color: transparent;
-
-  color: var(--color-white);
-
-  border: none;
-
-  padding: 12px;
-  border-radius: 4px;
-  cursor: pointer;
-
-  &:hover {
-    background-color: #555;
-  }
-`;
