@@ -75,7 +75,7 @@ const TabletRotateCarousel = ({
                 {cardData[index].contentText}
               </MobileContentText>
               <CompleteBtnWrapper>
-                <Link to='/techblog'>
+                <Link to={cardData[index].link} target='_blank'>
                   <CompleteBtn
                     size='xxs'
                     type='button'

@@ -62,7 +62,13 @@ const TechBlogEditPage = () => {
   }, [blogPost, markdown, setBlogPost, mutate]);
 
   const handleExit = () => {
-    navigate('/techblog');
+    if (
+      window.confirm(
+        '페이지를 나가시면 입력하신 내용이 저장되지 않습니다. 임시 저장을 완료하셨나요?'
+      )
+    ) {
+      navigate('/techblog');
+    }
   };
 
   return (

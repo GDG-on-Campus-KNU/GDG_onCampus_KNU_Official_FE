@@ -81,7 +81,7 @@ const PCRotateCarousel = ({
                 {cardData[index].contentText}
               </ContentText>
               <CompleteBtnWrapper>
-                <Link to='/techblog'>
+                <Link to={cardData[index].link} target='_blank'>
                   <CompleteBtn
                     size='xs'
                     type='button'
@@ -89,7 +89,7 @@ const PCRotateCarousel = ({
                     backgroundColor='blue'
                     hoverColor='blue'
                   >
-                    팀블로그 바로가기
+                    바로가기
                   </CompleteBtn>
                 </Link>
               </CompleteBtnWrapper>

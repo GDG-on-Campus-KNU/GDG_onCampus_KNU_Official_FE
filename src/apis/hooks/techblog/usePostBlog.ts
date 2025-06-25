@@ -1,4 +1,5 @@
 import { useMutation, UseMutationResult } from '@tanstack/react-query';
+import { useNavigate } from 'react-router-dom';
 
 import { fetchInstance } from '@gdg/apis/instance/Api_JWT';
 import { queryClient } from '@gdg/apis/instance/Http';
@@ -17,11 +18,14 @@ export const usePostBlog = (): UseMutationResult<
   Error,
   blogPostInterface
 > => {
+  const naviagte = useNavigate();
+
   return useMutation<void, Error, blogPostInterface>({
     mutationFn: postBlog,
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: ['blogPost'] });
       alert('게시글이 성공적으로 저장되었습니다.');
+      naviagte('/techblog');
     },
     onError: (error) => {
       console.error('게시글 저장 중 오류가 발생했습니다:', error);
