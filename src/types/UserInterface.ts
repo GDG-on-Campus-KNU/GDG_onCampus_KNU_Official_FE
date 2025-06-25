@@ -83,7 +83,7 @@ export interface blogPostMetaDataInterface {
   title: string;
   summary: string;
   thumbnailUrl: string;
-  category: string;
+  category: 'BACKEND' | 'FRONTEND' | 'ANDROID' | 'AI' | 'DESIGN' | 'ETC';
   createAt: string;
   likeCount: number;
   commentCount: number;

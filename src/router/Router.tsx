@@ -244,6 +244,10 @@ const routesConfig: AppRouteObject[] = [
         element: <TechBlogEditPage />,
       },
       {
+        path: 'edit/:id',
+        element: <TechBlogEditPage />,
+      },
+      {
         path: 'post',
         element: <TechBlogPostPage />,
       },
