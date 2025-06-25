@@ -75,14 +75,14 @@ export const renderDropdownItems = (
             </NavLink>
           </DropdownItem>
           <DropdownItem onClick={handleItemClick(closeDropdown)}>
-            <NavLink to='/posts'>
+            <NavLink to='/mypage/posts'>
               <ResponsiveText size='sm' color='black'>
                 내 블로그
               </ResponsiveText>
             </NavLink>
           </DropdownItem>
           <DropdownItem onClick={handleItemClick(closeDropdown)}>
-            <NavLink to='/team'>
+            <NavLink to='/mypage/saves'>
               <ResponsiveText size='sm' color='black'>
                 임시 글
               </ResponsiveText>
