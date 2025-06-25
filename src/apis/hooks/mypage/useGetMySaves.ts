@@ -5,8 +5,8 @@ const getMySavesPath = () => '/api/post/mypost';
 
 export const getMySaves = async (
   status: 'TEMPORAL' | 'SAVED',
-  page: number = 0,
-  size: number = 8
+  page: number,
+  size: number
 ): Promise<myTechBlogListInterface> => {
   const response = await fetchInstance.get(
     `${getMySavesPath()}?status=${status}&page=${page}&size=${size}`

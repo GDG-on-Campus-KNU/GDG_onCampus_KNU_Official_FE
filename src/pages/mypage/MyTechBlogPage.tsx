@@ -1,12 +1,12 @@
 // import { TeamBlogMetaData } from '@gdg/router/components/MetaData';
 import styled from '@emotion/styled';
-import { useState, useCallback, useEffect } from 'react';
 
-import { myTechBlogMetaDataInterface } from '@gdg/types/UserInterface';
+import { Spinner } from '@gdg/components/common/Spinner';
 import { getMySaves } from '@gdg/apis/hooks/mypage/useGetMySaves';
 import PageTitle from '@gdg/components/common/title/PageTitle';
 
 import SavesCard from './components/SavesCard';
+import useInfinityMyData from './hooks/useInfinityMyData';
 
 const PostListLayout = styled.div`
   width: 100%;
@@ -19,25 +19,12 @@ const PostListLayout = styled.div`
 `;
 
 const MyTechBlogPage = () => {
-  const [mySavesList, setMySavesList] = useState<myTechBlogMetaDataInterface[]>(
-    []
-  );
-
-  const fetchTrendPosts = useCallback(
-    async (status: 'TEMPORAL' | 'SAVED', size?: number) => {
-      try {
-        const response = await getMySaves(status, size);
-        setMySavesList(response.data);
-      } catch (error) {
-        console.error(error);
-      }
-    },
-    []
-  );
-
-  useEffect(() => {
-    fetchTrendPosts('SAVED');
-  }, []);
+  const {
+    observerRef,
+    data: mySavesList,
+    isPending,
+    hasNext,
+  } = useInfinityMyData('SAVED', getMySaves);
 
   return (
     <>
@@ -48,6 +35,8 @@ const MyTechBlogPage = () => {
         {mySavesList.map((e, i) => {
           return <SavesCard key={i} {...e} />;
         })}
+        {isPending && <Spinner />}
+        {hasNext && <div ref={observerRef}></div>}
       </PostListLayout>
     </>
   );
