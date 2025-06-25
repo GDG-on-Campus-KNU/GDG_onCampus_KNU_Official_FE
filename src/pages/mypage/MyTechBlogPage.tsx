@@ -6,21 +6,16 @@ import { myTechBlogMetaDataInterface } from '@gdg/types/UserInterface';
 import { getMySaves } from '@gdg/apis/hooks/mypage/useGetMySaves';
 import PageTitle from '@gdg/components/common/title/PageTitle';
 
+import SavesCard from './components/SavesCard';
+
 const PostListLayout = styled.div`
   width: 100%;
   max-width: 1024px;
-  margin: 20px 45px;
+  margin: 50px;
 
   display: flex;
   flex-direction: column;
   gap: 25px;
-`;
-
-const ButtonContainer = styled.div`
-  width: 100%;
-
-  display: flex;
-  justify-content: flex-end;
 `;
 
 const MyTechBlogPage = () => {
@@ -32,7 +27,6 @@ const MyTechBlogPage = () => {
     async (status: 'TEMPORAL' | 'SAVED', size?: number) => {
       try {
         const response = await getMySaves(status, size);
-        console.log(response.data);
         setMySavesList(response.data);
       } catch (error) {
         console.error(error);
@@ -48,9 +42,12 @@ const MyTechBlogPage = () => {
   return (
     <>
       {/* <TeamBlogMetaData /> */}
+      <PageTitle MainTitle='내 블로그' SubTitle='My TechBlog' />
+
       <PostListLayout>
-        {' '}
-        <PageTitle MainTitle='내 블로그' SubTitle='My TechBlog' />
+        {mySavesList.map((e, i) => {
+          return <SavesCard key={i} {...e} />;
+        })}
       </PostListLayout>
     </>
   );
