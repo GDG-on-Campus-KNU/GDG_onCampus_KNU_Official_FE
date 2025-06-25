@@ -21,13 +21,16 @@ const UnderLine = styled.div`
 `;
 
 const SavesCard = (props: myTechBlogMetaDataInterface) => {
+  const title = props.title?.trim() ? props.title : '(제목 없음)';
+  const summary = props.summary?.trim() ? props.summary : '(요약 없음)';
+
   return (
     <Link key={props.id} to={`/techblog/${props.id}`}>
       <CardWrapper>
         <Text size='sxl' weight='bold'>
-          {props.title}
+          {title}
         </Text>
-        <Text size='md'>{props.summary}</Text>
+        <Text size='md'>{summary}</Text>
         <Text size='xs' color='white'>
           {props.createAt}
         </Text>
