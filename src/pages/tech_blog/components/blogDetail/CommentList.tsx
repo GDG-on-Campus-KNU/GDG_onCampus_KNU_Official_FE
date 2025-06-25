@@ -22,7 +22,6 @@ import {
 } from '@gdg/pages/tech_blog/style/PostCard.style';
 import { addLikeCount } from '@gdg/apis/hooks/techblog/useAddLikeCount';
 import { deleteLikeCount } from '@gdg/apis/hooks/techblog/useDeleteLikeCount';
-import { throttle } from '@gdg/utils/throttle';
 const CommonBtn = lazy(() => import('@gdg/components/common/button/CommonBtn'));
 const PostComment = lazy(
   () => import('@gdg/pages/tech_blog/components/blogDetail/PostComment')
