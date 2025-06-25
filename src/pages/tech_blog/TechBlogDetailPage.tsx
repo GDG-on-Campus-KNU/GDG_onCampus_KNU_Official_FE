@@ -25,6 +25,7 @@ const TechBlogDetailPage = () => {
         <>
           <BlogContent postData={postData.data} />
           <CommentList
+            isLike={postData.data.liked}
             likeCount={postData.data.likeCount}
             commentCount={postData.data.commentCount}
           />
