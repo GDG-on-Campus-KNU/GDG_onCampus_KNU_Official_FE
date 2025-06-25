@@ -90,6 +90,20 @@ export interface blogPostMetaDataInterface {
   sharedCount: number;
 }
 
+export interface myTechBlogMetaDataInterface {
+  id: number;
+  title: string;
+  summary: string;
+  createAt: string;
+}
+
+export interface myTechBlogListInterface {
+  data: myTechBlogMetaDataInterface[];
+  hasNext: boolean;
+  page: number;
+  totalPage: number;
+}
+
 export interface blogPostListInterface {
   data: blogPostMetaDataInterface[];
   hasNext: boolean;

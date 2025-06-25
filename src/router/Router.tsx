@@ -39,6 +39,9 @@ const ApplyExPage = lazy(() => import('@gdg/pages/apply/ApplyExPage'));
 const InquiryPage = lazy(() => import('@gdg/pages/apply/InquiryPage'));
 const IntroducePage = lazy(() => import('@gdg/pages/introduce/IntroducePage'));
 // const MyPage = lazy(() => import('@gdg/pages/mypage/MyPage'));
+
+const MyTechBlogPage = lazy(() => import('@gdg/pages/mypage/MyTechBlogPage'));
+
 const AuthCallBackPage = lazy(
   () => import('@gdg/pages/signin/AuthCallBackPage')
 );
@@ -121,6 +124,16 @@ const routesConfig: AppRouteObject[] = [
       //     },
       //   ],
       // },
+      {
+        path: 'posts',
+        element: <StatusRoute allowedStatuses={['CORE', 'MEMBER']} />,
+        children: [
+          {
+            path: '',
+            element: <MyTechBlogPage />,
+          },
+        ],
+      },
       {
         path: 'team',
         element: <StatusRoute allowedStatuses={['CORE', 'MEMBER', 'GUEST']} />,

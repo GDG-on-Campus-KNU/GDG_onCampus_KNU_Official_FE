@@ -75,6 +75,20 @@ export const renderDropdownItems = (
             </NavLink>
           </DropdownItem>
           <DropdownItem onClick={handleItemClick(closeDropdown)}>
+            <NavLink to='/posts'>
+              <ResponsiveText size='sm' color='black'>
+                내 블로그
+              </ResponsiveText>
+            </NavLink>
+          </DropdownItem>
+          <DropdownItem onClick={handleItemClick(closeDropdown)}>
+            <NavLink to='/team'>
+              <ResponsiveText size='sm' color='black'>
+                임시 글
+              </ResponsiveText>
+            </NavLink>
+          </DropdownItem>
+          <DropdownItem onClick={handleItemClick(closeDropdown)}>
             <NavLink to='/admin'>
               <ResponsiveText size='sm' color='black'>
                 어드민페이지
