@@ -68,8 +68,6 @@ const useInfinityMyData = (
     setData([]);
     setPage(0);
     setHasNext(true);
-
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [status]);
 
   useEffect(() => {
