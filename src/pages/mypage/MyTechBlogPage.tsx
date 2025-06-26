@@ -33,7 +33,7 @@ const MyTechBlogPage = () => {
 
       <PostListLayout>
         {mySavesList.map((e, i) => {
-          return <SavesCard key={i} {...e} />;
+          return <SavesCard key={i} {...e} status='SAVED' />;
         })}
         {isPending && <Spinner />}
         {hasNext && <div ref={observerRef}></div>}

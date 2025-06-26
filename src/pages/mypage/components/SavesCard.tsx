@@ -3,6 +3,11 @@ import { Link } from 'react-router-dom';
 
 import { myTechBlogMetaDataInterface } from '@gdg/types/UserInterface';
 import Text from '@gdg/components/common/typography/Text';
+
+interface SavesCardProps extends myTechBlogMetaDataInterface {
+  status: 'SAVED' | 'TEMPORAL';
+}
+
 const CardWrapper = styled.div`
   width: 100%;
   height: auto;
@@ -20,12 +25,16 @@ const UnderLine = styled.div`
   margin: 20px 0px;
 `;
 
-const SavesCard = (props: myTechBlogMetaDataInterface) => {
+const SavesCard = (props: SavesCardProps) => {
   const title = props.title?.trim() ? props.title : '(제목 없음)';
   const summary = props.summary?.trim() ? props.summary : '(요약 없음)';
+  const linkTo =
+    props.status === 'SAVED'
+      ? `/techblog/${props.id}`
+      : `/write/edit/${props.id}`;
 
   return (
-    <Link key={props.id} to={`/write/edit/${props.id}`}>
+    <Link key={props.id} to={linkTo}>
       <CardWrapper>
         <Text size='sxl' weight='bold'>
           {title}

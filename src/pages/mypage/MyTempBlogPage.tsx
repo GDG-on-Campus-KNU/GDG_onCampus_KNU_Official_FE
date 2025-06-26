@@ -33,7 +33,7 @@ const MyTempBlogPage = () => {
 
       <PostListLayout>
         {myTempSavesList.map((e, i) => {
-          return <SavesCard key={i} {...e} />;
+          return <SavesCard key={i} {...e} status='TEMPORAL' />;
         })}
         {isPending && <Spinner />}
         {hasNext && <div ref={observerRef}></div>}

@@ -68,13 +68,6 @@ export const renderDropdownItems = (
       additionalItems = (
         <React.Fragment>
           <DropdownItem onClick={handleItemClick(closeDropdown)}>
-            <NavLink to='/team'>
-              <ResponsiveText size='sm' color='black'>
-                팀페이지
-              </ResponsiveText>
-            </NavLink>
-          </DropdownItem>
-          <DropdownItem onClick={handleItemClick(closeDropdown)}>
             <NavLink to='/mypage/posts'>
               <ResponsiveText size='sm' color='black'>
                 내 블로그
@@ -85,6 +78,13 @@ export const renderDropdownItems = (
             <NavLink to='/mypage/saves'>
               <ResponsiveText size='sm' color='black'>
                 임시 글
+              </ResponsiveText>
+            </NavLink>
+          </DropdownItem>
+          <DropdownItem onClick={handleItemClick(closeDropdown)}>
+            <NavLink to='/team'>
+              <ResponsiveText size='sm' color='black'>
+                팀페이지
               </ResponsiveText>
             </NavLink>
           </DropdownItem>
