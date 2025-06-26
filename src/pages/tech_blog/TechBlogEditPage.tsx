@@ -1,7 +1,6 @@
 import { useState, useRef, useCallback, useEffect } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 
-import { useGetPostDetail } from '@gdg/apis/hooks/techblog/useGetPostDetail';
 import {
   Wrapper,
   Container,
@@ -14,6 +13,7 @@ import {
 } from '@gdg/pages/tech_blog/style/MarkdownEditor.style';
 import { usePostBlog } from '@gdg/apis/hooks/techblog/usePostBlog';
 import { useBlogPost } from '@gdg/pages/tech_blog/context/index';
+import { useGetMyModifies } from '@gdg/apis/hooks/mypage/useGetMyModifies';
 
 import MarkdownEditor from './components/editor/MarkdownEditor';
 
@@ -23,7 +23,7 @@ const TechBlogEditPage = () => {
 
   const context = useBlogPost();
   const { blogPost, setBlogPost } = context;
-  const { data, isSuccess } = useGetPostDetail(postId);
+  const { data, isSuccess } = useGetMyModifies(postId);
 
   const [markdown, setMarkdown] = useState<string>(blogPost.content);
   const titleRef = useRef<HTMLInputElement>(null);

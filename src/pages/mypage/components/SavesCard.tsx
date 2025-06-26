@@ -25,7 +25,7 @@ const SavesCard = (props: myTechBlogMetaDataInterface) => {
   const summary = props.summary?.trim() ? props.summary : '(요약 없음)';
 
   return (
-    <Link key={props.id} to={`/techblog/${props.id}`}>
+    <Link key={props.id} to={`/write/edit/${props.id}`}>
       <CardWrapper>
         <Text size='sxl' weight='bold'>
           {title}
