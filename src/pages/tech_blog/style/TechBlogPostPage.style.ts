@@ -1,4 +1,5 @@
 import styled from '@emotion/styled';
+import { css } from '@emotion/react';
 
 export const Wrapper = styled.div`
   width: 80%;
@@ -123,7 +124,11 @@ export const CategoryElement = styled.div`
   margin-top: 20px;
 `;
 
-export const CategoryCard = styled.button`
+interface CategoryCardProps {
+  $active: boolean;
+}
+
+export const CategoryCard = styled.button<CategoryCardProps>`
   width: 80%;
   height: 70%;
 
@@ -139,6 +144,14 @@ export const CategoryCard = styled.button`
     border: 1px solid var(--color-white);
     cursor: pointer;
   }
+
+  ${({ $active }) =>
+    $active &&
+    css`
+      background-color: var(--color-smoky);
+      color: var(--color-white);
+      border-color: var(--color-smoky);
+    `}
 `;
 
 export const ButtonContainer = styled.div`

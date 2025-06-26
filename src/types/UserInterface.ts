@@ -83,11 +83,25 @@ export interface blogPostMetaDataInterface {
   title: string;
   summary: string;
   thumbnailUrl: string;
-  category: string;
+  category: 'BACKEND' | 'FRONTEND' | 'ANDROID' | 'AI' | 'DESIGN' | 'ETC';
   createAt: string;
   likeCount: number;
   commentCount: number;
   sharedCount: number;
+}
+
+export interface myTechBlogMetaDataInterface {
+  id: number;
+  title: string;
+  summary: string;
+  createAt: string;
+}
+
+export interface myTechBlogListInterface {
+  data: myTechBlogMetaDataInterface[];
+  hasNext: boolean;
+  page: number;
+  totalPage: number;
 }
 
 export interface blogPostListInterface {

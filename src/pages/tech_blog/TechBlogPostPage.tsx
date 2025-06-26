@@ -24,13 +24,14 @@ import {
 import { useBlogPost } from '@gdg/pages/tech_blog/context/index';
 import useImageHandler from '@gdg/pages/tech_blog/hooks/useImageHandler';
 
+type Category = 'BACKEND' | 'FRONTEND' | 'ANDROID' | 'AI' | 'DESIGN' | 'ETC';
+
 const TechBlogPostPage = () => {
   const context = useBlogPost();
   const [thumbnail, setThumbnail] = useState(uploadthumbnail);
   const inputFileRef = useRef<HTMLInputElement>(null);
   const { handleImage } = useImageHandler();
   const { mutate } = usePostBlog();
-
   const { blogPost, setBlogPost } = context;
 
   const thumbnailDeleteClick = () => {
@@ -110,24 +111,20 @@ const TechBlogPostPage = () => {
           카테고리 설정
         </Text>
         <CategoryElement>
-          {categories.map((category) => (
-            <CategoryCard
-              key={category.eng}
-              onClick={() =>
-                categoryCardClick(
-                  category.eng as
-                    | 'BACKEND'
-                    | 'FRONTEND'
-                    | 'ANDROID'
-                    | 'AI'
-                    | 'DESIGN'
-                    | 'ETC'
-                )
-              }
-            >
-              {category.kor}
-            </CategoryCard>
-          ))}
+          {categories.map((category) => {
+            const isActive = blogPost.category === category.eng;
+
+            return (
+              <CategoryCard
+                key={category.eng}
+                $active={isActive}
+                aria-pressed={isActive}
+                onClick={() => categoryCardClick(category.eng as Category)}
+              >
+                {category.kor}
+              </CategoryCard>
+            );
+          })}
         </CategoryElement>
         <ButtonContainer>
           <StyledPostBtn onClick={postBlog}>출간하기</StyledPostBtn>

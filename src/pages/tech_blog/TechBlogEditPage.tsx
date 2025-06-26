@@ -1,60 +1,65 @@
-import { Editor } from '@toast-ui/react-editor';
 import { useState, useRef, useCallback, useEffect } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 
-import MarkdownEditorLight from '@gdg/pages/tech_blog/components/editor/MarkdownEditorLight';
 import {
   Wrapper,
   Container,
   TitleContainer,
   NavBarContainer,
   StyledOutBtn,
-  StyledModeBtn,
   StyledPostBtn,
   StyledSaveBtn,
   Box,
 } from '@gdg/pages/tech_blog/style/MarkdownEditor.style';
 import { usePostBlog } from '@gdg/apis/hooks/techblog/usePostBlog';
-import MarkdownEditorDark from '@gdg/pages/tech_blog/components/editor/MarkdownEditorDark';
 import { useBlogPost } from '@gdg/pages/tech_blog/context/index';
-import useImageHandler from '@gdg/pages/tech_blog/hooks/useImageHandler';
+import { useGetMyModifies } from '@gdg/apis/hooks/mypage/useGetMyModifies';
+
+import MarkdownEditor from './components/editor/MarkdownEditor';
 
 const TechBlogEditPage = () => {
+  const { id } = useParams();
+  const postId = id ? parseInt(id) : null;
+
   const context = useBlogPost();
   const { blogPost, setBlogPost } = context;
-  const [mode, setMode] = useState(true);
+  const { data, isSuccess } = useGetMyModifies(postId);
+
+  const [markdown, setMarkdown] = useState<string>(blogPost.content);
   const titleRef = useRef<HTMLInputElement>(null);
-  const editorRef = useRef<Editor>(null);
-  const { handleImage } = useImageHandler();
+
   const { mutate } = usePostBlog();
   const navigate = useNavigate();
 
   useEffect(() => {
-    titleRef.current?.focus();
-  }, []);
+    if (isSuccess && data) {
+      const { title, content, thumbnailUrl, category } = data;
 
-  const handleMode = () => {
-    if (editorRef.current) {
-      const markdown = editorRef.current.getInstance().getMarkdown();
-      setBlogPost((prev) => ({
-        ...prev,
-        content: markdown,
-      }));
+      setBlogPost({
+        title,
+        content,
+        status: 'TEMPORAL',
+        thumbnailUrl: thumbnailUrl ?? null,
+        category: category ?? 'ETC',
+      });
+      console.log(content);
+      setMarkdown(content);
     }
-    setMode((prevMode) => !prevMode);
-  };
 
-  useEffect(() => {
-    if (editorRef.current) {
-      editorRef.current.getInstance().setMarkdown(blogPost.content);
+    if (!id) {
+      setBlogPost({
+        title: '',
+        content: '',
+        status: 'TEMPORAL',
+        thumbnailUrl: null,
+        category: 'ETC',
+      });
+
+      setMarkdown('');
     }
-  }, [blogPost.content]);
+  }, [id, isSuccess, data, setBlogPost]);
 
   const handleSubmit = useCallback(() => {
-    if (!editorRef.current) return;
-
-    const markdown = editorRef.current.getInstance().getMarkdown();
-
     setBlogPost((prev) => ({
       ...prev,
       title: titleRef.current?.value || prev.title,
@@ -63,12 +68,9 @@ const TechBlogEditPage = () => {
     }));
 
     navigate('/write/post');
-  }, [setBlogPost, navigate]);
+  }, [setBlogPost, navigate, markdown]);
 
   const handleTempSave = useCallback(() => {
-    if (!editorRef.current) return;
-
-    const markdown = editorRef.current.getInstance().getMarkdown();
     const newTitle = titleRef.current?.value || blogPost.title;
     const newContent = markdown || blogPost.content;
 
@@ -86,7 +88,17 @@ const TechBlogEditPage = () => {
       thumbnailUrl: null,
       category: 'ETC',
     });
-  }, [blogPost.content, blogPost.title, setBlogPost, mutate]);
+  }, [blogPost, markdown, setBlogPost, mutate]);
+
+  const handleExit = () => {
+    if (
+      window.confirm(
+        '페이지를 나가시면 입력하신 내용이 저장되지 않습니다. 임시 저장을 완료하셨나요?'
+      )
+    ) {
+      navigate('/techblog');
+    }
+  };
 
   return (
     <Wrapper>
@@ -96,26 +108,10 @@ const TechBlogEditPage = () => {
           placeholder='제목을 입력해주세요'
           defaultValue={blogPost.title}
         />
-        {mode && (
-          <MarkdownEditorDark
-            editorRef={editorRef}
-            handleImage={handleImage}
-            initialContent={blogPost.content}
-          />
-        )}
-        {!mode && (
-          <MarkdownEditorLight
-            editorRef={editorRef}
-            handleImage={handleImage}
-            initialContent={blogPost.content}
-          />
-        )}
+        <MarkdownEditor value={markdown} onChange={setMarkdown} />
         <NavBarContainer>
           <Box>
-            <StyledOutBtn>나가기</StyledOutBtn>
-            <StyledModeBtn onClick={handleMode}>
-              {mode ? '다크 모드' : '라이트 모드'}
-            </StyledModeBtn>
+            <StyledOutBtn onClick={handleExit}>나가기</StyledOutBtn>
           </Box>
           <Box>
             <StyledSaveBtn onClick={handleTempSave}>임시저장</StyledSaveBtn>
