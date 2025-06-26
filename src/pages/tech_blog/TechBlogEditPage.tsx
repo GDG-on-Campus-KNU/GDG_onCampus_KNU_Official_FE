@@ -1,5 +1,5 @@
 import { useState, useRef, useCallback, useEffect } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 
 import {
   Wrapper,
@@ -13,12 +13,17 @@ import {
 } from '@gdg/pages/tech_blog/style/MarkdownEditor.style';
 import { usePostBlog } from '@gdg/apis/hooks/techblog/usePostBlog';
 import { useBlogPost } from '@gdg/pages/tech_blog/context/index';
+import { useGetMyModifies } from '@gdg/apis/hooks/mypage/useGetMyModifies';
 
 import MarkdownEditor from './components/editor/MarkdownEditor';
 
 const TechBlogEditPage = () => {
+  const { id } = useParams();
+  const postId = id ? parseInt(id) : null;
+
   const context = useBlogPost();
   const { blogPost, setBlogPost } = context;
+  const { data, isSuccess } = useGetMyModifies(postId);
 
   const [markdown, setMarkdown] = useState<string>(blogPost.content);
   const titleRef = useRef<HTMLInputElement>(null);
@@ -27,8 +32,32 @@ const TechBlogEditPage = () => {
   const navigate = useNavigate();
 
   useEffect(() => {
-    titleRef.current?.focus();
-  }, []);
+    if (isSuccess && data) {
+      const { title, content, thumbnailUrl, category } = data;
+
+      setBlogPost({
+        title,
+        content,
+        status: 'TEMPORAL',
+        thumbnailUrl: thumbnailUrl ?? null,
+        category: category ?? 'ETC',
+      });
+      console.log(content);
+      setMarkdown(content);
+    }
+
+    if (!id) {
+      setBlogPost({
+        title: '',
+        content: '',
+        status: 'TEMPORAL',
+        thumbnailUrl: null,
+        category: 'ETC',
+      });
+
+      setMarkdown('');
+    }
+  }, [id, isSuccess, data, setBlogPost]);
 
   const handleSubmit = useCallback(() => {
     setBlogPost((prev) => ({

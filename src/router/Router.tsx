@@ -39,6 +39,10 @@ const ApplyExPage = lazy(() => import('@gdg/pages/apply/ApplyExPage'));
 const InquiryPage = lazy(() => import('@gdg/pages/apply/InquiryPage'));
 const IntroducePage = lazy(() => import('@gdg/pages/introduce/IntroducePage'));
 // const MyPage = lazy(() => import('@gdg/pages/mypage/MyPage'));
+
+const MyTechBlogPage = lazy(() => import('@gdg/pages/mypage/MyTechBlogPage'));
+const MyTempBlogPage = lazy(() => import('@gdg/pages/mypage/MyTempBlogPage'));
+
 const AuthCallBackPage = lazy(
   () => import('@gdg/pages/signin/AuthCallBackPage')
 );
@@ -121,6 +125,20 @@ const routesConfig: AppRouteObject[] = [
       //     },
       //   ],
       // },
+      {
+        path: 'mypage',
+        element: <StatusRoute allowedStatuses={['CORE', 'MEMBER']} />,
+        children: [
+          {
+            path: 'posts',
+            element: <MyTechBlogPage />,
+          },
+          {
+            path: 'saves',
+            element: <MyTempBlogPage />,
+          },
+        ],
+      },
       {
         path: 'team',
         element: <StatusRoute allowedStatuses={['CORE', 'MEMBER', 'GUEST']} />,
@@ -223,6 +241,10 @@ const routesConfig: AppRouteObject[] = [
     children: [
       {
         path: '',
+        element: <TechBlogEditPage />,
+      },
+      {
+        path: 'edit/:id',
         element: <TechBlogEditPage />,
       },
       {
